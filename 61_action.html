@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Action – AI 101</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./70_stream.html" rel="next">
+<link href="./60_mounts.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./61_action.html">Action</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI 101</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_podman.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Podman</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_alpine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alpine</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_enigma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enigma</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_c89_99.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C89/99</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_printb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Printb</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_macros.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Macros</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_sha256.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SHA256</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_endian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Endian</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22_shainc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SHAinC</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./30_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finite</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./31_bigadd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BigAdd</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./32_4096_t.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4096_t</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./40_fermat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fermat</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41_keygen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">KeyGen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42_rsainc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RSAinC</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50_euclid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Euclid</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51_ops_ui.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ops_ui</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./52_bigrsa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BigRSA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./60_mounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mounts</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61_action.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Action</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./70_stream.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stream</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./71_malloc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">malloc</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./72_list_t.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">list_t</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80_struct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">struct</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81_bchain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">bchain</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90_graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graphs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91_merkle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merkle</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92_heap_t.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">heap_t</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A0_logics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A2_btcinc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BTCinC</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#announcements" id="toc-announcements" class="nav-link active" data-scroll-target="#announcements">Announcements</a></li>
+  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#motivation-1" id="toc-motivation-1" class="nav-link" data-scroll-target="#motivation-1">Motivation</a></li>
+  <li><a href="#ci" id="toc-ci" class="nav-link" data-scroll-target="#ci">CI</a></li>
+  <li><a href="#cicd-introduction" id="toc-cicd-introduction" class="nav-link" data-scroll-target="#cicd-introduction">CI/CD Introduction</a></li>
+  <li><a href="#editorializing" id="toc-editorializing" class="nav-link" data-scroll-target="#editorializing">Editorializing</a></li>
+  <li><a href="#the-alternative" id="toc-the-alternative" class="nav-link" data-scroll-target="#the-alternative">The Alternative</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
+  <li><a href="#both-sides" id="toc-both-sides" class="nav-link" data-scroll-target="#both-sides">Both Sides</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#azure-linux" id="toc-azure-linux" class="nav-link" data-scroll-target="#azure-linux">Azure Linux</a></li>
+  <li><a href="#build-test-deploy" id="toc-build-test-deploy" class="nav-link" data-scroll-target="#build-test-deploy">Build, Test, Deploy</a></li>
+  <li><a href="#ci-1" id="toc-ci-1" class="nav-link" data-scroll-target="#ci-1">CI</a></li>
+  <li><a href="#mailing-list-ex." id="toc-mailing-list-ex." class="nav-link" data-scroll-target="#mailing-list-ex.">Mailing List Ex.</a></li>
+  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">CD</a></li>
+  <li><a href="#what-is-devops" id="toc-what-is-devops" class="nav-link" data-scroll-target="#what-is-devops">What is DevOps?</a></li>
+  <li><a href="#what-does-it-mean" id="toc-what-does-it-mean" class="nav-link" data-scroll-target="#what-does-it-mean">What does it mean?</a></li>
+  <li><a href="#devops-ci" id="toc-devops-ci" class="nav-link" data-scroll-target="#devops-ci">DevOps &amp; CI?</a></li>
+  <li><a href="#github-and-cicd" id="toc-github-and-cicd" class="nav-link" data-scroll-target="#github-and-cicd">GitHub and CI/CD</a></li>
+  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a></li>
+  <li><a href="#example-ci-workflow" id="toc-example-ci-workflow" class="nav-link" data-scroll-target="#example-ci-workflow">Example CI Workflow</a></li>
+  <li><a href="#example-cd-workflow" id="toc-example-cd-workflow" class="nav-link" data-scroll-target="#example-cd-workflow">Example CD Workflow</a></li>
+  <li><a href="#smaller-ex." id="toc-smaller-ex." class="nav-link" data-scroll-target="#smaller-ex.">Smaller Ex.</a></li>
+  <li><a href="#excerpt" id="toc-excerpt" class="nav-link" data-scroll-target="#excerpt">Excerpt</a></li>
+  <li><a href="#back-in-action" id="toc-back-in-action" class="nav-link" data-scroll-target="#back-in-action">Back in Action</a></li>
+  <li><a href="#ci-2" id="toc-ci-2" class="nav-link" data-scroll-target="#ci-2">CI</a></li>
+  <li><a href="#ref-.yml" id="toc-ref-.yml" class="nav-link" data-scroll-target="#ref-.yml">Ref .yml</a></li>
+  <li><a href="#yml" id="toc-yml" class="nav-link" data-scroll-target="#yml">.yml</a></li>
+  <li><a href="#simplify" id="toc-simplify" class="nav-link" data-scroll-target="#simplify">Simplify</a></li>
+  <li><a href="#simplify-1" id="toc-simplify-1" class="nav-link" data-scroll-target="#simplify-1">Simplify</a></li>
+  <li><a href="#jobs" id="toc-jobs" class="nav-link" data-scroll-target="#jobs">Jobs</a></li>
+  <li><a href="#runners" id="toc-runners" class="nav-link" data-scroll-target="#runners">Runners</a></li>
+  <li><a href="#vs-docker" id="toc-vs-docker" class="nav-link" data-scroll-target="#vs-docker">Vs Docker</a></li>
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  <li><a href="#on-.yml" id="toc-on-.yml" class="nav-link" data-scroll-target="#on-.yml">On .yml</a></li>
+  <li><a href="#up-to-you" id="toc-up-to-you" class="nav-link" data-scroll-target="#up-to-you">Up to you</a></li>
+  <li><a href="#today-1" id="toc-today-1" class="nav-link" data-scroll-target="#today-1">Today</a></li>
+  <li><a href="#make" id="toc-make" class="nav-link" data-scroll-target="#make"><code>make</code></a></li>
+  <li><a href="#the-pitch" id="toc-the-pitch" class="nav-link" data-scroll-target="#the-pitch">The Pitch</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#rules" id="toc-rules" class="nav-link" data-scroll-target="#rules">Rules</a></li>
+  <li><a href="#use-rules" id="toc-use-rules" class="nav-link" data-scroll-target="#use-rules">Use rules</a></li>
+  <li><a href="#in-practice" id="toc-in-practice" class="nav-link" data-scroll-target="#in-practice">In practice</a></li>
+  <li><a href="#check" id="toc-check" class="nav-link" data-scroll-target="#check">Check</a></li>
+  <li><a href="#a-note" id="toc-a-note" class="nav-link" data-scroll-target="#a-note">A note</a></li>
+  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step by step</a></li>
+  <li><a href="#curl" id="toc-curl" class="nav-link" data-scroll-target="#curl">Curl</a></li>
+  <li><a href="#curl-1" id="toc-curl-1" class="nav-link" data-scroll-target="#curl-1">Curl</a></li>
+  <li><a href="#diff" id="toc-diff" class="nav-link" data-scroll-target="#diff">Diff</a></li>
+  <li><a href="#wait---which-files" id="toc-wait---which-files" class="nav-link" data-scroll-target="#wait---which-files">Wait - which files?</a></li>
+  <li><a href="#try-diff" id="toc-try-diff" class="nav-link" data-scroll-target="#try-diff">Try diff</a></li>
+  <li><a href="#use-devnull" id="toc-use-devnull" class="nav-link" data-scroll-target="#use-devnull">Use /dev/null</a></li>
+  <li><a href="#non-zero-return" id="toc-non-zero-return" class="nav-link" data-scroll-target="#non-zero-return">Non-zero return</a></li>
+  <li><a href="#makefile-nonzero" id="toc-makefile-nonzero" class="nav-link" data-scroll-target="#makefile-nonzero">Makefile nonzero</a></li>
+  <li><a href="#actions" id="toc-actions" class="nav-link" data-scroll-target="#actions">Actions</a></li>
+  <li><a href="#end-to-end" id="toc-end-to-end" class="nav-link" data-scroll-target="#end-to-end">End-to-end</a></li>
+  <li><a href="#makefile" id="toc-makefile" class="nav-link" data-scroll-target="#makefile">Makefile</a></li>
+  <li><a href="#yml-1" id="toc-yml-1" class="nav-link" data-scroll-target="#yml-1">.yml</a></li>
+  <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes">Outcomes</a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">Todo</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="61_action.rjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Action</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<p class="subtitle lead">Week 0x8 II</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="announcements" class="level1">
+<h1>Announcements</h1>
+<ul>
+<li><strong>Welcome</strong> to variously CS 276/CS 540
+<ul>
+<li>Back to containers.</li>
+<li>Week off from C</li>
+<li>Two lectures with exercises</li>
+</ul></li>
+<li><strong>Action Items</strong>:
+<ul>
+<li>BigRSA due 31 Mar</li>
+</ul></li>
+</ul>
+</section>
+<section id="today" class="level1">
+<h1>Today</h1>
+<ul>
+<li><span class="smallcaps">DevOps</span></li>
+<li>Continious Integration
+<ul>
+<li><code>make</code></li>
+<li>GitHub Actions</li>
+</ul></li>
+</ul>
+</section>
+<section id="motivation" class="level1">
+<h1>Motivation</h1>
+<ul>
+<li>Last class we had this extremely cursed way of doing things.
+<ul>
+<li>We used a bunch of complicated and hard to remember podman commands.</li>
+<li>After those commands, we supplied further bash or sh shell commands.</li>
+<li>It was a hassle and a headache I don’t like it.</li>
+</ul></li>
+</ul>
+</section>
+<section id="motivation-1" class="level1">
+<h1>Motivation</h1>
+<ul>
+<li>Last class we uncovered a cool new way to do things.
+<ul>
+<li>We can do in-container development externally to a container.</li>
+<li>We can:
+<ul>
+<li>Build</li>
+<li>Test</li>
+</ul></li>
+<li>This is the modern dev tech stack.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ci" class="level1">
+<h1>CI</h1>
+<ul>
+<li>For Continuous Integration
+<ul>
+<li>Modern approach to combined unit, build, and integration testing.</li>
+<li>Usually done on build servers</li>
+<li>Pioneered by Google et al.&nbsp;for web services</li>
+</ul></li>
+<li>Component of DevOps and the more common term CI/CD</li>
+</ul>
+</section>
+<section id="cicd-introduction" class="level1">
+<h1>CI/CD Introduction</h1>
+<ul>
+<li>Continuous Integration (CI) and Continuous Delivery (CD).
+<ul>
+<li>Automates software development processes.
+<ul>
+<li>Push code to repo</li>
+<li>Repo builds, tests, and deploys software
+<ul>
+<li>Either as packages for download or a live service.</li>
+</ul></li>
+</ul></li>
+<li>Improves software quality and delivery speed [Citation Needed]</li>
+</ul></li>
+</ul>
+</section>
+<section id="editorializing" class="level1">
+<h1>Editorializing</h1>
+<ul>
+<li>I was an <em>extreme</em> software engineering skeptic</li>
+<li>I believe virtually all claims of software engineering advancements have been proven false by:
+<ul>
+<li>Collapse of Java and emergence of Rust when devs WFH in 2020</li>
+<li>Tech buildouts in China and India</li>
+<li>And before that, FOSS</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-alternative" class="level1">
+<h1>The Alternative</h1>
+<ul>
+<li>To me, CI/CD is the demonstrably correct approach to development.</li>
+<li>Scientifically proven by the Linux kernel
+<ul>
+<li>FOSS</li>
+<li>Higher quality than Windows/Mac and their <span class="math inline">\(n\)</span>-trillion dollar sponsors</li>
+<li>Completely imperative (no objects)</li>
+<li>No managers/No offices/No sprints</li>
+</ul></li>
+</ul>
+</section>
+<section id="see-also" class="level1">
+<h1>See also</h1>
+<ul>
+<li>GCC</li>
+<li>FreeBSD</li>
+<li>NGINX</li>
+<li>HTTPD</li>
+<li>PostgreSQL</li>
+</ul>
+</section>
+<section id="both-sides" class="level1">
+<h1>Both Sides</h1>
+<ul>
+<li>I have actually never heard a counterargument to this hypothesis.</li>
+<li>I think the actual counterargument is “a lot of people make money doing waterfall and agile”
+<ul>
+<li>I am arguing from a correctness rather than profitability perspective.</li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study" class="level1">
+<h1>Case Study</h1>
+<blockquote class="blockquote">
+<p>As part of the “Get the Facts” campaign, Microsoft highlighted the .NET Framework trading platform that it had developed in partnership with Accenture for the London Stock Exchange, claiming that it provided “five nines” reliability. After suffering extended downtime and unreliability the London Stock Exchange announced in 2009 that it was planning to drop its Microsoft solution and switch to a Linux-based one in 2010.</p>
+</blockquote>
+</section>
+<section id="section" class="level1 smaller">
+<h1 class="smaller"></h1>
+<blockquote class="blockquote">
+<p><a href="https://web.archive.org/web/20171225225348/http://www.telegraph.co.uk/finance/markets/4676369/Seven-hour-LSE-blackout-caused-by-double-glitch.html">Mason, Rowena (September 10, 2008). “Seven-hour LSE blackout caused by double glitch”. The Telegraph. London. Archived from the original on December 25, 2017. Retrieved April 3, 2018.</a></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><a href="https://web.archive.org/web/20130726144134/http://news.bbc.co.uk/1/hi/business/8380607.stm">“London Stock Exchange trading hit by technical glitch”. BBC News Online. BBC. November 26, 2009. Archived from the original on July 26, 2013. Retrieved September 30, 2010.</a></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><a href="https://web.archive.org/web/20110716005714/http://www.itwire.com/opinion-and-analysis/the-linux-distillery/28359-london-stock-exchange-gets-the-facts-and-dumps-windows-for-linux">Williams, David M. (October 8, 2009). “London Stock Exchange gets the facts and dumps Windows for Linux”. ITWire. Archived from the original on July 16, 2011. Retrieved September 30, 2010.</a></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><a href="https://web.archive.org/web/20110611085123/http://linux.slashdot.org/story/09/10/06/1742203/London-Stock-Exchange-Rejects-NET-For-Open-Source">“London Stock Exchange Rejects .NET For Open Source”. Slashdot. October 6, 2009. Archived from the original on August 11, 2011. Retrieved September 30, 2010.</a></p>
+</blockquote>
+</section>
+<section id="azure-linux" class="level1">
+<h1>Azure Linux</h1>
+<ul>
+<li>Since 2020 Microsoft just maintains a Linux distribution.</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="https://github.com/microsoft/azurelinux">Azure Linux is an internal Linux distribution for Microsoft’s cloud infrastructure and edge products and services.</a></p>
+</blockquote>
+<ul>
+<li>Under CI/CD GitOps on GitHub, the same site as the Linux kernel</li>
+<li>Which Microsoft purchased in Jun 2018</li>
+</ul>
+</section>
+<section id="build-test-deploy" class="level1">
+<h1>Build, Test, Deploy</h1>
+</section>
+<section id="ci-1" class="level1">
+<h1>CI</h1>
+<ul>
+<li>Build and Test.
+<ul>
+<li>Ensures code changes integrate smoothly.</li>
+<li>Detects errors as soon as they are written.</li>
+<li>Can facilitate collaboration within a broader framework.
+<ul>
+<li>GitHub uses issues and pull requests</li>
+<li>Historical, mailing lists (still in use of course).</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="mailing-list-ex." class="level1">
+<h1>Mailing List Ex.</h1>
+<blockquote class="blockquote">
+<p><a href="https://lkml.org/lkml/2025/2/20/2066">So this email is not about some “Rust policy”. This email is about a much bigger issue: as a maintainer you are in charge of your code, sure - but you are not in charge of who uses the end result and how.</a></p>
+</blockquote>
+</section>
+<section id="cd" class="level1">
+<h1>CD</h1>
+<ul>
+<li>Not <code>cd</code> and not “Crof. Dalvin”</li>
+<li>Not really part of this class.
+<ul>
+<li>Our code is banned for use.</li>
+</ul></li>
+<li>Automated deployment to staging/production.
+<ul>
+<li>Sort of like allowing me to see your code while you work on it.</li>
+</ul></li>
+<li>In a way, CD from <code>cd</code> to C.D.</li>
+</ul>
+</section>
+<section id="what-is-devops" class="level1">
+<h1>What is DevOps?</h1>
+<ul>
+<li>Combines software development (Dev) and IT operations (Ops).</li>
+<li>Shorten the development lifecycle.</li>
+<li>Collaboration, automation, integration, and rapid feedback cycles.</li>
+</ul>
+</section>
+<section id="what-does-it-mean" class="level1">
+<h1>What does it mean?</h1>
+<ul>
+<li>Integrate development (gcc) and operations (ubuntu).</li>
+<li>Automating as many tasks as possible.</li>
+<li>Using tools to manage the code (not people).</li>
+</ul>
+</section>
+<section id="devops-ci" class="level1">
+<h1>DevOps &amp; CI?</h1>
+<ul>
+<li>Continuous Integration (CI) is the practice of automating the integration of code changes into a shared repository.</li>
+<li>By using CI, we will be users of the Dev part of DevOps</li>
+<li>Clients of the Ops part (which is docker/podman)</li>
+</ul>
+</section>
+<section id="github-and-cicd" class="level1">
+<h1>GitHub and CI/CD</h1>
+<ul>
+<li>GitHub Actions for automation.
+<ul>
+<li>Workflow definitions in YAML files.
+<ul>
+<li>I’d call these “scripts”</li>
+</ul></li>
+<li>Integration with GitHub repositories.</li>
+<li>Support for various programming languages.
+<ul>
+<li>Including C!</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="workflows" class="level1">
+<h1>Workflows</h1>
+<ul>
+<li>Hidden <code>.github/workflows</code> folder in repos:
+<ul>
+<li>Triggers: Events that start a workflow.</li>
+<li>Jobs: Sets of steps executed on a runner.
+<ul>
+<li>Steps: Individual tasks within a job or lines in a script.</li>
+</ul></li>
+<li>Runners: Virtual machines or <em>containers</em>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-ci-workflow" class="level1">
+<h1>Example CI Workflow</h1>
+<ul>
+<li>Checkout code from repository (into container)
+<ul>
+<li>Install dependencies.
+<ul>
+<li>Or use a base image.</li>
+</ul></li>
+<li>Run unit tests.</li>
+<li>Build application artifacts (logs)</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-cd-workflow" class="level1">
+<h1>Example CD Workflow</h1>
+<ul>
+<li>Deploy application to GitHub Pages
+<ul>
+<li>Run integration tests.</li>
+<li>Deploy to live.</li>
+</ul></li>
+<li>Using this for the website for now.
+<ul>
+<li>Probably needs work, I don’t love it ATM.</li>
+</ul></li>
+</ul>
+</section>
+<section id="smaller-ex." class="level1">
+<h1>Smaller Ex.</h1>
+<ul>
+<li>The main website is big but D505 isn’t
+<ul>
+<li>It’s a fork from another repo</li>
+</ul></li>
+<li>You can’t see much here, I can see more: <a href="https://github.com/cd-public/D505/actions/runs/13771592743">https://github.com/cd-public/D505/actions/runs/13771592743</a></li>
+</ul>
+</section>
+<section id="excerpt" class="level1">
+<h1>Excerpt</h1>
+<ul>
+<li>Here’s a line under the “Build with Jekyll” heading:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_33b8a4 --label f68f14 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/D505/D505":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Folks… it’s containers all the way down.
+<ul>
+<li>That’s a Linux script running docker 😂</li>
+<li>Would’ve been podman before 2018 I bet.</li>
+</ul></li>
+</ul>
+</section>
+<section id="back-in-action" class="level1">
+<h1>Back in Action</h1>
+<ul>
+<li>GitHub Pages is a little bit <em>automated</em>
+<ul>
+<li>Read: I taught it to first years who had never programmed.</li>
+<li>I plan to teach it to high schoolers this summer.</li>
+</ul></li>
+<li>As with C/Python, in this class we index into clarity at the expense of brevity.</li>
+<li>So we write our own CI action.</li>
+</ul>
+</section>
+<section id="ci-2" class="level1">
+<h1>CI</h1>
+<ul>
+<li>Defined in a .yml file
+<ul>
+<li>GitHub provides templates</li>
+<li>I found the templates self-documenting and documentation unusuable</li>
+</ul></li>
+<li>You can press buttons on GitHub (click ops) or use command line.
+<ul>
+<li>You’ll never guess which one I think you should do.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ref-.yml" class="level1">
+<h1>Ref .yml</h1>
+<ul>
+<li>Please ignore that this says “c-cpp”
+<ul>
+<li>It <em>means</em> C89</li>
+<li>I blame Microsoft</li>
+</ul></li>
+<li><a href="https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml">https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml</a></li>
+</ul>
+</section>
+<section id="yml" class="level1">
+<h1>.yml</h1>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ci/c-cpp.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="ci/c-cpp.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C/C++ CI</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at"> $default-branch </span><span class="kw">]</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at"> $default-branch </span><span class="kw">]</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> configure</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> ./configure</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make check</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make check</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make distcheck</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make distcheck</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simplify" class="level1">
+<h1>Simplify</h1>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ci/c89.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="ci/c89.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C89 CI</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> push</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simplify-1" class="level1">
+<h1>Simplify</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Line</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name: C89 CI</code></td>
+<td>I didn’t check if names were required.</td>
+</tr>
+<tr class="even">
+<td><code>on: push</code></td>
+<td>Actions will run after a push to repo</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>After a colon, either a single option or a new line, indentation, and series of options.</li>
+</ul>
+</section>
+<section id="jobs" class="level1">
+<h1>Jobs</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Line</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>jobs:</code></td>
+<td>Job is like a .sh file</td>
+</tr>
+<tr class="even">
+<td>build:</td>
+<td>Usually one of build, test, deploy</td>
+</tr>
+<tr class="odd">
+<td><code>runs-on: ubuntu-latest</code></td>
+<td>That is GitHub managed image</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>I tried to change <code>ubuntu-latest</code> to <code>ubuntu</code> and it broke.
+<ul>
+<li>There will <em>always</em> be latest, or fix one of the recent versions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="runners" class="level1">
+<h1>Runners</h1>
+<ul>
+<li>GitHub runners are distinct from the docker.io and other images.</li>
+<li><a href="https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories">Read more</a></li>
+<li>Right now, here are the Linux options:
+<ul>
+<li><code>ubuntu-latest</code>, <code>ubuntu-24.04</code>, <code>ubuntu-22.04</code>, <code>ubuntu-20.04</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="vs-docker" class="level1">
+<h1>Vs Docker</h1>
+<ul>
+<li>These are the mostly the same images available via <a href="https://hub.docker.com/_/ubuntu">dockerhub</a>.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb4-1"><a href="#cb4-1"></a>20.04, focal-20241011, focal⁠</span>
+<span id="cb4-2"><a href="#cb4-2"></a>22.04, jammy-20250126, jammy⁠</span>
+<span id="cb4-3"><a href="#cb4-3"></a>24.04, noble-20250127, noble, latest⁠</span>
+<span id="cb4-4"><a href="#cb4-4"></a>24.10, oracular-20241120, oracular, rolling⁠</span>
+<span id="cb4-5"><a href="#cb4-5"></a>25.04, plucky-20241213, plucky, devel⁠</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>GitHub workflows just doesn’t bring over “rolling” and “devel” images.</li>
+</ul>
+</section>
+<section id="steps" class="level1">
+<h1>Steps</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Line</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>steps:</code></td>
+<td>Steps are like individual commands</td>
+</tr>
+<tr class="even">
+<td><code>- uses: actions/checkout@v4</code></td>
+<td>This is some built-in you can’t change.</td>
+</tr>
+<tr class="odd">
+<td><code>- run: make</code></td>
+<td>Runs <code>make</code> inside <code>ubuntu-latest</code> after checking out the repository within that container.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="on-.yml" class="level1">
+<h1>On .yml</h1>
+<ul>
+<li>You may have learned .yml from e.g.&nbsp;Data Engineering</li>
+<li>It is used in the header to these slides:
+<ul>
+<li>je suis développeur web</li>
+</ul></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>action.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="action.qmd"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">---</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Action</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Prof. Calvin</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Week 0x8 II"</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">institute</span><span class="kw">:</span><span class="at"> Crypto</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="at">        </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](../index.html)"</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">  # never re-render during project render</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="up-to-you" class="level1">
+<h1>Up to you</h1>
+<ul>
+<li>You can fiddle around with GitHub workflows and actions and etc and etc, it’s not too bad, but…</li>
+<li>I’d use the above as boilerplate and only change one thing:</li>
+<li><code>make</code></li>
+</ul>
+</section>
+<section id="today-1" class="level1">
+<h1>Today</h1>
+<ul>
+<li><span class="smallcaps">DevOps</span></li>
+<li>Continious Integration
+<ul>
+<li><code>make</code></li>
+<li>✓ GitHub Actions</li>
+</ul></li>
+</ul>
+</section>
+<section id="make" class="level1">
+<h1><code>make</code></h1>
+<ul>
+<li><code>make</code> is the historically supported way to get things done related to C (and C++) development.
+<ul>
+<li>CMake is the new technique which is a bit heavier weight and used in larger projects.
+<ul>
+<li>By new I mean 2000.</li>
+<li><code>make</code> is 1976</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="the-pitch" class="level1">
+<h1>The Pitch</h1>
+<ul>
+<li><code>make</code>
+<ul>
+<li>Stores big commands</li>
+<li>Can check how recently files have changed</li>
+<li>Is programable via “rules” in a <code>Makefile</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="example" class="level1">
+<h1>Example</h1>
+<ul>
+<li>Here’s a sample Makefile, the thing that programs <code>make</code>
+<ul>
+<li>Guess what Containerfile naming scheme is derived from!</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1"></a><span class="dv">build:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="er">  </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li>Using SHA as the running example…</li>
+</ul>
+</section>
+<section id="example-1" class="level1">
+<h1>Example</h1>
+<ul>
+<li>Suppose we have an incomplete “shainc.c”</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>shainc.c</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="shainc.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>        printf<span class="op">(</span><span class="st">"hi</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>We get some warnings:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a href="#cb8-1"></a>$ gcc shainc.c</span>
+<span id="cb8-2"><a href="#cb8-2"></a>shainc.c: In function ‘main’:</span>
+<span id="cb8-3"><a href="#cb8-3"></a>shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    2 |         printf("hi\n");</span>
+<span id="cb8-5"><a href="#cb8-5"></a>      |         ^~~~~~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2" class="level1">
+<h1>Example</h1>
+<ul>
+<li>Given a Makfile that contains the same “rule”</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb9-1"><a href="#cb9-1"></a><span class="dv">build:</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="er">    </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>We get <em>the same</em> warnings:</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a href="#cb10-1"></a>$ make</span>
+<span id="cb10-2"><a href="#cb10-2"></a>gcc shainc.c</span>
+<span id="cb10-3"><a href="#cb10-3"></a>shainc.c: In function ‘main’:</span>
+<span id="cb10-4"><a href="#cb10-4"></a>shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    2 |         printf("hi\n");</span>
+<span id="cb10-6"><a href="#cb10-6"></a>      |         ^~~~~~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="takeaways" class="level1">
+<h1>Takeaways</h1>
+<ul>
+<li>Make runs shell commands.</li>
+<li>They run the same as if we type them ourselves.</li>
+<li>This allows us to store commands.</li>
+<li>Rules can be goofy - but by default the first one runs - we have one, named build, so it’s the one that happens.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb11" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb11-1"><a href="#cb11-1"></a><span class="dv">build:</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="er">    </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rules" class="level1">
+<h1>Rules</h1>
+<ul>
+<li>You can also specify rules if you have more than one:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb12" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb12-1"><a href="#cb12-1"></a><span class="dv">build:</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="er">    </span>gcc shainc.c</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="dv">nowarn:</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="er">    </span>gcc shainc.c -w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-rules" class="level1">
+<h1>Use rules</h1>
+<ul>
+<li>We can “build”</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a href="#cb13-1"></a>$ make build</span>
+<span id="cb13-2"><a href="#cb13-2"></a>gcc shainc.c</span>
+<span id="cb13-3"><a href="#cb13-3"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Or we can specify “nowarn”</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb14-1"><a href="#cb14-1"></a>$ make nowarn</span>
+<span id="cb14-2"><a href="#cb14-2"></a>gcc shainc.c -w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The first is the default</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb15-1"><a href="#cb15-1"></a>$ make</span>
+<span id="cb15-2"><a href="#cb15-2"></a>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="in-practice" class="level1">
+<h1>In practice</h1>
+<ul>
+<li>I tend to use a Makefile like this:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb16" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1"></a><span class="dv">build:</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="er">    </span>gcc shainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="dv">clean:</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="er">    </span>rm shainc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>make</code> will compile and <code>make clean</code> will remove the old executable if I don’t want it around for some reason.</li>
+</ul>
+</section>
+<section id="check" class="level1">
+<h1>Check</h1>
+<ul>
+<li>“make” commands tend to 5 char, next most common I see is “check”</li>
+<li>We have a shell friendly <code>shainc</code> autograder!</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>tester.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb17" data-filename="tester.sh"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span> <span class="op">&gt;</span> lipsum.txt</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="bu">echo</span> <span class="st">" === Finding errors vs. reference implementation. === "</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> lipsum.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> lipsum.txt<span class="op">)</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> austen.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> austen.txt<span class="op">)</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="bu">echo</span> <span class="st">" === Errors printed. No errors denotes </span><span class="dt">\"</span><span class="st">Perfect!</span><span class="dt">\"</span><span class="st"> === "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-note" class="level1">
+<h1>A note</h1>
+<ul>
+<li>This:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Is <em>bash</em> and only works via <code>/bin/bash</code></li>
+<li>Makefile uses <em>sh</em> which doesn’t allow the parenthesis like that.</li>
+<li>We will use temporary files.</li>
+</ul>
+</section>
+<section id="step-by-step" class="level1">
+<h1>Step by step</h1>
+<ul>
+<li>This is just <code>make build</code></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>These lines just echo text into a file:</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, "</span> <span class="co"># etc etc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="curl" class="level1">
+<h1>Curl</h1>
+<ul>
+<li>This just pulls a book from GitHub using <code>curl</code> and usings the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Try it with different flags if you are confused.</li>
+</ul>
+</section>
+<section id="curl-1" class="level1">
+<h1>Curl</h1>
+<ul>
+<li><code>curl</code> downloads a file from a url</li>
+<li><code>-o</code> specifies what to save that file as on the local computers</li>
+<li><code>2&gt;</code> suggests were to send error handling information</li>
+<li><code>/dev/null</code> is an imaginary file we can write to that won’t remember what we wrote there.
+<ul>
+<li>Like <code>return none</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="diff" class="level1">
+<h1>Diff</h1>
+<ul>
+<li><code>diff</code> compares two files to see if they are the same or different.
+<ul>
+<li>If they differ, it prints the difference and returns a non-zero value.</li>
+<li>If they are the same, it prints nothing and returns zero.</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> lipsum.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> lipsum.txt<span class="op">)</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> austen.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> austen.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="wait---which-files" class="level1">
+<h1>Wait - which files?</h1>
+<ul>
+<li>This is another imaginary file:</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>This is not allowed by <code>make</code>.</li>
+<li>Instead, make a few files:</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">sha256sum</span> 15char.txt <span class="op">&gt;</span> 15char.sum</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="ex">./shainc</span> 15char.txt <span class="op">&gt;</span> 15char.inc</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">diff</span> 15char.inc 15char.sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-diff" class="level1">
+<h1>Try diff</h1>
+<ul>
+<li>Use <code>echo</code> to create <code>15char.txt</code> and <code>lipsum.txt</code>.</li>
+<li>Use <code>diff</code> to examine them:</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="ex">$</span> diff 15char.txt 15char.txt</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="ex">$</span> echo <span class="va">$?</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="ex">0</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="ex">$</span> diff 15char.txt lipsum.txt</span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="ex">1c1</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="op">&lt;</span> 15 <span class="ex">characters.</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="ex">---</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="op">&gt;</span> Lorem <span class="ex">ipsum</span> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="ex">$</span> echo <span class="va">$?</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="ex">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="use-devnull" class="level1">
+<h1>Use /dev/null</h1>
+<ul>
+<li>Wait we don’t care what the difference is, just if there is one.</li>
+<li>And we know how to ignore the output of a command.</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">$</span> diff 15char.txt 15char.txt <span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="ex">0</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="ex">$</span> diff 15char.txt lipsum.txt <span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="ex">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><em>When files differ, the return value of <code>diff</code> suggests an error occured</em></li>
+</ul>
+</section>
+<section id="non-zero-return" class="level1">
+<h1>Non-zero return</h1>
+<ul>
+<li>We get the same from <code>gcc</code> when a build fails.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">$</span> gcc shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">shainc.c:</span> In function ‘main’:</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="ex">shainc.c:2:9:</span> error: implicit declaration of function ‘printf’ <span class="pp">[-</span><span class="ss">Werror=implicit</span><span class="pp">-</span><span class="ss">function</span><span class="pp">-</span><span class="ss">declaration</span><span class="pp">]</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>    <span class="ex">2</span> <span class="kw">|</span>         <span class="bu">printf</span><span class="er">(</span><span class="st">"hi\n"</span><span class="kw">);</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>      <span class="kw">|</span>         <span class="ex">^~~~~~</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="ex">shainc.c:1:1:</span> note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
+<span id="cb27-7"><a href="#cb27-7"></a>  <span class="ex">+++</span> <span class="kw">|</span><span class="ex">+#include</span> <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a>    <span class="ex">1</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="ex">shainc.c:2:9:</span> error: incompatible implicit declaration of built-in function ‘printf’ <span class="pp">[-</span><span class="ss">Werror=builtin</span><span class="pp">-</span><span class="ss">declaration</span><span class="pp">-</span><span class="ss">mismatch</span><span class="pp">]</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a>    <span class="ex">2</span> <span class="kw">|</span>         <span class="bu">printf</span><span class="er">(</span><span class="st">"hi\n"</span><span class="kw">);</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a>      <span class="kw">|</span>         <span class="ex">^~~~~~</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="ex">shainc.c:2:9:</span> note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
+<span id="cb27-13"><a href="#cb27-13"></a><span class="ex">cc1:</span> all warnings being treated as errors</span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="ex">$</span> echo <span class="va">$?</span></span>
+<span id="cb27-15"><a href="#cb27-15"></a><span class="ex">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="makefile-nonzero" class="level1">
+<h1>Makefile nonzero</h1>
+<ul>
+<li>Makefile returns the error value:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">$</span> cat Makefile</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="ex">build:</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>        <span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="ex">$</span> make <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="ex">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="actions" class="level1">
+<h1>Actions</h1>
+<ul>
+<li>We can use <code>make</code> and <code>make check</code> within GitHub actions:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ci/c-cpp.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb29" data-filename="ci/c-cpp.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make check</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make check</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>And GitHub will report error status to us when we check in files.</li>
+</ul>
+</section>
+<section id="end-to-end" class="level1">
+<h1>End-to-end</h1>
+<ul>
+<li>Check this repository:
+<ul>
+<li><a href="https://github.com/cd-c89/action">https://github.com/cd-c89/action</a></li>
+</ul></li>
+<li>Spoiler alert: it contains a passable <code>shainc</code> solution if you wanted to work on that someday.</li>
+</ul>
+</section>
+<section id="makefile" class="level1">
+<h1>Makefile</h1>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Makefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb30" data-filename="Makefile"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">check:</span> build</span>
+<span id="cb30-2"><a href="#cb30-2"></a>    <span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
+<span id="cb30-3"><a href="#cb30-3"></a>    <span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span> <span class="op">&gt;</span> lipsum.txt</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    <span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="co"># Makefile uses sh not bash so can't use &lt;() and have to use the filesystem</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>    <span class="ex">./shainc</span> 15char.txt <span class="op">&gt;</span> 15char.inc</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    <span class="ex">./shainc</span> lipsum.txt <span class="op">&gt;</span> lipsum.inc</span>
+<span id="cb30-8"><a href="#cb30-8"></a>    <span class="ex">./shainc</span> austen.txt <span class="op">&gt;</span> austen.inc</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    <span class="fu">sha256sum</span> 15char.txt <span class="op">&gt;</span> 15char.sum</span>
+<span id="cb30-10"><a href="#cb30-10"></a>    <span class="fu">sha256sum</span> lipsum.txt <span class="op">&gt;</span> lipsum.sum</span>
+<span id="cb30-11"><a href="#cb30-11"></a>    <span class="fu">sha256sum</span> austen.txt <span class="op">&gt;</span> austen.sum</span>
+<span id="cb30-12"><a href="#cb30-12"></a>    <span class="fu">diff</span> 15char.inc 15char.sum <span class="kw">||</span> <span class="fu">diff</span> lipsum.inc lipsum.sum <span class="kw">||</span> <span class="fu">diff</span> austen.inc austen.sum</span>
+<span id="cb30-13"><a href="#cb30-13"></a></span>
+<span id="cb30-14"><a href="#cb30-14"></a></span>
+<span id="cb30-15"><a href="#cb30-15"></a><span class="ex">build:</span></span>
+<span id="cb30-16"><a href="#cb30-16"></a>    <span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
+<span id="cb30-17"><a href="#cb30-17"></a></span>
+<span id="cb30-18"><a href="#cb30-18"></a><span class="ex">clean:</span></span>
+<span id="cb30-19"><a href="#cb30-19"></a>    <span class="fu">rm</span> shainc <span class="pp">*</span>.txt <span class="pp">*</span>.inc <span class="pp">*</span>.sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="yml-1" class="level1">
+<h1>.yml</h1>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.github/workflows/c89.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb31" data-filename=".github/workflows/c89.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C89 CI</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> push</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="outcomes" class="level1">
+<h1>Outcomes</h1>
+<p><img src="imgs/ghact.png" class="img-fluid"></p>
+</section>
+<section id="todo" class="level1">
+<h1>Todo</h1>
+<ul>
+<li>Get this working on your “shainc” or “enigma” or something.</li>
+<li>Either in your main repo or in some other one.</li>
+<li>Add “GitHub Actions CI/CD pipelines for DevOps” to your resume.</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./60_mounts.html" class="pagination-link" aria-label="Mounts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Mounts</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./70_stream.html" class="pagination-link" aria-label="Stream">
+        <span class="nav-page-text">Stream</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb32" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1"></a><span class="co">---</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="an">title:</span><span class="co"> Action</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="an">subtitle:</span><span class="co"> "Week 0x8 II"</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="an">execute:</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="co">    echo: true</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="co">    cache: true</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="co">    freeze: true  # never re-render during project render</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="co">    code-fold: false</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co">---</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a></span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="fu"># Announcements</span></span>
+<span id="cb32-13"><a href="#cb32-13"></a></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="ss">- </span>**Welcome** to variously CS 276/CS 540</span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="ss">  - </span>Back to containers.</span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="ss">  - </span>Week off from C</span>
+<span id="cb32-17"><a href="#cb32-17"></a><span class="ss">  - </span>Two lectures with exercises</span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="ss">- </span>**Action Items**:</span>
+<span id="cb32-19"><a href="#cb32-19"></a><span class="ss">  - </span>BigRSA due 31 Mar</span>
+<span id="cb32-20"><a href="#cb32-20"></a>  </span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="fu"># Today</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a></span>
+<span id="cb32-23"><a href="#cb32-23"></a><span class="ss">- </span>&lt;span style="font-variant:small-caps"&gt;DevOps&lt;/span&gt;</span>
+<span id="cb32-24"><a href="#cb32-24"></a><span class="ss">- </span>Continious Integration</span>
+<span id="cb32-25"><a href="#cb32-25"></a><span class="ss">    - </span><span class="in">`make`</span></span>
+<span id="cb32-26"><a href="#cb32-26"></a><span class="ss">    - </span>GitHub Actions</span>
+<span id="cb32-27"><a href="#cb32-27"></a></span>
+<span id="cb32-28"><a href="#cb32-28"></a><span class="fu"># Motivation</span></span>
+<span id="cb32-29"><a href="#cb32-29"></a></span>
+<span id="cb32-30"><a href="#cb32-30"></a><span class="ss">- </span>Last class we had this extremely cursed way of doing things.</span>
+<span id="cb32-31"><a href="#cb32-31"></a><span class="ss">    - </span>We used a bunch of complicated and hard to remember podman commands.</span>
+<span id="cb32-32"><a href="#cb32-32"></a><span class="ss">    - </span>After those commands, we supplied further bash or sh shell commands.</span>
+<span id="cb32-33"><a href="#cb32-33"></a><span class="ss">    - </span>It was a hassle and a headache I don't like it.</span>
+<span id="cb32-34"><a href="#cb32-34"></a></span>
+<span id="cb32-35"><a href="#cb32-35"></a><span class="fu"># Motivation</span></span>
+<span id="cb32-36"><a href="#cb32-36"></a></span>
+<span id="cb32-37"><a href="#cb32-37"></a><span class="ss">- </span>Last class we uncovered a cool new way to do things.</span>
+<span id="cb32-38"><a href="#cb32-38"></a><span class="ss">    - </span>We can do in-container development externally to a container.</span>
+<span id="cb32-39"><a href="#cb32-39"></a><span class="ss">    - </span>We can:</span>
+<span id="cb32-40"><a href="#cb32-40"></a><span class="ss">        - </span>Build</span>
+<span id="cb32-41"><a href="#cb32-41"></a><span class="ss">        - </span>Test</span>
+<span id="cb32-42"><a href="#cb32-42"></a><span class="ss">    - </span>This is the modern dev tech stack.</span>
+<span id="cb32-43"><a href="#cb32-43"></a></span>
+<span id="cb32-44"><a href="#cb32-44"></a><span class="fu"># CI</span></span>
+<span id="cb32-45"><a href="#cb32-45"></a></span>
+<span id="cb32-46"><a href="#cb32-46"></a><span class="ss">- </span>For Continuous Integration</span>
+<span id="cb32-47"><a href="#cb32-47"></a><span class="ss">    - </span>Modern approach to combined unit, build, and integration testing.</span>
+<span id="cb32-48"><a href="#cb32-48"></a><span class="ss">    - </span>Usually done on build servers</span>
+<span id="cb32-49"><a href="#cb32-49"></a><span class="ss">    - </span>Pioneered by Google et al. for web services</span>
+<span id="cb32-50"><a href="#cb32-50"></a><span class="ss">- </span>Component of DevOps and the more common term CI/CD</span>
+<span id="cb32-51"><a href="#cb32-51"></a></span>
+<span id="cb32-52"><a href="#cb32-52"></a><span class="fu"># CI/CD Introduction</span></span>
+<span id="cb32-53"><a href="#cb32-53"></a></span>
+<span id="cb32-54"><a href="#cb32-54"></a><span class="ss">- </span>Continuous Integration (CI) and Continuous Delivery (CD).</span>
+<span id="cb32-55"><a href="#cb32-55"></a><span class="ss">    - </span>Automates software development processes.</span>
+<span id="cb32-56"><a href="#cb32-56"></a><span class="ss">        - </span>Push code to repo</span>
+<span id="cb32-57"><a href="#cb32-57"></a><span class="ss">        - </span>Repo builds, tests, and deploys software</span>
+<span id="cb32-58"><a href="#cb32-58"></a><span class="ss">            - </span>Either as packages for download or a live service.</span>
+<span id="cb32-59"><a href="#cb32-59"></a><span class="ss">    - </span>Improves software quality and delivery speed <span class="co">[</span><span class="ot">Citation Needed</span><span class="co">]</span></span>
+<span id="cb32-60"><a href="#cb32-60"></a></span>
+<span id="cb32-61"><a href="#cb32-61"></a><span class="fu"># Editorializing</span></span>
+<span id="cb32-62"><a href="#cb32-62"></a></span>
+<span id="cb32-63"><a href="#cb32-63"></a><span class="ss">- </span>I was an *extreme* software engineering skeptic</span>
+<span id="cb32-64"><a href="#cb32-64"></a><span class="ss">- </span>I believe virtually all claims of software engineering advancements have been proven false by:</span>
+<span id="cb32-65"><a href="#cb32-65"></a><span class="ss">    - </span>Collapse of Java and emergence of Rust when devs WFH in 2020</span>
+<span id="cb32-66"><a href="#cb32-66"></a><span class="ss">    - </span>Tech buildouts in China and India</span>
+<span id="cb32-67"><a href="#cb32-67"></a><span class="ss">    - </span>And before that, FOSS</span>
+<span id="cb32-68"><a href="#cb32-68"></a></span>
+<span id="cb32-69"><a href="#cb32-69"></a><span class="fu"># The Alternative</span></span>
+<span id="cb32-70"><a href="#cb32-70"></a></span>
+<span id="cb32-71"><a href="#cb32-71"></a><span class="ss">- </span>To me, CI/CD is the demonstrably correct approach to development.</span>
+<span id="cb32-72"><a href="#cb32-72"></a><span class="ss">- </span>Scientifically proven by the Linux kernel</span>
+<span id="cb32-73"><a href="#cb32-73"></a><span class="ss">    - </span>FOSS</span>
+<span id="cb32-74"><a href="#cb32-74"></a><span class="ss">    - </span>Higher quality than Windows/Mac and their $n$-trillion dollar sponsors</span>
+<span id="cb32-75"><a href="#cb32-75"></a><span class="ss">    - </span>Completely imperative (no objects)</span>
+<span id="cb32-76"><a href="#cb32-76"></a><span class="ss">    - </span>No managers/No offices/No sprints</span>
+<span id="cb32-77"><a href="#cb32-77"></a></span>
+<span id="cb32-78"><a href="#cb32-78"></a><span class="fu"># See also</span></span>
+<span id="cb32-79"><a href="#cb32-79"></a></span>
+<span id="cb32-80"><a href="#cb32-80"></a><span class="ss">- </span>GCC</span>
+<span id="cb32-81"><a href="#cb32-81"></a><span class="ss">- </span>FreeBSD</span>
+<span id="cb32-82"><a href="#cb32-82"></a><span class="ss">- </span>NGINX</span>
+<span id="cb32-83"><a href="#cb32-83"></a><span class="ss">- </span>HTTPD</span>
+<span id="cb32-84"><a href="#cb32-84"></a><span class="ss">- </span>PostgreSQL</span>
+<span id="cb32-85"><a href="#cb32-85"></a></span>
+<span id="cb32-86"><a href="#cb32-86"></a><span class="fu"># Both Sides</span></span>
+<span id="cb32-87"><a href="#cb32-87"></a></span>
+<span id="cb32-88"><a href="#cb32-88"></a><span class="ss">- </span>I have actually never heard a counterargument to this hypothesis.</span>
+<span id="cb32-89"><a href="#cb32-89"></a><span class="ss">- </span>I think the actual counterargument is "a lot of people make money doing waterfall and agile"</span>
+<span id="cb32-90"><a href="#cb32-90"></a><span class="ss">    - </span>I am arguing from a correctness rather than profitability perspective.</span>
+<span id="cb32-91"><a href="#cb32-91"></a></span>
+<span id="cb32-92"><a href="#cb32-92"></a><span class="fu"># Case Study</span></span>
+<span id="cb32-93"><a href="#cb32-93"></a></span>
+<span id="cb32-94"><a href="#cb32-94"></a><span class="at">&gt; As part of the "Get the Facts" campaign, Microsoft highlighted the .NET Framework trading platform that it had developed in partnership with Accenture for the London Stock Exchange, claiming that it provided "five nines" reliability. After suffering extended downtime and unreliability the London Stock Exchange announced in 2009 that it was planning to drop its Microsoft solution and switch to a Linux-based one in 2010.</span></span>
+<span id="cb32-95"><a href="#cb32-95"></a></span>
+<span id="cb32-96"><a href="#cb32-96"></a><span class="fu"># {.smaller}</span></span>
+<span id="cb32-97"><a href="#cb32-97"></a></span>
+<span id="cb32-98"><a href="#cb32-98"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">Mason, Rowena (September 10, 2008). "Seven-hour LSE blackout caused by double glitch". The Telegraph. London. Archived from the original on December 25, 2017. Retrieved April 3, 2018.</span><span class="co">](https://web.archive.org/web/20171225225348/http://www.telegraph.co.uk/finance/markets/4676369/Seven-hour-LSE-blackout-caused-by-double-glitch.html)</span></span>
+<span id="cb32-99"><a href="#cb32-99"></a></span>
+<span id="cb32-100"><a href="#cb32-100"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">"London Stock Exchange trading hit by technical glitch". BBC News Online. BBC. November 26, 2009. Archived from the original on July 26, 2013. Retrieved September 30, 2010.</span><span class="co">](https://web.archive.org/web/20130726144134/http://news.bbc.co.uk/1/hi/business/8380607.stm)</span></span>
+<span id="cb32-101"><a href="#cb32-101"></a></span>
+<span id="cb32-102"><a href="#cb32-102"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">Williams, David M. (October 8, 2009). "London Stock Exchange gets the facts and dumps Windows for Linux". ITWire. Archived from the original on July 16, 2011. Retrieved September 30, 2010.</span><span class="co">](https://web.archive.org/web/20110716005714/http://www.itwire.com/opinion-and-analysis/the-linux-distillery/28359-london-stock-exchange-gets-the-facts-and-dumps-windows-for-linux)</span></span>
+<span id="cb32-103"><a href="#cb32-103"></a></span>
+<span id="cb32-104"><a href="#cb32-104"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">"London Stock Exchange Rejects .NET For Open Source". Slashdot. October 6, 2009. Archived from the original on August 11, 2011. Retrieved September 30, 2010.</span><span class="co">](https://web.archive.org/web/20110611085123/http://linux.slashdot.org/story/09/10/06/1742203/London-Stock-Exchange-Rejects-NET-For-Open-Source)</span></span>
+<span id="cb32-105"><a href="#cb32-105"></a></span>
+<span id="cb32-106"><a href="#cb32-106"></a><span class="fu"># Azure Linux</span></span>
+<span id="cb32-107"><a href="#cb32-107"></a></span>
+<span id="cb32-108"><a href="#cb32-108"></a><span class="ss">- </span>Since 2020 Microsoft just maintains a Linux distribution.</span>
+<span id="cb32-109"><a href="#cb32-109"></a></span>
+<span id="cb32-110"><a href="#cb32-110"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">Azure Linux is an internal Linux distribution for Microsoft’s cloud infrastructure and edge products and services.</span><span class="co">](https://github.com/microsoft/azurelinux)</span></span>
+<span id="cb32-111"><a href="#cb32-111"></a></span>
+<span id="cb32-112"><a href="#cb32-112"></a><span class="ss">- </span>Under CI/CD GitOps on GitHub, the same site as the Linux kernel</span>
+<span id="cb32-113"><a href="#cb32-113"></a><span class="ss">- </span>Which Microsoft purchased in Jun 2018</span>
+<span id="cb32-114"><a href="#cb32-114"></a></span>
+<span id="cb32-115"><a href="#cb32-115"></a><span class="fu"># Build, Test, Deploy</span></span>
+<span id="cb32-116"><a href="#cb32-116"></a></span>
+<span id="cb32-117"><a href="#cb32-117"></a><span class="fu"># CI</span></span>
+<span id="cb32-118"><a href="#cb32-118"></a></span>
+<span id="cb32-119"><a href="#cb32-119"></a><span class="ss">- </span>Build and Test.</span>
+<span id="cb32-120"><a href="#cb32-120"></a><span class="ss">    - </span>Ensures code changes integrate smoothly.</span>
+<span id="cb32-121"><a href="#cb32-121"></a><span class="ss">    - </span>Detects errors as soon as they are written.</span>
+<span id="cb32-122"><a href="#cb32-122"></a><span class="ss">    - </span>Can facilitate collaboration within a broader framework.</span>
+<span id="cb32-123"><a href="#cb32-123"></a><span class="ss">        - </span>GitHub uses issues and pull requests</span>
+<span id="cb32-124"><a href="#cb32-124"></a><span class="ss">        - </span>Historical, mailing lists (still in use of course).</span>
+<span id="cb32-125"><a href="#cb32-125"></a></span>
+<span id="cb32-126"><a href="#cb32-126"></a><span class="fu"># Mailing List Ex.</span></span>
+<span id="cb32-127"><a href="#cb32-127"></a></span>
+<span id="cb32-128"><a href="#cb32-128"></a><span class="at">&gt; [So this email is not about some "Rust policy". This email is about a</span></span>
+<span id="cb32-129"><a href="#cb32-129"></a><span class="at">much bigger issue: as a maintainer you are in charge of your code,</span></span>
+<span id="cb32-130"><a href="#cb32-130"></a><span class="at">sure - but you are not in charge of who uses the end result and how.](https://lkml.org/lkml/2025/2/20/2066)</span></span>
+<span id="cb32-131"><a href="#cb32-131"></a></span>
+<span id="cb32-132"><a href="#cb32-132"></a><span class="fu"># CD</span></span>
+<span id="cb32-133"><a href="#cb32-133"></a></span>
+<span id="cb32-134"><a href="#cb32-134"></a><span class="ss">- </span>Not <span class="in">`cd`</span> and not "Crof. Dalvin"</span>
+<span id="cb32-135"><a href="#cb32-135"></a><span class="ss">- </span>Not really part of this class.</span>
+<span id="cb32-136"><a href="#cb32-136"></a><span class="ss">    - </span>Our code is banned for use.</span>
+<span id="cb32-137"><a href="#cb32-137"></a><span class="ss">- </span>Automated deployment to staging/production.</span>
+<span id="cb32-138"><a href="#cb32-138"></a><span class="ss">    - </span>Sort of like allowing me to see your code while you work on it.</span>
+<span id="cb32-139"><a href="#cb32-139"></a><span class="ss">- </span>In a way, CD from <span class="in">`cd`</span> to C.D.</span>
+<span id="cb32-140"><a href="#cb32-140"></a></span>
+<span id="cb32-141"><a href="#cb32-141"></a><span class="fu"># What is DevOps?</span></span>
+<span id="cb32-142"><a href="#cb32-142"></a></span>
+<span id="cb32-143"><a href="#cb32-143"></a><span class="ss">* </span>Combines software development (Dev) and IT operations (Ops).</span>
+<span id="cb32-144"><a href="#cb32-144"></a><span class="ss">* </span>Shorten the development lifecycle.</span>
+<span id="cb32-145"><a href="#cb32-145"></a><span class="ss">* </span>Collaboration, automation, integration, and rapid feedback cycles.</span>
+<span id="cb32-146"><a href="#cb32-146"></a></span>
+<span id="cb32-147"><a href="#cb32-147"></a><span class="fu"># What does it mean?</span></span>
+<span id="cb32-148"><a href="#cb32-148"></a></span>
+<span id="cb32-149"><a href="#cb32-149"></a><span class="ss">* </span>Integrate development (gcc) and operations (ubuntu).</span>
+<span id="cb32-150"><a href="#cb32-150"></a><span class="ss">* </span>Automating as many tasks as possible.</span>
+<span id="cb32-151"><a href="#cb32-151"></a><span class="ss">* </span>Using tools to manage the code (not people).</span>
+<span id="cb32-152"><a href="#cb32-152"></a></span>
+<span id="cb32-153"><a href="#cb32-153"></a><span class="fu"># DevOps &amp; CI?</span></span>
+<span id="cb32-154"><a href="#cb32-154"></a></span>
+<span id="cb32-155"><a href="#cb32-155"></a><span class="ss">* </span>Continuous Integration (CI) is the practice of automating the integration of code changes into a shared repository.</span>
+<span id="cb32-156"><a href="#cb32-156"></a><span class="ss">* </span>By using CI, we will be users of the Dev part of DevOps</span>
+<span id="cb32-157"><a href="#cb32-157"></a><span class="ss">* </span>Clients of the Ops part (which is docker/podman)</span>
+<span id="cb32-158"><a href="#cb32-158"></a></span>
+<span id="cb32-159"><a href="#cb32-159"></a><span class="fu"># GitHub and CI/CD</span></span>
+<span id="cb32-160"><a href="#cb32-160"></a></span>
+<span id="cb32-161"><a href="#cb32-161"></a><span class="ss">- </span>GitHub Actions for automation.</span>
+<span id="cb32-162"><a href="#cb32-162"></a><span class="ss">    - </span>Workflow definitions in YAML files.</span>
+<span id="cb32-163"><a href="#cb32-163"></a><span class="ss">        - </span>I'd call these "scripts"</span>
+<span id="cb32-164"><a href="#cb32-164"></a><span class="ss">    - </span>Integration with GitHub repositories.</span>
+<span id="cb32-165"><a href="#cb32-165"></a><span class="ss">    - </span>Support for various programming languages.</span>
+<span id="cb32-166"><a href="#cb32-166"></a><span class="ss">        - </span>Including C!</span>
+<span id="cb32-167"><a href="#cb32-167"></a></span>
+<span id="cb32-168"><a href="#cb32-168"></a><span class="fu"># Workflows</span></span>
+<span id="cb32-169"><a href="#cb32-169"></a></span>
+<span id="cb32-170"><a href="#cb32-170"></a><span class="ss">- </span>Hidden <span class="in">`.github/workflows`</span> folder in repos:</span>
+<span id="cb32-171"><a href="#cb32-171"></a><span class="ss">    - </span>Triggers: Events that start a workflow.</span>
+<span id="cb32-172"><a href="#cb32-172"></a><span class="ss">    - </span>Jobs: Sets of steps executed on a runner.</span>
+<span id="cb32-173"><a href="#cb32-173"></a><span class="ss">        - </span>Steps: Individual tasks within a job or lines in a script.</span>
+<span id="cb32-174"><a href="#cb32-174"></a><span class="ss">    - </span>Runners: Virtual machines or *containers*.</span>
+<span id="cb32-175"><a href="#cb32-175"></a></span>
+<span id="cb32-176"><a href="#cb32-176"></a><span class="fu"># Example CI Workflow</span></span>
+<span id="cb32-177"><a href="#cb32-177"></a></span>
+<span id="cb32-178"><a href="#cb32-178"></a><span class="ss">- </span>Checkout code from repository (into container)</span>
+<span id="cb32-179"><a href="#cb32-179"></a><span class="ss">    - </span>Install dependencies.</span>
+<span id="cb32-180"><a href="#cb32-180"></a><span class="ss">        - </span>Or use a base image.</span>
+<span id="cb32-181"><a href="#cb32-181"></a><span class="ss">    - </span>Run unit tests.</span>
+<span id="cb32-182"><a href="#cb32-182"></a><span class="ss">    - </span>Build application artifacts (logs)</span>
+<span id="cb32-183"><a href="#cb32-183"></a></span>
+<span id="cb32-184"><a href="#cb32-184"></a><span class="fu"># Example CD Workflow</span></span>
+<span id="cb32-185"><a href="#cb32-185"></a></span>
+<span id="cb32-186"><a href="#cb32-186"></a><span class="ss">- </span>Deploy application to GitHub Pages</span>
+<span id="cb32-187"><a href="#cb32-187"></a><span class="ss">    - </span>Run integration tests.</span>
+<span id="cb32-188"><a href="#cb32-188"></a><span class="ss">    - </span>Deploy to live.</span>
+<span id="cb32-189"><a href="#cb32-189"></a><span class="ss">- </span>Using this for the website for now.</span>
+<span id="cb32-190"><a href="#cb32-190"></a><span class="ss">    - </span>Probably needs work, I don't love it ATM.</span>
+<span id="cb32-191"><a href="#cb32-191"></a></span>
+<span id="cb32-192"><a href="#cb32-192"></a><span class="fu"># Smaller Ex.</span></span>
+<span id="cb32-193"><a href="#cb32-193"></a></span>
+<span id="cb32-194"><a href="#cb32-194"></a><span class="ss">- </span>The main website is big but D505 isn't</span>
+<span id="cb32-195"><a href="#cb32-195"></a><span class="ss">    - </span>It's a fork from another repo</span>
+<span id="cb32-196"><a href="#cb32-196"></a><span class="ss">- </span>You can't see much here, I can see more:</span>
+<span id="cb32-197"><a href="#cb32-197"></a>    <span class="co">[</span><span class="ot">https://github.com/cd-public/D505/actions/runs/13771592743</span><span class="co">](https://github.com/cd-public/D505/actions/runs/13771592743)</span></span>
+<span id="cb32-198"><a href="#cb32-198"></a></span>
+<span id="cb32-199"><a href="#cb32-199"></a><span class="fu"># Excerpt</span></span>
+<span id="cb32-200"><a href="#cb32-200"></a></span>
+<span id="cb32-201"><a href="#cb32-201"></a><span class="ss">- </span>Here's a line under the "Build with Jekyll" heading:</span>
+<span id="cb32-202"><a href="#cb32-202"></a></span>
+<span id="cb32-203"><a href="#cb32-203"></a><span class="in">```{.email}</span></span>
+<span id="cb32-204"><a href="#cb32-204"></a><span class="in">/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_33b8a4 --label f68f14 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/D505/D505":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13</span></span>
+<span id="cb32-205"><a href="#cb32-205"></a><span class="in">```</span></span>
+<span id="cb32-206"><a href="#cb32-206"></a></span>
+<span id="cb32-207"><a href="#cb32-207"></a><span class="ss">- </span>Folks... it's containers all the way down.</span>
+<span id="cb32-208"><a href="#cb32-208"></a><span class="ss">    - </span>That's a Linux script running docker 😂</span>
+<span id="cb32-209"><a href="#cb32-209"></a><span class="ss">    - </span>Would've been podman before 2018 I bet.</span>
+<span id="cb32-210"><a href="#cb32-210"></a></span>
+<span id="cb32-211"><a href="#cb32-211"></a><span class="fu"># Back in Action</span></span>
+<span id="cb32-212"><a href="#cb32-212"></a></span>
+<span id="cb32-213"><a href="#cb32-213"></a><span class="ss">- </span>GitHub Pages is a little bit *automated*</span>
+<span id="cb32-214"><a href="#cb32-214"></a><span class="ss">    - </span>Read: I taught it to first years who had never programmed.</span>
+<span id="cb32-215"><a href="#cb32-215"></a><span class="ss">    - </span>I plan to teach it to high schoolers this summer.</span>
+<span id="cb32-216"><a href="#cb32-216"></a><span class="ss">- </span>As with C/Python, in this class we index into clarity at the expense of brevity.</span>
+<span id="cb32-217"><a href="#cb32-217"></a><span class="ss">- </span>So we write our own CI action.</span>
+<span id="cb32-218"><a href="#cb32-218"></a></span>
+<span id="cb32-219"><a href="#cb32-219"></a><span class="fu"># CI</span></span>
+<span id="cb32-220"><a href="#cb32-220"></a></span>
+<span id="cb32-221"><a href="#cb32-221"></a><span class="ss">- </span>Defined in a .yml file</span>
+<span id="cb32-222"><a href="#cb32-222"></a><span class="ss">    - </span>GitHub provides templates</span>
+<span id="cb32-223"><a href="#cb32-223"></a><span class="ss">    - </span>I found the templates self-documenting and documentation unusuable</span>
+<span id="cb32-224"><a href="#cb32-224"></a><span class="ss">- </span>You can press buttons on GitHub (click ops) or use command line.</span>
+<span id="cb32-225"><a href="#cb32-225"></a><span class="ss">    - </span>You'll never guess which one I think you should do.</span>
+<span id="cb32-226"><a href="#cb32-226"></a></span>
+<span id="cb32-227"><a href="#cb32-227"></a><span class="fu"># Ref .yml</span></span>
+<span id="cb32-228"><a href="#cb32-228"></a></span>
+<span id="cb32-229"><a href="#cb32-229"></a><span class="ss">- </span>Please ignore that this says "c-cpp"</span>
+<span id="cb32-230"><a href="#cb32-230"></a><span class="ss">    - </span>It *means* C89</span>
+<span id="cb32-231"><a href="#cb32-231"></a><span class="ss">    - </span>I blame Microsoft</span>
+<span id="cb32-232"><a href="#cb32-232"></a><span class="ss">- </span><span class="co">[</span><span class="ot">https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml</span><span class="co">](https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml)</span></span>
+<span id="cb32-233"><a href="#cb32-233"></a></span>
+<span id="cb32-234"><a href="#cb32-234"></a><span class="fu"># .yml</span></span>
+<span id="cb32-235"><a href="#cb32-235"></a></span>
+<span id="cb32-236"><a href="#cb32-236"></a><span class="in">```{.yml filename="ci/c-cpp.yml"}</span></span>
+<span id="cb32-237"><a href="#cb32-237"></a><span class="in">name: C/C++ CI</span></span>
+<span id="cb32-238"><a href="#cb32-238"></a></span>
+<span id="cb32-239"><a href="#cb32-239"></a><span class="in">on:</span></span>
+<span id="cb32-240"><a href="#cb32-240"></a><span class="in">  push:</span></span>
+<span id="cb32-241"><a href="#cb32-241"></a><span class="in">    branches: [ $default-branch ]</span></span>
+<span id="cb32-242"><a href="#cb32-242"></a><span class="in">  pull_request:</span></span>
+<span id="cb32-243"><a href="#cb32-243"></a><span class="in">    branches: [ $default-branch ]</span></span>
+<span id="cb32-244"><a href="#cb32-244"></a></span>
+<span id="cb32-245"><a href="#cb32-245"></a><span class="in">jobs:</span></span>
+<span id="cb32-246"><a href="#cb32-246"></a><span class="in">  build:</span></span>
+<span id="cb32-247"><a href="#cb32-247"></a></span>
+<span id="cb32-248"><a href="#cb32-248"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb32-249"><a href="#cb32-249"></a></span>
+<span id="cb32-250"><a href="#cb32-250"></a><span class="in">    steps:</span></span>
+<span id="cb32-251"><a href="#cb32-251"></a><span class="in">    - uses: actions/checkout@v4</span></span>
+<span id="cb32-252"><a href="#cb32-252"></a><span class="in">    - name: configure</span></span>
+<span id="cb32-253"><a href="#cb32-253"></a><span class="in">      run: ./configure</span></span>
+<span id="cb32-254"><a href="#cb32-254"></a><span class="in">    - name: make</span></span>
+<span id="cb32-255"><a href="#cb32-255"></a><span class="in">      run: make</span></span>
+<span id="cb32-256"><a href="#cb32-256"></a><span class="in">    - name: make check</span></span>
+<span id="cb32-257"><a href="#cb32-257"></a><span class="in">      run: make check</span></span>
+<span id="cb32-258"><a href="#cb32-258"></a><span class="in">    - name: make distcheck</span></span>
+<span id="cb32-259"><a href="#cb32-259"></a><span class="in">      run: make distcheck</span></span>
+<span id="cb32-260"><a href="#cb32-260"></a><span class="in">```</span></span>
+<span id="cb32-261"><a href="#cb32-261"></a></span>
+<span id="cb32-262"><a href="#cb32-262"></a><span class="fu"># Simplify</span></span>
+<span id="cb32-263"><a href="#cb32-263"></a></span>
+<span id="cb32-264"><a href="#cb32-264"></a><span class="in">```{.yml filename="ci/c89.yml"}</span></span>
+<span id="cb32-265"><a href="#cb32-265"></a><span class="in">name: C89 CI</span></span>
+<span id="cb32-266"><a href="#cb32-266"></a></span>
+<span id="cb32-267"><a href="#cb32-267"></a><span class="in">on: push</span></span>
+<span id="cb32-268"><a href="#cb32-268"></a></span>
+<span id="cb32-269"><a href="#cb32-269"></a><span class="in">jobs:</span></span>
+<span id="cb32-270"><a href="#cb32-270"></a><span class="in">  build:</span></span>
+<span id="cb32-271"><a href="#cb32-271"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb32-272"><a href="#cb32-272"></a></span>
+<span id="cb32-273"><a href="#cb32-273"></a><span class="in">    steps:</span></span>
+<span id="cb32-274"><a href="#cb32-274"></a><span class="in">    - uses: actions/checkout@v4</span></span>
+<span id="cb32-275"><a href="#cb32-275"></a><span class="in">    - run: make</span></span>
+<span id="cb32-276"><a href="#cb32-276"></a><span class="in">```</span></span>
+<span id="cb32-277"><a href="#cb32-277"></a></span>
+<span id="cb32-278"><a href="#cb32-278"></a><span class="fu"># Simplify</span></span>
+<span id="cb32-279"><a href="#cb32-279"></a></span>
+<span id="cb32-280"><a href="#cb32-280"></a>|Line|Description|</span>
+<span id="cb32-281"><a href="#cb32-281"></a>|--|--|</span>
+<span id="cb32-282"><a href="#cb32-282"></a>|<span class="in">`name: C89 CI`</span>| I didn't check if names were required.|</span>
+<span id="cb32-283"><a href="#cb32-283"></a>|<span class="in">`on: push`</span> | Actions will run after a push to repo |</span>
+<span id="cb32-284"><a href="#cb32-284"></a></span>
+<span id="cb32-285"><a href="#cb32-285"></a><span class="ss">- </span>After a colon, either a single option or a new line, indentation, and series of options.</span>
+<span id="cb32-286"><a href="#cb32-286"></a></span>
+<span id="cb32-287"><a href="#cb32-287"></a><span class="fu"># Jobs</span></span>
+<span id="cb32-288"><a href="#cb32-288"></a></span>
+<span id="cb32-289"><a href="#cb32-289"></a>|Line|Description|</span>
+<span id="cb32-290"><a href="#cb32-290"></a>|--|--|</span>
+<span id="cb32-291"><a href="#cb32-291"></a>|<span class="in">`jobs:`</span>|Job is like a .sh file|</span>
+<span id="cb32-292"><a href="#cb32-292"></a>|  build: | Usually one of build, test, deploy |</span>
+<span id="cb32-293"><a href="#cb32-293"></a>|<span class="in">`    runs-on: ubuntu-latest`</span>| That is GitHub managed image|</span>
+<span id="cb32-294"><a href="#cb32-294"></a></span>
+<span id="cb32-295"><a href="#cb32-295"></a><span class="ss">- </span>I tried to change <span class="in">`ubuntu-latest`</span> to <span class="in">`ubuntu`</span> and it broke.</span>
+<span id="cb32-296"><a href="#cb32-296"></a><span class="ss">    - </span>There will *always* be latest, or fix one of the recent versions.</span>
+<span id="cb32-297"><a href="#cb32-297"></a></span>
+<span id="cb32-298"><a href="#cb32-298"></a><span class="fu"># Runners</span></span>
+<span id="cb32-299"><a href="#cb32-299"></a></span>
+<span id="cb32-300"><a href="#cb32-300"></a><span class="ss">- </span>GitHub runners are distinct from the docker.io and other images.</span>
+<span id="cb32-301"><a href="#cb32-301"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories)</span></span>
+<span id="cb32-302"><a href="#cb32-302"></a><span class="ss">- </span>Right now, here are the Linux options:</span>
+<span id="cb32-303"><a href="#cb32-303"></a><span class="ss">    - </span><span class="in">`ubuntu-latest`</span>, <span class="in">`ubuntu-24.04`</span>, <span class="in">`ubuntu-22.04`</span>, <span class="in">`ubuntu-20.04`</span></span>
+<span id="cb32-304"><a href="#cb32-304"></a></span>
+<span id="cb32-305"><a href="#cb32-305"></a><span class="fu"># Vs Docker</span></span>
+<span id="cb32-306"><a href="#cb32-306"></a></span>
+<span id="cb32-307"><a href="#cb32-307"></a><span class="ss">- </span>These are the mostly the same images available via <span class="co">[</span><span class="ot">dockerhub</span><span class="co">](https://hub.docker.com/_/ubuntu)</span>.</span>
+<span id="cb32-308"><a href="#cb32-308"></a><span class="in">```{.email}</span></span>
+<span id="cb32-309"><a href="#cb32-309"></a><span class="in">20.04, focal-20241011, focal⁠</span></span>
+<span id="cb32-310"><a href="#cb32-310"></a><span class="in">22.04, jammy-20250126, jammy⁠</span></span>
+<span id="cb32-311"><a href="#cb32-311"></a><span class="in">24.04, noble-20250127, noble, latest⁠</span></span>
+<span id="cb32-312"><a href="#cb32-312"></a><span class="in">24.10, oracular-20241120, oracular, rolling⁠</span></span>
+<span id="cb32-313"><a href="#cb32-313"></a><span class="in">25.04, plucky-20241213, plucky, devel⁠</span></span>
+<span id="cb32-314"><a href="#cb32-314"></a><span class="in">```</span></span>
+<span id="cb32-315"><a href="#cb32-315"></a><span class="ss">- </span>GitHub workflows just doesn't bring over "rolling" and "devel" images.</span>
+<span id="cb32-316"><a href="#cb32-316"></a></span>
+<span id="cb32-317"><a href="#cb32-317"></a></span>
+<span id="cb32-318"><a href="#cb32-318"></a><span class="fu"># Steps</span></span>
+<span id="cb32-319"><a href="#cb32-319"></a></span>
+<span id="cb32-320"><a href="#cb32-320"></a>|Line|Description|</span>
+<span id="cb32-321"><a href="#cb32-321"></a>|--|--|</span>
+<span id="cb32-322"><a href="#cb32-322"></a>|<span class="in">`steps:`</span>|Steps are like individual commands|</span>
+<span id="cb32-323"><a href="#cb32-323"></a>|    <span class="in">`- uses: actions/checkout@v4`</span>| This is some built-in you can't change.|</span>
+<span id="cb32-324"><a href="#cb32-324"></a>|    <span class="in">`- run: make`</span>| Runs <span class="in">`make`</span> inside <span class="in">`ubuntu-latest`</span> after checking out the repository within that container.|</span>
+<span id="cb32-325"><a href="#cb32-325"></a></span>
+<span id="cb32-326"><a href="#cb32-326"></a><span class="fu"># On .yml</span></span>
+<span id="cb32-327"><a href="#cb32-327"></a></span>
+<span id="cb32-328"><a href="#cb32-328"></a><span class="ss">- </span>You may have learned .yml from e.g. Data Engineering</span>
+<span id="cb32-329"><a href="#cb32-329"></a><span class="ss">- </span>It is used in the header to these slides:</span>
+<span id="cb32-330"><a href="#cb32-330"></a><span class="ss">    - </span>je suis développeur web</span>
+<span id="cb32-331"><a href="#cb32-331"></a></span>
+<span id="cb32-332"><a href="#cb32-332"></a><span class="in">```{.yml filename="action.qmd"}</span></span>
+<span id="cb32-333"><a href="#cb32-333"></a><span class="in">---</span></span>
+<span id="cb32-334"><a href="#cb32-334"></a><span class="in">title: Action</span></span>
+<span id="cb32-335"><a href="#cb32-335"></a><span class="in">theme: dark</span></span>
+<span id="cb32-336"><a href="#cb32-336"></a><span class="in">author: Prof. Calvin</span></span>
+<span id="cb32-337"><a href="#cb32-337"></a><span class="in">subtitle: "Week 0x8 II"</span></span>
+<span id="cb32-338"><a href="#cb32-338"></a><span class="in">institute: Crypto</span></span>
+<span id="cb32-339"><a href="#cb32-339"></a><span class="in">format: </span></span>
+<span id="cb32-340"><a href="#cb32-340"></a><span class="in">    revealjs: </span></span>
+<span id="cb32-341"><a href="#cb32-341"></a><span class="in">        code-fold: true</span></span>
+<span id="cb32-342"><a href="#cb32-342"></a><span class="in">        theme: dark</span></span>
+<span id="cb32-343"><a href="#cb32-343"></a><span class="in">        mainfont: monospace</span></span>
+<span id="cb32-344"><a href="#cb32-344"></a><span class="in">        slide-number: true</span></span>
+<span id="cb32-345"><a href="#cb32-345"></a><span class="in">        show-slide-number: all</span></span>
+<span id="cb32-346"><a href="#cb32-346"></a><span class="in">        width: 1050</span></span>
+<span id="cb32-347"><a href="#cb32-347"></a><span class="in">        height: 700</span></span>
+<span id="cb32-348"><a href="#cb32-348"></a><span class="in">        footer: "[Home](../index.html)"</span></span>
+<span id="cb32-349"><a href="#cb32-349"></a></span>
+<span id="cb32-350"><a href="#cb32-350"></a><span class="in">execute:</span></span>
+<span id="cb32-351"><a href="#cb32-351"></a><span class="in">    echo: true</span></span>
+<span id="cb32-352"><a href="#cb32-352"></a><span class="in">    cache: true</span></span>
+<span id="cb32-353"><a href="#cb32-353"></a><span class="in">    freeze: true  # never re-render during project render</span></span>
+<span id="cb32-354"><a href="#cb32-354"></a><span class="in">    code-fold: false</span></span>
+<span id="cb32-355"><a href="#cb32-355"></a><span class="in">---</span></span>
+<span id="cb32-356"><a href="#cb32-356"></a><span class="in">```</span></span>
+<span id="cb32-357"><a href="#cb32-357"></a></span>
+<span id="cb32-358"><a href="#cb32-358"></a><span class="fu"># Up to you</span></span>
+<span id="cb32-359"><a href="#cb32-359"></a></span>
+<span id="cb32-360"><a href="#cb32-360"></a><span class="ss">- </span>You can fiddle around with GitHub workflows and actions and etc and etc, it's not too bad, but...</span>
+<span id="cb32-361"><a href="#cb32-361"></a><span class="ss">- </span>I'd use the above as boilerplate and only change one thing:</span>
+<span id="cb32-362"><a href="#cb32-362"></a><span class="ss">- </span><span class="in">`make`</span></span>
+<span id="cb32-363"><a href="#cb32-363"></a></span>
+<span id="cb32-364"><a href="#cb32-364"></a><span class="fu"># Today</span></span>
+<span id="cb32-365"><a href="#cb32-365"></a></span>
+<span id="cb32-366"><a href="#cb32-366"></a><span class="ss">- </span>&lt;span style="font-variant:small-caps"&gt;DevOps&lt;/span&gt;</span>
+<span id="cb32-367"><a href="#cb32-367"></a><span class="ss">- </span>Continious Integration</span>
+<span id="cb32-368"><a href="#cb32-368"></a><span class="ss">    - </span><span class="in">`make`</span></span>
+<span id="cb32-369"><a href="#cb32-369"></a><span class="ss">    - </span><span class="dv">&amp;check;</span> GitHub Actions</span>
+<span id="cb32-370"><a href="#cb32-370"></a></span>
+<span id="cb32-371"><a href="#cb32-371"></a><span class="fu"># `make`</span></span>
+<span id="cb32-372"><a href="#cb32-372"></a></span>
+<span id="cb32-373"><a href="#cb32-373"></a><span class="ss">- </span><span class="in">`make`</span> is the historically supported way to get things done related to C (and C++) development.</span>
+<span id="cb32-374"><a href="#cb32-374"></a><span class="ss">    - </span>CMake is the new technique which is a bit heavier weight and used in larger projects.</span>
+<span id="cb32-375"><a href="#cb32-375"></a><span class="ss">        - </span>By new I mean 2000.</span>
+<span id="cb32-376"><a href="#cb32-376"></a><span class="ss">        - </span><span class="in">`make`</span> is 1976</span>
+<span id="cb32-377"><a href="#cb32-377"></a></span>
+<span id="cb32-378"><a href="#cb32-378"></a><span class="fu"># The Pitch</span></span>
+<span id="cb32-379"><a href="#cb32-379"></a></span>
+<span id="cb32-380"><a href="#cb32-380"></a><span class="ss">- </span><span class="in">`make`</span></span>
+<span id="cb32-381"><a href="#cb32-381"></a><span class="ss">    - </span>Stores big commands</span>
+<span id="cb32-382"><a href="#cb32-382"></a><span class="ss">    - </span>Can check how recently files have changed</span>
+<span id="cb32-383"><a href="#cb32-383"></a><span class="ss">    - </span>Is programable via "rules" in a <span class="in">`Makefile`</span>.</span>
+<span id="cb32-384"><a href="#cb32-384"></a></span>
+<span id="cb32-385"><a href="#cb32-385"></a></span>
+<span id="cb32-386"><a href="#cb32-386"></a><span class="fu"># Example</span></span>
+<span id="cb32-387"><a href="#cb32-387"></a></span>
+<span id="cb32-388"><a href="#cb32-388"></a><span class="ss">- </span>Here's a sample Makefile, the thing that programs <span class="in">`make`</span></span>
+<span id="cb32-389"><a href="#cb32-389"></a><span class="ss">    - </span>Guess what Containerfile naming scheme is derived from!</span>
+<span id="cb32-390"><a href="#cb32-390"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-391"><a href="#cb32-391"></a><span class="in">build:</span></span>
+<span id="cb32-392"><a href="#cb32-392"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-393"><a href="#cb32-393"></a><span class="in">```</span></span>
+<span id="cb32-394"><a href="#cb32-394"></a><span class="ss">- </span>Using SHA as the running example...</span>
+<span id="cb32-395"><a href="#cb32-395"></a></span>
+<span id="cb32-396"><a href="#cb32-396"></a><span class="fu"># Example</span></span>
+<span id="cb32-397"><a href="#cb32-397"></a></span>
+<span id="cb32-398"><a href="#cb32-398"></a><span class="ss">- </span>Suppose we have an incomplete "shainc.c"</span>
+<span id="cb32-399"><a href="#cb32-399"></a></span>
+<span id="cb32-400"><a href="#cb32-400"></a><span class="in">```{.C filename="shainc.c"}</span></span>
+<span id="cb32-401"><a href="#cb32-401"></a><span class="in">int main() {</span></span>
+<span id="cb32-402"><a href="#cb32-402"></a><span class="in">        printf("hi\n");</span></span>
+<span id="cb32-403"><a href="#cb32-403"></a><span class="in">}</span></span>
+<span id="cb32-404"><a href="#cb32-404"></a><span class="in">```</span></span>
+<span id="cb32-405"><a href="#cb32-405"></a></span>
+<span id="cb32-406"><a href="#cb32-406"></a><span class="ss">- </span>We get some warnings:</span>
+<span id="cb32-407"><a href="#cb32-407"></a><span class="in">```{.email}</span></span>
+<span id="cb32-408"><a href="#cb32-408"></a><span class="in">$ gcc shainc.c</span></span>
+<span id="cb32-409"><a href="#cb32-409"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-410"><a href="#cb32-410"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
+<span id="cb32-411"><a href="#cb32-411"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-412"><a href="#cb32-412"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-413"><a href="#cb32-413"></a><span class="in">```</span></span>
+<span id="cb32-414"><a href="#cb32-414"></a></span>
+<span id="cb32-415"><a href="#cb32-415"></a><span class="fu"># Example</span></span>
+<span id="cb32-416"><a href="#cb32-416"></a></span>
+<span id="cb32-417"><a href="#cb32-417"></a><span class="ss">- </span>Given a Makfile that contains the same "rule"</span>
+<span id="cb32-418"><a href="#cb32-418"></a></span>
+<span id="cb32-419"><a href="#cb32-419"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-420"><a href="#cb32-420"></a><span class="in">build:</span></span>
+<span id="cb32-421"><a href="#cb32-421"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-422"><a href="#cb32-422"></a><span class="in">```</span></span>
+<span id="cb32-423"><a href="#cb32-423"></a></span>
+<span id="cb32-424"><a href="#cb32-424"></a><span class="ss">- </span>We get *the same* warnings:</span>
+<span id="cb32-425"><a href="#cb32-425"></a><span class="in">```{.email}</span></span>
+<span id="cb32-426"><a href="#cb32-426"></a><span class="in">$ make</span></span>
+<span id="cb32-427"><a href="#cb32-427"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-428"><a href="#cb32-428"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-429"><a href="#cb32-429"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
+<span id="cb32-430"><a href="#cb32-430"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-431"><a href="#cb32-431"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-432"><a href="#cb32-432"></a><span class="in">```</span></span>
+<span id="cb32-433"><a href="#cb32-433"></a></span>
+<span id="cb32-434"><a href="#cb32-434"></a><span class="fu"># Takeaways</span></span>
+<span id="cb32-435"><a href="#cb32-435"></a></span>
+<span id="cb32-436"><a href="#cb32-436"></a><span class="ss">- </span>Make runs shell commands.</span>
+<span id="cb32-437"><a href="#cb32-437"></a><span class="ss">- </span>They run the same as if we type them ourselves.</span>
+<span id="cb32-438"><a href="#cb32-438"></a><span class="ss">- </span>This allows us to store commands.</span>
+<span id="cb32-439"><a href="#cb32-439"></a><span class="ss">- </span>Rules can be goofy - but by default the first one runs - we have one, named build, so it's the one that happens.</span>
+<span id="cb32-440"><a href="#cb32-440"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-441"><a href="#cb32-441"></a><span class="in">build:</span></span>
+<span id="cb32-442"><a href="#cb32-442"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-443"><a href="#cb32-443"></a><span class="in">```</span></span>
+<span id="cb32-444"><a href="#cb32-444"></a></span>
+<span id="cb32-445"><a href="#cb32-445"></a><span class="fu"># Rules</span></span>
+<span id="cb32-446"><a href="#cb32-446"></a></span>
+<span id="cb32-447"><a href="#cb32-447"></a><span class="ss">- </span>You can also specify rules if you have more than one:</span>
+<span id="cb32-448"><a href="#cb32-448"></a></span>
+<span id="cb32-449"><a href="#cb32-449"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-450"><a href="#cb32-450"></a><span class="in">build:</span></span>
+<span id="cb32-451"><a href="#cb32-451"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-452"><a href="#cb32-452"></a></span>
+<span id="cb32-453"><a href="#cb32-453"></a><span class="in">nowarn:</span></span>
+<span id="cb32-454"><a href="#cb32-454"></a><span class="in">    gcc shainc.c -w</span></span>
+<span id="cb32-455"><a href="#cb32-455"></a><span class="in">```</span></span>
+<span id="cb32-456"><a href="#cb32-456"></a></span>
+<span id="cb32-457"><a href="#cb32-457"></a><span class="fu"># Use rules</span></span>
+<span id="cb32-458"><a href="#cb32-458"></a></span>
+<span id="cb32-459"><a href="#cb32-459"></a><span class="ss">- </span>We can "build"</span>
+<span id="cb32-460"><a href="#cb32-460"></a><span class="in">```{.email}</span></span>
+<span id="cb32-461"><a href="#cb32-461"></a><span class="in">$ make build</span></span>
+<span id="cb32-462"><a href="#cb32-462"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-463"><a href="#cb32-463"></a><span class="in">...</span></span>
+<span id="cb32-464"><a href="#cb32-464"></a><span class="in">```</span></span>
+<span id="cb32-465"><a href="#cb32-465"></a><span class="ss">- </span>Or we can specify "nowarn"</span>
+<span id="cb32-466"><a href="#cb32-466"></a><span class="in">```{.email}</span></span>
+<span id="cb32-467"><a href="#cb32-467"></a><span class="in">$ make nowarn</span></span>
+<span id="cb32-468"><a href="#cb32-468"></a><span class="in">gcc shainc.c -w</span></span>
+<span id="cb32-469"><a href="#cb32-469"></a><span class="in">```</span></span>
+<span id="cb32-470"><a href="#cb32-470"></a><span class="ss">- </span>The first is the default</span>
+<span id="cb32-471"><a href="#cb32-471"></a><span class="in">```{.email}</span></span>
+<span id="cb32-472"><a href="#cb32-472"></a><span class="in">$ make</span></span>
+<span id="cb32-473"><a href="#cb32-473"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-474"><a href="#cb32-474"></a><span class="in">```</span></span>
+<span id="cb32-475"><a href="#cb32-475"></a></span>
+<span id="cb32-476"><a href="#cb32-476"></a><span class="fu"># In practice</span></span>
+<span id="cb32-477"><a href="#cb32-477"></a></span>
+<span id="cb32-478"><a href="#cb32-478"></a><span class="ss">- </span>I tend to use a Makefile like this:</span>
+<span id="cb32-479"><a href="#cb32-479"></a></span>
+<span id="cb32-480"><a href="#cb32-480"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-481"><a href="#cb32-481"></a><span class="in">build:</span></span>
+<span id="cb32-482"><a href="#cb32-482"></a><span class="in">    gcc shainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-483"><a href="#cb32-483"></a></span>
+<span id="cb32-484"><a href="#cb32-484"></a><span class="in">clean:</span></span>
+<span id="cb32-485"><a href="#cb32-485"></a><span class="in">    rm shainc</span></span>
+<span id="cb32-486"><a href="#cb32-486"></a><span class="in">```</span></span>
+<span id="cb32-487"><a href="#cb32-487"></a></span>
+<span id="cb32-488"><a href="#cb32-488"></a><span class="ss">- </span><span class="in">`make`</span> will compile and <span class="in">`make clean`</span> will remove the old executable if I don't want it around for some reason.</span>
+<span id="cb32-489"><a href="#cb32-489"></a></span>
+<span id="cb32-490"><a href="#cb32-490"></a><span class="fu"># Check</span></span>
+<span id="cb32-491"><a href="#cb32-491"></a></span>
+<span id="cb32-492"><a href="#cb32-492"></a><span class="ss">- </span>"make" commands tend to 5 char, next most common I see is "check"</span>
+<span id="cb32-493"><a href="#cb32-493"></a><span class="ss">- </span>We have a shell friendly <span class="in">`shainc`</span> autograder!</span>
+<span id="cb32-494"><a href="#cb32-494"></a><span class="in">```{.sh filename="tester.sh"}</span></span>
+<span id="cb32-495"><a href="#cb32-495"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-496"><a href="#cb32-496"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-497"><a href="#cb32-497"></a><span class="in">echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
+<span id="cb32-498"><a href="#cb32-498"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-499"><a href="#cb32-499"></a><span class="in">echo " === Finding errors vs. reference implementation. === "</span></span>
+<span id="cb32-500"><a href="#cb32-500"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-501"><a href="#cb32-501"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
+<span id="cb32-502"><a href="#cb32-502"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
+<span id="cb32-503"><a href="#cb32-503"></a><span class="in">echo " === Errors printed. No errors denotes \"Perfect!\" === "</span></span>
+<span id="cb32-504"><a href="#cb32-504"></a><span class="in">```</span></span>
+<span id="cb32-505"><a href="#cb32-505"></a></span>
+<span id="cb32-506"><a href="#cb32-506"></a><span class="fu"># A note</span></span>
+<span id="cb32-507"><a href="#cb32-507"></a></span>
+<span id="cb32-508"><a href="#cb32-508"></a><span class="ss">- </span>This:</span>
+<span id="cb32-509"><a href="#cb32-509"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-510"><a href="#cb32-510"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-511"><a href="#cb32-511"></a><span class="in">```</span></span>
+<span id="cb32-512"><a href="#cb32-512"></a><span class="ss">- </span>Is *bash* and only works via <span class="in">`/bin/bash`</span></span>
+<span id="cb32-513"><a href="#cb32-513"></a><span class="ss">- </span>Makefile uses *sh* which doesn't allow the parenthesis like that.</span>
+<span id="cb32-514"><a href="#cb32-514"></a><span class="ss">- </span>We will use temporary files.</span>
+<span id="cb32-515"><a href="#cb32-515"></a></span>
+<span id="cb32-516"><a href="#cb32-516"></a><span class="fu"># Step by step</span></span>
+<span id="cb32-517"><a href="#cb32-517"></a></span>
+<span id="cb32-518"><a href="#cb32-518"></a><span class="ss">- </span>This is just <span class="in">`make build`</span></span>
+<span id="cb32-519"><a href="#cb32-519"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-520"><a href="#cb32-520"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-521"><a href="#cb32-521"></a><span class="in">```</span></span>
+<span id="cb32-522"><a href="#cb32-522"></a><span class="ss">- </span>These lines just echo text into a file:</span>
+<span id="cb32-523"><a href="#cb32-523"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-524"><a href="#cb32-524"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-525"><a href="#cb32-525"></a><span class="in">echo "Lorem ipsum dolor sit amet, " # etc etc</span></span>
+<span id="cb32-526"><a href="#cb32-526"></a><span class="in">```</span></span>
+<span id="cb32-527"><a href="#cb32-527"></a></span>
+<span id="cb32-528"><a href="#cb32-528"></a><span class="fu"># Curl</span></span>
+<span id="cb32-529"><a href="#cb32-529"></a></span>
+<span id="cb32-530"><a href="#cb32-530"></a><span class="ss">- </span>This just pulls a book from GitHub using <span class="in">`curl`</span> and usings the <span class="in">`&gt;`</span> character to direct all of the diagnostic information to nowhere.</span>
+<span id="cb32-531"><a href="#cb32-531"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-532"><a href="#cb32-532"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-533"><a href="#cb32-533"></a><span class="in">```</span></span>
+<span id="cb32-534"><a href="#cb32-534"></a><span class="ss">- </span>Try it with different flags if you are confused.</span>
+<span id="cb32-535"><a href="#cb32-535"></a></span>
+<span id="cb32-536"><a href="#cb32-536"></a><span class="fu"># Curl</span></span>
+<span id="cb32-537"><a href="#cb32-537"></a></span>
+<span id="cb32-538"><a href="#cb32-538"></a><span class="ss">- </span><span class="in">`curl`</span> downloads a file from a url</span>
+<span id="cb32-539"><a href="#cb32-539"></a><span class="ss">- </span><span class="in">`-o`</span> specifies what to save that file as on the local computers</span>
+<span id="cb32-540"><a href="#cb32-540"></a><span class="ss">- </span><span class="in">`2&gt;`</span> suggests were to send error handling information</span>
+<span id="cb32-541"><a href="#cb32-541"></a><span class="ss">- </span><span class="in">`/dev/null`</span> is an imaginary file we can write to that won't remember what we wrote there.</span>
+<span id="cb32-542"><a href="#cb32-542"></a><span class="ss">    - </span>Like <span class="in">`return none`</span></span>
+<span id="cb32-543"><a href="#cb32-543"></a></span>
+<span id="cb32-544"><a href="#cb32-544"></a><span class="fu"># Diff</span></span>
+<span id="cb32-545"><a href="#cb32-545"></a></span>
+<span id="cb32-546"><a href="#cb32-546"></a><span class="ss">- </span><span class="in">`diff`</span> compares two files to see if they are the same or different.</span>
+<span id="cb32-547"><a href="#cb32-547"></a><span class="ss">    - </span>If they differ, it prints the difference and returns a non-zero value.</span>
+<span id="cb32-548"><a href="#cb32-548"></a><span class="ss">    - </span>If they are the same, it prints nothing and returns zero.</span>
+<span id="cb32-549"><a href="#cb32-549"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-550"><a href="#cb32-550"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-551"><a href="#cb32-551"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
+<span id="cb32-552"><a href="#cb32-552"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
+<span id="cb32-553"><a href="#cb32-553"></a><span class="in">```</span></span>
+<span id="cb32-554"><a href="#cb32-554"></a></span>
+<span id="cb32-555"><a href="#cb32-555"></a><span class="fu"># Wait - which files?</span></span>
+<span id="cb32-556"><a href="#cb32-556"></a></span>
+<span id="cb32-557"><a href="#cb32-557"></a><span class="ss">- </span>This is another imaginary file:</span>
+<span id="cb32-558"><a href="#cb32-558"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-559"><a href="#cb32-559"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-560"><a href="#cb32-560"></a><span class="in">```</span></span>
+<span id="cb32-561"><a href="#cb32-561"></a><span class="ss">- </span>This is not allowed by <span class="in">`make`</span>.</span>
+<span id="cb32-562"><a href="#cb32-562"></a><span class="ss">- </span>Instead, make a few files:</span>
+<span id="cb32-563"><a href="#cb32-563"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-564"><a href="#cb32-564"></a><span class="in">sha256sum 15char.txt &gt; 15char.sum</span></span>
+<span id="cb32-565"><a href="#cb32-565"></a><span class="in">./shainc 15char.txt &gt; 15char.inc</span></span>
+<span id="cb32-566"><a href="#cb32-566"></a><span class="in">diff 15char.inc 15char.sum</span></span>
+<span id="cb32-567"><a href="#cb32-567"></a><span class="in">```</span></span>
+<span id="cb32-568"><a href="#cb32-568"></a></span>
+<span id="cb32-569"><a href="#cb32-569"></a><span class="fu"># Try diff</span></span>
+<span id="cb32-570"><a href="#cb32-570"></a></span>
+<span id="cb32-571"><a href="#cb32-571"></a><span class="ss">- </span>Use <span class="in">`echo`</span> to create <span class="in">`15char.txt`</span> and <span class="in">`lipsum.txt`</span>.</span>
+<span id="cb32-572"><a href="#cb32-572"></a><span class="ss">- </span>Use <span class="in">`diff`</span> to examine them:</span>
+<span id="cb32-573"><a href="#cb32-573"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-574"><a href="#cb32-574"></a><span class="in">$ diff 15char.txt 15char.txt</span></span>
+<span id="cb32-575"><a href="#cb32-575"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-576"><a href="#cb32-576"></a><span class="in">0</span></span>
+<span id="cb32-577"><a href="#cb32-577"></a><span class="in">$ diff 15char.txt lipsum.txt</span></span>
+<span id="cb32-578"><a href="#cb32-578"></a><span class="in">1c1</span></span>
+<span id="cb32-579"><a href="#cb32-579"></a><span class="in">&lt; 15 characters.</span></span>
+<span id="cb32-580"><a href="#cb32-580"></a><span class="in">---</span></span>
+<span id="cb32-581"><a href="#cb32-581"></a><span class="in">&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span>
+<span id="cb32-582"><a href="#cb32-582"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-583"><a href="#cb32-583"></a><span class="in">1</span></span>
+<span id="cb32-584"><a href="#cb32-584"></a><span class="in">```</span></span>
+<span id="cb32-585"><a href="#cb32-585"></a></span>
+<span id="cb32-586"><a href="#cb32-586"></a><span class="fu"># Use /dev/null</span></span>
+<span id="cb32-587"><a href="#cb32-587"></a></span>
+<span id="cb32-588"><a href="#cb32-588"></a><span class="ss">- </span>Wait we don't care what the difference is, just if there is one.</span>
+<span id="cb32-589"><a href="#cb32-589"></a><span class="ss">- </span>And we know how to ignore the output of a command.</span>
+<span id="cb32-590"><a href="#cb32-590"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-591"><a href="#cb32-591"></a><span class="in">$ diff 15char.txt 15char.txt &gt;/dev/null ; echo $?</span></span>
+<span id="cb32-592"><a href="#cb32-592"></a><span class="in">0</span></span>
+<span id="cb32-593"><a href="#cb32-593"></a><span class="in">$ diff 15char.txt lipsum.txt &gt;/dev/null ; echo $?</span></span>
+<span id="cb32-594"><a href="#cb32-594"></a><span class="in">1</span></span>
+<span id="cb32-595"><a href="#cb32-595"></a><span class="in">```</span></span>
+<span id="cb32-596"><a href="#cb32-596"></a><span class="ss">- </span>*When files differ, the return value of `diff` suggests an error occured*</span>
+<span id="cb32-597"><a href="#cb32-597"></a></span>
+<span id="cb32-598"><a href="#cb32-598"></a><span class="fu"># Non-zero return</span></span>
+<span id="cb32-599"><a href="#cb32-599"></a></span>
+<span id="cb32-600"><a href="#cb32-600"></a><span class="ss">- </span>We get the same from <span class="in">`gcc`</span> when a build fails.</span>
+<span id="cb32-601"><a href="#cb32-601"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-602"><a href="#cb32-602"></a><span class="in">$ gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-603"><a href="#cb32-603"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-604"><a href="#cb32-604"></a><span class="in">shainc.c:2:9: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]</span></span>
+<span id="cb32-605"><a href="#cb32-605"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-606"><a href="#cb32-606"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-607"><a href="#cb32-607"></a><span class="in">shainc.c:1:1: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
+<span id="cb32-608"><a href="#cb32-608"></a><span class="in">  +++ |+#include &lt;stdio.h&gt;</span></span>
+<span id="cb32-609"><a href="#cb32-609"></a><span class="in">    1 | int main() {</span></span>
+<span id="cb32-610"><a href="#cb32-610"></a><span class="in">shainc.c:2:9: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror=builtin-declaration-mismatch]</span></span>
+<span id="cb32-611"><a href="#cb32-611"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-612"><a href="#cb32-612"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-613"><a href="#cb32-613"></a><span class="in">shainc.c:2:9: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
+<span id="cb32-614"><a href="#cb32-614"></a><span class="in">cc1: all warnings being treated as errors</span></span>
+<span id="cb32-615"><a href="#cb32-615"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-616"><a href="#cb32-616"></a><span class="in">2</span></span>
+<span id="cb32-617"><a href="#cb32-617"></a><span class="in">```</span></span>
+<span id="cb32-618"><a href="#cb32-618"></a></span>
+<span id="cb32-619"><a href="#cb32-619"></a><span class="fu"># Makefile nonzero</span></span>
+<span id="cb32-620"><a href="#cb32-620"></a></span>
+<span id="cb32-621"><a href="#cb32-621"></a><span class="ss">- </span>Makefile returns the error value:</span>
+<span id="cb32-622"><a href="#cb32-622"></a></span>
+<span id="cb32-623"><a href="#cb32-623"></a><span class="in">```{.sh}    </span></span>
+<span id="cb32-624"><a href="#cb32-624"></a><span class="in">$ cat Makefile</span></span>
+<span id="cb32-625"><a href="#cb32-625"></a><span class="in">build:</span></span>
+<span id="cb32-626"><a href="#cb32-626"></a><span class="in">        gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-627"><a href="#cb32-627"></a><span class="in">$ make 2&gt;/dev/null ; echo $?</span></span>
+<span id="cb32-628"><a href="#cb32-628"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-629"><a href="#cb32-629"></a><span class="in">2</span></span>
+<span id="cb32-630"><a href="#cb32-630"></a><span class="in">```</span></span>
+<span id="cb32-631"><a href="#cb32-631"></a></span>
+<span id="cb32-632"><a href="#cb32-632"></a><span class="fu"># Actions</span></span>
+<span id="cb32-633"><a href="#cb32-633"></a></span>
+<span id="cb32-634"><a href="#cb32-634"></a><span class="ss">- </span>We can use <span class="in">`make`</span> and <span class="in">`make check`</span> within GitHub actions:</span>
+<span id="cb32-635"><a href="#cb32-635"></a></span>
+<span id="cb32-636"><a href="#cb32-636"></a><span class="in">```{.yml filename="ci/c-cpp.yml"}</span></span>
+<span id="cb32-637"><a href="#cb32-637"></a><span class="in">    - name: make</span></span>
+<span id="cb32-638"><a href="#cb32-638"></a><span class="in">      run: make</span></span>
+<span id="cb32-639"><a href="#cb32-639"></a><span class="in">    - name: make check</span></span>
+<span id="cb32-640"><a href="#cb32-640"></a><span class="in">      run: make check</span></span>
+<span id="cb32-641"><a href="#cb32-641"></a><span class="in">```</span></span>
+<span id="cb32-642"><a href="#cb32-642"></a><span class="ss">- </span>And GitHub will report error status to us when we check in files.</span>
+<span id="cb32-643"><a href="#cb32-643"></a></span>
+<span id="cb32-644"><a href="#cb32-644"></a><span class="fu"># End-to-end</span></span>
+<span id="cb32-645"><a href="#cb32-645"></a></span>
+<span id="cb32-646"><a href="#cb32-646"></a><span class="ss">- </span>Check this repository:</span>
+<span id="cb32-647"><a href="#cb32-647"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/action</span><span class="co">](https://github.com/cd-c89/action)</span></span>
+<span id="cb32-648"><a href="#cb32-648"></a><span class="ss">- </span>Spoiler alert: it contains a passable <span class="in">`shainc`</span> solution if you wanted to work on that someday.</span>
+<span id="cb32-649"><a href="#cb32-649"></a></span>
+<span id="cb32-650"><a href="#cb32-650"></a><span class="fu"># Makefile</span></span>
+<span id="cb32-651"><a href="#cb32-651"></a></span>
+<span id="cb32-652"><a href="#cb32-652"></a><span class="in">```{.sh filename="Makefile"}</span></span>
+<span id="cb32-653"><a href="#cb32-653"></a><span class="in">check: build</span></span>
+<span id="cb32-654"><a href="#cb32-654"></a><span class="in">    echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-655"><a href="#cb32-655"></a><span class="in">    echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
+<span id="cb32-656"><a href="#cb32-656"></a><span class="in">    curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-657"><a href="#cb32-657"></a><span class="in">    # Makefile uses sh not bash so can't use &lt;() and have to use the filesystem</span></span>
+<span id="cb32-658"><a href="#cb32-658"></a><span class="in">    ./shainc 15char.txt &gt; 15char.inc</span></span>
+<span id="cb32-659"><a href="#cb32-659"></a><span class="in">    ./shainc lipsum.txt &gt; lipsum.inc</span></span>
+<span id="cb32-660"><a href="#cb32-660"></a><span class="in">    ./shainc austen.txt &gt; austen.inc</span></span>
+<span id="cb32-661"><a href="#cb32-661"></a><span class="in">    sha256sum 15char.txt &gt; 15char.sum</span></span>
+<span id="cb32-662"><a href="#cb32-662"></a><span class="in">    sha256sum lipsum.txt &gt; lipsum.sum</span></span>
+<span id="cb32-663"><a href="#cb32-663"></a><span class="in">    sha256sum austen.txt &gt; austen.sum</span></span>
+<span id="cb32-664"><a href="#cb32-664"></a><span class="in">    diff 15char.inc 15char.sum || diff lipsum.inc lipsum.sum || diff austen.inc austen.sum</span></span>
+<span id="cb32-665"><a href="#cb32-665"></a></span>
+<span id="cb32-666"><a href="#cb32-666"></a></span>
+<span id="cb32-667"><a href="#cb32-667"></a><span class="in">build:</span></span>
+<span id="cb32-668"><a href="#cb32-668"></a><span class="in">    gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-669"><a href="#cb32-669"></a></span>
+<span id="cb32-670"><a href="#cb32-670"></a><span class="in">clean:</span></span>
+<span id="cb32-671"><a href="#cb32-671"></a><span class="in">    rm shainc *.txt *.inc *.sum</span></span>
+<span id="cb32-672"><a href="#cb32-672"></a><span class="in">```</span></span>
+<span id="cb32-673"><a href="#cb32-673"></a></span>
+<span id="cb32-674"><a href="#cb32-674"></a><span class="fu"># .yml</span></span>
+<span id="cb32-675"><a href="#cb32-675"></a></span>
+<span id="cb32-676"><a href="#cb32-676"></a><span class="in">```{.yml filename=".github/workflows/c89.yml"}</span></span>
+<span id="cb32-677"><a href="#cb32-677"></a><span class="in">name: C89 CI</span></span>
+<span id="cb32-678"><a href="#cb32-678"></a></span>
+<span id="cb32-679"><a href="#cb32-679"></a><span class="in">on: push</span></span>
+<span id="cb32-680"><a href="#cb32-680"></a></span>
+<span id="cb32-681"><a href="#cb32-681"></a><span class="in">jobs:</span></span>
+<span id="cb32-682"><a href="#cb32-682"></a><span class="in">  build:</span></span>
+<span id="cb32-683"><a href="#cb32-683"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb32-684"><a href="#cb32-684"></a></span>
+<span id="cb32-685"><a href="#cb32-685"></a><span class="in">    steps:</span></span>
+<span id="cb32-686"><a href="#cb32-686"></a><span class="in">    - uses: actions/checkout@v4</span></span>
+<span id="cb32-687"><a href="#cb32-687"></a><span class="in">    - run: make</span></span>
+<span id="cb32-688"><a href="#cb32-688"></a><span class="in">```</span></span>
+<span id="cb32-689"><a href="#cb32-689"></a></span>
+<span id="cb32-690"><a href="#cb32-690"></a><span class="fu"># Outcomes</span></span>
+<span id="cb32-691"><a href="#cb32-691"></a></span>
+<span id="cb32-692"><a href="#cb32-692"></a><span class="al">![](imgs/ghact.png)</span></span>
+<span id="cb32-693"><a href="#cb32-693"></a></span>
+<span id="cb32-694"><a href="#cb32-694"></a><span class="fu"># Todo</span></span>
+<span id="cb32-695"><a href="#cb32-695"></a></span>
+<span id="cb32-696"><a href="#cb32-696"></a><span class="ss">- </span>Get this working on your "shainc" or "enigma" or something.</span>
+<span id="cb32-697"><a href="#cb32-697"></a><span class="ss">- </span>Either in your main repo or in some other one.</span>
+<span id="cb32-698"><a href="#cb32-698"></a><span class="ss">- </span>Add "GitHub Actions CI/CD pipelines for DevOps" to your resume.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -13,6 +13,7 @@ subtitle: "AI 101"
 
 format:
     html:
+        mainfont: monospace
         toc: true
         theme: darkly 
         code-line-numbers: true
@@ -21,6 +22,7 @@ format:
             toggle: false
             caption: none
     revealjs: 
+        mainfont: monospace
         theme: dark
         slide-number: true
         show-slide-number: all
@@ -33,3 +35,4 @@ execute:
     echo: true
     cache: true
     freeze: auto 
+    code-fold: false

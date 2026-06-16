@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
 
-<title>Systems in C – AI 101</title>
+<title>BTCinC – AI 101</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./A0_logics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,9 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      AI 101
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A2_btcinc.html">BTCinC</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -317,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./A2_btcinc.html" class="sidebar-item-text sidebar-link">
+  <a href="./A2_btcinc.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">BTCinC</span></a>
   </div>
 </li>
@@ -331,13 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cs-271-systems-in-c" id="toc-cs-271-systems-in-c" class="nav-link active" data-scroll-target="#cs-271-systems-in-c">CS 271 “Systems in C”</a>
-  <ul class="collapse">
-  <li><a href="#tth-1310-1440" id="toc-tth-1310-1440" class="nav-link" data-scroll-target="#tth-1310-1440">TTh 1310-1440</a></li>
-  <li><a href="#prof.-calvin" id="toc-prof.-calvin" class="nav-link" data-scroll-target="#prof.-calvin">Prof.&nbsp;Calvin</a></li>
-  <li><a href="#syllabus" id="toc-syllabus" class="nav-link" data-scroll-target="#syllabus">Syllabus</a></li>
-  </ul></li>
-  <li><a href="#calendar" id="toc-calendar" class="nav-link" data-scroll-target="#calendar">Calendar</a></li>
+  <li><a href="#btcinc" id="toc-btcinc" class="nav-link active" data-scroll-target="#btcinc">BTCinC</a></li>
   </ul>
 </nav>
     </div>
@@ -346,7 +338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Systems in C</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">BTCinC</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<p class="subtitle lead">Final Product</p>
 </div>
 
 
@@ -363,163 +356,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="cs-271-systems-in-c" class="level1">
-<h1>CS 271 “Systems in C”</h1>
+<section id="btcinc" class="level1">
+<h1>BTCinC</h1>
 <ul>
-<li>Called:
+<li>Once you implement SHA, RSA, and data structures, implementation of Bitcoin is trivial.</li>
+<li>Do the following assignments:
 <ul>
-<li>CS 271: Systems Programming</li>
-<li>CS 271: Sys Programming, Computer Arch</li>
+<li><a href="list_t.html">list_t</a></li>
+<li><a href="heap_t.html">heap_t</a></li>
 </ul></li>
-<li>The first semester class in a:
-<ul>
-<li>Compiled language, with</li>
-<li>No garbage collector.</li>
-</ul></li>
-<li>Term these “systems” languages.
-<ul>
-<li>Suitable to write an operating system.</li>
-</ul></li>
-<li>Taught this year in C.
-<ul>
-<li>So to me, “Systems in C”</li>
-</ul></li>
+<li>Due Friday, 8 August at midnight AOE.</li>
 </ul>
-<section id="tth-1310-1440" class="level3">
-<h3 class="anchored" data-anchor-id="tth-1310-1440">TTh 1310-1440</h3>
-</section>
-<section id="prof.-calvin" class="level3">
-<h3 class="anchored" data-anchor-id="prof.-calvin"><a href="mailto:ckdeutschbein@willamette.edu">Prof.&nbsp;Calvin</a></h3>
-</section>
-<section id="syllabus" class="level3">
-<h3 class="anchored" data-anchor-id="syllabus">Syllabus</h3>
-<ul>
-<li><a href="https://cd-public.github.io/courses/old/c89s25/cs276.html">Syllabus link</a></li>
-<li>Will be updated soon!</li>
-</ul>
-</section>
-</section>
-<section id="calendar" class="level1">
-<h1>Calendar</h1>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week Num.</th>
-<th style="text-align: left;">Date Tues</th>
-<th style="text-align: left;">Tues/Talk</th>
-<th style="text-align: left;">Thurs/Lab</th>
-<th style="text-align: left;">HW/Nxt Th</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0x0</td>
-<td style="text-align: left;">08/35</td>
-<td style="text-align: left;"><a href="./00_podman.html">podman</a></td>
-<td style="text-align: left;"><a href="./01_alpine.html">alpine</a></td>
-<td style="text-align: left;"><a href="./02_enigma.html">enigma</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x1</td>
-<td style="text-align: left;">09/01</td>
-<td style="text-align: left;"><a href="./10_c89_99.html">C89/99</a></td>
-<td style="text-align: left;"><a href="./11_printb.html">printb</a></td>
-<td style="text-align: left;"><a href="./12_macros.html">macros</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0x2</td>
-<td style="text-align: left;">09/08</td>
-<td style="text-align: left;"><a href="./20_sha256.html">SHA256</a></td>
-<td style="text-align: left;"><a href="./21_endian.html">Endian</a></td>
-<td style="text-align: left;"><a href="./22_shainc.html">SHAinC</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x3</td>
-<td style="text-align: left;">09/15</td>
-<td style="text-align: left;"><a href="./30_finite.html">Finite</a></td>
-<td style="text-align: left;"><a href="./31_bigadd.html">BigAdd</a></td>
-<td style="text-align: left;"><a href="./32_4096_t.html">4096_t</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0x4</td>
-<td style="text-align: left;">09/22</td>
-<td style="text-align: left;"><a href="./40_fermat.html">Fermat</a></td>
-<td style="text-align: left;"><a href="./41_keygen.html">KeyGen</a></td>
-<td style="text-align: left;"><a href="./42_rsainc.html">RSAinC</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x5</td>
-<td style="text-align: left;">09/29</td>
-<td style="text-align: left;"><a href="./50_euclid.html">Euclid</a></td>
-<td style="text-align: left;"><a href="./51_ops_ui.html">ops_ui</a></td>
-<td style="text-align: left;"><a href="./52_bigrsa.html">BigRSA</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0x6</td>
-<td style="text-align: left;">10/06</td>
-<td style="text-align: left;">Middle</td>
-<td style="text-align: left;">Assess</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x7</td>
-<td style="text-align: left;">10/13</td>
-<td style="text-align: left;"><a href="./60_mounts.html">Mounts</a></td>
-<td style="text-align: left;"><a href="./61_action.html">action</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0x8</td>
-<td style="text-align: left;">10/20</td>
-<td style="text-align: left;"><a href="./70_stream.html">Stream</a></td>
-<td style="text-align: left;"><a href="./71_malloc.html">malloc</a></td>
-<td style="text-align: left;"><a href="./72_list_t.html">list_t</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x9</td>
-<td style="text-align: left;">10/27</td>
-<td style="text-align: left;"><a href="./80_struct.html">struct</a></td>
-<td style="text-align: left;"><a href="./81_bchain.html">bchain</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0bX</td>
-<td style="text-align: left;">11/03</td>
-<td style="text-align: left;"><code>break;</code></td>
-<td style="text-align: left;"><a href="./90_graphs.html">graphs</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0xA</td>
-<td style="text-align: left;">11/10</td>
-<td style="text-align: left;"><a href="./91_merkle.html">Merkle</a></td>
-<td style="text-align: left;"><a href="./A0_logics.html">logics</a></td>
-<td style="text-align: left;"><a href="./92_heap_t.html">heap_t</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0xB</td>
-<td style="text-align: left;">11/17</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="./A2_btcinc.html">BTCinC</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0xC</td>
-<td style="text-align: left;">11/24</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><code>break;</code></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0xD</td>
-<td style="text-align: left;">12/01</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>*The final is described as <a href="./A2_btcinc.html">BTCinC</a> and is due <a href="https://my.willamette.edu/site/registrar/info/mywu-summative-evaluations">Tuesday, December 8th at 5:00 p.m.</a>.</p>
 
 
 <!-- -->
@@ -997,57 +844,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./A0_logics.html" class="pagination-link" aria-label="Logics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> Systems in C</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">author:</span><span class="co"> ""</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="an">subtitle:</span><span class="co"> ""</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> BTCinC</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="an">subtitle:</span><span class="co"> "Final Product"</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">---</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu"># BTCinC</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu"># CS 271 "Systems in C"</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="ss">- </span>Called:</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="ss">    - </span>CS 271: Systems Programming</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="ss">    - </span>CS 271: Sys Programming, Computer Arch</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="ss">- </span>The first semester class in a:</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="ss">    - </span>Compiled language, with</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="ss">    - </span>No garbage collector.</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ss">- </span>Term these "systems" languages.</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="ss">    - </span>Suitable to write an operating system.</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="ss">- </span>Taught this year in C.</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="ss">    - </span>So to me, "Systems in C"</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="fu">### TTh 1310-1440</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="fu">### [Prof. Calvin](mailto:ckdeutschbein@willamette.edu)</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="fu">### Syllabus</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Syllabus link</span><span class="co">](https://cd-public.github.io/courses/old/c89s25/cs276.html)</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="ss">- </span>Will be updated soon!</span>
-<span id="cb1-29"><a href="#cb1-29"></a></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="fu"># Calendar</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a></span>
-<span id="cb1-32"><a href="#cb1-32"></a>|Week Num.|Date Tues|Tues/Talk|Thurs/Lab|HW/Nxt Th|</span>
-<span id="cb1-33"><a href="#cb1-33"></a>|:--:|:---|:----|:-------|:-------|</span>
-<span id="cb1-34"><a href="#cb1-34"></a>|0x0|08/35|<span class="co">[</span><span class="ot">podman</span><span class="co">](00_podman.qmd)</span>|<span class="co">[</span><span class="ot">alpine</span><span class="co">](01_alpine.qmd)</span>|<span class="co">[</span><span class="ot">enigma</span><span class="co">](02_enigma.qmd)</span>|</span>
-<span id="cb1-35"><a href="#cb1-35"></a>|0x1|09/01|<span class="co">[</span><span class="ot">C89/99</span><span class="co">](10_c89_99.qmd)</span>|<span class="co">[</span><span class="ot">printb</span><span class="co">](11_printb.qmd)</span>|<span class="co">[</span><span class="ot">macros</span><span class="co">](12_macros.qmd)</span>|</span>
-<span id="cb1-36"><a href="#cb1-36"></a>|0x2|09/08|<span class="co">[</span><span class="ot">SHA256</span><span class="co">](20_sha256.qmd)</span>|<span class="co">[</span><span class="ot">Endian</span><span class="co">](21_endian.qmd)</span>|<span class="co">[</span><span class="ot">SHAinC</span><span class="co">](22_shainc.qmd)</span>|</span>
-<span id="cb1-37"><a href="#cb1-37"></a>|0x3|09/15|<span class="co">[</span><span class="ot">Finite</span><span class="co">](30_finite.qmd)</span>|<span class="co">[</span><span class="ot">BigAdd</span><span class="co">](31_bigadd.qmd)</span>|<span class="co">[</span><span class="ot">4096_t</span><span class="co">](32_4096_t.qmd)</span>|</span>
-<span id="cb1-38"><a href="#cb1-38"></a>|0x4|09/22|<span class="co">[</span><span class="ot">Fermat</span><span class="co">](40_fermat.qmd)</span>|<span class="co">[</span><span class="ot">KeyGen</span><span class="co">](41_keygen.qmd)</span>|<span class="co">[</span><span class="ot">RSAinC</span><span class="co">](42_rsainc.qmd)</span>|</span>
-<span id="cb1-39"><a href="#cb1-39"></a>|0x5|09/29|<span class="co">[</span><span class="ot">Euclid</span><span class="co">](50_euclid.qmd)</span>|<span class="co">[</span><span class="ot">ops_ui</span><span class="co">](51_ops_ui.qmd)</span>|<span class="co">[</span><span class="ot">BigRSA</span><span class="co">](52_bigrsa.qmd)</span>|</span>
-<span id="cb1-40"><a href="#cb1-40"></a>|0x6|10/06|Middle|Assess||</span>
-<span id="cb1-41"><a href="#cb1-41"></a>|0x7|10/13|<span class="co">[</span><span class="ot">Mounts</span><span class="co">](60_mounts.qmd)</span>|<span class="co">[</span><span class="ot">action</span><span class="co">](61_action.qmd)</span>||</span>
-<span id="cb1-42"><a href="#cb1-42"></a>|0x8|10/20|<span class="co">[</span><span class="ot">Stream</span><span class="co">](70_stream.qmd)</span>|<span class="co">[</span><span class="ot">malloc</span><span class="co">](71_malloc.qmd)</span>|<span class="co">[</span><span class="ot">list_t</span><span class="co">](72_list_t.qmd)</span>|</span>
-<span id="cb1-43"><a href="#cb1-43"></a>|0x9|10/27|<span class="co">[</span><span class="ot">struct</span><span class="co">](80_struct.qmd)</span>|<span class="co">[</span><span class="ot">bchain</span><span class="co">](81_bchain.qmd)</span>||</span>
-<span id="cb1-44"><a href="#cb1-44"></a>|0bX|11/03|<span class="in">`break;`</span>               |<span class="co">[</span><span class="ot">graphs</span><span class="co">](90_graphs.qmd)</span>||</span>
-<span id="cb1-45"><a href="#cb1-45"></a>|0xA|11/10|<span class="co">[</span><span class="ot">Merkle</span><span class="co">](91_merkle.qmd)</span>|<span class="co">[</span><span class="ot">logics</span><span class="co">](A0_logics.qmd)</span>|<span class="co">[</span><span class="ot">heap_t</span><span class="co">](92_heap_t.qmd)</span>|</span>
-<span id="cb1-46"><a href="#cb1-46"></a>|0xB|11/17|||<span class="co">[</span><span class="ot">BTCinC</span><span class="co">](A2_btcinc.qmd)</span>|</span>
-<span id="cb1-47"><a href="#cb1-47"></a>|0xC|11/24||<span class="in">`break;`</span>||</span>
-<span id="cb1-48"><a href="#cb1-48"></a>|0xD|12/01||||</span>
-<span id="cb1-49"><a href="#cb1-49"></a></span>
-<span id="cb1-50"><a href="#cb1-50"></a>*The final is described as <span class="co">[</span><span class="ot">BTCinC</span><span class="co">](A2_btcinc.qmd)</span> and is due <span class="co">[</span><span class="ot">Tuesday, December 8th at 5:00 p.m.</span><span class="co">](https://my.willamette.edu/site/registrar/info/mywu-summative-evaluations)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ss">- </span>Once you implement SHA, RSA, and data structures, implementation of Bitcoin is trivial.</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ss">- </span>Do the following assignments:</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">list_t</span><span class="co">](list_t.html)</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">heap_t</span><span class="co">](heap_t.html)</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="ss">- </span>Due Friday, 8 August at midnight AOE.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
