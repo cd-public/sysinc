@@ -3,17 +3,16 @@ project:
     output-dir: ../
 
 website:
-    title: "AI 101"
+    title: "Systems in C"
     sidebar:
         contents: auto
     search: true
     page-navigation: true
 
-subtitle: "AI 101"
+subtitle: "Systems in C"
 
 format:
     html:
-        mainfont: monospace
         toc: true
         theme: darkly 
         code-line-numbers: true
@@ -22,7 +21,6 @@ format:
             toggle: false
             caption: none
     revealjs: 
-        mainfont: monospace
         theme: dark
         slide-number: true
         show-slide-number: all
@@ -34,5 +32,5 @@ format:
 execute:
     echo: true
     cache: true
-    freeze: auto 
+    freeze: auto    
     code-fold: false

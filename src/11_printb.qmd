@@ -1,6 +1,6 @@
 ---
 title: Printb
-subtitle: "Lab 0x0.4"
+subtitle: "w1d1"
 
 format: html
 ---

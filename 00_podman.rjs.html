@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.30">
 
-  <title>AI 101 – Podman</title>
+  <title>Systems in C – Podman</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -93,7 +93,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0f071606cd187ea9c4f27a73aca9ddf7.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-83ff8eaca933b935d6975c751fe501e4.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -393,14 +393,19 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Podman</h1>
-  <p class="subtitle">0x0.0</p>
+  <p class="subtitle">w0d0</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section>
+<section id="logistics" class="title-slide slide level1 center">
+<h1>Logistics</h1>
+
+</section>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
 <li><p><strong>Welcome</strong> to Computing Security</p>
 <ul>
@@ -417,53 +422,50 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="homework" class="title-slide slide level1 center">
-<h1>Homework</h1>
+<section id="homework" class="slide level2">
+<h2>Homework</h2>
 <ul>
 <li>The first homework, “Enigma”, is ready after this class.
 <ul>
-<li>Due Monday, 14 Jul at midnight AOE</li>
+<li>Due Thursday, 03 Sep at midnight AOE</li>
 <li>The infamous CS1 hw, now in a good language!</li>
 <li>Mostly just get the toolchain working.</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="enigma" class="title-slide slide level1 center">
-<h1>Enigma</h1>
+<section id="enigma" class="slide level2">
+<h2>Enigma</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<pre><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ # in
-    |
-BDFHJLCPRTXVZNYEIWGAKMUSQO # fast
-    &gt;&gt;&gt;&gt;&gt;&gt;
-ABCDEFGHIJKLMNOPQRSTUVWXYZ 
-         |
-AJDKSIRUXBLHWTMCQGZNPYFVOE # mid
- &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
- |
-BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # in</span>
+<span id="cb1-2"><a></a>    |</span>
+<span id="cb1-3"><a></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # fast</span>
+<span id="cb1-4"><a></a>    &gt;&gt;&gt;&gt;&gt;&gt;</span>
+<span id="cb1-5"><a></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
+<span id="cb1-6"><a></a>         |</span>
+<span id="cb1-7"><a></a>AJDKSIRUXBLHWTMCQGZNPYFVOE # mid</span>
+<span id="cb1-8"><a></a> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span id="cb1-9"><a></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span id="cb1-10"><a></a> |</span>
+<span id="cb1-11"><a></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:10%;">
 <p>→</p>
 </div><div class="column" style="width:45%;">
-<pre><code>BDFHJLCPRTXVZNYEIWGAKMUSQO
- &gt;&gt;&gt;
-ABCDEFGHIJKLMNOPQRSTUVWXYZ 
-   |
-IXUHFEZDAOMTKQJWNSRLCYPBVG # reflect
-   |
-BDFHJLCPRTXVZNYEIWGAKMUSQO # slow
-   &gt;&gt;&gt;&gt;&gt;
-ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
-
-# etc etc   </code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a></a>BDFHJLCPRTXVZNYEIWGAKMUSQO</span>
+<span id="cb2-2"><a></a> &gt;&gt;&gt;</span>
+<span id="cb2-3"><a></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
+<span id="cb2-4"><a></a>   |</span>
+<span id="cb2-5"><a></a>IXUHFEZDAOMTKQJWNSRLCYPBVG # reflect</span>
+<span id="cb2-6"><a></a>   |</span>
+<span id="cb2-7"><a></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span>
+<span id="cb2-8"><a></a>   &gt;&gt;&gt;&gt;&gt;</span>
+<span id="cb2-9"><a></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # out</span>
+<span id="cb2-10"><a></a></span>
+<span id="cb2-11"><a></a>## etc etc   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Introduce the course
 <ul>
@@ -479,9 +481,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="pre-reqs" class="title-slide slide level1 center">
-<h1>Pre-reqs</h1>
+<section id="pre-reqs" class="slide level2">
+<h2>Pre-reqs</h2>
 <ul>
 <li>These things:
 <ul>
@@ -494,9 +495,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>If you are afraid of the command line, drop this class.</li>
 </ul>
 </section>
-
-<section id="it-me" class="title-slide slide level1 center">
-<h1>It me</h1>
+<section id="it-me" class="slide level2">
+<h2>It me</h2>
 <ul>
 <li><strong>Name</strong>
 <ul>
@@ -513,9 +513,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="the-great-work" class="title-slide slide level1 center">
-<h1>The Great Work</h1>
+<section id="the-great-work" class="slide level2">
+<h2>The Great Work</h2>
 <ul>
 <li>Thesis Title
 <ul>
@@ -526,10 +525,14 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>Just as there are bugs in code that makes software, modern hardware is also written in code and therefore may contain bugs. I find these bugs.</li>
 </ul></li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="learning-objectives" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
 
-<section id="how-to-do-it" class="title-slide slide level1 center">
-<h1>How To Do It</h1>
+</section>
+<section id="how-to-do-it" class="slide level2">
+<h2>How To Do It</h2>
 <ul>
 <li><p>After ~10 years of systems research I’ve convinced myself <a href="https://www.joelonsoftware.com/2005/12/29/the-perils-of-javaschools-2/">only two things</a> that really matter:</p>
 <ul>
@@ -542,9 +545,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <span id="cb3-2"><a></a><span class="op">&gt;&gt;&gt;</span> exp(<span class="dv">2</span>,<span class="dv">8</span>)</span>
 <span id="cb3-3"><a></a><span class="dv">256</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="pointers" class="title-slide slide level1 center">
-<h1>Pointers</h1>
+<section id="pointers" class="slide level2">
+<h2>Pointers</h2>
 <ul>
 <li>Pointers are a beast, but without them nothing makes sense!</li>
 </ul>
@@ -567,9 +569,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <span id="cb5-7"><a></a>[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="insight" class="title-slide slide level1 center">
-<h1>Insight</h1>
+<section id="insight" class="slide level2">
+<h2>Insight</h2>
 <ul>
 <li><strong>Definition:</strong>
 <ul>
@@ -582,9 +583,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="python-and-pointers" class="title-slide slide level1 center">
-<h1>Python and Pointers</h1>
+<section id="python-and-pointers" class="slide level2">
+<h2>Python and Pointers</h2>
 <ul>
 <li><strong>Why not .py (.js, .java, .cs, .cpp, etc)?</strong>
 <ul>
@@ -600,10 +600,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section>
-<section id="c-and-pointers" class="title-slide slide level1 center">
-<h1>C and Pointers</h1>
+<section id="c-and-pointers" class="slide level2">
+<h2>C and Pointers</h2>
 <ul>
 <li><strong>Why C?</strong>
 <ul>
@@ -618,9 +616,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <section id="kennedy-is-my-middle-name" class="slide level2">
 <h2>Kennedy is my middle name</h2>
 
-<img data-src="https://www.azquotes.com/picture-quotes/quote-we-choose-to-go-to-the-moon-in-this-decade-and-do-the-other-things-not-because-they-john-f-kennedy-34-98-64.jpg" class="r-stretch quarto-figure-center"><p class="caption">Not an endorsement; I voted for ******* **** ****** ********!</p></section></section>
-<section id="c-is-for-clear" class="title-slide slide level1 center">
-<h1>C is for Clear</h1>
+<img data-src="https://www.azquotes.com/picture-quotes/quote-we-choose-to-go-to-the-moon-in-this-decade-and-do-the-other-things-not-because-they-john-f-kennedy-34-98-64.jpg" class="r-stretch quarto-figure-center"><p class="caption">Not an endorsement; I voted for ******* **** ****** ********!</p></section>
+<section id="c-is-for-clear" class="slide level2">
+<h2>C is for Clear</h2>
 <ul>
 <li>C does not <em>obscure</em> what a computer is doing.</li>
 <li>This lack of obscurity allows for greater precision.</li>
@@ -632,9 +630,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="this-class" class="title-slide slide level1 center">
-<h1>This class</h1>
+<section id="this-class" class="slide level2">
+<h2>This class</h2>
 <ul>
 <li>I am a systems security researcher and I discerned two core gaps in Willamette CS education:
 <ul>
@@ -645,9 +642,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>Teaching security alone can be defuse and ethereal.</li>
 </ul>
 </section>
-
-<section id="learning-objectives" class="title-slide slide level1 center">
-<h1>Learning Objectives</h1>
+<section id="learning-objectives-1" class="slide level2">
+<h2>Learning Objectives</h2>
 <ul>
 <li>Differentiate confidentiality, integrity, and availability.</li>
 <li>Apply modular arithmetic to computational systems.</li>
@@ -656,10 +652,18 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>Understand a low-level systems language.</li>
 </ul>
 </section>
-
-<section id="sketch" class="title-slide slide level1 center">
-<h1>Sketch</h1>
+<section id="sketch" class="slide level2">
+<h2>Sketch</h2>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a></a>flowchart LR</span>
+<span id="cb6-2"><a></a>  A( ) --&gt; B(SHA)</span>
+<span id="cb6-3"><a></a>  A --&gt; C(RSA)</span>
+<span id="cb6-4"><a></a>  B --&gt; E(Block Chain)</span>
+<span id="cb6-5"><a></a>  C --&gt; F(Merkle Tree)</span>
+<span id="cb6-6"><a></a>  B --&gt; F</span>
+<span id="cb6-7"><a></a>  E --&gt; G(Nakamoto'08)</span>
+<span id="cb6-8"><a></a>  F --&gt; G</span>
+<span id="cb6-9"><a></a>  G --&gt; I((Capstone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -680,9 +684,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </div>
 </div>
 </section>
-
-<section id="sha" class="title-slide slide level1 center">
-<h1>SHA</h1>
+<section id="sha" class="slide level2">
+<h2>SHA</h2>
 <ul>
 <li><strong>SHA Basics:</strong>
 <ul>
@@ -699,9 +702,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="rsa" class="title-slide slide level1 center">
-<h1>RSA</h1>
+<section id="rsa" class="slide level2">
+<h2>RSA</h2>
 <ul>
 <li><strong>RSA Basics:</strong>
 <ul>
@@ -718,9 +720,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="rsa-sha-btc" class="title-slide slide level1 center">
-<h1>RSA + SHA = BTC</h1>
+<section id="rsa-sha-btc" class="slide level2">
+<h2>RSA + SHA = BTC</h2>
 <ul>
 <li><strong>Facilitating Blockchain:</strong>
 <ul>
@@ -736,9 +737,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="blockchain" class="title-slide slide level1 center">
-<h1>Blockchain</h1>
+<section id="blockchain" class="slide level2">
+<h2>Blockchain</h2>
 <ul>
 <li><strong>Blockchain:</strong>
 <ul>
@@ -754,9 +754,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="merkle-trees" class="title-slide slide level1 center">
-<h1>Merkle Trees</h1>
+<section id="merkle-trees" class="slide level2">
+<h2>Merkle Trees</h2>
 <ul>
 <li><strong>Merkle Trees:</strong>
 <ul>
@@ -770,9 +769,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="final" class="title-slide slide level1 center">
-<h1>Final</h1>
+<section id="final" class="slide level2">
+<h2>Final</h2>
 <ul>
 <li><strong>Implement Full-Custom BTC</strong>
 <ul>
@@ -780,18 +778,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <ul>
 <li>It’ll be insecure for reasons out-of-scope</li>
 </ul></li>
-<li>CS 540:
-<ul>
-<li>Must add some improvement</li>
-<li>Must conduct evaluative experiments</li>
-<li>Must document as a whitepaper</li>
-</ul></li>
 </ul></li>
 </ul>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Introduce the course
 <ul>
@@ -806,10 +797,14 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li><code>git</code></li>
 </ul></li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="podman" class="title-slide slide level1 center">
+<h1><code>podman</code></h1>
 
-<section id="what-is-podman" class="title-slide slide level1 center">
-<h1>What is Podman?</h1>
+</section>
+<section id="what-is-podman" class="slide level2">
+<h2>What is Podman?</h2>
 <ul>
 <li><strong>Definition:</strong>
 <ul>
@@ -825,9 +820,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="in-practice" class="title-slide slide level1 center">
-<h1>In practice:</h1>
+<section id="in-practice" class="slide level2">
+<h2>In practice:</h2>
 <ul>
 <li><strong>Windows</strong> only
 <ul>
@@ -845,9 +839,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="circa-2013" class="title-slide slide level1 center">
-<h1>Circa ~2013</h1>
+<section id="circa-2013" class="slide level2">
+<h2>Circa ~2013</h2>
 <ul>
 <li><strong>The problem:</strong>
 <ul>
@@ -862,9 +855,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="circa-2008" class="title-slide slide level1 center">
-<h1>Circa ~2008</h1>
+<section id="circa-2008" class="slide level2">
+<h2>Circa ~2008</h2>
 <ul>
 <li><strong>The setting:</strong>
 <ul>
@@ -879,9 +871,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="dockerpodman" class="title-slide slide level1 center">
-<h1>Docker→Podman</h1>
+<section id="dockerpodman" class="slide level2">
+<h2>Docker→Podman</h2>
 <ul>
 <li>Docker is closed-source (bad)</li>
 <li>Docker is critical infastructre in most code bases</li>
@@ -890,9 +881,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>We use Podman in this class</li>
 </ul>
 </section>
-
-<section id="podman" class="title-slide slide level1 center">
-<h1>Podman</h1>
+<section id="podman-1" class="slide level2">
+<h2>Podman</h2>
 <ul>
 <li>Podman solves the problem of writing code on one computer and running it another.</li>
 <li>Simply specify a Podman image
@@ -906,9 +896,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="podman-python" class="title-slide slide level1 center">
-<h1>Podman &amp; Python</h1>
+<section id="podman-python" class="slide level2">
+<h2>Podman &amp; Python</h2>
 <ul>
 <li><strong>Windows, Mac, Linux:</strong>
 <ul>
@@ -917,14 +906,13 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>Linux, because its good, makes you specify:</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python</span>
-<span id="cb6-2"><a></a><span class="ex">Command</span> <span class="st">'python'</span> not found, did you mean:</span>
-<span id="cb6-3"><a></a>  <span class="bu">command</span> <span class="st">'python3'</span> from deb python3</span>
-<span id="cb6-4"><a></a>  <span class="bu">command</span> <span class="st">'python'</span> from deb python-is-python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python</span>
+<span id="cb7-2"><a></a><span class="ex">Command</span> <span class="st">'python'</span> not found, did you mean:</span>
+<span id="cb7-3"><a></a>  <span class="bu">command</span> <span class="st">'python3'</span> from deb python3</span>
+<span id="cb7-4"><a></a>  <span class="bu">command</span> <span class="st">'python'</span> from deb python-is-python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="bugs" class="title-slide slide level1 center">
-<h1>Bugs</h1>
+<section id="bugs" class="slide level2">
+<h2>Bugs</h2>
 <ul>
 <li>This can lead to bugs pretty quickly
 <ul>
@@ -933,17 +921,16 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>SyntaxError on my prof’s Linux device:</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python2 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
-<span id="cb7-2"><a></a><span class="ex">hello</span> world</span>
-<span id="cb7-3"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python3 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
-<span id="cb7-4"><a></a>  <span class="ex">File</span> <span class="st">"&lt;string&gt;"</span>, line 1</span>
-<span id="cb7-5"><a></a>    <span class="ex">print</span> <span class="st">'hello world'</span></span>
-<span id="cb7-6"><a></a>    <span class="ex">^^^^^^^^^^^^^^^^^^^</span></span>
-<span id="cb7-7"><a></a><span class="ex">SyntaxError:</span> Missing parentheses in call to <span class="st">'print'</span>. Did you mean print<span class="er">(</span><span class="ex">...</span><span class="kw">)</span><span class="ex">?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python2 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
+<span id="cb8-2"><a></a><span class="ex">hello</span> world</span>
+<span id="cb8-3"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python3 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
+<span id="cb8-4"><a></a>  <span class="ex">File</span> <span class="st">"&lt;string&gt;"</span>, line 1</span>
+<span id="cb8-5"><a></a>    <span class="ex">print</span> <span class="st">'hello world'</span></span>
+<span id="cb8-6"><a></a>    <span class="ex">^^^^^^^^^^^^^^^^^^^</span></span>
+<span id="cb8-7"><a></a><span class="ex">SyntaxError:</span> Missing parentheses in call to <span class="st">'print'</span>. Did you mean print<span class="er">(</span><span class="ex">...</span><span class="kw">)</span><span class="ex">?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="versioning" class="title-slide slide level1 center">
-<h1>Versioning</h1>
+<section id="versioning" class="slide level2">
+<h2>Versioning</h2>
 <ul>
 <li>Python2/3 is just an extreme example
 <ul>
@@ -953,16 +940,15 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 <li>Solution: Just run in podman:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">C:\Users\cd-desk</span><span class="op">&gt;</span>podman run <span class="at">-it</span> python:alpine python</span>
-<span id="cb8-2"><a></a><span class="ex">Python</span> 3.13.1 <span class="er">(</span><span class="ex">main,</span> Dec  4 2024, 20:31:31<span class="kw">)</span> <span class="ex">[GCC</span> 13.2.1 20240309] on linux</span>
-<span id="cb8-3"><a></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
-<span id="cb8-4"><a></a><span class="op">&gt;&gt;&gt;</span> print<span class="kw">(</span><span class="st">"hello world"</span><span class="kw">)</span></span>
-<span id="cb8-5"><a></a><span class="ex">hello</span> world</span>
-<span id="cb8-6"><a></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">C:\Users\cd-desk</span><span class="op">&gt;</span>podman run <span class="at">-it</span> python:alpine python</span>
+<span id="cb9-2"><a></a><span class="ex">Python</span> 3.13.1 <span class="er">(</span><span class="ex">main,</span> Dec  4 2024, 20:31:31<span class="kw">)</span> <span class="ex">[GCC</span> 13.2.1 20240309] on linux</span>
+<span id="cb9-3"><a></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
+<span id="cb9-4"><a></a><span class="op">&gt;&gt;&gt;</span> print<span class="kw">(</span><span class="st">"hello world"</span><span class="kw">)</span></span>
+<span id="cb9-5"><a></a><span class="ex">hello</span> world</span>
+<span id="cb9-6"><a></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="images" class="title-slide slide level1 center">
-<h1>Images</h1>
+<section id="images" class="slide level2">
+<h2>Images</h2>
 <ul>
 <li>Something we <code>podman run -it</code> is an <em>image</em>
 <ul>
@@ -972,9 +958,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="containers" class="title-slide slide level1 center">
-<h1>Containers</h1>
+<section id="containers" class="slide level2">
+<h2>Containers</h2>
 <ul>
 <li>Each time we run said command, we have a different <em>container</em>
 <ul>
@@ -986,9 +971,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="today-2" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Introduce the course
 <ul>
@@ -1003,10 +987,14 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li><code>git</code></li>
 </ul></li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="vim" class="title-slide slide level1 center">
+<h1><code>vim</code></h1>
 
-<section id="ides" class="title-slide slide level1 center">
-<h1>IDEs</h1>
+</section>
+<section id="ides" class="slide level2">
+<h2>IDEs</h2>
 <ul>
 <li>At some point in time, code started being written in IDEs.
 <ul>
@@ -1020,9 +1008,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>VS Code has some nice things - including good <code>git</code> and <code>docker</code> (less so <code>podman</code>) integration.</li>
 </ul>
 </section>
-
-<section id="integration" class="title-slide slide level1 center">
-<h1>Integration</h1>
+<section id="integration" class="slide level2">
+<h2>Integration</h2>
 <ul>
 <li>VS Code has some nice things
 <ul>
@@ -1039,9 +1026,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="why-vim" class="title-slide slide level1 center">
-<h1>Why Vim?</h1>
+<section id="why-vim" class="slide level2">
+<h2>Why Vim?</h2>
 <ul>
 <li>While IDEs are ascendent…
 <ul>
@@ -1057,9 +1043,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="vim" class="title-slide slide level1 center">
-<h1>Vim</h1>
+<section id="vim-1" class="slide level2">
+<h2>Vim</h2>
 <ul>
 <li>Vim isn’t too bad
 <ul>
@@ -1070,19 +1055,18 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>It is hard to find people who have learned <code>vim</code> who don’t prefer it.</li>
 </ul>
 </section>
-
-<section id="podvim" class="title-slide slide level1 center">
-<h1>Podvim</h1>
+<section id="podvim" class="slide level2">
+<h2>Podvim</h2>
 <ul>
 <li>We can install and run <code>vim</code> inside a container (which happens to run Debian &amp; ∴ <code>apt</code>)</li>
 <li>Even directly from Python…</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> os</span>
-<span id="cb9-2"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt update"</span>) <span class="co"># update the registry of packages</span></span>
-<span id="cb9-3"><a></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
-<span id="cb9-4"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt install vim -y"</span>) <span class="co"># -y saves us from having to say "yes" to any prompts</span></span>
-<span id="cb9-5"><a></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
-<span id="cb9-6"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"vim"</span>) <span class="co"># a vim window will open</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> os</span>
+<span id="cb10-2"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt update"</span>) <span class="co"># update the registry of packages</span></span>
+<span id="cb10-3"><a></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
+<span id="cb10-4"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt install vim -y"</span>) <span class="co"># -y saves us from having to say "yes" to any prompts</span></span>
+<span id="cb10-5"><a></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
+<span id="cb10-6"><a></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"vim"</span>) <span class="co"># a vim window will open</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This is <code>vim</code> inside <code>python</code> inside <code>podman</code>
 <ul>
@@ -1090,27 +1074,25 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="vim-1" class="title-slide slide level1 center">
-<h1>Vim</h1>
+<section id="vim-2" class="slide level2">
+<h2>Vim</h2>
 <ul>
 <li>It looks like this:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="ex">~</span>               VIM <span class="at">-</span> Vi IMproved</span>
-<span id="cb10-2"><a></a><span class="ex">~</span>                  version 9.1</span>
-<span id="cb10-3"><a></a><span class="ex">~</span>            by Bram Moolenaar et al.</span>
-<span id="cb10-4"><a></a><span class="ex">~</span>   Vim is open source and freely distributable</span>
-<span id="cb10-5"><a></a><span class="ex">~</span></span>
-<span id="cb10-6"><a></a><span class="ex">~</span>          Become a registered Vim user!</span>
-<span id="cb10-7"><a></a><span class="ex">~</span>  type  :help register<span class="op">&lt;</span>Enter<span class="op">&gt;</span>   for information</span>
-<span id="cb10-8"><a></a><span class="ex">~</span></span>
-<span id="cb10-9"><a></a><span class="ex">~</span>  type  :q<span class="op">&lt;</span>Enter<span class="op">&gt;</span>              to exit</span>
-<span id="cb10-10"><a></a><span class="ex">~</span>  type  :help<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  or  <span class="op">&lt;</span>F1<span class="op">&gt;</span> for on-line help</span>
-<span id="cb10-11"><a></a><span class="ex">~</span>  type  :help version9<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  for version info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="ex">~</span>               VIM <span class="at">-</span> Vi IMproved</span>
+<span id="cb11-2"><a></a><span class="ex">~</span>                  version 9.1</span>
+<span id="cb11-3"><a></a><span class="ex">~</span>            by Bram Moolenaar et al.</span>
+<span id="cb11-4"><a></a><span class="ex">~</span>   Vim is open source and freely distributable</span>
+<span id="cb11-5"><a></a><span class="ex">~</span></span>
+<span id="cb11-6"><a></a><span class="ex">~</span>          Become a registered Vim user!</span>
+<span id="cb11-7"><a></a><span class="ex">~</span>  type  :help register<span class="op">&lt;</span>Enter<span class="op">&gt;</span>   for information</span>
+<span id="cb11-8"><a></a><span class="ex">~</span></span>
+<span id="cb11-9"><a></a><span class="ex">~</span>  type  :q<span class="op">&lt;</span>Enter<span class="op">&gt;</span>              to exit</span>
+<span id="cb11-10"><a></a><span class="ex">~</span>  type  :help<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  or  <span class="op">&lt;</span>F1<span class="op">&gt;</span> for on-line help</span>
+<span id="cb11-11"><a></a><span class="ex">~</span>  type  :help version9<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  for version info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="usage" class="title-slide slide level1 center">
-<h1>Usage</h1>
+<section id="usage" class="slide level2">
+<h2>Usage</h2>
 <ul>
 <li>I usually use vim as <code>vim filename.py</code>
 <ul>
@@ -1121,9 +1103,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li>Learn <code>vim</code> incrementally by using it for this class - for code, for notes, for whatever.</li>
 </ul>
 </section>
-
-<section id="today-3" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-3" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Introduce the course
 <ul>
@@ -1138,22 +1119,25 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li><code>git</code></li>
 </ul></li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="gcc" class="title-slide slide level1 center">
-<h1>GCC</h1>
+<h1><code>gcc</code></h1>
+
+</section>
+<section id="gcc-1" class="slide level2">
+<h2>GCC</h2>
 <ul>
 <li>Developed for the C language to make an open source operating system in 1987.</li>
 <li>Mainly around today for the C language to make an open source operating system (Linux)</li>
 <li>(The C language was invented to write an operating system).</li>
 <li><code>python</code> is written in GCC C</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
-<span id="cb11-2"><a></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
+<span id="cb12-2"><a></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="great-freeware" class="title-slide slide level1 center">
-<h1>Great freeware</h1>
+<section id="great-freeware" class="slide level2">
+<h2>Great freeware</h2>
 <ul>
 <li>Many legendary programs created using GCC:
 <ul>
@@ -1168,9 +1152,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="compilation" class="title-slide slide level1 center">
-<h1>Compilation</h1>
+<section id="compilation" class="slide level2">
+<h2>Compilation</h2>
 <ul>
 <li>Like <code>python</code> or <code>podman</code> or <code>vim</code>, GCC is a command - <code>gcc</code></li>
 <li><code>gcc</code> takes at least one argument: a filename, usually of a C file</li>
@@ -1184,10 +1167,17 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 </ul></li>
 </ul>
 </section>
-
-<section id="py-vs-.c" class="title-slide slide level1 center">
-<h1>.py vs .c</h1>
+<section id="py-vs-.c" class="slide level2">
+<h2>.py vs .c</h2>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a></a>flowchart LR</span>
+<span id="cb13-2"><a></a>  A(Python) --&gt; B[fname.py file]</span>
+<span id="cb13-3"><a></a>  B --&gt; C[python fname.py]</span>
+<span id="cb13-4"><a></a>  C --&gt; D{hello world}</span>
+<span id="cb13-5"><a></a>  E(C) --&gt; F[fname.c  file]</span>
+<span id="cb13-6"><a></a>  F --&gt; G[gcc fname.c -o ename]</span>
+<span id="cb13-7"><a></a>  G --&gt; H[./ename]</span>
+<span id="cb13-8"><a></a>  H --&gt; I{hello world}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1211,9 +1201,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li><em>Most programs are executables, not scripts.</em></li>
 </ul>
 </section>
-
-<section id="today-4" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-4" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Introduce the course
 <ul>
@@ -1228,10 +1217,14 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
 <li><code>git</code></li>
 </ul></li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="git" class="title-slide slide level1 center">
-<h1>Git</h1>
+<h1><code>git</code></h1>
+
+</section>
+<section id="git-1" class="slide level2">
+<h2>Git</h2>
 <ul>
 <li>
 Git was invented… to store the C language source code for an open source operating system (Linux)
@@ -1256,9 +1249,8 @@ Keep track of code used inside containers
 </ul>
 </li>
 </ul></section>
-
-<section id="as-a-command" class="title-slide slide level1 center">
-<h1>As a command</h1>
+<section id="as-a-command" class="slide level2">
+<h2>As a command</h2>
 <ul>
 <li>Git corresponds, like the others, to a command: <code>git</code>
 <ul>
@@ -1272,13 +1264,14 @@ If you want a lot of control and flexibility, you can use the command line.
 </blockquote>
 </a><p><a href="https://docs.github.com/en/get-started/using-github/connecting-to-github"></a></p>
 </section>
-
-<section id="as-a-technology" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>So basically, you have things called repositories or “repos”</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a></a>flowchart LR</span>
+<span id="cb14-2"><a></a>  A(My ️‍🔥 code repo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1292,13 +1285,14 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-1" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-1" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>Then you realize you wrote an infinite loop so you update it</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a></a>flowchart LR</span>
+<span id="cb15-2"><a></a>  A(My ️‍🔥 code repo v0 ) --&gt; B(My ️‍🔥 code repo v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1312,13 +1306,14 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-2" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-2" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>Then you come to class and realize your code is on your gaming rig in your apartment.</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a></a>flowchart LR</span>
+<span id="cb16-2"><a></a>  A(&lt;s&gt;My ️‍🔥 code repo v0&lt;/s&gt;) --&gt; B(&lt;s&gt;My ️‍🔥 code repo v1&lt;/s&gt;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1332,9 +1327,8 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-3" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-3" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>So you save your code on GitHub
 <ul>
@@ -1342,6 +1336,9 @@ If you want a lot of control and flexibility, you can use the command line.
 </ul></li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a></a>flowchart LR</span>
+<span id="cb17-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb17-3"><a></a>  B --&gt; C(GH.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1356,13 +1353,16 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-4" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-4" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>But you realize you didn’t sanitize your inputs so you update again.</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a></a>flowchart LR</span>
+<span id="cb18-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb18-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb18-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1378,13 +1378,17 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-5" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-5" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>Then you have class again and grab the GitHub version onto your LT = Laptop</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a></a>flowchart LR</span>
+<span id="cb19-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb19-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb19-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb19-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1401,13 +1405,18 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-6" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-6" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>You notice it has the bug so you fix it again on your laptop in almost the same way</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a></a>flowchart LR</span>
+<span id="cb20-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb20-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb20-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb20-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span>
+<span id="cb20-6"><a></a>  E --&gt; F(LT.‍🔥 v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1425,13 +1434,19 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-7" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-7" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>And save that back to GitHub then head back home to play Nethack on your 12000USD Gaming PC</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a></a>flowchart LR</span>
+<span id="cb21-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb21-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb21-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb21-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span>
+<span id="cb21-6"><a></a>  E --&gt; F(LT.‍🔥 v1)</span>
+<span id="cb21-7"><a></a>  F --&gt; G(GH.‍🔥 v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1450,13 +1465,21 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-8" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-8" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>You realize you also added some ASCII art and try to send that to GitHub</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a></a>flowchart LR</span>
+<span id="cb22-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb22-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb22-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb22-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span>
+<span id="cb22-6"><a></a>  E --&gt; F(LT.‍🔥 v1)</span>
+<span id="cb22-7"><a></a>  F --&gt; G(GH.‍🔥 v1)</span>
+<span id="cb22-8"><a></a>  G --&gt; H(GH.‍🔥 v2)</span>
+<span id="cb22-9"><a></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1477,13 +1500,21 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-9" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-9" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>Two arrows into one thing is a merge conflict and out-of-scope for now.</li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a></a>flowchart LR</span>
+<span id="cb23-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb23-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb23-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb23-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span>
+<span id="cb23-6"><a></a>  E --&gt; F(LT.‍🔥 v1)</span>
+<span id="cb23-7"><a></a>  F --&gt; G(GH.‍🔥 v1)</span>
+<span id="cb23-8"><a></a>  G --&gt; H{💥}</span>
+<span id="cb23-9"><a></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1504,9 +1535,8 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="as-a-technology-10" class="title-slide slide level1 center">
-<h1>As a technology</h1>
+<section id="as-a-technology-10" class="slide level2">
+<h2>As a technology</h2>
 <ul>
 <li>Basically versions of code can live in more than one place.
 <ul>
@@ -1514,6 +1544,15 @@ If you want a lot of control and flexibility, you can use the command line.
 </ul></li>
 </ul>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a></a>flowchart LR</span>
+<span id="cb24-2"><a></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
+<span id="cb24-3"><a></a>  B --&gt; C(GR.️‍🔥 v2)</span>
+<span id="cb24-4"><a></a>  B --&gt; D(GH.‍🔥 v0)</span>
+<span id="cb24-5"><a></a>  D --&gt; E(LT.‍🔥 v0)</span>
+<span id="cb24-6"><a></a>  E --&gt; F(LT.‍🔥 v1)</span>
+<span id="cb24-7"><a></a>  F --&gt; G(GH.‍🔥 v1)</span>
+<span id="cb24-8"><a></a>  G --&gt; H{💥}</span>
+<span id="cb24-9"><a></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1534,9 +1573,8 @@ If you want a lot of control and flexibility, you can use the command line.
 </div>
 </div>
 </section>
-
-<section id="in-brief" class="title-slide slide level1 center">
-<h1>In Brief</h1>
+<section id="in-brief" class="slide level2">
+<h2>In Brief</h2>
 <ul>
 <li>Generally create repositories + tokens in browser</li>
 <li>Use command line and use ‘git clone <name>’ once.</name></li>
@@ -1546,9 +1584,8 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>Use a “.gitignore” file so only code (<strong>NOT</strong> executables) live on GitHub</li>
 </ul>
 </section>
-
-<section id="today-5" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-5" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Introduce the course
 <ul>
@@ -1565,7 +1602,7 @@ If you want a lot of control and flexibility, you can use the command line.
 </ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

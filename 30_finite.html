@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Finite – AI 101</title>
+<title>Finite – Systems in C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-70c9a4798e5f6abb0636bcdc3eed0e90.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -159,7 +159,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI 101</a> 
+      <a href="./">Systems in C</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -286,7 +286,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./61_action.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Action</span></a>
+ <span class="menu-text">Stream</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -434,7 +434,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Finite</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
-<p class="subtitle lead">0x2.0-1</p>
+<p class="subtitle lead">w3d0</p>
 </div>
 
 
@@ -451,8 +451,8 @@ window.Quarto = {
 </header>
 
 
-<section id="announcements" class="level1">
-<h1>Announcements</h1>
+<section id="announcements" class="level2">
+<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
 <ul>
 <li><strong>Welcome</strong> to Computing Security
 <ul>
@@ -464,8 +464,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="apocryphal-quote" class="level1">
-<h1>Apocryphal Quote</h1>
+<section id="apocryphal-quote" class="level2">
+<h2 class="anchored" data-anchor-id="apocryphal-quote">Apocryphal Quote</h2>
 <ul>
 <li>I cannot find it, but I believe a philosopher one jested:</li>
 </ul>
@@ -477,8 +477,8 @@ window.Quarto = {
 <li>We can not capture the infinite, but we may model it.</li>
 </ul>
 </section>
-<section id="these-slides" class="level1">
-<h1>These Slides</h1>
+<section id="these-slides" class="level2">
+<h2 class="anchored" data-anchor-id="these-slides">These Slides</h2>
 <ul>
 <li>Reintroduce the technologies
 <ul>
@@ -493,8 +493,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="what-are-integers" class="level1">
-<h1>What are integers?</h1>
+<section id="what-are-integers" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-integers">What are integers?</h2>
 <ul>
 <li>Denote integers as the mathematical symbol <span class="math inline">\(\mathbb{Z}\)</span>
 <ul>
@@ -507,8 +507,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="in-python" class="level1">
-<h1>In Python</h1>
+<section id="in-python" class="level2">
+<h2 class="anchored" data-anchor-id="in-python">In Python</h2>
 <ul>
 <li>We can write them in Python with <code>itertools</code></li>
 </ul>
@@ -520,7 +520,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2"></a>N <span class="op">=</span> count()</span>
 <span id="cb1-3"><a href="#cb1-3"></a>make_z <span class="op">=</span> <span class="kw">lambda</span> n : n <span class="op">//</span> <span class="dv">2</span> <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="cf">else</span> <span class="op">-</span>n <span class="op">//</span> <span class="dv">2</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>Z <span class="op">=</span> (make_z(n) <span class="cf">for</span> n <span class="kw">in</span> count(<span class="dv">1</span>))</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># We can see elements of these infinite collections with</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">## We can see elements of these infinite collections with</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>[<span class="bu">next</span>(N) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)], [<span class="bu">next</span>(Z) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -528,8 +528,8 @@ window.Quarto = {
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="aside" class="level1">
-<h1>Aside</h1>
+<section id="aside" class="level2">
+<h2 class="anchored" data-anchor-id="aside">Aside</h2>
 <ul>
 <li>It is moderately controversial to assert: <span class="math display">\[
 0 \in \mathbb{N}
@@ -541,8 +541,8 @@ window.Quarto = {
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">assert</span>(<span class="dv">0</span> <span class="kw">in</span> count())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="mathbbn-is-akin-to-uint" class="level1">
-<h1><span class="math inline">\(\mathbb{N}\)</span> is akin to <code>uint</code></h1>
+<section id="mathbbn-is-akin-to-uint" class="level2">
+<h2 class="anchored" data-anchor-id="mathbbn-is-akin-to-uint"><span class="math inline">\(\mathbb{N}\)</span> is akin to <code>uint</code></h2>
 <ul>
 <li>The natural numbers <span class="math inline">\(\mathbb{N}\)</span> probably look a lot like the unsigned integers.</li>
 <li>There’s only one real problem.</li>
@@ -552,8 +552,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="the-problem" class="level1">
-<h1>The Problem</h1>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The Problem</h2>
 <ul>
 <li>Python has been lying to us for years that its integer have no upper limit.
 <ul>
@@ -562,8 +562,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="test-with--c" class="level1">
-<h1>Test with <code>-c</code></h1>
+<section id="test-with--c" class="level2">
+<h2 class="anchored" data-anchor-id="test-with--c">Test with <code>-c</code></h2>
 <ul>
 <li>We use the <code>-c</code> flag to Python to run a script directly at command line.</li>
 </ul>
@@ -576,8 +576,8 @@ window.Quarto = {
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>python3 <span class="op">-</span>c <span class="st">"from itertools import count; print(0 in count())"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="time-it" class="level1">
-<h1>Time it</h1>
+<section id="time-it" class="level2">
+<h2 class="anchored" data-anchor-id="time-it">Time it</h2>
 <ul>
 <li>Running on Linux
 <ul>
@@ -590,8 +590,8 @@ window.Quarto = {
 <span id="cb6-3"><a href="#cb6-3"></a>0.01user 0.00system 0:00.01elapsed 109%CPU (0avgtext+0avgdata 8748maxresident)k</span>
 <span id="cb6-4"><a href="#cb6-4"></a>0inputs+0outputs (0major+942minor)pagefaults 0swaps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pivot-to-bash" class="level1">
-<h1>Pivot to bash</h1>
+<section id="pivot-to-bash" class="level2">
+<h2 class="anchored" data-anchor-id="pivot-to-bash">Pivot to bash</h2>
 <ul>
 <li>Looks nicer in <code>/bin/bash</code></li>
 </ul>
@@ -607,8 +607,8 @@ window.Quarto = {
 <li>Or .013 seconds to find itertools on a SDD</li>
 </ul>
 </section>
-<section id="bigger-numbers" class="level1">
-<h1>Bigger Numbers</h1>
+<section id="bigger-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="bigger-numbers">Bigger Numbers</h2>
 <ul>
 <li>Check e.g.&nbsp;1000</li>
 </ul>
@@ -623,15 +623,15 @@ window.Quarto = {
 <li>Trivial.</li>
 </ul>
 </section>
-<section id="test-it" class="level1">
-<h1>Test it</h1>
+<section id="test-it" class="level2">
+<h2 class="anchored" data-anchor-id="test-it">Test it</h2>
 <ul>
 <li>Try a few powers yourself. What do you find?</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a href="#cb9-1"></a>time python3 -c "from itertools import count; n=1; print(10**n in count())"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="section" class="level1">
-<h1></h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <div class="columns">
 <div class="column" style="width:%50;">
 <table class="caption-top table">
@@ -697,8 +697,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </div>
 </div>
 </section>
-<section id="c-for-clear" class="level1">
-<h1>C for Clear</h1>
+<section id="c-for-clear" class="level2">
+<h2 class="anchored" data-anchor-id="c-for-clear">C for Clear</h2>
 <ul>
 <li>C is a little more forthright about how big its numbers get.</li>
 </ul>
@@ -719,8 +719,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb10-11"><a href="#cb10-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="c-fast" class="level1">
-<h1>C fast</h1>
+<section id="c-fast" class="level2">
+<h2 class="anchored" data-anchor-id="c-fast">C fast</h2>
 <ul>
 <li>For me, this took 5.19s on <code>uint32_t</code>
 <ul>
@@ -737,8 +737,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>How many base 10 digits does the largest number we can store in 32 bytes have?</li>
 </ul>
 </section>
-<section id="limits.h" class="level1">
-<h1>limits.h</h1>
+<section id="limits.h" class="level2">
+<h2 class="anchored" data-anchor-id="limits.h">limits.h</h2>
 <ul>
 <li>C discloses the maximum values it can tolerate in <code>&lt;limits.h&gt;</code></li>
 </ul>
@@ -761,8 +761,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="rings" class="level1">
-<h1>Rings</h1>
+<section id="rings" class="level2">
+<h2 class="anchored" data-anchor-id="rings">Rings</h2>
 <ul>
 <li>As far as I know (not a mathematician) the <code>uint</code>s and <code>int</code>s in C are <em>rings</em>
 <ul>
@@ -774,8 +774,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="rings-vs-integers" class="level1">
-<h1>Rings vs Integers</h1>
+<section id="rings-vs-integers" class="level2">
+<h2 class="anchored" data-anchor-id="rings-vs-integers">Rings vs Integers</h2>
 <ul>
 <li>Rings have some “goofy” features
 <ul>
@@ -785,8 +785,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Let’s look at an example.</li>
 </ul>
 </section>
-<section id="checkers" class="level1">
-<h1>Checkers</h1>
+<section id="checkers" class="level2">
+<h2 class="anchored" data-anchor-id="checkers">Checkers</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>num.c</strong></pre>
@@ -806,8 +806,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>From <code>&lt;stdlib.h&gt;</code> per <code>man atoi</code>, but might work without that.</li>
 </ul>
 </section>
-<section id="do-some-additions" class="level1">
-<h1>Do some additions</h1>
+<section id="do-some-additions" class="level2">
+<h2 class="anchored" data-anchor-id="do-some-additions">Do some additions</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a href="#cb13-1"></a>$  ./a.out 100 100 ; echo $?</span>
 <span id="cb13-2"><a href="#cb13-2"></a>200</span>
 <span id="cb13-3"><a href="#cb13-3"></a>$ ./a.out 200 100 ; echo $?</span>
@@ -816,8 +816,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>44? From whence?</li>
 </ul>
 </section>
-<section id="uint8_t-is-finite" class="level1">
-<h1>uint8_t is <em>finite</em></h1>
+<section id="uint8_t-is-finite" class="level2">
+<h2 class="anchored" data-anchor-id="uint8_t-is-finite">uint8_t is <em>finite</em></h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb14-1"><a href="#cb14-1"></a>&gt;&gt;&gt; 200 + 100</span>
 <span id="cb14-2"><a href="#cb14-2"></a>300</span>
 <span id="cb14-3"><a href="#cb14-3"></a>&gt;&gt;&gt; 2 ** 8</span>
@@ -832,8 +832,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 \]</span></li>
 </ul>
 </section>
-<section id="in-practice" class="level1">
-<h1>In practice</h1>
+<section id="in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="in-practice">In practice</h2>
 <ul>
 <li><span class="math inline">\(\exists\)</span> <code>INT_MAX</code>, <code>UINT_MAX</code>, <code>CHAR_MAX</code>, etc.
 <ul>
@@ -844,8 +844,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li><span class="math inline">\(\forall a, b \in\)</span> <code>uint</code><span class="math inline">\(n\)</span><code>_t</code> <span class="math inline">\(: a + b \equiv a + b \pmod {2^n}\)</span></li>
 </ul>
 </section>
-<section id="problem-statement" class="level1">
-<h1>Problem Statement</h1>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
 <ul>
 <li>Quoth GitHub</li>
 </ul>
@@ -860,8 +860,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="bits" class="level1">
-<h1>4096 bits</h1>
+<section id="bits" class="level2">
+<h2 class="anchored" data-anchor-id="bits">4096 bits</h2>
 <ul>
 <li>Modern security recommendations are for 4096 bit cryptographic keys.
 <ul>
@@ -874,8 +874,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb15-4"><a href="#cb15-4"></a>SYNOPSIS</span>
 <span id="cb15-5"><a href="#cb15-5"></a>     ssh-keygen [-q] [-a rounds] [-b bits] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="these-slides-1" class="level1">
-<h1>These Slides</h1>
+<section id="these-slides-1" class="level2">
+<h2 class="anchored" data-anchor-id="these-slides-1">These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -890,8 +890,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="big-values" class="level1">
-<h1>Big Values</h1>
+<section id="big-values" class="level2">
+<h2 class="anchored" data-anchor-id="big-values">Big Values</h2>
 <ul>
 <li>Soon, we will implement RSA
 <ul>
@@ -904,8 +904,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="simple-example" class="level1">
-<h1>Simple Example</h1>
+<section id="simple-example" class="level2">
+<h2 class="anchored" data-anchor-id="simple-example">Simple Example</h2>
 <ul>
 <li>Recall this example from a data application.</li>
 <li>We had a data set for which we determined a mean height in inches.</li>
@@ -914,8 +914,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">69.3</span> <span class="op">//</span> <span class="dv">12</span>, <span class="fl">69.3</span> <span class="op">%</span> <span class="dv">12</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>(<span class="fl">5.0</span>, <span class="fl">9.299999999999997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="addition-is-easy" class="level1">
-<h1>Addition is easy</h1>
+<section id="addition-is-easy" class="level2">
+<h2 class="anchored" data-anchor-id="addition-is-easy">Addition is easy</h2>
 <ul>
 <li>WNBA MVP and Olympic Gold Medalist A’ja Wilson is <a href="https://en.wikipedia.org/wiki/A%27ja_Wilson">6 ft 4 in</a></li>
 <li>How much taller is that than 5 ft 9.3 in
@@ -925,8 +925,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="difference" class="level1">
-<h1>Difference</h1>
+<section id="difference" class="level2">
+<h2 class="anchored" data-anchor-id="difference">Difference</h2>
 <ul>
 <li>We perform “long subtraction”</li>
 <li>It’s fun!</li>
@@ -956,8 +956,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="difference-1" class="level1">
-<h1>Difference</h1>
+<section id="difference-1" class="level2">
+<h2 class="anchored" data-anchor-id="difference-1">Difference</h2>
 <ul>
 <li><span class="math inline">\(0 - 3 \equiv 7 \pmod{10}\)</span></li>
 <li>Tenths of inches</li>
@@ -993,8 +993,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="difference-2" class="level1">
-<h1>Difference</h1>
+<section id="difference-2" class="level2">
+<h2 class="anchored" data-anchor-id="difference-2">Difference</h2>
 <ul>
 <li>But wait - <code>3</code> is more than <code>0</code></li>
 <li>Track via a “carry”</li>
@@ -1036,8 +1036,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="difference-3" class="level1">
-<h1>Difference</h1>
+<section id="difference-3" class="level2">
+<h2 class="anchored" data-anchor-id="difference-3">Difference</h2>
 <ul>
 <li><span class="math inline">\(4 - 9 - 1 \equiv 6 \pmod{12}\)</span></li>
 <li>12 in = 1 ft</li>
@@ -1079,8 +1079,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="difference-4" class="level1">
-<h1>Difference</h1>
+<section id="difference-4" class="level2">
+<h2 class="anchored" data-anchor-id="difference-4">Difference</h2>
 <ul>
 <li>Another carry.</li>
 <li>12 in = 1 ft</li>
@@ -1122,8 +1122,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="difference-5" class="level1">
-<h1>Difference</h1>
+<section id="difference-5" class="level2">
+<h2 class="anchored" data-anchor-id="difference-5">Difference</h2>
 <ul>
 <li><span class="math inline">\(6 - 5 - 1 = 0\)</span></li>
 <li>Nonmodular - feet has no max.</li>
@@ -1165,8 +1165,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <ul>
 <li>Iconic living legend A’ja Wilson is tall af.</li>
 <li>We can do addition and substraction on larger values than <code>UINT_MAX</code> or <code>ULONG_MAX</code> by:
@@ -1180,8 +1180,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="exercise" class="level1">
-<h1>Exercise</h1>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
 <ul>
 <li>Make a height adder, try <code>man scanf</code></li>
 </ul>
@@ -1205,8 +1205,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb17-14"><a href="#cb17-14"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="usefulness" class="level1">
-<h1>Usefulness</h1>
+<section id="usefulness" class="level2">
+<h2 class="anchored" data-anchor-id="usefulness">Usefulness</h2>
 <ul>
 <li>We can now do arithmetic correctly
 <ul>
@@ -1218,8 +1218,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="faq" class="level1">
-<h1>FAQ</h1>
+<section id="faq" class="level2">
+<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
 <ul>
 <li>Can we use this to add numbers bigger than <span class="math inline">\(2^n\)</span> using adds over at most <span class="math inline">\(n\)</span> bits at a time?
 <ul>
@@ -1234,8 +1234,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="these-slides-2" class="level1">
-<h1>These Slides</h1>
+<section id="these-slides-2" class="level2">
+<h2 class="anchored" data-anchor-id="these-slides-2">These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1250,8 +1250,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="easy-mode" class="level1">
-<h1>Easy Mode</h1>
+<section id="easy-mode" class="level2">
+<h2 class="anchored" data-anchor-id="easy-mode">Easy Mode</h2>
 <ul>
 <li>Addition and subtraction are easy.</li>
 <li>For some value of easy.
@@ -1266,8 +1266,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="hard-mode" class="level1">
-<h1>Hard Mode</h1>
+<section id="hard-mode" class="level2">
+<h2 class="anchored" data-anchor-id="hard-mode">Hard Mode</h2>
 <ul>
 <li>Some cryptographical algorithms, however, use two extremely advanced arithmetic operations:
 <ul>
@@ -1278,8 +1278,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Fortunately this only two operations (need a combined <code>divmod</code>)</li>
 </ul>
 </section>
-<section id="example" class="level1">
-<h1>Example</h1>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
 <ul>
 <li>Imagine an engineering team lead for:
 <ul>
@@ -1297,8 +1297,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>How many person hours is this?</li>
 </ul>
 </section>
-<section id="napkin-math" class="level1">
-<h1>Napkin Math</h1>
+<section id="napkin-math" class="level2">
+<h2 class="anchored" data-anchor-id="napkin-math">Napkin Math</h2>
 <ul>
 <li>I’d say
 <ul>
@@ -1312,8 +1312,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="times-139.5" class="level1">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5" class="level2">
+<h2 class="anchored" data-anchor-id="times-139.5"><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>That just isn’t easy</li>
 <li>(140 * 34 isn’t bad, but we need a motivating example).</li>
@@ -1347,8 +1347,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="times-139.5-1" class="level1">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5-1" class="level2">
+<h2 class="anchored" data-anchor-id="times-139.5-1"><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>Compute all products over single-digit factors</li>
 </ul>
@@ -1387,8 +1387,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="times-139.5-2" class="level1">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5-2" class="level2">
+<h2 class="anchored" data-anchor-id="times-139.5-2"><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>Include sigificance</li>
 </ul>
@@ -1420,8 +1420,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-<section id="dear-watson" class="level1">
-<h1>Dear Watson</h1>
+<section id="dear-watson" class="level2">
+<h2 class="anchored" data-anchor-id="dear-watson">Dear Watson</h2>
 <div class="columns">
 <div class="column" style="width:%50;">
 <table class="caption-top table">
@@ -1467,8 +1467,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </div>
 </div>
 </section>
-<section id="express-as" class="level1">
-<h1>Express as</h1>
+<section id="express-as" class="level2">
+<h2 class="anchored" data-anchor-id="express-as">Express as</h2>
 <p><span class="math display">\[
 \begin{align*}
 139.5&amp; = &amp;1 * 10^2 + &amp;3 * 10^1 + &amp;9 * 10^0&amp; + 5 * 10^{-1}\\
@@ -1485,8 +1485,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li><p>That is polynomial; can work with those.</p></li>
 </ul>
 </section>
-<section id="polynomial" class="level1">
-<h1>Polynomial</h1>
+<section id="polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="polynomial">Polynomial</h2>
 <p><span class="math display">\[
 (x^2 + 3x + 9 + 5x^{-1})(3x + 4)
 \]</span></p>
@@ -1500,8 +1500,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 3x^3 + 13x^2 + 39x + 51 + 20x^{-1}
 \]</span></p>
 </section>
-<section id="aside-1" class="level1">
-<h1>Aside</h1>
+<section id="aside-1" class="level2">
+<h2 class="anchored" data-anchor-id="aside-1">Aside</h2>
 <ul>
 <li>I think this is covered around ~8th grade</li>
 <li>I don’t want to assume the integrity to US public school system
@@ -1515,8 +1515,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="considerations" class="level1">
-<h1>Considerations</h1>
+<section id="considerations" class="level2">
+<h2 class="anchored" data-anchor-id="considerations">Considerations</h2>
 <ul>
 <li>It is natural to express multiplication of e.g.&nbsp;4096 bit integers as a polynomial over, say, 64 bit integers.</li>
 <li>One teeny problem:
@@ -1525,8 +1525,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="overflow" class="level1">
-<h1>Overflow</h1>
+<section id="overflow" class="level2">
+<h2 class="anchored" data-anchor-id="overflow">Overflow</h2>
 <ul>
 <li>The point of calculating this was to get things down to single digit:</li>
 </ul>
@@ -1538,8 +1538,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Essentially, 1-digit multiply may produce a 2-digit product.</li>
 </ul>
 </section>
-<section id="uh-oh" class="level1">
-<h1>Uh oh</h1>
+<section id="uh-oh" class="level2">
+<h2 class="anchored" data-anchor-id="uh-oh">Uh oh</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>/bin/sh</strong></pre>
@@ -1563,8 +1563,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb18-17"><a href="#cb18-17"></a><span class="dv">132</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="size-of-ints" class="level1">
-<h1>Size of ints</h1>
+<section id="size-of-ints" class="level2">
+<h2 class="anchored" data-anchor-id="size-of-ints">Size of ints</h2>
 <ul>
 <li>Say we have two integers of 8 bits of precision.</li>
 <li>We multiple them together.</li>
@@ -1576,8 +1576,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>16</li>
 </ul>
 </section>
-<section id="carrys-for-mults" class="level1">
-<h1>Carrys for mults</h1>
+<section id="carrys-for-mults" class="level2">
+<h2 class="anchored" data-anchor-id="carrys-for-mults">Carrys for mults</h2>
 <ul>
 <li>When we are doing big multiplications:
 <ul>
@@ -1587,8 +1587,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="one-technique" class="level1">
-<h1>One Technique</h1>
+<section id="one-technique" class="level2">
+<h2 class="anchored" data-anchor-id="one-technique">One Technique</h2>
 <ul>
 <li>I Made a pointer to a <code>uint32_t</code>
 <ul>
@@ -1605,8 +1605,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Multiplied, tracking significance.</li>
 </ul>
 </section>
-<section id="division" class="level1">
-<h1>Division</h1>
+<section id="division" class="level2">
+<h2 class="anchored" data-anchor-id="division">Division</h2>
 <ul>
 <li>Remember long division?
 <ul>
@@ -1625,8 +1625,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>The final remainder is the mod.</li>
 </ul>
 </section>
-<section id="these-slides-3" class="level1">
-<h1>These Slides</h1>
+<section id="these-slides-3" class="level2">
+<h2 class="anchored" data-anchor-id="these-slides-3">These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1641,8 +1641,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="a-4096-bit-type" class="level1">
-<h1>A 4096 bit type</h1>
+<section id="a-4096-bit-type" class="level2">
+<h2 class="anchored" data-anchor-id="a-4096-bit-type">A 4096 bit type</h2>
 <ul>
 <li>It’s not too bad to pass around 4096 bits.
 <ul>
@@ -1657,8 +1657,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <div class="sourceCode" id="cb20" data-filename="bigadd"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1"></a><span class="dt">uint64_t</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="usage" class="level1">
-<h1>Usage</h1>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
 <ul>
 <li>Before call this function, declare three arrays:</li>
 </ul>
@@ -1674,8 +1674,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb22-2"><a href="#cb22-2"></a>bigadd<span class="op">(</span>in0<span class="op">,</span>in1<span class="op">,</span>in0<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="usage-1" class="level1">
-<h1>Usage</h1>
+<section id="usage-1" class="level2">
+<h2 class="anchored" data-anchor-id="usage-1">Usage</h2>
 <ul>
 <li>Remember this is banned:</li>
 </ul>
@@ -1688,8 +1688,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>My <code>uint64_t</code> value returned the carry value (it was nice to keep track of)</li>
 </ul>
 </section>
-<section id="faq-1" class="level1">
-<h1>FAQ</h1>
+<section id="faq-1" class="level2">
+<h2 class="anchored" data-anchor-id="faq-1">FAQ</h2>
 <ul>
 <li>Isn’t there a way to return the value from the function, rather than write a value to the memory location at a provided argument.
 <ul>
@@ -1700,8 +1700,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="faq-2" class="level1">
-<h1>FAQ</h1>
+<section id="faq-2" class="level2">
+<h2 class="anchored" data-anchor-id="faq-2">FAQ</h2>
 <ul>
 <li>How do we deal with integers that aren’t of known length.
 <ul>
@@ -1711,8 +1711,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="these-slides-4" class="level1">
-<h1>These Slides</h1>
+<section id="these-slides-4" class="level2">
+<h2 class="anchored" data-anchor-id="these-slides-4">These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1727,8 +1727,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-<section id="stinger" class="level1">
-<h1>Stinger</h1>
+<section id="stinger" class="level2">
+<h2 class="anchored" data-anchor-id="stinger">Stinger</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">/* print the big value as a string */</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="dt">void</span> seebig<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>a<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>    <span class="dt">size_t</span> i<span class="op">;</span></span>
@@ -2233,807 +2233,805 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">---</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="an">title:</span><span class="co"> Finite</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="an">subtitle:</span><span class="co"> "0x2.0-1"</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="an">execute:</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="co">    echo: false</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="co">---</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="fu"># Announcements</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a></span>
-<span id="cb25-10"><a href="#cb25-10"></a><span class="ss">- </span>**Welcome** to Computing Security</span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="ss">  - </span>Composite multi-session lecture.</span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="ss">- </span>**Action Items**:</span>
-<span id="cb25-13"><a href="#cb25-13"></a><span class="ss">  - </span>Broadly supports SHA, RSA, and mixed precision arithmetic, concurrent assignments with this lecture.</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="an">subtitle:</span><span class="co"> "w3d0"</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">---</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="fu">## Announcements</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="ss">- </span>**Welcome** to Computing Security</span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="ss">  - </span>Composite multi-session lecture.</span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="ss">- </span>**Action Items**:</span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="ss">  - </span>Broadly supports SHA, RSA, and mixed precision arithmetic, concurrent assignments with this lecture.</span>
+<span id="cb25-12"><a href="#cb25-12"></a></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="fu">## Apocryphal Quote</span></span>
 <span id="cb25-14"><a href="#cb25-14"></a></span>
-<span id="cb25-15"><a href="#cb25-15"></a><span class="fu"># Apocryphal Quote</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="ss">- </span>I cannot find it, but I believe a philosopher one jested:</span>
 <span id="cb25-16"><a href="#cb25-16"></a></span>
-<span id="cb25-17"><a href="#cb25-17"></a><span class="ss">- </span>I cannot find it, but I believe a philosopher one jested:</span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="at">&gt; I am a weapons-grade finitist. I don't believe in numbers larger than two.</span></span>
 <span id="cb25-18"><a href="#cb25-18"></a></span>
-<span id="cb25-19"><a href="#cb25-19"></a><span class="at">&gt; I am a weapons-grade finitist. I don't believe in numbers larger than two.</span></span>
-<span id="cb25-20"><a href="#cb25-20"></a></span>
-<span id="cb25-21"><a href="#cb25-21"></a><span class="ss">- </span>Arrays of such numbers are sufficient for computation of arbitrary precision.</span>
-<span id="cb25-22"><a href="#cb25-22"></a><span class="ss">- </span>We can not capture the infinite, but we may model it.</span>
-<span id="cb25-23"><a href="#cb25-23"></a>  </span>
-<span id="cb25-24"><a href="#cb25-24"></a><span class="fu"># These Slides</span></span>
-<span id="cb25-25"><a href="#cb25-25"></a></span>
-<span id="cb25-26"><a href="#cb25-26"></a><span class="ss">- </span>Reintroduce the technologies</span>
-<span id="cb25-27"><a href="#cb25-27"></a><span class="ss">  - </span><span class="in">`stdint`</span></span>
-<span id="cb25-28"><a href="#cb25-28"></a><span class="ss">- </span>New</span>
-<span id="cb25-29"><a href="#cb25-29"></a><span class="ss">  - </span>Finite sets, rings</span>
-<span id="cb25-30"><a href="#cb25-30"></a><span class="ss">  - </span>Arbitrary/high precision integers</span>
-<span id="cb25-31"><a href="#cb25-31"></a><span class="ss">  - </span>Arithmetic operations</span>
-<span id="cb25-32"><a href="#cb25-32"></a><span class="ss">  - </span>Function types</span>
-<span id="cb25-33"><a href="#cb25-33"></a>  </span>
-<span id="cb25-34"><a href="#cb25-34"></a><span class="fu"># What are integers?</span></span>
-<span id="cb25-35"><a href="#cb25-35"></a></span>
-<span id="cb25-36"><a href="#cb25-36"></a><span class="ss">- </span>Denote integers as the mathematical symbol $\mathbb{Z}$</span>
-<span id="cb25-37"><a href="#cb25-37"></a><span class="ss">  - </span>Something to do with the German/Deutsch</span>
-<span id="cb25-38"><a href="#cb25-38"></a><span class="ss">- </span>Not particular useful in cryptography, actually</span>
-<span id="cb25-39"><a href="#cb25-39"></a><span class="ss">  - </span>We tend to want the naturals, denoted $\mathbb{N}$</span>
-<span id="cb25-40"><a href="#cb25-40"></a><span class="ss">  - </span>Counting numbers, $0$ and up.</span>
+<span id="cb25-19"><a href="#cb25-19"></a><span class="ss">- </span>Arrays of such numbers are sufficient for computation of arbitrary precision.</span>
+<span id="cb25-20"><a href="#cb25-20"></a><span class="ss">- </span>We can not capture the infinite, but we may model it.</span>
+<span id="cb25-21"><a href="#cb25-21"></a>  </span>
+<span id="cb25-22"><a href="#cb25-22"></a><span class="fu">## These Slides</span></span>
+<span id="cb25-23"><a href="#cb25-23"></a></span>
+<span id="cb25-24"><a href="#cb25-24"></a><span class="ss">- </span>Reintroduce the technologies</span>
+<span id="cb25-25"><a href="#cb25-25"></a><span class="ss">  - </span><span class="in">`stdint`</span></span>
+<span id="cb25-26"><a href="#cb25-26"></a><span class="ss">- </span>New</span>
+<span id="cb25-27"><a href="#cb25-27"></a><span class="ss">  - </span>Finite sets, rings</span>
+<span id="cb25-28"><a href="#cb25-28"></a><span class="ss">  - </span>Arbitrary/high precision integers</span>
+<span id="cb25-29"><a href="#cb25-29"></a><span class="ss">  - </span>Arithmetic operations</span>
+<span id="cb25-30"><a href="#cb25-30"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-31"><a href="#cb25-31"></a>  </span>
+<span id="cb25-32"><a href="#cb25-32"></a><span class="fu">## What are integers?</span></span>
+<span id="cb25-33"><a href="#cb25-33"></a></span>
+<span id="cb25-34"><a href="#cb25-34"></a><span class="ss">- </span>Denote integers as the mathematical symbol $\mathbb{Z}$</span>
+<span id="cb25-35"><a href="#cb25-35"></a><span class="ss">  - </span>Something to do with the German/Deutsch</span>
+<span id="cb25-36"><a href="#cb25-36"></a><span class="ss">- </span>Not particular useful in cryptography, actually</span>
+<span id="cb25-37"><a href="#cb25-37"></a><span class="ss">  - </span>We tend to want the naturals, denoted $\mathbb{N}$</span>
+<span id="cb25-38"><a href="#cb25-38"></a><span class="ss">  - </span>Counting numbers, $0$ and up.</span>
+<span id="cb25-39"><a href="#cb25-39"></a></span>
+<span id="cb25-40"><a href="#cb25-40"></a><span class="fu">## In Python</span></span>
 <span id="cb25-41"><a href="#cb25-41"></a></span>
-<span id="cb25-42"><a href="#cb25-42"></a><span class="fu"># In Python</span></span>
+<span id="cb25-42"><a href="#cb25-42"></a><span class="ss">- </span>We can write them in Python with <span class="in">`itertools`</span></span>
 <span id="cb25-43"><a href="#cb25-43"></a></span>
-<span id="cb25-44"><a href="#cb25-44"></a><span class="ss">- </span>We can write them in Python with <span class="in">`itertools`</span></span>
-<span id="cb25-45"><a href="#cb25-45"></a></span>
-<span id="cb25-46"><a href="#cb25-46"></a><span class="in">```{.python filename="fields.py"}</span></span>
-<span id="cb25-47"><a href="#cb25-47"></a><span class="in">from itertools import count</span></span>
-<span id="cb25-48"><a href="#cb25-48"></a><span class="in">N = count()</span></span>
-<span id="cb25-49"><a href="#cb25-49"></a><span class="in">make_z = lambda n : n // 2 if n % 2 else -n // 2</span></span>
-<span id="cb25-50"><a href="#cb25-50"></a><span class="in">Z = (make_z(n) for n in count(1))</span></span>
-<span id="cb25-51"><a href="#cb25-51"></a><span class="in"># We can see elements of these infinite collections with</span></span>
-<span id="cb25-52"><a href="#cb25-52"></a><span class="in">[next(N) for _ in range(5)], [next(Z) for _ in range(5)]</span></span>
-<span id="cb25-53"><a href="#cb25-53"></a><span class="in">```</span></span>
-<span id="cb25-54"><a href="#cb25-54"></a></span>
-<span id="cb25-55"><a href="#cb25-55"></a><span class="ss">- </span>What do you see?</span>
-<span id="cb25-56"><a href="#cb25-56"></a><span class="in">```python</span></span>
-<span id="cb25-57"><a href="#cb25-57"></a>([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>])</span>
-<span id="cb25-58"><a href="#cb25-58"></a><span class="in">```</span></span>
+<span id="cb25-44"><a href="#cb25-44"></a><span class="in">```{.python filename="fields.py"}</span></span>
+<span id="cb25-45"><a href="#cb25-45"></a><span class="in">from itertools import count</span></span>
+<span id="cb25-46"><a href="#cb25-46"></a><span class="in">N = count()</span></span>
+<span id="cb25-47"><a href="#cb25-47"></a><span class="in">make_z = lambda n : n // 2 if n % 2 else -n // 2</span></span>
+<span id="cb25-48"><a href="#cb25-48"></a><span class="in">Z = (make_z(n) for n in count(1))</span></span>
+<span id="cb25-49"><a href="#cb25-49"></a><span class="in">## We can see elements of these infinite collections with</span></span>
+<span id="cb25-50"><a href="#cb25-50"></a><span class="in">[next(N) for _ in range(5)], [next(Z) for _ in range(5)]</span></span>
+<span id="cb25-51"><a href="#cb25-51"></a><span class="in">```</span></span>
+<span id="cb25-52"><a href="#cb25-52"></a></span>
+<span id="cb25-53"><a href="#cb25-53"></a><span class="ss">- </span>What do you see?</span>
+<span id="cb25-54"><a href="#cb25-54"></a><span class="in">```python</span></span>
+<span id="cb25-55"><a href="#cb25-55"></a>([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>])</span>
+<span id="cb25-56"><a href="#cb25-56"></a><span class="in">```</span></span>
+<span id="cb25-57"><a href="#cb25-57"></a></span>
+<span id="cb25-58"><a href="#cb25-58"></a><span class="fu">## Aside</span></span>
 <span id="cb25-59"><a href="#cb25-59"></a></span>
-<span id="cb25-60"><a href="#cb25-60"></a><span class="fu"># Aside</span></span>
-<span id="cb25-61"><a href="#cb25-61"></a></span>
-<span id="cb25-62"><a href="#cb25-62"></a><span class="ss">- </span>It is moderately controversial to assert:</span>
+<span id="cb25-60"><a href="#cb25-60"></a><span class="ss">- </span>It is moderately controversial to assert:</span>
+<span id="cb25-61"><a href="#cb25-61"></a>$$</span>
+<span id="cb25-62"><a href="#cb25-62"></a>0 \in \mathbb{N}</span>
 <span id="cb25-63"><a href="#cb25-63"></a>$$</span>
-<span id="cb25-64"><a href="#cb25-64"></a>0 \in \mathbb{N}</span>
-<span id="cb25-65"><a href="#cb25-65"></a>$$</span>
-<span id="cb25-66"><a href="#cb25-66"></a><span class="ss">  - </span>Enderton, Herbert B. (1977). Elements of set theory. New York: Academic Press. p. 66. ISBN 0122384407.</span>
-<span id="cb25-67"><a href="#cb25-67"></a><span class="ss">- </span>Fortunately this is a CS class.</span>
-<span id="cb25-68"><a href="#cb25-68"></a><span class="in">```python</span></span>
-<span id="cb25-69"><a href="#cb25-69"></a><span class="cf">assert</span>(<span class="dv">0</span> <span class="kw">in</span> count())</span>
-<span id="cb25-70"><a href="#cb25-70"></a><span class="in">```</span></span>
+<span id="cb25-64"><a href="#cb25-64"></a><span class="ss">  - </span>Enderton, Herbert B. (1977). Elements of set theory. New York: Academic Press. p. 66. ISBN 0122384407.</span>
+<span id="cb25-65"><a href="#cb25-65"></a><span class="ss">- </span>Fortunately this is a CS class.</span>
+<span id="cb25-66"><a href="#cb25-66"></a><span class="in">```python</span></span>
+<span id="cb25-67"><a href="#cb25-67"></a><span class="cf">assert</span>(<span class="dv">0</span> <span class="kw">in</span> count())</span>
+<span id="cb25-68"><a href="#cb25-68"></a><span class="in">```</span></span>
+<span id="cb25-69"><a href="#cb25-69"></a></span>
+<span id="cb25-70"><a href="#cb25-70"></a><span class="fu">## $\mathbb{N}$ is akin to `uint`</span></span>
 <span id="cb25-71"><a href="#cb25-71"></a></span>
-<span id="cb25-72"><a href="#cb25-72"></a><span class="fu"># $\mathbb{N}$ is akin to `uint`</span></span>
-<span id="cb25-73"><a href="#cb25-73"></a></span>
-<span id="cb25-74"><a href="#cb25-74"></a><span class="ss">- </span>The natural numbers $\mathbb{N}$ probably look a lot like the unsigned integers.</span>
-<span id="cb25-75"><a href="#cb25-75"></a><span class="ss">- </span>There's only one real problem.</span>
-<span id="cb25-76"><a href="#cb25-76"></a><span class="ss">- </span>We don't have the unsigned integers in C</span>
-<span id="cb25-77"><a href="#cb25-77"></a><span class="ss">  - </span>We don't have them in Python either, but for a different reason.</span>
+<span id="cb25-72"><a href="#cb25-72"></a><span class="ss">- </span>The natural numbers $\mathbb{N}$ probably look a lot like the unsigned integers.</span>
+<span id="cb25-73"><a href="#cb25-73"></a><span class="ss">- </span>There's only one real problem.</span>
+<span id="cb25-74"><a href="#cb25-74"></a><span class="ss">- </span>We don't have the unsigned integers in C</span>
+<span id="cb25-75"><a href="#cb25-75"></a><span class="ss">  - </span>We don't have them in Python either, but for a different reason.</span>
+<span id="cb25-76"><a href="#cb25-76"></a></span>
+<span id="cb25-77"><a href="#cb25-77"></a><span class="fu">## The Problem</span></span>
 <span id="cb25-78"><a href="#cb25-78"></a></span>
-<span id="cb25-79"><a href="#cb25-79"></a><span class="fu"># The Problem</span></span>
-<span id="cb25-80"><a href="#cb25-80"></a></span>
-<span id="cb25-81"><a href="#cb25-81"></a><span class="ss">- </span>Python has been lying to us for years that its integer have no upper limit.</span>
-<span id="cb25-82"><a href="#cb25-82"></a><span class="ss">  - </span>We say $\nexists n : n \notin$ <span class="in">`count()`</span></span>
-<span id="cb25-83"><a href="#cb25-83"></a><span class="ss">  - </span>Let's just try a reasonably sized number, say googolplex $= 10^{10^{100}}$</span>
+<span id="cb25-79"><a href="#cb25-79"></a><span class="ss">- </span>Python has been lying to us for years that its integer have no upper limit.</span>
+<span id="cb25-80"><a href="#cb25-80"></a><span class="ss">  - </span>We say $\nexists n : n \notin$ <span class="in">`count()`</span></span>
+<span id="cb25-81"><a href="#cb25-81"></a><span class="ss">  - </span>Let's just try a reasonably sized number, say googolplex $= 10^{10^{100}}$</span>
+<span id="cb25-82"><a href="#cb25-82"></a></span>
+<span id="cb25-83"><a href="#cb25-83"></a><span class="fu">## Test with `-c`</span></span>
 <span id="cb25-84"><a href="#cb25-84"></a></span>
-<span id="cb25-85"><a href="#cb25-85"></a><span class="fu"># Test with `-c`</span></span>
-<span id="cb25-86"><a href="#cb25-86"></a></span>
-<span id="cb25-87"><a href="#cb25-87"></a><span class="ss">- </span>We use the <span class="in">`-c`</span> flag to Python to run a script directly at command line.</span>
-<span id="cb25-88"><a href="#cb25-88"></a><span class="in">```python</span></span>
-<span id="cb25-89"><a href="#cb25-89"></a>python3 <span class="op">-</span>c <span class="st">"print('hello world')"</span></span>
-<span id="cb25-90"><a href="#cb25-90"></a><span class="in">```</span></span>
-<span id="cb25-91"><a href="#cb25-91"></a><span class="ss">- </span>Perform multi-line calculuations using <span class="in">`;`</span></span>
-<span id="cb25-92"><a href="#cb25-92"></a><span class="ss">  - </span>Oh - like C. 🤔</span>
-<span id="cb25-93"><a href="#cb25-93"></a></span>
-<span id="cb25-94"><a href="#cb25-94"></a><span class="in">```python</span></span>
-<span id="cb25-95"><a href="#cb25-95"></a>python3 <span class="op">-</span>c <span class="st">"from itertools import count; print(0 in count())"</span></span>
-<span id="cb25-96"><a href="#cb25-96"></a><span class="in">```</span></span>
+<span id="cb25-85"><a href="#cb25-85"></a><span class="ss">- </span>We use the <span class="in">`-c`</span> flag to Python to run a script directly at command line.</span>
+<span id="cb25-86"><a href="#cb25-86"></a><span class="in">```python</span></span>
+<span id="cb25-87"><a href="#cb25-87"></a>python3 <span class="op">-</span>c <span class="st">"print('hello world')"</span></span>
+<span id="cb25-88"><a href="#cb25-88"></a><span class="in">```</span></span>
+<span id="cb25-89"><a href="#cb25-89"></a><span class="ss">- </span>Perform multi-line calculuations using <span class="in">`;`</span></span>
+<span id="cb25-90"><a href="#cb25-90"></a><span class="ss">  - </span>Oh - like C. 🤔</span>
+<span id="cb25-91"><a href="#cb25-91"></a></span>
+<span id="cb25-92"><a href="#cb25-92"></a><span class="in">```python</span></span>
+<span id="cb25-93"><a href="#cb25-93"></a>python3 <span class="op">-</span>c <span class="st">"from itertools import count; print(0 in count())"</span></span>
+<span id="cb25-94"><a href="#cb25-94"></a><span class="in">```</span></span>
+<span id="cb25-95"><a href="#cb25-95"></a></span>
+<span id="cb25-96"><a href="#cb25-96"></a><span class="fu">## Time it</span></span>
 <span id="cb25-97"><a href="#cb25-97"></a></span>
-<span id="cb25-98"><a href="#cb25-98"></a><span class="fu"># Time it</span></span>
-<span id="cb25-99"><a href="#cb25-99"></a></span>
-<span id="cb25-100"><a href="#cb25-100"></a><span class="ss">- </span>Running on Linux </span>
-<span id="cb25-101"><a href="#cb25-101"></a><span class="ss">   - </span><span class="in">`podman start -l ; podman exec -it -l`</span></span>
-<span id="cb25-102"><a href="#cb25-102"></a><span class="ss">- </span>We can use <span class="in">`time`</span> to... time things.</span>
-<span id="cb25-103"><a href="#cb25-103"></a><span class="in">```email</span></span>
-<span id="cb25-104"><a href="#cb25-104"></a>$ time python3 -c "from itertools import count; print(0 in count())"</span>
-<span id="cb25-105"><a href="#cb25-105"></a>True</span>
-<span id="cb25-106"><a href="#cb25-106"></a>0.01user 0.00system 0:00.01elapsed 109%CPU (0avgtext+0avgdata 8748maxresident)k</span>
-<span id="cb25-107"><a href="#cb25-107"></a>0inputs+0outputs (0major+942minor)pagefaults 0swaps</span>
-<span id="cb25-108"><a href="#cb25-108"></a><span class="in">```</span></span>
+<span id="cb25-98"><a href="#cb25-98"></a><span class="ss">- </span>Running on Linux </span>
+<span id="cb25-99"><a href="#cb25-99"></a><span class="ss">   - </span><span class="in">`podman start -l ; podman exec -it -l`</span></span>
+<span id="cb25-100"><a href="#cb25-100"></a><span class="ss">- </span>We can use <span class="in">`time`</span> to... time things.</span>
+<span id="cb25-101"><a href="#cb25-101"></a><span class="in">```email</span></span>
+<span id="cb25-102"><a href="#cb25-102"></a>$ time python3 -c "from itertools import count; print(0 in count())"</span>
+<span id="cb25-103"><a href="#cb25-103"></a>True</span>
+<span id="cb25-104"><a href="#cb25-104"></a>0.01user 0.00system 0:00.01elapsed 109%CPU (0avgtext+0avgdata 8748maxresident)k</span>
+<span id="cb25-105"><a href="#cb25-105"></a>0inputs+0outputs (0major+942minor)pagefaults 0swaps</span>
+<span id="cb25-106"><a href="#cb25-106"></a><span class="in">```</span></span>
+<span id="cb25-107"><a href="#cb25-107"></a></span>
+<span id="cb25-108"><a href="#cb25-108"></a><span class="fu">## Pivot to bash</span></span>
 <span id="cb25-109"><a href="#cb25-109"></a></span>
-<span id="cb25-110"><a href="#cb25-110"></a><span class="fu"># Pivot to bash</span></span>
-<span id="cb25-111"><a href="#cb25-111"></a></span>
-<span id="cb25-112"><a href="#cb25-112"></a><span class="ss">- </span>Looks nicer in <span class="in">`/bin/bash`</span></span>
-<span id="cb25-113"><a href="#cb25-113"></a><span class="in">```email</span></span>
-<span id="cb25-114"><a href="#cb25-114"></a>$ /bin/bash</span>
-<span id="cb25-115"><a href="#cb25-115"></a>user@DESKTOP-THMS2PJ:~/tmp$ time python3 -c "from itertools import count; print(0 in count())"</span>
-<span id="cb25-116"><a href="#cb25-116"></a>True</span>
-<span id="cb25-117"><a href="#cb25-117"></a></span>
-<span id="cb25-118"><a href="#cb25-118"></a>real    0m0.013s</span>
-<span id="cb25-119"><a href="#cb25-119"></a>user    0m0.014s</span>
-<span id="cb25-120"><a href="#cb25-120"></a>sys     0m0.000s</span>
-<span id="cb25-121"><a href="#cb25-121"></a><span class="in">```</span></span>
-<span id="cb25-122"><a href="#cb25-122"></a></span>
-<span id="cb25-123"><a href="#cb25-123"></a><span class="ss">- </span>We could argue it takes .013 seconds to check</span>
-<span id="cb25-124"><a href="#cb25-124"></a><span class="ss">- </span>Or .013 seconds to find itertools on a SDD</span>
+<span id="cb25-110"><a href="#cb25-110"></a><span class="ss">- </span>Looks nicer in <span class="in">`/bin/bash`</span></span>
+<span id="cb25-111"><a href="#cb25-111"></a><span class="in">```email</span></span>
+<span id="cb25-112"><a href="#cb25-112"></a>$ /bin/bash</span>
+<span id="cb25-113"><a href="#cb25-113"></a>user@DESKTOP-THMS2PJ:~/tmp$ time python3 -c "from itertools import count; print(0 in count())"</span>
+<span id="cb25-114"><a href="#cb25-114"></a>True</span>
+<span id="cb25-115"><a href="#cb25-115"></a></span>
+<span id="cb25-116"><a href="#cb25-116"></a>real    0m0.013s</span>
+<span id="cb25-117"><a href="#cb25-117"></a>user    0m0.014s</span>
+<span id="cb25-118"><a href="#cb25-118"></a>sys     0m0.000s</span>
+<span id="cb25-119"><a href="#cb25-119"></a><span class="in">```</span></span>
+<span id="cb25-120"><a href="#cb25-120"></a></span>
+<span id="cb25-121"><a href="#cb25-121"></a><span class="ss">- </span>We could argue it takes .013 seconds to check</span>
+<span id="cb25-122"><a href="#cb25-122"></a><span class="ss">- </span>Or .013 seconds to find itertools on a SDD</span>
+<span id="cb25-123"><a href="#cb25-123"></a></span>
+<span id="cb25-124"><a href="#cb25-124"></a><span class="fu">## Bigger Numbers</span></span>
 <span id="cb25-125"><a href="#cb25-125"></a></span>
-<span id="cb25-126"><a href="#cb25-126"></a><span class="fu"># Bigger Numbers</span></span>
-<span id="cb25-127"><a href="#cb25-127"></a></span>
-<span id="cb25-128"><a href="#cb25-128"></a><span class="ss">- </span>Check e.g. 1000</span>
-<span id="cb25-129"><a href="#cb25-129"></a><span class="in">```email</span></span>
-<span id="cb25-130"><a href="#cb25-130"></a>$ /bin/bash</span>
-<span id="cb25-131"><a href="#cb25-131"></a>user@DESKTOP-THMS2PJ:~/tmp$ time python3 -c "from itertools import count; print(1000 in count())"</span>
-<span id="cb25-132"><a href="#cb25-132"></a>True</span>
-<span id="cb25-133"><a href="#cb25-133"></a></span>
-<span id="cb25-134"><a href="#cb25-134"></a>real    0m0.012s</span>
-<span id="cb25-135"><a href="#cb25-135"></a>user    0m0.012s</span>
-<span id="cb25-136"><a href="#cb25-136"></a>sys     0m0.000s</span>
-<span id="cb25-137"><a href="#cb25-137"></a><span class="in">```</span></span>
+<span id="cb25-126"><a href="#cb25-126"></a><span class="ss">- </span>Check e.g. 1000</span>
+<span id="cb25-127"><a href="#cb25-127"></a><span class="in">```email</span></span>
+<span id="cb25-128"><a href="#cb25-128"></a>$ /bin/bash</span>
+<span id="cb25-129"><a href="#cb25-129"></a>user@DESKTOP-THMS2PJ:~/tmp$ time python3 -c "from itertools import count; print(1000 in count())"</span>
+<span id="cb25-130"><a href="#cb25-130"></a>True</span>
+<span id="cb25-131"><a href="#cb25-131"></a></span>
+<span id="cb25-132"><a href="#cb25-132"></a>real    0m0.012s</span>
+<span id="cb25-133"><a href="#cb25-133"></a>user    0m0.012s</span>
+<span id="cb25-134"><a href="#cb25-134"></a>sys     0m0.000s</span>
+<span id="cb25-135"><a href="#cb25-135"></a><span class="in">```</span></span>
+<span id="cb25-136"><a href="#cb25-136"></a></span>
+<span id="cb25-137"><a href="#cb25-137"></a><span class="ss">- </span>Trivial.</span>
 <span id="cb25-138"><a href="#cb25-138"></a></span>
-<span id="cb25-139"><a href="#cb25-139"></a><span class="ss">- </span>Trivial.</span>
+<span id="cb25-139"><a href="#cb25-139"></a><span class="fu">## Test it</span></span>
 <span id="cb25-140"><a href="#cb25-140"></a></span>
-<span id="cb25-141"><a href="#cb25-141"></a><span class="fu"># Test it</span></span>
+<span id="cb25-141"><a href="#cb25-141"></a><span class="ss">- </span>Try a few powers yourself. What do you find?</span>
 <span id="cb25-142"><a href="#cb25-142"></a></span>
-<span id="cb25-143"><a href="#cb25-143"></a><span class="ss">- </span>Try a few powers yourself. What do you find?</span>
-<span id="cb25-144"><a href="#cb25-144"></a></span>
-<span id="cb25-145"><a href="#cb25-145"></a><span class="in">```email</span></span>
-<span id="cb25-146"><a href="#cb25-146"></a>time python3 -c "from itertools import count; n=1; print(10**n in count())"</span>
-<span id="cb25-147"><a href="#cb25-147"></a><span class="in">```</span></span>
+<span id="cb25-143"><a href="#cb25-143"></a><span class="in">```email</span></span>
+<span id="cb25-144"><a href="#cb25-144"></a>time python3 -c "from itertools import count; n=1; print(10**n in count())"</span>
+<span id="cb25-145"><a href="#cb25-145"></a><span class="in">```</span></span>
+<span id="cb25-146"><a href="#cb25-146"></a></span>
+<span id="cb25-147"><a href="#cb25-147"></a><span class="fu">## </span></span>
 <span id="cb25-148"><a href="#cb25-148"></a></span>
-<span id="cb25-149"><a href="#cb25-149"></a><span class="fu"># </span></span>
+<span id="cb25-149"><a href="#cb25-149"></a>::::{.columns}</span>
 <span id="cb25-150"><a href="#cb25-150"></a></span>
-<span id="cb25-151"><a href="#cb25-151"></a>::::{.columns}</span>
+<span id="cb25-151"><a href="#cb25-151"></a>:::{.column width="%50"}</span>
 <span id="cb25-152"><a href="#cb25-152"></a></span>
-<span id="cb25-153"><a href="#cb25-153"></a>:::{.column width="%50"}</span>
-<span id="cb25-154"><a href="#cb25-154"></a></span>
-<span id="cb25-155"><a href="#cb25-155"></a>|10^$n$|<span class="in">`real`</span>|</span>
-<span id="cb25-156"><a href="#cb25-156"></a>|-|-|</span>
-<span id="cb25-157"><a href="#cb25-157"></a>|1|00.012|</span>
-<span id="cb25-158"><a href="#cb25-158"></a>|2|00.012|</span>
-<span id="cb25-159"><a href="#cb25-159"></a>|3|00.012|</span>
-<span id="cb25-160"><a href="#cb25-160"></a>|4|00.013|</span>
-<span id="cb25-161"><a href="#cb25-161"></a>|5|00.013|</span>
-<span id="cb25-162"><a href="#cb25-162"></a>|6|00.027|</span>
-<span id="cb25-163"><a href="#cb25-163"></a>|7|00.164|</span>
-<span id="cb25-164"><a href="#cb25-164"></a>|8|01.498|</span>
-<span id="cb25-165"><a href="#cb25-165"></a>|9|16.810|</span>
+<span id="cb25-153"><a href="#cb25-153"></a>|10^$n$|<span class="in">`real`</span>|</span>
+<span id="cb25-154"><a href="#cb25-154"></a>|-|-|</span>
+<span id="cb25-155"><a href="#cb25-155"></a>|1|00.012|</span>
+<span id="cb25-156"><a href="#cb25-156"></a>|2|00.012|</span>
+<span id="cb25-157"><a href="#cb25-157"></a>|3|00.012|</span>
+<span id="cb25-158"><a href="#cb25-158"></a>|4|00.013|</span>
+<span id="cb25-159"><a href="#cb25-159"></a>|5|00.013|</span>
+<span id="cb25-160"><a href="#cb25-160"></a>|6|00.027|</span>
+<span id="cb25-161"><a href="#cb25-161"></a>|7|00.164|</span>
+<span id="cb25-162"><a href="#cb25-162"></a>|8|01.498|</span>
+<span id="cb25-163"><a href="#cb25-163"></a>|9|16.810|</span>
+<span id="cb25-164"><a href="#cb25-164"></a></span>
+<span id="cb25-165"><a href="#cb25-165"></a>:::</span>
 <span id="cb25-166"><a href="#cb25-166"></a></span>
-<span id="cb25-167"><a href="#cb25-167"></a>:::</span>
-<span id="cb25-168"><a href="#cb25-168"></a></span>
+<span id="cb25-167"><a href="#cb25-167"></a></span>
+<span id="cb25-168"><a href="#cb25-168"></a>:::{.column width="%50"}</span>
 <span id="cb25-169"><a href="#cb25-169"></a></span>
-<span id="cb25-170"><a href="#cb25-170"></a>:::{.column width="%50"}</span>
-<span id="cb25-171"><a href="#cb25-171"></a></span>
-<span id="cb25-172"><a href="#cb25-172"></a><span class="ss">- </span>Expect:</span>
+<span id="cb25-170"><a href="#cb25-170"></a><span class="ss">- </span>Expect:</span>
+<span id="cb25-171"><a href="#cb25-171"></a>$$</span>
+<span id="cb25-172"><a href="#cb25-172"></a>t(10^{10}) \in <span class="co">[</span><span class="ot">140,170</span><span class="co">]</span></span>
 <span id="cb25-173"><a href="#cb25-173"></a>$$</span>
-<span id="cb25-174"><a href="#cb25-174"></a>t(10^{10}) \in <span class="co">[</span><span class="ot">140,170</span><span class="co">]</span></span>
+<span id="cb25-174"><a href="#cb25-174"></a><span class="ss">- </span>Expect for $n \gt 9$</span>
 <span id="cb25-175"><a href="#cb25-175"></a>$$</span>
-<span id="cb25-176"><a href="#cb25-176"></a><span class="ss">- </span>Expect for $n \gt 9$</span>
+<span id="cb25-176"><a href="#cb25-176"></a>t(10^n) \in <span class="co">[</span><span class="ot">14,17</span><span class="co">]</span> \times 10^{n-9}</span>
 <span id="cb25-177"><a href="#cb25-177"></a>$$</span>
-<span id="cb25-178"><a href="#cb25-178"></a>t(10^n) \in <span class="co">[</span><span class="ot">14,17</span><span class="co">]</span> \times 10^{n-9}</span>
-<span id="cb25-179"><a href="#cb25-179"></a>$$</span>
-<span id="cb25-180"><a href="#cb25-180"></a><span class="ss">- </span>Expect $10^{10^{100}}$ in</span>
-<span id="cb25-181"><a href="#cb25-181"></a><span class="ss">  - </span>(Googol - 9) seconds</span>
-<span id="cb25-182"><a href="#cb25-182"></a><span class="ss">  - </span>316 novemvigintilion years</span>
+<span id="cb25-178"><a href="#cb25-178"></a><span class="ss">- </span>Expect $10^{10^{100}}$ in</span>
+<span id="cb25-179"><a href="#cb25-179"></a><span class="ss">  - </span>(Googol - 9) seconds</span>
+<span id="cb25-180"><a href="#cb25-180"></a><span class="ss">  - </span>316 novemvigintilion years</span>
+<span id="cb25-181"><a href="#cb25-181"></a></span>
+<span id="cb25-182"><a href="#cb25-182"></a>:::</span>
 <span id="cb25-183"><a href="#cb25-183"></a></span>
-<span id="cb25-184"><a href="#cb25-184"></a>:::</span>
+<span id="cb25-184"><a href="#cb25-184"></a>::::</span>
 <span id="cb25-185"><a href="#cb25-185"></a></span>
-<span id="cb25-186"><a href="#cb25-186"></a>::::</span>
+<span id="cb25-186"><a href="#cb25-186"></a><span class="fu">## C for Clear</span></span>
 <span id="cb25-187"><a href="#cb25-187"></a></span>
-<span id="cb25-188"><a href="#cb25-188"></a><span class="fu"># C for Clear</span></span>
-<span id="cb25-189"><a href="#cb25-189"></a></span>
-<span id="cb25-190"><a href="#cb25-190"></a><span class="ss">- </span>C is a little more forthright about how big its numbers get.</span>
-<span id="cb25-191"><a href="#cb25-191"></a><span class="in">```{.C filename="max.c"}</span></span>
-<span id="cb25-192"><a href="#cb25-192"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb25-193"><a href="#cb25-193"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
-<span id="cb25-194"><a href="#cb25-194"></a></span>
-<span id="cb25-195"><a href="#cb25-195"></a><span class="in">int main() {</span></span>
-<span id="cb25-196"><a href="#cb25-196"></a><span class="in">    uint32_t n = 0;</span></span>
-<span id="cb25-197"><a href="#cb25-197"></a><span class="in">    while ((n + 1) &gt; n) {</span></span>
-<span id="cb25-198"><a href="#cb25-198"></a><span class="in">        n++;</span></span>
-<span id="cb25-199"><a href="#cb25-199"></a><span class="in">    }</span></span>
-<span id="cb25-200"><a href="#cb25-200"></a><span class="in">    printf("n = %u\n", n);</span></span>
-<span id="cb25-201"><a href="#cb25-201"></a><span class="in">    return 0;</span></span>
-<span id="cb25-202"><a href="#cb25-202"></a><span class="in">}</span></span>
-<span id="cb25-203"><a href="#cb25-203"></a><span class="in">```</span></span>
+<span id="cb25-188"><a href="#cb25-188"></a><span class="ss">- </span>C is a little more forthright about how big its numbers get.</span>
+<span id="cb25-189"><a href="#cb25-189"></a><span class="in">```{.C filename="max.c"}</span></span>
+<span id="cb25-190"><a href="#cb25-190"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb25-191"><a href="#cb25-191"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
+<span id="cb25-192"><a href="#cb25-192"></a></span>
+<span id="cb25-193"><a href="#cb25-193"></a><span class="in">int main() {</span></span>
+<span id="cb25-194"><a href="#cb25-194"></a><span class="in">    uint32_t n = 0;</span></span>
+<span id="cb25-195"><a href="#cb25-195"></a><span class="in">    while ((n + 1) &gt; n) {</span></span>
+<span id="cb25-196"><a href="#cb25-196"></a><span class="in">        n++;</span></span>
+<span id="cb25-197"><a href="#cb25-197"></a><span class="in">    }</span></span>
+<span id="cb25-198"><a href="#cb25-198"></a><span class="in">    printf("n = %u\n", n);</span></span>
+<span id="cb25-199"><a href="#cb25-199"></a><span class="in">    return 0;</span></span>
+<span id="cb25-200"><a href="#cb25-200"></a><span class="in">}</span></span>
+<span id="cb25-201"><a href="#cb25-201"></a><span class="in">```</span></span>
+<span id="cb25-202"><a href="#cb25-202"></a></span>
+<span id="cb25-203"><a href="#cb25-203"></a><span class="fu">## C fast</span></span>
 <span id="cb25-204"><a href="#cb25-204"></a></span>
-<span id="cb25-205"><a href="#cb25-205"></a><span class="fu"># C fast</span></span>
-<span id="cb25-206"><a href="#cb25-206"></a></span>
-<span id="cb25-207"><a href="#cb25-207"></a><span class="ss">- </span>For me, this took 5.19s on <span class="in">`uint32_t`</span></span>
-<span id="cb25-208"><a href="#cb25-208"></a><span class="ss">  - </span>Same value in Python was 1m9.32s</span>
-<span id="cb25-209"><a href="#cb25-209"></a><span class="ss">- </span>How long for  <span class="in">`uint64_t`</span>?</span>
-<span id="cb25-210"><a href="#cb25-210"></a><span class="ss">  - </span>In Python?</span>
-<span id="cb25-211"><a href="#cb25-211"></a><span class="ss">- </span>How would speed up the code?</span>
-<span id="cb25-212"><a href="#cb25-212"></a><span class="ss">  - </span>What assumptions did you make?</span>
-<span id="cb25-213"><a href="#cb25-213"></a><span class="ss">- </span>How many base 10 digits does the largest number we can store in 32 bytes have?</span>
+<span id="cb25-205"><a href="#cb25-205"></a><span class="ss">- </span>For me, this took 5.19s on <span class="in">`uint32_t`</span></span>
+<span id="cb25-206"><a href="#cb25-206"></a><span class="ss">  - </span>Same value in Python was 1m9.32s</span>
+<span id="cb25-207"><a href="#cb25-207"></a><span class="ss">- </span>How long for  <span class="in">`uint64_t`</span>?</span>
+<span id="cb25-208"><a href="#cb25-208"></a><span class="ss">  - </span>In Python?</span>
+<span id="cb25-209"><a href="#cb25-209"></a><span class="ss">- </span>How would speed up the code?</span>
+<span id="cb25-210"><a href="#cb25-210"></a><span class="ss">  - </span>What assumptions did you make?</span>
+<span id="cb25-211"><a href="#cb25-211"></a><span class="ss">- </span>How many base 10 digits does the largest number we can store in 32 bytes have?</span>
+<span id="cb25-212"><a href="#cb25-212"></a></span>
+<span id="cb25-213"><a href="#cb25-213"></a><span class="fu">## limits.h </span></span>
 <span id="cb25-214"><a href="#cb25-214"></a></span>
-<span id="cb25-215"><a href="#cb25-215"></a><span class="fu"># limits.h </span></span>
-<span id="cb25-216"><a href="#cb25-216"></a></span>
-<span id="cb25-217"><a href="#cb25-217"></a><span class="ss">- </span>C discloses the maximum values it can tolerate in <span class="in">`&lt;limits.h&gt;`</span></span>
-<span id="cb25-218"><a href="#cb25-218"></a><span class="in">```{.C filename="num.c"}</span></span>
-<span id="cb25-219"><a href="#cb25-219"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb25-220"><a href="#cb25-220"></a><span class="in">#include &lt;limits.h&gt;</span></span>
-<span id="cb25-221"><a href="#cb25-221"></a></span>
-<span id="cb25-222"><a href="#cb25-222"></a><span class="in">int main() {</span></span>
-<span id="cb25-223"><a href="#cb25-223"></a><span class="in">    printf("n = %u\n", UINT_MAX);</span></span>
-<span id="cb25-224"><a href="#cb25-224"></a><span class="in">    return 0;</span></span>
-<span id="cb25-225"><a href="#cb25-225"></a><span class="in">}</span></span>
-<span id="cb25-226"><a href="#cb25-226"></a><span class="in">```</span></span>
-<span id="cb25-227"><a href="#cb25-227"></a><span class="ss">- </span>The correct answer was binary search.</span>
-<span id="cb25-228"><a href="#cb25-228"></a><span class="ss">  - </span>The incorrect answer (so far) was subtraction.</span>
+<span id="cb25-215"><a href="#cb25-215"></a><span class="ss">- </span>C discloses the maximum values it can tolerate in <span class="in">`&lt;limits.h&gt;`</span></span>
+<span id="cb25-216"><a href="#cb25-216"></a><span class="in">```{.C filename="num.c"}</span></span>
+<span id="cb25-217"><a href="#cb25-217"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb25-218"><a href="#cb25-218"></a><span class="in">#include &lt;limits.h&gt;</span></span>
+<span id="cb25-219"><a href="#cb25-219"></a></span>
+<span id="cb25-220"><a href="#cb25-220"></a><span class="in">int main() {</span></span>
+<span id="cb25-221"><a href="#cb25-221"></a><span class="in">    printf("n = %u\n", UINT_MAX);</span></span>
+<span id="cb25-222"><a href="#cb25-222"></a><span class="in">    return 0;</span></span>
+<span id="cb25-223"><a href="#cb25-223"></a><span class="in">}</span></span>
+<span id="cb25-224"><a href="#cb25-224"></a><span class="in">```</span></span>
+<span id="cb25-225"><a href="#cb25-225"></a><span class="ss">- </span>The correct answer was binary search.</span>
+<span id="cb25-226"><a href="#cb25-226"></a><span class="ss">  - </span>The incorrect answer (so far) was subtraction.</span>
+<span id="cb25-227"><a href="#cb25-227"></a></span>
+<span id="cb25-228"><a href="#cb25-228"></a><span class="fu">## Rings</span></span>
 <span id="cb25-229"><a href="#cb25-229"></a></span>
-<span id="cb25-230"><a href="#cb25-230"></a><span class="fu"># Rings</span></span>
-<span id="cb25-231"><a href="#cb25-231"></a></span>
-<span id="cb25-232"><a href="#cb25-232"></a><span class="ss">- </span>As far as I know (not a mathematician) the <span class="in">`uint`</span>s and <span class="in">`int`</span>s in C are *rings*</span>
-<span id="cb25-233"><a href="#cb25-233"></a><span class="ss">  - </span>They have addition and multiplication</span>
-<span id="cb25-234"><a href="#cb25-234"></a><span class="ss">- </span>They aren't fields - zero is divisible</span>
-<span id="cb25-235"><a href="#cb25-235"></a><span class="ss">  - </span>Spoiler alert, but $2^{\frac{n}{2}} \times 2^{\frac{n}{2}} \equiv 0 \pmod{2^n}$</span>
+<span id="cb25-230"><a href="#cb25-230"></a><span class="ss">- </span>As far as I know (not a mathematician) the <span class="in">`uint`</span>s and <span class="in">`int`</span>s in C are *rings*</span>
+<span id="cb25-231"><a href="#cb25-231"></a><span class="ss">  - </span>They have addition and multiplication</span>
+<span id="cb25-232"><a href="#cb25-232"></a><span class="ss">- </span>They aren't fields - zero is divisible</span>
+<span id="cb25-233"><a href="#cb25-233"></a><span class="ss">  - </span>Spoiler alert, but $2^{\frac{n}{2}} \times 2^{\frac{n}{2}} \equiv 0 \pmod{2^n}$</span>
+<span id="cb25-234"><a href="#cb25-234"></a></span>
+<span id="cb25-235"><a href="#cb25-235"></a><span class="fu">## Rings vs Integers</span></span>
 <span id="cb25-236"><a href="#cb25-236"></a></span>
-<span id="cb25-237"><a href="#cb25-237"></a><span class="fu"># Rings vs Integers</span></span>
-<span id="cb25-238"><a href="#cb25-238"></a></span>
-<span id="cb25-239"><a href="#cb25-239"></a><span class="ss">- </span>Rings have some "goofy" features</span>
-<span id="cb25-240"><a href="#cb25-240"></a><span class="ss">  - </span>$a, b \in$ <span class="in">`uint`</span>$n$<span class="in">`_t`</span> $\nRightarrow a + b &gt; a$</span>
-<span id="cb25-241"><a href="#cb25-241"></a><span class="ss">  - </span>Same with multiplication.</span>
-<span id="cb25-242"><a href="#cb25-242"></a><span class="ss">- </span>Let's look at an example.</span>
+<span id="cb25-237"><a href="#cb25-237"></a><span class="ss">- </span>Rings have some "goofy" features</span>
+<span id="cb25-238"><a href="#cb25-238"></a><span class="ss">  - </span>$a, b \in$ <span class="in">`uint`</span>$n$<span class="in">`_t`</span> $\nRightarrow a + b &gt; a$</span>
+<span id="cb25-239"><a href="#cb25-239"></a><span class="ss">  - </span>Same with multiplication.</span>
+<span id="cb25-240"><a href="#cb25-240"></a><span class="ss">- </span>Let's look at an example.</span>
+<span id="cb25-241"><a href="#cb25-241"></a></span>
+<span id="cb25-242"><a href="#cb25-242"></a><span class="fu">## Checkers</span></span>
 <span id="cb25-243"><a href="#cb25-243"></a></span>
-<span id="cb25-244"><a href="#cb25-244"></a><span class="fu"># Checkers</span></span>
-<span id="cb25-245"><a href="#cb25-245"></a></span>
-<span id="cb25-246"><a href="#cb25-246"></a><span class="in">```{.C filename="num.c"}</span></span>
-<span id="cb25-247"><a href="#cb25-247"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
-<span id="cb25-248"><a href="#cb25-248"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
-<span id="cb25-249"><a href="#cb25-249"></a></span>
-<span id="cb25-250"><a href="#cb25-250"></a><span class="in">int main(int argc, char **argv) {</span></span>
-<span id="cb25-251"><a href="#cb25-251"></a><span class="in">    uint8_t x, y;</span></span>
-<span id="cb25-252"><a href="#cb25-252"></a><span class="in">    x = atoi(argv[1]);</span></span>
-<span id="cb25-253"><a href="#cb25-253"></a><span class="in">    y = atoi(argv[2]);</span></span>
-<span id="cb25-254"><a href="#cb25-254"></a><span class="in">    return x + y;</span></span>
-<span id="cb25-255"><a href="#cb25-255"></a><span class="in">}</span></span>
-<span id="cb25-256"><a href="#cb25-256"></a><span class="in">```</span></span>
-<span id="cb25-257"><a href="#cb25-257"></a></span>
-<span id="cb25-258"><a href="#cb25-258"></a><span class="ss">- </span><span class="in">`atoi`</span> - alphabetical to int</span>
-<span id="cb25-259"><a href="#cb25-259"></a><span class="ss">- </span>From <span class="in">`&lt;stdlib.h&gt;`</span> per <span class="in">`man atoi`</span>, but might work without that.</span>
+<span id="cb25-244"><a href="#cb25-244"></a><span class="in">```{.C filename="num.c"}</span></span>
+<span id="cb25-245"><a href="#cb25-245"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
+<span id="cb25-246"><a href="#cb25-246"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
+<span id="cb25-247"><a href="#cb25-247"></a></span>
+<span id="cb25-248"><a href="#cb25-248"></a><span class="in">int main(int argc, char **argv) {</span></span>
+<span id="cb25-249"><a href="#cb25-249"></a><span class="in">    uint8_t x, y;</span></span>
+<span id="cb25-250"><a href="#cb25-250"></a><span class="in">    x = atoi(argv[1]);</span></span>
+<span id="cb25-251"><a href="#cb25-251"></a><span class="in">    y = atoi(argv[2]);</span></span>
+<span id="cb25-252"><a href="#cb25-252"></a><span class="in">    return x + y;</span></span>
+<span id="cb25-253"><a href="#cb25-253"></a><span class="in">}</span></span>
+<span id="cb25-254"><a href="#cb25-254"></a><span class="in">```</span></span>
+<span id="cb25-255"><a href="#cb25-255"></a></span>
+<span id="cb25-256"><a href="#cb25-256"></a><span class="ss">- </span><span class="in">`atoi`</span> - alphabetical to int</span>
+<span id="cb25-257"><a href="#cb25-257"></a><span class="ss">- </span>From <span class="in">`&lt;stdlib.h&gt;`</span> per <span class="in">`man atoi`</span>, but might work without that.</span>
+<span id="cb25-258"><a href="#cb25-258"></a></span>
+<span id="cb25-259"><a href="#cb25-259"></a><span class="fu">## Do some additions</span></span>
 <span id="cb25-260"><a href="#cb25-260"></a></span>
-<span id="cb25-261"><a href="#cb25-261"></a><span class="fu"># Do some additions</span></span>
-<span id="cb25-262"><a href="#cb25-262"></a></span>
-<span id="cb25-263"><a href="#cb25-263"></a><span class="in">```email</span></span>
-<span id="cb25-264"><a href="#cb25-264"></a>$  ./a.out 100 100 ; echo $?</span>
-<span id="cb25-265"><a href="#cb25-265"></a>200</span>
-<span id="cb25-266"><a href="#cb25-266"></a>$ ./a.out 200 100 ; echo $?</span>
-<span id="cb25-267"><a href="#cb25-267"></a>44</span>
-<span id="cb25-268"><a href="#cb25-268"></a><span class="in">```</span></span>
-<span id="cb25-269"><a href="#cb25-269"></a><span class="ss">- </span>44? From whence?</span>
+<span id="cb25-261"><a href="#cb25-261"></a><span class="in">```email</span></span>
+<span id="cb25-262"><a href="#cb25-262"></a>$  ./a.out 100 100 ; echo $?</span>
+<span id="cb25-263"><a href="#cb25-263"></a>200</span>
+<span id="cb25-264"><a href="#cb25-264"></a>$ ./a.out 200 100 ; echo $?</span>
+<span id="cb25-265"><a href="#cb25-265"></a>44</span>
+<span id="cb25-266"><a href="#cb25-266"></a><span class="in">```</span></span>
+<span id="cb25-267"><a href="#cb25-267"></a><span class="ss">- </span>44? From whence?</span>
+<span id="cb25-268"><a href="#cb25-268"></a></span>
+<span id="cb25-269"><a href="#cb25-269"></a><span class="fu">## uint8_t is *finite*</span></span>
 <span id="cb25-270"><a href="#cb25-270"></a></span>
-<span id="cb25-271"><a href="#cb25-271"></a><span class="fu"># uint8_t is *finite*</span></span>
-<span id="cb25-272"><a href="#cb25-272"></a></span>
-<span id="cb25-273"><a href="#cb25-273"></a><span class="in">```email</span></span>
-<span id="cb25-274"><a href="#cb25-274"></a>&gt;&gt;&gt; 200 + 100</span>
-<span id="cb25-275"><a href="#cb25-275"></a>300</span>
-<span id="cb25-276"><a href="#cb25-276"></a>&gt;&gt;&gt; 2 ** 8</span>
-<span id="cb25-277"><a href="#cb25-277"></a>256</span>
-<span id="cb25-278"><a href="#cb25-278"></a>&gt;&gt;&gt; 300 - 256</span>
+<span id="cb25-271"><a href="#cb25-271"></a><span class="in">```email</span></span>
+<span id="cb25-272"><a href="#cb25-272"></a>&gt;&gt;&gt; 200 + 100</span>
+<span id="cb25-273"><a href="#cb25-273"></a>300</span>
+<span id="cb25-274"><a href="#cb25-274"></a>&gt;&gt;&gt; 2 ** 8</span>
+<span id="cb25-275"><a href="#cb25-275"></a>256</span>
+<span id="cb25-276"><a href="#cb25-276"></a>&gt;&gt;&gt; 300 - 256</span>
+<span id="cb25-277"><a href="#cb25-277"></a>44</span>
+<span id="cb25-278"><a href="#cb25-278"></a>&gt;&gt;&gt; 300 % 256</span>
 <span id="cb25-279"><a href="#cb25-279"></a>44</span>
-<span id="cb25-280"><a href="#cb25-280"></a>&gt;&gt;&gt; 300 % 256</span>
-<span id="cb25-281"><a href="#cb25-281"></a>44</span>
-<span id="cb25-282"><a href="#cb25-282"></a><span class="in">```</span></span>
-<span id="cb25-283"><a href="#cb25-283"></a></span>
-<span id="cb25-284"><a href="#cb25-284"></a><span class="ss">- </span>Operations on <span class="in">`uint8_t`</span> values are equivalent to operations on the natural numbers modulo $2^8$</span>
+<span id="cb25-280"><a href="#cb25-280"></a><span class="in">```</span></span>
+<span id="cb25-281"><a href="#cb25-281"></a></span>
+<span id="cb25-282"><a href="#cb25-282"></a><span class="ss">- </span>Operations on <span class="in">`uint8_t`</span> values are equivalent to operations on the natural numbers modulo $2^8$</span>
+<span id="cb25-283"><a href="#cb25-283"></a>$$</span>
+<span id="cb25-284"><a href="#cb25-284"></a>\mathbb{N}/(2^8)</span>
 <span id="cb25-285"><a href="#cb25-285"></a>$$</span>
-<span id="cb25-286"><a href="#cb25-286"></a>\mathbb{N}/(2^8)</span>
-<span id="cb25-287"><a href="#cb25-287"></a>$$</span>
+<span id="cb25-286"><a href="#cb25-286"></a></span>
+<span id="cb25-287"><a href="#cb25-287"></a><span class="fu">## In practice</span></span>
 <span id="cb25-288"><a href="#cb25-288"></a></span>
-<span id="cb25-289"><a href="#cb25-289"></a><span class="fu"># In practice</span></span>
-<span id="cb25-290"><a href="#cb25-290"></a></span>
-<span id="cb25-291"><a href="#cb25-291"></a><span class="ss">- </span>$\exists$ <span class="in">`INT_MAX`</span>, <span class="in">`UINT_MAX`</span>, <span class="in">`CHAR_MAX`</span>, etc.</span>
-<span id="cb25-292"><a href="#cb25-292"></a><span class="ss">  - </span>They use C names, not <span class="in">`stdint`</span> names</span>
-<span id="cb25-293"><a href="#cb25-293"></a><span class="ss">- </span>Sums and products less than these values are unaffected</span>
-<span id="cb25-294"><a href="#cb25-294"></a><span class="ss">- </span>Sums and products greater than these values are taken modulo said max.</span>
-<span id="cb25-295"><a href="#cb25-295"></a><span class="ss">- </span>$\forall a, b \in$ <span class="in">`uint`</span>$n$<span class="in">`_t`</span> $: a + b \equiv a + b \pmod {2^n}$</span>
+<span id="cb25-289"><a href="#cb25-289"></a><span class="ss">- </span>$\exists$ <span class="in">`INT_MAX`</span>, <span class="in">`UINT_MAX`</span>, <span class="in">`CHAR_MAX`</span>, etc.</span>
+<span id="cb25-290"><a href="#cb25-290"></a><span class="ss">  - </span>They use C names, not <span class="in">`stdint`</span> names</span>
+<span id="cb25-291"><a href="#cb25-291"></a><span class="ss">- </span>Sums and products less than these values are unaffected</span>
+<span id="cb25-292"><a href="#cb25-292"></a><span class="ss">- </span>Sums and products greater than these values are taken modulo said max.</span>
+<span id="cb25-293"><a href="#cb25-293"></a><span class="ss">- </span>$\forall a, b \in$ <span class="in">`uint`</span>$n$<span class="in">`_t`</span> $: a + b \equiv a + b \pmod {2^n}$</span>
+<span id="cb25-294"><a href="#cb25-294"></a></span>
+<span id="cb25-295"><a href="#cb25-295"></a><span class="fu">## Problem Statement</span></span>
 <span id="cb25-296"><a href="#cb25-296"></a></span>
-<span id="cb25-297"><a href="#cb25-297"></a><span class="fu"># Problem Statement</span></span>
+<span id="cb25-297"><a href="#cb25-297"></a><span class="ss">- </span>Quoth GitHub</span>
 <span id="cb25-298"><a href="#cb25-298"></a></span>
-<span id="cb25-299"><a href="#cb25-299"></a><span class="ss">- </span>Quoth GitHub</span>
+<span id="cb25-299"><a href="#cb25-299"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`</span><span class="co">](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)</span></span>
 <span id="cb25-300"><a href="#cb25-300"></a></span>
-<span id="cb25-301"><a href="#cb25-301"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`</span><span class="co">](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)</span></span>
-<span id="cb25-302"><a href="#cb25-302"></a></span>
-<span id="cb25-303"><a href="#cb25-303"></a><span class="ss">- </span>Wait a minute. </span>
-<span id="cb25-304"><a href="#cb25-304"></a><span class="ss">- </span>What does that 4096 stand for?</span>
-<span id="cb25-305"><a href="#cb25-305"></a><span class="ss">  - </span>For what does that 4096 stand?</span>
+<span id="cb25-301"><a href="#cb25-301"></a><span class="ss">- </span>Wait a minute. </span>
+<span id="cb25-302"><a href="#cb25-302"></a><span class="ss">- </span>What does that 4096 stand for?</span>
+<span id="cb25-303"><a href="#cb25-303"></a><span class="ss">  - </span>For what does that 4096 stand?</span>
+<span id="cb25-304"><a href="#cb25-304"></a></span>
+<span id="cb25-305"><a href="#cb25-305"></a><span class="fu">## 4096 bits</span></span>
 <span id="cb25-306"><a href="#cb25-306"></a></span>
-<span id="cb25-307"><a href="#cb25-307"></a><span class="fu"># 4096 bits</span></span>
-<span id="cb25-308"><a href="#cb25-308"></a></span>
-<span id="cb25-309"><a href="#cb25-309"></a><span class="ss">- </span>Modern security recommendations are for 4096 bit cryptographic keys.</span>
-<span id="cb25-310"><a href="#cb25-310"></a><span class="ss">  - </span>2048 is generally considered "okay" or "acceptable"</span>
-<span id="cb25-311"><a href="#cb25-311"></a></span>
-<span id="cb25-312"><a href="#cb25-312"></a><span class="in">```email</span></span>
-<span id="cb25-313"><a href="#cb25-313"></a>NAME</span>
-<span id="cb25-314"><a href="#cb25-314"></a>     ssh-keygen — OpenSSH authentication key utility</span>
-<span id="cb25-315"><a href="#cb25-315"></a></span>
-<span id="cb25-316"><a href="#cb25-316"></a>SYNOPSIS</span>
-<span id="cb25-317"><a href="#cb25-317"></a>     ssh-keygen [-q] [-a rounds] [-b bits] </span>
-<span id="cb25-318"><a href="#cb25-318"></a><span class="in">```</span></span>
+<span id="cb25-307"><a href="#cb25-307"></a><span class="ss">- </span>Modern security recommendations are for 4096 bit cryptographic keys.</span>
+<span id="cb25-308"><a href="#cb25-308"></a><span class="ss">  - </span>2048 is generally considered "okay" or "acceptable"</span>
+<span id="cb25-309"><a href="#cb25-309"></a></span>
+<span id="cb25-310"><a href="#cb25-310"></a><span class="in">```email</span></span>
+<span id="cb25-311"><a href="#cb25-311"></a>NAME</span>
+<span id="cb25-312"><a href="#cb25-312"></a>     ssh-keygen — OpenSSH authentication key utility</span>
+<span id="cb25-313"><a href="#cb25-313"></a></span>
+<span id="cb25-314"><a href="#cb25-314"></a>SYNOPSIS</span>
+<span id="cb25-315"><a href="#cb25-315"></a>     ssh-keygen [-q] [-a rounds] [-b bits] </span>
+<span id="cb25-316"><a href="#cb25-316"></a><span class="in">```</span></span>
+<span id="cb25-317"><a href="#cb25-317"></a></span>
+<span id="cb25-318"><a href="#cb25-318"></a><span class="fu">## These Slides</span></span>
 <span id="cb25-319"><a href="#cb25-319"></a></span>
-<span id="cb25-320"><a href="#cb25-320"></a><span class="fu"># These Slides</span></span>
-<span id="cb25-321"><a href="#cb25-321"></a></span>
-<span id="cb25-322"><a href="#cb25-322"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
-<span id="cb25-323"><a href="#cb25-323"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
-<span id="cb25-324"><a href="#cb25-324"></a><span class="ss">- </span>New</span>
-<span id="cb25-325"><a href="#cb25-325"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
-<span id="cb25-326"><a href="#cb25-326"></a><span class="ss">  - </span>Arbitrary/high precision integers</span>
-<span id="cb25-327"><a href="#cb25-327"></a><span class="ss">  - </span>Arithmetic operations</span>
-<span id="cb25-328"><a href="#cb25-328"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-320"><a href="#cb25-320"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
+<span id="cb25-321"><a href="#cb25-321"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
+<span id="cb25-322"><a href="#cb25-322"></a><span class="ss">- </span>New</span>
+<span id="cb25-323"><a href="#cb25-323"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
+<span id="cb25-324"><a href="#cb25-324"></a><span class="ss">  - </span>Arbitrary/high precision integers</span>
+<span id="cb25-325"><a href="#cb25-325"></a><span class="ss">  - </span>Arithmetic operations</span>
+<span id="cb25-326"><a href="#cb25-326"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-327"><a href="#cb25-327"></a></span>
+<span id="cb25-328"><a href="#cb25-328"></a><span class="fu">## Big Values</span></span>
 <span id="cb25-329"><a href="#cb25-329"></a></span>
-<span id="cb25-330"><a href="#cb25-330"></a><span class="fu"># Big Values</span></span>
-<span id="cb25-331"><a href="#cb25-331"></a></span>
-<span id="cb25-332"><a href="#cb25-332"></a><span class="ss">- </span>Soon, we will implement RSA</span>
-<span id="cb25-333"><a href="#cb25-333"></a><span class="ss">  - </span>We'll talk about what it is then.</span>
-<span id="cb25-334"><a href="#cb25-334"></a><span class="ss">- </span>First, we need a way to deal with integers that big.</span>
-<span id="cb25-335"><a href="#cb25-335"></a><span class="ss">- </span>We will use *modular arithmetic*.</span>
-<span id="cb25-336"><a href="#cb25-336"></a><span class="ss">  - </span>Finite <span class="in">`uint64_t`</span> models infinite $\mathbb{N}$</span>
+<span id="cb25-330"><a href="#cb25-330"></a><span class="ss">- </span>Soon, we will implement RSA</span>
+<span id="cb25-331"><a href="#cb25-331"></a><span class="ss">  - </span>We'll talk about what it is then.</span>
+<span id="cb25-332"><a href="#cb25-332"></a><span class="ss">- </span>First, we need a way to deal with integers that big.</span>
+<span id="cb25-333"><a href="#cb25-333"></a><span class="ss">- </span>We will use *modular arithmetic*.</span>
+<span id="cb25-334"><a href="#cb25-334"></a><span class="ss">  - </span>Finite <span class="in">`uint64_t`</span> models infinite $\mathbb{N}$</span>
+<span id="cb25-335"><a href="#cb25-335"></a></span>
+<span id="cb25-336"><a href="#cb25-336"></a><span class="fu">## Simple Example</span></span>
 <span id="cb25-337"><a href="#cb25-337"></a></span>
-<span id="cb25-338"><a href="#cb25-338"></a><span class="fu"># Simple Example</span></span>
-<span id="cb25-339"><a href="#cb25-339"></a></span>
-<span id="cb25-340"><a href="#cb25-340"></a><span class="ss">- </span>Recall this example from a data application.</span>
-<span id="cb25-341"><a href="#cb25-341"></a><span class="ss">- </span>We had a data set for which we determined a mean height in inches.</span>
-<span id="cb25-342"><a href="#cb25-342"></a><span class="ss">- </span>We converted it to inches and feet.</span>
-<span id="cb25-343"><a href="#cb25-343"></a><span class="in">```python</span></span>
-<span id="cb25-344"><a href="#cb25-344"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">69.3</span> <span class="op">//</span> <span class="dv">12</span>, <span class="fl">69.3</span> <span class="op">%</span> <span class="dv">12</span></span>
-<span id="cb25-345"><a href="#cb25-345"></a>(<span class="fl">5.0</span>, <span class="fl">9.299999999999997</span>)</span>
-<span id="cb25-346"><a href="#cb25-346"></a><span class="in">```</span></span>
+<span id="cb25-338"><a href="#cb25-338"></a><span class="ss">- </span>Recall this example from a data application.</span>
+<span id="cb25-339"><a href="#cb25-339"></a><span class="ss">- </span>We had a data set for which we determined a mean height in inches.</span>
+<span id="cb25-340"><a href="#cb25-340"></a><span class="ss">- </span>We converted it to inches and feet.</span>
+<span id="cb25-341"><a href="#cb25-341"></a><span class="in">```python</span></span>
+<span id="cb25-342"><a href="#cb25-342"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">69.3</span> <span class="op">//</span> <span class="dv">12</span>, <span class="fl">69.3</span> <span class="op">%</span> <span class="dv">12</span></span>
+<span id="cb25-343"><a href="#cb25-343"></a>(<span class="fl">5.0</span>, <span class="fl">9.299999999999997</span>)</span>
+<span id="cb25-344"><a href="#cb25-344"></a><span class="in">```</span></span>
+<span id="cb25-345"><a href="#cb25-345"></a></span>
+<span id="cb25-346"><a href="#cb25-346"></a><span class="fu">## Addition is easy</span></span>
 <span id="cb25-347"><a href="#cb25-347"></a></span>
-<span id="cb25-348"><a href="#cb25-348"></a><span class="fu"># Addition is easy</span></span>
-<span id="cb25-349"><a href="#cb25-349"></a></span>
-<span id="cb25-350"><a href="#cb25-350"></a><span class="ss">- </span>WNBA MVP and Olympic Gold Medalist A'ja Wilson is <span class="co">[</span><span class="ot">6 ft 4 in</span><span class="co">](https://en.wikipedia.org/wiki/A%27ja_Wilson)</span></span>
-<span id="cb25-351"><a href="#cb25-351"></a><span class="ss">- </span>How much taller is that than 5 ft 9.3 in</span>
-<span id="cb25-352"><a href="#cb25-352"></a><span class="ss">  - </span>Can convert to non-integer inches, but...</span>
-<span id="cb25-353"><a href="#cb25-353"></a><span class="ss">  - </span>We already had the .299... problem</span>
+<span id="cb25-348"><a href="#cb25-348"></a><span class="ss">- </span>WNBA MVP and Olympic Gold Medalist A'ja Wilson is <span class="co">[</span><span class="ot">6 ft 4 in</span><span class="co">](https://en.wikipedia.org/wiki/A%27ja_Wilson)</span></span>
+<span id="cb25-349"><a href="#cb25-349"></a><span class="ss">- </span>How much taller is that than 5 ft 9.3 in</span>
+<span id="cb25-350"><a href="#cb25-350"></a><span class="ss">  - </span>Can convert to non-integer inches, but...</span>
+<span id="cb25-351"><a href="#cb25-351"></a><span class="ss">  - </span>We already had the .299... problem</span>
+<span id="cb25-352"><a href="#cb25-352"></a></span>
+<span id="cb25-353"><a href="#cb25-353"></a><span class="fu">## Difference</span></span>
 <span id="cb25-354"><a href="#cb25-354"></a></span>
-<span id="cb25-355"><a href="#cb25-355"></a><span class="fu"># Difference</span></span>
-<span id="cb25-356"><a href="#cb25-356"></a></span>
-<span id="cb25-357"><a href="#cb25-357"></a><span class="ss">- </span>We perform "long subtraction"</span>
-<span id="cb25-358"><a href="#cb25-358"></a><span class="ss">- </span>It's fun!</span>
-<span id="cb25-359"><a href="#cb25-359"></a></span>
-<span id="cb25-360"><a href="#cb25-360"></a>| |ft|in.|.in|</span>
-<span id="cb25-361"><a href="#cb25-361"></a>|-|--|---|---|</span>
-<span id="cb25-362"><a href="#cb25-362"></a>|A'ja|6|4|0|</span>
-<span id="cb25-363"><a href="#cb25-363"></a>|Mean|5|9|3|</span>
+<span id="cb25-355"><a href="#cb25-355"></a><span class="ss">- </span>We perform "long subtraction"</span>
+<span id="cb25-356"><a href="#cb25-356"></a><span class="ss">- </span>It's fun!</span>
+<span id="cb25-357"><a href="#cb25-357"></a></span>
+<span id="cb25-358"><a href="#cb25-358"></a>| |ft|in.|.in|</span>
+<span id="cb25-359"><a href="#cb25-359"></a>|-|--|---|---|</span>
+<span id="cb25-360"><a href="#cb25-360"></a>|A'ja|6|4|0|</span>
+<span id="cb25-361"><a href="#cb25-361"></a>|Mean|5|9|3|</span>
+<span id="cb25-362"><a href="#cb25-362"></a></span>
+<span id="cb25-363"><a href="#cb25-363"></a><span class="fu">## Difference</span></span>
 <span id="cb25-364"><a href="#cb25-364"></a></span>
-<span id="cb25-365"><a href="#cb25-365"></a><span class="fu"># Difference</span></span>
-<span id="cb25-366"><a href="#cb25-366"></a></span>
-<span id="cb25-367"><a href="#cb25-367"></a><span class="ss">- </span>$0 - 3 \equiv 7 \pmod{10}$</span>
-<span id="cb25-368"><a href="#cb25-368"></a><span class="ss">- </span>Tenths of inches</span>
-<span id="cb25-369"><a href="#cb25-369"></a></span>
-<span id="cb25-370"><a href="#cb25-370"></a>| |ft|in.|.in|</span>
-<span id="cb25-371"><a href="#cb25-371"></a>|-|--|---|---|</span>
-<span id="cb25-372"><a href="#cb25-372"></a>|A'ja|6|4|0|</span>
-<span id="cb25-373"><a href="#cb25-373"></a>|Mean|5|9|3|</span>
-<span id="cb25-374"><a href="#cb25-374"></a>|Diff| | |7|</span>
+<span id="cb25-365"><a href="#cb25-365"></a><span class="ss">- </span>$0 - 3 \equiv 7 \pmod{10}$</span>
+<span id="cb25-366"><a href="#cb25-366"></a><span class="ss">- </span>Tenths of inches</span>
+<span id="cb25-367"><a href="#cb25-367"></a></span>
+<span id="cb25-368"><a href="#cb25-368"></a>| |ft|in.|.in|</span>
+<span id="cb25-369"><a href="#cb25-369"></a>|-|--|---|---|</span>
+<span id="cb25-370"><a href="#cb25-370"></a>|A'ja|6|4|0|</span>
+<span id="cb25-371"><a href="#cb25-371"></a>|Mean|5|9|3|</span>
+<span id="cb25-372"><a href="#cb25-372"></a>|Diff| | |7|</span>
+<span id="cb25-373"><a href="#cb25-373"></a></span>
+<span id="cb25-374"><a href="#cb25-374"></a><span class="fu">## Difference</span></span>
 <span id="cb25-375"><a href="#cb25-375"></a></span>
-<span id="cb25-376"><a href="#cb25-376"></a><span class="fu"># Difference</span></span>
-<span id="cb25-377"><a href="#cb25-377"></a></span>
-<span id="cb25-378"><a href="#cb25-378"></a><span class="ss">- </span>But wait - <span class="in">`3`</span> is more than <span class="in">`0`</span></span>
-<span id="cb25-379"><a href="#cb25-379"></a><span class="ss">- </span>Track via a "carry"</span>
-<span id="cb25-380"><a href="#cb25-380"></a></span>
-<span id="cb25-381"><a href="#cb25-381"></a>| |ft|in.|.in|</span>
-<span id="cb25-382"><a href="#cb25-382"></a>|-|--|---|---|</span>
-<span id="cb25-383"><a href="#cb25-383"></a>|A'ja|6|4|0|</span>
-<span id="cb25-384"><a href="#cb25-384"></a>|Mean|5|9|3|</span>
-<span id="cb25-385"><a href="#cb25-385"></a>|Carry|0|1|0|</span>
-<span id="cb25-386"><a href="#cb25-386"></a>|Diff| | |7|</span>
+<span id="cb25-376"><a href="#cb25-376"></a><span class="ss">- </span>But wait - <span class="in">`3`</span> is more than <span class="in">`0`</span></span>
+<span id="cb25-377"><a href="#cb25-377"></a><span class="ss">- </span>Track via a "carry"</span>
+<span id="cb25-378"><a href="#cb25-378"></a></span>
+<span id="cb25-379"><a href="#cb25-379"></a>| |ft|in.|.in|</span>
+<span id="cb25-380"><a href="#cb25-380"></a>|-|--|---|---|</span>
+<span id="cb25-381"><a href="#cb25-381"></a>|A'ja|6|4|0|</span>
+<span id="cb25-382"><a href="#cb25-382"></a>|Mean|5|9|3|</span>
+<span id="cb25-383"><a href="#cb25-383"></a>|Carry|0|1|0|</span>
+<span id="cb25-384"><a href="#cb25-384"></a>|Diff| | |7|</span>
+<span id="cb25-385"><a href="#cb25-385"></a></span>
+<span id="cb25-386"><a href="#cb25-386"></a><span class="fu">## Difference</span></span>
 <span id="cb25-387"><a href="#cb25-387"></a></span>
-<span id="cb25-388"><a href="#cb25-388"></a><span class="fu"># Difference</span></span>
-<span id="cb25-389"><a href="#cb25-389"></a></span>
-<span id="cb25-390"><a href="#cb25-390"></a><span class="ss">- </span>$4 - 9 - 1 \equiv 6 \pmod{12}$</span>
-<span id="cb25-391"><a href="#cb25-391"></a><span class="ss">- </span>12 in = 1 ft</span>
-<span id="cb25-392"><a href="#cb25-392"></a></span>
-<span id="cb25-393"><a href="#cb25-393"></a>| |ft|in.|.in|</span>
-<span id="cb25-394"><a href="#cb25-394"></a>|-|--|---|---|</span>
-<span id="cb25-395"><a href="#cb25-395"></a>|A'ja|6|4|0|</span>
-<span id="cb25-396"><a href="#cb25-396"></a>|Mean|5|9|3|</span>
-<span id="cb25-397"><a href="#cb25-397"></a>|Carry|0|1|0|</span>
-<span id="cb25-398"><a href="#cb25-398"></a>|Diff| |6|7|</span>
-<span id="cb25-399"><a href="#cb25-399"></a></span>
+<span id="cb25-388"><a href="#cb25-388"></a><span class="ss">- </span>$4 - 9 - 1 \equiv 6 \pmod{12}$</span>
+<span id="cb25-389"><a href="#cb25-389"></a><span class="ss">- </span>12 in = 1 ft</span>
+<span id="cb25-390"><a href="#cb25-390"></a></span>
+<span id="cb25-391"><a href="#cb25-391"></a>| |ft|in.|.in|</span>
+<span id="cb25-392"><a href="#cb25-392"></a>|-|--|---|---|</span>
+<span id="cb25-393"><a href="#cb25-393"></a>|A'ja|6|4|0|</span>
+<span id="cb25-394"><a href="#cb25-394"></a>|Mean|5|9|3|</span>
+<span id="cb25-395"><a href="#cb25-395"></a>|Carry|0|1|0|</span>
+<span id="cb25-396"><a href="#cb25-396"></a>|Diff| |6|7|</span>
+<span id="cb25-397"><a href="#cb25-397"></a></span>
+<span id="cb25-398"><a href="#cb25-398"></a></span>
+<span id="cb25-399"><a href="#cb25-399"></a><span class="fu">## Difference</span></span>
 <span id="cb25-400"><a href="#cb25-400"></a></span>
-<span id="cb25-401"><a href="#cb25-401"></a><span class="fu"># Difference</span></span>
-<span id="cb25-402"><a href="#cb25-402"></a></span>
-<span id="cb25-403"><a href="#cb25-403"></a><span class="ss">- </span>Another carry.</span>
-<span id="cb25-404"><a href="#cb25-404"></a><span class="ss">- </span>12 in = 1 ft</span>
-<span id="cb25-405"><a href="#cb25-405"></a></span>
-<span id="cb25-406"><a href="#cb25-406"></a>| |ft|in.|.in|</span>
-<span id="cb25-407"><a href="#cb25-407"></a>|-|--|---|---|</span>
-<span id="cb25-408"><a href="#cb25-408"></a>|A'ja|6|4|0|</span>
-<span id="cb25-409"><a href="#cb25-409"></a>|Mean|5|9|3|</span>
-<span id="cb25-410"><a href="#cb25-410"></a>|Carry|1|0|0|</span>
-<span id="cb25-411"><a href="#cb25-411"></a>|Diff| |6|7|</span>
-<span id="cb25-412"><a href="#cb25-412"></a></span>
+<span id="cb25-401"><a href="#cb25-401"></a><span class="ss">- </span>Another carry.</span>
+<span id="cb25-402"><a href="#cb25-402"></a><span class="ss">- </span>12 in = 1 ft</span>
+<span id="cb25-403"><a href="#cb25-403"></a></span>
+<span id="cb25-404"><a href="#cb25-404"></a>| |ft|in.|.in|</span>
+<span id="cb25-405"><a href="#cb25-405"></a>|-|--|---|---|</span>
+<span id="cb25-406"><a href="#cb25-406"></a>|A'ja|6|4|0|</span>
+<span id="cb25-407"><a href="#cb25-407"></a>|Mean|5|9|3|</span>
+<span id="cb25-408"><a href="#cb25-408"></a>|Carry|1|0|0|</span>
+<span id="cb25-409"><a href="#cb25-409"></a>|Diff| |6|7|</span>
+<span id="cb25-410"><a href="#cb25-410"></a></span>
+<span id="cb25-411"><a href="#cb25-411"></a></span>
+<span id="cb25-412"><a href="#cb25-412"></a><span class="fu">## Difference</span></span>
 <span id="cb25-413"><a href="#cb25-413"></a></span>
-<span id="cb25-414"><a href="#cb25-414"></a><span class="fu"># Difference</span></span>
-<span id="cb25-415"><a href="#cb25-415"></a></span>
-<span id="cb25-416"><a href="#cb25-416"></a><span class="ss">- </span>$6 - 5 - 1 = 0$</span>
-<span id="cb25-417"><a href="#cb25-417"></a><span class="ss">- </span>Nonmodular - feet has no max.</span>
-<span id="cb25-418"><a href="#cb25-418"></a></span>
-<span id="cb25-419"><a href="#cb25-419"></a>| |ft|in.|.in|</span>
-<span id="cb25-420"><a href="#cb25-420"></a>|-|--|---|---|</span>
-<span id="cb25-421"><a href="#cb25-421"></a>|A'ja|6|4|0|</span>
-<span id="cb25-422"><a href="#cb25-422"></a>|Mean|5|9|3|</span>
-<span id="cb25-423"><a href="#cb25-423"></a>|Carry|1|0|0|</span>
-<span id="cb25-424"><a href="#cb25-424"></a>|Diff|0|6|7|</span>
+<span id="cb25-414"><a href="#cb25-414"></a><span class="ss">- </span>$6 - 5 - 1 = 0$</span>
+<span id="cb25-415"><a href="#cb25-415"></a><span class="ss">- </span>Nonmodular - feet has no max.</span>
+<span id="cb25-416"><a href="#cb25-416"></a></span>
+<span id="cb25-417"><a href="#cb25-417"></a>| |ft|in.|.in|</span>
+<span id="cb25-418"><a href="#cb25-418"></a>|-|--|---|---|</span>
+<span id="cb25-419"><a href="#cb25-419"></a>|A'ja|6|4|0|</span>
+<span id="cb25-420"><a href="#cb25-420"></a>|Mean|5|9|3|</span>
+<span id="cb25-421"><a href="#cb25-421"></a>|Carry|1|0|0|</span>
+<span id="cb25-422"><a href="#cb25-422"></a>|Diff|0|6|7|</span>
+<span id="cb25-423"><a href="#cb25-423"></a></span>
+<span id="cb25-424"><a href="#cb25-424"></a><span class="fu">## Conclusion</span></span>
 <span id="cb25-425"><a href="#cb25-425"></a></span>
-<span id="cb25-426"><a href="#cb25-426"></a><span class="fu"># Conclusion</span></span>
-<span id="cb25-427"><a href="#cb25-427"></a></span>
-<span id="cb25-428"><a href="#cb25-428"></a><span class="ss">- </span>Iconic living legend A'ja Wilson is tall af.</span>
-<span id="cb25-429"><a href="#cb25-429"></a><span class="ss">- </span>We can do addition and substraction on larger values than <span class="in">`UINT_MAX`</span> or <span class="in">`ULONG_MAX`</span> by:</span>
-<span id="cb25-430"><a href="#cb25-430"></a><span class="ss">  - </span>Breaking numbers in smaller ranges</span>
-<span id="cb25-431"><a href="#cb25-431"></a><span class="ss">    - </span>A tenths digit</span>
-<span id="cb25-432"><a href="#cb25-432"></a><span class="ss">    - </span>A ones digit</span>
-<span id="cb25-433"><a href="#cb25-433"></a><span class="ss">    - </span>A twelves digit</span>
+<span id="cb25-426"><a href="#cb25-426"></a><span class="ss">- </span>Iconic living legend A'ja Wilson is tall af.</span>
+<span id="cb25-427"><a href="#cb25-427"></a><span class="ss">- </span>We can do addition and substraction on larger values than <span class="in">`UINT_MAX`</span> or <span class="in">`ULONG_MAX`</span> by:</span>
+<span id="cb25-428"><a href="#cb25-428"></a><span class="ss">  - </span>Breaking numbers in smaller ranges</span>
+<span id="cb25-429"><a href="#cb25-429"></a><span class="ss">    - </span>A tenths digit</span>
+<span id="cb25-430"><a href="#cb25-430"></a><span class="ss">    - </span>A ones digit</span>
+<span id="cb25-431"><a href="#cb25-431"></a><span class="ss">    - </span>A twelves digit</span>
+<span id="cb25-432"><a href="#cb25-432"></a></span>
+<span id="cb25-433"><a href="#cb25-433"></a><span class="fu">## Exercise</span></span>
 <span id="cb25-434"><a href="#cb25-434"></a></span>
-<span id="cb25-435"><a href="#cb25-435"></a><span class="fu"># Exercise</span></span>
-<span id="cb25-436"><a href="#cb25-436"></a></span>
-<span id="cb25-437"><a href="#cb25-437"></a><span class="ss">- </span>Make a height adder, try <span class="in">`man scanf`</span></span>
-<span id="cb25-438"><a href="#cb25-438"></a><span class="in">```{.C filename="hadder.c"}</span></span>
-<span id="cb25-439"><a href="#cb25-439"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
-<span id="cb25-440"><a href="#cb25-440"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
-<span id="cb25-441"><a href="#cb25-441"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb25-442"><a href="#cb25-442"></a></span>
-<span id="cb25-443"><a href="#cb25-443"></a><span class="in">int main() {</span></span>
-<span id="cb25-444"><a href="#cb25-444"></a><span class="in">        int buf[6];</span></span>
-<span id="cb25-445"><a href="#cb25-445"></a><span class="in">        printf("Insert 2 heights as XftY.Zin, each on their own line\n");</span></span>
-<span id="cb25-446"><a href="#cb25-446"></a><span class="in">        scanf("%dft%d.%din", &amp;buf[0], &amp;buf[1], &amp;buf[2]);</span></span>
-<span id="cb25-447"><a href="#cb25-447"></a><span class="in">        scanf("%dft%d.%din", &amp;buf[3], &amp;buf[4], &amp;buf[5]);</span></span>
+<span id="cb25-435"><a href="#cb25-435"></a><span class="ss">- </span>Make a height adder, try <span class="in">`man scanf`</span></span>
+<span id="cb25-436"><a href="#cb25-436"></a><span class="in">```{.C filename="hadder.c"}</span></span>
+<span id="cb25-437"><a href="#cb25-437"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
+<span id="cb25-438"><a href="#cb25-438"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
+<span id="cb25-439"><a href="#cb25-439"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb25-440"><a href="#cb25-440"></a></span>
+<span id="cb25-441"><a href="#cb25-441"></a><span class="in">int main() {</span></span>
+<span id="cb25-442"><a href="#cb25-442"></a><span class="in">        int buf[6];</span></span>
+<span id="cb25-443"><a href="#cb25-443"></a><span class="in">        printf("Insert 2 heights as XftY.Zin, each on their own line\n");</span></span>
+<span id="cb25-444"><a href="#cb25-444"></a><span class="in">        scanf("%dft%d.%din", &amp;buf[0], &amp;buf[1], &amp;buf[2]);</span></span>
+<span id="cb25-445"><a href="#cb25-445"></a><span class="in">        scanf("%dft%d.%din", &amp;buf[3], &amp;buf[4], &amp;buf[5]);</span></span>
+<span id="cb25-446"><a href="#cb25-446"></a></span>
+<span id="cb25-447"><a href="#cb25-447"></a><span class="in">        printf("%dft%d.%din\n", buf[0], buf[1], buf[2]);</span></span>
 <span id="cb25-448"><a href="#cb25-448"></a></span>
-<span id="cb25-449"><a href="#cb25-449"></a><span class="in">        printf("%dft%d.%din\n", buf[0], buf[1], buf[2]);</span></span>
-<span id="cb25-450"><a href="#cb25-450"></a></span>
-<span id="cb25-451"><a href="#cb25-451"></a><span class="in">        return 0;</span></span>
-<span id="cb25-452"><a href="#cb25-452"></a><span class="in">}</span></span>
-<span id="cb25-453"><a href="#cb25-453"></a><span class="in">```</span></span>
-<span id="cb25-454"><a href="#cb25-454"></a></span>
+<span id="cb25-449"><a href="#cb25-449"></a><span class="in">        return 0;</span></span>
+<span id="cb25-450"><a href="#cb25-450"></a><span class="in">}</span></span>
+<span id="cb25-451"><a href="#cb25-451"></a><span class="in">```</span></span>
+<span id="cb25-452"><a href="#cb25-452"></a></span>
+<span id="cb25-453"><a href="#cb25-453"></a></span>
+<span id="cb25-454"><a href="#cb25-454"></a><span class="fu">## Usefulness</span></span>
 <span id="cb25-455"><a href="#cb25-455"></a></span>
-<span id="cb25-456"><a href="#cb25-456"></a><span class="fu"># Usefulness</span></span>
-<span id="cb25-457"><a href="#cb25-457"></a></span>
-<span id="cb25-458"><a href="#cb25-458"></a><span class="ss">- </span>We can now do arithmetic correctly</span>
-<span id="cb25-459"><a href="#cb25-459"></a><span class="ss">  - </span>@Python</span>
-<span id="cb25-460"><a href="#cb25-460"></a><span class="ss">- </span>What else can we do?</span>
-<span id="cb25-461"><a href="#cb25-461"></a><span class="ss">  - </span>Arbitrary (not infinite) precision.</span>
+<span id="cb25-456"><a href="#cb25-456"></a><span class="ss">- </span>We can now do arithmetic correctly</span>
+<span id="cb25-457"><a href="#cb25-457"></a><span class="ss">  - </span>@Python</span>
+<span id="cb25-458"><a href="#cb25-458"></a><span class="ss">- </span>What else can we do?</span>
+<span id="cb25-459"><a href="#cb25-459"></a><span class="ss">  - </span>Arbitrary (not infinite) precision.</span>
+<span id="cb25-460"><a href="#cb25-460"></a></span>
+<span id="cb25-461"><a href="#cb25-461"></a><span class="fu">## FAQ</span></span>
 <span id="cb25-462"><a href="#cb25-462"></a></span>
-<span id="cb25-463"><a href="#cb25-463"></a><span class="fu"># FAQ</span></span>
-<span id="cb25-464"><a href="#cb25-464"></a></span>
-<span id="cb25-465"><a href="#cb25-465"></a><span class="ss">- </span>Can we use this to add numbers bigger than $2^n$ using adds over at most $n$ bits at a time?</span>
-<span id="cb25-466"><a href="#cb25-466"></a><span class="ss">  - </span>Sure! Change the modulos and you're set.</span>
-<span id="cb25-467"><a href="#cb25-467"></a><span class="ss">    - </span>Get it? Because the numbers form a set?</span>
-<span id="cb25-468"><a href="#cb25-468"></a><span class="ss">- </span>Can we do this for more than 3 fields?</span>
-<span id="cb25-469"><a href="#cb25-469"></a><span class="ss">  - </span>Sure! Just put the middle (both consumes and produces a carry bit) in a loop!</span>
+<span id="cb25-463"><a href="#cb25-463"></a><span class="ss">- </span>Can we use this to add numbers bigger than $2^n$ using adds over at most $n$ bits at a time?</span>
+<span id="cb25-464"><a href="#cb25-464"></a><span class="ss">  - </span>Sure! Change the modulos and you're set.</span>
+<span id="cb25-465"><a href="#cb25-465"></a><span class="ss">    - </span>Get it? Because the numbers form a set?</span>
+<span id="cb25-466"><a href="#cb25-466"></a><span class="ss">- </span>Can we do this for more than 3 fields?</span>
+<span id="cb25-467"><a href="#cb25-467"></a><span class="ss">  - </span>Sure! Just put the middle (both consumes and produces a carry bit) in a loop!</span>
+<span id="cb25-468"><a href="#cb25-468"></a></span>
+<span id="cb25-469"><a href="#cb25-469"></a><span class="fu">## These Slides</span></span>
 <span id="cb25-470"><a href="#cb25-470"></a></span>
-<span id="cb25-471"><a href="#cb25-471"></a><span class="fu"># These Slides</span></span>
-<span id="cb25-472"><a href="#cb25-472"></a></span>
-<span id="cb25-473"><a href="#cb25-473"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
-<span id="cb25-474"><a href="#cb25-474"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
-<span id="cb25-475"><a href="#cb25-475"></a><span class="ss">- </span>New</span>
-<span id="cb25-476"><a href="#cb25-476"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
-<span id="cb25-477"><a href="#cb25-477"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
-<span id="cb25-478"><a href="#cb25-478"></a><span class="ss">  - </span>Arithmetic operations</span>
-<span id="cb25-479"><a href="#cb25-479"></a><span class="ss">  - </span>Function types</span>
-<span id="cb25-480"><a href="#cb25-480"></a></span>
+<span id="cb25-471"><a href="#cb25-471"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
+<span id="cb25-472"><a href="#cb25-472"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
+<span id="cb25-473"><a href="#cb25-473"></a><span class="ss">- </span>New</span>
+<span id="cb25-474"><a href="#cb25-474"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
+<span id="cb25-475"><a href="#cb25-475"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
+<span id="cb25-476"><a href="#cb25-476"></a><span class="ss">  - </span>Arithmetic operations</span>
+<span id="cb25-477"><a href="#cb25-477"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-478"><a href="#cb25-478"></a></span>
+<span id="cb25-479"><a href="#cb25-479"></a></span>
+<span id="cb25-480"><a href="#cb25-480"></a><span class="fu">## Easy Mode</span></span>
 <span id="cb25-481"><a href="#cb25-481"></a></span>
-<span id="cb25-482"><a href="#cb25-482"></a><span class="fu"># Easy Mode</span></span>
-<span id="cb25-483"><a href="#cb25-483"></a></span>
-<span id="cb25-484"><a href="#cb25-484"></a><span class="ss">- </span>Addition and subtraction are easy.</span>
-<span id="cb25-485"><a href="#cb25-485"></a><span class="ss">- </span>For some value of easy.</span>
-<span id="cb25-486"><a href="#cb25-486"></a><span class="ss">  - </span>Cut a too-big number into chunks.</span>
-<span id="cb25-487"><a href="#cb25-487"></a><span class="ss">  - </span>Add or subtract within chunks of the same index/offset/significance.</span>
-<span id="cb25-488"><a href="#cb25-488"></a><span class="ss">  - </span>Only wrinkle is a carry bit.</span>
-<span id="cb25-489"><a href="#cb25-489"></a><span class="ss">- </span>Identical to digit-based addition.</span>
-<span id="cb25-490"><a href="#cb25-490"></a><span class="ss">  - </span><span class="in">`uint8_t`</span>s as digits in base 256 arithmetic</span>
+<span id="cb25-482"><a href="#cb25-482"></a><span class="ss">- </span>Addition and subtraction are easy.</span>
+<span id="cb25-483"><a href="#cb25-483"></a><span class="ss">- </span>For some value of easy.</span>
+<span id="cb25-484"><a href="#cb25-484"></a><span class="ss">  - </span>Cut a too-big number into chunks.</span>
+<span id="cb25-485"><a href="#cb25-485"></a><span class="ss">  - </span>Add or subtract within chunks of the same index/offset/significance.</span>
+<span id="cb25-486"><a href="#cb25-486"></a><span class="ss">  - </span>Only wrinkle is a carry bit.</span>
+<span id="cb25-487"><a href="#cb25-487"></a><span class="ss">- </span>Identical to digit-based addition.</span>
+<span id="cb25-488"><a href="#cb25-488"></a><span class="ss">  - </span><span class="in">`uint8_t`</span>s as digits in base 256 arithmetic</span>
+<span id="cb25-489"><a href="#cb25-489"></a></span>
+<span id="cb25-490"><a href="#cb25-490"></a><span class="fu">## Hard Mode</span></span>
 <span id="cb25-491"><a href="#cb25-491"></a></span>
-<span id="cb25-492"><a href="#cb25-492"></a><span class="fu"># Hard Mode</span></span>
-<span id="cb25-493"><a href="#cb25-493"></a></span>
-<span id="cb25-494"><a href="#cb25-494"></a><span class="ss">- </span>Some cryptographical algorithms, however, use two extremely advanced arithmetic operations:</span>
-<span id="cb25-495"><a href="#cb25-495"></a><span class="ss">  - </span>Multiplication, and</span>
-<span id="cb25-496"><a href="#cb25-496"></a><span class="ss">  - </span>Division, and</span>
-<span id="cb25-497"><a href="#cb25-497"></a><span class="ss">  - </span>Modulo</span>
-<span id="cb25-498"><a href="#cb25-498"></a><span class="ss">- </span>Fortunately this only two operations (need a combined <span class="in">`divmod`</span>)</span>
+<span id="cb25-492"><a href="#cb25-492"></a><span class="ss">- </span>Some cryptographical algorithms, however, use two extremely advanced arithmetic operations:</span>
+<span id="cb25-493"><a href="#cb25-493"></a><span class="ss">  - </span>Multiplication, and</span>
+<span id="cb25-494"><a href="#cb25-494"></a><span class="ss">  - </span>Division, and</span>
+<span id="cb25-495"><a href="#cb25-495"></a><span class="ss">  - </span>Modulo</span>
+<span id="cb25-496"><a href="#cb25-496"></a><span class="ss">- </span>Fortunately this only two operations (need a combined <span class="in">`divmod`</span>)</span>
+<span id="cb25-497"><a href="#cb25-497"></a></span>
+<span id="cb25-498"><a href="#cb25-498"></a><span class="fu">## Example</span></span>
 <span id="cb25-499"><a href="#cb25-499"></a></span>
-<span id="cb25-500"><a href="#cb25-500"></a><span class="fu"># Example</span></span>
-<span id="cb25-501"><a href="#cb25-501"></a></span>
-<span id="cb25-502"><a href="#cb25-502"></a><span class="ss">- </span>Imagine an engineering team lead for:</span>
-<span id="cb25-503"><a href="#cb25-503"></a><span class="ss">  - </span>14 MS-level Computer Scientists</span>
-<span id="cb25-504"><a href="#cb25-504"></a><span class="ss">    - </span>9-12 hrs/wk</span>
-<span id="cb25-505"><a href="#cb25-505"></a><span class="ss">    - </span>14 week contract</span>
-<span id="cb25-506"><a href="#cb25-506"></a><span class="ss">  - </span>34 BS-level Computer Scientists</span>
-<span id="cb25-507"><a href="#cb25-507"></a><span class="ss">    - </span>6-9 hrs/wk</span>
-<span id="cb25-508"><a href="#cb25-508"></a><span class="ss">    - </span>15.5 week contract</span>
-<span id="cb25-509"><a href="#cb25-509"></a><span class="ss">- </span>How many person hours is this?</span>
+<span id="cb25-500"><a href="#cb25-500"></a><span class="ss">- </span>Imagine an engineering team lead for:</span>
+<span id="cb25-501"><a href="#cb25-501"></a><span class="ss">  - </span>14 MS-level Computer Scientists</span>
+<span id="cb25-502"><a href="#cb25-502"></a><span class="ss">    - </span>9-12 hrs/wk</span>
+<span id="cb25-503"><a href="#cb25-503"></a><span class="ss">    - </span>14 week contract</span>
+<span id="cb25-504"><a href="#cb25-504"></a><span class="ss">  - </span>34 BS-level Computer Scientists</span>
+<span id="cb25-505"><a href="#cb25-505"></a><span class="ss">    - </span>6-9 hrs/wk</span>
+<span id="cb25-506"><a href="#cb25-506"></a><span class="ss">    - </span>15.5 week contract</span>
+<span id="cb25-507"><a href="#cb25-507"></a><span class="ss">- </span>How many person hours is this?</span>
+<span id="cb25-508"><a href="#cb25-508"></a></span>
+<span id="cb25-509"><a href="#cb25-509"></a><span class="fu">## Napkin Math</span></span>
 <span id="cb25-510"><a href="#cb25-510"></a></span>
-<span id="cb25-511"><a href="#cb25-511"></a><span class="fu"># Napkin Math</span></span>
-<span id="cb25-512"><a href="#cb25-512"></a></span>
-<span id="cb25-513"><a href="#cb25-513"></a><span class="ss">- </span>I'd say</span>
-<span id="cb25-514"><a href="#cb25-514"></a><span class="ss">  - </span>$14 \times 12 \times 14$</span>
-<span id="cb25-515"><a href="#cb25-515"></a><span class="ss">  - </span>$34 \times 9 \times 15.5$</span>
-<span id="cb25-516"><a href="#cb25-516"></a><span class="ss">- </span>I... can't quite do that in one fell swoop.</span>
-<span id="cb25-517"><a href="#cb25-517"></a><span class="ss">  - </span>$14 \times 12$ is trivially $12^2 + 24 = 168$</span>
-<span id="cb25-518"><a href="#cb25-518"></a><span class="ss">  - </span>$9 \times 15.5$ is trivially $155 - 15.5 = 139.5$</span>
+<span id="cb25-511"><a href="#cb25-511"></a><span class="ss">- </span>I'd say</span>
+<span id="cb25-512"><a href="#cb25-512"></a><span class="ss">  - </span>$14 \times 12 \times 14$</span>
+<span id="cb25-513"><a href="#cb25-513"></a><span class="ss">  - </span>$34 \times 9 \times 15.5$</span>
+<span id="cb25-514"><a href="#cb25-514"></a><span class="ss">- </span>I... can't quite do that in one fell swoop.</span>
+<span id="cb25-515"><a href="#cb25-515"></a><span class="ss">  - </span>$14 \times 12$ is trivially $12^2 + 24 = 168$</span>
+<span id="cb25-516"><a href="#cb25-516"></a><span class="ss">  - </span>$9 \times 15.5$ is trivially $155 - 15.5 = 139.5$</span>
+<span id="cb25-517"><a href="#cb25-517"></a></span>
+<span id="cb25-518"><a href="#cb25-518"></a><span class="fu">## $34 \times 139.5$</span></span>
 <span id="cb25-519"><a href="#cb25-519"></a></span>
-<span id="cb25-520"><a href="#cb25-520"></a><span class="fu"># $34 \times 139.5$</span></span>
-<span id="cb25-521"><a href="#cb25-521"></a></span>
-<span id="cb25-522"><a href="#cb25-522"></a><span class="ss">- </span>That just isn't easy </span>
-<span id="cb25-523"><a href="#cb25-523"></a><span class="ss"> - </span>(140 * 34 isn't bad, but we need a motivating example). </span>
-<span id="cb25-524"><a href="#cb25-524"></a><span class="ss">- </span>Express *digit-wise*:</span>
-<span id="cb25-525"><a href="#cb25-525"></a></span>
-<span id="cb25-526"><a href="#cb25-526"></a>| |1|3|9|5|</span>
-<span id="cb25-527"><a href="#cb25-527"></a>|-|-|-|-|-|</span>
-<span id="cb25-528"><a href="#cb25-528"></a>|3|-|-|-|-|</span>
-<span id="cb25-529"><a href="#cb25-529"></a>|4|-|-|-|-|</span>
+<span id="cb25-520"><a href="#cb25-520"></a><span class="ss">- </span>That just isn't easy </span>
+<span id="cb25-521"><a href="#cb25-521"></a><span class="ss"> - </span>(140 * 34 isn't bad, but we need a motivating example). </span>
+<span id="cb25-522"><a href="#cb25-522"></a><span class="ss">- </span>Express *digit-wise*:</span>
+<span id="cb25-523"><a href="#cb25-523"></a></span>
+<span id="cb25-524"><a href="#cb25-524"></a>| |1|3|9|5|</span>
+<span id="cb25-525"><a href="#cb25-525"></a>|-|-|-|-|-|</span>
+<span id="cb25-526"><a href="#cb25-526"></a>|3|-|-|-|-|</span>
+<span id="cb25-527"><a href="#cb25-527"></a>|4|-|-|-|-|</span>
+<span id="cb25-528"><a href="#cb25-528"></a></span>
+<span id="cb25-529"><a href="#cb25-529"></a><span class="fu">## $34 \times 139.5$</span></span>
 <span id="cb25-530"><a href="#cb25-530"></a></span>
-<span id="cb25-531"><a href="#cb25-531"></a><span class="fu"># $34 \times 139.5$</span></span>
+<span id="cb25-531"><a href="#cb25-531"></a><span class="ss">- </span>Compute all products over single-digit factors</span>
 <span id="cb25-532"><a href="#cb25-532"></a></span>
-<span id="cb25-533"><a href="#cb25-533"></a><span class="ss">- </span>Compute all products over single-digit factors</span>
-<span id="cb25-534"><a href="#cb25-534"></a></span>
-<span id="cb25-535"><a href="#cb25-535"></a>| |1|3|9|5|</span>
-<span id="cb25-536"><a href="#cb25-536"></a>|-|-|-|-|-|</span>
-<span id="cb25-537"><a href="#cb25-537"></a>|3|3|9|27|15|</span>
-<span id="cb25-538"><a href="#cb25-538"></a>|4|4|12|36|20|</span>
-<span id="cb25-539"><a href="#cb25-539"></a></span>
-<span id="cb25-540"><a href="#cb25-540"></a><span class="ss">- </span>These:</span>
-<span id="cb25-541"><a href="#cb25-541"></a><span class="ss">  - </span>Aren't single digit</span>
-<span id="cb25-542"><a href="#cb25-542"></a><span class="ss">  - </span>Aren't of the same signficance</span>
+<span id="cb25-533"><a href="#cb25-533"></a>| |1|3|9|5|</span>
+<span id="cb25-534"><a href="#cb25-534"></a>|-|-|-|-|-|</span>
+<span id="cb25-535"><a href="#cb25-535"></a>|3|3|9|27|15|</span>
+<span id="cb25-536"><a href="#cb25-536"></a>|4|4|12|36|20|</span>
+<span id="cb25-537"><a href="#cb25-537"></a></span>
+<span id="cb25-538"><a href="#cb25-538"></a><span class="ss">- </span>These:</span>
+<span id="cb25-539"><a href="#cb25-539"></a><span class="ss">  - </span>Aren't single digit</span>
+<span id="cb25-540"><a href="#cb25-540"></a><span class="ss">  - </span>Aren't of the same signficance</span>
+<span id="cb25-541"><a href="#cb25-541"></a></span>
+<span id="cb25-542"><a href="#cb25-542"></a><span class="fu">## $34 \times 139.5$</span></span>
 <span id="cb25-543"><a href="#cb25-543"></a></span>
-<span id="cb25-544"><a href="#cb25-544"></a><span class="fu"># $34 \times 139.5$</span></span>
+<span id="cb25-544"><a href="#cb25-544"></a><span class="ss">- </span>Include sigificance</span>
 <span id="cb25-545"><a href="#cb25-545"></a></span>
-<span id="cb25-546"><a href="#cb25-546"></a><span class="ss">- </span>Include sigificance</span>
-<span id="cb25-547"><a href="#cb25-547"></a></span>
-<span id="cb25-548"><a href="#cb25-548"></a>| |100|30|9|.5|</span>
-<span id="cb25-549"><a href="#cb25-549"></a>|-|-|-|-|-|</span>
-<span id="cb25-550"><a href="#cb25-550"></a>|30|3000|900|270|15|</span>
-<span id="cb25-551"><a href="#cb25-551"></a>|4|400|120|36|2|</span>
+<span id="cb25-546"><a href="#cb25-546"></a>| |100|30|9|.5|</span>
+<span id="cb25-547"><a href="#cb25-547"></a>|-|-|-|-|-|</span>
+<span id="cb25-548"><a href="#cb25-548"></a>|30|3000|900|270|15|</span>
+<span id="cb25-549"><a href="#cb25-549"></a>|4|400|120|36|2|</span>
+<span id="cb25-550"><a href="#cb25-550"></a></span>
+<span id="cb25-551"><a href="#cb25-551"></a><span class="fu">## Dear Watson</span></span>
 <span id="cb25-552"><a href="#cb25-552"></a></span>
-<span id="cb25-553"><a href="#cb25-553"></a><span class="fu"># Dear Watson</span></span>
-<span id="cb25-554"><a href="#cb25-554"></a></span>
+<span id="cb25-553"><a href="#cb25-553"></a></span>
+<span id="cb25-554"><a href="#cb25-554"></a>::::{.columns}</span>
 <span id="cb25-555"><a href="#cb25-555"></a></span>
-<span id="cb25-556"><a href="#cb25-556"></a>::::{.columns}</span>
+<span id="cb25-556"><a href="#cb25-556"></a>:::{.column width="%50"}</span>
 <span id="cb25-557"><a href="#cb25-557"></a></span>
-<span id="cb25-558"><a href="#cb25-558"></a>:::{.column width="%50"}</span>
-<span id="cb25-559"><a href="#cb25-559"></a></span>
-<span id="cb25-560"><a href="#cb25-560"></a></span>
-<span id="cb25-561"><a href="#cb25-561"></a>| |100|30|9|.5|</span>
-<span id="cb25-562"><a href="#cb25-562"></a>|-|-|-|-|-|</span>
-<span id="cb25-563"><a href="#cb25-563"></a>|30|3000|900|270|15|</span>
-<span id="cb25-564"><a href="#cb25-564"></a>|4|400|120|36|2|</span>
-<span id="cb25-565"><a href="#cb25-565"></a></span>
+<span id="cb25-558"><a href="#cb25-558"></a></span>
+<span id="cb25-559"><a href="#cb25-559"></a>| |100|30|9|.5|</span>
+<span id="cb25-560"><a href="#cb25-560"></a>|-|-|-|-|-|</span>
+<span id="cb25-561"><a href="#cb25-561"></a>|30|3000|900|270|15|</span>
+<span id="cb25-562"><a href="#cb25-562"></a>|4|400|120|36|2|</span>
+<span id="cb25-563"><a href="#cb25-563"></a></span>
+<span id="cb25-564"><a href="#cb25-564"></a></span>
+<span id="cb25-565"><a href="#cb25-565"></a>:::</span>
 <span id="cb25-566"><a href="#cb25-566"></a></span>
-<span id="cb25-567"><a href="#cb25-567"></a>:::</span>
-<span id="cb25-568"><a href="#cb25-568"></a></span>
+<span id="cb25-567"><a href="#cb25-567"></a></span>
+<span id="cb25-568"><a href="#cb25-568"></a>:::{.column width="%50"}</span>
 <span id="cb25-569"><a href="#cb25-569"></a></span>
-<span id="cb25-570"><a href="#cb25-570"></a>:::{.column width="%50"}</span>
-<span id="cb25-571"><a href="#cb25-571"></a></span>
-<span id="cb25-572"><a href="#cb25-572"></a>$$</span>
-<span id="cb25-573"><a href="#cb25-573"></a>\begin{align*}</span>
-<span id="cb25-574"><a href="#cb25-574"></a>5&amp; \times 4  \times 10^{-1}  &amp;= 2&amp;<span class="sc">\\</span></span>
-<span id="cb25-575"><a href="#cb25-575"></a>+5&amp; \times 3  \times 10^{0}  &amp;= 15&amp;<span class="sc">\\</span></span>
-<span id="cb25-576"><a href="#cb25-576"></a>+9&amp; \times 4  \times 10^{0}  &amp;= 36&amp;<span class="sc">\\</span></span>
-<span id="cb25-577"><a href="#cb25-577"></a>+9&amp; \times 3  \times 10^{1}  &amp;= 270&amp;<span class="sc">\\</span></span>
-<span id="cb25-578"><a href="#cb25-578"></a>+3&amp; \times 4  \times 10^{1}  &amp;= 120&amp;<span class="sc">\\</span></span>
-<span id="cb25-579"><a href="#cb25-579"></a>+3&amp; \times 3  \times 10^{2}  &amp;= 900&amp;<span class="sc">\\</span></span>
-<span id="cb25-580"><a href="#cb25-580"></a>+1&amp; \times 4  \times 10^{2}  &amp;= 400&amp;<span class="sc">\\</span></span>
-<span id="cb25-581"><a href="#cb25-581"></a>+1&amp; \times 3  \times 10^{3}  &amp;= 3000&amp;<span class="sc">\\</span></span>
-<span id="cb25-582"><a href="#cb25-582"></a>\end{align*}</span>
-<span id="cb25-583"><a href="#cb25-583"></a>$$</span>
+<span id="cb25-570"><a href="#cb25-570"></a>$$</span>
+<span id="cb25-571"><a href="#cb25-571"></a>\begin{align*}</span>
+<span id="cb25-572"><a href="#cb25-572"></a>5&amp; \times 4  \times 10^{-1}  &amp;= 2&amp;<span class="sc">\\</span></span>
+<span id="cb25-573"><a href="#cb25-573"></a>+5&amp; \times 3  \times 10^{0}  &amp;= 15&amp;<span class="sc">\\</span></span>
+<span id="cb25-574"><a href="#cb25-574"></a>+9&amp; \times 4  \times 10^{0}  &amp;= 36&amp;<span class="sc">\\</span></span>
+<span id="cb25-575"><a href="#cb25-575"></a>+9&amp; \times 3  \times 10^{1}  &amp;= 270&amp;<span class="sc">\\</span></span>
+<span id="cb25-576"><a href="#cb25-576"></a>+3&amp; \times 4  \times 10^{1}  &amp;= 120&amp;<span class="sc">\\</span></span>
+<span id="cb25-577"><a href="#cb25-577"></a>+3&amp; \times 3  \times 10^{2}  &amp;= 900&amp;<span class="sc">\\</span></span>
+<span id="cb25-578"><a href="#cb25-578"></a>+1&amp; \times 4  \times 10^{2}  &amp;= 400&amp;<span class="sc">\\</span></span>
+<span id="cb25-579"><a href="#cb25-579"></a>+1&amp; \times 3  \times 10^{3}  &amp;= 3000&amp;<span class="sc">\\</span></span>
+<span id="cb25-580"><a href="#cb25-580"></a>\end{align*}</span>
+<span id="cb25-581"><a href="#cb25-581"></a>$$</span>
+<span id="cb25-582"><a href="#cb25-582"></a></span>
+<span id="cb25-583"><a href="#cb25-583"></a>:::</span>
 <span id="cb25-584"><a href="#cb25-584"></a></span>
-<span id="cb25-585"><a href="#cb25-585"></a>:::</span>
+<span id="cb25-585"><a href="#cb25-585"></a>::::</span>
 <span id="cb25-586"><a href="#cb25-586"></a></span>
-<span id="cb25-587"><a href="#cb25-587"></a>::::</span>
-<span id="cb25-588"><a href="#cb25-588"></a></span>
-<span id="cb25-589"><a href="#cb25-589"></a><span class="fu"># Express as</span></span>
-<span id="cb25-590"><a href="#cb25-590"></a>$$</span>
-<span id="cb25-591"><a href="#cb25-591"></a>\begin{align*}</span>
-<span id="cb25-592"><a href="#cb25-592"></a>139.5&amp; = &amp;1 * 10^2 + &amp;3 * 10^1 + &amp;9 * 10^0&amp; + 5 * 10^{-1}<span class="sc">\\</span></span>
-<span id="cb25-593"><a href="#cb25-593"></a>34&amp; = &amp;&amp;3 * 10^1 + &amp;4 * 10^0&amp;<span class="sc">\\</span></span>
-<span id="cb25-594"><a href="#cb25-594"></a>\end{align*}</span>
-<span id="cb25-595"><a href="#cb25-595"></a>$$</span>
-<span id="cb25-596"><a href="#cb25-596"></a></span>
-<span id="cb25-597"><a href="#cb25-597"></a><span class="ss">- </span>Take $x = 10$</span>
-<span id="cb25-598"><a href="#cb25-598"></a>$$</span>
-<span id="cb25-599"><a href="#cb25-599"></a>\begin{align*}</span>
-<span id="cb25-600"><a href="#cb25-600"></a>139.5&amp; = &amp;1 * x^2 + &amp;3 * x + &amp;9&amp; + 5 * x^{-1}<span class="sc">\\</span></span>
-<span id="cb25-601"><a href="#cb25-601"></a>34&amp; = &amp;&amp;3 * x + &amp;4&amp;<span class="sc">\\</span></span>
-<span id="cb25-602"><a href="#cb25-602"></a>\end{align*}</span>
-<span id="cb25-603"><a href="#cb25-603"></a>$$</span>
+<span id="cb25-587"><a href="#cb25-587"></a><span class="fu">## Express as</span></span>
+<span id="cb25-588"><a href="#cb25-588"></a>$$</span>
+<span id="cb25-589"><a href="#cb25-589"></a>\begin{align*}</span>
+<span id="cb25-590"><a href="#cb25-590"></a>139.5&amp; = &amp;1 * 10^2 + &amp;3 * 10^1 + &amp;9 * 10^0&amp; + 5 * 10^{-1}<span class="sc">\\</span></span>
+<span id="cb25-591"><a href="#cb25-591"></a>34&amp; = &amp;&amp;3 * 10^1 + &amp;4 * 10^0&amp;<span class="sc">\\</span></span>
+<span id="cb25-592"><a href="#cb25-592"></a>\end{align*}</span>
+<span id="cb25-593"><a href="#cb25-593"></a>$$</span>
+<span id="cb25-594"><a href="#cb25-594"></a></span>
+<span id="cb25-595"><a href="#cb25-595"></a><span class="ss">- </span>Take $x = 10$</span>
+<span id="cb25-596"><a href="#cb25-596"></a>$$</span>
+<span id="cb25-597"><a href="#cb25-597"></a>\begin{align*}</span>
+<span id="cb25-598"><a href="#cb25-598"></a>139.5&amp; = &amp;1 * x^2 + &amp;3 * x + &amp;9&amp; + 5 * x^{-1}<span class="sc">\\</span></span>
+<span id="cb25-599"><a href="#cb25-599"></a>34&amp; = &amp;&amp;3 * x + &amp;4&amp;<span class="sc">\\</span></span>
+<span id="cb25-600"><a href="#cb25-600"></a>\end{align*}</span>
+<span id="cb25-601"><a href="#cb25-601"></a>$$</span>
+<span id="cb25-602"><a href="#cb25-602"></a></span>
+<span id="cb25-603"><a href="#cb25-603"></a><span class="ss">- </span>That is polynomial; can work with those.</span>
 <span id="cb25-604"><a href="#cb25-604"></a></span>
-<span id="cb25-605"><a href="#cb25-605"></a><span class="ss">- </span>That is polynomial; can work with those.</span>
+<span id="cb25-605"><a href="#cb25-605"></a><span class="fu">## Polynomial</span></span>
 <span id="cb25-606"><a href="#cb25-606"></a></span>
-<span id="cb25-607"><a href="#cb25-607"></a><span class="fu"># Polynomial</span></span>
-<span id="cb25-608"><a href="#cb25-608"></a></span>
+<span id="cb25-607"><a href="#cb25-607"></a>$$</span>
+<span id="cb25-608"><a href="#cb25-608"></a>(x^2 + 3x + 9 + 5x^{-1})(3x + 4)</span>
 <span id="cb25-609"><a href="#cb25-609"></a>$$</span>
-<span id="cb25-610"><a href="#cb25-610"></a>(x^2 + 3x + 9 + 5x^{-1})(3x + 4)</span>
+<span id="cb25-610"><a href="#cb25-610"></a></span>
 <span id="cb25-611"><a href="#cb25-611"></a>$$</span>
-<span id="cb25-612"><a href="#cb25-612"></a></span>
+<span id="cb25-612"><a href="#cb25-612"></a>(x^2 + 3x + 9 + 5x^{-1})(3x) + (x^2 + 3x + 9 + 5x^{-1})(4)</span>
 <span id="cb25-613"><a href="#cb25-613"></a>$$</span>
-<span id="cb25-614"><a href="#cb25-614"></a>(x^2 + 3x + 9 + 5x^{-1})(3x) + (x^2 + 3x + 9 + 5x^{-1})(4)</span>
-<span id="cb25-615"><a href="#cb25-615"></a>$$</span>
-<span id="cb25-616"><a href="#cb25-616"></a></span>
-<span id="cb25-617"><a href="#cb25-617"></a></span>
+<span id="cb25-614"><a href="#cb25-614"></a></span>
+<span id="cb25-615"><a href="#cb25-615"></a></span>
+<span id="cb25-616"><a href="#cb25-616"></a>$$</span>
+<span id="cb25-617"><a href="#cb25-617"></a>(3x^3 + 9x^2 + 27x + 15) + (4x^2 + 12x + 36 + 20x^{-1})</span>
 <span id="cb25-618"><a href="#cb25-618"></a>$$</span>
-<span id="cb25-619"><a href="#cb25-619"></a>(3x^3 + 9x^2 + 27x + 15) + (4x^2 + 12x + 36 + 20x^{-1})</span>
+<span id="cb25-619"><a href="#cb25-619"></a></span>
 <span id="cb25-620"><a href="#cb25-620"></a>$$</span>
-<span id="cb25-621"><a href="#cb25-621"></a></span>
+<span id="cb25-621"><a href="#cb25-621"></a>3x^3 + 13x^2 + 39x + 51 + 20x^{-1}</span>
 <span id="cb25-622"><a href="#cb25-622"></a>$$</span>
-<span id="cb25-623"><a href="#cb25-623"></a>3x^3 + 13x^2 + 39x + 51 + 20x^{-1}</span>
-<span id="cb25-624"><a href="#cb25-624"></a>$$</span>
+<span id="cb25-623"><a href="#cb25-623"></a></span>
+<span id="cb25-624"><a href="#cb25-624"></a><span class="fu">## Aside</span></span>
 <span id="cb25-625"><a href="#cb25-625"></a></span>
-<span id="cb25-626"><a href="#cb25-626"></a><span class="fu"># Aside</span></span>
-<span id="cb25-627"><a href="#cb25-627"></a></span>
-<span id="cb25-628"><a href="#cb25-628"></a><span class="ss">- </span>I think this is covered around ~8th grade</span>
-<span id="cb25-629"><a href="#cb25-629"></a><span class="ss">- </span>I don't want to assume the integrity to US public school system</span>
-<span id="cb25-630"><a href="#cb25-630"></a><span class="ss">  - </span>Or anything school system</span>
-<span id="cb25-631"><a href="#cb25-631"></a><span class="ss">  - </span>Shout out school</span>
-<span id="cb25-632"><a href="#cb25-632"></a><span class="ss">- </span>The point of this class isn't middle/high school math</span>
-<span id="cb25-633"><a href="#cb25-633"></a><span class="ss">  - </span>That's the point of life itself /s</span>
+<span id="cb25-626"><a href="#cb25-626"></a><span class="ss">- </span>I think this is covered around ~8th grade</span>
+<span id="cb25-627"><a href="#cb25-627"></a><span class="ss">- </span>I don't want to assume the integrity to US public school system</span>
+<span id="cb25-628"><a href="#cb25-628"></a><span class="ss">  - </span>Or anything school system</span>
+<span id="cb25-629"><a href="#cb25-629"></a><span class="ss">  - </span>Shout out school</span>
+<span id="cb25-630"><a href="#cb25-630"></a><span class="ss">- </span>The point of this class isn't middle/high school math</span>
+<span id="cb25-631"><a href="#cb25-631"></a><span class="ss">  - </span>That's the point of life itself /s</span>
+<span id="cb25-632"><a href="#cb25-632"></a></span>
+<span id="cb25-633"><a href="#cb25-633"></a><span class="fu">## Considerations</span></span>
 <span id="cb25-634"><a href="#cb25-634"></a></span>
-<span id="cb25-635"><a href="#cb25-635"></a><span class="fu"># Considerations</span></span>
-<span id="cb25-636"><a href="#cb25-636"></a></span>
-<span id="cb25-637"><a href="#cb25-637"></a><span class="ss">- </span>It is natural to express multiplication of e.g. 4096 bit integers as a polynomial over, say, 64 bit integers.</span>
-<span id="cb25-638"><a href="#cb25-638"></a><span class="ss">- </span>One teeny problem:</span>
-<span id="cb25-639"><a href="#cb25-639"></a><span class="ss">  - </span>Overflow.</span>
+<span id="cb25-635"><a href="#cb25-635"></a><span class="ss">- </span>It is natural to express multiplication of e.g. 4096 bit integers as a polynomial over, say, 64 bit integers.</span>
+<span id="cb25-636"><a href="#cb25-636"></a><span class="ss">- </span>One teeny problem:</span>
+<span id="cb25-637"><a href="#cb25-637"></a><span class="ss">  - </span>Overflow.</span>
+<span id="cb25-638"><a href="#cb25-638"></a></span>
+<span id="cb25-639"><a href="#cb25-639"></a><span class="fu">## Overflow</span></span>
 <span id="cb25-640"><a href="#cb25-640"></a></span>
-<span id="cb25-641"><a href="#cb25-641"></a><span class="fu"># Overflow</span></span>
+<span id="cb25-641"><a href="#cb25-641"></a><span class="ss">- </span>The point of calculating this was to get things down to single digit:</span>
 <span id="cb25-642"><a href="#cb25-642"></a></span>
-<span id="cb25-643"><a href="#cb25-643"></a><span class="ss">- </span>The point of calculating this was to get things down to single digit:</span>
-<span id="cb25-644"><a href="#cb25-644"></a></span>
+<span id="cb25-643"><a href="#cb25-643"></a>$$</span>
+<span id="cb25-644"><a href="#cb25-644"></a>3x^3 + 13x^2 + 39x + 51 + 20x^{-1}</span>
 <span id="cb25-645"><a href="#cb25-645"></a>$$</span>
-<span id="cb25-646"><a href="#cb25-646"></a>3x^3 + 13x^2 + 39x + 51 + 20x^{-1}</span>
-<span id="cb25-647"><a href="#cb25-647"></a>$$</span>
-<span id="cb25-648"><a href="#cb25-648"></a></span>
-<span id="cb25-649"><a href="#cb25-649"></a><span class="ss">- </span>13, 39, 51, and 20 are all not compliant (debatably 20 is okay)</span>
-<span id="cb25-650"><a href="#cb25-650"></a><span class="ss">- </span>Essentially, 1-digit multiply may produce a 2-digit product.</span>
+<span id="cb25-646"><a href="#cb25-646"></a></span>
+<span id="cb25-647"><a href="#cb25-647"></a><span class="ss">- </span>13, 39, 51, and 20 are all not compliant (debatably 20 is okay)</span>
+<span id="cb25-648"><a href="#cb25-648"></a><span class="ss">- </span>Essentially, 1-digit multiply may produce a 2-digit product.</span>
+<span id="cb25-649"><a href="#cb25-649"></a></span>
+<span id="cb25-650"><a href="#cb25-650"></a><span class="fu">## Uh oh</span></span>
 <span id="cb25-651"><a href="#cb25-651"></a></span>
-<span id="cb25-652"><a href="#cb25-652"></a><span class="fu"># Uh oh</span></span>
-<span id="cb25-653"><a href="#cb25-653"></a></span>
-<span id="cb25-654"><a href="#cb25-654"></a><span class="in">```{.C filename="/bin/sh"}</span></span>
-<span id="cb25-655"><a href="#cb25-655"></a><span class="in">$ cat num.c</span></span>
-<span id="cb25-656"><a href="#cb25-656"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
-<span id="cb25-657"><a href="#cb25-657"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
-<span id="cb25-658"><a href="#cb25-658"></a></span>
-<span id="cb25-659"><a href="#cb25-659"></a><span class="in">int main(int argc, char **argv) {</span></span>
-<span id="cb25-660"><a href="#cb25-660"></a><span class="in">    uint8_t x, y, z;</span></span>
-<span id="cb25-661"><a href="#cb25-661"></a><span class="in">    x = atoi(argv[1]);</span></span>
-<span id="cb25-662"><a href="#cb25-662"></a><span class="in">    y = atoi(argv[2]);</span></span>
-<span id="cb25-663"><a href="#cb25-663"></a><span class="in">    z = x * y;</span></span>
-<span id="cb25-664"><a href="#cb25-664"></a><span class="in">    return z;</span></span>
-<span id="cb25-665"><a href="#cb25-665"></a><span class="in">}</span></span>
-<span id="cb25-666"><a href="#cb25-666"></a><span class="in">$ gcc num.c ; ./a.out 30 30 ; echo $?</span></span>
-<span id="cb25-667"><a href="#cb25-667"></a><span class="in">132</span></span>
-<span id="cb25-668"><a href="#cb25-668"></a><span class="in">$ gcc num.c ; ./a.out 3 3 ; echo $?</span></span>
-<span id="cb25-669"><a href="#cb25-669"></a><span class="in">9</span></span>
-<span id="cb25-670"><a href="#cb25-670"></a><span class="in">$ python3 -c "print(30 * 30 % 2 ** 8)"</span></span>
-<span id="cb25-671"><a href="#cb25-671"></a><span class="in">132</span></span>
-<span id="cb25-672"><a href="#cb25-672"></a><span class="in">```</span></span>
+<span id="cb25-652"><a href="#cb25-652"></a><span class="in">```{.C filename="/bin/sh"}</span></span>
+<span id="cb25-653"><a href="#cb25-653"></a><span class="in">$ cat num.c</span></span>
+<span id="cb25-654"><a href="#cb25-654"></a><span class="in">#include &lt;stdlib.h&gt;</span></span>
+<span id="cb25-655"><a href="#cb25-655"></a><span class="in">#include &lt;stdint.h&gt;</span></span>
+<span id="cb25-656"><a href="#cb25-656"></a></span>
+<span id="cb25-657"><a href="#cb25-657"></a><span class="in">int main(int argc, char **argv) {</span></span>
+<span id="cb25-658"><a href="#cb25-658"></a><span class="in">    uint8_t x, y, z;</span></span>
+<span id="cb25-659"><a href="#cb25-659"></a><span class="in">    x = atoi(argv[1]);</span></span>
+<span id="cb25-660"><a href="#cb25-660"></a><span class="in">    y = atoi(argv[2]);</span></span>
+<span id="cb25-661"><a href="#cb25-661"></a><span class="in">    z = x * y;</span></span>
+<span id="cb25-662"><a href="#cb25-662"></a><span class="in">    return z;</span></span>
+<span id="cb25-663"><a href="#cb25-663"></a><span class="in">}</span></span>
+<span id="cb25-664"><a href="#cb25-664"></a><span class="in">$ gcc num.c ; ./a.out 30 30 ; echo $?</span></span>
+<span id="cb25-665"><a href="#cb25-665"></a><span class="in">132</span></span>
+<span id="cb25-666"><a href="#cb25-666"></a><span class="in">$ gcc num.c ; ./a.out 3 3 ; echo $?</span></span>
+<span id="cb25-667"><a href="#cb25-667"></a><span class="in">9</span></span>
+<span id="cb25-668"><a href="#cb25-668"></a><span class="in">$ python3 -c "print(30 * 30 % 2 ** 8)"</span></span>
+<span id="cb25-669"><a href="#cb25-669"></a><span class="in">132</span></span>
+<span id="cb25-670"><a href="#cb25-670"></a><span class="in">```</span></span>
+<span id="cb25-671"><a href="#cb25-671"></a></span>
+<span id="cb25-672"><a href="#cb25-672"></a><span class="fu">## Size of ints</span></span>
 <span id="cb25-673"><a href="#cb25-673"></a></span>
-<span id="cb25-674"><a href="#cb25-674"></a><span class="fu"># Size of ints</span></span>
-<span id="cb25-675"><a href="#cb25-675"></a></span>
-<span id="cb25-676"><a href="#cb25-676"></a><span class="ss">- </span>Say we have two integers of 8 bits of precision.</span>
-<span id="cb25-677"><a href="#cb25-677"></a><span class="ss">- </span>We multiple them together.</span>
-<span id="cb25-678"><a href="#cb25-678"></a><span class="ss">- </span>What is the largest number we can get, and</span>
-<span id="cb25-679"><a href="#cb25-679"></a><span class="ss">- </span>How many bits does it require?</span>
-<span id="cb25-680"><a href="#cb25-680"></a><span class="in">```{.email}</span></span>
-<span id="cb25-681"><a href="#cb25-681"></a><span class="in">python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"</span></span>
-<span id="cb25-682"><a href="#cb25-682"></a><span class="in">```</span></span>
-<span id="cb25-683"><a href="#cb25-683"></a><span class="ss">- </span>16</span>
+<span id="cb25-674"><a href="#cb25-674"></a><span class="ss">- </span>Say we have two integers of 8 bits of precision.</span>
+<span id="cb25-675"><a href="#cb25-675"></a><span class="ss">- </span>We multiple them together.</span>
+<span id="cb25-676"><a href="#cb25-676"></a><span class="ss">- </span>What is the largest number we can get, and</span>
+<span id="cb25-677"><a href="#cb25-677"></a><span class="ss">- </span>How many bits does it require?</span>
+<span id="cb25-678"><a href="#cb25-678"></a><span class="in">```{.email}</span></span>
+<span id="cb25-679"><a href="#cb25-679"></a><span class="in">python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"</span></span>
+<span id="cb25-680"><a href="#cb25-680"></a><span class="in">```</span></span>
+<span id="cb25-681"><a href="#cb25-681"></a><span class="ss">- </span>16</span>
+<span id="cb25-682"><a href="#cb25-682"></a></span>
+<span id="cb25-683"><a href="#cb25-683"></a><span class="fu">## Carrys for mults</span></span>
 <span id="cb25-684"><a href="#cb25-684"></a></span>
-<span id="cb25-685"><a href="#cb25-685"></a><span class="fu"># Carrys for mults</span></span>
-<span id="cb25-686"><a href="#cb25-686"></a></span>
-<span id="cb25-687"><a href="#cb25-687"></a><span class="ss">- </span>When we are doing big multiplications:</span>
-<span id="cb25-688"><a href="#cb25-688"></a><span class="ss">  - </span>We must multiply chunks of at most half the size of our biggest integer.</span>
-<span id="cb25-689"><a href="#cb25-689"></a><span class="ss">  - </span>We must keep track of significance - their position in an imagined larger integer</span>
-<span id="cb25-690"><a href="#cb25-690"></a><span class="ss">  - </span>We must perform adds over these terms, using big addition</span>
+<span id="cb25-685"><a href="#cb25-685"></a><span class="ss">- </span>When we are doing big multiplications:</span>
+<span id="cb25-686"><a href="#cb25-686"></a><span class="ss">  - </span>We must multiply chunks of at most half the size of our biggest integer.</span>
+<span id="cb25-687"><a href="#cb25-687"></a><span class="ss">  - </span>We must keep track of significance - their position in an imagined larger integer</span>
+<span id="cb25-688"><a href="#cb25-688"></a><span class="ss">  - </span>We must perform adds over these terms, using big addition</span>
+<span id="cb25-689"><a href="#cb25-689"></a></span>
+<span id="cb25-690"><a href="#cb25-690"></a><span class="fu">## One Technique</span></span>
 <span id="cb25-691"><a href="#cb25-691"></a></span>
-<span id="cb25-692"><a href="#cb25-692"></a><span class="fu"># One Technique</span></span>
-<span id="cb25-693"><a href="#cb25-693"></a></span>
-<span id="cb25-694"><a href="#cb25-694"></a><span class="ss">- </span>I Made a pointer to a <span class="in">`uint32_t`</span></span>
-<span id="cb25-695"><a href="#cb25-695"></a><span class="ss">  - </span><span class="in">`uint32_t *alias;`</span>;</span>
-<span id="cb25-696"><a href="#cb25-696"></a><span class="ss">- </span>Set it equal to the location of some array of <span class="in">`uint64_t`</span></span>
-<span id="cb25-697"><a href="#cb25-697"></a><span class="ss">  - </span><span class="in">`uint32_t *alias = &amp;array;`</span></span>
-<span id="cb25-698"><a href="#cb25-698"></a><span class="ss">- </span>Copied elements of the "alias" into 64 bit values.</span>
-<span id="cb25-699"><a href="#cb25-699"></a><span class="ss">  - </span><span class="in">`uint64_t tmp = alias[5];`</span></span>
-<span id="cb25-700"><a href="#cb25-700"></a><span class="ss">- </span>Multiplied, tracking significance.</span>
+<span id="cb25-692"><a href="#cb25-692"></a><span class="ss">- </span>I Made a pointer to a <span class="in">`uint32_t`</span></span>
+<span id="cb25-693"><a href="#cb25-693"></a><span class="ss">  - </span><span class="in">`uint32_t *alias;`</span>;</span>
+<span id="cb25-694"><a href="#cb25-694"></a><span class="ss">- </span>Set it equal to the location of some array of <span class="in">`uint64_t`</span></span>
+<span id="cb25-695"><a href="#cb25-695"></a><span class="ss">  - </span><span class="in">`uint32_t *alias = &amp;array;`</span></span>
+<span id="cb25-696"><a href="#cb25-696"></a><span class="ss">- </span>Copied elements of the "alias" into 64 bit values.</span>
+<span id="cb25-697"><a href="#cb25-697"></a><span class="ss">  - </span><span class="in">`uint64_t tmp = alias[5];`</span></span>
+<span id="cb25-698"><a href="#cb25-698"></a><span class="ss">- </span>Multiplied, tracking significance.</span>
+<span id="cb25-699"><a href="#cb25-699"></a></span>
+<span id="cb25-700"><a href="#cb25-700"></a><span class="fu">## Division</span></span>
 <span id="cb25-701"><a href="#cb25-701"></a></span>
-<span id="cb25-702"><a href="#cb25-702"></a><span class="fu"># Division</span></span>
-<span id="cb25-703"><a href="#cb25-703"></a></span>
-<span id="cb25-704"><a href="#cb25-704"></a><span class="ss">- </span>Remember long division?</span>
-<span id="cb25-705"><a href="#cb25-705"></a><span class="ss">  - </span>Align the highest digits.</span>
-<span id="cb25-706"><a href="#cb25-706"></a><span class="ss">    - </span>I took the log base 2.</span>
-<span id="cb25-707"><a href="#cb25-707"></a><span class="ss">  - </span>Divide.</span>
-<span id="cb25-708"><a href="#cb25-708"></a><span class="ss">  - </span>Keep track of significance.</span>
-<span id="cb25-709"><a href="#cb25-709"></a><span class="ss">    - </span>Difference between logs.</span>
-<span id="cb25-710"><a href="#cb25-710"></a><span class="ss">  - </span>Calculate remainder.</span>
-<span id="cb25-711"><a href="#cb25-711"></a><span class="ss">  - </span>Loop.</span>
-<span id="cb25-712"><a href="#cb25-712"></a><span class="ss">- </span>The final remainder is the mod.</span>
+<span id="cb25-702"><a href="#cb25-702"></a><span class="ss">- </span>Remember long division?</span>
+<span id="cb25-703"><a href="#cb25-703"></a><span class="ss">  - </span>Align the highest digits.</span>
+<span id="cb25-704"><a href="#cb25-704"></a><span class="ss">    - </span>I took the log base 2.</span>
+<span id="cb25-705"><a href="#cb25-705"></a><span class="ss">  - </span>Divide.</span>
+<span id="cb25-706"><a href="#cb25-706"></a><span class="ss">  - </span>Keep track of significance.</span>
+<span id="cb25-707"><a href="#cb25-707"></a><span class="ss">    - </span>Difference between logs.</span>
+<span id="cb25-708"><a href="#cb25-708"></a><span class="ss">  - </span>Calculate remainder.</span>
+<span id="cb25-709"><a href="#cb25-709"></a><span class="ss">  - </span>Loop.</span>
+<span id="cb25-710"><a href="#cb25-710"></a><span class="ss">- </span>The final remainder is the mod.</span>
+<span id="cb25-711"><a href="#cb25-711"></a></span>
+<span id="cb25-712"><a href="#cb25-712"></a><span class="fu">## These Slides</span></span>
 <span id="cb25-713"><a href="#cb25-713"></a></span>
-<span id="cb25-714"><a href="#cb25-714"></a><span class="fu"># These Slides</span></span>
-<span id="cb25-715"><a href="#cb25-715"></a></span>
-<span id="cb25-716"><a href="#cb25-716"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
-<span id="cb25-717"><a href="#cb25-717"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
-<span id="cb25-718"><a href="#cb25-718"></a><span class="ss">- </span>New</span>
-<span id="cb25-719"><a href="#cb25-719"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
-<span id="cb25-720"><a href="#cb25-720"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
-<span id="cb25-721"><a href="#cb25-721"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arithmetic operations</span>
-<span id="cb25-722"><a href="#cb25-722"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-714"><a href="#cb25-714"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
+<span id="cb25-715"><a href="#cb25-715"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
+<span id="cb25-716"><a href="#cb25-716"></a><span class="ss">- </span>New</span>
+<span id="cb25-717"><a href="#cb25-717"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
+<span id="cb25-718"><a href="#cb25-718"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
+<span id="cb25-719"><a href="#cb25-719"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arithmetic operations</span>
+<span id="cb25-720"><a href="#cb25-720"></a><span class="ss">  - </span>Function types</span>
+<span id="cb25-721"><a href="#cb25-721"></a></span>
+<span id="cb25-722"><a href="#cb25-722"></a><span class="fu">## A 4096 bit type</span></span>
 <span id="cb25-723"><a href="#cb25-723"></a></span>
-<span id="cb25-724"><a href="#cb25-724"></a><span class="fu"># A 4096 bit type</span></span>
-<span id="cb25-725"><a href="#cb25-725"></a></span>
-<span id="cb25-726"><a href="#cb25-726"></a><span class="ss">- </span>It's not too bad to pass around 4096 bits.</span>
-<span id="cb25-727"><a href="#cb25-727"></a><span class="ss">  - </span>An array of 64 <span class="in">`uint64_t`</span>s or 128 <span class="in">`uint32_t`</span>s</span>
-<span id="cb25-728"><a href="#cb25-728"></a><span class="ss">- </span>Here's an example function declaration:</span>
-<span id="cb25-729"><a href="#cb25-729"></a><span class="in">```{.C filename="bigadd"}</span></span>
-<span id="cb25-730"><a href="#cb25-730"></a><span class="in">uint64_t bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum);</span></span>
-<span id="cb25-731"><a href="#cb25-731"></a><span class="in">```</span></span>
+<span id="cb25-724"><a href="#cb25-724"></a><span class="ss">- </span>It's not too bad to pass around 4096 bits.</span>
+<span id="cb25-725"><a href="#cb25-725"></a><span class="ss">  - </span>An array of 64 <span class="in">`uint64_t`</span>s or 128 <span class="in">`uint32_t`</span>s</span>
+<span id="cb25-726"><a href="#cb25-726"></a><span class="ss">- </span>Here's an example function declaration:</span>
+<span id="cb25-727"><a href="#cb25-727"></a><span class="in">```{.C filename="bigadd"}</span></span>
+<span id="cb25-728"><a href="#cb25-728"></a><span class="in">uint64_t bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum);</span></span>
+<span id="cb25-729"><a href="#cb25-729"></a><span class="in">```</span></span>
+<span id="cb25-730"><a href="#cb25-730"></a></span>
+<span id="cb25-731"><a href="#cb25-731"></a><span class="fu">## Usage</span></span>
 <span id="cb25-732"><a href="#cb25-732"></a></span>
-<span id="cb25-733"><a href="#cb25-733"></a><span class="fu"># Usage</span></span>
-<span id="cb25-734"><a href="#cb25-734"></a></span>
-<span id="cb25-735"><a href="#cb25-735"></a><span class="ss">- </span>Before call this function, declare three arrays:</span>
-<span id="cb25-736"><a href="#cb25-736"></a><span class="in">```{.C }</span></span>
-<span id="cb25-737"><a href="#cb25-737"></a><span class="in">uint64_t in0[64], in1[64], sum[64];</span></span>
-<span id="cb25-738"><a href="#cb25-738"></a><span class="in">bigadd(in0,in1,sum);</span></span>
-<span id="cb25-739"><a href="#cb25-739"></a><span class="in">```</span></span>
-<span id="cb25-740"><a href="#cb25-740"></a></span>
-<span id="cb25-741"><a href="#cb25-741"></a><span class="ss">- </span>You can recycle the arrays, as needed.</span>
-<span id="cb25-742"><a href="#cb25-742"></a><span class="ss">  - </span>An astute student would be able to implement "in-place add"</span>
-<span id="cb25-743"><a href="#cb25-743"></a><span class="ss">  - </span>Sum overrights (either) operand</span>
-<span id="cb25-744"><a href="#cb25-744"></a>  <span class="in">```{.C }</span></span>
-<span id="cb25-745"><a href="#cb25-745"></a><span class="in">uint64_t in0[64], in1[64], sum[64];</span></span>
-<span id="cb25-746"><a href="#cb25-746"></a><span class="in">bigadd(in0,in1,in0);</span></span>
-<span id="cb25-747"><a href="#cb25-747"></a><span class="in">```</span></span>
+<span id="cb25-733"><a href="#cb25-733"></a><span class="ss">- </span>Before call this function, declare three arrays:</span>
+<span id="cb25-734"><a href="#cb25-734"></a><span class="in">```{.C }</span></span>
+<span id="cb25-735"><a href="#cb25-735"></a><span class="in">uint64_t in0[64], in1[64], sum[64];</span></span>
+<span id="cb25-736"><a href="#cb25-736"></a><span class="in">bigadd(in0,in1,sum);</span></span>
+<span id="cb25-737"><a href="#cb25-737"></a><span class="in">```</span></span>
+<span id="cb25-738"><a href="#cb25-738"></a></span>
+<span id="cb25-739"><a href="#cb25-739"></a><span class="ss">- </span>You can recycle the arrays, as needed.</span>
+<span id="cb25-740"><a href="#cb25-740"></a><span class="ss">  - </span>An astute student would be able to implement "in-place add"</span>
+<span id="cb25-741"><a href="#cb25-741"></a><span class="ss">  - </span>Sum overrights (either) operand</span>
+<span id="cb25-742"><a href="#cb25-742"></a>  <span class="in">```{.C }</span></span>
+<span id="cb25-743"><a href="#cb25-743"></a><span class="in">uint64_t in0[64], in1[64], sum[64];</span></span>
+<span id="cb25-744"><a href="#cb25-744"></a><span class="in">bigadd(in0,in1,in0);</span></span>
+<span id="cb25-745"><a href="#cb25-745"></a><span class="in">```</span></span>
+<span id="cb25-746"><a href="#cb25-746"></a></span>
+<span id="cb25-747"><a href="#cb25-747"></a><span class="fu">## Usage</span></span>
 <span id="cb25-748"><a href="#cb25-748"></a></span>
-<span id="cb25-749"><a href="#cb25-749"></a><span class="fu"># Usage</span></span>
+<span id="cb25-749"><a href="#cb25-749"></a><span class="ss">- </span>Remember this is banned:</span>
 <span id="cb25-750"><a href="#cb25-750"></a></span>
-<span id="cb25-751"><a href="#cb25-751"></a><span class="ss">- </span>Remember this is banned:</span>
-<span id="cb25-752"><a href="#cb25-752"></a></span>
-<span id="cb25-753"><a href="#cb25-753"></a><span class="in">```{.C}</span></span>
-<span id="cb25-754"><a href="#cb25-754"></a><span class="in">uint64_t *whatever(uint64_t *in0, uint64_t *in1) {</span></span>
-<span id="cb25-755"><a href="#cb25-755"></a><span class="in">    uint64_t sum[64];</span></span>
-<span id="cb25-756"><a href="#cb25-756"></a><span class="in">    /* much code */</span></span>
-<span id="cb25-757"><a href="#cb25-757"></a><span class="in">    return sum;</span></span>
-<span id="cb25-758"><a href="#cb25-758"></a><span class="in">}</span></span>
-<span id="cb25-759"><a href="#cb25-759"></a><span class="in">```</span></span>
-<span id="cb25-760"><a href="#cb25-760"></a><span class="ss">- </span>My <span class="in">`uint64_t`</span> value returned the carry value (it was nice to keep track of)</span>
+<span id="cb25-751"><a href="#cb25-751"></a><span class="in">```{.C}</span></span>
+<span id="cb25-752"><a href="#cb25-752"></a><span class="in">uint64_t *whatever(uint64_t *in0, uint64_t *in1) {</span></span>
+<span id="cb25-753"><a href="#cb25-753"></a><span class="in">    uint64_t sum[64];</span></span>
+<span id="cb25-754"><a href="#cb25-754"></a><span class="in">    /* much code */</span></span>
+<span id="cb25-755"><a href="#cb25-755"></a><span class="in">    return sum;</span></span>
+<span id="cb25-756"><a href="#cb25-756"></a><span class="in">}</span></span>
+<span id="cb25-757"><a href="#cb25-757"></a><span class="in">```</span></span>
+<span id="cb25-758"><a href="#cb25-758"></a><span class="ss">- </span>My <span class="in">`uint64_t`</span> value returned the carry value (it was nice to keep track of)</span>
+<span id="cb25-759"><a href="#cb25-759"></a></span>
+<span id="cb25-760"><a href="#cb25-760"></a><span class="fu">## FAQ</span></span>
 <span id="cb25-761"><a href="#cb25-761"></a></span>
-<span id="cb25-762"><a href="#cb25-762"></a><span class="fu"># FAQ</span></span>
-<span id="cb25-763"><a href="#cb25-763"></a></span>
-<span id="cb25-764"><a href="#cb25-764"></a><span class="ss">- </span>Isn't there a way to return the value from the function, rather than write a value to the memory location at a provided argument.</span>
-<span id="cb25-765"><a href="#cb25-765"></a><span class="ss">  - </span>Yes.</span>
-<span id="cb25-766"><a href="#cb25-766"></a><span class="ss">  - </span>This form of coding we use here is *memory-safe*</span>
-<span id="cb25-767"><a href="#cb25-767"></a><span class="ss">  - </span>It was endorsed by the White House from 26 Feb 24 to 19 Jan 25</span>
-<span id="cb25-768"><a href="#cb25-768"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://web.archive.org/web/20250118013136/https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/)</span></span>
+<span id="cb25-762"><a href="#cb25-762"></a><span class="ss">- </span>Isn't there a way to return the value from the function, rather than write a value to the memory location at a provided argument.</span>
+<span id="cb25-763"><a href="#cb25-763"></a><span class="ss">  - </span>Yes.</span>
+<span id="cb25-764"><a href="#cb25-764"></a><span class="ss">  - </span>This form of coding we use here is *memory-safe*</span>
+<span id="cb25-765"><a href="#cb25-765"></a><span class="ss">  - </span>It was endorsed by the White House from 26 Feb 24 to 19 Jan 25</span>
+<span id="cb25-766"><a href="#cb25-766"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://web.archive.org/web/20250118013136/https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/)</span></span>
+<span id="cb25-767"><a href="#cb25-767"></a></span>
+<span id="cb25-768"><a href="#cb25-768"></a><span class="fu">## FAQ</span></span>
 <span id="cb25-769"><a href="#cb25-769"></a></span>
-<span id="cb25-770"><a href="#cb25-770"></a><span class="fu"># FAQ</span></span>
-<span id="cb25-771"><a href="#cb25-771"></a></span>
-<span id="cb25-772"><a href="#cb25-772"></a><span class="ss">- </span>How do we deal with integers that aren't of known length.</span>
-<span id="cb25-773"><a href="#cb25-773"></a><span class="ss">  - </span>Ask me after the midterm.</span>
-<span id="cb25-774"><a href="#cb25-774"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://gmplib.org/)</span></span>
-<span id="cb25-775"><a href="#cb25-775"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://man7.org/linux/man-pages/man3/free.3.html)</span></span>
-<span id="cb25-776"><a href="#cb25-776"></a>  </span>
-<span id="cb25-777"><a href="#cb25-777"></a><span class="fu"># These Slides</span></span>
-<span id="cb25-778"><a href="#cb25-778"></a></span>
-<span id="cb25-779"><a href="#cb25-779"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
-<span id="cb25-780"><a href="#cb25-780"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
-<span id="cb25-781"><a href="#cb25-781"></a><span class="ss">- </span>New</span>
-<span id="cb25-782"><a href="#cb25-782"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
-<span id="cb25-783"><a href="#cb25-783"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
-<span id="cb25-784"><a href="#cb25-784"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arithmetic operations</span>
-<span id="cb25-785"><a href="#cb25-785"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Function types</span>
-<span id="cb25-786"><a href="#cb25-786"></a></span>
+<span id="cb25-770"><a href="#cb25-770"></a><span class="ss">- </span>How do we deal with integers that aren't of known length.</span>
+<span id="cb25-771"><a href="#cb25-771"></a><span class="ss">  - </span>Ask me after the midterm.</span>
+<span id="cb25-772"><a href="#cb25-772"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://gmplib.org/)</span></span>
+<span id="cb25-773"><a href="#cb25-773"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://man7.org/linux/man-pages/man3/free.3.html)</span></span>
+<span id="cb25-774"><a href="#cb25-774"></a>  </span>
+<span id="cb25-775"><a href="#cb25-775"></a><span class="fu">## These Slides</span></span>
+<span id="cb25-776"><a href="#cb25-776"></a></span>
+<span id="cb25-777"><a href="#cb25-777"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Reintroduce the technologies</span>
+<span id="cb25-778"><a href="#cb25-778"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`stdint`</span></span>
+<span id="cb25-779"><a href="#cb25-779"></a><span class="ss">- </span>New</span>
+<span id="cb25-780"><a href="#cb25-780"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Finite sets, rings</span>
+<span id="cb25-781"><a href="#cb25-781"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arbitrary/high precision integers</span>
+<span id="cb25-782"><a href="#cb25-782"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Arithmetic operations</span>
+<span id="cb25-783"><a href="#cb25-783"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Function types</span>
+<span id="cb25-784"><a href="#cb25-784"></a></span>
+<span id="cb25-785"><a href="#cb25-785"></a></span>
+<span id="cb25-786"><a href="#cb25-786"></a><span class="fu">## Stinger</span></span>
 <span id="cb25-787"><a href="#cb25-787"></a></span>
-<span id="cb25-788"><a href="#cb25-788"></a><span class="fu"># Stinger</span></span>
-<span id="cb25-789"><a href="#cb25-789"></a></span>
-<span id="cb25-790"><a href="#cb25-790"></a><span class="in">```{.C}</span></span>
-<span id="cb25-791"><a href="#cb25-791"></a><span class="in">/* print the big value as a string */</span></span>
-<span id="cb25-792"><a href="#cb25-792"></a><span class="in">void seebig(uint64_t *a) {</span></span>
-<span id="cb25-793"><a href="#cb25-793"></a><span class="in">    size_t i;</span></span>
-<span id="cb25-794"><a href="#cb25-794"></a><span class="in">    for (i = S-1; i &lt; S ; i--) {</span></span>
-<span id="cb25-795"><a href="#cb25-795"></a><span class="in">        printf("%016lx ", a[i]); </span></span>
-<span id="cb25-796"><a href="#cb25-796"></a><span class="in">        if ((i % 8 == 0 &amp;&amp; i)) {</span></span>
-<span id="cb25-797"><a href="#cb25-797"></a><span class="in">            printf("\n");</span></span>
-<span id="cb25-798"><a href="#cb25-798"></a><span class="in">        }       </span></span>
-<span id="cb25-799"><a href="#cb25-799"></a><span class="in">    }</span></span>
-<span id="cb25-800"><a href="#cb25-800"></a><span class="in">    printf("\n\n");</span></span>
-<span id="cb25-801"><a href="#cb25-801"></a><span class="in">    return;</span></span>
-<span id="cb25-802"><a href="#cb25-802"></a><span class="in">}</span></span>
-<span id="cb25-803"><a href="#cb25-803"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb25-788"><a href="#cb25-788"></a><span class="in">```{.C}</span></span>
+<span id="cb25-789"><a href="#cb25-789"></a><span class="in">/* print the big value as a string */</span></span>
+<span id="cb25-790"><a href="#cb25-790"></a><span class="in">void seebig(uint64_t *a) {</span></span>
+<span id="cb25-791"><a href="#cb25-791"></a><span class="in">    size_t i;</span></span>
+<span id="cb25-792"><a href="#cb25-792"></a><span class="in">    for (i = S-1; i &lt; S ; i--) {</span></span>
+<span id="cb25-793"><a href="#cb25-793"></a><span class="in">        printf("%016lx ", a[i]); </span></span>
+<span id="cb25-794"><a href="#cb25-794"></a><span class="in">        if ((i % 8 == 0 &amp;&amp; i)) {</span></span>
+<span id="cb25-795"><a href="#cb25-795"></a><span class="in">            printf("\n");</span></span>
+<span id="cb25-796"><a href="#cb25-796"></a><span class="in">        }       </span></span>
+<span id="cb25-797"><a href="#cb25-797"></a><span class="in">    }</span></span>
+<span id="cb25-798"><a href="#cb25-798"></a><span class="in">    printf("\n\n");</span></span>
+<span id="cb25-799"><a href="#cb25-799"></a><span class="in">    return;</span></span>
+<span id="cb25-800"><a href="#cb25-800"></a><span class="in">}</span></span>
+<span id="cb25-801"><a href="#cb25-801"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

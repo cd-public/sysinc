@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.30">
 
-  <title>AI 101 – Finite</title>
+  <title>Systems in C – Finite</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -93,7 +93,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0f071606cd187ea9c4f27a73aca9ddf7.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-83ff8eaca933b935d6975c751fe501e4.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -390,14 +390,14 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Finite</h1>
-  <p class="subtitle">0x2.0-1</p>
+  <p class="subtitle">w3d0</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
 <li><strong>Welcome</strong> to Computing Security
 <ul>
@@ -409,9 +409,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="apocryphal-quote" class="title-slide slide level1 center">
-<h1>Apocryphal Quote</h1>
+<section id="apocryphal-quote" class="slide level2">
+<h2>Apocryphal Quote</h2>
 <ul>
 <li>I cannot find it, but I believe a philosopher one jested:</li>
 </ul>
@@ -423,9 +422,8 @@
 <li>We can not capture the infinite, but we may model it.</li>
 </ul>
 </section>
-
-<section id="these-slides" class="title-slide slide level1 center">
-<h1>These Slides</h1>
+<section id="these-slides" class="slide level2">
+<h2>These Slides</h2>
 <ul>
 <li>Reintroduce the technologies
 <ul>
@@ -440,9 +438,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="what-are-integers" class="title-slide slide level1 center">
-<h1>What are integers?</h1>
+<section id="what-are-integers" class="slide level2">
+<h2>What are integers?</h2>
 <ul>
 <li>Denote integers as the mathematical symbol <span class="math inline">\(\mathbb{Z}\)</span>
 <ul>
@@ -455,9 +452,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="in-python" class="title-slide slide level1 center">
-<h1>In Python</h1>
+<section id="in-python" class="slide level2">
+<h2>In Python</h2>
 <ul>
 <li>We can write them in Python with <code>itertools</code></li>
 </ul>
@@ -469,7 +465,7 @@
 <span id="cb1-2"><a></a>N <span class="op">=</span> count()</span>
 <span id="cb1-3"><a></a>make_z <span class="op">=</span> <span class="kw">lambda</span> n : n <span class="op">//</span> <span class="dv">2</span> <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="cf">else</span> <span class="op">-</span>n <span class="op">//</span> <span class="dv">2</span></span>
 <span id="cb1-4"><a></a>Z <span class="op">=</span> (make_z(n) <span class="cf">for</span> n <span class="kw">in</span> count(<span class="dv">1</span>))</span>
-<span id="cb1-5"><a></a><span class="co"># We can see elements of these infinite collections with</span></span>
+<span id="cb1-5"><a></a><span class="co">## We can see elements of these infinite collections with</span></span>
 <span id="cb1-6"><a></a>[<span class="bu">next</span>(N) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)], [<span class="bu">next</span>(Z) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -477,9 +473,8 @@
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="aside" class="title-slide slide level1 center">
-<h1>Aside</h1>
+<section id="aside" class="slide level2">
+<h2>Aside</h2>
 <ul>
 <li>It is moderately controversial to assert: <span class="math display">\[
 0 \in \mathbb{N}
@@ -491,9 +486,8 @@
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">assert</span>(<span class="dv">0</span> <span class="kw">in</span> count())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="mathbbn-is-akin-to-uint" class="title-slide slide level1 center">
-<h1><span class="math inline">\(\mathbb{N}\)</span> is akin to <code>uint</code></h1>
+<section id="mathbbn-is-akin-to-uint" class="slide level2">
+<h2><span class="math inline">\(\mathbb{N}\)</span> is akin to <code>uint</code></h2>
 <ul>
 <li>The natural numbers <span class="math inline">\(\mathbb{N}\)</span> probably look a lot like the unsigned integers.</li>
 <li>There’s only one real problem.</li>
@@ -503,9 +497,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="the-problem" class="title-slide slide level1 center">
-<h1>The Problem</h1>
+<section id="the-problem" class="slide level2">
+<h2>The Problem</h2>
 <ul>
 <li>Python has been lying to us for years that its integer have no upper limit.
 <ul>
@@ -514,9 +507,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="test-with--c" class="title-slide slide level1 center">
-<h1>Test with <code>-c</code></h1>
+<section id="test-with--c" class="slide level2">
+<h2>Test with <code>-c</code></h2>
 <ul>
 <li>We use the <code>-c</code> flag to Python to run a script directly at command line.</li>
 </ul>
@@ -529,9 +521,8 @@
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>python3 <span class="op">-</span>c <span class="st">"from itertools import count; print(0 in count())"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="time-it" class="title-slide slide level1 center">
-<h1>Time it</h1>
+<section id="time-it" class="slide level2">
+<h2>Time it</h2>
 <ul>
 <li>Running on Linux
 <ul>
@@ -544,9 +535,8 @@
 <span id="cb6-3"><a></a>0.01user 0.00system 0:00.01elapsed 109%CPU (0avgtext+0avgdata 8748maxresident)k</span>
 <span id="cb6-4"><a></a>0inputs+0outputs (0major+942minor)pagefaults 0swaps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="pivot-to-bash" class="title-slide slide level1 center">
-<h1>Pivot to bash</h1>
+<section id="pivot-to-bash" class="slide level2">
+<h2>Pivot to bash</h2>
 <ul>
 <li>Looks nicer in <code>/bin/bash</code></li>
 </ul>
@@ -562,9 +552,8 @@
 <li>Or .013 seconds to find itertools on a SDD</li>
 </ul>
 </section>
-
-<section id="bigger-numbers" class="title-slide slide level1 center">
-<h1>Bigger Numbers</h1>
+<section id="bigger-numbers" class="slide level2">
+<h2>Bigger Numbers</h2>
 <ul>
 <li>Check e.g.&nbsp;1000</li>
 </ul>
@@ -579,17 +568,15 @@
 <li>Trivial.</li>
 </ul>
 </section>
-
-<section id="test-it" class="title-slide slide level1 center">
-<h1>Test it</h1>
+<section id="test-it" class="slide level2">
+<h2>Test it</h2>
 <ul>
 <li>Try a few powers yourself. What do you find?</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a></a>time python3 -c "from itertools import count; n=1; print(10**n in count())"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="columns">
 <div class="column" style="width:%50;">
 <table class="caption-top">
@@ -654,9 +641,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul>
 </div></div>
 </section>
-
-<section id="c-for-clear" class="title-slide slide level1 center">
-<h1>C for Clear</h1>
+<section id="c-for-clear" class="slide level2">
+<h2>C for Clear</h2>
 <ul>
 <li>C is a little more forthright about how big its numbers get.</li>
 </ul>
@@ -677,9 +663,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb10-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="c-fast" class="title-slide slide level1 center">
-<h1>C fast</h1>
+<section id="c-fast" class="slide level2">
+<h2>C fast</h2>
 <ul>
 <li>For me, this took 5.19s on <code>uint32_t</code>
 <ul>
@@ -696,9 +681,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>How many base 10 digits does the largest number we can store in 32 bytes have?</li>
 </ul>
 </section>
-
-<section id="limits.h" class="title-slide slide level1 center">
-<h1>limits.h</h1>
+<section id="limits.h" class="slide level2">
+<h2>limits.h</h2>
 <ul>
 <li>C discloses the maximum values it can tolerate in <code>&lt;limits.h&gt;</code></li>
 </ul>
@@ -721,9 +705,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="rings" class="title-slide slide level1 center">
-<h1>Rings</h1>
+<section id="rings" class="slide level2">
+<h2>Rings</h2>
 <ul>
 <li>As far as I know (not a mathematician) the <code>uint</code>s and <code>int</code>s in C are <em>rings</em>
 <ul>
@@ -735,9 +718,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="rings-vs-integers" class="title-slide slide level1 center">
-<h1>Rings vs Integers</h1>
+<section id="rings-vs-integers" class="slide level2">
+<h2>Rings vs Integers</h2>
 <ul>
 <li>Rings have some “goofy” features
 <ul>
@@ -747,9 +729,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Let’s look at an example.</li>
 </ul>
 </section>
-
-<section id="checkers" class="title-slide slide level1 center">
-<h1>Checkers</h1>
+<section id="checkers" class="slide level2">
+<h2>Checkers</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>num.c</strong></pre>
@@ -769,9 +750,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>From <code>&lt;stdlib.h&gt;</code> per <code>man atoi</code>, but might work without that.</li>
 </ul>
 </section>
-
-<section id="do-some-additions" class="title-slide slide level1 center">
-<h1>Do some additions</h1>
+<section id="do-some-additions" class="slide level2">
+<h2>Do some additions</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a></a>$  ./a.out 100 100 ; echo $?</span>
 <span id="cb13-2"><a></a>200</span>
 <span id="cb13-3"><a></a>$ ./a.out 200 100 ; echo $?</span>
@@ -780,9 +760,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>44? From whence?</li>
 </ul>
 </section>
-
-<section id="uint8_t-is-finite" class="title-slide slide level1 center">
-<h1>uint8_t is <em>finite</em></h1>
+<section id="uint8_t-is-finite" class="slide level2">
+<h2>uint8_t is <em>finite</em></h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb14-1"><a></a>&gt;&gt;&gt; 200 + 100</span>
 <span id="cb14-2"><a></a>300</span>
 <span id="cb14-3"><a></a>&gt;&gt;&gt; 2 ** 8</span>
@@ -797,9 +776,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 \]</span></li>
 </ul>
 </section>
-
-<section id="in-practice" class="title-slide slide level1 center">
-<h1>In practice</h1>
+<section id="in-practice" class="slide level2">
+<h2>In practice</h2>
 <ul>
 <li><span class="math inline">\(\exists\)</span> <code>INT_MAX</code>, <code>UINT_MAX</code>, <code>CHAR_MAX</code>, etc.
 <ul>
@@ -810,9 +788,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li><span class="math inline">\(\forall a, b \in\)</span> <code>uint</code><span class="math inline">\(n\)</span><code>_t</code> <span class="math inline">\(: a + b \equiv a + b \pmod {2^n}\)</span></li>
 </ul>
 </section>
-
-<section id="problem-statement" class="title-slide slide level1 center">
-<h1>Problem Statement</h1>
+<section id="problem-statement" class="slide level2">
+<h2>Problem Statement</h2>
 <ul>
 <li>Quoth GitHub</li>
 </ul>
@@ -827,9 +804,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="bits" class="title-slide slide level1 center">
-<h1>4096 bits</h1>
+<section id="bits" class="slide level2">
+<h2>4096 bits</h2>
 <ul>
 <li>Modern security recommendations are for 4096 bit cryptographic keys.
 <ul>
@@ -842,9 +818,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb15-4"><a></a>SYNOPSIS</span>
 <span id="cb15-5"><a></a>     ssh-keygen [-q] [-a rounds] [-b bits] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="these-slides-1" class="title-slide slide level1 center">
-<h1>These Slides</h1>
+<section id="these-slides-1" class="slide level2">
+<h2>These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -859,9 +834,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="big-values" class="title-slide slide level1 center">
-<h1>Big Values</h1>
+<section id="big-values" class="slide level2">
+<h2>Big Values</h2>
 <ul>
 <li>Soon, we will implement RSA
 <ul>
@@ -874,9 +848,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="simple-example" class="title-slide slide level1 center">
-<h1>Simple Example</h1>
+<section id="simple-example" class="slide level2">
+<h2>Simple Example</h2>
 <ul>
 <li>Recall this example from a data application.</li>
 <li>We had a data set for which we determined a mean height in inches.</li>
@@ -885,9 +858,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">69.3</span> <span class="op">//</span> <span class="dv">12</span>, <span class="fl">69.3</span> <span class="op">%</span> <span class="dv">12</span></span>
 <span id="cb16-2"><a></a>(<span class="fl">5.0</span>, <span class="fl">9.299999999999997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="addition-is-easy" class="title-slide slide level1 center">
-<h1>Addition is easy</h1>
+<section id="addition-is-easy" class="slide level2">
+<h2>Addition is easy</h2>
 <ul>
 <li>WNBA MVP and Olympic Gold Medalist A’ja Wilson is <a href="https://en.wikipedia.org/wiki/A%27ja_Wilson">6 ft 4 in</a></li>
 <li>How much taller is that than 5 ft 9.3 in
@@ -897,9 +869,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="difference" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li>We perform “long subtraction”</li>
 <li>It’s fun!</li>
@@ -929,9 +900,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="difference-1" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference-1" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li><span class="math inline">\(0 - 3 \equiv 7 \pmod{10}\)</span></li>
 <li>Tenths of inches</li>
@@ -967,9 +937,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="difference-2" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference-2" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li>But wait - <code>3</code> is more than <code>0</code></li>
 <li>Track via a “carry”</li>
@@ -1011,9 +980,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="difference-3" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference-3" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li><span class="math inline">\(4 - 9 - 1 \equiv 6 \pmod{12}\)</span></li>
 <li>12 in = 1 ft</li>
@@ -1055,9 +1023,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="difference-4" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference-4" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li>Another carry.</li>
 <li>12 in = 1 ft</li>
@@ -1099,9 +1066,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="difference-5" class="title-slide slide level1 center">
-<h1>Difference</h1>
+<section id="difference-5" class="slide level2">
+<h2>Difference</h2>
 <ul>
 <li><span class="math inline">\(6 - 5 - 1 = 0\)</span></li>
 <li>Nonmodular - feet has no max.</li>
@@ -1143,9 +1109,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="conclusion" class="title-slide slide level1 center">
-<h1>Conclusion</h1>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
 <ul>
 <li>Iconic living legend A’ja Wilson is tall af.</li>
 <li>We can do addition and substraction on larger values than <code>UINT_MAX</code> or <code>ULONG_MAX</code> by:
@@ -1159,9 +1124,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="exercise" class="title-slide slide level1 center">
-<h1>Exercise</h1>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
 <ul>
 <li>Make a height adder, try <code>man scanf</code></li>
 </ul>
@@ -1185,9 +1149,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb17-14"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="usefulness" class="title-slide slide level1 center">
-<h1>Usefulness</h1>
+<section id="usefulness" class="slide level2">
+<h2>Usefulness</h2>
 <ul>
 <li>We can now do arithmetic correctly
 <ul>
@@ -1199,9 +1162,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="faq" class="title-slide slide level1 center">
-<h1>FAQ</h1>
+<section id="faq" class="slide level2">
+<h2>FAQ</h2>
 <ul>
 <li>Can we use this to add numbers bigger than <span class="math inline">\(2^n\)</span> using adds over at most <span class="math inline">\(n\)</span> bits at a time?
 <ul>
@@ -1216,9 +1178,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="these-slides-2" class="title-slide slide level1 center">
-<h1>These Slides</h1>
+<section id="these-slides-2" class="slide level2">
+<h2>These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1233,9 +1194,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="easy-mode" class="title-slide slide level1 center">
-<h1>Easy Mode</h1>
+<section id="easy-mode" class="slide level2">
+<h2>Easy Mode</h2>
 <ul>
 <li>Addition and subtraction are easy.</li>
 <li>For some value of easy.
@@ -1250,9 +1210,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="hard-mode" class="title-slide slide level1 center">
-<h1>Hard Mode</h1>
+<section id="hard-mode" class="slide level2">
+<h2>Hard Mode</h2>
 <ul>
 <li>Some cryptographical algorithms, however, use two extremely advanced arithmetic operations:
 <ul>
@@ -1263,9 +1222,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Fortunately this only two operations (need a combined <code>divmod</code>)</li>
 </ul>
 </section>
-
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>Imagine an engineering team lead for:
 <ul>
@@ -1283,9 +1241,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>How many person hours is this?</li>
 </ul>
 </section>
-
-<section id="napkin-math" class="title-slide slide level1 center">
-<h1>Napkin Math</h1>
+<section id="napkin-math" class="slide level2">
+<h2>Napkin Math</h2>
 <ul>
 <li>I’d say
 <ul>
@@ -1299,9 +1256,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="times-139.5" class="title-slide slide level1 center">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5" class="slide level2">
+<h2><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>That just isn’t easy</li>
 <li>(140 * 34 isn’t bad, but we need a motivating example).</li>
@@ -1335,9 +1291,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="times-139.5-1" class="title-slide slide level1 center">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5-1" class="slide level2">
+<h2><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>Compute all products over single-digit factors</li>
 </ul>
@@ -1376,9 +1331,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="times-139.5-2" class="title-slide slide level1 center">
-<h1><span class="math inline">\(34 \times 139.5\)</span></h1>
+<section id="times-139.5-2" class="slide level2">
+<h2><span class="math inline">\(34 \times 139.5\)</span></h2>
 <ul>
 <li>Include sigificance</li>
 </ul>
@@ -1410,9 +1364,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </tbody>
 </table>
 </section>
-
-<section id="dear-watson" class="title-slide slide level1 center">
-<h1>Dear Watson</h1>
+<section id="dear-watson" class="slide level2">
+<h2>Dear Watson</h2>
 <div class="columns">
 <div class="column" style="width:%50;">
 <table class="caption-top">
@@ -1457,9 +1410,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 \]</span></p>
 </div></div>
 </section>
-
-<section id="express-as" class="title-slide slide level1 center">
-<h1>Express as</h1>
+<section id="express-as" class="slide level2">
+<h2>Express as</h2>
 <p><span class="math display">\[
 \begin{align*}
 139.5&amp; = &amp;1 * 10^2 + &amp;3 * 10^1 + &amp;9 * 10^0&amp; + 5 * 10^{-1}\\
@@ -1476,9 +1428,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li><p>That is polynomial; can work with those.</p></li>
 </ul>
 </section>
-
-<section id="polynomial" class="title-slide slide level1 center">
-<h1>Polynomial</h1>
+<section id="polynomial" class="slide level2">
+<h2>Polynomial</h2>
 <p><span class="math display">\[
 (x^2 + 3x + 9 + 5x^{-1})(3x + 4)
 \]</span></p>
@@ -1492,9 +1443,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 3x^3 + 13x^2 + 39x + 51 + 20x^{-1}
 \]</span></p>
 </section>
-
-<section id="aside-1" class="title-slide slide level1 center">
-<h1>Aside</h1>
+<section id="aside-1" class="slide level2">
+<h2>Aside</h2>
 <ul>
 <li>I think this is covered around ~8th grade</li>
 <li>I don’t want to assume the integrity to US public school system
@@ -1508,9 +1458,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="considerations" class="title-slide slide level1 center">
-<h1>Considerations</h1>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
 <ul>
 <li>It is natural to express multiplication of e.g.&nbsp;4096 bit integers as a polynomial over, say, 64 bit integers.</li>
 <li>One teeny problem:
@@ -1519,9 +1468,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="overflow" class="title-slide slide level1 center">
-<h1>Overflow</h1>
+<section id="overflow" class="slide level2">
+<h2>Overflow</h2>
 <ul>
 <li>The point of calculating this was to get things down to single digit:</li>
 </ul>
@@ -1533,9 +1481,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Essentially, 1-digit multiply may produce a 2-digit product.</li>
 </ul>
 </section>
-
-<section id="uh-oh" class="title-slide slide level1 center">
-<h1>Uh oh</h1>
+<section id="uh-oh" class="slide level2">
+<h2>Uh oh</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>/bin/sh</strong></pre>
@@ -1559,9 +1506,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb18-17"><a></a><span class="dv">132</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="size-of-ints" class="title-slide slide level1 center">
-<h1>Size of ints</h1>
+<section id="size-of-ints" class="slide level2">
+<h2>Size of ints</h2>
 <ul>
 <li>Say we have two integers of 8 bits of precision.</li>
 <li>We multiple them together.</li>
@@ -1573,9 +1519,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>16</li>
 </ul>
 </section>
-
-<section id="carrys-for-mults" class="title-slide slide level1 center">
-<h1>Carrys for mults</h1>
+<section id="carrys-for-mults" class="slide level2">
+<h2>Carrys for mults</h2>
 <ul>
 <li>When we are doing big multiplications:
 <ul>
@@ -1585,9 +1530,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="one-technique" class="title-slide slide level1 center">
-<h1>One Technique</h1>
+<section id="one-technique" class="slide level2">
+<h2>One Technique</h2>
 <ul>
 <li>I Made a pointer to a <code>uint32_t</code>
 <ul>
@@ -1604,9 +1548,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>Multiplied, tracking significance.</li>
 </ul>
 </section>
-
-<section id="division" class="title-slide slide level1 center">
-<h1>Division</h1>
+<section id="division" class="slide level2">
+<h2>Division</h2>
 <ul>
 <li>Remember long division?
 <ul>
@@ -1625,9 +1568,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>The final remainder is the mod.</li>
 </ul>
 </section>
-
-<section id="these-slides-3" class="title-slide slide level1 center">
-<h1>These Slides</h1>
+<section id="these-slides-3" class="slide level2">
+<h2>These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1642,9 +1584,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="a-4096-bit-type" class="title-slide slide level1 center">
-<h1>A 4096 bit type</h1>
+<section id="a-4096-bit-type" class="slide level2">
+<h2>A 4096 bit type</h2>
 <ul>
 <li>It’s not too bad to pass around 4096 bits.
 <ul>
@@ -1659,9 +1600,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <div class="sourceCode" id="cb20" data-filename="bigadd"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a></a><span class="dt">uint64_t</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="usage" class="title-slide slide level1 center">
-<h1>Usage</h1>
+<section id="usage" class="slide level2">
+<h2>Usage</h2>
 <ul>
 <li>Before call this function, declare three arrays:</li>
 </ul>
@@ -1677,9 +1617,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <span id="cb22-2"><a></a>bigadd<span class="op">(</span>in0<span class="op">,</span>in1<span class="op">,</span>in0<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="usage-1" class="title-slide slide level1 center">
-<h1>Usage</h1>
+<section id="usage-1" class="slide level2">
+<h2>Usage</h2>
 <ul>
 <li>Remember this is banned:</li>
 </ul>
@@ -1692,9 +1631,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 <li>My <code>uint64_t</code> value returned the carry value (it was nice to keep track of)</li>
 </ul>
 </section>
-
-<section id="faq-1" class="title-slide slide level1 center">
-<h1>FAQ</h1>
+<section id="faq-1" class="slide level2">
+<h2>FAQ</h2>
 <ul>
 <li>Isn’t there a way to return the value from the function, rather than write a value to the memory location at a provided argument.
 <ul>
@@ -1705,9 +1643,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="faq-2" class="title-slide slide level1 center">
-<h1>FAQ</h1>
+<section id="faq-2" class="slide level2">
+<h2>FAQ</h2>
 <ul>
 <li>How do we deal with integers that aren’t of known length.
 <ul>
@@ -1717,9 +1654,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="these-slides-4" class="title-slide slide level1 center">
-<h1>These Slides</h1>
+<section id="these-slides-4" class="slide level2">
+<h2>These Slides</h2>
 <ul>
 <li>✓ Reintroduce the technologies
 <ul>
@@ -1734,9 +1670,8 @@ t(10^n) \in [14,17] \times 10^{n-9}
 </ul></li>
 </ul>
 </section>
-
-<section id="stinger" class="title-slide slide level1 center">
-<h1>Stinger</h1>
+<section id="stinger" class="slide level2">
+<h2>Stinger</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a></a><span class="co">/* print the big value as a string */</span></span>
 <span id="cb24-2"><a></a><span class="dt">void</span> seebig<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>a<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb24-3"><a></a>    <span class="dt">size_t</span> i<span class="op">;</span></span>

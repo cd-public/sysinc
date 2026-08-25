@@ -1,18 +1,16 @@
 ---
 title: Finite
-subtitle: "0x2.0-1"
-
-execute:
-    echo: false
+subtitle: "w3d0"
 ---
-# Announcements
+
+## Announcements
 
 - **Welcome** to Computing Security
   - Composite multi-session lecture.
 - **Action Items**:
   - Broadly supports SHA, RSA, and mixed precision arithmetic, concurrent assignments with this lecture.
 
-# Apocryphal Quote
+## Apocryphal Quote
 
 - I cannot find it, but I believe a philosopher one jested:
 
@@ -21,7 +19,7 @@ execute:
 - Arrays of such numbers are sufficient for computation of arbitrary precision.
 - We can not capture the infinite, but we may model it.
   
-# These Slides
+## These Slides
 
 - Reintroduce the technologies
   - `stdint`
@@ -31,7 +29,7 @@ execute:
   - Arithmetic operations
   - Function types
   
-# What are integers?
+## What are integers?
 
 - Denote integers as the mathematical symbol $\mathbb{Z}$
   - Something to do with the German/Deutsch
@@ -39,7 +37,7 @@ execute:
   - We tend to want the naturals, denoted $\mathbb{N}$
   - Counting numbers, $0$ and up.
 
-# In Python
+## In Python
 
 - We can write them in Python with `itertools`
 
@@ -48,7 +46,7 @@ from itertools import count
 N = count()
 make_z = lambda n : n // 2 if n % 2 else -n // 2
 Z = (make_z(n) for n in count(1))
-# We can see elements of these infinite collections with
+## We can see elements of these infinite collections with
 [next(N) for _ in range(5)], [next(Z) for _ in range(5)]
 ```
 
@@ -57,7 +55,7 @@ Z = (make_z(n) for n in count(1))
 ([0, 1, 2, 3, 4], [0, -1, 1, -2, 2])
 ```
 
-# Aside
+## Aside
 
 - It is moderately controversial to assert:
 $$
@@ -69,20 +67,20 @@ $$
 assert(0 in count())
 ```
 
-# $\mathbb{N}$ is akin to `uint`
+## $\mathbb{N}$ is akin to `uint`
 
 - The natural numbers $\mathbb{N}$ probably look a lot like the unsigned integers.
 - There's only one real problem.
 - We don't have the unsigned integers in C
   - We don't have them in Python either, but for a different reason.
 
-# The Problem
+## The Problem
 
 - Python has been lying to us for years that its integer have no upper limit.
   - We say $\nexists n : n \notin$ `count()`
   - Let's just try a reasonably sized number, say googolplex $= 10^{10^{100}}$
 
-# Test with `-c`
+## Test with `-c`
 
 - We use the `-c` flag to Python to run a script directly at command line.
 ```python
@@ -95,7 +93,7 @@ python3 -c "print('hello world')"
 python3 -c "from itertools import count; print(0 in count())"
 ```
 
-# Time it
+## Time it
 
 - Running on Linux 
    - `podman start -l ; podman exec -it -l`
@@ -107,7 +105,7 @@ True
 0inputs+0outputs (0major+942minor)pagefaults 0swaps
 ```
 
-# Pivot to bash
+## Pivot to bash
 
 - Looks nicer in `/bin/bash`
 ```email
@@ -123,7 +121,7 @@ sys     0m0.000s
 - We could argue it takes .013 seconds to check
 - Or .013 seconds to find itertools on a SDD
 
-# Bigger Numbers
+## Bigger Numbers
 
 - Check e.g. 1000
 ```email
@@ -138,7 +136,7 @@ sys     0m0.000s
 
 - Trivial.
 
-# Test it
+## Test it
 
 - Try a few powers yourself. What do you find?
 
@@ -146,7 +144,7 @@ sys     0m0.000s
 time python3 -c "from itertools import count; n=1; print(10**n in count())"
 ```
 
-# 
+## 
 
 ::::{.columns}
 
@@ -185,7 +183,7 @@ $$
 
 ::::
 
-# C for Clear
+## C for Clear
 
 - C is a little more forthright about how big its numbers get.
 ```{.C filename="max.c"}
@@ -202,7 +200,7 @@ int main() {
 }
 ```
 
-# C fast
+## C fast
 
 - For me, this took 5.19s on `uint32_t`
   - Same value in Python was 1m9.32s
@@ -212,7 +210,7 @@ int main() {
   - What assumptions did you make?
 - How many base 10 digits does the largest number we can store in 32 bytes have?
 
-# limits.h 
+## limits.h 
 
 - C discloses the maximum values it can tolerate in `<limits.h>`
 ```{.C filename="num.c"}
@@ -227,21 +225,21 @@ int main() {
 - The correct answer was binary search.
   - The incorrect answer (so far) was subtraction.
 
-# Rings
+## Rings
 
 - As far as I know (not a mathematician) the `uint`s and `int`s in C are *rings*
   - They have addition and multiplication
 - They aren't fields - zero is divisible
   - Spoiler alert, but $2^{\frac{n}{2}} \times 2^{\frac{n}{2}} \equiv 0 \pmod{2^n}$
 
-# Rings vs Integers
+## Rings vs Integers
 
 - Rings have some "goofy" features
   - $a, b \in$ `uint`$n$`_t` $\nRightarrow a + b > a$
   - Same with multiplication.
 - Let's look at an example.
 
-# Checkers
+## Checkers
 
 ```{.C filename="num.c"}
 #include <stdlib.h>
@@ -258,7 +256,7 @@ int main(int argc, char **argv) {
 - `atoi` - alphabetical to int
 - From `<stdlib.h>` per `man atoi`, but might work without that.
 
-# Do some additions
+## Do some additions
 
 ```email
 $  ./a.out 100 100 ; echo $?
@@ -268,7 +266,7 @@ $ ./a.out 200 100 ; echo $?
 ```
 - 44? From whence?
 
-# uint8_t is *finite*
+## uint8_t is *finite*
 
 ```email
 >>> 200 + 100
@@ -286,7 +284,7 @@ $$
 \mathbb{N}/(2^8)
 $$
 
-# In practice
+## In practice
 
 - $\exists$ `INT_MAX`, `UINT_MAX`, `CHAR_MAX`, etc.
   - They use C names, not `stdint` names
@@ -294,7 +292,7 @@ $$
 - Sums and products greater than these values are taken modulo said max.
 - $\forall a, b \in$ `uint`$n$`_t` $: a + b \equiv a + b \pmod {2^n}$
 
-# Problem Statement
+## Problem Statement
 
 - Quoth GitHub
 
@@ -304,7 +302,7 @@ $$
 - What does that 4096 stand for?
   - For what does that 4096 stand?
 
-# 4096 bits
+## 4096 bits
 
 - Modern security recommendations are for 4096 bit cryptographic keys.
   - 2048 is generally considered "okay" or "acceptable"
@@ -317,7 +315,7 @@ SYNOPSIS
      ssh-keygen [-q] [-a rounds] [-b bits] 
 ```
 
-# These Slides
+## These Slides
 
 - &check; Reintroduce the technologies
   - &check; `stdint`
@@ -327,7 +325,7 @@ SYNOPSIS
   - Arithmetic operations
   - Function types
 
-# Big Values
+## Big Values
 
 - Soon, we will implement RSA
   - We'll talk about what it is then.
@@ -335,7 +333,7 @@ SYNOPSIS
 - We will use *modular arithmetic*.
   - Finite `uint64_t` models infinite $\mathbb{N}$
 
-# Simple Example
+## Simple Example
 
 - Recall this example from a data application.
 - We had a data set for which we determined a mean height in inches.
@@ -345,14 +343,14 @@ SYNOPSIS
 (5.0, 9.299999999999997)
 ```
 
-# Addition is easy
+## Addition is easy
 
 - WNBA MVP and Olympic Gold Medalist A'ja Wilson is [6 ft 4 in](https://en.wikipedia.org/wiki/A%27ja_Wilson)
 - How much taller is that than 5 ft 9.3 in
   - Can convert to non-integer inches, but...
   - We already had the .299... problem
 
-# Difference
+## Difference
 
 - We perform "long subtraction"
 - It's fun!
@@ -362,7 +360,7 @@ SYNOPSIS
 |A'ja|6|4|0|
 |Mean|5|9|3|
 
-# Difference
+## Difference
 
 - $0 - 3 \equiv 7 \pmod{10}$
 - Tenths of inches
@@ -373,7 +371,7 @@ SYNOPSIS
 |Mean|5|9|3|
 |Diff| | |7|
 
-# Difference
+## Difference
 
 - But wait - `3` is more than `0`
 - Track via a "carry"
@@ -385,7 +383,7 @@ SYNOPSIS
 |Carry|0|1|0|
 |Diff| | |7|
 
-# Difference
+## Difference
 
 - $4 - 9 - 1 \equiv 6 \pmod{12}$
 - 12 in = 1 ft
@@ -398,7 +396,7 @@ SYNOPSIS
 |Diff| |6|7|
 
 
-# Difference
+## Difference
 
 - Another carry.
 - 12 in = 1 ft
@@ -411,7 +409,7 @@ SYNOPSIS
 |Diff| |6|7|
 
 
-# Difference
+## Difference
 
 - $6 - 5 - 1 = 0$
 - Nonmodular - feet has no max.
@@ -423,7 +421,7 @@ SYNOPSIS
 |Carry|1|0|0|
 |Diff|0|6|7|
 
-# Conclusion
+## Conclusion
 
 - Iconic living legend A'ja Wilson is tall af.
 - We can do addition and substraction on larger values than `UINT_MAX` or `ULONG_MAX` by:
@@ -432,7 +430,7 @@ SYNOPSIS
     - A ones digit
     - A twelves digit
 
-# Exercise
+## Exercise
 
 - Make a height adder, try `man scanf`
 ```{.C filename="hadder.c"}
@@ -453,14 +451,14 @@ int main() {
 ```
 
 
-# Usefulness
+## Usefulness
 
 - We can now do arithmetic correctly
   - @Python
 - What else can we do?
   - Arbitrary (not infinite) precision.
 
-# FAQ
+## FAQ
 
 - Can we use this to add numbers bigger than $2^n$ using adds over at most $n$ bits at a time?
   - Sure! Change the modulos and you're set.
@@ -468,7 +466,7 @@ int main() {
 - Can we do this for more than 3 fields?
   - Sure! Just put the middle (both consumes and produces a carry bit) in a loop!
 
-# These Slides
+## These Slides
 
 - &check; Reintroduce the technologies
   - &check; `stdint`
@@ -479,7 +477,7 @@ int main() {
   - Function types
 
 
-# Easy Mode
+## Easy Mode
 
 - Addition and subtraction are easy.
 - For some value of easy.
@@ -489,7 +487,7 @@ int main() {
 - Identical to digit-based addition.
   - `uint8_t`s as digits in base 256 arithmetic
 
-# Hard Mode
+## Hard Mode
 
 - Some cryptographical algorithms, however, use two extremely advanced arithmetic operations:
   - Multiplication, and
@@ -497,7 +495,7 @@ int main() {
   - Modulo
 - Fortunately this only two operations (need a combined `divmod`)
 
-# Example
+## Example
 
 - Imagine an engineering team lead for:
   - 14 MS-level Computer Scientists
@@ -508,7 +506,7 @@ int main() {
     - 15.5 week contract
 - How many person hours is this?
 
-# Napkin Math
+## Napkin Math
 
 - I'd say
   - $14 \times 12 \times 14$
@@ -517,7 +515,7 @@ int main() {
   - $14 \times 12$ is trivially $12^2 + 24 = 168$
   - $9 \times 15.5$ is trivially $155 - 15.5 = 139.5$
 
-# $34 \times 139.5$
+## $34 \times 139.5$
 
 - That just isn't easy 
  - (140 * 34 isn't bad, but we need a motivating example). 
@@ -528,7 +526,7 @@ int main() {
 |3|-|-|-|-|
 |4|-|-|-|-|
 
-# $34 \times 139.5$
+## $34 \times 139.5$
 
 - Compute all products over single-digit factors
 
@@ -541,7 +539,7 @@ int main() {
   - Aren't single digit
   - Aren't of the same signficance
 
-# $34 \times 139.5$
+## $34 \times 139.5$
 
 - Include sigificance
 
@@ -550,7 +548,7 @@ int main() {
 |30|3000|900|270|15|
 |4|400|120|36|2|
 
-# Dear Watson
+## Dear Watson
 
 
 ::::{.columns}
@@ -586,7 +584,7 @@ $$
 
 ::::
 
-# Express as
+## Express as
 $$
 \begin{align*}
 139.5& = &1 * 10^2 + &3 * 10^1 + &9 * 10^0& + 5 * 10^{-1}\\
@@ -604,7 +602,7 @@ $$
 
 - That is polynomial; can work with those.
 
-# Polynomial
+## Polynomial
 
 $$
 (x^2 + 3x + 9 + 5x^{-1})(3x + 4)
@@ -623,7 +621,7 @@ $$
 3x^3 + 13x^2 + 39x + 51 + 20x^{-1}
 $$
 
-# Aside
+## Aside
 
 - I think this is covered around ~8th grade
 - I don't want to assume the integrity to US public school system
@@ -632,13 +630,13 @@ $$
 - The point of this class isn't middle/high school math
   - That's the point of life itself /s
 
-# Considerations
+## Considerations
 
 - It is natural to express multiplication of e.g. 4096 bit integers as a polynomial over, say, 64 bit integers.
 - One teeny problem:
   - Overflow.
 
-# Overflow
+## Overflow
 
 - The point of calculating this was to get things down to single digit:
 
@@ -649,7 +647,7 @@ $$
 - 13, 39, 51, and 20 are all not compliant (debatably 20 is okay)
 - Essentially, 1-digit multiply may produce a 2-digit product.
 
-# Uh oh
+## Uh oh
 
 ```{.C filename="/bin/sh"}
 $ cat num.c
@@ -671,7 +669,7 @@ $ python3 -c "print(30 * 30 % 2 ** 8)"
 132
 ```
 
-# Size of ints
+## Size of ints
 
 - Say we have two integers of 8 bits of precision.
 - We multiple them together.
@@ -682,14 +680,14 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
 ```
 - 16
 
-# Carrys for mults
+## Carrys for mults
 
 - When we are doing big multiplications:
   - We must multiply chunks of at most half the size of our biggest integer.
   - We must keep track of significance - their position in an imagined larger integer
   - We must perform adds over these terms, using big addition
 
-# One Technique
+## One Technique
 
 - I Made a pointer to a `uint32_t`
   - `uint32_t *alias;`;
@@ -699,7 +697,7 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
   - `uint64_t tmp = alias[5];`
 - Multiplied, tracking significance.
 
-# Division
+## Division
 
 - Remember long division?
   - Align the highest digits.
@@ -711,7 +709,7 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
   - Loop.
 - The final remainder is the mod.
 
-# These Slides
+## These Slides
 
 - &check; Reintroduce the technologies
   - &check; `stdint`
@@ -721,7 +719,7 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
   - &check; Arithmetic operations
   - Function types
 
-# A 4096 bit type
+## A 4096 bit type
 
 - It's not too bad to pass around 4096 bits.
   - An array of 64 `uint64_t`s or 128 `uint32_t`s
@@ -730,7 +728,7 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
 uint64_t bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum);
 ```
 
-# Usage
+## Usage
 
 - Before call this function, declare three arrays:
 ```{.C }
@@ -746,7 +744,7 @@ uint64_t in0[64], in1[64], sum[64];
 bigadd(in0,in1,in0);
 ```
 
-# Usage
+## Usage
 
 - Remember this is banned:
 
@@ -759,7 +757,7 @@ uint64_t *whatever(uint64_t *in0, uint64_t *in1) {
 ```
 - My `uint64_t` value returned the carry value (it was nice to keep track of)
 
-# FAQ
+## FAQ
 
 - Isn't there a way to return the value from the function, rather than write a value to the memory location at a provided argument.
   - Yes.
@@ -767,14 +765,14 @@ uint64_t *whatever(uint64_t *in0, uint64_t *in1) {
   - It was endorsed by the White House from 26 Feb 24 to 19 Jan 25
   - [Read more](https://web.archive.org/web/20250118013136/https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/)
 
-# FAQ
+## FAQ
 
 - How do we deal with integers that aren't of known length.
   - Ask me after the midterm.
   - [Read more](https://gmplib.org/)
   - [Read more](https://man7.org/linux/man-pages/man3/free.3.html)
   
-# These Slides
+## These Slides
 
 - &check; Reintroduce the technologies
   - &check; `stdint`
@@ -785,7 +783,7 @@ uint64_t *whatever(uint64_t *in0, uint64_t *in1) {
   - &check; Function types
 
 
-# Stinger
+## Stinger
 
 ```{.C}
 /* print the big value as a string */

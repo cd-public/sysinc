@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.30">
 
-  <title>AI 101 – Action</title>
+  <title>Systems in C – Stream</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -93,7 +93,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0f071606cd187ea9c4f27a73aca9ddf7.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-83ff8eaca933b935d6975c751fe501e4.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -389,8 +389,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Action</h1>
-  <p class="subtitle">Week 0x8 II</p>
+  <h1 class="title">Stream</h1>
+  <p class="subtitle">Week 0x9 I</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -399,1024 +399,1922 @@
 <section id="announcements" class="title-slide slide level1 center">
 <h1>Announcements</h1>
 <ul>
-<li><strong>Welcome</strong> to variously CS 276/CS 540
+<li><strong>Welcome</strong> to CS 540
 <ul>
-<li>Back to containers.</li>
-<li>Week off from C</li>
-<li>Two lectures with exercises</li>
+<li>A quick digression on patterns &amp; antipatterns</li>
+<li>C relevant</li>
+<li>Then data structures</li>
 </ul></li>
 <li><strong>Action Items</strong>:
 <ul>
-<li>BigRSA due 31 Mar</li>
+<li>BigRSA due this week.</li>
+<li>Final released</li>
 </ul></li>
+</ul>
+</section>
+
+<section id="final" class="title-slide slide level1 center">
+<h1>Final</h1>
+<ul>
+<li>The final is a write-up with supporting code.</li>
+<li>The “MS CS” extensions for the next 4 weeks are 3 technical papers and 1 blog.</li>
+<li>I have “tech debt” on the <code>genrsa</code> and <code>linker</code> VoDs, which will help you if you get stuck on the final, but right now I could only do them poorly, rather than well.</li>
+<li>Let’s review <a href="btcinc.html"><code>BTCinC</code></a> and the readings.</li>
 </ul>
 </section>
 
 <section id="today" class="title-slide slide level1 center">
 <h1>Today</h1>
 <ul>
-<li><span class="smallcaps">DevOps</span></li>
-<li>Continious Integration
-<ul>
-<li><code>make</code></li>
-<li>GitHub Actions</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="motivation" class="title-slide slide level1 center">
-<h1>Motivation</h1>
-<ul>
-<li>Last class we had this extremely cursed way of doing things.
-<ul>
-<li>We used a bunch of complicated and hard to remember podman commands.</li>
-<li>After those commands, we supplied further bash or sh shell commands.</li>
-<li>It was a hassle and a headache I don’t like it.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="motivation-1" class="title-slide slide level1 center">
-<h1>Motivation</h1>
-<ul>
-<li>Last class we uncovered a cool new way to do things.
-<ul>
-<li>We can do in-container development externally to a container.</li>
-<li>We can:
-<ul>
-<li>Build</li>
-<li>Test</li>
-</ul></li>
-<li>This is the modern dev tech stack.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="ci" class="title-slide slide level1 center">
-<h1>CI</h1>
-<ul>
-<li>For Continuous Integration
-<ul>
-<li>Modern approach to combined unit, build, and integration testing.</li>
-<li>Usually done on build servers</li>
-<li>Pioneered by Google et al.&nbsp;for web services</li>
-</ul></li>
-<li>Component of DevOps and the more common term CI/CD</li>
-</ul>
-</section>
-
-<section id="cicd-introduction" class="title-slide slide level1 center">
-<h1>CI/CD Introduction</h1>
-<ul>
-<li>Continuous Integration (CI) and Continuous Delivery (CD).
-<ul>
-<li>Automates software development processes.
-<ul>
-<li>Push code to repo</li>
-<li>Repo builds, tests, and deploys software
-<ul>
-<li>Either as packages for download or a live service.</li>
-</ul></li>
-</ul></li>
-<li>Improves software quality and delivery speed [Citation Needed]</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="editorializing" class="title-slide slide level1 center">
-<h1>Editorializing</h1>
-<ul>
-<li>I was an <em>extreme</em> software engineering skeptic</li>
-<li>I believe virtually all claims of software engineering advancements have been proven false by:
-<ul>
-<li>Collapse of Java and emergence of Rust when devs WFH in 2020</li>
-<li>Tech buildouts in China and India</li>
-<li>And before that, FOSS</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="the-alternative" class="title-slide slide level1 center">
-<h1>The Alternative</h1>
-<ul>
-<li>To me, CI/CD is the demonstrably correct approach to development.</li>
-<li>Scientifically proven by the Linux kernel
-<ul>
-<li>FOSS</li>
-<li>Higher quality than Windows/Mac and their <span class="math inline">\(n\)</span>-trillion dollar sponsors</li>
-<li>Completely imperative (no objects)</li>
-<li>No managers/No offices/No sprints</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="see-also" class="title-slide slide level1 center">
-<h1>See also</h1>
-<ul>
-<li>GCC</li>
-<li>FreeBSD</li>
-<li>NGINX</li>
-<li>HTTPD</li>
-<li>PostgreSQL</li>
-</ul>
-</section>
-
-<section id="both-sides" class="title-slide slide level1 center">
-<h1>Both Sides</h1>
-<ul>
-<li>I have actually never heard a counterargument to this hypothesis.</li>
-<li>I think the actual counterargument is “a lot of people make money doing waterfall and agile”
-<ul>
-<li>I am arguing from a correctness rather than profitability perspective.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="case-study" class="title-slide slide level1 center">
-<h1>Case Study</h1>
-<blockquote>
-<p>As part of the “Get the Facts” campaign, Microsoft highlighted the .NET Framework trading platform that it had developed in partnership with Accenture for the London Stock Exchange, claiming that it provided “five nines” reliability. After suffering extended downtime and unreliability the London Stock Exchange announced in 2009 that it was planning to drop its Microsoft solution and switch to a Linux-based one in 2010.</p>
-</blockquote>
-</section>
-
-<section id="section" class="title-slide slide level1 smaller center">
-<h1></h1>
-<blockquote>
-<p><a href="https://web.archive.org/web/20171225225348/http://www.telegraph.co.uk/finance/markets/4676369/Seven-hour-LSE-blackout-caused-by-double-glitch.html">Mason, Rowena (September 10, 2008). “Seven-hour LSE blackout caused by double glitch”. The Telegraph. London. Archived from the original on December 25, 2017. Retrieved April 3, 2018.</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://web.archive.org/web/20130726144134/http://news.bbc.co.uk/1/hi/business/8380607.stm">“London Stock Exchange trading hit by technical glitch”. BBC News Online. BBC. November 26, 2009. Archived from the original on July 26, 2013. Retrieved September 30, 2010.</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://web.archive.org/web/20110716005714/http://www.itwire.com/opinion-and-analysis/the-linux-distillery/28359-london-stock-exchange-gets-the-facts-and-dumps-windows-for-linux">Williams, David M. (October 8, 2009). “London Stock Exchange gets the facts and dumps Windows for Linux”. ITWire. Archived from the original on July 16, 2011. Retrieved September 30, 2010.</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://web.archive.org/web/20110611085123/http://linux.slashdot.org/story/09/10/06/1742203/London-Stock-Exchange-Rejects-NET-For-Open-Source">“London Stock Exchange Rejects .NET For Open Source”. Slashdot. October 6, 2009. Archived from the original on August 11, 2011. Retrieved September 30, 2010.</a></p>
-</blockquote>
-</section>
-
-<section id="azure-linux" class="title-slide slide level1 center">
-<h1>Azure Linux</h1>
-<ul>
-<li>Since 2020 Microsoft just maintains a Linux distribution.</li>
+<li>Antipatterns</li>
 </ul>
 <blockquote>
-<p><a href="https://github.com/microsoft/azurelinux">Azure Linux is an internal Linux distribution for Microsoft’s cloud infrastructure and edge products and services.</a></p>
+<p>An anti-pattern in software engineering, project management, and business processes is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.</p>
 </blockquote>
-<ul>
-<li>Under CI/CD GitOps on GitHub, the same site as the Linux kernel</li>
-<li>Which Microsoft purchased in Jun 2018</li>
-</ul>
-</section>
-
-<section id="build-test-deploy" class="title-slide slide level1 center">
-<h1>Build, Test, Deploy</h1>
-
-</section>
-
-<section id="ci-1" class="title-slide slide level1 center">
-<h1>CI</h1>
-<ul>
-<li>Build and Test.
-<ul>
-<li>Ensures code changes integrate smoothly.</li>
-<li>Detects errors as soon as they are written.</li>
-<li>Can facilitate collaboration within a broader framework.
-<ul>
-<li>GitHub uses issues and pull requests</li>
-<li>Historical, mailing lists (still in use of course).</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-
-<section id="mailing-list-ex." class="title-slide slide level1 center">
-<h1>Mailing List Ex.</h1>
-<blockquote>
-<p><a href="https://lkml.org/lkml/2025/2/20/2066">So this email is not about some “Rust policy”. This email is about a much bigger issue: as a maintainer you are in charge of your code, sure - but you are not in charge of who uses the end result and how.</a></p>
-</blockquote>
-</section>
-
-<section id="cd" class="title-slide slide level1 center">
-<h1>CD</h1>
-<ul>
-<li>Not <code>cd</code> and not “Crof. Dalvin”</li>
-<li>Not really part of this class.
-<ul>
-<li>Our code is banned for use.</li>
-</ul></li>
-<li>Automated deployment to staging/production.
-<ul>
-<li>Sort of like allowing me to see your code while you work on it.</li>
-</ul></li>
-<li>In a way, CD from <code>cd</code> to C.D.</li>
-</ul>
-</section>
-
-<section id="what-is-devops" class="title-slide slide level1 center">
-<h1>What is DevOps?</h1>
-<ul>
-<li>Combines software development (Dev) and IT operations (Ops).</li>
-<li>Shorten the development lifecycle.</li>
-<li>Collaboration, automation, integration, and rapid feedback cycles.</li>
-</ul>
-</section>
-
-<section id="what-does-it-mean" class="title-slide slide level1 center">
-<h1>What does it mean?</h1>
-<ul>
-<li>Integrate development (gcc) and operations (ubuntu).</li>
-<li>Automating as many tasks as possible.</li>
-<li>Using tools to manage the code (not people).</li>
-</ul>
-</section>
-
-<section id="devops-ci" class="title-slide slide level1 center">
-<h1>DevOps &amp; CI?</h1>
-<ul>
-<li>Continuous Integration (CI) is the practice of automating the integration of code changes into a shared repository.</li>
-<li>By using CI, we will be users of the Dev part of DevOps</li>
-<li>Clients of the Ops part (which is docker/podman)</li>
-</ul>
-</section>
-
-<section id="github-and-cicd" class="title-slide slide level1 center">
-<h1>GitHub and CI/CD</h1>
-<ul>
-<li>GitHub Actions for automation.
-<ul>
-<li>Workflow definitions in YAML files.
-<ul>
-<li>I’d call these “scripts”</li>
-</ul></li>
-<li>Integration with GitHub repositories.</li>
-<li>Support for various programming languages.
-<ul>
-<li>Including C!</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-
-<section id="workflows" class="title-slide slide level1 center">
-<h1>Workflows</h1>
-<ul>
-<li>Hidden <code>.github/workflows</code> folder in repos:
-<ul>
-<li>Triggers: Events that start a workflow.</li>
-<li>Jobs: Sets of steps executed on a runner.
-<ul>
-<li>Steps: Individual tasks within a job or lines in a script.</li>
-</ul></li>
-<li>Runners: Virtual machines or <em>containers</em>.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="example-ci-workflow" class="title-slide slide level1 center">
-<h1>Example CI Workflow</h1>
-<ul>
-<li>Checkout code from repository (into container)
-<ul>
-<li>Install dependencies.
-<ul>
-<li>Or use a base image.</li>
-</ul></li>
-<li>Run unit tests.</li>
-<li>Build application artifacts (logs)</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="example-cd-workflow" class="title-slide slide level1 center">
-<h1>Example CD Workflow</h1>
-<ul>
-<li>Deploy application to GitHub Pages
-<ul>
-<li>Run integration tests.</li>
-<li>Deploy to live.</li>
-</ul></li>
-<li>Using this for the website for now.
-<ul>
-<li>Probably needs work, I don’t love it ATM.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="smaller-ex." class="title-slide slide level1 center">
-<h1>Smaller Ex.</h1>
-<ul>
-<li>The main website is big but D505 isn’t
-<ul>
-<li>It’s a fork from another repo</li>
-</ul></li>
-<li>You can’t see much here, I can see more: <a href="https://github.com/cd-public/D505/actions/runs/13771592743">https://github.com/cd-public/D505/actions/runs/13771592743</a></li>
-</ul>
-</section>
-
-<section id="excerpt" class="title-slide slide level1 center">
-<h1>Excerpt</h1>
-<ul>
-<li>Here’s a line under the “Build with Jekyll” heading:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a></a>/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_33b8a4 --label f68f14 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/D505/D505":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Folks… it’s containers all the way down.
-<ul>
-<li>That’s a Linux script running docker 😂</li>
-<li>Would’ve been podman before 2018 I bet.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="back-in-action" class="title-slide slide level1 center">
-<h1>Back in Action</h1>
-<ul>
-<li>GitHub Pages is a little bit <em>automated</em>
-<ul>
-<li>Read: I taught it to first years who had never programmed.</li>
-<li>I plan to teach it to high schoolers this summer.</li>
-</ul></li>
-<li>As with C/Python, in this class we index into clarity at the expense of brevity.</li>
-<li>So we write our own CI action.</li>
-</ul>
-</section>
-
-<section id="ci-2" class="title-slide slide level1 center">
-<h1>CI</h1>
-<ul>
-<li>Defined in a .yml file
-<ul>
-<li>GitHub provides templates</li>
-<li>I found the templates self-documenting and documentation unusuable</li>
-</ul></li>
-<li>You can press buttons on GitHub (click ops) or use command line.
-<ul>
-<li>You’ll never guess which one I think you should do.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="ref-.yml" class="title-slide slide level1 center">
-<h1>Ref .yml</h1>
-<ul>
-<li>Please ignore that this says “c-cpp”
-<ul>
-<li>It <em>means</em> C89</li>
-<li>I blame Microsoft</li>
-</ul></li>
-<li><a href="https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml">https://github.com/actions/starter-workflows/blob/main/ci/c-cpp.yml</a></li>
-</ul>
-</section>
-
-<section id="yml" class="title-slide slide level1 center">
-<h1>.yml</h1>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>ci/c-cpp.yml</strong></pre>
-</div>
-<div class="sourceCode" id="cb2" data-filename="ci/c-cpp.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C/C++ CI</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb2-4"><a></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb2-5"><a></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at"> $default-branch </span><span class="kw">]</span></span>
-<span id="cb2-6"><a></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
-<span id="cb2-7"><a></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at"> $default-branch </span><span class="kw">]</span></span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a><span class="fu">jobs</span><span class="kw">:</span></span>
-<span id="cb2-10"><a></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
-<span id="cb2-11"><a></a></span>
-<span id="cb2-12"><a></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb2-13"><a></a></span>
-<span id="cb2-14"><a></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb2-15"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
-<span id="cb2-16"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> configure</span></span>
-<span id="cb2-17"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> ./configure</span></span>
-<span id="cb2-18"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make</span></span>
-<span id="cb2-19"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span>
-<span id="cb2-20"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make check</span></span>
-<span id="cb2-21"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make check</span></span>
-<span id="cb2-22"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make distcheck</span></span>
-<span id="cb2-23"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make distcheck</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="simplify" class="title-slide slide level1 center">
-<h1>Simplify</h1>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>ci/c89.yml</strong></pre>
-</div>
-<div class="sourceCode" id="cb3" data-filename="ci/c89.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C89 CI</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">on</span><span class="kw">:</span><span class="at"> push</span></span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">jobs</span><span class="kw">:</span></span>
-<span id="cb3-6"><a></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
-<span id="cb3-7"><a></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb3-10"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
-<span id="cb3-11"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="simplify-1" class="title-slide slide level1 center">
-<h1>Simplify</h1>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Line</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>name: C89 CI</code></td>
-<td>I didn’t check if names were required.</td>
-</tr>
-<tr class="even">
-<td><code>on: push</code></td>
-<td>Actions will run after a push to repo</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>After a colon, either a single option or a new line, indentation, and series of options.</li>
-</ul>
-</section>
-
-<section id="jobs" class="title-slide slide level1 center">
-<h1>Jobs</h1>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Line</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>jobs:</code></td>
-<td>Job is like a .sh file</td>
-</tr>
-<tr class="even">
-<td>build:</td>
-<td>Usually one of build, test, deploy</td>
-</tr>
-<tr class="odd">
-<td><code>runs-on: ubuntu-latest</code></td>
-<td>That is GitHub managed image</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>I tried to change <code>ubuntu-latest</code> to <code>ubuntu</code> and it broke.
-<ul>
-<li>There will <em>always</em> be latest, or fix one of the recent versions.</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="runners" class="title-slide slide level1 center">
-<h1>Runners</h1>
-<ul>
-<li>GitHub runners are distinct from the docker.io and other images.</li>
-<li><a href="https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories">Read more</a></li>
-<li>Right now, here are the Linux options:
-<ul>
-<li><code>ubuntu-latest</code>, <code>ubuntu-24.04</code>, <code>ubuntu-22.04</code>, <code>ubuntu-20.04</code></li>
-</ul></li>
-</ul>
-</section>
-
-<section id="vs-docker" class="title-slide slide level1 center">
-<h1>Vs Docker</h1>
-<ul>
-<li>These are the mostly the same images available via <a href="https://hub.docker.com/_/ubuntu">dockerhub</a>.</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb4-1"><a></a>20.04, focal-20241011, focal⁠</span>
-<span id="cb4-2"><a></a>22.04, jammy-20250126, jammy⁠</span>
-<span id="cb4-3"><a></a>24.04, noble-20250127, noble, latest⁠</span>
-<span id="cb4-4"><a></a>24.10, oracular-20241120, oracular, rolling⁠</span>
-<span id="cb4-5"><a></a>25.04, plucky-20241213, plucky, devel⁠</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>GitHub workflows just doesn’t bring over “rolling” and “devel” images.</li>
-</ul>
-</section>
-
-<section id="steps" class="title-slide slide level1 center">
-<h1>Steps</h1>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Line</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>steps:</code></td>
-<td>Steps are like individual commands</td>
-</tr>
-<tr class="even">
-<td><code>- uses: actions/checkout@v4</code></td>
-<td>This is some built-in you can’t change.</td>
-</tr>
-<tr class="odd">
-<td><code>- run: make</code></td>
-<td>Runs <code>make</code> inside <code>ubuntu-latest</code> after checking out the repository within that container.</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-<section id="on-.yml" class="title-slide slide level1 center">
-<h1>On .yml</h1>
-<ul>
-<li>You may have learned .yml from e.g.&nbsp;Data Engineering</li>
-<li>It is used in the header to these slides:
-<ul>
-<li>je suis développeur web</li>
-</ul></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>action.qmd</strong></pre>
-</div>
-<div class="sourceCode" id="cb5" data-filename="action.qmd"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="pp">---</span></span>
-<span id="cb5-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Action</span></span>
-<span id="cb5-3"><a></a><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-4"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Prof. Calvin</span></span>
-<span id="cb5-5"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Week 0x8 II"</span></span>
-<span id="cb5-6"><a></a><span class="fu">institute</span><span class="kw">:</span><span class="at"> Crypto</span></span>
-<span id="cb5-7"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-8"><a></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-9"><a></a><span class="at">        </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-10"><a></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-11"><a></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
-<span id="cb5-12"><a></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-13"><a></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
-<span id="cb5-14"><a></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
-<span id="cb5-15"><a></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
-<span id="cb5-16"><a></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](../index.html)"</span></span>
-<span id="cb5-17"><a></a></span>
-<span id="cb5-18"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb5-19"><a></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-20"><a></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-21"><a></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">  # never re-render during project render</span></span>
-<span id="cb5-22"><a></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb5-23"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="up-to-you" class="title-slide slide level1 center">
-<h1>Up to you</h1>
-<ul>
-<li>You can fiddle around with GitHub workflows and actions and etc and etc, it’s not too bad, but…</li>
-<li>I’d use the above as boilerplate and only change one thing:</li>
-<li><code>make</code></li>
-</ul>
 </section>
 
 <section id="today-1" class="title-slide slide level1 center">
 <h1>Today</h1>
 <ul>
-<li><span class="smallcaps">DevOps</span></li>
-<li>Continious Integration
+<li>Duplication</li>
+<li>Deficient encapsulation v. Broken modularization</li>
+<li>Magic Numbers</li>
+<li>Overthinking</li>
+<li>Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
+</ul>
+</section>
+
+<section id="duplication" class="title-slide slide level1 center">
+<h1>Duplication</h1>
 <ul>
-<li><code>make</code></li>
-<li>✓ GitHub Actions</li>
+<li>And <em>streaming</em>
+<ul>
+<li>Today’s lecture inspire by the idea of <em>streaming data</em></li>
+<li>Huge paradigm change in exascale data application, built the modern cloud.</li>
+</ul></li>
+<li>Let’s look at two examples.</li>
+</ul>
+</section>
+
+<section id="duplicate" class="title-slide slide level1 center">
+<h1>Duplicate</h1>
+<ul>
+<li>Say we are working on Base85 and have the following function:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a></a><span class="dt">void</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>We know:
+<ul>
+<li>Base85 prints exactly 5 characters of printable ascii/utf-8 for exactly every 4 bytes / 32 bits of data</li>
+<li>We know that every single 32-bit word is independent.</li>
 </ul></li>
 </ul>
 </section>
 
-<section id="make" class="title-slide slide level1 center">
-<h1><code>make</code></h1>
+<section id="base85" class="title-slide slide level1 center">
+<h1>Base85</h1>
 <ul>
-<li><code>make</code> is the historically supported way to get things done related to C (and C++) development.
-<ul>
-<li>CMake is the new technique which is a bit heavier weight and used in larger projects.
-<ul>
-<li>By new I mean 2000.</li>
-<li><code>make</code> is 1976</li>
-</ul></li>
-</ul></li>
+<li>It is perhaps impossible but certainly “wrong” to perform base85 encoding without this function.</li>
+<li>So no matter what, we will have this function in some loop over some data.</li>
 </ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb2-2"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb2-3"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
-<section id="the-pitch" class="title-slide slide level1 center">
-<h1>The Pitch</h1>
+<section id="design-decision" class="title-slide slide level1 center">
+<h1>Design Decision</h1>
 <ul>
-<li><code>make</code>
+<li>We have to decide how to populate <code>word</code>.
 <ul>
-<li>Stores big commands</li>
-<li>Can check how recently files have changed</li>
-<li>Is programable via “rules” in a <code>Makefile</code>.</li>
+<li>We need 32 bits</li>
+<li>We need to read it from a file.</li>
 </ul></li>
 </ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb3-2"><a></a><span class="dt">uint32_t</span> word<span class="op">,</span> conditional<span class="op">;</span></span>
+<span id="cb3-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb3-4"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb3-5"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb4-2"><a></a><span class="dt">uint32_t</span> word<span class="op">,</span> conditional<span class="op">;</span></span>
+<span id="cb4-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb4-4"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb4-5"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="do-we" class="title-slide slide level1 center">
+<h1>Do we?</h1>
+<ul>
+<li>Copy (duplicate) all data then read, or…</li>
+<li>Read 32 bits at a time</li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span id="cb5-2"><a></a><span class="dt">uint32_t</span> words<span class="op">[</span>∞<span class="op">],</span> conditional<span class="op">,</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-3"><a></a>fread<span class="op">(</span>words<span class="op">,</span> ∞<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="op">*</span>fp<span class="op">);</span></span>
+<span id="cb5-4"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb5-5"><a></a>    print_in_base85<span class="op">(</span>words<span class="op">[</span>i<span class="op">++]);</span></span>
+<span id="cb5-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb6-2"><a></a><span class="dt">uint32_t</span> word<span class="op">,</span> conditional<span class="op">;</span></span>
+<span id="cb6-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb6-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb6-5"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb6-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="stream" class="title-slide slide level1 center">
+<h1>Stream!</h1>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<ul>
+<li>We never need local copies if we have independence!</li>
+<li>SHA256 - 512 bytes</li>
+<li>Base64 - 3 bytes</li>
+<li>Base85 - 4 bytes</li>
+<li>RSA - Fewer bytes than <span class="math inline">\(n = pq\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb7-2"><a></a><span class="dt">uint32_t</span> word<span class="op">,</span> conditional<span class="op">;</span></span>
+<span id="cb7-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb7-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb7-5"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb7-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 
 <section id="example" class="title-slide slide level1 center">
 <h1>Example</h1>
 <ul>
-<li>Here’s a sample Makefile, the thing that programs <code>make</code>
+<li>From my research
 <ul>
-<li>Guess what Containerfile naming scheme is derived from!</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
-</div>
-<div class="sourceCode" id="cb6" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb6-1"><a></a><span class="dv">build:</span></span>
-<span id="cb6-2"><a></a><span class="er">  </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li>Using SHA as the running example…</li>
+<li>Wrote a Python script the handles some hardware design data.</li>
+<li>I use an existing tool in Java that handles the same data.</li>
+<li>I implemented by tool with <em>streaming</em></li>
+</ul></li>
 </ul>
 </section>
 
-<section id="example-1" class="title-slide slide level1 center">
-<h1>Example</h1>
-<ul>
-<li>Suppose we have an incomplete “shainc.c”</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>shainc.c</strong></pre>
-</div>
-<div class="sourceCode" id="cb7" data-filename="shainc.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-2"><a></a>        printf<span class="op">(</span><span class="st">"hi</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb7-3"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>We get some warnings:</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a></a>$ gcc shainc.c</span>
-<span id="cb8-2"><a></a>shainc.c: In function ‘main’:</span>
-<span id="cb8-3"><a></a>shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
-<span id="cb8-4"><a></a>    2 |         printf("hi\n");</span>
-<span id="cb8-5"><a></a>      |         ^~~~~~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="timing" class="title-slide slide level1 center">
+<h1>Timing</h1>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a></a>$ time python3 rtlkon.py testbench.vcd &gt;/dev/null</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>real    0m0.323s</span>
+<span id="cb8-4"><a></a>user    0m0.285s</span>
+<span id="cb8-5"><a></a>sys     0m0.030s</span>
+<span id="cb8-6"><a></a>$ time java daikon.Daikon testbench.decls testbench.dtrace &gt;/dev/null</span>
+<span id="cb8-7"><a></a></span>
+<span id="cb8-8"><a></a>real    0m4.358s</span>
+<span id="cb8-9"><a></a>user    0m14.128s</span>
+<span id="cb8-10"><a></a>sys     0m0.413s</span>
+<span id="cb8-11"><a></a>$ wc testbench.decls testbench.dtrace</span>
+<span id="cb8-12"><a></a>    2219     4434    39059 testbench.decls</span>
+<span id="cb8-13"><a></a> 2936134  2931732 17474090 testbench.dtrace</span>
+<span id="cb8-14"><a></a> 2938353  2936166 17513149 total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
-<section id="example-2" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="stream-1" class="title-slide slide level1 center">
+<h1>Stream</h1>
 <ul>
-<li>Given a Makfile that contains the same “rule”</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
-</div>
-<div class="sourceCode" id="cb9" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb9-1"><a></a><span class="dv">build:</span></span>
-<span id="cb9-2"><a></a><span class="er">    </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<li>Python 3, the world’s slowest language, writes 15.5 MB in .323 seconds</li>
+<li>Java, the other slowest language, reads 15.5 MB in 14.128 seconds.
 <ul>
-<li>We get <em>the same</em> warnings:</li>
+<li>Python at 48x speed</li>
+</ul></li>
+<li>Both tools fully simulate the processor as an automata, use local storage, etc.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a></a>$ make</span>
-<span id="cb10-2"><a></a>gcc shainc.c</span>
-<span id="cb10-3"><a></a>shainc.c: In function ‘main’:</span>
-<span id="cb10-4"><a></a>shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
-<span id="cb10-5"><a></a>    2 |         printf("hi\n");</span>
-<span id="cb10-6"><a></a>      |         ^~~~~~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="visualize" class="title-slide slide level1 center">
+<h1>Visualize</h1>
+<ul>
+<li>I think of streaming as follows.</li>
+<li>We image we want to make some “File B” from some “File A”</li>
+</ul>
+<div class="cell" data-fig-width="500px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="500" height="480" viewbox="0.00 0.00 152.00 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-40 148,-40 148,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="54,-36 0,-36 0,0 54,0 54,-36"></polygon>
+<text text-anchor="middle" x="27" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">File A</text>
+</g>
+<!-- file2 -->
+<g id="node2" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="144,-36 90,-36 90,0 144,0 144,-36"></polygon>
+<text text-anchor="middle" x="117" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">File B</text>
+</g>
+<!-- file1&#45;&gt;file2 -->
+<g id="edge1" class="edge">
+<title>file1-&gt;file2</title>
+<path fill="none" stroke="#ffffff" d="M54.4,-18C62.39,-18 71.31,-18 79.82,-18"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="visualize-1" class="title-slide slide level1 center">
+<h1>Visualize</h1>
+<ul>
+<li>Imagine SHA hashing Pride and Prejudice
+<ul>
+<li>You did this.</li>
+</ul></li>
+</ul>
+<div class="cell" data-fig-width="500px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="500" height="480" viewbox="0.00 0.00 152.00 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-40 148,-40 148,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="54,-36 0,-36 0,0 54,0 54,-36"></polygon>
+<text text-anchor="middle" x="27" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">P&amp;P</text>
+</g>
+<!-- file2 -->
+<g id="node2" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="144,-36 90,-36 90,0 144,0 144,-36"></polygon>
+<text text-anchor="middle" x="117" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">SHA</text>
+</g>
+<!-- file1&#45;&gt;file2 -->
+<g id="edge1" class="edge">
+<title>file1-&gt;file2</title>
+<path fill="none" stroke="#ffffff" d="M54.4,-18C62.39,-18 71.31,-18 79.82,-18"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="visualize-2" class="title-slide slide level1 center">
+<h1>Visualize</h1>
+<ul>
+<li>Imagine Base64 encoding an .svg.
+<ul>
+<li>You can do this, quarto does this.</li>
+</ul></li>
+</ul>
+<div class="cell" data-fig-width="500px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="500" height="480" viewbox="0.00 0.00 152.00 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-40 148,-40 148,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="54,-36 0,-36 0,0 54,0 54,-36"></polygon>
+<text text-anchor="middle" x="27" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">SVG</text>
+</g>
+<!-- file2 -->
+<g id="node2" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="144,-36 90,-36 90,0 144,0 144,-36"></polygon>
+<text text-anchor="middle" x="117" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">B64</text>
+</g>
+<!-- file1&#45;&gt;file2 -->
+<g id="edge1" class="edge">
+<title>file1-&gt;file2</title>
+<path fill="none" stroke="#ffffff" d="M54.4,-18C62.39,-18 71.31,-18 79.82,-18"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="streaming" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<ul>
+<li>A file contains of <span class="math inline">\(n\)</span> words of <span class="math inline">\(b\)</span> bits.</li>
+</ul>
+<div class="cell" data-fig-width="500px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="500" height="480" viewbox="0.00 0.00 152.00 108.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 104.2)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-104.2 148,-104.2 148,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-99.7 54,-99.7 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x0</text>
+<polyline fill="none" stroke="#ffffff" points="0,-74.9 54,-74.9 "></polyline>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x4</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x8</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xc</text>
+</g>
+<!-- file2 -->
+<g id="node2" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="90,-0.5 90,-99.7 144,-99.7 144,-0.5 90,-0.5"></polygon>
+<text text-anchor="middle" x="117" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="90,-74.9 144,-74.9 "></polyline>
+<text text-anchor="middle" x="117" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="90,-50.1 144,-50.1 "></polyline>
+<text text-anchor="middle" x="117" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="90,-25.3 144,-25.3 "></polyline>
+<text text-anchor="middle" x="117" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- file1&#45;&gt;file2 -->
+<g id="edge1" class="edge">
+<title>file1-&gt;file2</title>
+<path fill="none" stroke="#ffffff" d="M54.4,-50.1C62.39,-50.1 71.31,-50.1 79.82,-50.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.92,-53.6 89.92,-50.1 79.92,-46.6 79.92,-53.6"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="streaming-1" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<ul>
+<li>An executable maps files-to-files
+<ul>
+<li>base64 is a bijection - remember those?</li>
+</ul></li>
+</ul>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 108.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 104.2)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-104.2 238.88,-104.2 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-99.7 54,-99.7 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x0</text>
+<polyline fill="none" stroke="#ffffff" points="0,-74.9 54,-74.9 "></polyline>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x4</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x8</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xc</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-62.1 90.06,-62.1 90.06,-38.1 126.81,-38.1 126.81,-32.1 144.81,-50.1 126.81,-68.1 126.81,-62.1"></polygon>
+<text text-anchor="middle" x="117.44" y="-45.9" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54.06,-50.1C62.1,-50.1 71.11,-50.1 79.73,-50.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.96,-53.6 89.96,-50.1 79.96,-46.6 79.96,-53.6"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-0.5 180.88,-99.7 234.88,-99.7 234.88,-0.5 180.88,-0.5"></polygon>
+<text text-anchor="middle" x="207.88" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-74.9 234.88,-74.9 "></polyline>
+<text text-anchor="middle" x="207.88" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-50.1 234.88,-50.1 "></polyline>
+<text text-anchor="middle" x="207.88" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-25.3 234.88,-25.3 "></polyline>
+<text text-anchor="middle" x="207.88" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2</title>
+<path fill="none" stroke="#ffffff" d="M144.97,-50.1C153,-50.1 161.96,-50.1 170.52,-50.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.67,-53.6 180.67,-50.1 170.67,-46.6 170.67,-53.6"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>Bijective</strong></p>
+<div class="cell" data-fig-width="300px" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="300" height="200" viewbox="0.00 0.00 148.02 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-259 144.02,-259 144.02,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_X</title>
+<path fill="#191919" stroke="#ffffff" d="M20,-8C20,-8 48,-8 48,-8 54,-8 60,-14 60,-20 60,-20 60,-235 60,-235 60,-241 54,-247 48,-247 48,-247 20,-247 20,-247 14,-247 8,-241 8,-235 8,-235 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
+<text text-anchor="middle" x="34" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_Y</title>
+<path fill="#191919" stroke="#ffffff" d="M92,-8C92,-8 120.02,-8 120.02,-8 126.02,-8 132.02,-14 132.02,-20 132.02,-20 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-20 80,-20 80,-14 86,-8 92,-8"></path>
+<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
+</g>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-196" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">1</text>
+</g>
+<!-- w -->
+<g id="node5" class="node">
+<title>w</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-196" rx="18.02" ry="18.02"></ellipse>
+<text text-anchor="middle" x="106.01" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">w</text>
+</g>
+<!-- 1&#45;&gt;w -->
+<g id="edge1" class="edge">
+<title>1-&gt;w</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-196C60.02,-196 69.29,-196 77.89,-196"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-199.5 87.9,-196 77.9,-192.5 77.9,-199.5"></polygon>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">2</text>
+</g>
+<!-- x -->
+<g id="node6" class="node">
+<title>x</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">x</text>
+</g>
+<!-- 2&#45;&gt;x -->
+<g id="edge2" class="edge">
+<title>2-&gt;x</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-142C60.02,-142 69.29,-142 77.89,-142"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-145.5 87.9,-142 77.9,-138.5 77.9,-145.5"></polygon>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">3</text>
+</g>
+<!-- y -->
+<g id="node7" class="node">
+<title>y</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">y</text>
+</g>
+<!-- 3&#45;&gt;y -->
+<g id="edge3" class="edge">
+<title>3-&gt;y</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-88C60.02,-88 69.29,-88 77.89,-88"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-91.5 87.9,-88 77.9,-84.5 77.9,-91.5"></polygon>
+</g>
+<!-- 4 -->
+<g id="node4" class="node">
+<title>4</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">4</text>
+</g>
+<!-- z -->
+<g id="node8" class="node">
+<title>z</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">z</text>
+</g>
+<!-- 4&#45;&gt;z -->
+<g id="edge4" class="edge">
+<title>4-&gt;z</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-34C60.02,-34 69.29,-34 77.89,-34"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-37.5 87.9,-34 77.9,-30.5 77.9,-37.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</td>
+<td>
+<p><strong>Injective</strong></p>
+<div class="cell" data-fig-width="300px" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="300" height="200" viewbox="0.00 0.00 148.02 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-259 144.02,-259 144.02,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_X</title>
+<path fill="#191919" stroke="#ffffff" d="M20,-62C20,-62 48,-62 48,-62 54,-62 60,-68 60,-74 60,-74 60,-235 60,-235 60,-241 54,-247 48,-247 48,-247 20,-247 20,-247 14,-247 8,-241 8,-235 8,-235 8,-74 8,-74 8,-68 14,-62 20,-62"></path>
+<text text-anchor="middle" x="34" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_Y</title>
+<path fill="#191919" stroke="#ffffff" d="M92,-8C92,-8 120.02,-8 120.02,-8 126.02,-8 132.02,-14 132.02,-20 132.02,-20 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-20 80,-20 80,-14 86,-8 92,-8"></path>
+<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
+</g>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-196" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">1</text>
+</g>
+<!-- w -->
+<g id="node4" class="node">
+<title>w</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-196" rx="18.02" ry="18.02"></ellipse>
+<text text-anchor="middle" x="106.01" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">w</text>
+</g>
+<!-- 1&#45;&gt;w -->
+<g id="edge1" class="edge">
+<title>1-&gt;w</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-196C60.02,-196 69.29,-196 77.89,-196"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-199.5 87.9,-196 77.9,-192.5 77.9,-199.5"></polygon>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">2</text>
+</g>
+<!-- x -->
+<g id="node5" class="node">
+<title>x</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">x</text>
+</g>
+<!-- 2&#45;&gt;x -->
+<g id="edge2" class="edge">
+<title>2-&gt;x</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-142C60.02,-142 69.29,-142 77.89,-142"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-145.5 87.9,-142 77.9,-138.5 77.9,-145.5"></polygon>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">3</text>
+</g>
+<!-- z -->
+<g id="node7" class="node">
+<title>z</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">z</text>
+</g>
+<!-- 3&#45;&gt;z -->
+<g id="edge3" class="edge">
+<title>3-&gt;z</title>
+<path fill="none" stroke="#ffffff" d="M48.83,-77.33C58.61,-69.79 71.93,-59.52 83.14,-50.87"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="85.43,-53.53 91.21,-44.65 81.15,-47.98 85.43,-53.53"></polygon>
+</g>
+<!-- y -->
+<g id="node6" class="node">
+<title>y</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">y</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Surjective</strong></p>
+<div class="cell" data-fig-width="300px" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="300" height="200" viewbox="0.00 0.00 148.02 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-259 144.02,-259 144.02,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_X</title>
+<path fill="#191919" stroke="#ffffff" d="M20,-8C20,-8 48,-8 48,-8 54,-8 60,-14 60,-20 60,-20 60,-235 60,-235 60,-241 54,-247 48,-247 48,-247 20,-247 20,-247 14,-247 8,-241 8,-235 8,-235 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
+<text text-anchor="middle" x="34" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_Y</title>
+<path fill="#191919" stroke="#ffffff" d="M92,-62C92,-62 120.02,-62 120.02,-62 126.02,-62 132.02,-68 132.02,-74 132.02,-74 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-74 80,-74 80,-68 86,-62 92,-62"></path>
+<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
+</g>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-196" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">1</text>
+</g>
+<!-- w -->
+<g id="node5" class="node">
+<title>w</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-196" rx="18.02" ry="18.02"></ellipse>
+<text text-anchor="middle" x="106.01" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">w</text>
+</g>
+<!-- 1&#45;&gt;w -->
+<g id="edge1" class="edge">
+<title>1-&gt;w</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-196C60.02,-196 69.29,-196 77.89,-196"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-199.5 87.9,-196 77.9,-192.5 77.9,-199.5"></polygon>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">2</text>
+</g>
+<!-- x -->
+<g id="node6" class="node">
+<title>x</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">x</text>
+</g>
+<!-- 2&#45;&gt;x -->
+<g id="edge2" class="edge">
+<title>2-&gt;x</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-142C60.02,-142 69.29,-142 77.89,-142"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-145.5 87.9,-142 77.9,-138.5 77.9,-145.5"></polygon>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">3</text>
+</g>
+<!-- y -->
+<g id="node7" class="node">
+<title>y</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">y</text>
+</g>
+<!-- 3&#45;&gt;y -->
+<g id="edge3" class="edge">
+<title>3-&gt;y</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-88C60.02,-88 69.29,-88 77.89,-88"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-91.5 87.9,-88 77.9,-84.5 77.9,-91.5"></polygon>
+</g>
+<!-- 4 -->
+<g id="node4" class="node">
+<title>4</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">4</text>
+</g>
+<!-- 4&#45;&gt;y -->
+<g id="edge4" class="edge">
+<title>4-&gt;y</title>
+<path fill="none" stroke="#ffffff" d="M48.83,-44.67C58.61,-52.21 71.93,-62.48 83.14,-71.13"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="81.15,-74.02 91.21,-77.35 85.43,-68.47 81.15,-74.02"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</td>
+<td>
+<p>Neither</p>
+<div class="cell" data-fig-width="300px" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="300" height="200" viewbox="0.00 0.00 148.02 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-259 144.02,-259 144.02,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_X</title>
+<path fill="#191919" stroke="#ffffff" d="M20,-8C20,-8 48,-8 48,-8 54,-8 60,-14 60,-20 60,-20 60,-235 60,-235 60,-241 54,-247 48,-247 48,-247 20,-247 20,-247 14,-247 8,-241 8,-235 8,-235 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
+<text text-anchor="middle" x="34" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_Y</title>
+<path fill="#191919" stroke="#ffffff" d="M92,-8C92,-8 120.02,-8 120.02,-8 126.02,-8 132.02,-14 132.02,-20 132.02,-20 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-20 80,-20 80,-14 86,-8 92,-8"></path>
+<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
+</g>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-196" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">1</text>
+</g>
+<!-- w -->
+<g id="node5" class="node">
+<title>w</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-196" rx="18.02" ry="18.02"></ellipse>
+<text text-anchor="middle" x="106.01" y="-191.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">w</text>
+</g>
+<!-- 1&#45;&gt;w -->
+<g id="edge1" class="edge">
+<title>1-&gt;w</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-196C60.02,-196 69.29,-196 77.89,-196"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-199.5 87.9,-196 77.9,-192.5 77.9,-199.5"></polygon>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">2</text>
+</g>
+<!-- x -->
+<g id="node6" class="node">
+<title>x</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-142" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-137.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">x</text>
+</g>
+<!-- 2&#45;&gt;x -->
+<g id="edge2" class="edge">
+<title>2-&gt;x</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-142C60.02,-142 69.29,-142 77.89,-142"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-145.5 87.9,-142 77.9,-138.5 77.9,-145.5"></polygon>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">3</text>
+</g>
+<!-- z -->
+<g id="node8" class="node">
+<title>z</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">z</text>
+</g>
+<!-- 3&#45;&gt;z -->
+<g id="edge3" class="edge">
+<title>3-&gt;z</title>
+<path fill="none" stroke="#ffffff" d="M48.83,-77.33C58.61,-69.79 71.93,-59.52 83.14,-50.87"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="85.43,-53.53 91.21,-44.65 81.15,-47.98 85.43,-53.53"></polygon>
+</g>
+<!-- 4 -->
+<g id="node4" class="node">
+<title>4</title>
+<ellipse fill="none" stroke="#ffffff" cx="34" cy="-34" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="34" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">4</text>
+</g>
+<!-- 4&#45;&gt;z -->
+<g id="edge4" class="edge">
+<title>4-&gt;z</title>
+<path fill="none" stroke="#ffffff" d="M52.31,-34C60.02,-34 69.29,-34 77.89,-34"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="77.9,-37.5 87.9,-34 77.9,-30.5 77.9,-37.5"></polygon>
+</g>
+<!-- y -->
+<g id="node7" class="node">
+<title>y</title>
+<ellipse fill="none" stroke="#ffffff" cx="106.01" cy="-88" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="106.01" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">y</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section id="base64" class="title-slide slide level1 center">
+<h1>Base64</h1>
+<ul>
+<li>Base64
+<ul>
+<li>Bijects numbers in <span class="math inline">\(\mathbb{Z}/n\mathbb{Z}:n = 2^{32}\)</span></li>
+<li>To strings of length 5 over these symbols <code>[A-Za-z0-9+/]</code></li>
+</ul></li>
+<li>Base64 encoding of a file
+<ul>
+<li>Bijects files, we can think of as in binary, to</li>
+<li>Strings of arbitrary length over <code>[A-Za-z0-9+/]</code></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="streaming-2" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 113.10" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 109.1)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-109.1 238.88,-109.1 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-99.7 54,-99.7 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x0</text>
+<polyline fill="none" stroke="#ffffff" points="0,-74.9 54,-74.9 "></polyline>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-99.1 90.06,-99.1 90.06,-75.1 126.81,-75.1 126.81,-69.1 144.81,-87.1 126.81,-105.1 126.81,-99.1"></polygon>
+<text text-anchor="middle" x="117.44" y="-82.9" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1:a-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54,-87.1C62.4,-87.1 71.44,-87.1 79.95,-87.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="80.01,-90.6 90.01,-87.1 80.01,-83.6 80.01,-90.6"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-0.5 180.88,-99.7 234.88,-99.7 234.88,-0.5 180.88,-0.5"></polygon>
+<text text-anchor="middle" x="207.88" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-74.9 234.88,-74.9 "></polyline>
+<text text-anchor="middle" x="207.88" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-50.1 234.88,-50.1 "></polyline>
+<text text-anchor="middle" x="207.88" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-25.3 234.88,-25.3 "></polyline>
+<text text-anchor="middle" x="207.88" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M144.87,-87.1C152.86,-87.1 161.86,-87.1 170.68,-87.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.88,-90.6 180.88,-87.1 170.88,-83.6 170.88,-90.6"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="streaming-3" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 108.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 104.2)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-104.2 238.88,-104.2 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-99.7 54,-99.7 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-74.9 54,-74.9 "></polyline>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x4</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-74.1 90.06,-74.1 90.06,-50.1 126.81,-50.1 126.81,-44.1 144.81,-62.1 126.81,-80.1 126.81,-74.1"></polygon>
+<text text-anchor="middle" x="117.44" y="-57.9" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1:a-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54,-62.1C62.4,-62.1 71.44,-62.1 79.95,-62.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="80.01,-65.6 90.01,-62.1 80.01,-58.6 80.01,-65.6"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-0.5 180.88,-99.7 234.88,-99.7 234.88,-0.5 180.88,-0.5"></polygon>
+<text text-anchor="middle" x="207.88" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-74.9 234.88,-74.9 "></polyline>
+<text text-anchor="middle" x="207.88" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x5</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-50.1 234.88,-50.1 "></polyline>
+<text text-anchor="middle" x="207.88" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-25.3 234.88,-25.3 "></polyline>
+<text text-anchor="middle" x="207.88" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M144.87,-62.1C152.86,-62.1 161.86,-62.1 170.68,-62.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.88,-65.6 180.88,-62.1 170.88,-58.6 170.88,-65.6"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="streaming-4" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 108.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 104.2)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-104.2 238.88,-104.2 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-99.7 54,-99.7 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-74.9 54,-74.9 "></polyline>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0x8</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-50.1 90.06,-50.1 90.06,-26.1 126.81,-26.1 126.81,-20.1 144.81,-38.1 126.81,-56.1 126.81,-50.1"></polygon>
+<text text-anchor="middle" x="117.44" y="-33.9" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1:a-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54,-38.1C62.4,-38.1 71.44,-38.1 79.95,-38.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="80.01,-41.6 90.01,-38.1 80.01,-34.6 80.01,-41.6"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-0.5 180.88,-99.7 234.88,-99.7 234.88,-0.5 180.88,-0.5"></polygon>
+<text text-anchor="middle" x="207.88" y="-83.1" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-74.9 234.88,-74.9 "></polyline>
+<text text-anchor="middle" x="207.88" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-50.1 234.88,-50.1 "></polyline>
+<text text-anchor="middle" x="207.88" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xA</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-25.3 234.88,-25.3 "></polyline>
+<text text-anchor="middle" x="207.88" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M144.87,-38.1C152.86,-38.1 161.86,-38.1 170.68,-38.1"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.88,-41.6 180.88,-38.1 170.88,-34.6 170.88,-41.6"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="streaming-5" class="title-slide slide level1 center">
+<h1>Streaming</h1>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 113.10" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 109.1)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-109.1 238.88,-109.1 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-5.4 0,-104.6 54,-104.6 54,-5.4 0,-5.4"></polygon>
+<text text-anchor="middle" x="27" y="-88" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-79.8 54,-79.8 "></polyline>
+<text text-anchor="middle" x="27" y="-63.2" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-55 54,-55 "></polyline>
+<text text-anchor="middle" x="27" y="-38.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="0,-30.2 54,-30.2 "></polyline>
+<text text-anchor="middle" x="27" y="-13.6" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xC</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-30 90.06,-30 90.06,-6 126.81,-6 126.81,0 144.81,-18 126.81,-36 126.81,-30"></polygon>
+<text text-anchor="middle" x="117.44" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1:a-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54,-18C62.4,-18 71.44,-18 79.95,-18"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="80.01,-21.5 90.01,-18 80.01,-14.5 80.01,-21.5"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-5.4 180.88,-104.6 234.88,-104.6 234.88,-5.4 180.88,-5.4"></polygon>
+<text text-anchor="middle" x="207.88" y="-88" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-79.8 234.88,-79.8 "></polyline>
+<text text-anchor="middle" x="207.88" y="-63.2" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-55 234.88,-55 "></polyline>
+<text text-anchor="middle" x="207.88" y="-38.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">???</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-30.2 234.88,-30.2 "></polyline>
+<text text-anchor="middle" x="207.88" y="-13.6" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xF</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M144.87,-18C152.86,-18 161.86,-18 170.68,-18"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.88,-21.5 180.88,-18 170.88,-14.5 170.88,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pattern" class="title-slide slide level1 center">
+<h1>Pattern</h1>
+<ul>
+<li>This is the pattern</li>
+</ul>
+<div class="cell" data-fig-width="800px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="800" height="480" viewbox="0.00 0.00 242.88 83.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 79.4)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-79.4 238.88,-79.4 238.88,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-74.9 54,-74.9 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xX</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+</g>
+<!-- ELF -->
+<g id="node2" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="126.81,-49.7 90.06,-49.7 90.06,-25.7 126.81,-25.7 126.81,-19.7 144.81,-37.7 126.81,-55.7 126.81,-49.7"></polygon>
+<text text-anchor="middle" x="117.44" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file1&#45;&gt;ELF -->
+<g id="edge1" class="edge">
+<title>file1:a-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M54,-37.7C62.4,-37.7 71.44,-37.7 79.95,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="80.01,-41.2 90.01,-37.7 80.01,-34.2 80.01,-41.2"></polygon>
+</g>
+<!-- file2 -->
+<g id="node3" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="180.88,-0.5 180.88,-74.9 234.88,-74.9 234.88,-0.5 180.88,-0.5"></polygon>
+<text text-anchor="middle" x="207.88" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-50.1 234.88,-50.1 "></polyline>
+<text text-anchor="middle" x="207.88" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xY</text>
+<polyline fill="none" stroke="#ffffff" points="180.88,-25.3 234.88,-25.3 "></polyline>
+<text text-anchor="middle" x="207.88" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge2" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M144.87,-37.7C152.86,-37.7 161.86,-37.7 170.68,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="170.88,-41.2 180.88,-37.7 170.88,-34.2 170.88,-41.2"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="anti-pattern" class="title-slide slide level1 center">
+<h1>Anti-Pattern</h1>
+<ul>
+<li>This is the anti-pattern of duplication</li>
+</ul>
+<div class="cell" data-fig-width="1000px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="1000" height="480" viewbox="0.00 0.00 423.36 83.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 79.4)">
+<title>finite_automata</title>
+<polygon fill="#191919" stroke="transparent" points="-4,4 -4,-79.4 419.36,-79.4 419.36,4 -4,4"></polygon>
+<!-- file1 -->
+<g id="node1" class="node">
+<title>file1</title>
+<polygon fill="none" stroke="#ffffff" points="0,-0.5 0,-74.9 54,-74.9 54,-0.5 0,-0.5"></polygon>
+<text text-anchor="middle" x="27" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+<polyline fill="none" stroke="#ffffff" points="0,-50.1 54,-50.1 "></polyline>
+<text text-anchor="middle" x="27" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xX</text>
+<polyline fill="none" stroke="#ffffff" points="0,-25.3 54,-25.3 "></polyline>
+<text text-anchor="middle" x="27" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+</g>
+<!-- fio -->
+<g id="node2" class="node">
+<title>fio</title>
+<polygon fill="none" stroke="#ffffff" points="126,-49.7 90,-49.7 90,-25.7 126,-25.7 126,-19.7 144,-37.7 126,-55.7 126,-49.7"></polygon>
+<text text-anchor="middle" x="117" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">fread</text>
+</g>
+<!-- file1&#45;&gt;fio -->
+<g id="edge1" class="edge">
+<title>file1-&gt;fio</title>
+<path fill="none" stroke="#ffffff" d="M54.4,-37.7C62.39,-37.7 71.31,-37.7 79.82,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="79.92,-41.2 89.92,-37.7 79.92,-34.2 79.92,-41.2"></polygon>
+</g>
+<!-- file15 -->
+<g id="node3" class="node">
+<title>file15</title>
+<polygon fill="none" stroke="#ffffff" points="180,-19.7 180,-55.7 234.49,-55.7 234.49,-19.7 180,-19.7"></polygon>
+<text text-anchor="middle" x="207.24" y="-33.6" font-family="Times,serif" font-size="14.00" fill="#ffffff">buf[∞]</text>
+</g>
+<!-- fio&#45;&gt;file15 -->
+<g id="edge2" class="edge">
+<title>fio-&gt;file15</title>
+<path fill="none" stroke="#ffffff" d="M144.48,-37.7C152.42,-37.7 161.27,-37.7 169.74,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="169.79,-41.2 179.79,-37.7 169.79,-34.2 169.79,-41.2"></polygon>
+</g>
+<!-- ELF -->
+<g id="node4" class="node">
+<title>ELF</title>
+<polygon fill="none" stroke="#ffffff" points="307.3,-49.7 270.55,-49.7 270.55,-25.7 307.3,-25.7 307.3,-19.7 325.3,-37.7 307.3,-55.7 307.3,-49.7"></polygon>
+<text text-anchor="middle" x="297.92" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">base64</text>
+</g>
+<!-- file15&#45;&gt;ELF -->
+<g id="edge3" class="edge">
+<title>file15-&gt;ELF</title>
+<path fill="none" stroke="#ffffff" d="M234.85,-37.7C242.83,-37.7 251.73,-37.7 260.24,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="260.34,-41.2 270.34,-37.7 260.34,-34.2 260.34,-41.2"></polygon>
+</g>
+<!-- file2 -->
+<g id="node5" class="node">
+<title>file2</title>
+<polygon fill="none" stroke="#ffffff" points="361.36,-0.5 361.36,-74.9 415.36,-74.9 415.36,-0.5 361.36,-0.5"></polygon>
+<text text-anchor="middle" x="388.36" y="-58.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+<polyline fill="none" stroke="#ffffff" points="361.36,-50.1 415.36,-50.1 "></polyline>
+<text text-anchor="middle" x="388.36" y="-33.5" font-family="Times,serif" font-size="14.00" fill="#ffffff">0xY</text>
+<polyline fill="none" stroke="#ffffff" points="361.36,-25.3 415.36,-25.3 "></polyline>
+<text text-anchor="middle" x="388.36" y="-8.7" font-family="Times,serif" font-size="14.00" fill="#ffffff">...</text>
+</g>
+<!-- ELF&#45;&gt;file2 -->
+<g id="edge4" class="edge">
+<title>ELF-&gt;file2:b</title>
+<path fill="none" stroke="#ffffff" d="M325.36,-37.7C333.35,-37.7 342.35,-37.7 351.17,-37.7"></path>
+<polygon fill="#ffffff" stroke="#ffffff" points="351.36,-41.2 361.36,-37.7 351.36,-34.2 351.36,-41.2"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="big-deal" class="title-slide slide level1 center">
+<h1>Big Deal</h1>
+<ul>
+<li>Unnecessary duplication is a big deal in database / lakehouse.</li>
+</ul>
+
+<img data-src="https://miro.medium.com/v2/0*-qVE8s5PCVcv_E7c.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section id="big-deal-1" class="title-slide slide level1 center">
+<h1>Big Deal</h1>
+<ul>
+<li>Unnecessary duplication is what prevented prime generation in my 4096_t.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a></a><span class="dt">uint64_t</span> bigdiv<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>quo<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>rem<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a></a>    <span class="dt">uint64_t</span> i <span class="op">=</span> getmsb<span class="op">(</span>num<span class="op">),</span> j <span class="op">=</span> getmsb<span class="op">(</span>den<span class="op">),</span> n<span class="op">,</span> d<span class="op">,</span> tmq<span class="op">[</span>S<span class="op">],</span> tmr<span class="op">[</span>S<span class="op">];</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>That is <code>(4 + 2) * 64 * 64 = 24576</code> = 25 kilobytes for <code>5/2</code></li>
+</ul>
+</section>
+
+<section id="today-2" class="title-slide slide level1 center">
+<h1>Today</h1>
+<ul>
+<li>✓ Duplication</li>
+<li>Deficient encapsulation v. Broken modularization</li>
+<li>Magic Numbers</li>
+<li>Overthinking</li>
+<li>Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
+</ul>
+</section>
+
+<section id="on-4096_t" class="title-slide slide level1 center">
+<h1>On 4096_t</h1>
+<ul>
+<li>I needed the following on BigRSA</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a></a><span class="dt">uint64_t</span> bignul<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a></a>    <span class="dt">size_t</span> i<span class="op">;</span></span>
+<span id="cb10-3"><a></a>    <span class="cf">for</span>  <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> i <span class="op">&lt;</span> S <span class="op">&amp;&amp;</span> <span class="op">!</span>a<span class="op">[</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb10-4"><a></a>    <span class="cf">return</span> i <span class="op">!=</span> S<span class="op">;</span></span>
+<span id="cb10-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>I needed it on both <code>bigkey</code> and <code>bigrsa</code></li>
+<li>I didn’t inclode it in 4096_t
+<ul>
+<li>I duplicated the code but…</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="header-files" class="title-slide slide level1 center">
+<h1>Header files</h1>
+<ul>
+<li>This header file implements the 4096_t… dare I say… API?</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a></a><span class="dt">void</span> seebig<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>a<span class="op">);</span> </span>
+<span id="cb11-2"><a></a><span class="dt">uint64_t</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">);</span> </span>
+<span id="cb11-3"><a></a><span class="dt">uint64_t</span> bigsub<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>min<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sub<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>dif<span class="op">);</span> </span>
+<span id="cb11-4"><a></a><span class="dt">uint64_t</span> bigmul<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">);</span> </span>
+<span id="cb11-5"><a></a><span class="dt">uint64_t</span> bigdiv<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>quo<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>rem<span class="op">);</span> </span>
+<span id="cb11-6"><a></a><span class="dt">uint64_t</span> bigquo<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>quo<span class="op">);</span></span>
+<span id="cb11-7"><a></a><span class="dt">uint64_t</span> bigrem<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>rem<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>I shouldn’t mess with this! It’s already “released”!</li>
+</ul>
+</section>
+
+<section id="options" class="title-slide slide level1 center">
+<h1>Options</h1>
+<ul>
+<li>Implement <code>bignul</code> at the point-of-us, in both <code>bigrsa</code> and <code>bigkey</code>
+<ul>
+<li>Broken modularization (big function outside of 4096_t)</li>
+<li>Duplication (in both files)</li>
+</ul></li>
+<li>Add <code>bignul</code> back into <code>4096_t.h</code>
+<ul>
+<li>Broken modularization
+<ul>
+<li>E.g., the tests on 4096_t don’t test bignul</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 
 <section id="takeaways" class="title-slide slide level1 center">
 <h1>Takeaways</h1>
 <ul>
-<li>Make runs shell commands.</li>
-<li>They run the same as if we type them ourselves.</li>
-<li>This allows us to store commands.</li>
-<li>Rules can be goofy - but by default the first one runs - we have one, named build, so it’s the one that happens.</li>
+<li>When we design libraries, software, APIs, test scripts…</li>
+<li>Make sure we are preserving modularization and enscapsulation
+<ul>
+<li>Shouldn’t have bigops scattered to the four winds</li>
+</ul></li>
 </ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
-</div>
-<div class="sourceCode" id="cb11" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb11-1"><a></a><span class="dv">build:</span></span>
-<span id="cb11-2"><a></a><span class="er">    </span>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 
-<section id="rules" class="title-slide slide level1 center">
-<h1>Rules</h1>
+<section id="another-example" class="title-slide slide level1 center">
+<h1>Another example</h1>
 <ul>
-<li>You can also specify rules if you have more than one:</li>
+<li>This function:</li>
 </ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
-</div>
-<div class="sourceCode" id="cb12" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb12-1"><a></a><span class="dv">build:</span></span>
-<span id="cb12-2"><a></a><span class="er">    </span>gcc shainc.c</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a><span class="dv">nowarn:</span></span>
-<span id="cb12-5"><a></a><span class="er">    </span>gcc shainc.c -w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a></a><span class="dt">void</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Breaks here:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb13-2"><a></a><span class="dt">uint32_t</span> word<span class="op">,</span> conditional<span class="op">;</span></span>
+<span id="cb13-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb13-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb13-5"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb13-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>What is <code>conditional</code>?</li>
+</ul>
 </section>
 
-<section id="use-rules" class="title-slide slide level1 center">
-<h1>Use rules</h1>
+<section id="return-type" class="title-slide slide level1 center">
+<h1>Return type</h1>
 <ul>
-<li>We can “build”</li>
+<li>This function:</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a></a>$ make build</span>
-<span id="cb13-2"><a></a>gcc shainc.c</span>
-<span id="cb13-3"><a></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a></a><span class="co">/* returns # of words read */</span></span>
+<span id="cb14-2"><a></a><span class="dt">size_t</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Or we can specify “nowarn”</li>
+<li>Uses its return value:</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb14-1"><a></a>$ make nowarn</span>
-<span id="cb14-2"><a></a>gcc shainc.c -w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb15-1"><a></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb15-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb15-3"><a></a><span class="dt">size_t</span> cond<span class="op">;</span></span>
+<span id="cb15-4"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb15-5"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb15-6"><a></a>    cond <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb15-7"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="dv">4</span> <span class="op">==</span> cond <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>The first is the default</li>
+<li>To <em>encapsulate</em> checking end of a file</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb15-1"><a></a>$ make</span>
-<span id="cb15-2"><a></a>gcc shainc.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="bad" class="title-slide slide level1 center">
+<h1>Bad</h1>
+<ul>
+<li>These are both bad</li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a></a><span class="dt">void</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb17-1"><a></a><span class="dt">size_t</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb17-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb17-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb17-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb17-5"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
+<span id="cb17-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="op">???</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a></a><span class="dt">size_t</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">);</span></span>
+<span id="cb19-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb19-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb19-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb19-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
+<span id="cb19-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="dv">4</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="another-example-1" class="title-slide slide level1 center">
+<h1>Another example</h1>
+<ul>
+<li><code>biggmp.c</code>, a libgmp implementation of 4096_t I am now providing for usage on <code>bigrsa</code>, could contain much repeated code.</li>
+</ul>
+</section>
+
+<section id="add-and-sub" class="title-slide slide level1 center">
+<h1>Add and Sub</h1>
+<ul>
+<li>GMP works by:
+<ul>
+<li>Declaring an <code>mpz_t</code> variable.</li>
+<li>Initializing with <code>mpz_init</code></li>
+<li>Loading in data with <code>mpz_import</code></li>
+<li>Performing some operation</li>
+<li>Extracting to a buffer or 4096_t with <code>mpz_export</code></li>
+<li>Calling <code>mpz_clear</code> or slowing using up all your memory.</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="see-it" class="title-slide slide level1 center">
+<h1>See it</h1>
+<ul>
+<li>Here’s add with light edits:</li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb20-1"><a></a></span>
+<span id="cb20-2"><a></a>Declaring an `mpz_t` variable.</span>
+<span id="cb20-3"><a></a>Initializing with `mpz_init`</span>
+<span id="cb20-4"><a></a>Loading in data with `mpz_import`</span>
+<span id="cb20-5"><a></a>    (Twice)</span>
+<span id="cb20-6"><a></a>Performing some operation</span>
+<span id="cb20-7"><a></a>Extracting to a buffer or 4096_t with `mpz_export`</span>
+<span id="cb20-8"><a></a>Calling `mpz_clear` or slowing using up all your memory.</span>
+<span id="cb20-9"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb21-1"><a></a><span class="dt">void</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb21-3"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb21-4"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb21-5"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb21-6"><a></a>    mpz_add<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb21-7"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb21-8"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb21-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="both" class="title-slide slide level1 center">
+<h1>Both</h1>
+<ul>
+<li>Only one line differs!
+<ul>
+<li>8 repeated lines!</li>
+<li>Would have to fix any bug in <span class="math inline">\(n\)</span> places!</li>
+</ul></li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a></a><span class="dt">void</span> bigsub<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>dif<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb22-3"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb22-4"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb22-5"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb22-6"><a></a>    mpz_sub<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb22-7"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb22-8"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb22-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a></a><span class="dt">void</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb23-3"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb23-4"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb23-5"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb23-6"><a></a>    mpz_add<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb23-7"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb23-8"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb23-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="bug" class="title-slide slide level1 center">
+<h1>Bug</h1>
+<ul>
+<li>This doesn’t work because <code>sum</code> is used unitialized
+<ul>
+<li>Requires 2 edits, easy to miss one</li>
+</ul></li>
+</ul>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a></a><span class="dt">void</span> bigsub<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>dif<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb24-3"><a></a>    memset<span class="op">(</span>dif<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> BYTES<span class="op">);</span></span>
+<span id="cb24-4"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb24-5"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb24-6"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb24-7"><a></a>    mpz_sub<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb24-8"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb24-9"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb24-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb25-1"><a></a><span class="dt">void</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb25-3"><a></a>    memset<span class="op">(</span>sum<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> BYTES<span class="op">);</span></span>
+<span id="cb25-4"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb25-5"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb25-6"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb25-7"><a></a>    mpz_add<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb25-8"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb25-9"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb25-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="better" class="title-slide slide level1 center">
+<h1>Better</h1>
+<ul>
+<li>Write some function that does all the setup and teardown</li>
+<li>Pass that function the operation as an argument</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb26-1"><a></a><span class="dt">void</span> apply<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">,</span> function<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb26-3"><a></a>    memset<span class="op">(</span>sum<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> BYTES<span class="op">);</span></span>
+<span id="cb26-4"><a></a>    mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb26-5"><a></a>    mpz_import<span class="op">(</span>m0<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb26-6"><a></a>    mpz_import<span class="op">(</span>m1<span class="op">,</span> S<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb26-7"><a></a>    function<span class="op">(</span>m0<span class="op">,</span>m0<span class="op">,</span>m1<span class="op">);</span></span>
+<span id="cb26-8"><a></a>    mpz_export<span class="op">(</span>c<span class="op">,</span> NULL<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">),</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> m0<span class="op">);</span></span>
+<span id="cb26-9"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb26-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="code-reuse" class="title-slide slide level1 center">
+<h1>Code reuse!</h1>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a></a><span class="dt">uint64_t</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-2"><a></a>    apply<span class="op">(</span>in0<span class="op">,</span> in1<span class="op">,</span> sum<span class="op">,</span> mpz_add<span class="op">);</span></span>
+<span id="cb27-3"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-4"><a></a><span class="op">}</span></span>
+<span id="cb27-5"><a></a></span>
+<span id="cb27-6"><a></a><span class="dt">uint64_t</span> bigsub<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>min<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sub<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>dif<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-7"><a></a>    apply<span class="op">(</span>min<span class="op">,</span> sub<span class="op">,</span> dif<span class="op">,</span> mpz_sub<span class="op">);</span></span>
+<span id="cb27-8"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-9"><a></a><span class="op">}</span></span>
+<span id="cb27-10"><a></a></span>
+<span id="cb27-11"><a></a><span class="dt">uint64_t</span> bigmul<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-12"><a></a>    apply<span class="op">(</span>in0<span class="op">,</span> in1<span class="op">,</span> out<span class="op">,</span> mpz_mul<span class="op">);</span></span>
+<span id="cb27-13"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-14"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="in-practice" class="title-slide slide level1 center">
 <h1>In practice</h1>
 <ul>
-<li>I tend to use a Makefile like this:</li>
+<li>We declare a function which accepts a function as an argument by giving the functions type, and a local variable name.</li>
+<li>We call a function which “” by using the function name.</li>
+<li><code>mpz_add</code> returns void and accepts 3 <code>mpz_t</code> arguments.
+<ul>
+<li>Two are <code>const</code> which is out-of-scope for now</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb28-1"><a></a><span class="dt">void</span> <span class="op">(</span>f<span class="op">)(</span>mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+
+<section id="declare-it" class="title-slide slide level1 center">
+<h1>Declare it:</h1>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb29-1"><a></a><span class="dt">void</span> apply<span class="op">(</span><span class="dt">void</span> <span class="op">(</span>f<span class="op">)(</span>mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">),</span> <span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb29-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb29-3"><a></a>    <span class="co">/* much text */</span></span>
+<span id="cb29-4"><a></a>    <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb29-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="call-it" class="title-slide slide level1 center">
+<h1>Call it:</h1>
+<ul>
+<li>This code is correct, just use name.</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb30-1"><a></a><span class="dt">uint64_t</span> bigmul<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-2"><a></a>    apply<span class="op">(</span>in0<span class="op">,</span> in1<span class="op">,</span> out<span class="op">,</span> mpz_mul<span class="op">);</span></span>
+<span id="cb30-3"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb30-4"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="higher-order" class="title-slide slide level1 center">
+<h1>Higher Order</h1>
+<ul>
+<li>Oh by the way, this <strong>encapsulates</strong> libgmp.</li>
+<li>This encapsulation method is the function programming concept of higher order functions.</li>
+<li>They are great.</li>
+<li>Not fully supported in C 😭
+<ul>
+<li>We can’t <em>return</em> functions, just pass as args</li>
+</ul></li>
+<li>Oh by the way, this <strong>encapsulates</strong> libgmp.</li>
+</ul>
+</section>
+
+<section id="today-3" class="title-slide slide level1 center">
+<h1>Today</h1>
+<ul>
+<li>✓ Duplication</li>
+<li>✓ Deficient encapsulation v. Broken modularization</li>
+<li>Magic Numbers</li>
+<li>Overthinking</li>
+<li>Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
+</ul>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+
+<img data-src="https://upload.wikimedia.org/wikipedia/en/6/62/I_Am_Number_Four_Poster.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section id="who-or-what-is-4" class="title-slide slide level1 center">
+<h1>Who or what is “4”?</h1>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb31-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span id="cb31-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb31-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb31-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb31-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
+<span id="cb31-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="dv">4</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="sizeof" class="title-slide slide level1 center">
+<h1>Sizeof</h1>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span id="cb32-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb32-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb32-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint32_t</span><span class="op">),</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb32-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
+<span id="cb32-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint32_t</span><span class="op">)</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="define" class="title-slide slide level1 center">
+<h1>Define</h1>
+<ul>
+<li>Add a define:</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb33-1"><a></a><span class="pp">#define WORD_SIZE </span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint32_t</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>By convention, as we know, all caps.</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb34-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span id="cb34-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
+<span id="cb34-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb34-4"><a></a>    fread<span class="op">(</span>word<span class="op">,</span> WORD_SIZE<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> fp<span class="op">);</span></span>
+<span id="cb34-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
+<span id="cb34-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> WORD_SIZE <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="t" class="title-slide slide level1 center">
+<h1>4096_t</h1>
+<ul>
+<li>I used defines to allow 4096_t to be changed to 8192 with a change to a single line of code</li>
+<li><em>But this only works if you use the defines everywhere</em></li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
+<pre><strong>4096_t.h</strong></pre>
 </div>
-<div class="sourceCode" id="cb16" data-filename="Makefile"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb16-1"><a></a><span class="dv">build:</span></span>
-<span id="cb16-2"><a></a><span class="er">    </span>gcc shainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a><span class="dv">clean:</span></span>
-<span id="cb16-5"><a></a><span class="er">    </span>rm shainc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-filename="4096_t.h"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb35-1"><a></a><span class="pp">#define S </span><span class="op">(</span><span class="dt">size_t</span><span class="op">)(</span><span class="dv">4096</span><span class="pp"> </span><span class="op">/</span><span class="pp"> </span><span class="dv">64</span><span class="op">)</span></span>
+<span id="cb35-2"><a></a><span class="pp">#define BYTES S </span><span class="op">*</span><span class="pp"> </span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint64_t</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>make</code> will compile and <code>make clean</code> will remove the old executable if I don’t want it around for some reason.</li>
+<li>Imagine a <code>???_t</code> and then just using different header files with different <code>S</code> values.</li>
 </ul>
 </section>
 
-<section id="check" class="title-slide slide level1 center">
-<h1>Check</h1>
+<section id="today-4" class="title-slide slide level1 center">
+<h1>Today</h1>
 <ul>
-<li>“make” commands tend to 5 char, next most common I see is “check”</li>
-<li>We have a shell friendly <code>shainc</code> autograder!</li>
+<li>✓ Duplication</li>
+<li>✓ Deficient encapsulation v. Broken modularization</li>
+<li>✓ Magic Numbers</li>
+<li>Overthinking</li>
+<li>Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
+</ul>
+</section>
+
+<section id="overthinking" class="title-slide slide level1 center">
+<h1>Overthinking</h1>
+<ul>
+<li>It’s just bits.</li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>tester.sh</strong></pre>
+<pre><strong>uint32.c</strong></pre>
 </div>
-<div class="sourceCode" id="cb17" data-filename="tester.sh"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
-<span id="cb17-2"><a></a><span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
-<span id="cb17-3"><a></a><span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span> <span class="op">&gt;</span> lipsum.txt</span>
-<span id="cb17-4"><a></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
-<span id="cb17-5"><a></a><span class="bu">echo</span> <span class="st">" === Finding errors vs. reference implementation. === "</span></span>
-<span id="cb17-6"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span>
-<span id="cb17-7"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> lipsum.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> lipsum.txt<span class="op">)</span></span>
-<span id="cb17-8"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> austen.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> austen.txt<span class="op">)</span></span>
-<span id="cb17-9"><a></a><span class="bu">echo</span> <span class="st">" === Errors printed. No errors denotes </span><span class="dt">\"</span><span class="st">Perfect!</span><span class="dt">\"</span><span class="st"> === "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36" data-filename="uint32.c"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb36-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb36-2"><a></a></span>
+<span id="cb36-3"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb36-4"><a></a></span>
+<span id="cb36-5"><a></a><span class="dt">void</span> show<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>buf<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb36-6"><a></a></span>
+<span id="cb36-7"><a></a>        <span class="dt">int</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">int</span> <span class="op">*)</span>buf<span class="op">;</span></span>
+<span id="cb36-8"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">s -&gt; </span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">);</span></span>
+<span id="cb36-9"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">d -&gt; </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">int</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb36-10"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">u -&gt; </span><span class="sc">%u\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">unsigned</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb36-11"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">x -&gt; </span><span class="sc">%x\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">unsigned</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb36-12"><a></a>        printf<span class="op">(</span><span class="st">"As array: [</span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">]</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">[</span><span class="dv">0</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">1</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">2</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">3</span><span class="op">]);</span></span>
+<span id="cb36-13"><a></a>        printf<span class="op">(</span><span class="st">"As array: [</span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">]</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">[</span><span class="dv">0</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">1</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">2</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">3</span><span class="op">]);</span></span>
+<span id="cb36-14"><a></a><span class="op">}</span></span>
+<span id="cb36-15"><a></a></span>
+<span id="cb36-16"><a></a><span class="dt">void</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb36-17"><a></a>        <span class="dt">char</span> buf<span class="op">[</span><span class="dv">4</span><span class="op">]</span> <span class="op">=</span> <span class="st">"hi!"</span><span class="op">;</span></span>
+<span id="cb36-18"><a></a>        <span class="dt">int</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">int</span> <span class="op">*)</span>buf<span class="op">;</span></span>
+<span id="cb36-19"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">\n\"</span><span class="st">hi!</span><span class="sc">\"</span><span class="st"> n ways:</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb36-20"><a></a>        show<span class="op">(</span>buf<span class="op">)</span></span>
+<span id="cb36-21"><a></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">add 10 to *alias</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb36-22"><a></a>        <span class="op">*</span>alias <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb36-23"><a></a>        show<span class="op">(</span>buf<span class="op">);</span></span>
+<span id="cb36-24"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
-<section id="a-note" class="title-slide slide level1 center">
-<h1>A note</h1>
+<section id="not-numbers" class="title-slide slide level1 center">
+<h1>Not Numbers</h1>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb37-1"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">s -&gt; </span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">);</span></span>
+<span id="cb37-2"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">d -&gt; </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">int</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb37-3"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">u -&gt; </span><span class="sc">%u\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">unsigned</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb37-4"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">x -&gt; </span><span class="sc">%x\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">unsigned</span><span class="op">)*</span>alias<span class="op">);</span></span>
+<span id="cb37-5"><a></a>printf<span class="op">(</span><span class="st">"As array: [</span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">, </span><span class="sc">%d</span><span class="st">]</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">[</span><span class="dv">0</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">1</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">2</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">3</span><span class="op">]);</span></span>
+<span id="cb37-6"><a></a>printf<span class="op">(</span><span class="st">"As array: [</span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">, </span><span class="sc">%x</span><span class="st">]</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">[</span><span class="dv">0</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">1</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">2</span><span class="op">],</span> buf<span class="op">[</span><span class="dv">3</span><span class="op">]);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb38-1"><a></a>%s -&gt; hi!</span>
+<span id="cb38-2"><a></a>%d -&gt; 2189672</span>
+<span id="cb38-3"><a></a>%u -&gt; 2189672</span>
+<span id="cb38-4"><a></a>%x -&gt; 216968</span>
+<span id="cb38-5"><a></a>As array: [104, 105, 33, 0]</span>
+<span id="cb38-6"><a></a>As array: [68, 69, 21, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="not-letters" class="title-slide slide level1 center">
+<h1>Not Letters</h1>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb39-1"><a></a>show<span class="op">(</span>buf<span class="op">)</span></span>
+<span id="cb39-2"><a></a><span class="op">*</span>alias <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb39-3"><a></a>show<span class="op">(</span>buf<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="{columns}">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb40-1"><a></a>"hi!" n ways:</span>
+<span id="cb40-2"><a></a>%s -&gt; hi!</span>
+<span id="cb40-3"><a></a>%d -&gt; 2189672</span>
+<span id="cb40-4"><a></a>%u -&gt; 2189672</span>
+<span id="cb40-5"><a></a>%x -&gt; 216968</span>
+<span id="cb40-6"><a></a>As array: [104, 105, 33, 0]</span>
+<span id="cb40-7"><a></a>As array: [68, 69, 21, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb41-1"><a></a>add 10 to *alias</span>
+<span id="cb41-2"><a></a>%s -&gt; ri!</span>
+<span id="cb41-3"><a></a>%d -&gt; 2189682</span>
+<span id="cb41-4"><a></a>%u -&gt; 2189682</span>
+<span id="cb41-5"><a></a>%x -&gt; 216972</span>
+<span id="cb41-6"><a></a>As array: [114, 105, 33, 0]</span>
+<span id="cb41-7"><a></a>As array: [72, 69, 21, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+
+<section id="just-bits" class="title-slide slide level1 center">
+<h1>Just bits</h1>
 <ul>
-<li>This:</li>
+<li>We, the coder, give them meaning.</li>
+<li>What does magic number <code>6650210</code> mean?</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb42-1"><a></a><span class="op">*</span>alias <span class="op">=</span> <span class="dv">6650210</span><span class="op">;</span> <span class="co">/* New */</span></span>
+<span id="cb42-2"><a></a>show<span class="op">(</span>buf<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb43-1"><a></a>%s -&gt; bye</span>
+<span id="cb43-2"><a></a>%d -&gt; 6650210</span>
+<span id="cb43-3"><a></a>%u -&gt; 6650210</span>
+<span id="cb43-4"><a></a>%x -&gt; 657962</span>
+<span id="cb43-5"><a></a>As array: [98, 121, 101, 0]</span>
+<span id="cb43-6"><a></a>As array: [62, 79, 65, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="today-5" class="title-slide slide level1 center">
+<h1>Today</h1>
 <ul>
-<li>Is <em>bash</em> and only works via <code>/bin/bash</code></li>
-<li>Makefile uses <em>sh</em> which doesn’t allow the parenthesis like that.</li>
-<li>We will use temporary files.</li>
+<li>✓ Duplication</li>
+<li>✓ Deficient encapsulation v. Broken modularization</li>
+<li>✓ Magic Numbers</li>
+<li>✓ Overthinking</li>
+<li>Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
 </ul>
 </section>
 
-<section id="step-by-step" class="title-slide slide level1 center">
-<h1>Step by step</h1>
+<section id="languages" class="title-slide slide level1 center">
+<h1>Languages</h1>
 <ul>
-<li>This is just <code>make build</code></li>
+<li>Not all patterns and antipatterns exist in all languages.</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>These lines just echo text into a file:</li>
-</ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a></a><span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
-<span id="cb20-2"><a></a><span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, "</span> <span class="co"># etc etc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote>
+<p><a href="https://www.norvig.com/design-patterns/">Peter Norvig demonstrates that 16 out of the 23 patterns in the Design Patterns book (which is primarily focused on C++) are simplified or eliminated (via direct language support) in Lisp</a></p>
+</blockquote>
 </section>
 
-<section id="curl" class="title-slide slide level1 center">
-<h1>Curl</h1>
+<section id="c-good" class="title-slide slide level1 center">
+<h1>C good</h1>
 <ul>
-<li>This just pulls a book from GitHub using <code>curl</code> and usings the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
-</ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Try it with different flags if you are confused.</li>
+<li>God Objects cannot be made in C, an imperative language.</li>
+<li>But, we should make sure we use header files. (No “God .c”)</li>
+<li>Famously, the C preprocess (remember <code>Macros</code>) starts to look an awful lot like a LISP implementation in more sophisticated projects.</li>
 </ul>
 </section>
 
-<section id="curl-1" class="title-slide slide level1 center">
-<h1>Curl</h1>
+<section id="c-lisp" class="title-slide slide level1 center">
+<h1>C LISP</h1>
 <ul>
-<li><code>curl</code> downloads a file from a url</li>
-<li><code>-o</code> specifies what to save that file as on the local computers</li>
-<li><code>2&gt;</code> suggests were to send error handling information</li>
-<li><code>/dev/null</code> is an imaginary file we can write to that won’t remember what we wrote there.
+<li>I can’t read this, but we all know what <code>CAT</code> means</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb44-1"><a></a><span class="pp">#define _E</span><span class="op">(...)</span><span class="pp"> __VA_ARGS__</span></span>
+<span id="cb44-2"><a></a><span class="pp">#define _N</span><span class="op">(...)</span></span>
+<span id="cb44-3"><a></a><span class="pp">#define _e</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> x</span></span>
+<span id="cb44-4"><a></a><span class="pp">#define _n</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span></span>
+<span id="cb44-5"><a></a><span class="pp">#define _CAT</span><span class="op">(</span><span class="pp">x</span><span class="op">,</span><span class="pp">y</span><span class="op">)</span><span class="pp"> x</span><span class="op">##</span><span class="pp">y</span></span>
+<span id="cb44-6"><a></a><span class="pp">#define CAT</span><span class="op">(</span><span class="pp">x</span><span class="op">,</span><span class="pp">y</span><span class="op">)</span><span class="pp"> _CAT</span><span class="op">(</span><span class="pp">x</span><span class="op">,</span><span class="pp">y</span><span class="op">)</span></span>
+<span id="cb44-7"><a></a><span class="pp">#define _e_sem</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> x</span><span class="op">(</span></span>
+<span id="cb44-8"><a></a><span class="pp">#define _bsem </span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="today-6" class="title-slide slide level1 center">
+<h1>Today</h1>
 <ul>
-<li>Like <code>return none</code></li>
+<li>✓ Duplication</li>
+<li>✓ Deficient encapsulation v. Broken modularization</li>
+<li>✓ Magic Numbers</li>
+<li>✓ Overthinking</li>
+<li>✓ Big Ball of Mud v. God Object</li>
+<li>Data clump</li>
+</ul>
+</section>
+
+<section id="mandatory" class="title-slide slide level1 center">
+<h1>Mandatory</h1>
+<ul>
+<li>C contains a language-mandatory data clump anti-pattern</li>
+<li>This is a data clump - two values that only make sense together.</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb45-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="null-termination" class="title-slide slide level1 center">
+<h1>Null termination</h1>
+<ul>
+<li>In practice, you can null terminate vectors just like strings
+<ul>
+<li>libgmp does this</li>
+</ul></li>
+<li>Null terminated strings are just a special case of null-terminated vectors.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>biggmp.c</strong></pre>
+</div>
+<div class="sourceCode" id="cb46" data-filename="biggmp.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb46-1"><a></a>mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
+<span id="cb46-2"><a></a>mpz_inits<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb46-3"><a></a><span class="co">/* various activities */</span></span>
+<span id="cb46-4"><a></a>mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Avoids duplication, like 2x <code>mpz_init</code> calls</li>
+</ul>
+</section>
+
+<section id="today-7" class="title-slide slide level1 center">
+<h1>Today</h1>
+<ul>
+<li>✓ Duplication</li>
+<li>✓ Deficient encapsulation v. Broken modularization</li>
+<li>✓ Magic Numbers</li>
+<li>✓ Overthinking</li>
+<li>✓ Big Ball of Mud v. God Object</li>
+<li>✓ Data clump</li>
+</ul>
+</section>
+
+<section id="previews" class="title-slide slide level1 center">
+<h1>Previews</h1>
+<ul>
+<li><code>struct</code>
+<ul>
+<li>C language data structures</li>
+</ul></li>
+<li><code>malloc</code>
+<ul>
+<li>Dynamically sized C types</li>
 </ul></li>
 </ul>
 </section>
 
-<section id="diff" class="title-slide slide level1 center">
-<h1>Diff</h1>
+<section id="or" class="title-slide slide level1 center">
+<h1>Or…</h1>
 <ul>
-<li><code>diff</code> compares two files to see if they are the same or different.
-<ul>
-<li>If they differ, it prints the difference and returns a non-zero value.</li>
-<li>If they are the same, it prints nothing and returns zero.</li>
-</ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span>
-<span id="cb22-2"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> lipsum.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> lipsum.txt<span class="op">)</span></span>
-<span id="cb22-3"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> austen.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> austen.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-
-<section id="wait---which-files" class="title-slide slide level1 center">
-<h1>Wait - which files?</h1>
-<ul>
-<li>This is another imaginary file:</li>
-</ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">sha256sum</span> 15char.txt<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">./shainc</span> 15char.txt<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>This is not allowed by <code>make</code>.</li>
-<li>Instead, make a few files:</li>
-</ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a></a><span class="fu">sha256sum</span> 15char.txt <span class="op">&gt;</span> 15char.sum</span>
-<span id="cb24-2"><a></a><span class="ex">./shainc</span> 15char.txt <span class="op">&gt;</span> 15char.inc</span>
-<span id="cb24-3"><a></a><span class="fu">diff</span> 15char.inc 15char.sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
-<section id="try-diff" class="title-slide slide level1 center">
-<h1>Try diff</h1>
-<ul>
-<li>Use <code>echo</code> to create <code>15char.txt</code> and <code>lipsum.txt</code>.</li>
-<li>Use <code>diff</code> to examine them:</li>
-</ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a></a><span class="ex">$</span> diff 15char.txt 15char.txt</span>
-<span id="cb25-2"><a></a><span class="ex">$</span> echo <span class="va">$?</span></span>
-<span id="cb25-3"><a></a><span class="ex">0</span></span>
-<span id="cb25-4"><a></a><span class="ex">$</span> diff 15char.txt lipsum.txt</span>
-<span id="cb25-5"><a></a><span class="ex">1c1</span></span>
-<span id="cb25-6"><a></a><span class="op">&lt;</span> 15 <span class="ex">characters.</span></span>
-<span id="cb25-7"><a></a><span class="ex">---</span></span>
-<span id="cb25-8"><a></a><span class="op">&gt;</span> Lorem <span class="ex">ipsum</span> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-<span id="cb25-9"><a></a><span class="ex">$</span> echo <span class="va">$?</span></span>
-<span id="cb25-10"><a></a><span class="ex">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
-<section id="use-devnull" class="title-slide slide level1 center">
-<h1>Use /dev/null</h1>
-<ul>
-<li>Wait we don’t care what the difference is, just if there is one.</li>
-<li>And we know how to ignore the output of a command.</li>
-</ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a></a><span class="ex">$</span> diff 15char.txt 15char.txt <span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
-<span id="cb26-2"><a></a><span class="ex">0</span></span>
-<span id="cb26-3"><a></a><span class="ex">$</span> diff 15char.txt lipsum.txt <span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
-<span id="cb26-4"><a></a><span class="ex">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><em>When files differ, the return value of <code>diff</code> suggests an error occured</em></li>
-</ul>
-</section>
-
-<section id="non-zero-return" class="title-slide slide level1 center">
-<h1>Non-zero return</h1>
-<ul>
-<li>We get the same from <code>gcc</code> when a build fails.</li>
-</ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a></a><span class="ex">$</span> gcc shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
-<span id="cb27-2"><a></a><span class="ex">shainc.c:</span> In function ‘main’:</span>
-<span id="cb27-3"><a></a><span class="ex">shainc.c:2:9:</span> error: implicit declaration of function ‘printf’ <span class="pp">[-</span><span class="ss">Werror=implicit</span><span class="pp">-</span><span class="ss">function</span><span class="pp">-</span><span class="ss">declaration</span><span class="pp">]</span></span>
-<span id="cb27-4"><a></a>    <span class="ex">2</span> <span class="kw">|</span>         <span class="bu">printf</span><span class="er">(</span><span class="st">"hi\n"</span><span class="kw">);</span></span>
-<span id="cb27-5"><a></a>      <span class="kw">|</span>         <span class="ex">^~~~~~</span></span>
-<span id="cb27-6"><a></a><span class="ex">shainc.c:1:1:</span> note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
-<span id="cb27-7"><a></a>  <span class="ex">+++</span> <span class="kw">|</span><span class="ex">+#include</span> <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></span>
-<span id="cb27-8"><a></a>    <span class="ex">1</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="kw">)</span> <span class="kw">{</span></span>
-<span id="cb27-9"><a></a><span class="ex">shainc.c:2:9:</span> error: incompatible implicit declaration of built-in function ‘printf’ <span class="pp">[-</span><span class="ss">Werror=builtin</span><span class="pp">-</span><span class="ss">declaration</span><span class="pp">-</span><span class="ss">mismatch</span><span class="pp">]</span></span>
-<span id="cb27-10"><a></a>    <span class="ex">2</span> <span class="kw">|</span>         <span class="bu">printf</span><span class="er">(</span><span class="st">"hi\n"</span><span class="kw">);</span></span>
-<span id="cb27-11"><a></a>      <span class="kw">|</span>         <span class="ex">^~~~~~</span></span>
-<span id="cb27-12"><a></a><span class="ex">shainc.c:2:9:</span> note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
-<span id="cb27-13"><a></a><span class="ex">cc1:</span> all warnings being treated as errors</span>
-<span id="cb27-14"><a></a><span class="ex">$</span> echo <span class="va">$?</span></span>
-<span id="cb27-15"><a></a><span class="ex">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
-<section id="makefile-nonzero" class="title-slide slide level1 center">
-<h1>Makefile nonzero</h1>
-<ul>
-<li>Makefile returns the error value:</li>
-</ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a></a><span class="ex">$</span> cat Makefile</span>
-<span id="cb28-2"><a></a><span class="ex">build:</span></span>
-<span id="cb28-3"><a></a>        <span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
-<span id="cb28-4"><a></a><span class="ex">$</span> make <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">;</span> <span class="bu">echo</span> <span class="va">$?</span></span>
-<span id="cb28-5"><a></a><span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
-<span id="cb28-6"><a></a><span class="ex">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
-<section id="actions" class="title-slide slide level1 center">
-<h1>Actions</h1>
-<ul>
-<li>We can use <code>make</code> and <code>make check</code> within GitHub actions:</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>ci/c-cpp.yml</strong></pre>
-</div>
-<div class="sourceCode" id="cb29" data-filename="ci/c-cpp.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make</span></span>
-<span id="cb29-2"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span>
-<span id="cb29-3"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> make check</span></span>
-<span id="cb29-4"><a></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make check</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>And GitHub will report error status to us when we check in files.</li>
-</ul>
-</section>
-
-<section id="end-to-end" class="title-slide slide level1 center">
-<h1>End-to-end</h1>
-<ul>
-<li>Check this repository:
-<ul>
-<li><a href="https://github.com/cd-c89/action">https://github.com/cd-c89/action</a></li>
-</ul></li>
-<li>Spoiler alert: it contains a passable <code>shainc</code> solution if you wanted to work on that someday.</li>
-</ul>
-</section>
-
-<section id="makefile" class="title-slide slide level1 center">
-<h1>Makefile</h1>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Makefile</strong></pre>
-</div>
-<div class="sourceCode" id="cb30" data-filename="Makefile"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a></a><span class="ex">check:</span> build</span>
-<span id="cb30-2"><a></a>    <span class="bu">echo</span> <span class="st">"15 characters."</span> <span class="op">&gt;</span> 15char.txt</span>
-<span id="cb30-3"><a></a>    <span class="bu">echo</span> <span class="st">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span> <span class="op">&gt;</span> lipsum.txt</span>
-<span id="cb30-4"><a></a>    <span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
-<span id="cb30-5"><a></a>    <span class="co"># Makefile uses sh not bash so can't use &lt;() and have to use the filesystem</span></span>
-<span id="cb30-6"><a></a>    <span class="ex">./shainc</span> 15char.txt <span class="op">&gt;</span> 15char.inc</span>
-<span id="cb30-7"><a></a>    <span class="ex">./shainc</span> lipsum.txt <span class="op">&gt;</span> lipsum.inc</span>
-<span id="cb30-8"><a></a>    <span class="ex">./shainc</span> austen.txt <span class="op">&gt;</span> austen.inc</span>
-<span id="cb30-9"><a></a>    <span class="fu">sha256sum</span> 15char.txt <span class="op">&gt;</span> 15char.sum</span>
-<span id="cb30-10"><a></a>    <span class="fu">sha256sum</span> lipsum.txt <span class="op">&gt;</span> lipsum.sum</span>
-<span id="cb30-11"><a></a>    <span class="fu">sha256sum</span> austen.txt <span class="op">&gt;</span> austen.sum</span>
-<span id="cb30-12"><a></a>    <span class="fu">diff</span> 15char.inc 15char.sum <span class="kw">||</span> <span class="fu">diff</span> lipsum.inc lipsum.sum <span class="kw">||</span> <span class="fu">diff</span> austen.inc austen.sum</span>
-<span id="cb30-13"><a></a></span>
-<span id="cb30-14"><a></a></span>
-<span id="cb30-15"><a></a><span class="ex">build:</span></span>
-<span id="cb30-16"><a></a>    <span class="fu">gcc</span> shainc.c <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> shainc</span>
-<span id="cb30-17"><a></a></span>
-<span id="cb30-18"><a></a><span class="ex">clean:</span></span>
-<span id="cb30-19"><a></a>    <span class="fu">rm</span> shainc <span class="pp">*</span>.txt <span class="pp">*</span>.inc <span class="pp">*</span>.sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="yml-1" class="title-slide slide level1 center">
-<h1>.yml</h1>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>.github/workflows/c89.yml</strong></pre>
-</div>
-<div class="sourceCode" id="cb31" data-filename=".github/workflows/c89.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a></a><span class="fu">name</span><span class="kw">:</span><span class="at"> C89 CI</span></span>
-<span id="cb31-2"><a></a></span>
-<span id="cb31-3"><a></a><span class="fu">on</span><span class="kw">:</span><span class="at"> push</span></span>
-<span id="cb31-4"><a></a></span>
-<span id="cb31-5"><a></a><span class="fu">jobs</span><span class="kw">:</span></span>
-<span id="cb31-6"><a></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
-<span id="cb31-7"><a></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb31-8"><a></a></span>
-<span id="cb31-9"><a></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb31-10"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
-<span id="cb31-11"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="outcomes" class="title-slide slide level1 center">
-<h1>Outcomes</h1>
-
-<img data-src="imgs/ghact.png" class="r-stretch"></section>
-
-<section id="todo" class="title-slide slide level1 center">
-<h1>Todo</h1>
-<ul>
-<li>Get this working on your “shainc” or “enigma” or something.</li>
-<li>Either in your main repo or in some other one.</li>
-<li>Add “GitHub Actions CI/CD pipelines for DevOps” to your resume.</li>
+<li>Riff on P strings?</li>
 </ul>
 
 
