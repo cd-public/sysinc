@@ -1405,7 +1405,7 @@
     "href": "00_podman.html",
     "title": "Podman",
     "section": "",
-    "text": "Welcome to Computing Security\n\nWhat is in point of fact a systems cryptography course.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nYou should have gotten an email…\n\nSpin up a GitHub acct if you don’t have one.\n\n\n\n\n\n\nThe first homework, “Enigma”, is ready after this class.\n\nDue Thursday, 03 Sep at midnight AOE\nThe infamous CS1 hw, now in a good language!\nMostly just get the toolchain working.\n\n\n\n\n\n\n\nABCDEFGHIJKLMNOPQRSTUVWXYZ # in\n    |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # fast\n    &gt;&gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n         |\nAJDKSIRUXBLHWTMCQGZNPYFVOE # mid\n &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n\n→\n\nBDFHJLCPRTXVZNYEIWGAKMUSQO\n &gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n   |\nIXUHFEZDAOMTKQJWNSRLCYPBVG # reflect\n   |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n   &gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ # out\n\n## etc etc   \n\n\n\n\n\n\nIntroduce the course\n\nThe C Programming Language\nCryptography + Cryptocurrency\n\nIntroduce the technologies\n\npodman\nvim\ngcc\ngit\n\n\n\n\n\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, drop this class.\n\n\n\n\n\nName\n\nCalvin (Deutschbein)\n\nCall me\n\n(Professor) Calvin\n\nPronouns\n\npronouns or big frowns - me\nthey/them\n\n\n\n\n\n\nThesis Title\n\nMining Secure Behavior of Hardware Designs\n\nPlain English\n\nJust as there are bugs in code that makes software, modern hardware is also written in code and therefore may contain bugs. I find these bugs.",
+    "text": "Welcome to Systems in C\n\nYou first semester in a compiled language - more on that soon.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nWorking on this.\n\nSpin up a GitHub acct if you don’t have one.\n\n\n\n\n\n\nThe first homework, “Enigma”, is ready after this class.\n\nDue Thursday, 03 Sep at midnight AOE\nThe infamous CS1 hw, now in a good language!\nMostly just get the toolchain working.\n\n\n\n\n\n\n\nABCDEFGHIJKLMNOPQRSTUVWXYZ # in\n    |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # fast\n    &gt;&gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n         |\nAJDKSIRUXBLHWTMCQGZNPYFVOE # mid\n &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n\n→\n\nBDFHJLCPRTXVZNYEIWGAKMUSQO\n &gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n   |\nIXUHFEZDAOMTKQJWNSRLCYPBVG # reflect\n   |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n   &gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ # out\n\n## etc etc   \n\n\n\n\n\n\nIntroduce the course\n\nThe C Programming Language\nCryptography + Cryptocurrency\n\nIntroduce the technologies\n\npodman\nvim\ngcc\ngit\n\n\n\n\n\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, drop this class.\n\n\n\n\n\nName\n\nCalvin (Deutschbein)\n\nCall me\n\n(Professor) Calvin\n\nPronouns\n\npronouns or big frowns - me\nthey/them\n\n\n\n\n\n\nThesis Title\n\nMining Secure Behavior of Hardware Designs\n\nPlain English\n\nJust as there are bugs in code that makes software, modern hardware is also written in code and therefore may contain bugs. I find these bugs.",
     "crumbs": [
       "Podman"
     ]
@@ -1415,7 +1415,7 @@
     "href": "00_podman.html#announcements",
     "title": "Podman",
     "section": "",
-    "text": "Welcome to Computing Security\n\nWhat is in point of fact a systems cryptography course.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nYou should have gotten an email…\n\nSpin up a GitHub acct if you don’t have one.",
+    "text": "Welcome to Systems in C\n\nYou first semester in a compiled language - more on that soon.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nWorking on this.\n\nSpin up a GitHub acct if you don’t have one.",
     "crumbs": [
       "Podman"
     ]
@@ -2055,7 +2055,7 @@
     "href": "00_podman.rjs.html#announcements",
     "title": "Podman",
     "section": "Announcements",
-    "text": "Announcements\n\nWelcome to Computing Security\n\nWhat is in point of fact a systems cryptography course.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nYou should have gotten an email…\n\nSpin up a GitHub acct if you don’t have one."
+    "text": "Announcements\n\nWelcome to Systems in C\n\nYou first semester in a compiled language - more on that soon.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nWorking on this.\n\nSpin up a GitHub acct if you don’t have one."
   },
   {
     "objectID": "00_podman.rjs.html#homework",

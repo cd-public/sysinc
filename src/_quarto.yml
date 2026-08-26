@@ -16,12 +16,14 @@ format:
         toc: true
         theme: darkly 
         code-line-numbers: true
+        mainfont: monospace
         code-tools:
             source: true
             toggle: false
             caption: none
     revealjs: 
         theme: dark
+        mainfont: monospace
         slide-number: true
         show-slide-number: all
         width: 1050

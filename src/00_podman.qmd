@@ -7,13 +7,13 @@ subtitle: "w0d0"
 
 ## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
 
-  - What is in point of fact a systems cryptography course.
+  - You first semester in a compiled language - more on that soon.
 - **Action Items**:
   - Access the [course webpage](https://cd-public.github.io/crypto/)
   - Join the Discord!
-    - You should have gotten an email...
+    - Working on this.
   - Spin up a GitHub acct if you don't have one.
 
 ## Homework
