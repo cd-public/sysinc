@@ -89,7 +89,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ # out
   - `gcc`
   - `git`
 - Are commands at the command line
-- If you are afraid of the command line, drop this class.
+- If you are afraid of the command line, we will fix that!
 
 ## It me
 

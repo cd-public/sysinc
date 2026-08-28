@@ -1,6 +1,6 @@
 ---
 title: Macros
-subtitle: "0x1.1"
+subtitle: "Due Thu, 10 Sep"
 
 format:   html
 ---

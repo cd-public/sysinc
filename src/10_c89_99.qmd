@@ -5,7 +5,7 @@ subtitle: "w1d0"
 
 ## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
 - **Action Items**:
   - Enigma assignment
 
@@ -132,10 +132,10 @@ cat: file.txt: No such file or directory
   - Podman is busy being free and open source.
 - Try this:
 ```email
-podman run -d -p 8080:80 docker/welcome-to-docker
+podman run -d -p 8080:80/tcp docker.io/library/httpd
 ```
 - You can probably find it at this link:
-  - [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+  - [http://127.0.0.0:8080/](http://127.0.0.0:8080/)
 
 ## Breakdown
 
@@ -158,7 +158,7 @@ podman run -d -p 8080:80 docker/welcome-to-docker
 podman run -d -p 8083:80 docker/welcome-to-docker
 ```
 - Change the link as well.
-  - [http://127.0.0.1:8083/](http://127.0.0.1:8083/)
+  - [http://127.0.0.0:8083/](http://127.0.0.0:8083/)
   
 ## Two pages
 
@@ -202,9 +202,9 @@ podman ps
 - We see two servers (nginx) running 
   
 ```email
-CONTAINER ID  IMAGE                                      COMMAND               CREATED        STATUS        PORTS                         NAMES
-7d6af09131b5  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8080->80/tcp, 80/tcp  confident_darwin
-2e1b9f844dcd  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8083->80/tcp, 80/tcp  adoring_shamir
+INER ID  IMAGE                           COMMAND           CREATED        STATUS            PORTS                 NAMES
+1548a1d7dce5  docker.io/library/httpd:latest  httpd-foreground  4 minutes ago  Up 4 minutes ago  0.0.0.0:8080->80/tcp  busy_wiles
+0a47ae6c6039  docker.io/library/httpd:latest  httpd-foreground  2 seconds ago  Up 3 seconds ago  0.0.0.0:8083->80/tcp  naughty_rama
 ```
 
 ## ps -a
@@ -602,6 +602,14 @@ samp.c [+]                           8,1            Bot
 :term                                                  
 ```
 
+## Aside
+
+- I have been told to tell you to try `vimtutor`
+
+```{.sh}
+vimtutor
+```
+
 ## Today
 
 - &check; Introduce the course
@@ -735,7 +743,7 @@ user@DESKTOP-THMS2PJ:~/crypto/c89_99$ podman exec -it -l gcc samp.c
 
 - The other flags help "keep you honest"
   - If we wanted shortcuts, we'd use Python
-  - We want to be percise [sic]
+  - We want to be precise
 - Try it:
 ```bash
 gcc samp.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2
@@ -906,7 +914,7 @@ int main(int argc, char **argv) {
   - Work on older devices
   - Understand old code
   - Understand how computers work
-- Learn modern C via Stack Overflow
+- Learn modern C/C++/C# via Stack Overflow
   - Understand how to code in practice
 
 ## Today
@@ -962,9 +970,9 @@ If you want a lot of control and flexibility, you can use the command line.
 
 - I recommend:
   - Pop in browser
-  - Make a private github repo, like "crypto"
+  - Make a private github repo, like "sysinc"
     - Add me as a collaborator
-  - Name it "crypto"
+  - Name it "sysinc"
   - Probably use a folder per week for hws
     - Maybe also labs, or just keep those local
     

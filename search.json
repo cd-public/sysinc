@@ -1405,7 +1405,7 @@
     "href": "00_podman.html",
     "title": "Podman",
     "section": "",
-    "text": "Welcome to Systems in C\n\nYou first semester in a compiled language - more on that soon.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nWorking on this.\n\nSpin up a GitHub acct if you don’t have one.\n\n\n\n\n\n\nThe first homework, “Enigma”, is ready after this class.\n\nDue Thursday, 03 Sep at midnight AOE\nThe infamous CS1 hw, now in a good language!\nMostly just get the toolchain working.\n\n\n\n\n\n\n\nABCDEFGHIJKLMNOPQRSTUVWXYZ # in\n    |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # fast\n    &gt;&gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n         |\nAJDKSIRUXBLHWTMCQGZNPYFVOE # mid\n &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n\n→\n\nBDFHJLCPRTXVZNYEIWGAKMUSQO\n &gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n   |\nIXUHFEZDAOMTKQJWNSRLCYPBVG # reflect\n   |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n   &gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ # out\n\n## etc etc   \n\n\n\n\n\n\nIntroduce the course\n\nThe C Programming Language\nCryptography + Cryptocurrency\n\nIntroduce the technologies\n\npodman\nvim\ngcc\ngit\n\n\n\n\n\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, drop this class.\n\n\n\n\n\nName\n\nCalvin (Deutschbein)\n\nCall me\n\n(Professor) Calvin\n\nPronouns\n\npronouns or big frowns - me\nthey/them\n\n\n\n\n\n\nThesis Title\n\nMining Secure Behavior of Hardware Designs\n\nPlain English\n\nJust as there are bugs in code that makes software, modern hardware is also written in code and therefore may contain bugs. I find these bugs.",
+    "text": "Welcome to Systems in C\n\nYou first semester in a compiled language - more on that soon.\n\nAction Items:\n\nAccess the course webpage\nJoin the Discord!\n\nWorking on this.\n\nSpin up a GitHub acct if you don’t have one.\n\n\n\n\n\n\nThe first homework, “Enigma”, is ready after this class.\n\nDue Thursday, 03 Sep at midnight AOE\nThe infamous CS1 hw, now in a good language!\nMostly just get the toolchain working.\n\n\n\n\n\n\n\nABCDEFGHIJKLMNOPQRSTUVWXYZ # in\n    |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # fast\n    &gt;&gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n         |\nAJDKSIRUXBLHWTMCQGZNPYFVOE # mid\n &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n\n→\n\nBDFHJLCPRTXVZNYEIWGAKMUSQO\n &gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ \n   |\nIXUHFEZDAOMTKQJWNSRLCYPBVG # reflect\n   |\nBDFHJLCPRTXVZNYEIWGAKMUSQO # slow\n   &gt;&gt;&gt;&gt;&gt;\nABCDEFGHIJKLMNOPQRSTUVWXYZ # out\n\n## etc etc   \n\n\n\n\n\n\nIntroduce the course\n\nThe C Programming Language\nCryptography + Cryptocurrency\n\nIntroduce the technologies\n\npodman\nvim\ngcc\ngit\n\n\n\n\n\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, we will fix that!\n\n\n\n\n\nName\n\nCalvin (Deutschbein)\n\nCall me\n\n(Professor) Calvin\n\nPronouns\n\npronouns or big frowns - me\nthey/them\n\n\n\n\n\n\nThesis Title\n\nMining Secure Behavior of Hardware Designs\n\nPlain English\n\nJust as there are bugs in code that makes software, modern hardware is also written in code and therefore may contain bugs. I find these bugs.",
     "crumbs": [
       "Podman"
     ]
@@ -1455,7 +1455,7 @@
     "href": "00_podman.html#pre-reqs",
     "title": "Podman",
     "section": "",
-    "text": "These things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, drop this class.",
+    "text": "These things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, we will fix that!",
     "crumbs": [
       "Podman"
     ]
@@ -2083,7 +2083,7 @@
     "href": "00_podman.rjs.html#pre-reqs",
     "title": "Podman",
     "section": "Pre-reqs",
-    "text": "Pre-reqs\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, drop this class."
+    "text": "Pre-reqs\n\nThese things:\n\npodman\nvim\ngcc\ngit\n\nAre commands at the command line\nIf you are afraid of the command line, we will fix that!"
   },
   {
     "objectID": "00_podman.rjs.html#it-me",
@@ -2683,7 +2683,7 @@
     "href": "10_c89_99.rjs.html#announcements",
     "title": "C89/99",
     "section": "Announcements",
-    "text": "Announcements\n\nWelcome to Computing Security\nAction Items:\n\nEnigma assignment"
+    "text": "Announcements\n\nWelcome to Systems in C\nAction Items:\n\nEnigma assignment"
   },
   {
     "objectID": "10_c89_99.rjs.html#homework",
@@ -2781,7 +2781,7 @@
     "href": "10_c89_99.rjs.html#sample",
     "title": "C89/99",
     "section": "Sample",
-    "text": "Sample\n\nDocker maintains a sample container.\n\nPodman is busy being free and open source.\n\nTry this:\n\npodman run -d -p 8080:80 docker/welcome-to-docker\n\nYou can probably find it at this link:\n\nhttp://127.0.0.1:8080/"
+    "text": "Sample\n\nDocker maintains a sample container.\n\nPodman is busy being free and open source.\n\nTry this:\n\npodman run -d -p 8080:80/tcp docker.io/library/httpd\n\nYou can probably find it at this link:\n\nhttp://127.0.0.0:8080/"
   },
   {
     "objectID": "10_c89_99.rjs.html#breakdown",
@@ -2795,7 +2795,7 @@
     "href": "10_c89_99.rjs.html#ports",
     "title": "C89/99",
     "section": "Ports",
-    "text": "Ports\n\nPorts aren’t the point, but\nWe should demystify.\nChange 8080:80 to 8083:80\n\npodman run -d -p 8083:80 docker/welcome-to-docker\n\nChange the link as well.\n\nhttp://127.0.0.1:8083/"
+    "text": "Ports\n\nPorts aren’t the point, but\nWe should demystify.\nChange 8080:80 to 8083:80\n\npodman run -d -p 8083:80 docker/welcome-to-docker\n\nChange the link as well.\n\nhttp://127.0.0.0:8083/"
   },
   {
     "objectID": "10_c89_99.rjs.html#two-pages",
@@ -2823,7 +2823,7 @@
     "href": "10_c89_99.rjs.html#ps",
     "title": "C89/99",
     "section": "ps",
-    "text": "ps\n\nWhen fiddling about with containers…\n\nIt’s good to know who they are (names)\nAnd what they do (command)\n\nWe can use podman ps\n\npodman ps\n\nWe see two servers (nginx) running\n\nCONTAINER ID  IMAGE                                      COMMAND               CREATED        STATUS        PORTS                         NAMES\n7d6af09131b5  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8080-&gt;80/tcp, 80/tcp  confident_darwin\n2e1b9f844dcd  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8083-&gt;80/tcp, 80/tcp  adoring_shamir"
+    "text": "ps\n\nWhen fiddling about with containers…\n\nIt’s good to know who they are (names)\nAnd what they do (command)\n\nWe can use podman ps\n\npodman ps\n\nWe see two servers (nginx) running\n\nINER ID  IMAGE                           COMMAND           CREATED        STATUS            PORTS                 NAMES\n1548a1d7dce5  docker.io/library/httpd:latest  httpd-foreground  4 minutes ago  Up 4 minutes ago  0.0.0.0:8080-&gt;80/tcp  busy_wiles\n0a47ae6c6039  docker.io/library/httpd:latest  httpd-foreground  2 seconds ago  Up 3 seconds ago  0.0.0.0:8083-&gt;80/tcp  naughty_rama"
   },
   {
     "objectID": "10_c89_99.rjs.html#ps--a",
@@ -3022,6 +3022,13 @@
     "text": "Segfault\n\nIn “samp.c” to fix off-by-one error, test\n\nSegmentation fault (core dumped)\n## gcc samp.c\n## ./a.out\n## ./a.out hello\nhello\n##     \n!sh [running]                        0,0-1          All\nint main(int argc, char **argv) {\n        if (argc &gt; 1) {                                    \n                printf(\"%s\\n\", argv[1]);                       \n        }                                                      \n        return 0;                                      \n}                                                      \nsamp.c [+]                           8,1            Bot\n:term"
   },
   {
+    "objectID": "10_c89_99.rjs.html#aside",
+    "href": "10_c89_99.rjs.html#aside",
+    "title": "C89/99",
+    "section": "Aside",
+    "text": "Aside\n\nI have been told to tell you to try vimtutor\n\nvimtutor"
+  },
+  {
     "objectID": "10_c89_99.rjs.html#today-2",
     "href": "10_c89_99.rjs.html#today-2",
     "title": "C89/99",
@@ -3096,7 +3103,7 @@
     "href": "10_c89_99.rjs.html#wall-etc",
     "title": "C89/99",
     "section": "-Wall etc",
-    "text": "-Wall etc\n\nThe other flags help “keep you honest”\n\nIf we wanted shortcuts, we’d use Python\nWe want to be percise [sic]\n\nTry it:\n\ngcc samp.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2"
+    "text": "-Wall etc\n\nThe other flags help “keep you honest”\n\nIf we wanted shortcuts, we’d use Python\nWe want to be precise\n\nTry it:\n\ngcc samp.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2"
   },
   {
     "objectID": "10_c89_99.rjs.html#whoops",
@@ -3173,7 +3180,7 @@
     "href": "10_c89_99.rjs.html#practice-to-perform",
     "title": "C89/99",
     "section": "Practice to Perform",
-    "text": "Practice to Perform\n\nMy take: learn C89 in class\n\nCultivate a disciplined coding practice\nWork on older devices\nUnderstand old code\nUnderstand how computers work\n\nLearn modern C via Stack Overflow\n\nUnderstand how to code in practice"
+    "text": "Practice to Perform\n\nMy take: learn C89 in class\n\nCultivate a disciplined coding practice\nWork on older devices\nUnderstand old code\nUnderstand how computers work\n\nLearn modern C/C++/C# via Stack Overflow\n\nUnderstand how to code in practice"
   },
   {
     "objectID": "10_c89_99.rjs.html#today-3",
@@ -3215,7 +3222,7 @@
     "href": "10_c89_99.rjs.html#private",
     "title": "C89/99",
     "section": "Private",
-    "text": "Private\n\nI recommend:\n\nPop in browser\nMake a private github repo, like “crypto”\n\nAdd me as a collaborator\n\nName it “crypto”\nProbably use a folder per week for hws\n\nMaybe also labs, or just keep those local"
+    "text": "Private\n\nI recommend:\n\nPop in browser\nMake a private github repo, like “sysinc”\n\nAdd me as a collaborator\n\nName it “sysinc”\nProbably use a folder per week for hws\n\nMaybe also labs, or just keep those local"
   },
   {
     "objectID": "10_c89_99.rjs.html#github-x-podman",
@@ -3243,7 +3250,7 @@
     "href": "10_c89_99.html",
     "title": "C89/99",
     "section": "",
-    "text": "Welcome to Computing Security\nAction Items:\n\nEnigma assignment",
+    "text": "Welcome to Systems in C\nAction Items:\n\nEnigma assignment",
     "crumbs": [
       "C89/99"
     ]
@@ -3253,7 +3260,7 @@
     "href": "10_c89_99.html#announcements",
     "title": "C89/99",
     "section": "",
-    "text": "Welcome to Computing Security\nAction Items:\n\nEnigma assignment",
+    "text": "Welcome to Systems in C\nAction Items:\n\nEnigma assignment",
     "crumbs": [
       "C89/99"
     ]
@@ -3393,7 +3400,7 @@
     "href": "10_c89_99.html#sample",
     "title": "C89/99",
     "section": "Sample",
-    "text": "Sample\n\nDocker maintains a sample container.\n\nPodman is busy being free and open source.\n\nTry this:\n\npodman run -d -p 8080:80 docker/welcome-to-docker\n\nYou can probably find it at this link:\n\nhttp://127.0.0.1:8080/",
+    "text": "Sample\n\nDocker maintains a sample container.\n\nPodman is busy being free and open source.\n\nTry this:\n\npodman run -d -p 8080:80/tcp docker.io/library/httpd\n\nYou can probably find it at this link:\n\nhttp://127.0.0.0:8080/",
     "crumbs": [
       "C89/99"
     ]
@@ -3413,7 +3420,7 @@
     "href": "10_c89_99.html#ports",
     "title": "C89/99",
     "section": "Ports",
-    "text": "Ports\n\nPorts aren’t the point, but\nWe should demystify.\nChange 8080:80 to 8083:80\n\npodman run -d -p 8083:80 docker/welcome-to-docker\n\nChange the link as well.\n\nhttp://127.0.0.1:8083/",
+    "text": "Ports\n\nPorts aren’t the point, but\nWe should demystify.\nChange 8080:80 to 8083:80\n\npodman run -d -p 8083:80 docker/welcome-to-docker\n\nChange the link as well.\n\nhttp://127.0.0.0:8083/",
     "crumbs": [
       "C89/99"
     ]
@@ -3453,7 +3460,7 @@
     "href": "10_c89_99.html#ps",
     "title": "C89/99",
     "section": "ps",
-    "text": "ps\n\nWhen fiddling about with containers…\n\nIt’s good to know who they are (names)\nAnd what they do (command)\n\nWe can use podman ps\n\npodman ps\n\nWe see two servers (nginx) running\n\nCONTAINER ID  IMAGE                                      COMMAND               CREATED        STATUS        PORTS                         NAMES\n7d6af09131b5  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8080-&gt;80/tcp, 80/tcp  confident_darwin\n2e1b9f844dcd  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8083-&gt;80/tcp, 80/tcp  adoring_shamir",
+    "text": "ps\n\nWhen fiddling about with containers…\n\nIt’s good to know who they are (names)\nAnd what they do (command)\n\nWe can use podman ps\n\npodman ps\n\nWe see two servers (nginx) running\n\nINER ID  IMAGE                           COMMAND           CREATED        STATUS            PORTS                 NAMES\n1548a1d7dce5  docker.io/library/httpd:latest  httpd-foreground  4 minutes ago  Up 4 minutes ago  0.0.0.0:8080-&gt;80/tcp  busy_wiles\n0a47ae6c6039  docker.io/library/httpd:latest  httpd-foreground  2 seconds ago  Up 3 seconds ago  0.0.0.0:8083-&gt;80/tcp  naughty_rama",
     "crumbs": [
       "C89/99"
     ]
@@ -3739,6 +3746,16 @@
     ]
   },
   {
+    "objectID": "10_c89_99.html#aside",
+    "href": "10_c89_99.html#aside",
+    "title": "C89/99",
+    "section": "Aside",
+    "text": "Aside\n\nI have been told to tell you to try vimtutor\n\nvimtutor",
+    "crumbs": [
+      "C89/99"
+    ]
+  },
+  {
     "objectID": "10_c89_99.html#today-2",
     "href": "10_c89_99.html#today-2",
     "title": "C89/99",
@@ -3843,7 +3860,7 @@
     "href": "10_c89_99.html#wall-etc",
     "title": "C89/99",
     "section": "-Wall etc",
-    "text": "-Wall etc\n\nThe other flags help “keep you honest”\n\nIf we wanted shortcuts, we’d use Python\nWe want to be percise [sic]\n\nTry it:\n\ngcc samp.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2",
+    "text": "-Wall etc\n\nThe other flags help “keep you honest”\n\nIf we wanted shortcuts, we’d use Python\nWe want to be precise\n\nTry it:\n\ngcc samp.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2",
     "crumbs": [
       "C89/99"
     ]
@@ -3953,7 +3970,7 @@
     "href": "10_c89_99.html#practice-to-perform",
     "title": "C89/99",
     "section": "Practice to Perform",
-    "text": "Practice to Perform\n\nMy take: learn C89 in class\n\nCultivate a disciplined coding practice\nWork on older devices\nUnderstand old code\nUnderstand how computers work\n\nLearn modern C via Stack Overflow\n\nUnderstand how to code in practice",
+    "text": "Practice to Perform\n\nMy take: learn C89 in class\n\nCultivate a disciplined coding practice\nWork on older devices\nUnderstand old code\nUnderstand how computers work\n\nLearn modern C/C++/C# via Stack Overflow\n\nUnderstand how to code in practice",
     "crumbs": [
       "C89/99"
     ]
@@ -4013,7 +4030,7 @@
     "href": "10_c89_99.html#private",
     "title": "C89/99",
     "section": "Private",
-    "text": "Private\n\nI recommend:\n\nPop in browser\nMake a private github repo, like “crypto”\n\nAdd me as a collaborator\n\nName it “crypto”\nProbably use a folder per week for hws\n\nMaybe also labs, or just keep those local",
+    "text": "Private\n\nI recommend:\n\nPop in browser\nMake a private github repo, like “sysinc”\n\nAdd me as a collaborator\n\nName it “sysinc”\nProbably use a folder per week for hws\n\nMaybe also labs, or just keep those local",
     "crumbs": [
       "C89/99"
     ]

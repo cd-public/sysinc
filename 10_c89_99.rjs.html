@@ -402,7 +402,7 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><strong>Welcome</strong> to Computing Security</li>
+<li><strong>Welcome</strong> to Systems in C</li>
 <li><strong>Action Items</strong>:
 <ul>
 <li>Enigma assignment</li>
@@ -598,11 +598,11 @@
 </ul></li>
 <li>Try this:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a></a>podman run -d -p 8080:80 docker/welcome-to-docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a></a>podman run -d -p 8080:80/tcp docker.io/library/httpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You can probably find it at this link:
 <ul>
-<li><a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></li>
+<li><a href="http://127.0.0.0:8080/">http://127.0.0.0:8080/</a></li>
 </ul></li>
 </ul>
 </section>
@@ -658,7 +658,7 @@
 <ul>
 <li>Change the link as well.
 <ul>
-<li><a href="http://127.0.0.1:8083/">http://127.0.0.1:8083/</a></li>
+<li><a href="http://127.0.0.0:8083/">http://127.0.0.0:8083/</a></li>
 </ul></li>
 </ul>
 </section>
@@ -723,9 +723,9 @@
 <ul>
 <li>We see two servers (nginx) running</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb5-1"><a></a>CONTAINER ID  IMAGE                                      COMMAND               CREATED        STATUS        PORTS                         NAMES</span>
-<span id="cb5-2"><a></a>7d6af09131b5  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8080-&gt;80/tcp, 80/tcp  confident_darwin</span>
-<span id="cb5-3"><a></a>2e1b9f844dcd  docker.io/docker/welcome-to-docker:latest  nginx -g daemon o...  2 minutes ago  Up 2 minutes  0.0.0.0:8083-&gt;80/tcp, 80/tcp  adoring_shamir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb5-1"><a></a>INER ID  IMAGE                           COMMAND           CREATED        STATUS            PORTS                 NAMES</span>
+<span id="cb5-2"><a></a>1548a1d7dce5  docker.io/library/httpd:latest  httpd-foreground  4 minutes ago  Up 4 minutes ago  0.0.0.0:8080-&gt;80/tcp  busy_wiles</span>
+<span id="cb5-3"><a></a>0a47ae6c6039  docker.io/library/httpd:latest  httpd-foreground  2 seconds ago  Up 3 seconds ago  0.0.0.0:8083-&gt;80/tcp  naughty_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ps--a" class="slide level2">
 <h2>ps -a</h2>
@@ -1221,6 +1221,13 @@
 <span id="cb29-14"><a></a>samp.c [+]                           8,1            Bot</span>
 <span id="cb29-15"><a></a>:term                                                  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="aside" class="slide level2">
+<h2>Aside</h2>
+<ul>
+<li>I have been told to tell you to try <code>vimtutor</code></li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a></a><span class="ex">vimtutor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="today-2" class="slide level2">
 <h2>Today</h2>
 <ul>
@@ -1251,8 +1258,8 @@
 <li>(The C language was invented to write an operating system).</li>
 <li><code>python</code> is written in GCC C</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
-<span id="cb30-2"><a></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
+<span id="cb31-2"><a></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="great-freeware" class="slide level2">
 <h2>Great freeware</h2>
@@ -1288,14 +1295,14 @@
 <section id="py-vs-.c" class="slide level2">
 <h2>.py vs .c</h2>
 <div class="cell" data-reveal="true" data-theme="Darkly" data-layout-align="default">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb31-1"><a></a>flowchart LR</span>
-<span id="cb31-2"><a></a>  A(Python) --&gt; B[fname.py file]</span>
-<span id="cb31-3"><a></a>  B --&gt; C[python fname.py]</span>
-<span id="cb31-4"><a></a>  C --&gt; D{hello world}</span>
-<span id="cb31-5"><a></a>  E(C) --&gt; F[fname.c  file]</span>
-<span id="cb31-6"><a></a>  F --&gt; G[gcc fname.c -o ename]</span>
-<span id="cb31-7"><a></a>  G --&gt; H[./ename]</span>
-<span id="cb31-8"><a></a>  H --&gt; I{hello world}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb32-1"><a></a>flowchart LR</span>
+<span id="cb32-2"><a></a>  A(Python) --&gt; B[fname.py file]</span>
+<span id="cb32-3"><a></a>  B --&gt; C[python fname.py]</span>
+<span id="cb32-4"><a></a>  C --&gt; D{hello world}</span>
+<span id="cb32-5"><a></a>  E(C) --&gt; F[fname.c  file]</span>
+<span id="cb32-6"><a></a>  F --&gt; G[gcc fname.c -o ename]</span>
+<span id="cb32-7"><a></a>  G --&gt; H[./ename]</span>
+<span id="cb32-8"><a></a>  H --&gt; I{hello world}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -1352,11 +1359,11 @@
 <li>Bookmark this page, save the text in a script, etc.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb32-1"><a></a>podman start -l ; podman exec -it -l vim samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb33-1"><a></a>podman start -l ; podman exec -it -l vim samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Pop open <code>:term</code> and run</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb33-1"><a></a>gcc samp.c -std=c89</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb34-1"><a></a>gcc samp.c -std=c89</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>My code runs fine. Let’s break it.</li>
 </ul>
@@ -1371,14 +1378,14 @@
 <div class="code-with-filename-file">
 <pre><strong>samp.c</strong></pre>
 </div>
-<div class="sourceCode" id="cb34" data-filename="samp.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb34-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb34-2"><a></a></span>
-<span id="cb34-3"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb34-4"><a></a>        <span class="co">/* This is a C89 style comment */</span></span>
-<span id="cb34-5"><a></a>        <span class="co">// This is a C++ style comment</span></span>
-<span id="cb34-6"><a></a>        printf<span class="op">(</span><span class="st">"hi</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb34-7"><a></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb34-8"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-filename="samp.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb35-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb35-2"><a></a></span>
+<span id="cb35-3"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-4"><a></a>        <span class="co">/* This is a C89 style comment */</span></span>
+<span id="cb35-5"><a></a>        <span class="co">// This is a C++ style comment</span></span>
+<span id="cb35-6"><a></a>        printf<span class="op">(</span><span class="st">"hi</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb35-7"><a></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb35-8"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="stdc89" class="slide level2">
@@ -1388,13 +1395,13 @@
 <li>I opened a new terminal and tested</li>
 </ul>
 <pre><code>gcc samp.c --std=c89</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
-<span id="cb36-2"><a></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
-<span id="cb36-3"><a></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
-<span id="cb36-4"><a></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
-<span id="cb36-5"><a></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
-<span id="cb36-6"><a></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
-<span id="cb36-7"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
+<span id="cb37-2"><a></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
+<span id="cb37-3"><a></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
+<span id="cb37-4"><a></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
+<span id="cb37-5"><a></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
+<span id="cb37-6"><a></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
+<span id="cb37-7"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wall-etc" class="slide level2">
 <h2>-Wall etc</h2>
@@ -1402,29 +1409,29 @@
 <li>The other flags help “keep you honest”
 <ul>
 <li>If we wanted shortcuts, we’d use Python</li>
-<li>We want to be percise [sic]</li>
+<li>We want to be precise</li>
 </ul></li>
 <li>Try it:</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a></a><span class="fu">gcc</span> samp.c <span class="at">--std</span><span class="op">=</span>c89 <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a></a><span class="fu">gcc</span> samp.c <span class="at">--std</span><span class="op">=</span>c89 <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="whoops" class="slide level2">
 <h2>Whoops</h2>
 <ul>
 <li>You don’t want to find these problems latter.</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb38-1"><a></a>samp.c: In function 'main':</span>
-<span id="cb38-2"><a></a>samp.c:5:9: error: C++ style comments are not allowed in ISO C90</span>
-<span id="cb38-3"><a></a>    5 |         // This is a C++ style comment</span>
-<span id="cb38-4"><a></a>      |         ^</span>
-<span id="cb38-5"><a></a>samp.c:5:9: note: (this will be reported only once per input file)</span>
-<span id="cb38-6"><a></a>samp.c:3:14: error: unused parameter 'argc' [-Werror=unused-parameter]</span>
-<span id="cb38-7"><a></a>    3 | int main(int argc, char **argv) {</span>
-<span id="cb38-8"><a></a>      |          ~~~~^~~~</span>
-<span id="cb38-9"><a></a>samp.c:3:27: error: unused parameter 'argv' [-Werror=unused-parameter]</span>
-<span id="cb38-10"><a></a>    3 | int main(int argc, char **argv) {</span>
-<span id="cb38-11"><a></a>      |                    ~~~~~~~^~~~</span>
-<span id="cb38-12"><a></a><span class="fu">cc1: </span>all warnings being treated as errors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb39-1"><a></a>samp.c: In function 'main':</span>
+<span id="cb39-2"><a></a>samp.c:5:9: error: C++ style comments are not allowed in ISO C90</span>
+<span id="cb39-3"><a></a>    5 |         // This is a C++ style comment</span>
+<span id="cb39-4"><a></a>      |         ^</span>
+<span id="cb39-5"><a></a>samp.c:5:9: note: (this will be reported only once per input file)</span>
+<span id="cb39-6"><a></a>samp.c:3:14: error: unused parameter 'argc' [-Werror=unused-parameter]</span>
+<span id="cb39-7"><a></a>    3 | int main(int argc, char **argv) {</span>
+<span id="cb39-8"><a></a>      |          ~~~~^~~~</span>
+<span id="cb39-9"><a></a>samp.c:3:27: error: unused parameter 'argv' [-Werror=unused-parameter]</span>
+<span id="cb39-10"><a></a>    3 | int main(int argc, char **argv) {</span>
+<span id="cb39-11"><a></a>      |                    ~~~~~~~^~~~</span>
+<span id="cb39-12"><a></a><span class="fu">cc1: </span>all warnings being treated as errors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Python needs <code>-Wall</code> for intro programming classes!</li>
 </ul>
@@ -1447,23 +1454,23 @@
 <div class="code-with-filename-file">
 <pre><strong>cipher.c</strong></pre>
 </div>
-<div class="sourceCode" id="cb39" data-filename="cipher.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb39-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb39-2"><a></a></span>
-<span id="cb39-3"><a></a><span class="dt">char</span> cipher<span class="op">(</span><span class="dt">char</span> c<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb39-4"><a></a>    <span class="cf">return</span> <span class="op">(</span>c <span class="op">-</span> <span class="ch">'A'</span> <span class="op">+</span> i<span class="op">)</span> <span class="op">%</span> <span class="dv">26</span> <span class="op">+</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb39-5"><a></a><span class="op">}</span></span>
-<span id="cb39-6"><a></a></span>
-<span id="cb39-7"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb39-8"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
-<span id="cb39-9"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb39-10"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb39-11"><a></a>    <span class="op">}</span></span>
-<span id="cb39-12"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb39-13"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb39-14"><a></a>    <span class="op">}</span></span>
-<span id="cb39-15"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb39-16"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb39-17"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40" data-filename="cipher.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb40-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb40-2"><a></a></span>
+<span id="cb40-3"><a></a><span class="dt">char</span> cipher<span class="op">(</span><span class="dt">char</span> c<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb40-4"><a></a>    <span class="cf">return</span> <span class="op">(</span>c <span class="op">-</span> <span class="ch">'A'</span> <span class="op">+</span> i<span class="op">)</span> <span class="op">%</span> <span class="dv">26</span> <span class="op">+</span> <span class="ch">'A'</span><span class="op">;</span></span>
+<span id="cb40-5"><a></a><span class="op">}</span></span>
+<span id="cb40-6"><a></a></span>
+<span id="cb40-7"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb40-8"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
+<span id="cb40-9"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb40-10"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb40-11"><a></a>    <span class="op">}</span></span>
+<span id="cb40-12"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb40-13"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb40-14"><a></a>    <span class="op">}</span></span>
+<span id="cb40-15"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb40-16"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb40-17"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reality" class="slide level2">
@@ -1481,17 +1488,17 @@
 <ul>
 <li>Variable declared, not used.</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb40-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb40-2"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
-<span id="cb40-3"><a></a>    <span class="co">/* if (argc &lt; 1) {</span></span>
-<span id="cb40-4"><a></a><span class="co">        return 1;</span></span>
-<span id="cb40-5"><a></a><span class="co">    } */</span></span>
-<span id="cb40-6"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb40-7"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb40-8"><a></a>    <span class="op">}</span></span>
-<span id="cb40-9"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb40-10"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb40-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb41-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb41-2"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
+<span id="cb41-3"><a></a>    <span class="co">/* if (argc &lt; 1) {</span></span>
+<span id="cb41-4"><a></a><span class="co">        return 1;</span></span>
+<span id="cb41-5"><a></a><span class="co">    } */</span></span>
+<span id="cb41-6"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb41-7"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb41-8"><a></a>    <span class="op">}</span></span>
+<span id="cb41-9"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb41-10"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb41-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>We can segmentation fault from an out-of-bounds error on argv.</li>
 </ul>
@@ -1501,15 +1508,15 @@
 <ul>
 <li>Variable declaration in function</li>
 </ul>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb41-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb41-2"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
-<span id="cb41-3"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb41-4"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb41-5"><a></a>        <span class="dt">int</span> i<span class="op">++;</span> </span>
-<span id="cb41-6"><a></a>    <span class="op">}</span></span>
-<span id="cb41-7"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb41-8"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb41-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb42-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb42-2"><a></a>    <span class="dt">int</span> i<span class="op">;</span></span>
+<span id="cb42-3"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb42-4"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb42-5"><a></a>        <span class="dt">int</span> i<span class="op">++;</span> </span>
+<span id="cb42-6"><a></a>    <span class="op">}</span></span>
+<span id="cb42-7"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb42-8"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb42-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Prevents ill-formed variable changes.
 <ul>
@@ -1522,14 +1529,14 @@
 <ul>
 <li><code>-Werror=char-subscripts</code></li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb42-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb42-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
-<span id="cb42-3"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb42-4"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb42-5"><a></a>    <span class="op">}</span></span>
-<span id="cb42-6"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb42-7"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb42-8"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb43-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
+<span id="cb43-3"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb43-4"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb43-5"><a></a>    <span class="op">}</span></span>
+<span id="cb43-6"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb43-7"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb43-8"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Ensures we can read strings of 255+ chars.</li>
 </ul>
@@ -1539,18 +1546,18 @@
 <ul>
 <li>Not technically wrong.</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb43-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
-<span id="cb43-3"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-4"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb43-5"><a></a>    <span class="op">}</span></span>
-<span id="cb43-6"><a></a>    <span class="dt">char</span> <span class="op">*</span>input_string <span class="op">=</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
-<span id="cb43-7"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb43-8"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb43-9"><a></a>    <span class="op">}</span></span>
-<span id="cb43-10"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb43-11"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb43-12"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb44-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb44-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
+<span id="cb44-3"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb44-4"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb44-5"><a></a>    <span class="op">}</span></span>
+<span id="cb44-6"><a></a>    <span class="dt">char</span> <span class="op">*</span>input_string <span class="op">=</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb44-7"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb44-8"><a></a>        argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb44-9"><a></a>    <span class="op">}</span></span>
+<span id="cb44-10"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb44-11"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb44-12"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>But why?</li>
 </ul>
@@ -1560,18 +1567,18 @@
 <ul>
 <li>Actually wrong - output_string has no size.</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb44-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb44-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
-<span id="cb44-3"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb44-4"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb44-5"><a></a>    <span class="op">}</span></span>
-<span id="cb44-6"><a></a>    <span class="dt">char</span> <span class="op">*</span>output_string<span class="op">;</span></span>
-<span id="cb44-7"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb44-8"><a></a>        output_string<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
-<span id="cb44-9"><a></a>    <span class="op">}</span></span>
-<span id="cb44-10"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb44-11"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb44-12"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb45-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb45-2"><a></a>    <span class="dt">char</span> i<span class="op">;</span></span>
+<span id="cb45-3"><a></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb45-4"><a></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb45-5"><a></a>    <span class="op">}</span></span>
+<span id="cb45-6"><a></a>    <span class="dt">char</span> <span class="op">*</span>output_string<span class="op">;</span></span>
+<span id="cb45-7"><a></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span> <span class="op">;</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">];</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb45-8"><a></a>        output_string<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> cipher<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">][</span>i<span class="op">],</span> i<span class="op">);</span></span>
+<span id="cb45-9"><a></a>    <span class="op">}</span></span>
+<span id="cb45-10"><a></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb45-11"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb45-12"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>C89 catches this, others don’t.</li>
 </ul>
@@ -1600,7 +1607,7 @@
 <li>Understand old code</li>
 <li>Understand how computers work</li>
 </ul></li>
-<li>Learn modern C via Stack Overflow
+<li>Learn modern C/C++/C# via Stack Overflow
 <ul>
 <li>Understand how to code in practice</li>
 </ul></li>
@@ -1688,11 +1695,11 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>I recommend:
 <ul>
 <li>Pop in browser</li>
-<li>Make a private github repo, like “crypto”
+<li>Make a private github repo, like “sysinc”
 <ul>
 <li>Add me as a collaborator</li>
 </ul></li>
-<li>Name it “crypto”</li>
+<li>Name it “sysinc”</li>
 <li>Probably use a folder per week for hws
 <ul>
 <li>Maybe also labs, or just keep those local</li>
@@ -1725,27 +1732,27 @@ If you want a lot of control and flexibility, you can use the command line.
 </section>
 <section id="stinger" class="slide level2">
 <h2>Stinger</h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a></a><span class="ex">root@262ad65a08ba:/#</span> vim build.sh</span>
-<span id="cb45-2"><a></a><span class="ex">root@262ad65a08ba:/#</span> ./build.sh</span>
-<span id="cb45-3"><a></a><span class="ex">bash:</span> ./build.sh: Permission denied</span>
-<span id="cb45-4"><a></a><span class="ex">root@262ad65a08ba:/#</span> chmod 777 build.sh</span>
-<span id="cb45-5"><a></a><span class="ex">root@262ad65a08ba:/#</span> ./build.sh</span>
-<span id="cb45-6"><a></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
-<span id="cb45-7"><a></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
-<span id="cb45-8"><a></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
-<span id="cb45-9"><a></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
-<span id="cb45-10"><a></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
-<span id="cb45-11"><a></a><span class="ex">samp.c:3:14:</span> error: unused parameter <span class="st">'argc'</span> <span class="pp">[-</span><span class="ss">Werror=unused</span><span class="pp">-</span><span class="ss">parameter</span><span class="pp">]</span></span>
-<span id="cb45-12"><a></a>    <span class="ex">3</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="ex">int</span> argc, char <span class="pp">**</span>argv<span class="kw">)</span> <span class="kw">{</span></span>
-<span id="cb45-13"><a></a>      <span class="kw">|</span>          <span class="ex">~~~~^~~~</span></span>
-<span id="cb45-14"><a></a><span class="ex">samp.c:3:27:</span> error: unused parameter <span class="st">'argv'</span> <span class="pp">[-</span><span class="ss">Werror=unused</span><span class="pp">-</span><span class="ss">parameter</span><span class="pp">]</span></span>
-<span id="cb45-15"><a></a>    <span class="ex">3</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="ex">int</span> argc, char <span class="pp">**</span>argv<span class="kw">)</span> <span class="kw">{</span></span>
-<span id="cb45-16"><a></a>      <span class="kw">|</span>                    <span class="ex">~~~~~~~^~~~</span></span>
-<span id="cb45-17"><a></a><span class="ex">cc1:</span> all warnings being treated as errors</span>
-<span id="cb45-18"><a></a><span class="ex">root@262ad65a08ba:/#</span> cat build.sh</span>
-<span id="cb45-19"><a></a><span class="co">#!/bin/sh</span></span>
-<span id="cb45-20"><a></a><span class="fu">gcc</span> samp.c <span class="at">--std</span><span class="op">=</span>c89 <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> samp</span>
-<span id="cb45-21"><a></a><span class="ex">root@262ad65a08ba:/#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a></a><span class="ex">root@262ad65a08ba:/#</span> vim build.sh</span>
+<span id="cb46-2"><a></a><span class="ex">root@262ad65a08ba:/#</span> ./build.sh</span>
+<span id="cb46-3"><a></a><span class="ex">bash:</span> ./build.sh: Permission denied</span>
+<span id="cb46-4"><a></a><span class="ex">root@262ad65a08ba:/#</span> chmod 777 build.sh</span>
+<span id="cb46-5"><a></a><span class="ex">root@262ad65a08ba:/#</span> ./build.sh</span>
+<span id="cb46-6"><a></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
+<span id="cb46-7"><a></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
+<span id="cb46-8"><a></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
+<span id="cb46-9"><a></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
+<span id="cb46-10"><a></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
+<span id="cb46-11"><a></a><span class="ex">samp.c:3:14:</span> error: unused parameter <span class="st">'argc'</span> <span class="pp">[-</span><span class="ss">Werror=unused</span><span class="pp">-</span><span class="ss">parameter</span><span class="pp">]</span></span>
+<span id="cb46-12"><a></a>    <span class="ex">3</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="ex">int</span> argc, char <span class="pp">**</span>argv<span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb46-13"><a></a>      <span class="kw">|</span>          <span class="ex">~~~~^~~~</span></span>
+<span id="cb46-14"><a></a><span class="ex">samp.c:3:27:</span> error: unused parameter <span class="st">'argv'</span> <span class="pp">[-</span><span class="ss">Werror=unused</span><span class="pp">-</span><span class="ss">parameter</span><span class="pp">]</span></span>
+<span id="cb46-15"><a></a>    <span class="ex">3</span> <span class="kw">|</span> <span class="ex">int</span> main<span class="er">(</span><span class="ex">int</span> argc, char <span class="pp">**</span>argv<span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb46-16"><a></a>      <span class="kw">|</span>                    <span class="ex">~~~~~~~^~~~</span></span>
+<span id="cb46-17"><a></a><span class="ex">cc1:</span> all warnings being treated as errors</span>
+<span id="cb46-18"><a></a><span class="ex">root@262ad65a08ba:/#</span> cat build.sh</span>
+<span id="cb46-19"><a></a><span class="co">#!/bin/sh</span></span>
+<span id="cb46-20"><a></a><span class="fu">gcc</span> samp.c <span class="at">--std</span><span class="op">=</span>c89 <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-Wpedantic</span> <span class="at">-O2</span> <span class="at">-o</span> samp</span>
+<span id="cb46-21"><a></a><span class="ex">root@262ad65a08ba:/#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section></section>
