@@ -25,7 +25,6 @@ format: html
 ### Syllabus
 
 - [Syllabus link](https://cd-public.github.io/courses/old/c89s25/cs276.html)
-- Will be updated soon!
 
 # Calendar
 
