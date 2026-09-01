@@ -48,3 +48,8 @@ format: html
 |0xD|12/01||||
 
 *The final is described as [BTCinC](A2_btcinc.qmd) and is due [Tuesday, December 8th at 5:00 p.m.](https://my.willamette.edu/site/registrar/info/mywu-summative-evaluations).
+
+
+# Recordings
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=aonYOyE6DyUx5Bfs&amp;list=PLRUtrB1tmoTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
