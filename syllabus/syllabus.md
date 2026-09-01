@@ -8,17 +8,15 @@ format: typst
 
 |||
   |:--------------------------------------------|---------------------------------------------------------------------------:|
- | [ckdeutschbein@willamette.edu](ckdeutschbein@willamette.edu) | [cd-public.github.io/](https://cd-public.github.io/)|
+ | [ckdeutschbein@willamette.edu](mailto:ckdeutschbein@willamette.edu) | [cd-public.github.io/](https://cd-public.github.io/)|
  | Office Hours: TTh 1110-1310                               |                            Lecture: TTh 1310-1440   |
-| Office: Ford 307, Discord |                                                                                       Classroom: Walton Hall 235 |
+| Office: Ford 307, Discord by appt. |                                                                                       Classroom: Walton Hall 235 |
 
 # Course Description 
+    
+## CS-271
 
-## AI-101 
-
-A semester-long study of topics in Computer Science that specifically includes a collaborative programming project that applies or extends the content of CS 152 or more advanced classes.
-
-Systems research joins together the theory and the practice of computing, and cryptography is a perfect microcosm of this dynamic. As a guided study of low-level implementation of computer systems, this course will study the RSA and SHA cryptographic at once in theory and practice, and then build these cryptographic elements into emergent systems using data structures and algorithms such as Merkle trees and blockchains. 
+Systems programmers study the boundary between abstractions in language and implementation at engineering and physical levels. This course will prepare computer scientists to reason at and across this abstraction boundary to more fully embrace the power of computation. Students will learn the systems language of C, systems libraries such as POSIX, and about UNIX-based systems such as Linux.
 
 # About Me
 
@@ -27,7 +25,7 @@ Calvin Deutschbein is an assistant professor of computer science.
 # Required Materials 
 
 Required materials for a given class will be available on the [course
-webpage](https://cd-public.github.io/crypto/). All course materials will
+webpage](https://cd-public.github.io/sysinc/). All course materials will
 be made available at no cost to the student.
 
 # Accessability 

@@ -24,7 +24,7 @@ format: html
 
 ### Syllabus
 
-- [Syllabus link](https://cd-public.github.io/courses/old/c89s25/cs276.html)
+- [Syllabus link](syllabus/syllabus.pdf)
 
 # Calendar
 
