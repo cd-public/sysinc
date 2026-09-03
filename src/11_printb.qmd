@@ -108,7 +108,7 @@ python3 -c 'print(f"{1==1}")'
 - You can test if you want:
   - Yoink a Java container.
   ```bash
-  podman run -it openjdk
+  podman run -it docker.io/eclipse-temurin 
   ```
   - It will drop you into something called jshell
   - We can do a quick Java printf
