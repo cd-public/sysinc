@@ -82,7 +82,7 @@ This course will be ungraded.  Systems computing is difficult and may be stressf
     
 These policies apply to all coursework up to the final project, which must be completed to earn a high score (B- or higher) in the course. 
 
-A completed final is submitted on time and contains all required elements at the required length. The final is described on the [course webpage "Final" page](https://cd-public.github.io/sysinc/A2_btcinc.html).
+A completed final is submitted on time and contains all required elements. The final is described on the [course webpage "Final" page](https://cd-public.github.io/sysinc/A2_btcinc.html).
 
 # Course Policies
 

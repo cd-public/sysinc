@@ -400,9 +400,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>ROTATE</code> - a “right” rotate.</li>
 </ul></li>
 </ul></li>
-<li>You will create a private GitHub repository named “crypto”
+<li>You will create a private GitHub repository named “sysinc”
 <ul>
-<li>I recommend creating a new repository of your own, not forking my repository.</li>
+<li>I recommend creating a new repository of your own, not forking a repository.</li>
+<li>You can fork this one, if you need to.</li>
 <li>This makes it easier to manage a private repository.</li>
 <li>Up to you.</li>
 </ul></li>
@@ -416,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>If you would like to fork an existing repository, use this one:
 <ul>
-<li><a href="https://github.com/cd-c89/crypto">https://github.com/cd-c89/crypto</a></li>
+<li><a href="https://github.com/cd-c89/sysinc">https://github.com/cd-c89/sysinc</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -910,9 +911,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-2"><a href="#cb19-2"></a></span>
 <span id="cb19-3"><a href="#cb19-3"></a>RUN apt update &amp;&amp; apt install gcc curl -y</span>
 <span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a>RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.c -o tester.c</span>
+<span id="cb19-5"><a href="#cb19-5"></a>RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.c -o tester.c</span>
 <span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a>RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.sh -o tester.sh</span>
+<span id="cb19-7"><a href="#cb19-7"></a>RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.sh -o tester.sh</span>
 <span id="cb19-8"><a href="#cb19-8"></a></span>
 <span id="cb19-9"><a href="#cb19-9"></a>COPY macros.c .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -964,14 +965,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>MEDIAN</code> is incorrect but <code>CHOICE</code> is correct</li>
 <li><code>ROTATE</code> is incorrect but <code>CHOICE</code> and <code>MEDIAN</code> are correct</li>
 </ol></li>
-<li>It may be the case that <code>tester.c</code> runs strangly on your system.
-<ul>
-<li>It assumes an underlying AMD64 device</li>
-<li><a href="https://console.cloud.google.com/">GCP</a> cloud console runs on AMD64
-<ul>
-<li><code>docker</code>, installed by default, is an alternative to <code>podman</code> on GCP.</li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -1568,564 +1561,560 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb24-24"><a href="#cb24-24"></a><span class="ss">      - </span><span class="in">`CHOICE`</span></span>
 <span id="cb24-25"><a href="#cb24-25"></a><span class="ss">      - </span><span class="in">`MEDIAN`</span></span>
 <span id="cb24-26"><a href="#cb24-26"></a><span class="ss">      - </span><span class="in">`ROTATE`</span> - a "right" rotate.</span>
-<span id="cb24-27"><a href="#cb24-27"></a><span class="ss">  - </span>You will create a private GitHub repository named "crypto"</span>
-<span id="cb24-28"><a href="#cb24-28"></a><span class="ss">    - </span>I recommend creating a new repository of your own, not forking my repository.</span>
-<span id="cb24-29"><a href="#cb24-29"></a><span class="ss">    - </span>This makes it easier to manage a private repository.</span>
-<span id="cb24-30"><a href="#cb24-30"></a><span class="ss">    - </span>Up to you.</span>
-<span id="cb24-31"><a href="#cb24-31"></a><span class="ss">  - </span>You will create a folder in this repository named "macros"</span>
-<span id="cb24-32"><a href="#cb24-32"></a><span class="ss">  - </span>You will store your "macros.c" file in the "macros" folder.</span>
-<span id="cb24-33"><a href="#cb24-33"></a><span class="ss">  - </span>You will add me as a collaborator through the GitHub web application</span>
-<span id="cb24-34"><a href="#cb24-34"></a><span class="ss">    - </span>- My GitHub account <span class="co">[</span><span class="ot">cd-public</span><span class="co">](https://github.com/cd-public)</span> is attached to my @wu address.</span>
-<span id="cb24-35"><a href="#cb24-35"></a><span class="ss">  - </span>If you would like to fork an existing repository, use this one:</span>
-<span id="cb24-36"><a href="#cb24-36"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/crypto</span><span class="co">](https://github.com/cd-c89/crypto)</span></span>
-<span id="cb24-37"><a href="#cb24-37"></a>  </span>
-<span id="cb24-38"><a href="#cb24-38"></a><span class="fu">### Topic Areas</span></span>
-<span id="cb24-39"><a href="#cb24-39"></a></span>
-<span id="cb24-40"><a href="#cb24-40"></a>|Review:    | Newish:    |</span>
-<span id="cb24-41"><a href="#cb24-41"></a>| --------- | ---------- |</span>
-<span id="cb24-42"><a href="#cb24-42"></a>|- bits     | - Macros   |</span>
-<span id="cb24-43"><a href="#cb24-43"></a>|- bytes    | - Sizeof   |</span>
-<span id="cb24-44"><a href="#cb24-44"></a>|- operators|            |</span>
-<span id="cb24-45"><a href="#cb24-45"></a></span>
+<span id="cb24-27"><a href="#cb24-27"></a><span class="ss">  - </span>You will create a private GitHub repository named "sysinc"</span>
+<span id="cb24-28"><a href="#cb24-28"></a><span class="ss">    - </span>I recommend creating a new repository of your own, not forking a repository.</span>
+<span id="cb24-29"><a href="#cb24-29"></a><span class="ss">    - </span>You can fork this one, if you need to.</span>
+<span id="cb24-30"><a href="#cb24-30"></a><span class="ss">    - </span>This makes it easier to manage a private repository.</span>
+<span id="cb24-31"><a href="#cb24-31"></a><span class="ss">    - </span>Up to you.</span>
+<span id="cb24-32"><a href="#cb24-32"></a><span class="ss">  - </span>You will create a folder in this repository named "macros"</span>
+<span id="cb24-33"><a href="#cb24-33"></a><span class="ss">  - </span>You will store your "macros.c" file in the "macros" folder.</span>
+<span id="cb24-34"><a href="#cb24-34"></a><span class="ss">  - </span>You will add me as a collaborator through the GitHub web application</span>
+<span id="cb24-35"><a href="#cb24-35"></a><span class="ss">    - </span>- My GitHub account <span class="co">[</span><span class="ot">cd-public</span><span class="co">](https://github.com/cd-public)</span> is attached to my @wu address.</span>
+<span id="cb24-36"><a href="#cb24-36"></a><span class="ss">  - </span>If you would like to fork an existing repository, use this one:</span>
+<span id="cb24-37"><a href="#cb24-37"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/sysinc</span><span class="co">](https://github.com/cd-c89/sysinc)</span></span>
+<span id="cb24-38"><a href="#cb24-38"></a>  </span>
+<span id="cb24-39"><a href="#cb24-39"></a><span class="fu">### Topic Areas</span></span>
+<span id="cb24-40"><a href="#cb24-40"></a></span>
+<span id="cb24-41"><a href="#cb24-41"></a>|Review:    | Newish:    |</span>
+<span id="cb24-42"><a href="#cb24-42"></a>| --------- | ---------- |</span>
+<span id="cb24-43"><a href="#cb24-43"></a>|- bits     | - Macros   |</span>
+<span id="cb24-44"><a href="#cb24-44"></a>|- bytes    | - Sizeof   |</span>
+<span id="cb24-45"><a href="#cb24-45"></a>|- operators|            |</span>
 <span id="cb24-46"><a href="#cb24-46"></a></span>
-<span id="cb24-47"><a href="#cb24-47"></a>:::</span>
-<span id="cb24-48"><a href="#cb24-48"></a></span>
+<span id="cb24-47"><a href="#cb24-47"></a></span>
+<span id="cb24-48"><a href="#cb24-48"></a>:::</span>
 <span id="cb24-49"><a href="#cb24-49"></a></span>
-<span id="cb24-50"><a href="#cb24-50"></a><span class="fu"># Podman&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#podman" role="button" aria-expanded="false" aria-controls="podman"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-51"><a href="#cb24-51"></a></span>
-<span id="cb24-52"><a href="#cb24-52"></a>::: {#podman .collapse .multi-collapse}</span>
-<span id="cb24-53"><a href="#cb24-53"></a></span>
-<span id="cb24-54"><a href="#cb24-54"></a><span class="fu"># Setup</span></span>
-<span id="cb24-55"><a href="#cb24-55"></a></span>
-<span id="cb24-56"><a href="#cb24-56"></a><span class="ss">- </span>For this lab, I used the following Containerfile</span>
-<span id="cb24-57"><a href="#cb24-57"></a><span class="ss">  - </span>Same as lecture</span>
-<span id="cb24-58"><a href="#cb24-58"></a><span class="ss">  - </span>I didn't even rename it</span>
-<span id="cb24-59"><a href="#cb24-59"></a></span>
-<span id="cb24-60"><a href="#cb24-60"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb24-61"><a href="#cb24-61"></a><span class="in">FROM ubuntu</span></span>
-<span id="cb24-62"><a href="#cb24-62"></a></span>
-<span id="cb24-63"><a href="#cb24-63"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim</span></span>
-<span id="cb24-64"><a href="#cb24-64"></a><span class="in">```</span></span>
-<span id="cb24-65"><a href="#cb24-65"></a><span class="ss">- </span>I could build with the following, but I already had it built:</span>
-<span id="cb24-66"><a href="#cb24-66"></a><span class="in">```email</span></span>
-<span id="cb24-67"><a href="#cb24-67"></a>podman build -t c89_99 .</span>
-<span id="cb24-68"><a href="#cb24-68"></a><span class="in">```</span></span>
-<span id="cb24-69"><a href="#cb24-69"></a><span class="ss">- </span>I conducted the full hw within a single container's <span class="in">`vim`</span> instance.</span>
-<span id="cb24-70"><a href="#cb24-70"></a><span class="in">```email</span></span>
-<span id="cb24-71"><a href="#cb24-71"></a>podman run -it c89_99 vim macros.c</span>
-<span id="cb24-72"><a href="#cb24-72"></a><span class="in">```</span></span>
-<span id="cb24-73"><a href="#cb24-73"></a> </span>
-<span id="cb24-74"><a href="#cb24-74"></a>:::</span>
-<span id="cb24-75"><a href="#cb24-75"></a></span>
-<span id="cb24-76"><a href="#cb24-76"></a><span class="fu"># GitHub&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#github" role="button" aria-expanded="false" aria-controls="github"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-77"><a href="#cb24-77"></a></span>
-<span id="cb24-78"><a href="#cb24-78"></a>::: {#github .collapse .multi-collapse}</span>
-<span id="cb24-79"><a href="#cb24-79"></a></span>
-<span id="cb24-80"><a href="#cb24-80"></a>*[Read this in GitHub Docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)*</span>
-<span id="cb24-81"><a href="#cb24-81"></a></span>
-<span id="cb24-82"><a href="#cb24-82"></a><span class="fu">### Inviting collaborators to a personal repository</span></span>
-<span id="cb24-83"><a href="#cb24-83"></a>*You can add unlimited collaborators on public and private repositories.*</span>
-<span id="cb24-84"><a href="#cb24-84"></a></span>
-<span id="cb24-85"><a href="#cb24-85"></a><span class="fu">#### About collaboration in a personal repository</span></span>
-<span id="cb24-86"><a href="#cb24-86"></a></span>
-<span id="cb24-87"><a href="#cb24-87"></a>To collaborate with users in a repository that belongs to your personal account on GitHub, you can invite the users as collaborators.</span>
-<span id="cb24-88"><a href="#cb24-88"></a></span>
-<span id="cb24-89"><a href="#cb24-89"></a>If you want to grant more granular access to the repository, you can create a repository within an organization. For more information, see <span class="co">[</span><span class="ot"> Access permissions on GitHub</span><span class="co">](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github)</span>.</span>
-<span id="cb24-90"><a href="#cb24-90"></a></span>
-<span id="cb24-91"><a href="#cb24-91"></a><span class="fu">#### Inviting a collaborator to a personal repository</span></span>
-<span id="cb24-92"><a href="#cb24-92"></a></span>
-<span id="cb24-93"><a href="#cb24-93"></a>You can send an invitation to collaborate in your repository directly to someone on GitHub, or to the person's email address..</span>
-<span id="cb24-94"><a href="#cb24-94"></a></span>
-<span id="cb24-95"><a href="#cb24-95"></a>GitHub limits the number of people who can be invited to a repository within a 24-hour period. If you exceed this limit, either wait 24 hours or create an organization to collaborate with more people. For more information, see <span class="co">[</span><span class="ot">Creating a new organization from scratch</span><span class="co">](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch)</span>.</span>
-<span id="cb24-96"><a href="#cb24-96"></a></span>
-<span id="cb24-97"><a href="#cb24-97"></a><span class="ss">1. </span>Ask for the username of the person you're inviting as a collaborator. If they don't have a username yet, they can sign up for GitHub. For more information, see <span class="co">[</span><span class="ot">Creating an account on GitHub</span><span class="co">](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)</span>.</span>
-<span id="cb24-98"><a href="#cb24-98"></a><span class="ss">1. </span>Under your repository name, click **Settings**. If you cannot see the "Settings" tab, select the dropdown menu, then click Settings.</span>
-<span id="cb24-99"><a href="#cb24-99"></a>&lt;img width="100%" src="https://docs.github.com/assets/cb-28260/mw-1440/images/help/repository/repo-actions-settings.webp"&gt;</span>
-<span id="cb24-100"><a href="#cb24-100"></a><span class="ss">1. </span>In the "Access" section of the sidebar, click  **Collaborators**.</span>
-<span id="cb24-101"><a href="#cb24-101"></a><span class="ss">1. </span>Click **Add people**.</span>
-<span id="cb24-102"><a href="#cb24-102"></a><span class="ss">1. </span>In the search field, start typing the name of person you want to invite, then click a name in the list of matches.</span>
-<span id="cb24-103"><a href="#cb24-103"></a><span class="ss">1. </span>Click **Add NAME to REPOSITORY**.</span>
-<span id="cb24-104"><a href="#cb24-104"></a><span class="ss">1. </span>The user will receive an email inviting them to the repository. Once they accept your invitation, they will have collaborator access to your repository.</span>
-<span id="cb24-105"><a href="#cb24-105"></a></span>
-<span id="cb24-106"><a href="#cb24-106"></a>:::</span>
-<span id="cb24-107"><a href="#cb24-107"></a></span>
-<span id="cb24-108"><a href="#cb24-108"></a><span class="fu"># Sketch&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#rubric" role="button" aria-expanded="false" aria-controls="rubric"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-109"><a href="#cb24-109"></a></span>
-<span id="cb24-110"><a href="#cb24-110"></a>::: {#rubric .collapse .multi-collapse}</span>
-<span id="cb24-111"><a href="#cb24-111"></a></span>
-<span id="cb24-112"><a href="#cb24-112"></a><span class="ss">- </span>The purpose of this homework is to write four (4) bitwise macros</span>
-<span id="cb24-113"><a href="#cb24-113"></a><span class="ss">  - </span>Two trenanry operations</span>
-<span id="cb24-114"><a href="#cb24-114"></a><span class="ss">    - </span>Choice</span>
-<span id="cb24-115"><a href="#cb24-115"></a><span class="ss">    - </span>Median, also called Majority</span>
-<span id="cb24-116"><a href="#cb24-116"></a><span class="ss">  - </span>And two rotations</span>
-<span id="cb24-117"><a href="#cb24-117"></a><span class="ss">    - </span>Right, which sees use, and</span>
-<span id="cb24-118"><a href="#cb24-118"></a><span class="ss">    - </span>Left, as an academic exercise</span>
-<span id="cb24-119"><a href="#cb24-119"></a><span class="ss">- </span>These will see use in the next assignment, SHA256</span>
-<span id="cb24-120"><a href="#cb24-120"></a><span class="ss">- </span>They are logically and historically interesting within cryptography</span>
-<span id="cb24-121"><a href="#cb24-121"></a><span class="ss">- </span>There is no graceful way, to my knowledge, to describe these on bits in Python</span>
-<span id="cb24-122"><a href="#cb24-122"></a><span class="ss">  - </span>I will provide pseudo code over tuples of integers.</span>
-<span id="cb24-123"><a href="#cb24-123"></a><span class="ss">  - </span>I provide conversion functions from strings.</span>
-<span id="cb24-124"><a href="#cb24-124"></a><span class="ss">  - </span>I am aware of plenty non-graceful ways, but </span>
-<span id="cb24-125"><a href="#cb24-125"></a><span class="ss">    - </span>If you want to show me one you like send me a DM</span>
-<span id="cb24-126"><a href="#cb24-126"></a><span class="ss">- </span>For this homework, you will need some form of bit printing</span>
-<span id="cb24-127"><a href="#cb24-127"></a><span class="ss">  - </span>If your <span class="in">`printb`</span> from lab is struggling, use <span class="in">`%b`</span> in debug</span>
-<span id="cb24-128"><a href="#cb24-128"></a><span class="ss">  - </span>Just remove it before your turn in your work.</span>
-<span id="cb24-129"><a href="#cb24-129"></a><span class="ss">- </span>We next introduce macros.</span>
-<span id="cb24-130"><a href="#cb24-130"></a>  </span>
-<span id="cb24-131"><a href="#cb24-131"></a>:::</span>
-<span id="cb24-132"><a href="#cb24-132"></a></span>
-<span id="cb24-133"><a href="#cb24-133"></a><span class="fu"># Macros&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#macros" role="button" aria-expanded="false" aria-controls="macros"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-134"><a href="#cb24-134"></a></span>
-<span id="cb24-135"><a href="#cb24-135"></a>::: {#macros .collapse .multi-collapse}</span>
-<span id="cb24-136"><a href="#cb24-136"></a></span>
-<span id="cb24-137"><a href="#cb24-137"></a><span class="ss">- </span>The purpose of this homework is to write four (4) bitwise macros.</span>
-<span id="cb24-138"><a href="#cb24-138"></a><span class="ss">- </span>C macros exist in the "preproprocessor".</span>
-<span id="cb24-139"><a href="#cb24-139"></a><span class="ss">- </span>Here is an example of preprocessor directive you have written already:</span>
-<span id="cb24-140"><a href="#cb24-140"></a><span class="in">```C</span></span>
-<span id="cb24-141"><a href="#cb24-141"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb24-142"><a href="#cb24-142"></a><span class="in">```</span></span>
-<span id="cb24-143"><a href="#cb24-143"></a><span class="ss">- </span>You probably also have used a define directive</span>
-<span id="cb24-144"><a href="#cb24-144"></a><span class="in">```C</span></span>
-<span id="cb24-145"><a href="#cb24-145"></a><span class="in">#define ABCS "ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span></span>
-<span id="cb24-146"><a href="#cb24-146"></a><span class="in">```</span></span>
-<span id="cb24-147"><a href="#cb24-147"></a><span class="ss">- </span>The define directive is used to define something called a macro.</span>
-<span id="cb24-148"><a href="#cb24-148"></a><span class="ss">  - </span>When used to define constants, those are just macros that return a value.</span>
-<span id="cb24-149"><a href="#cb24-149"></a><span class="ss">- </span>We can also define macros that accept arguments, the most famous are <span class="in">`MIN`</span> and <span class="in">`MAX`</span></span>
-<span id="cb24-150"><a href="#cb24-150"></a><span class="ss">  - </span>I grabbed these from <span class="co">[</span><span class="ot">OpenBSD</span><span class="co">](https://github.com/openbsd/src/blob/master/sys/sys/param.h)</span></span>
-<span id="cb24-151"><a href="#cb24-151"></a><span class="ss">  - </span>They have fallen out of favor for a complicated reason.</span>
-<span id="cb24-152"><a href="#cb24-152"></a><span class="ss">  - </span>In general, use functions.</span>
-<span id="cb24-153"><a href="#cb24-153"></a><span class="ss">  - </span>We use macros to learn about them, not to learn to write them.</span>
-<span id="cb24-154"><a href="#cb24-154"></a>  </span>
-<span id="cb24-155"><a href="#cb24-155"></a><span class="in">```C</span></span>
-<span id="cb24-156"><a href="#cb24-156"></a><span class="in">/* Macros for min/max. */</span></span>
-<span id="cb24-157"><a href="#cb24-157"></a><span class="in">#define MIN(a,b) (((a)&lt;(b))?(a):(b))</span></span>
-<span id="cb24-158"><a href="#cb24-158"></a><span class="in">#define MAX(a,b) (((a)&gt;(b))?(a):(b))</span></span>
-<span id="cb24-159"><a href="#cb24-159"></a><span class="in">```</span></span>
-<span id="cb24-160"><a href="#cb24-160"></a></span>
-<span id="cb24-161"><a href="#cb24-161"></a><span class="ss">- </span>I'd encourage you to play around a bit with these macros.</span>
-<span id="cb24-162"><a href="#cb24-162"></a><span class="ss">  - </span>You don't need to fully understand before diving into choice, median, rotate.</span>
-<span id="cb24-163"><a href="#cb24-163"></a><span class="ss">  - </span>But a little background can help.</span>
-<span id="cb24-164"><a href="#cb24-164"></a>  </span>
-<span id="cb24-165"><a href="#cb24-165"></a><span class="in">```C</span></span>
-<span id="cb24-166"><a href="#cb24-166"></a><span class="in">int x = 50;</span></span>
-<span id="cb24-167"><a href="#cb24-167"></a><span class="in">int a = 'a';</span></span>
-<span id="cb24-168"><a href="#cb24-168"></a><span class="in">printf("%d\n", MAX(x++,a++))</span></span>
-<span id="cb24-169"><a href="#cb24-169"></a><span class="in">```</span></span>
-<span id="cb24-170"><a href="#cb24-170"></a></span>
-<span id="cb24-171"><a href="#cb24-171"></a><span class="ss">- </span>In general, you want to use a lot of parens in macros.</span>
-<span id="cb24-172"><a href="#cb24-172"></a><span class="ss">  - </span>Try some things out to try to see why.</span>
-<span id="cb24-173"><a href="#cb24-173"></a></span>
-<span id="cb24-174"><a href="#cb24-174"></a>:::</span>
-<span id="cb24-175"><a href="#cb24-175"></a></span>
-<span id="cb24-176"><a href="#cb24-176"></a><span class="fu"># Choice&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#choice" role="button" aria-expanded="choice" aria-controls="choice"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-177"><a href="#cb24-177"></a></span>
-<span id="cb24-178"><a href="#cb24-178"></a>::: {#choice .collapse .multi-collapse}</span>
-<span id="cb24-179"><a href="#cb24-179"></a></span>
-<span id="cb24-180"><a href="#cb24-180"></a><span class="ss">- </span>Here I provide Pythonic boolean choice and bitwise choice, and C boolean choice.</span>
-<span id="cb24-181"><a href="#cb24-181"></a><span class="ss">- </span>You will need C bitwise choice.</span>
-<span id="cb24-182"><a href="#cb24-182"></a><span class="ss">- </span>Choice is sometimes also referred to as the "ternary operator"</span>
-<span id="cb24-183"><a href="#cb24-183"></a><span class="ss">  - </span>Most famously in <span class="co">[</span><span class="ot">.js</span><span class="co">](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)</span></span>
-<span id="cb24-184"><a href="#cb24-184"></a><span class="ss">  - </span>This is... potentially confusing.</span>
-<span id="cb24-185"><a href="#cb24-185"></a><span class="ss">  - </span>It is *a* ternary operator.</span>
-<span id="cb24-186"><a href="#cb24-186"></a><span class="ss">  - </span>The Python operator is non-standard and <span class="co">[</span><span class="ot">intentionally ugly</span><span class="co">](https://mail.python.org/pipermail/python-dev/2005-September/056846.html)</span>.</span>
-<span id="cb24-187"><a href="#cb24-187"></a></span>
-<span id="cb24-188"><a href="#cb24-188"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
-<span id="cb24-189"><a href="#cb24-189"></a><span class="in">```{.python filename="macros.py"}</span></span>
-<span id="cb24-190"><a href="#cb24-190"></a><span class="in"># ref: choice := (e and f) xor ((not e) and g)</span></span>
-<span id="cb24-191"><a href="#cb24-191"></a><span class="in"># src: https://en.wikipedia.org/wiki/SHA-2</span></span>
-<span id="cb24-192"><a href="#cb24-192"></a></span>
-<span id="cb24-193"><a href="#cb24-193"></a><span class="in"># We just tell Python the ints are bools</span></span>
-<span id="cb24-194"><a href="#cb24-194"></a><span class="in"># We just use "!=" as xor</span></span>
-<span id="cb24-195"><a href="#cb24-195"></a></span>
-<span id="cb24-196"><a href="#cb24-196"></a><span class="in">def _choice(e:bool, f:bool, g:bool) -&gt; bool:</span></span>
-<span id="cb24-197"><a href="#cb24-197"></a><span class="in">    return int(f if e else g)</span></span>
-<span id="cb24-198"><a href="#cb24-198"></a><span class="in">    # return int((e and f) != ((not e) and g))</span></span>
-<span id="cb24-199"><a href="#cb24-199"></a></span>
-<span id="cb24-200"><a href="#cb24-200"></a><span class="in">import itertools</span></span>
-<span id="cb24-201"><a href="#cb24-201"></a></span>
-<span id="cb24-202"><a href="#cb24-202"></a><span class="in">tester = list(itertools.product([0, 1],repeat=3))</span></span>
-<span id="cb24-203"><a href="#cb24-203"></a></span>
-<span id="cb24-204"><a href="#cb24-204"></a><span class="in">print(" === Boolean Choice === ")</span></span>
-<span id="cb24-205"><a href="#cb24-205"></a><span class="in">[print('_choice'+str(test), '-&gt;', _choice(*test)) for test in tester]</span></span>
-<span id="cb24-206"><a href="#cb24-206"></a></span>
-<span id="cb24-207"><a href="#cb24-207"></a><span class="in">arrays = (tuple(zip(*tester)))</span></span>
-<span id="cb24-208"><a href="#cb24-208"></a></span>
-<span id="cb24-209"><a href="#cb24-209"></a><span class="in">def choice(e:tuple[bool], f:tuple[bool], g:tuple[bool]) -&gt; tuple[bool]:</span></span>
-<span id="cb24-210"><a href="#cb24-210"></a><span class="in">    return tuple(_choice(_e, _f, _g) for _e, _f, _g in zip(e,f,g))</span></span>
-<span id="cb24-211"><a href="#cb24-211"></a></span>
-<span id="cb24-212"><a href="#cb24-212"></a><span class="in"># This was ugly</span></span>
-<span id="cb24-213"><a href="#cb24-213"></a><span class="in"># print('choice'+str(arrays), '-&gt;', choice(*arrays))</span></span>
-<span id="cb24-214"><a href="#cb24-214"></a></span>
-<span id="cb24-215"><a href="#cb24-215"></a><span class="in"># pretty print</span></span>
-<span id="cb24-216"><a href="#cb24-216"></a><span class="in">bitstr = lambda bits : "".join([str(b) for b in bits])</span></span>
-<span id="cb24-217"><a href="#cb24-217"></a><span class="in">bsstrs = lambda arrs : str(tuple(bitstr(bits) for bits in arrs))</span></span>
-<span id="cb24-218"><a href="#cb24-218"></a><span class="in">print(" === Bitwise Choice === ")</span></span>
-<span id="cb24-219"><a href="#cb24-219"></a><span class="in">print('choice'+bsstrs(arrays), '-&gt;', "'"+bitstr(choice(*arrays))+"'")</span></span>
-<span id="cb24-220"><a href="#cb24-220"></a><span class="in">```</span></span>
-<span id="cb24-221"><a href="#cb24-221"></a>&lt;/blockquote&gt;</span>
-<span id="cb24-222"><a href="#cb24-222"></a></span>
-<span id="cb24-223"><a href="#cb24-223"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
-<span id="cb24-224"><a href="#cb24-224"></a></span>
-<span id="cb24-225"><a href="#cb24-225"></a><span class="in">```email</span></span>
-<span id="cb24-226"><a href="#cb24-226"></a> === Boolean Choice === </span>
-<span id="cb24-227"><a href="#cb24-227"></a>_choice(0, 0, 0) -&gt; 0</span>
-<span id="cb24-228"><a href="#cb24-228"></a>_choice(0, 0, 1) -&gt; 1</span>
-<span id="cb24-229"><a href="#cb24-229"></a>_choice(0, 1, 0) -&gt; 0</span>
-<span id="cb24-230"><a href="#cb24-230"></a>_choice(0, 1, 1) -&gt; 1</span>
-<span id="cb24-231"><a href="#cb24-231"></a>_choice(1, 0, 0) -&gt; 0</span>
-<span id="cb24-232"><a href="#cb24-232"></a>_choice(1, 0, 1) -&gt; 0</span>
-<span id="cb24-233"><a href="#cb24-233"></a>_choice(1, 1, 0) -&gt; 1</span>
-<span id="cb24-234"><a href="#cb24-234"></a>_choice(1, 1, 1) -&gt; 1</span>
-<span id="cb24-235"><a href="#cb24-235"></a> === Bitwise Choice ===</span>
-<span id="cb24-236"><a href="#cb24-236"></a>choice('00001111', '00110011', '01010101') -&gt; '01010011'</span>
-<span id="cb24-237"><a href="#cb24-237"></a><span class="in">```</span></span>
-<span id="cb24-238"><a href="#cb24-238"></a></span>
-<span id="cb24-239"><a href="#cb24-239"></a><span class="ss">- </span>The following defines a macro for boolean choice.</span>
-<span id="cb24-240"><a href="#cb24-240"></a><span class="ss">  - </span>Though not particularly gracefully.</span>
-<span id="cb24-241"><a href="#cb24-241"></a>  </span>
-<span id="cb24-242"><a href="#cb24-242"></a><span class="in">```C</span></span>
-<span id="cb24-243"><a href="#cb24-243"></a><span class="in">/* Macro for boolean choice. */</span></span>
-<span id="cb24-244"><a href="#cb24-244"></a><span class="in">#define CHOICE(e,f,g) ((e)?(f):(g))</span></span>
-<span id="cb24-245"><a href="#cb24-245"></a><span class="in">```</span></span>
-<span id="cb24-246"><a href="#cb24-246"></a></span>
-<span id="cb24-247"><a href="#cb24-247"></a><span class="ss">- </span>Update the macro to perform bitwise choice.</span>
-<span id="cb24-248"><a href="#cb24-248"></a><span class="ss">  - </span>It should be a single line macro.</span>
-<span id="cb24-249"><a href="#cb24-249"></a><span class="ss">  - </span>It should use bitwise operators.</span>
-<span id="cb24-250"><a href="#cb24-250"></a></span>
-<span id="cb24-251"><a href="#cb24-251"></a>:::</span>
-<span id="cb24-252"><a href="#cb24-252"></a></span>
-<span id="cb24-253"><a href="#cb24-253"></a><span class="fu"># Median&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#median" role="button" aria-expanded="median" aria-controls="median"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-254"><a href="#cb24-254"></a></span>
-<span id="cb24-255"><a href="#cb24-255"></a>::: {#median .collapse .multi-collapse}</span>
-<span id="cb24-256"><a href="#cb24-256"></a></span>
-<span id="cb24-257"><a href="#cb24-257"></a><span class="ss">- </span>Here I provide Pythonic boolean median and bitwise median, and C boolean median.</span>
-<span id="cb24-258"><a href="#cb24-258"></a><span class="ss">- </span>You will need C bitwise median.</span>
-<span id="cb24-259"><a href="#cb24-259"></a><span class="ss">- </span>I will take it as given you know what a median is.</span>
-<span id="cb24-260"><a href="#cb24-260"></a><span class="ss">- </span>The following code is appended to "macros.py"</span>
-<span id="cb24-261"><a href="#cb24-261"></a></span>
-<span id="cb24-262"><a href="#cb24-262"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
-<span id="cb24-263"><a href="#cb24-263"></a><span class="in">```{.python filename="macros.py" }</span></span>
-<span id="cb24-264"><a href="#cb24-264"></a><span class="in">import numpy as np</span></span>
-<span id="cb24-265"><a href="#cb24-265"></a></span>
-<span id="cb24-266"><a href="#cb24-266"></a><span class="in">def _median(e:bool, f:bool, g:bool) -&gt; bool:</span></span>
-<span id="cb24-267"><a href="#cb24-267"></a><span class="in">    return int(np.median([e,f,g]))</span></span>
-<span id="cb24-268"><a href="#cb24-268"></a></span>
-<span id="cb24-269"><a href="#cb24-269"></a><span class="in">print(" === Boolean Median === ")</span></span>
-<span id="cb24-270"><a href="#cb24-270"></a><span class="in">[print('_median'+str(test), '-&gt;', _median(*test)) for test in tester]</span></span>
-<span id="cb24-271"><a href="#cb24-271"></a></span>
-<span id="cb24-272"><a href="#cb24-272"></a><span class="in">def median(e:tuple[bool], f:tuple[bool], g:tuple[bool]) -&gt; tuple[bool]:</span></span>
-<span id="cb24-273"><a href="#cb24-273"></a><span class="in">    return tuple(_median(_e, _f, _g) for _e, _f, _g in zip(e,f,g))</span></span>
-<span id="cb24-274"><a href="#cb24-274"></a></span>
-<span id="cb24-275"><a href="#cb24-275"></a><span class="in">print(" === Bitwise Median === ")</span></span>
-<span id="cb24-276"><a href="#cb24-276"></a><span class="in">print('median'+bsstrs(arrays), '-&gt;', "'"+bitstr(median(*arrays))+"'")</span></span>
-<span id="cb24-277"><a href="#cb24-277"></a><span class="in">```</span></span>
-<span id="cb24-278"><a href="#cb24-278"></a>&lt;/blockquote&gt;</span>
-<span id="cb24-279"><a href="#cb24-279"></a></span>
-<span id="cb24-280"><a href="#cb24-280"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
-<span id="cb24-281"><a href="#cb24-281"></a></span>
-<span id="cb24-282"><a href="#cb24-282"></a><span class="in">```email</span></span>
-<span id="cb24-283"><a href="#cb24-283"></a> === Boolean Median === </span>
-<span id="cb24-284"><a href="#cb24-284"></a>_median(0, 0, 0) -&gt; 0</span>
-<span id="cb24-285"><a href="#cb24-285"></a>_median(0, 0, 1) -&gt; 0</span>
-<span id="cb24-286"><a href="#cb24-286"></a>_median(0, 1, 0) -&gt; 0</span>
-<span id="cb24-287"><a href="#cb24-287"></a>_median(0, 1, 1) -&gt; 1</span>
-<span id="cb24-288"><a href="#cb24-288"></a>_median(1, 0, 0) -&gt; 0</span>
-<span id="cb24-289"><a href="#cb24-289"></a>_median(1, 0, 1) -&gt; 1</span>
-<span id="cb24-290"><a href="#cb24-290"></a>_median(1, 1, 0) -&gt; 1</span>
-<span id="cb24-291"><a href="#cb24-291"></a>_median(1, 1, 1) -&gt; 1</span>
-<span id="cb24-292"><a href="#cb24-292"></a> === Bitwise Median ===</span>
-<span id="cb24-293"><a href="#cb24-293"></a>median('00001111', '00110011', '01010101') -&gt; '00010111'</span>
-<span id="cb24-294"><a href="#cb24-294"></a><span class="in">```</span></span>
-<span id="cb24-295"><a href="#cb24-295"></a></span>
-<span id="cb24-296"><a href="#cb24-296"></a><span class="ss">- </span>The following defines a macro for boolean median.</span>
-<span id="cb24-297"><a href="#cb24-297"></a><span class="ss">  - </span>Though not particularly gracefully.</span>
-<span id="cb24-298"><a href="#cb24-298"></a><span class="ss">  - </span>C <span class="in">`!!`</span> is very close to Python <span class="in">`bool()`</span></span>
-<span id="cb24-299"><a href="#cb24-299"></a>  </span>
-<span id="cb24-300"><a href="#cb24-300"></a><span class="in">```C</span></span>
-<span id="cb24-301"><a href="#cb24-301"></a><span class="in">/* Macro for boolean median. */</span></span>
-<span id="cb24-302"><a href="#cb24-302"></a><span class="in">#define MEDIAN(e,f,g) ((!!(e) + !!(f) + !!(g)) &gt; 1)</span></span>
-<span id="cb24-303"><a href="#cb24-303"></a><span class="in">```</span></span>
-<span id="cb24-304"><a href="#cb24-304"></a></span>
-<span id="cb24-305"><a href="#cb24-305"></a><span class="ss">- </span>Update the macro to perform bitwise median.</span>
-<span id="cb24-306"><a href="#cb24-306"></a><span class="ss">  - </span>It should be a single line macro.</span>
-<span id="cb24-307"><a href="#cb24-307"></a><span class="ss">  - </span>It should use bitwise operators.</span>
-<span id="cb24-308"><a href="#cb24-308"></a></span>
-<span id="cb24-309"><a href="#cb24-309"></a>:::</span>
-<span id="cb24-310"><a href="#cb24-310"></a></span>
-<span id="cb24-311"><a href="#cb24-311"></a><span class="fu"># Sizeof&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#sizeof" role="button" aria-expanded="false" aria-controls="sizeof"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-312"><a href="#cb24-312"></a></span>
-<span id="cb24-313"><a href="#cb24-313"></a>::: {#sizeof .collapse .multi-collapse}</span>
-<span id="cb24-314"><a href="#cb24-314"></a></span>
-<span id="cb24-315"><a href="#cb24-315"></a><span class="ss">- </span>You may have noticed something while writing <span class="in">`printb`</span>: </span>
-<span id="cb24-316"><a href="#cb24-316"></a><span class="ss">  - </span>That not know how many bits you had was annoying.</span>
-<span id="cb24-317"><a href="#cb24-317"></a><span class="ss">- </span>Not to worry, C can help us.</span>
-<span id="cb24-318"><a href="#cb24-318"></a><span class="ss">  - </span>A char is always exactly 8 bits</span>
-<span id="cb24-319"><a href="#cb24-319"></a><span class="ss">    - </span>This is also called one byte</span>
-<span id="cb24-320"><a href="#cb24-320"></a><span class="ss">    - </span>It is trivial to verifying this experimentally.</span>
-<span id="cb24-321"><a href="#cb24-321"></a><span class="ss">  - </span>Everything else is some multiple of char</span>
-<span id="cb24-322"><a href="#cb24-322"></a><span class="ss">  - </span>To find how many char's big something is, use <span class="in">`sizeof`</span></span>
-<span id="cb24-323"><a href="#cb24-323"></a><span class="ss">- </span>I compile with <span class="in">`-w`</span> to silence an error.</span>
-<span id="cb24-324"><a href="#cb24-324"></a><span class="ss">  - </span><span class="in">`sizeof`</span> doesn't run an integer, so we shouldn't print with <span class="in">`%d`</span></span>
-<span id="cb24-325"><a href="#cb24-325"></a><span class="ss">  - </span>More latter.</span>
-<span id="cb24-326"><a href="#cb24-326"></a></span>
-<span id="cb24-327"><a href="#cb24-327"></a><span class="in">```sh</span></span>
-<span id="cb24-328"><a href="#cb24-328"></a><span class="ex">$</span> cat sizeof.c</span>
-<span id="cb24-329"><a href="#cb24-329"></a><span class="co">#include &lt;stdio.h&gt;</span></span>
-<span id="cb24-330"><a href="#cb24-330"></a></span>
-<span id="cb24-331"><a href="#cb24-331"></a><span class="ex">int</span> main<span class="er">(</span><span class="kw">)</span> <span class="kw">{</span></span>
-<span id="cb24-332"><a href="#cb24-332"></a>        <span class="ex">char</span> c = 1<span class="kw">;</span></span>
-<span id="cb24-333"><a href="#cb24-333"></a>        <span class="ex">int</span> n = 2<span class="kw">;</span></span>
-<span id="cb24-334"><a href="#cb24-334"></a>        <span class="ex">char</span> s<span class="pp">[</span><span class="ss">8</span><span class="pp">]</span> = <span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3</span><span class="op">,</span><span class="dt">4</span><span class="op">,</span><span class="dt">5</span><span class="op">,</span><span class="dt">6</span><span class="op">,</span><span class="dt">7</span><span class="op">,</span><span class="dt">8}</span><span class="kw">;</span></span>
-<span id="cb24-335"><a href="#cb24-335"></a>        <span class="bu">printf</span><span class="er">(</span><span class="st">"sizeof(c) = %d, sizeof(n) = %d, sizeof(s) = %d\n"</span><span class="ex">,</span></span>
-<span id="cb24-336"><a href="#cb24-336"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">c</span><span class="kw">)</span><span class="ex">,</span></span>
-<span id="cb24-337"><a href="#cb24-337"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="ex">,</span></span>
-<span id="cb24-338"><a href="#cb24-338"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">s</span><span class="kw">)</span></span>
-<span id="cb24-339"><a href="#cb24-339"></a>              <span class="kw">);</span></span>
-<span id="cb24-340"><a href="#cb24-340"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="kw">;</span></span>
-<span id="cb24-341"><a href="#cb24-341"></a><span class="kw">}</span></span>
-<span id="cb24-342"><a href="#cb24-342"></a><span class="ex">$</span> gcc sizeof.c <span class="at">-w</span></span>
-<span id="cb24-343"><a href="#cb24-343"></a><span class="ex">$</span> ./a.out</span>
-<span id="cb24-344"><a href="#cb24-344"></a><span class="ex">sizeof</span><span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">=</span> 1, sizeof<span class="er">(</span><span class="ex">n</span><span class="kw">)</span> <span class="ex">=</span> 4, sizeof<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="ex">=</span> 8</span>
-<span id="cb24-345"><a href="#cb24-345"></a><span class="in">```</span></span>
-<span id="cb24-346"><a href="#cb24-346"></a></span>
-<span id="cb24-347"><a href="#cb24-347"></a><span class="ss">- </span>To make introducing rotate easier, all examples will be on char</span>
-<span id="cb24-348"><a href="#cb24-348"></a><span class="ss">- </span>Rotate is used in cryptography on things 32 bits in size.</span>
-<span id="cb24-349"><a href="#cb24-349"></a><span class="ss">  - </span>Usually an int is this big, but not always.</span>
-<span id="cb24-350"><a href="#cb24-350"></a><span class="ss">  - </span>There's ways to manage this.</span>
-<span id="cb24-351"><a href="#cb24-351"></a><span class="ss">- </span>I will test your rotate code on the <span class="in">`unsigned int`</span> type, which is usually 32 bits in size.</span>
-<span id="cb24-352"><a href="#cb24-352"></a><span class="ss">  - </span>You can assume 32, for now.</span>
-<span id="cb24-353"><a href="#cb24-353"></a></span>
-<span id="cb24-354"><a href="#cb24-354"></a>:::</span>
-<span id="cb24-355"><a href="#cb24-355"></a></span>
-<span id="cb24-356"><a href="#cb24-356"></a><span class="fu"># Rotate&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#rotate" role="button" aria-expanded="false" aria-controls="rotate"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-357"><a href="#cb24-357"></a></span>
-<span id="cb24-358"><a href="#cb24-358"></a>::: {#rotate .collapse .multi-collapse}</span>
-<span id="cb24-359"><a href="#cb24-359"></a></span>
-<span id="cb24-360"><a href="#cb24-360"></a><span class="ss">- </span>We recall cipher rotation.</span>
-<span id="cb24-361"><a href="#cb24-361"></a></span>
-<span id="cb24-362"><a href="#cb24-362"></a><span class="in">```email</span></span>
-<span id="cb24-363"><a href="#cb24-363"></a> ____________________________</span>
-<span id="cb24-364"><a href="#cb24-364"></a>[ ABCDEFGHIJKLMNOPQRSTUVWXYZ ] # alphabet</span>
-<span id="cb24-365"><a href="#cb24-365"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
-<span id="cb24-366"><a href="#cb24-366"></a> ____________________________</span>
-<span id="cb24-367"><a href="#cb24-367"></a>[ DEFGHIJKLMNOPQRSTUVWXYZABC ] # forward(3)</span>
-<span id="cb24-368"><a href="#cb24-368"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
-<span id="cb24-369"><a href="#cb24-369"></a> ____________________________</span>
-<span id="cb24-370"><a href="#cb24-370"></a>[ XYZABCDEFGHIJKLMNOPQRSTUVW ] # forward(-3)</span>
-<span id="cb24-371"><a href="#cb24-371"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
-<span id="cb24-372"><a href="#cb24-372"></a><span class="in">```</span></span>
-<span id="cb24-373"><a href="#cb24-373"></a></span>
-<span id="cb24-374"><a href="#cb24-374"></a><span class="ss">- </span>We understand this as:</span>
-<span id="cb24-375"><a href="#cb24-375"></a><span class="ss">  - </span>Take an array and,</span>
-<span id="cb24-376"><a href="#cb24-376"></a><span class="ss">  - </span>Take a numerical value...</span>
-<span id="cb24-377"><a href="#cb24-377"></a><span class="ss">     - </span>of less than the length of the array.</span>
-<span id="cb24-378"><a href="#cb24-378"></a><span class="ss">  - </span>Maintain all elements of the array, but</span>
-<span id="cb24-379"><a href="#cb24-379"></a><span class="ss">    - </span>Increase their index by the numerical value, and</span>
-<span id="cb24-380"><a href="#cb24-380"></a><span class="ss">    - </span>Indices greater than array length wrap around...</span>
-<span id="cb24-381"><a href="#cb24-381"></a><span class="ss">      - </span>Using modulo array length.</span>
-<span id="cb24-382"><a href="#cb24-382"></a><span class="ss">- </span>We apply this same idea to the notion of boolean arrays.</span>
-<span id="cb24-383"><a href="#cb24-383"></a><span class="ss">  - </span>A unsigned int is a boolean array of some length.</span>
-<span id="cb24-384"><a href="#cb24-384"></a><span class="ss">  - </span>It is possible to determine these lengths.</span>
-<span id="cb24-385"><a href="#cb24-385"></a><span class="ss">- </span>Here is a Python bitwise rotate on boolean arrays of size 8.</span>
-<span id="cb24-386"><a href="#cb24-386"></a></span>
-<span id="cb24-387"><a href="#cb24-387"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
-<span id="cb24-388"><a href="#cb24-388"></a><span class="in">```{.python filename="macros.py"}</span></span>
-<span id="cb24-389"><a href="#cb24-389"></a><span class="in">def rotleft(a:tuple[bool], n:int) -&gt; tuple[bool]:</span></span>
-<span id="cb24-390"><a href="#cb24-390"></a><span class="in">    return a[n:] + a[:n]</span></span>
-<span id="cb24-391"><a href="#cb24-391"></a></span>
-<span id="cb24-392"><a href="#cb24-392"></a><span class="in">print(" === Bitwise Rotleft === ")</span></span>
-<span id="cb24-393"><a href="#cb24-393"></a><span class="in">array = (0,0,1,0,1,1,0,1)</span></span>
-<span id="cb24-394"><a href="#cb24-394"></a><span class="in">for n in range(len(arrays[0])+1):</span></span>
-<span id="cb24-395"><a href="#cb24-395"></a><span class="in">    print('rotleft('+bitstr(array)+','+str(n)+') -&gt;', bitstr(rotate(array,n)))</span></span>
-<span id="cb24-396"><a href="#cb24-396"></a><span class="in">```</span></span>
-<span id="cb24-397"><a href="#cb24-397"></a>&lt;/blockquote&gt;</span>
-<span id="cb24-398"><a href="#cb24-398"></a></span>
-<span id="cb24-399"><a href="#cb24-399"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
-<span id="cb24-400"><a href="#cb24-400"></a></span>
-<span id="cb24-401"><a href="#cb24-401"></a><span class="in">```email</span></span>
-<span id="cb24-402"><a href="#cb24-402"></a> === Bitwise Rotleft ===</span>
-<span id="cb24-403"><a href="#cb24-403"></a>rotleft(00101101,0) -&gt; 00101101</span>
-<span id="cb24-404"><a href="#cb24-404"></a>rotleft(00101101,1) -&gt; 01011010</span>
-<span id="cb24-405"><a href="#cb24-405"></a>rotleft(00101101,2) -&gt; 10110100</span>
-<span id="cb24-406"><a href="#cb24-406"></a>rotleft(00101101,3) -&gt; 01101001</span>
-<span id="cb24-407"><a href="#cb24-407"></a>rotleft(00101101,4) -&gt; 11010010</span>
-<span id="cb24-408"><a href="#cb24-408"></a>rotleft(00101101,5) -&gt; 10100101</span>
-<span id="cb24-409"><a href="#cb24-409"></a>rotleft(00101101,6) -&gt; 01001011</span>
-<span id="cb24-410"><a href="#cb24-410"></a>rotleft(00101101,7) -&gt; 10010110</span>
-<span id="cb24-411"><a href="#cb24-411"></a>rotleft(00101101,8) -&gt; 00101101</span>
-<span id="cb24-412"><a href="#cb24-412"></a><span class="in">```</span></span>
-<span id="cb24-413"><a href="#cb24-413"></a></span>
-<span id="cb24-414"><a href="#cb24-414"></a><span class="ss">- </span>We note that this forms a "backward" or "leftward" rotate.</span>
-<span id="cb24-415"><a href="#cb24-415"></a><span class="ss">  - </span>This is a non-standard rotate, often called <span class="in">`lotate`</span> or <span class="in">`rotleft`</span></span>
-<span id="cb24-416"><a href="#cb24-416"></a><span class="ss">  - </span>A future assignment will use a "forward" or "rightward" rotate.</span>
-<span id="cb24-417"><a href="#cb24-417"></a><span class="ss">- </span>Without showing code, it would look like this.</span>
-<span id="cb24-418"><a href="#cb24-418"></a></span>
-<span id="cb24-419"><a href="#cb24-419"></a><span class="in">```email</span></span>
-<span id="cb24-420"><a href="#cb24-420"></a> === Bitwise Rotate ===</span>
-<span id="cb24-421"><a href="#cb24-421"></a>rotate(00101101,0) -&gt; 00101101</span>
-<span id="cb24-422"><a href="#cb24-422"></a>rotate(00101101,1) -&gt; 10010110</span>
-<span id="cb24-423"><a href="#cb24-423"></a>rotate(00101101,2) -&gt; 01001011</span>
-<span id="cb24-424"><a href="#cb24-424"></a>rotate(00101101,3) -&gt; 10100101</span>
-<span id="cb24-425"><a href="#cb24-425"></a>rotate(00101101,4) -&gt; 11010010</span>
-<span id="cb24-426"><a href="#cb24-426"></a>rotate(00101101,5) -&gt; 01101001</span>
-<span id="cb24-427"><a href="#cb24-427"></a>rotate(00101101,6) -&gt; 10110100</span>
-<span id="cb24-428"><a href="#cb24-428"></a>rotate(00101101,7) -&gt; 01011010</span>
-<span id="cb24-429"><a href="#cb24-429"></a>rotate(00101101,8) -&gt; 00101101</span>
-<span id="cb24-430"><a href="#cb24-430"></a><span class="in">```</span></span>
-<span id="cb24-431"><a href="#cb24-431"></a></span>
-<span id="cb24-432"><a href="#cb24-432"></a><span class="fu">#### Note:</span></span>
-<span id="cb24-433"><a href="#cb24-433"></a></span>
-<span id="cb24-434"><a href="#cb24-434"></a><span class="ss">- </span>The C language bitwise operations often seem quite unstable.</span>
-<span id="cb24-435"><a href="#cb24-435"></a><span class="ss">  - </span>It is a virtual certainty you will encounter pernicious bugs.</span>
-<span id="cb24-436"><a href="#cb24-436"></a><span class="ss">  - </span>Use <span class="in">`unsigned int`</span> or just <span class="in">`unsigned`</span> to avoid negative shenanigans.</span>
-<span id="cb24-437"><a href="#cb24-437"></a><span class="ss">  - </span>Print everything all the time.</span>
-<span id="cb24-438"><a href="#cb24-438"></a><span class="ss">  - </span>Liberally consult <span class="in">`printf`</span> and C language documentation.</span>
-<span id="cb24-439"><a href="#cb24-439"></a><span class="ss">  - </span>Ask questions early and often.</span>
-<span id="cb24-440"><a href="#cb24-440"></a></span>
-<span id="cb24-441"><a href="#cb24-441"></a>:::</span>
-<span id="cb24-442"><a href="#cb24-442"></a></span>
-<span id="cb24-443"><a href="#cb24-443"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls="tester"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb24-444"><a href="#cb24-444"></a></span>
-<span id="cb24-445"><a href="#cb24-445"></a>::: {#tester .collapse .multi-collapse}</span>
-<span id="cb24-446"><a href="#cb24-446"></a></span>
-<span id="cb24-447"><a href="#cb24-447"></a><span class="fu">#### Tester</span></span>
-<span id="cb24-448"><a href="#cb24-448"></a></span>
-<span id="cb24-449"><a href="#cb24-449"></a><span class="ss">- </span>I am providing the following Containerfile, which will serve as a minimal autograder</span>
-<span id="cb24-450"><a href="#cb24-450"></a><span class="ss">    - </span>It sets up an Ubuntu container.</span>
-<span id="cb24-451"><a href="#cb24-451"></a><span class="ss">    - </span>It downloads a .c and .sh file and script to test.</span>
-<span id="cb24-452"><a href="#cb24-452"></a><span class="ss">    - </span>It copies in "macros.c" from your system.</span>
-<span id="cb24-453"><a href="#cb24-453"></a></span>
-<span id="cb24-454"><a href="#cb24-454"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb24-455"><a href="#cb24-455"></a><span class="in">FROM ubuntu </span></span>
-<span id="cb24-456"><a href="#cb24-456"></a></span>
-<span id="cb24-457"><a href="#cb24-457"></a><span class="in">RUN apt update &amp;&amp; apt install gcc curl -y</span></span>
-<span id="cb24-458"><a href="#cb24-458"></a></span>
-<span id="cb24-459"><a href="#cb24-459"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.c -o tester.c</span></span>
-<span id="cb24-460"><a href="#cb24-460"></a></span>
-<span id="cb24-461"><a href="#cb24-461"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.sh -o tester.sh</span></span>
-<span id="cb24-462"><a href="#cb24-462"></a></span>
-<span id="cb24-463"><a href="#cb24-463"></a><span class="in">COPY macros.c .</span></span>
-<span id="cb24-464"><a href="#cb24-464"></a><span class="in">```</span></span>
-<span id="cb24-465"><a href="#cb24-465"></a></span>
-<span id="cb24-466"><a href="#cb24-466"></a><span class="fu">#### Usage</span></span>
-<span id="cb24-467"><a href="#cb24-467"></a></span>
-<span id="cb24-468"><a href="#cb24-468"></a><span class="ss">- </span>I built my container via:</span>
-<span id="cb24-469"><a href="#cb24-469"></a></span>
-<span id="cb24-470"><a href="#cb24-470"></a><span class="in">```email</span></span>
-<span id="cb24-471"><a href="#cb24-471"></a>podman build -t tester .</span>
-<span id="cb24-472"><a href="#cb24-472"></a><span class="in">```</span></span>
-<span id="cb24-473"><a href="#cb24-473"></a></span>
-<span id="cb24-474"><a href="#cb24-474"></a><span class="ss">- </span>I tested my code via:</span>
-<span id="cb24-475"><a href="#cb24-475"></a></span>
-<span id="cb24-476"><a href="#cb24-476"></a><span class="in">```email</span></span>
-<span id="cb24-477"><a href="#cb24-477"></a>podman run tester /bin/bash tester.sh</span>
-<span id="cb24-478"><a href="#cb24-478"></a><span class="in">```</span></span>
-<span id="cb24-479"><a href="#cb24-479"></a></span>
-<span id="cb24-480"><a href="#cb24-480"></a><span class="ss">- </span>If the above script returns <span class="in">`0`</span> you are done.</span>
-<span id="cb24-481"><a href="#cb24-481"></a><span class="ss">    - </span>Upload your code to your GitHub on which I am a collaborator.</span>
-<span id="cb24-482"><a href="#cb24-482"></a><span class="ss">- </span>I will review the most recent version prior to the due date.</span>
-<span id="cb24-483"><a href="#cb24-483"></a></span>
-<span id="cb24-484"><a href="#cb24-484"></a><span class="fu">#### Testing</span></span>
-<span id="cb24-485"><a href="#cb24-485"></a></span>
-<span id="cb24-486"><a href="#cb24-486"></a><span class="ss">- </span>It may be non-obvious how the tester functions.</span>
-<span id="cb24-487"><a href="#cb24-487"></a><span class="ss">    -   </span>When the container is built, it copies in <span class="in">`macros.c`</span></span>
-<span id="cb24-488"><a href="#cb24-488"></a><span class="ss">    -   </span>Within the container, <span class="in">`tester.sh`</span>:</span>
-<span id="cb24-489"><a href="#cb24-489"></a><span class="ss">        -   </span>Reads <span class="in">`macros.c`</span> with <span class="in">`grep`</span></span>
-<span id="cb24-490"><a href="#cb24-490"></a><span class="ss">            -   </span>Finds lines containing the 3 define statements</span>
-<span id="cb24-491"><a href="#cb24-491"></a><span class="ss">            -   </span>Echos these statements to the command line</span>
-<span id="cb24-492"><a href="#cb24-492"></a><span class="ss">        -   </span>Echoes <span class="in">`tester.c`</span> to the command line</span>
-<span id="cb24-493"><a href="#cb24-493"></a><span class="ss">        -   </span>Runs <span class="in">`gcc`</span> over the command line input</span>
-<span id="cb24-494"><a href="#cb24-494"></a><span class="ss">            -   </span><span class="in">`tester.c`</span> intentionally causes a suppressed error (<span class="in">`-Wno`</span>) </span>
-<span id="cb24-495"><a href="#cb24-495"></a><span class="ss">            -   </span>The command line code needs its languages specified (<span class="in">`-xc`</span>)</span>
-<span id="cb24-496"><a href="#cb24-496"></a><span class="ss">        -   </span>Runs the output executable</span>
-<span id="cb24-497"><a href="#cb24-497"></a><span class="ss">        -   </span>Echoes the return value via `$?</span>
-<span id="cb24-498"><a href="#cb24-498"></a><span class="ss">    -   </span>A return value of _n_ denotes:</span>
-<span id="cb24-499"><a href="#cb24-499"></a><span class="ss">        0.  </span>Perfect.</span>
-<span id="cb24-500"><a href="#cb24-500"></a><span class="ss">        1.  </span><span class="in">`CHOICE`</span> is incorrect</span>
-<span id="cb24-501"><a href="#cb24-501"></a><span class="ss">        2.  </span><span class="in">`MEDIAN`</span> is incorrect but <span class="in">`CHOICE`</span> is correct</span>
-<span id="cb24-502"><a href="#cb24-502"></a><span class="ss">        3.  </span><span class="in">`ROTATE`</span> is incorrect but <span class="in">`CHOICE`</span> and <span class="in">`MEDIAN`</span> are correct</span>
-<span id="cb24-503"><a href="#cb24-503"></a><span class="ss">  -   </span>It may be the case that <span class="in">`tester.c`</span> runs strangly on your system.</span>
-<span id="cb24-504"><a href="#cb24-504"></a><span class="ss">        -   </span>It assumes an underlying AMD64 device</span>
-<span id="cb24-505"><a href="#cb24-505"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">GCP</span><span class="co">](https://console.cloud.google.com/)</span> cloud console runs on AMD64</span>
-<span id="cb24-506"><a href="#cb24-506"></a><span class="ss">            -   </span><span class="in">`docker`</span>, installed by default, is an alternative to <span class="in">`podman`</span> on GCP.</span>
-<span id="cb24-507"><a href="#cb24-507"></a></span>
-<span id="cb24-508"><a href="#cb24-508"></a></span>
-<span id="cb24-509"><a href="#cb24-509"></a><span class="fu">#### Viewer</span></span>
-<span id="cb24-510"><a href="#cb24-510"></a></span>
-<span id="cb24-511"><a href="#cb24-511"></a><span class="ss">- </span>The tester doesn't include <span class="in">`&lt;stdio.h&gt;`</span> so it isn't easy to examine.</span>
-<span id="cb24-512"><a href="#cb24-512"></a><span class="ss">- </span>You can view sample outputs here.</span>
-<span id="cb24-513"><a href="#cb24-513"></a></span>
-<span id="cb24-514"><a href="#cb24-514"></a><span class="in">```{.c filename="viewer.c"}</span></span>
-<span id="cb24-515"><a href="#cb24-515"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb24-516"><a href="#cb24-516"></a></span>
-<span id="cb24-517"><a href="#cb24-517"></a><span class="in">/* your code here</span></span>
-<span id="cb24-518"><a href="#cb24-518"></a><span class="in">#define CHOICE(x,y,z) </span></span>
-<span id="cb24-519"><a href="#cb24-519"></a><span class="in">#define MEDIAN(x,y,z) </span></span>
-<span id="cb24-520"><a href="#cb24-520"></a><span class="in">#define ROTATE(a,b) */</span></span>
+<span id="cb24-50"><a href="#cb24-50"></a></span>
+<span id="cb24-51"><a href="#cb24-51"></a><span class="fu"># Podman&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#podman" role="button" aria-expanded="false" aria-controls="podman"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-52"><a href="#cb24-52"></a></span>
+<span id="cb24-53"><a href="#cb24-53"></a>::: {#podman .collapse .multi-collapse}</span>
+<span id="cb24-54"><a href="#cb24-54"></a></span>
+<span id="cb24-55"><a href="#cb24-55"></a><span class="fu"># Setup</span></span>
+<span id="cb24-56"><a href="#cb24-56"></a></span>
+<span id="cb24-57"><a href="#cb24-57"></a><span class="ss">- </span>For this lab, I used the following Containerfile</span>
+<span id="cb24-58"><a href="#cb24-58"></a><span class="ss">  - </span>Same as lecture</span>
+<span id="cb24-59"><a href="#cb24-59"></a><span class="ss">  - </span>I didn't even rename it</span>
+<span id="cb24-60"><a href="#cb24-60"></a></span>
+<span id="cb24-61"><a href="#cb24-61"></a><span class="in">```{.email filename="Containerfile"}</span></span>
+<span id="cb24-62"><a href="#cb24-62"></a><span class="in">FROM ubuntu</span></span>
+<span id="cb24-63"><a href="#cb24-63"></a></span>
+<span id="cb24-64"><a href="#cb24-64"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim</span></span>
+<span id="cb24-65"><a href="#cb24-65"></a><span class="in">```</span></span>
+<span id="cb24-66"><a href="#cb24-66"></a><span class="ss">- </span>I could build with the following, but I already had it built:</span>
+<span id="cb24-67"><a href="#cb24-67"></a><span class="in">```email</span></span>
+<span id="cb24-68"><a href="#cb24-68"></a>podman build -t c89_99 .</span>
+<span id="cb24-69"><a href="#cb24-69"></a><span class="in">```</span></span>
+<span id="cb24-70"><a href="#cb24-70"></a><span class="ss">- </span>I conducted the full hw within a single container's <span class="in">`vim`</span> instance.</span>
+<span id="cb24-71"><a href="#cb24-71"></a><span class="in">```email</span></span>
+<span id="cb24-72"><a href="#cb24-72"></a>podman run -it c89_99 vim macros.c</span>
+<span id="cb24-73"><a href="#cb24-73"></a><span class="in">```</span></span>
+<span id="cb24-74"><a href="#cb24-74"></a> </span>
+<span id="cb24-75"><a href="#cb24-75"></a>:::</span>
+<span id="cb24-76"><a href="#cb24-76"></a></span>
+<span id="cb24-77"><a href="#cb24-77"></a><span class="fu"># GitHub&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#github" role="button" aria-expanded="false" aria-controls="github"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-78"><a href="#cb24-78"></a></span>
+<span id="cb24-79"><a href="#cb24-79"></a>::: {#github .collapse .multi-collapse}</span>
+<span id="cb24-80"><a href="#cb24-80"></a></span>
+<span id="cb24-81"><a href="#cb24-81"></a>*[Read this in GitHub Docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)*</span>
+<span id="cb24-82"><a href="#cb24-82"></a></span>
+<span id="cb24-83"><a href="#cb24-83"></a><span class="fu">### Inviting collaborators to a personal repository</span></span>
+<span id="cb24-84"><a href="#cb24-84"></a>*You can add unlimited collaborators on public and private repositories.*</span>
+<span id="cb24-85"><a href="#cb24-85"></a></span>
+<span id="cb24-86"><a href="#cb24-86"></a><span class="fu">#### About collaboration in a personal repository</span></span>
+<span id="cb24-87"><a href="#cb24-87"></a></span>
+<span id="cb24-88"><a href="#cb24-88"></a>To collaborate with users in a repository that belongs to your personal account on GitHub, you can invite the users as collaborators.</span>
+<span id="cb24-89"><a href="#cb24-89"></a></span>
+<span id="cb24-90"><a href="#cb24-90"></a>If you want to grant more granular access to the repository, you can create a repository within an organization. For more information, see <span class="co">[</span><span class="ot"> Access permissions on GitHub</span><span class="co">](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github)</span>.</span>
+<span id="cb24-91"><a href="#cb24-91"></a></span>
+<span id="cb24-92"><a href="#cb24-92"></a><span class="fu">#### Inviting a collaborator to a personal repository</span></span>
+<span id="cb24-93"><a href="#cb24-93"></a></span>
+<span id="cb24-94"><a href="#cb24-94"></a>You can send an invitation to collaborate in your repository directly to someone on GitHub, or to the person's email address..</span>
+<span id="cb24-95"><a href="#cb24-95"></a></span>
+<span id="cb24-96"><a href="#cb24-96"></a>GitHub limits the number of people who can be invited to a repository within a 24-hour period. If you exceed this limit, either wait 24 hours or create an organization to collaborate with more people. For more information, see <span class="co">[</span><span class="ot">Creating a new organization from scratch</span><span class="co">](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch)</span>.</span>
+<span id="cb24-97"><a href="#cb24-97"></a></span>
+<span id="cb24-98"><a href="#cb24-98"></a><span class="ss">1. </span>Ask for the username of the person you're inviting as a collaborator. If they don't have a username yet, they can sign up for GitHub. For more information, see <span class="co">[</span><span class="ot">Creating an account on GitHub</span><span class="co">](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)</span>.</span>
+<span id="cb24-99"><a href="#cb24-99"></a><span class="ss">1. </span>Under your repository name, click **Settings**. If you cannot see the "Settings" tab, select the dropdown menu, then click Settings.</span>
+<span id="cb24-100"><a href="#cb24-100"></a>&lt;img width="100%" src="https://docs.github.com/assets/cb-28260/mw-1440/images/help/repository/repo-actions-settings.webp"&gt;</span>
+<span id="cb24-101"><a href="#cb24-101"></a><span class="ss">1. </span>In the "Access" section of the sidebar, click  **Collaborators**.</span>
+<span id="cb24-102"><a href="#cb24-102"></a><span class="ss">1. </span>Click **Add people**.</span>
+<span id="cb24-103"><a href="#cb24-103"></a><span class="ss">1. </span>In the search field, start typing the name of person you want to invite, then click a name in the list of matches.</span>
+<span id="cb24-104"><a href="#cb24-104"></a><span class="ss">1. </span>Click **Add NAME to REPOSITORY**.</span>
+<span id="cb24-105"><a href="#cb24-105"></a><span class="ss">1. </span>The user will receive an email inviting them to the repository. Once they accept your invitation, they will have collaborator access to your repository.</span>
+<span id="cb24-106"><a href="#cb24-106"></a></span>
+<span id="cb24-107"><a href="#cb24-107"></a>:::</span>
+<span id="cb24-108"><a href="#cb24-108"></a></span>
+<span id="cb24-109"><a href="#cb24-109"></a><span class="fu"># Sketch&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#rubric" role="button" aria-expanded="false" aria-controls="rubric"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-110"><a href="#cb24-110"></a></span>
+<span id="cb24-111"><a href="#cb24-111"></a>::: {#rubric .collapse .multi-collapse}</span>
+<span id="cb24-112"><a href="#cb24-112"></a></span>
+<span id="cb24-113"><a href="#cb24-113"></a><span class="ss">- </span>The purpose of this homework is to write four (4) bitwise macros</span>
+<span id="cb24-114"><a href="#cb24-114"></a><span class="ss">  - </span>Two trenanry operations</span>
+<span id="cb24-115"><a href="#cb24-115"></a><span class="ss">    - </span>Choice</span>
+<span id="cb24-116"><a href="#cb24-116"></a><span class="ss">    - </span>Median, also called Majority</span>
+<span id="cb24-117"><a href="#cb24-117"></a><span class="ss">  - </span>And two rotations</span>
+<span id="cb24-118"><a href="#cb24-118"></a><span class="ss">    - </span>Right, which sees use, and</span>
+<span id="cb24-119"><a href="#cb24-119"></a><span class="ss">    - </span>Left, as an academic exercise</span>
+<span id="cb24-120"><a href="#cb24-120"></a><span class="ss">- </span>These will see use in the next assignment, SHA256</span>
+<span id="cb24-121"><a href="#cb24-121"></a><span class="ss">- </span>They are logically and historically interesting within cryptography</span>
+<span id="cb24-122"><a href="#cb24-122"></a><span class="ss">- </span>There is no graceful way, to my knowledge, to describe these on bits in Python</span>
+<span id="cb24-123"><a href="#cb24-123"></a><span class="ss">  - </span>I will provide pseudo code over tuples of integers.</span>
+<span id="cb24-124"><a href="#cb24-124"></a><span class="ss">  - </span>I provide conversion functions from strings.</span>
+<span id="cb24-125"><a href="#cb24-125"></a><span class="ss">  - </span>I am aware of plenty non-graceful ways, but </span>
+<span id="cb24-126"><a href="#cb24-126"></a><span class="ss">    - </span>If you want to show me one you like send me a DM</span>
+<span id="cb24-127"><a href="#cb24-127"></a><span class="ss">- </span>For this homework, you will need some form of bit printing</span>
+<span id="cb24-128"><a href="#cb24-128"></a><span class="ss">  - </span>If your <span class="in">`printb`</span> from lab is struggling, use <span class="in">`%b`</span> in debug</span>
+<span id="cb24-129"><a href="#cb24-129"></a><span class="ss">  - </span>Just remove it before your turn in your work.</span>
+<span id="cb24-130"><a href="#cb24-130"></a><span class="ss">- </span>We next introduce macros.</span>
+<span id="cb24-131"><a href="#cb24-131"></a>  </span>
+<span id="cb24-132"><a href="#cb24-132"></a>:::</span>
+<span id="cb24-133"><a href="#cb24-133"></a></span>
+<span id="cb24-134"><a href="#cb24-134"></a><span class="fu"># Macros&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#macros" role="button" aria-expanded="false" aria-controls="macros"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-135"><a href="#cb24-135"></a></span>
+<span id="cb24-136"><a href="#cb24-136"></a>::: {#macros .collapse .multi-collapse}</span>
+<span id="cb24-137"><a href="#cb24-137"></a></span>
+<span id="cb24-138"><a href="#cb24-138"></a><span class="ss">- </span>The purpose of this homework is to write four (4) bitwise macros.</span>
+<span id="cb24-139"><a href="#cb24-139"></a><span class="ss">- </span>C macros exist in the "preproprocessor".</span>
+<span id="cb24-140"><a href="#cb24-140"></a><span class="ss">- </span>Here is an example of preprocessor directive you have written already:</span>
+<span id="cb24-141"><a href="#cb24-141"></a><span class="in">```C</span></span>
+<span id="cb24-142"><a href="#cb24-142"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb24-143"><a href="#cb24-143"></a><span class="in">```</span></span>
+<span id="cb24-144"><a href="#cb24-144"></a><span class="ss">- </span>You probably also have used a define directive</span>
+<span id="cb24-145"><a href="#cb24-145"></a><span class="in">```C</span></span>
+<span id="cb24-146"><a href="#cb24-146"></a><span class="in">#define ABCS "ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span></span>
+<span id="cb24-147"><a href="#cb24-147"></a><span class="in">```</span></span>
+<span id="cb24-148"><a href="#cb24-148"></a><span class="ss">- </span>The define directive is used to define something called a macro.</span>
+<span id="cb24-149"><a href="#cb24-149"></a><span class="ss">  - </span>When used to define constants, those are just macros that return a value.</span>
+<span id="cb24-150"><a href="#cb24-150"></a><span class="ss">- </span>We can also define macros that accept arguments, the most famous are <span class="in">`MIN`</span> and <span class="in">`MAX`</span></span>
+<span id="cb24-151"><a href="#cb24-151"></a><span class="ss">  - </span>I grabbed these from <span class="co">[</span><span class="ot">OpenBSD</span><span class="co">](https://github.com/openbsd/src/blob/master/sys/sys/param.h)</span></span>
+<span id="cb24-152"><a href="#cb24-152"></a><span class="ss">  - </span>They have fallen out of favor for a complicated reason.</span>
+<span id="cb24-153"><a href="#cb24-153"></a><span class="ss">  - </span>In general, use functions.</span>
+<span id="cb24-154"><a href="#cb24-154"></a><span class="ss">  - </span>We use macros to learn about them, not to learn to write them.</span>
+<span id="cb24-155"><a href="#cb24-155"></a>  </span>
+<span id="cb24-156"><a href="#cb24-156"></a><span class="in">```C</span></span>
+<span id="cb24-157"><a href="#cb24-157"></a><span class="in">/* Macros for min/max. */</span></span>
+<span id="cb24-158"><a href="#cb24-158"></a><span class="in">#define MIN(a,b) (((a)&lt;(b))?(a):(b))</span></span>
+<span id="cb24-159"><a href="#cb24-159"></a><span class="in">#define MAX(a,b) (((a)&gt;(b))?(a):(b))</span></span>
+<span id="cb24-160"><a href="#cb24-160"></a><span class="in">```</span></span>
+<span id="cb24-161"><a href="#cb24-161"></a></span>
+<span id="cb24-162"><a href="#cb24-162"></a><span class="ss">- </span>I'd encourage you to play around a bit with these macros.</span>
+<span id="cb24-163"><a href="#cb24-163"></a><span class="ss">  - </span>You don't need to fully understand before diving into choice, median, rotate.</span>
+<span id="cb24-164"><a href="#cb24-164"></a><span class="ss">  - </span>But a little background can help.</span>
+<span id="cb24-165"><a href="#cb24-165"></a>  </span>
+<span id="cb24-166"><a href="#cb24-166"></a><span class="in">```C</span></span>
+<span id="cb24-167"><a href="#cb24-167"></a><span class="in">int x = 50;</span></span>
+<span id="cb24-168"><a href="#cb24-168"></a><span class="in">int a = 'a';</span></span>
+<span id="cb24-169"><a href="#cb24-169"></a><span class="in">printf("%d\n", MAX(x++,a++))</span></span>
+<span id="cb24-170"><a href="#cb24-170"></a><span class="in">```</span></span>
+<span id="cb24-171"><a href="#cb24-171"></a></span>
+<span id="cb24-172"><a href="#cb24-172"></a><span class="ss">- </span>In general, you want to use a lot of parens in macros.</span>
+<span id="cb24-173"><a href="#cb24-173"></a><span class="ss">  - </span>Try some things out to try to see why.</span>
+<span id="cb24-174"><a href="#cb24-174"></a></span>
+<span id="cb24-175"><a href="#cb24-175"></a>:::</span>
+<span id="cb24-176"><a href="#cb24-176"></a></span>
+<span id="cb24-177"><a href="#cb24-177"></a><span class="fu"># Choice&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#choice" role="button" aria-expanded="choice" aria-controls="choice"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-178"><a href="#cb24-178"></a></span>
+<span id="cb24-179"><a href="#cb24-179"></a>::: {#choice .collapse .multi-collapse}</span>
+<span id="cb24-180"><a href="#cb24-180"></a></span>
+<span id="cb24-181"><a href="#cb24-181"></a><span class="ss">- </span>Here I provide Pythonic boolean choice and bitwise choice, and C boolean choice.</span>
+<span id="cb24-182"><a href="#cb24-182"></a><span class="ss">- </span>You will need C bitwise choice.</span>
+<span id="cb24-183"><a href="#cb24-183"></a><span class="ss">- </span>Choice is sometimes also referred to as the "ternary operator"</span>
+<span id="cb24-184"><a href="#cb24-184"></a><span class="ss">  - </span>Most famously in <span class="co">[</span><span class="ot">.js</span><span class="co">](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)</span></span>
+<span id="cb24-185"><a href="#cb24-185"></a><span class="ss">  - </span>This is... potentially confusing.</span>
+<span id="cb24-186"><a href="#cb24-186"></a><span class="ss">  - </span>It is *a* ternary operator.</span>
+<span id="cb24-187"><a href="#cb24-187"></a><span class="ss">  - </span>The Python operator is non-standard and <span class="co">[</span><span class="ot">intentionally ugly</span><span class="co">](https://mail.python.org/pipermail/python-dev/2005-September/056846.html)</span>.</span>
+<span id="cb24-188"><a href="#cb24-188"></a></span>
+<span id="cb24-189"><a href="#cb24-189"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
+<span id="cb24-190"><a href="#cb24-190"></a><span class="in">```{.python filename="macros.py"}</span></span>
+<span id="cb24-191"><a href="#cb24-191"></a><span class="in"># ref: choice := (e and f) xor ((not e) and g)</span></span>
+<span id="cb24-192"><a href="#cb24-192"></a><span class="in"># src: https://en.wikipedia.org/wiki/SHA-2</span></span>
+<span id="cb24-193"><a href="#cb24-193"></a></span>
+<span id="cb24-194"><a href="#cb24-194"></a><span class="in"># We just tell Python the ints are bools</span></span>
+<span id="cb24-195"><a href="#cb24-195"></a><span class="in"># We just use "!=" as xor</span></span>
+<span id="cb24-196"><a href="#cb24-196"></a></span>
+<span id="cb24-197"><a href="#cb24-197"></a><span class="in">def _choice(e:bool, f:bool, g:bool) -&gt; bool:</span></span>
+<span id="cb24-198"><a href="#cb24-198"></a><span class="in">    return int(f if e else g)</span></span>
+<span id="cb24-199"><a href="#cb24-199"></a><span class="in">    # return int((e and f) != ((not e) and g))</span></span>
+<span id="cb24-200"><a href="#cb24-200"></a></span>
+<span id="cb24-201"><a href="#cb24-201"></a><span class="in">import itertools</span></span>
+<span id="cb24-202"><a href="#cb24-202"></a></span>
+<span id="cb24-203"><a href="#cb24-203"></a><span class="in">tester = list(itertools.product([0, 1],repeat=3))</span></span>
+<span id="cb24-204"><a href="#cb24-204"></a></span>
+<span id="cb24-205"><a href="#cb24-205"></a><span class="in">print(" === Boolean Choice === ")</span></span>
+<span id="cb24-206"><a href="#cb24-206"></a><span class="in">[print('_choice'+str(test), '-&gt;', _choice(*test)) for test in tester]</span></span>
+<span id="cb24-207"><a href="#cb24-207"></a></span>
+<span id="cb24-208"><a href="#cb24-208"></a><span class="in">arrays = (tuple(zip(*tester)))</span></span>
+<span id="cb24-209"><a href="#cb24-209"></a></span>
+<span id="cb24-210"><a href="#cb24-210"></a><span class="in">def choice(e:tuple[bool], f:tuple[bool], g:tuple[bool]) -&gt; tuple[bool]:</span></span>
+<span id="cb24-211"><a href="#cb24-211"></a><span class="in">    return tuple(_choice(_e, _f, _g) for _e, _f, _g in zip(e,f,g))</span></span>
+<span id="cb24-212"><a href="#cb24-212"></a></span>
+<span id="cb24-213"><a href="#cb24-213"></a><span class="in"># This was ugly</span></span>
+<span id="cb24-214"><a href="#cb24-214"></a><span class="in"># print('choice'+str(arrays), '-&gt;', choice(*arrays))</span></span>
+<span id="cb24-215"><a href="#cb24-215"></a></span>
+<span id="cb24-216"><a href="#cb24-216"></a><span class="in"># pretty print</span></span>
+<span id="cb24-217"><a href="#cb24-217"></a><span class="in">bitstr = lambda bits : "".join([str(b) for b in bits])</span></span>
+<span id="cb24-218"><a href="#cb24-218"></a><span class="in">bsstrs = lambda arrs : str(tuple(bitstr(bits) for bits in arrs))</span></span>
+<span id="cb24-219"><a href="#cb24-219"></a><span class="in">print(" === Bitwise Choice === ")</span></span>
+<span id="cb24-220"><a href="#cb24-220"></a><span class="in">print('choice'+bsstrs(arrays), '-&gt;', "'"+bitstr(choice(*arrays))+"'")</span></span>
+<span id="cb24-221"><a href="#cb24-221"></a><span class="in">```</span></span>
+<span id="cb24-222"><a href="#cb24-222"></a>&lt;/blockquote&gt;</span>
+<span id="cb24-223"><a href="#cb24-223"></a></span>
+<span id="cb24-224"><a href="#cb24-224"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
+<span id="cb24-225"><a href="#cb24-225"></a></span>
+<span id="cb24-226"><a href="#cb24-226"></a><span class="in">```email</span></span>
+<span id="cb24-227"><a href="#cb24-227"></a> === Boolean Choice === </span>
+<span id="cb24-228"><a href="#cb24-228"></a>_choice(0, 0, 0) -&gt; 0</span>
+<span id="cb24-229"><a href="#cb24-229"></a>_choice(0, 0, 1) -&gt; 1</span>
+<span id="cb24-230"><a href="#cb24-230"></a>_choice(0, 1, 0) -&gt; 0</span>
+<span id="cb24-231"><a href="#cb24-231"></a>_choice(0, 1, 1) -&gt; 1</span>
+<span id="cb24-232"><a href="#cb24-232"></a>_choice(1, 0, 0) -&gt; 0</span>
+<span id="cb24-233"><a href="#cb24-233"></a>_choice(1, 0, 1) -&gt; 0</span>
+<span id="cb24-234"><a href="#cb24-234"></a>_choice(1, 1, 0) -&gt; 1</span>
+<span id="cb24-235"><a href="#cb24-235"></a>_choice(1, 1, 1) -&gt; 1</span>
+<span id="cb24-236"><a href="#cb24-236"></a> === Bitwise Choice ===</span>
+<span id="cb24-237"><a href="#cb24-237"></a>choice('00001111', '00110011', '01010101') -&gt; '01010011'</span>
+<span id="cb24-238"><a href="#cb24-238"></a><span class="in">```</span></span>
+<span id="cb24-239"><a href="#cb24-239"></a></span>
+<span id="cb24-240"><a href="#cb24-240"></a><span class="ss">- </span>The following defines a macro for boolean choice.</span>
+<span id="cb24-241"><a href="#cb24-241"></a><span class="ss">  - </span>Though not particularly gracefully.</span>
+<span id="cb24-242"><a href="#cb24-242"></a>  </span>
+<span id="cb24-243"><a href="#cb24-243"></a><span class="in">```C</span></span>
+<span id="cb24-244"><a href="#cb24-244"></a><span class="in">/* Macro for boolean choice. */</span></span>
+<span id="cb24-245"><a href="#cb24-245"></a><span class="in">#define CHOICE(e,f,g) ((e)?(f):(g))</span></span>
+<span id="cb24-246"><a href="#cb24-246"></a><span class="in">```</span></span>
+<span id="cb24-247"><a href="#cb24-247"></a></span>
+<span id="cb24-248"><a href="#cb24-248"></a><span class="ss">- </span>Update the macro to perform bitwise choice.</span>
+<span id="cb24-249"><a href="#cb24-249"></a><span class="ss">  - </span>It should be a single line macro.</span>
+<span id="cb24-250"><a href="#cb24-250"></a><span class="ss">  - </span>It should use bitwise operators.</span>
+<span id="cb24-251"><a href="#cb24-251"></a></span>
+<span id="cb24-252"><a href="#cb24-252"></a>:::</span>
+<span id="cb24-253"><a href="#cb24-253"></a></span>
+<span id="cb24-254"><a href="#cb24-254"></a><span class="fu"># Median&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#median" role="button" aria-expanded="median" aria-controls="median"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-255"><a href="#cb24-255"></a></span>
+<span id="cb24-256"><a href="#cb24-256"></a>::: {#median .collapse .multi-collapse}</span>
+<span id="cb24-257"><a href="#cb24-257"></a></span>
+<span id="cb24-258"><a href="#cb24-258"></a><span class="ss">- </span>Here I provide Pythonic boolean median and bitwise median, and C boolean median.</span>
+<span id="cb24-259"><a href="#cb24-259"></a><span class="ss">- </span>You will need C bitwise median.</span>
+<span id="cb24-260"><a href="#cb24-260"></a><span class="ss">- </span>I will take it as given you know what a median is.</span>
+<span id="cb24-261"><a href="#cb24-261"></a><span class="ss">- </span>The following code is appended to "macros.py"</span>
+<span id="cb24-262"><a href="#cb24-262"></a></span>
+<span id="cb24-263"><a href="#cb24-263"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
+<span id="cb24-264"><a href="#cb24-264"></a><span class="in">```{.python filename="macros.py" }</span></span>
+<span id="cb24-265"><a href="#cb24-265"></a><span class="in">import numpy as np</span></span>
+<span id="cb24-266"><a href="#cb24-266"></a></span>
+<span id="cb24-267"><a href="#cb24-267"></a><span class="in">def _median(e:bool, f:bool, g:bool) -&gt; bool:</span></span>
+<span id="cb24-268"><a href="#cb24-268"></a><span class="in">    return int(np.median([e,f,g]))</span></span>
+<span id="cb24-269"><a href="#cb24-269"></a></span>
+<span id="cb24-270"><a href="#cb24-270"></a><span class="in">print(" === Boolean Median === ")</span></span>
+<span id="cb24-271"><a href="#cb24-271"></a><span class="in">[print('_median'+str(test), '-&gt;', _median(*test)) for test in tester]</span></span>
+<span id="cb24-272"><a href="#cb24-272"></a></span>
+<span id="cb24-273"><a href="#cb24-273"></a><span class="in">def median(e:tuple[bool], f:tuple[bool], g:tuple[bool]) -&gt; tuple[bool]:</span></span>
+<span id="cb24-274"><a href="#cb24-274"></a><span class="in">    return tuple(_median(_e, _f, _g) for _e, _f, _g in zip(e,f,g))</span></span>
+<span id="cb24-275"><a href="#cb24-275"></a></span>
+<span id="cb24-276"><a href="#cb24-276"></a><span class="in">print(" === Bitwise Median === ")</span></span>
+<span id="cb24-277"><a href="#cb24-277"></a><span class="in">print('median'+bsstrs(arrays), '-&gt;', "'"+bitstr(median(*arrays))+"'")</span></span>
+<span id="cb24-278"><a href="#cb24-278"></a><span class="in">```</span></span>
+<span id="cb24-279"><a href="#cb24-279"></a>&lt;/blockquote&gt;</span>
+<span id="cb24-280"><a href="#cb24-280"></a></span>
+<span id="cb24-281"><a href="#cb24-281"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
+<span id="cb24-282"><a href="#cb24-282"></a></span>
+<span id="cb24-283"><a href="#cb24-283"></a><span class="in">```email</span></span>
+<span id="cb24-284"><a href="#cb24-284"></a> === Boolean Median === </span>
+<span id="cb24-285"><a href="#cb24-285"></a>_median(0, 0, 0) -&gt; 0</span>
+<span id="cb24-286"><a href="#cb24-286"></a>_median(0, 0, 1) -&gt; 0</span>
+<span id="cb24-287"><a href="#cb24-287"></a>_median(0, 1, 0) -&gt; 0</span>
+<span id="cb24-288"><a href="#cb24-288"></a>_median(0, 1, 1) -&gt; 1</span>
+<span id="cb24-289"><a href="#cb24-289"></a>_median(1, 0, 0) -&gt; 0</span>
+<span id="cb24-290"><a href="#cb24-290"></a>_median(1, 0, 1) -&gt; 1</span>
+<span id="cb24-291"><a href="#cb24-291"></a>_median(1, 1, 0) -&gt; 1</span>
+<span id="cb24-292"><a href="#cb24-292"></a>_median(1, 1, 1) -&gt; 1</span>
+<span id="cb24-293"><a href="#cb24-293"></a> === Bitwise Median ===</span>
+<span id="cb24-294"><a href="#cb24-294"></a>median('00001111', '00110011', '01010101') -&gt; '00010111'</span>
+<span id="cb24-295"><a href="#cb24-295"></a><span class="in">```</span></span>
+<span id="cb24-296"><a href="#cb24-296"></a></span>
+<span id="cb24-297"><a href="#cb24-297"></a><span class="ss">- </span>The following defines a macro for boolean median.</span>
+<span id="cb24-298"><a href="#cb24-298"></a><span class="ss">  - </span>Though not particularly gracefully.</span>
+<span id="cb24-299"><a href="#cb24-299"></a><span class="ss">  - </span>C <span class="in">`!!`</span> is very close to Python <span class="in">`bool()`</span></span>
+<span id="cb24-300"><a href="#cb24-300"></a>  </span>
+<span id="cb24-301"><a href="#cb24-301"></a><span class="in">```C</span></span>
+<span id="cb24-302"><a href="#cb24-302"></a><span class="in">/* Macro for boolean median. */</span></span>
+<span id="cb24-303"><a href="#cb24-303"></a><span class="in">#define MEDIAN(e,f,g) ((!!(e) + !!(f) + !!(g)) &gt; 1)</span></span>
+<span id="cb24-304"><a href="#cb24-304"></a><span class="in">```</span></span>
+<span id="cb24-305"><a href="#cb24-305"></a></span>
+<span id="cb24-306"><a href="#cb24-306"></a><span class="ss">- </span>Update the macro to perform bitwise median.</span>
+<span id="cb24-307"><a href="#cb24-307"></a><span class="ss">  - </span>It should be a single line macro.</span>
+<span id="cb24-308"><a href="#cb24-308"></a><span class="ss">  - </span>It should use bitwise operators.</span>
+<span id="cb24-309"><a href="#cb24-309"></a></span>
+<span id="cb24-310"><a href="#cb24-310"></a>:::</span>
+<span id="cb24-311"><a href="#cb24-311"></a></span>
+<span id="cb24-312"><a href="#cb24-312"></a><span class="fu"># Sizeof&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#sizeof" role="button" aria-expanded="false" aria-controls="sizeof"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-313"><a href="#cb24-313"></a></span>
+<span id="cb24-314"><a href="#cb24-314"></a>::: {#sizeof .collapse .multi-collapse}</span>
+<span id="cb24-315"><a href="#cb24-315"></a></span>
+<span id="cb24-316"><a href="#cb24-316"></a><span class="ss">- </span>You may have noticed something while writing <span class="in">`printb`</span>: </span>
+<span id="cb24-317"><a href="#cb24-317"></a><span class="ss">  - </span>That not know how many bits you had was annoying.</span>
+<span id="cb24-318"><a href="#cb24-318"></a><span class="ss">- </span>Not to worry, C can help us.</span>
+<span id="cb24-319"><a href="#cb24-319"></a><span class="ss">  - </span>A char is always exactly 8 bits</span>
+<span id="cb24-320"><a href="#cb24-320"></a><span class="ss">    - </span>This is also called one byte</span>
+<span id="cb24-321"><a href="#cb24-321"></a><span class="ss">    - </span>It is trivial to verifying this experimentally.</span>
+<span id="cb24-322"><a href="#cb24-322"></a><span class="ss">  - </span>Everything else is some multiple of char</span>
+<span id="cb24-323"><a href="#cb24-323"></a><span class="ss">  - </span>To find how many char's big something is, use <span class="in">`sizeof`</span></span>
+<span id="cb24-324"><a href="#cb24-324"></a><span class="ss">- </span>I compile with <span class="in">`-w`</span> to silence an error.</span>
+<span id="cb24-325"><a href="#cb24-325"></a><span class="ss">  - </span><span class="in">`sizeof`</span> doesn't run an integer, so we shouldn't print with <span class="in">`%d`</span></span>
+<span id="cb24-326"><a href="#cb24-326"></a><span class="ss">  - </span>More latter.</span>
+<span id="cb24-327"><a href="#cb24-327"></a></span>
+<span id="cb24-328"><a href="#cb24-328"></a><span class="in">```sh</span></span>
+<span id="cb24-329"><a href="#cb24-329"></a><span class="ex">$</span> cat sizeof.c</span>
+<span id="cb24-330"><a href="#cb24-330"></a><span class="co">#include &lt;stdio.h&gt;</span></span>
+<span id="cb24-331"><a href="#cb24-331"></a></span>
+<span id="cb24-332"><a href="#cb24-332"></a><span class="ex">int</span> main<span class="er">(</span><span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb24-333"><a href="#cb24-333"></a>        <span class="ex">char</span> c = 1<span class="kw">;</span></span>
+<span id="cb24-334"><a href="#cb24-334"></a>        <span class="ex">int</span> n = 2<span class="kw">;</span></span>
+<span id="cb24-335"><a href="#cb24-335"></a>        <span class="ex">char</span> s<span class="pp">[</span><span class="ss">8</span><span class="pp">]</span> = <span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3</span><span class="op">,</span><span class="dt">4</span><span class="op">,</span><span class="dt">5</span><span class="op">,</span><span class="dt">6</span><span class="op">,</span><span class="dt">7</span><span class="op">,</span><span class="dt">8}</span><span class="kw">;</span></span>
+<span id="cb24-336"><a href="#cb24-336"></a>        <span class="bu">printf</span><span class="er">(</span><span class="st">"sizeof(c) = %d, sizeof(n) = %d, sizeof(s) = %d\n"</span><span class="ex">,</span></span>
+<span id="cb24-337"><a href="#cb24-337"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">c</span><span class="kw">)</span><span class="ex">,</span></span>
+<span id="cb24-338"><a href="#cb24-338"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="ex">,</span></span>
+<span id="cb24-339"><a href="#cb24-339"></a>                        <span class="ex">sizeof</span><span class="er">(</span><span class="ex">s</span><span class="kw">)</span></span>
+<span id="cb24-340"><a href="#cb24-340"></a>              <span class="kw">);</span></span>
+<span id="cb24-341"><a href="#cb24-341"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="kw">;</span></span>
+<span id="cb24-342"><a href="#cb24-342"></a><span class="kw">}</span></span>
+<span id="cb24-343"><a href="#cb24-343"></a><span class="ex">$</span> gcc sizeof.c <span class="at">-w</span></span>
+<span id="cb24-344"><a href="#cb24-344"></a><span class="ex">$</span> ./a.out</span>
+<span id="cb24-345"><a href="#cb24-345"></a><span class="ex">sizeof</span><span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">=</span> 1, sizeof<span class="er">(</span><span class="ex">n</span><span class="kw">)</span> <span class="ex">=</span> 4, sizeof<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="ex">=</span> 8</span>
+<span id="cb24-346"><a href="#cb24-346"></a><span class="in">```</span></span>
+<span id="cb24-347"><a href="#cb24-347"></a></span>
+<span id="cb24-348"><a href="#cb24-348"></a><span class="ss">- </span>To make introducing rotate easier, all examples will be on char</span>
+<span id="cb24-349"><a href="#cb24-349"></a><span class="ss">- </span>Rotate is used in cryptography on things 32 bits in size.</span>
+<span id="cb24-350"><a href="#cb24-350"></a><span class="ss">  - </span>Usually an int is this big, but not always.</span>
+<span id="cb24-351"><a href="#cb24-351"></a><span class="ss">  - </span>There's ways to manage this.</span>
+<span id="cb24-352"><a href="#cb24-352"></a><span class="ss">- </span>I will test your rotate code on the <span class="in">`unsigned int`</span> type, which is usually 32 bits in size.</span>
+<span id="cb24-353"><a href="#cb24-353"></a><span class="ss">  - </span>You can assume 32, for now.</span>
+<span id="cb24-354"><a href="#cb24-354"></a></span>
+<span id="cb24-355"><a href="#cb24-355"></a>:::</span>
+<span id="cb24-356"><a href="#cb24-356"></a></span>
+<span id="cb24-357"><a href="#cb24-357"></a><span class="fu"># Rotate&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#rotate" role="button" aria-expanded="false" aria-controls="rotate"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-358"><a href="#cb24-358"></a></span>
+<span id="cb24-359"><a href="#cb24-359"></a>::: {#rotate .collapse .multi-collapse}</span>
+<span id="cb24-360"><a href="#cb24-360"></a></span>
+<span id="cb24-361"><a href="#cb24-361"></a><span class="ss">- </span>We recall cipher rotation.</span>
+<span id="cb24-362"><a href="#cb24-362"></a></span>
+<span id="cb24-363"><a href="#cb24-363"></a><span class="in">```email</span></span>
+<span id="cb24-364"><a href="#cb24-364"></a> ____________________________</span>
+<span id="cb24-365"><a href="#cb24-365"></a>[ ABCDEFGHIJKLMNOPQRSTUVWXYZ ] # alphabet</span>
+<span id="cb24-366"><a href="#cb24-366"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
+<span id="cb24-367"><a href="#cb24-367"></a> ____________________________</span>
+<span id="cb24-368"><a href="#cb24-368"></a>[ DEFGHIJKLMNOPQRSTUVWXYZABC ] # forward(3)</span>
+<span id="cb24-369"><a href="#cb24-369"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
+<span id="cb24-370"><a href="#cb24-370"></a> ____________________________</span>
+<span id="cb24-371"><a href="#cb24-371"></a>[ XYZABCDEFGHIJKLMNOPQRSTUVW ] # forward(-3)</span>
+<span id="cb24-372"><a href="#cb24-372"></a> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
+<span id="cb24-373"><a href="#cb24-373"></a><span class="in">```</span></span>
+<span id="cb24-374"><a href="#cb24-374"></a></span>
+<span id="cb24-375"><a href="#cb24-375"></a><span class="ss">- </span>We understand this as:</span>
+<span id="cb24-376"><a href="#cb24-376"></a><span class="ss">  - </span>Take an array and,</span>
+<span id="cb24-377"><a href="#cb24-377"></a><span class="ss">  - </span>Take a numerical value...</span>
+<span id="cb24-378"><a href="#cb24-378"></a><span class="ss">     - </span>of less than the length of the array.</span>
+<span id="cb24-379"><a href="#cb24-379"></a><span class="ss">  - </span>Maintain all elements of the array, but</span>
+<span id="cb24-380"><a href="#cb24-380"></a><span class="ss">    - </span>Increase their index by the numerical value, and</span>
+<span id="cb24-381"><a href="#cb24-381"></a><span class="ss">    - </span>Indices greater than array length wrap around...</span>
+<span id="cb24-382"><a href="#cb24-382"></a><span class="ss">      - </span>Using modulo array length.</span>
+<span id="cb24-383"><a href="#cb24-383"></a><span class="ss">- </span>We apply this same idea to the notion of boolean arrays.</span>
+<span id="cb24-384"><a href="#cb24-384"></a><span class="ss">  - </span>A unsigned int is a boolean array of some length.</span>
+<span id="cb24-385"><a href="#cb24-385"></a><span class="ss">  - </span>It is possible to determine these lengths.</span>
+<span id="cb24-386"><a href="#cb24-386"></a><span class="ss">- </span>Here is a Python bitwise rotate on boolean arrays of size 8.</span>
+<span id="cb24-387"><a href="#cb24-387"></a></span>
+<span id="cb24-388"><a href="#cb24-388"></a>&lt;blockquote style="max-height:10em;overflow-y: scroll;"&gt;</span>
+<span id="cb24-389"><a href="#cb24-389"></a><span class="in">```{.python filename="macros.py"}</span></span>
+<span id="cb24-390"><a href="#cb24-390"></a><span class="in">def rotleft(a:tuple[bool], n:int) -&gt; tuple[bool]:</span></span>
+<span id="cb24-391"><a href="#cb24-391"></a><span class="in">    return a[n:] + a[:n]</span></span>
+<span id="cb24-392"><a href="#cb24-392"></a></span>
+<span id="cb24-393"><a href="#cb24-393"></a><span class="in">print(" === Bitwise Rotleft === ")</span></span>
+<span id="cb24-394"><a href="#cb24-394"></a><span class="in">array = (0,0,1,0,1,1,0,1)</span></span>
+<span id="cb24-395"><a href="#cb24-395"></a><span class="in">for n in range(len(arrays[0])+1):</span></span>
+<span id="cb24-396"><a href="#cb24-396"></a><span class="in">    print('rotleft('+bitstr(array)+','+str(n)+') -&gt;', bitstr(rotate(array,n)))</span></span>
+<span id="cb24-397"><a href="#cb24-397"></a><span class="in">```</span></span>
+<span id="cb24-398"><a href="#cb24-398"></a>&lt;/blockquote&gt;</span>
+<span id="cb24-399"><a href="#cb24-399"></a></span>
+<span id="cb24-400"><a href="#cb24-400"></a><span class="ss">- </span>You can run it yourself, but here is the output for reference.</span>
+<span id="cb24-401"><a href="#cb24-401"></a></span>
+<span id="cb24-402"><a href="#cb24-402"></a><span class="in">```email</span></span>
+<span id="cb24-403"><a href="#cb24-403"></a> === Bitwise Rotleft ===</span>
+<span id="cb24-404"><a href="#cb24-404"></a>rotleft(00101101,0) -&gt; 00101101</span>
+<span id="cb24-405"><a href="#cb24-405"></a>rotleft(00101101,1) -&gt; 01011010</span>
+<span id="cb24-406"><a href="#cb24-406"></a>rotleft(00101101,2) -&gt; 10110100</span>
+<span id="cb24-407"><a href="#cb24-407"></a>rotleft(00101101,3) -&gt; 01101001</span>
+<span id="cb24-408"><a href="#cb24-408"></a>rotleft(00101101,4) -&gt; 11010010</span>
+<span id="cb24-409"><a href="#cb24-409"></a>rotleft(00101101,5) -&gt; 10100101</span>
+<span id="cb24-410"><a href="#cb24-410"></a>rotleft(00101101,6) -&gt; 01001011</span>
+<span id="cb24-411"><a href="#cb24-411"></a>rotleft(00101101,7) -&gt; 10010110</span>
+<span id="cb24-412"><a href="#cb24-412"></a>rotleft(00101101,8) -&gt; 00101101</span>
+<span id="cb24-413"><a href="#cb24-413"></a><span class="in">```</span></span>
+<span id="cb24-414"><a href="#cb24-414"></a></span>
+<span id="cb24-415"><a href="#cb24-415"></a><span class="ss">- </span>We note that this forms a "backward" or "leftward" rotate.</span>
+<span id="cb24-416"><a href="#cb24-416"></a><span class="ss">  - </span>This is a non-standard rotate, often called <span class="in">`lotate`</span> or <span class="in">`rotleft`</span></span>
+<span id="cb24-417"><a href="#cb24-417"></a><span class="ss">  - </span>A future assignment will use a "forward" or "rightward" rotate.</span>
+<span id="cb24-418"><a href="#cb24-418"></a><span class="ss">- </span>Without showing code, it would look like this.</span>
+<span id="cb24-419"><a href="#cb24-419"></a></span>
+<span id="cb24-420"><a href="#cb24-420"></a><span class="in">```email</span></span>
+<span id="cb24-421"><a href="#cb24-421"></a> === Bitwise Rotate ===</span>
+<span id="cb24-422"><a href="#cb24-422"></a>rotate(00101101,0) -&gt; 00101101</span>
+<span id="cb24-423"><a href="#cb24-423"></a>rotate(00101101,1) -&gt; 10010110</span>
+<span id="cb24-424"><a href="#cb24-424"></a>rotate(00101101,2) -&gt; 01001011</span>
+<span id="cb24-425"><a href="#cb24-425"></a>rotate(00101101,3) -&gt; 10100101</span>
+<span id="cb24-426"><a href="#cb24-426"></a>rotate(00101101,4) -&gt; 11010010</span>
+<span id="cb24-427"><a href="#cb24-427"></a>rotate(00101101,5) -&gt; 01101001</span>
+<span id="cb24-428"><a href="#cb24-428"></a>rotate(00101101,6) -&gt; 10110100</span>
+<span id="cb24-429"><a href="#cb24-429"></a>rotate(00101101,7) -&gt; 01011010</span>
+<span id="cb24-430"><a href="#cb24-430"></a>rotate(00101101,8) -&gt; 00101101</span>
+<span id="cb24-431"><a href="#cb24-431"></a><span class="in">```</span></span>
+<span id="cb24-432"><a href="#cb24-432"></a></span>
+<span id="cb24-433"><a href="#cb24-433"></a><span class="fu">#### Note:</span></span>
+<span id="cb24-434"><a href="#cb24-434"></a></span>
+<span id="cb24-435"><a href="#cb24-435"></a><span class="ss">- </span>The C language bitwise operations often seem quite unstable.</span>
+<span id="cb24-436"><a href="#cb24-436"></a><span class="ss">  - </span>It is a virtual certainty you will encounter pernicious bugs.</span>
+<span id="cb24-437"><a href="#cb24-437"></a><span class="ss">  - </span>Use <span class="in">`unsigned int`</span> or just <span class="in">`unsigned`</span> to avoid negative shenanigans.</span>
+<span id="cb24-438"><a href="#cb24-438"></a><span class="ss">  - </span>Print everything all the time.</span>
+<span id="cb24-439"><a href="#cb24-439"></a><span class="ss">  - </span>Liberally consult <span class="in">`printf`</span> and C language documentation.</span>
+<span id="cb24-440"><a href="#cb24-440"></a><span class="ss">  - </span>Ask questions early and often.</span>
+<span id="cb24-441"><a href="#cb24-441"></a></span>
+<span id="cb24-442"><a href="#cb24-442"></a>:::</span>
+<span id="cb24-443"><a href="#cb24-443"></a></span>
+<span id="cb24-444"><a href="#cb24-444"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls="tester"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb24-445"><a href="#cb24-445"></a></span>
+<span id="cb24-446"><a href="#cb24-446"></a>::: {#tester .collapse .multi-collapse}</span>
+<span id="cb24-447"><a href="#cb24-447"></a></span>
+<span id="cb24-448"><a href="#cb24-448"></a><span class="fu">#### Tester</span></span>
+<span id="cb24-449"><a href="#cb24-449"></a></span>
+<span id="cb24-450"><a href="#cb24-450"></a><span class="ss">- </span>I am providing the following Containerfile, which will serve as a minimal autograder</span>
+<span id="cb24-451"><a href="#cb24-451"></a><span class="ss">    - </span>It sets up an Ubuntu container.</span>
+<span id="cb24-452"><a href="#cb24-452"></a><span class="ss">    - </span>It downloads a .c and .sh file and script to test.</span>
+<span id="cb24-453"><a href="#cb24-453"></a><span class="ss">    - </span>It copies in "macros.c" from your system.</span>
+<span id="cb24-454"><a href="#cb24-454"></a></span>
+<span id="cb24-455"><a href="#cb24-455"></a><span class="in">```{.email filename="Containerfile"}</span></span>
+<span id="cb24-456"><a href="#cb24-456"></a><span class="in">FROM ubuntu </span></span>
+<span id="cb24-457"><a href="#cb24-457"></a></span>
+<span id="cb24-458"><a href="#cb24-458"></a><span class="in">RUN apt update &amp;&amp; apt install gcc curl -y</span></span>
+<span id="cb24-459"><a href="#cb24-459"></a></span>
+<span id="cb24-460"><a href="#cb24-460"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.c -o tester.c</span></span>
+<span id="cb24-461"><a href="#cb24-461"></a></span>
+<span id="cb24-462"><a href="#cb24-462"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.sh -o tester.sh</span></span>
+<span id="cb24-463"><a href="#cb24-463"></a></span>
+<span id="cb24-464"><a href="#cb24-464"></a><span class="in">COPY macros.c .</span></span>
+<span id="cb24-465"><a href="#cb24-465"></a><span class="in">```</span></span>
+<span id="cb24-466"><a href="#cb24-466"></a></span>
+<span id="cb24-467"><a href="#cb24-467"></a><span class="fu">#### Usage</span></span>
+<span id="cb24-468"><a href="#cb24-468"></a></span>
+<span id="cb24-469"><a href="#cb24-469"></a><span class="ss">- </span>I built my container via:</span>
+<span id="cb24-470"><a href="#cb24-470"></a></span>
+<span id="cb24-471"><a href="#cb24-471"></a><span class="in">```email</span></span>
+<span id="cb24-472"><a href="#cb24-472"></a>podman build -t tester .</span>
+<span id="cb24-473"><a href="#cb24-473"></a><span class="in">```</span></span>
+<span id="cb24-474"><a href="#cb24-474"></a></span>
+<span id="cb24-475"><a href="#cb24-475"></a><span class="ss">- </span>I tested my code via:</span>
+<span id="cb24-476"><a href="#cb24-476"></a></span>
+<span id="cb24-477"><a href="#cb24-477"></a><span class="in">```email</span></span>
+<span id="cb24-478"><a href="#cb24-478"></a>podman run tester /bin/bash tester.sh</span>
+<span id="cb24-479"><a href="#cb24-479"></a><span class="in">```</span></span>
+<span id="cb24-480"><a href="#cb24-480"></a></span>
+<span id="cb24-481"><a href="#cb24-481"></a><span class="ss">- </span>If the above script returns <span class="in">`0`</span> you are done.</span>
+<span id="cb24-482"><a href="#cb24-482"></a><span class="ss">    - </span>Upload your code to your GitHub on which I am a collaborator.</span>
+<span id="cb24-483"><a href="#cb24-483"></a><span class="ss">- </span>I will review the most recent version prior to the due date.</span>
+<span id="cb24-484"><a href="#cb24-484"></a></span>
+<span id="cb24-485"><a href="#cb24-485"></a><span class="fu">#### Testing</span></span>
+<span id="cb24-486"><a href="#cb24-486"></a></span>
+<span id="cb24-487"><a href="#cb24-487"></a><span class="ss">- </span>It may be non-obvious how the tester functions.</span>
+<span id="cb24-488"><a href="#cb24-488"></a><span class="ss">    -   </span>When the container is built, it copies in <span class="in">`macros.c`</span></span>
+<span id="cb24-489"><a href="#cb24-489"></a><span class="ss">    -   </span>Within the container, <span class="in">`tester.sh`</span>:</span>
+<span id="cb24-490"><a href="#cb24-490"></a><span class="ss">        -   </span>Reads <span class="in">`macros.c`</span> with <span class="in">`grep`</span></span>
+<span id="cb24-491"><a href="#cb24-491"></a><span class="ss">            -   </span>Finds lines containing the 3 define statements</span>
+<span id="cb24-492"><a href="#cb24-492"></a><span class="ss">            -   </span>Echos these statements to the command line</span>
+<span id="cb24-493"><a href="#cb24-493"></a><span class="ss">        -   </span>Echoes <span class="in">`tester.c`</span> to the command line</span>
+<span id="cb24-494"><a href="#cb24-494"></a><span class="ss">        -   </span>Runs <span class="in">`gcc`</span> over the command line input</span>
+<span id="cb24-495"><a href="#cb24-495"></a><span class="ss">            -   </span><span class="in">`tester.c`</span> intentionally causes a suppressed error (<span class="in">`-Wno`</span>) </span>
+<span id="cb24-496"><a href="#cb24-496"></a><span class="ss">            -   </span>The command line code needs its languages specified (<span class="in">`-xc`</span>)</span>
+<span id="cb24-497"><a href="#cb24-497"></a><span class="ss">        -   </span>Runs the output executable</span>
+<span id="cb24-498"><a href="#cb24-498"></a><span class="ss">        -   </span>Echoes the return value via `$?</span>
+<span id="cb24-499"><a href="#cb24-499"></a><span class="ss">    -   </span>A return value of _n_ denotes:</span>
+<span id="cb24-500"><a href="#cb24-500"></a><span class="ss">        0.  </span>Perfect.</span>
+<span id="cb24-501"><a href="#cb24-501"></a><span class="ss">        1.  </span><span class="in">`CHOICE`</span> is incorrect</span>
+<span id="cb24-502"><a href="#cb24-502"></a><span class="ss">        2.  </span><span class="in">`MEDIAN`</span> is incorrect but <span class="in">`CHOICE`</span> is correct</span>
+<span id="cb24-503"><a href="#cb24-503"></a><span class="ss">        3.  </span><span class="in">`ROTATE`</span> is incorrect but <span class="in">`CHOICE`</span> and <span class="in">`MEDIAN`</span> are correct</span>
+<span id="cb24-504"><a href="#cb24-504"></a></span>
+<span id="cb24-505"><a href="#cb24-505"></a><span class="fu">#### Viewer</span></span>
+<span id="cb24-506"><a href="#cb24-506"></a></span>
+<span id="cb24-507"><a href="#cb24-507"></a><span class="ss">- </span>The tester doesn't include <span class="in">`&lt;stdio.h&gt;`</span> so it isn't easy to examine.</span>
+<span id="cb24-508"><a href="#cb24-508"></a><span class="ss">- </span>You can view sample outputs here.</span>
+<span id="cb24-509"><a href="#cb24-509"></a></span>
+<span id="cb24-510"><a href="#cb24-510"></a><span class="in">```{.c filename="viewer.c"}</span></span>
+<span id="cb24-511"><a href="#cb24-511"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb24-512"><a href="#cb24-512"></a></span>
+<span id="cb24-513"><a href="#cb24-513"></a><span class="in">/* your code here</span></span>
+<span id="cb24-514"><a href="#cb24-514"></a><span class="in">#define CHOICE(x,y,z) </span></span>
+<span id="cb24-515"><a href="#cb24-515"></a><span class="in">#define MEDIAN(x,y,z) </span></span>
+<span id="cb24-516"><a href="#cb24-516"></a><span class="in">#define ROTATE(a,b) */</span></span>
+<span id="cb24-517"><a href="#cb24-517"></a></span>
+<span id="cb24-518"><a href="#cb24-518"></a><span class="in">int main() {</span></span>
+<span id="cb24-519"><a href="#cb24-519"></a><span class="in">    /* Various Variables*/</span></span>
+<span id="cb24-520"><a href="#cb24-520"></a><span class="in">    unsigned a[4] = {0x11110000, 0x11001100, 0x10101010, 0xABCD0123};</span></span>
 <span id="cb24-521"><a href="#cb24-521"></a></span>
-<span id="cb24-522"><a href="#cb24-522"></a><span class="in">int main() {</span></span>
-<span id="cb24-523"><a href="#cb24-523"></a><span class="in">    /* Various Variables*/</span></span>
-<span id="cb24-524"><a href="#cb24-524"></a><span class="in">    unsigned a[4] = {0x11110000, 0x11001100, 0x10101010, 0xABCD0123};</span></span>
-<span id="cb24-525"><a href="#cb24-525"></a></span>
-<span id="cb24-526"><a href="#cb24-526"></a><span class="in">    /* CHOICE */</span></span>
-<span id="cb24-527"><a href="#cb24-527"></a><span class="in">    printf("*Rotates use a decimal shift value, but print in hexadecimal:\n");</span></span>
-<span id="cb24-528"><a href="#cb24-528"></a><span class="in">    printf("CHOICE(\n%08lX,\n%08lX,\n%08lX) = \n--------\n%08lX\n\n", a[0], a[1], a[2], CHOICE(a[0], a[1], a[2]));</span></span>
-<span id="cb24-529"><a href="#cb24-529"></a><span class="in">    printf("MEDIAN(\n%08lX,\n%08lX,\n%08lX) = \n--------\n%08lX\n\n", a[0], a[1], a[2], MEDIAN(a[0], a[1], a[2]));</span></span>
-<span id="cb24-530"><a href="#cb24-530"></a><span class="in">    printf("*Rotates use a decimal shift value, but print in hexadecimal:\n");</span></span>
-<span id="cb24-531"><a href="#cb24-531"></a><span class="in">    printf("ROTATE(\n%08lX, 04) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 4));</span></span>
-<span id="cb24-532"><a href="#cb24-532"></a><span class="in">    printf("ROTATE(\n%08lX, 08) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 8));</span></span>
-<span id="cb24-533"><a href="#cb24-533"></a><span class="in">    printf("ROTATE(\n%08lX, 12) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 12));</span></span>
-<span id="cb24-534"><a href="#cb24-534"></a><span class="in">    printf("ROTATE(\n%08lX, 02) = \n--------\n%08lX\n\n", 0x1000, ROTATE(0x1000, 2));</span></span>
-<span id="cb24-535"><a href="#cb24-535"></a><span class="in">    printf("ROTATE(\n%08lX, 30) = \n--------\n%08lX\n\n", 0x1000, ROTATE(0x1000, 30));</span></span>
+<span id="cb24-522"><a href="#cb24-522"></a><span class="in">    /* CHOICE */</span></span>
+<span id="cb24-523"><a href="#cb24-523"></a><span class="in">    printf("*Rotates use a decimal shift value, but print in hexadecimal:\n");</span></span>
+<span id="cb24-524"><a href="#cb24-524"></a><span class="in">    printf("CHOICE(\n%08lX,\n%08lX,\n%08lX) = \n--------\n%08lX\n\n", a[0], a[1], a[2], CHOICE(a[0], a[1], a[2]));</span></span>
+<span id="cb24-525"><a href="#cb24-525"></a><span class="in">    printf("MEDIAN(\n%08lX,\n%08lX,\n%08lX) = \n--------\n%08lX\n\n", a[0], a[1], a[2], MEDIAN(a[0], a[1], a[2]));</span></span>
+<span id="cb24-526"><a href="#cb24-526"></a><span class="in">    printf("*Rotates use a decimal shift value, but print in hexadecimal:\n");</span></span>
+<span id="cb24-527"><a href="#cb24-527"></a><span class="in">    printf("ROTATE(\n%08lX, 04) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 4));</span></span>
+<span id="cb24-528"><a href="#cb24-528"></a><span class="in">    printf("ROTATE(\n%08lX, 08) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 8));</span></span>
+<span id="cb24-529"><a href="#cb24-529"></a><span class="in">    printf("ROTATE(\n%08lX, 12) = \n--------\n%08lX\n\n", a[3], ROTATE(a[3], 12));</span></span>
+<span id="cb24-530"><a href="#cb24-530"></a><span class="in">    printf("ROTATE(\n%08lX, 02) = \n--------\n%08lX\n\n", 0x1000, ROTATE(0x1000, 2));</span></span>
+<span id="cb24-531"><a href="#cb24-531"></a><span class="in">    printf("ROTATE(\n%08lX, 30) = \n--------\n%08lX\n\n", 0x1000, ROTATE(0x1000, 30));</span></span>
+<span id="cb24-532"><a href="#cb24-532"></a></span>
+<span id="cb24-533"><a href="#cb24-533"></a><span class="in">    return 0;</span></span>
+<span id="cb24-534"><a href="#cb24-534"></a><span class="in">}</span></span>
+<span id="cb24-535"><a href="#cb24-535"></a><span class="in">```</span></span>
 <span id="cb24-536"><a href="#cb24-536"></a></span>
-<span id="cb24-537"><a href="#cb24-537"></a><span class="in">    return 0;</span></span>
-<span id="cb24-538"><a href="#cb24-538"></a><span class="in">}</span></span>
-<span id="cb24-539"><a href="#cb24-539"></a><span class="in">```</span></span>
-<span id="cb24-540"><a href="#cb24-540"></a></span>
-<span id="cb24-541"><a href="#cb24-541"></a><span class="in">```{.email}</span></span>
-<span id="cb24-542"><a href="#cb24-542"></a><span class="in">*Rotates use a decimal shift value, but print in hexadecimal:</span></span>
-<span id="cb24-543"><a href="#cb24-543"></a><span class="in">CHOICE(</span></span>
-<span id="cb24-544"><a href="#cb24-544"></a><span class="in">11110000,</span></span>
-<span id="cb24-545"><a href="#cb24-545"></a><span class="in">11001100,</span></span>
-<span id="cb24-546"><a href="#cb24-546"></a><span class="in">10101010) = </span></span>
-<span id="cb24-547"><a href="#cb24-547"></a><span class="in">--------</span></span>
-<span id="cb24-548"><a href="#cb24-548"></a><span class="in">11001010</span></span>
-<span id="cb24-549"><a href="#cb24-549"></a></span>
-<span id="cb24-550"><a href="#cb24-550"></a><span class="in">MEDIAN(</span></span>
-<span id="cb24-551"><a href="#cb24-551"></a><span class="in">11110000,</span></span>
-<span id="cb24-552"><a href="#cb24-552"></a><span class="in">11001100,</span></span>
-<span id="cb24-553"><a href="#cb24-553"></a><span class="in">10101010) = </span></span>
-<span id="cb24-554"><a href="#cb24-554"></a><span class="in">--------</span></span>
-<span id="cb24-555"><a href="#cb24-555"></a><span class="in">11101000</span></span>
-<span id="cb24-556"><a href="#cb24-556"></a></span>
-<span id="cb24-557"><a href="#cb24-557"></a><span class="in">*Rotates use a decimal shift value, but print in hexadecimal:</span></span>
-<span id="cb24-558"><a href="#cb24-558"></a><span class="in">ROTATE(</span></span>
-<span id="cb24-559"><a href="#cb24-559"></a><span class="in">ABCD0123,04) = </span></span>
-<span id="cb24-560"><a href="#cb24-560"></a><span class="in">--------</span></span>
-<span id="cb24-561"><a href="#cb24-561"></a><span class="in">3ABCD012</span></span>
-<span id="cb24-562"><a href="#cb24-562"></a></span>
-<span id="cb24-563"><a href="#cb24-563"></a><span class="in">ROTATE(</span></span>
-<span id="cb24-564"><a href="#cb24-564"></a><span class="in">ABCD0123,08) = </span></span>
-<span id="cb24-565"><a href="#cb24-565"></a><span class="in">--------</span></span>
-<span id="cb24-566"><a href="#cb24-566"></a><span class="in">23ABCD01</span></span>
-<span id="cb24-567"><a href="#cb24-567"></a></span>
-<span id="cb24-568"><a href="#cb24-568"></a><span class="in">ROTATE(</span></span>
-<span id="cb24-569"><a href="#cb24-569"></a><span class="in">ABCD0123,12) = </span></span>
-<span id="cb24-570"><a href="#cb24-570"></a><span class="in">--------</span></span>
-<span id="cb24-571"><a href="#cb24-571"></a><span class="in">123ABCD0</span></span>
-<span id="cb24-572"><a href="#cb24-572"></a></span>
-<span id="cb24-573"><a href="#cb24-573"></a><span class="in">ROTATE(</span></span>
-<span id="cb24-574"><a href="#cb24-574"></a><span class="in">00001000,02) = </span></span>
-<span id="cb24-575"><a href="#cb24-575"></a><span class="in">--------</span></span>
-<span id="cb24-576"><a href="#cb24-576"></a><span class="in">00000400</span></span>
-<span id="cb24-577"><a href="#cb24-577"></a></span>
-<span id="cb24-578"><a href="#cb24-578"></a><span class="in">ROTATE(</span></span>
-<span id="cb24-579"><a href="#cb24-579"></a><span class="in">00001000,30) = </span></span>
-<span id="cb24-580"><a href="#cb24-580"></a><span class="in">--------</span></span>
-<span id="cb24-581"><a href="#cb24-581"></a><span class="in">00004000</span></span>
-<span id="cb24-582"><a href="#cb24-582"></a><span class="in">```</span></span>
-<span id="cb24-583"><a href="#cb24-583"></a></span>
-<span id="cb24-584"><a href="#cb24-584"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb24-537"><a href="#cb24-537"></a><span class="in">```{.email}</span></span>
+<span id="cb24-538"><a href="#cb24-538"></a><span class="in">*Rotates use a decimal shift value, but print in hexadecimal:</span></span>
+<span id="cb24-539"><a href="#cb24-539"></a><span class="in">CHOICE(</span></span>
+<span id="cb24-540"><a href="#cb24-540"></a><span class="in">11110000,</span></span>
+<span id="cb24-541"><a href="#cb24-541"></a><span class="in">11001100,</span></span>
+<span id="cb24-542"><a href="#cb24-542"></a><span class="in">10101010) = </span></span>
+<span id="cb24-543"><a href="#cb24-543"></a><span class="in">--------</span></span>
+<span id="cb24-544"><a href="#cb24-544"></a><span class="in">11001010</span></span>
+<span id="cb24-545"><a href="#cb24-545"></a></span>
+<span id="cb24-546"><a href="#cb24-546"></a><span class="in">MEDIAN(</span></span>
+<span id="cb24-547"><a href="#cb24-547"></a><span class="in">11110000,</span></span>
+<span id="cb24-548"><a href="#cb24-548"></a><span class="in">11001100,</span></span>
+<span id="cb24-549"><a href="#cb24-549"></a><span class="in">10101010) = </span></span>
+<span id="cb24-550"><a href="#cb24-550"></a><span class="in">--------</span></span>
+<span id="cb24-551"><a href="#cb24-551"></a><span class="in">11101000</span></span>
+<span id="cb24-552"><a href="#cb24-552"></a></span>
+<span id="cb24-553"><a href="#cb24-553"></a><span class="in">*Rotates use a decimal shift value, but print in hexadecimal:</span></span>
+<span id="cb24-554"><a href="#cb24-554"></a><span class="in">ROTATE(</span></span>
+<span id="cb24-555"><a href="#cb24-555"></a><span class="in">ABCD0123,04) = </span></span>
+<span id="cb24-556"><a href="#cb24-556"></a><span class="in">--------</span></span>
+<span id="cb24-557"><a href="#cb24-557"></a><span class="in">3ABCD012</span></span>
+<span id="cb24-558"><a href="#cb24-558"></a></span>
+<span id="cb24-559"><a href="#cb24-559"></a><span class="in">ROTATE(</span></span>
+<span id="cb24-560"><a href="#cb24-560"></a><span class="in">ABCD0123,08) = </span></span>
+<span id="cb24-561"><a href="#cb24-561"></a><span class="in">--------</span></span>
+<span id="cb24-562"><a href="#cb24-562"></a><span class="in">23ABCD01</span></span>
+<span id="cb24-563"><a href="#cb24-563"></a></span>
+<span id="cb24-564"><a href="#cb24-564"></a><span class="in">ROTATE(</span></span>
+<span id="cb24-565"><a href="#cb24-565"></a><span class="in">ABCD0123,12) = </span></span>
+<span id="cb24-566"><a href="#cb24-566"></a><span class="in">--------</span></span>
+<span id="cb24-567"><a href="#cb24-567"></a><span class="in">123ABCD0</span></span>
+<span id="cb24-568"><a href="#cb24-568"></a></span>
+<span id="cb24-569"><a href="#cb24-569"></a><span class="in">ROTATE(</span></span>
+<span id="cb24-570"><a href="#cb24-570"></a><span class="in">00001000,02) = </span></span>
+<span id="cb24-571"><a href="#cb24-571"></a><span class="in">--------</span></span>
+<span id="cb24-572"><a href="#cb24-572"></a><span class="in">00000400</span></span>
+<span id="cb24-573"><a href="#cb24-573"></a></span>
+<span id="cb24-574"><a href="#cb24-574"></a><span class="in">ROTATE(</span></span>
+<span id="cb24-575"><a href="#cb24-575"></a><span class="in">00001000,30) = </span></span>
+<span id="cb24-576"><a href="#cb24-576"></a><span class="in">--------</span></span>
+<span id="cb24-577"><a href="#cb24-577"></a><span class="in">00004000</span></span>
+<span id="cb24-578"><a href="#cb24-578"></a><span class="in">```</span></span>
+<span id="cb24-579"><a href="#cb24-579"></a></span>
+<span id="cb24-580"><a href="#cb24-580"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

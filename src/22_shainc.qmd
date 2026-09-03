@@ -1,6 +1,6 @@
 ---
 title: SHAinC
-subtitle: "HW 0x1: Due Mon, 21 Jul"
+subtitle: "Due Thu, 17 Sep"
 format: html
 ---
 
@@ -14,7 +14,7 @@ format: html
   - I will provide an autograder Containerfile
 - Your responsibility
   - You will implement SHA-256 in C89 as an "shainc.c" file
-  - You will store your "shainc.c" file in the "shainc" folder on your "crypto" GitHub repository.
+  - You will store your "shainc.c" file in the "shainc" folder on your "sysinc" GitHub repository.
   
 ### Topic Areas
 

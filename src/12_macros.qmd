@@ -24,8 +24,9 @@ format:   html
       - `CHOICE`
       - `MEDIAN`
       - `ROTATE` - a "right" rotate.
-  - You will create a private GitHub repository named "crypto"
-    - I recommend creating a new repository of your own, not forking my repository.
+  - You will create a private GitHub repository named "sysinc"
+    - I recommend creating a new repository of your own, not forking a repository.
+    - You can fork this one, if you need to.
     - This makes it easier to manage a private repository.
     - Up to you.
   - You will create a folder in this repository named "macros"
@@ -33,7 +34,7 @@ format:   html
   - You will add me as a collaborator through the GitHub web application
     - - My GitHub account [cd-public](https://github.com/cd-public) is attached to my @wu address.
   - If you would like to fork an existing repository, use this one:
-    - [https://github.com/cd-c89/crypto](https://github.com/cd-c89/crypto)
+    - [https://github.com/cd-c89/sysinc](https://github.com/cd-c89/sysinc)
   
 ### Topic Areas
 
@@ -456,9 +457,9 @@ FROM ubuntu
 
 RUN apt update && apt install gcc curl -y
 
-RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.c -o tester.c
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.c -o tester.c
 
-RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/macros/tester.sh -o tester.sh
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/macros/tester.sh -o tester.sh
 
 COPY macros.c .
 ```
@@ -500,11 +501,6 @@ podman run tester /bin/bash tester.sh
         1.  `CHOICE` is incorrect
         2.  `MEDIAN` is incorrect but `CHOICE` is correct
         3.  `ROTATE` is incorrect but `CHOICE` and `MEDIAN` are correct
-  -   It may be the case that `tester.c` runs strangly on your system.
-        -   It assumes an underlying AMD64 device
-        -   [GCP](https://console.cloud.google.com/) cloud console runs on AMD64
-            -   `docker`, installed by default, is an alternative to `podman` on GCP.
-
 
 #### Viewer
 
