@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.30">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +67,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./42_rsainc.html" rel="next">
 <link href="./40_fermat.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-40a160e28a8c0a8ad2fc184c8ba4238c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,7 +120,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -135,7 +138,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -158,9 +161,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Systems in C</a> 
-    </div>
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -470,9 +472,9 @@ window.Quarto = {
 <div class="code-with-filename-file">
 <pre><strong>Containerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="Containerfile"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>FROM ubuntu</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Containerfile"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>FROM ubuntu</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Mostly, having <code>astyle</code> and <code>python3</code> is nice.</li>
@@ -493,7 +495,7 @@ window.Quarto = {
 <div class="code-with-filename-file">
 <pre><strong>fermat.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
@@ -535,12 +537,12 @@ window.Quarto = {
 <span id="cb2-40"><a href="#cb2-40"></a></span>
 <span id="cb2-41"><a href="#cb2-41"></a>c <span class="op">=</span> modexp(m, e, n) <span class="co"># ciphertext</span></span>
 <span id="cb2-42"><a href="#cb2-42"></a></span>
-<span id="cb2-43"><a href="#cb2-43"></a><span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>I did not show this in class, but it’s probably easier to think of as follows:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># make_encrypt takes an </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># make_encrypt takes an </span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co"># * encryptor e and </span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># * modular base n and </span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co"># returns a function the performs public key encryption.</span></span>
@@ -550,7 +552,7 @@ window.Quarto = {
 <span id="cb3-8"><a href="#cb3-8"></a>encrypt <span class="op">=</span> make_encrypt(e,n)</span>
 <span id="cb3-9"><a href="#cb3-9"></a>decrypt <span class="op">=</span> make_encrypt(find_d(),n)</span>
 <span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="bu">chr</span>(decrypt(encrypt(<span class="bu">ord</span>(<span class="st">"C"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="bu">chr</span>(decrypt(encrypt(<span class="bu">ord</span>(<span class="st">"C"</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>There’s no graceful (or even ungraceful) way to retuun functions in C, but I thought this was really cool <code>¯\_(ツ)_/¯</code></li>
 </ul>
@@ -567,29 +569,29 @@ window.Quarto = {
 <div class="code-with-filename-file">
 <pre><strong>fermat.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
 <span id="cb4-3"><a href="#cb4-3"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
 <span id="cb4-5"><a href="#cb4-5"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="cf">return</span> candidate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="cf">return</span> candidate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>For BigRSA, you will primality testing for the <code>4096_t</code>.</li>
 <li>Likewise, for BigRSA, you will need fairly narrow bounds on <em>precision</em>, or how many bits your primes take up.</li>
 <li>That said, for now the following should be sufficient:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">uint64_t</span> sixkp1<span class="op">(</span><span class="dt">uint64_t</span> k<span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">uint64_t</span> sixkp1<span class="op">(</span><span class="dt">uint64_t</span> k<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">/* Your code here (and update the return statement)  */</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">return</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Advanced Primality Testing
+<span class="screen-reader-only">Note</span>Advanced Primality Testing
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -616,19 +618,19 @@ Advanced Primality Testing
 <div class="code-with-filename-file">
 <pre><strong>fermat.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> lcm(a, b):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="fermat.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> lcm(a, b):</span>
 <span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> gcd(a, b):</span>
 <span id="cb6-3"><a href="#cb6-3"></a>        <span class="cf">while</span> b:</span>
 <span id="cb6-4"><a href="#cb6-4"></a>            a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
 <span id="cb6-5"><a href="#cb6-5"></a>        <span class="cf">return</span> a</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>For BigRSA, this operation will require considerably optimizations related to the “Extended Euclidean Algorithm”.</li>
 <li>Note that inner functions are non-standard C and not permitted in C89.</li>
 <li>That said, for now the following should be sufficient:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">uint64_t</span> gcd<span class="op">(</span><span class="dt">uint64_t</span> a<span class="op">,</span> <span class="dt">uint64_t</span> b<span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">uint64_t</span> gcd<span class="op">(</span><span class="dt">uint64_t</span> a<span class="op">,</span> <span class="dt">uint64_t</span> b<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">/* Your code here (and update the return statement)  */</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="op">}</span></span>
@@ -636,14 +638,14 @@ Advanced Primality Testing
 <span id="cb7-6"><a href="#cb7-6"></a><span class="dt">uint64_t</span> lcm<span class="op">(</span><span class="dt">uint64_t</span> a<span class="op">,</span> <span class="dt">uint64_t</span> b<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>  <span class="co">/* Your code here (and update the return statement)  */</span></span>
 <span id="cb7-8"><a href="#cb7-8"></a>  <span class="cf">return</span> a <span class="op">*</span> b<span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Optimizations and Assertions
+<span class="screen-reader-only">Note</span>Optimizations and Assertions
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -692,11 +694,11 @@ Optimizations and Assertions
 <div class="code-with-filename-file">
 <pre><strong>unsafe.bad</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" data-filename="unsafe.bad"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a href="#cb8-1"></a>-----BEGIN UNSAFE PRIVATE KEY-----</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="unsafe.bad"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a href="#cb8-1"></a>-----BEGIN UNSAFE PRIVATE KEY-----</span>
 <span id="cb8-2"><a href="#cb8-2"></a>95a61f99198bd8e9</span>
 <span id="cb8-3"><a href="#cb8-3"></a>10001</span>
 <span id="cb8-4"><a href="#cb8-4"></a>fbea5e6a3ed31e8f</span>
-<span id="cb8-5"><a href="#cb8-5"></a>-----END UNSAFE PRIVATE KEY-----</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a href="#cb8-5"></a>-----END UNSAFE PRIVATE KEY-----</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>This format is based on the <code>.pem</code> format
@@ -717,7 +719,7 @@ Optimizations and Assertions
 <div class="code-with-filename-file">
 <pre><strong>~/.ssh/id_rsa</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="~/.ssh/id_rsa"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a href="#cb9-1"></a>-----BEGIN OPENSSH PRIVATE KEY-----</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="~/.ssh/id_rsa"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a href="#cb9-1"></a>-----BEGIN OPENSSH PRIVATE KEY-----</span>
 <span id="cb9-2"><a href="#cb9-2"></a>b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAlwAAAAdzc2gtcn</span>
 <span id="cb9-3"><a href="#cb9-3"></a>NhAAAAAwEAAQAAAIEAv97YRG/TOK6VnXi3LK8N6z/meRvSo5vkjjm0YUIV5zEx8OyZUdTV</span>
 <span id="cb9-4"><a href="#cb9-4"></a>cu114ll/eC4ZgrW3bISzyIO0MB5rnt8oPcO5uiSJIqRSKbd2LNJdkefIpMe4LJJLuzfB4z</span>
@@ -732,7 +734,7 @@ Optimizations and Assertions
 <span id="cb9-13"><a href="#cb9-13"></a>w3tvwxZXcTAHGyrwXAhwbEym5V/naUGIB8QWlsbG3tZB03V0qnregcYdtQRXTy1KkAAABB</span>
 <span id="cb9-14"><a href="#cb9-14"></a>ANqXE1Toyq5aPp2DqN5Il1zTK5gmDOcmil+ao8M93Zc5ZDAANG40RcEDBHj1xxMzNCwJDo</span>
 <span id="cb9-15"><a href="#cb9-15"></a>XTYW2ynMpXNi5QokUAAAAUdXNlckBERVNLVE9QLVRITVMyUEoBAgMEBQYH</span>
-<span id="cb9-16"><a href="#cb9-16"></a>-----END OPENSSH PRIVATE KEY-----</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-16"><a href="#cb9-16"></a>-----END OPENSSH PRIVATE KEY-----</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </div>
@@ -761,10 +763,10 @@ Optimizations and Assertions
 <div class="code-with-filename-file">
 <pre><strong>unsafe.pub</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="unsafe.pub"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a href="#cb10-1"></a>-----BEGIN UNSAFE PUBLIC KEY-----</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="unsafe.pub"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a href="#cb10-1"></a>-----BEGIN UNSAFE PUBLIC KEY-----</span>
 <span id="cb10-2"><a href="#cb10-2"></a>95a61f99198bd8e9</span>
 <span id="cb10-3"><a href="#cb10-3"></a>10001</span>
-<span id="cb10-4"><a href="#cb10-4"></a>-----END UNSAFE PUBLIC KEY-----</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a>-----END UNSAFE PUBLIC KEY-----</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Update your <code>keygen.c</code> such that each time it runs it:
@@ -814,7 +816,7 @@ Optimizations and Assertions
 <div class="code-with-filename-file">
 <pre><strong>tester.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="tester.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="tester.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> modexp(m, e, n):</span>
 <span id="cb11-2"><a href="#cb11-2"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb11-3"><a href="#cb11-3"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -846,7 +848,7 @@ Optimizations and Assertions
 <span id="cb11-30"><a href="#cb11-30"></a><span class="cf">if</span> <span class="bu">all</span>([i <span class="op">==</span> decrypt(encrypt(i)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">31</span>, <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">29</span>)]):</span>
 <span id="cb11-31"><a href="#cb11-31"></a>    <span class="bu">print</span>(<span class="st">"Keys work for larger values."</span>)</span>
 <span id="cb11-32"><a href="#cb11-32"></a><span class="cf">else</span>:</span>
-<span id="cb11-33"><a href="#cb11-33"></a>    <span class="bu">print</span>(<span class="st">"Keys failed on larger values."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-33"><a href="#cb11-33"></a>    <span class="bu">print</span>(<span class="st">"Keys failed on larger values."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
 <p>By successfully encrypting and decrypting up to <code>1 &lt;&lt; 31</code>, the key is large enough for some small tasks, such encrypting the string “hi” - a string of length 3 when including the null terminator, which therefore contains 24 bits of information.</p>
@@ -861,7 +863,7 @@ Optimizations and Assertions
 <div class="code-with-filename-file">
 <pre><strong>keygen.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="keygen.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="keygen.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> random</span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="kw">def</span> find_large_prime():</span>
 <span id="cb12-4"><a href="#cb12-4"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">all</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
@@ -890,7 +892,7 @@ Optimizations and Assertions
 <span id="cb12-27"><a href="#cb12-27"></a>tl <span class="op">=</span> <span class="st">" UNSAFE PRIVATE KEY-----</span><span class="ch">\n</span><span class="st">"</span></span>
 <span id="cb12-28"><a href="#cb12-28"></a><span class="bu">open</span>(<span class="st">"unsafe.bad"</span>, <span class="st">"w"</span>).write(<span class="ss">f"</span><span class="sc">{</span>hd<span class="sc">}{</span>tl<span class="sc">}{</span>n<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>e<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>d<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>ft<span class="sc">}{</span>tl<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-29"><a href="#cb12-29"></a>tl <span class="op">=</span> <span class="st">" UNSAFE PUBLIC KEY-----</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb12-30"><a href="#cb12-30"></a><span class="bu">open</span>(<span class="st">"unsafe.pub"</span>, <span class="st">"w"</span>).write(<span class="ss">f"</span><span class="sc">{</span>hd<span class="sc">}{</span>tl<span class="sc">}{</span>n<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>e<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>ft<span class="sc">}{</span>tl<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-30"><a href="#cb12-30"></a><span class="bu">open</span>(<span class="st">"unsafe.pub"</span>, <span class="st">"w"</span>).write(<span class="ss">f"</span><span class="sc">{</span>hd<span class="sc">}{</span>tl<span class="sc">}{</span>n<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>e<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>ft<span class="sc">}{</span>tl<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </div>
@@ -902,290 +904,294 @@ Optimizations and Assertions
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
         }
-        return container.innerHTML
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1193,185 +1199,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./40_fermat.html" class="pagination-link" aria-label="Fermat">
@@ -1384,7 +1366,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="an">title:</span><span class="co"> KeyGen</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="an">subtitle:</span><span class="co"> "0x3.1"</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a></span>
@@ -1397,11 +1379,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-11"><a href="#cb13-11"></a></span>
 <span id="cb13-12"><a href="#cb13-12"></a><span class="fu">### Goal: Public Key Encryption</span></span>
 <span id="cb13-13"><a href="#cb13-13"></a></span>
-<span id="cb13-14"><a href="#cb13-14"></a>|Review:    | Newish:    |</span>
-<span id="cb13-15"><a href="#cb13-15"></a>| --------- | ---------- |</span>
-<span id="cb13-16"><a href="#cb13-16"></a>|- Public key encryption   | - RSA in C  |</span>
-<span id="cb13-17"><a href="#cb13-17"></a>|- Fermat's little theorm   | - .pem files  |</span>
-<span id="cb13-18"><a href="#cb13-18"></a>|- RSA   |   |</span>
+<span id="cb13-14"><a href="#cb13-14"></a><span class="pp">|</span>Review:    <span class="pp">|</span> Newish:    <span class="pp">|</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="pp">| ---------</span> <span class="pp">| ----------</span> <span class="pp">|</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="pp">|</span>- Public key encryption   <span class="pp">|</span> - RSA in C  <span class="pp">|</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a><span class="pp">|</span>- Fermat's little theorm   <span class="pp">|</span> - .pem files  <span class="pp">|</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="pp">|</span>- RSA   <span class="pp">|</span>   <span class="pp">|</span></span>
 <span id="cb13-19"><a href="#cb13-19"></a></span>
 <span id="cb13-20"><a href="#cb13-20"></a><span class="ss">- </span>There are no required exercises of this lab.</span>
 <span id="cb13-21"><a href="#cb13-21"></a><span class="ss">- </span>It is supplementary material to the RSAinC homework.</span>
@@ -1428,9 +1410,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-42"><a href="#cb13-42"></a><span class="ss">  - </span>Same as the printb lab</span>
 <span id="cb13-43"><a href="#cb13-43"></a></span>
 <span id="cb13-44"><a href="#cb13-44"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb13-45"><a href="#cb13-45"></a><span class="in">FROM ubuntu</span></span>
+<span id="cb13-45"><a href="#cb13-45"></a>FROM ubuntu</span>
 <span id="cb13-46"><a href="#cb13-46"></a></span>
-<span id="cb13-47"><a href="#cb13-47"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></span>
+<span id="cb13-47"><a href="#cb13-47"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span>
 <span id="cb13-48"><a href="#cb13-48"></a><span class="in">```</span></span>
 <span id="cb13-49"><a href="#cb13-49"></a><span class="ss">- </span>Mostly, having <span class="in">`astyle`</span> and <span class="in">`python3`</span> is nice.</span>
 <span id="cb13-50"><a href="#cb13-50"></a></span>
@@ -1446,65 +1428,65 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-60"><a href="#cb13-60"></a><span class="ss">  - </span>I editted lightly for readability (removed comments).</span>
 <span id="cb13-61"><a href="#cb13-61"></a></span>
 <span id="cb13-62"><a href="#cb13-62"></a><span class="in">```{.python filename="fermat.py"}</span></span>
-<span id="cb13-63"><a href="#cb13-63"></a><span class="in">def sixkp1(k): # 6k+1</span></span>
-<span id="cb13-64"><a href="#cb13-64"></a><span class="in">    is_prime = lambda n : any([n % i for i in range(2, int(n **.5))])</span></span>
-<span id="cb13-65"><a href="#cb13-65"></a><span class="in">    candidate = 6 * k + 1</span></span>
-<span id="cb13-66"><a href="#cb13-66"></a><span class="in">    while not is_prime(candidate):</span></span>
-<span id="cb13-67"><a href="#cb13-67"></a><span class="in">        candidate += 6</span></span>
-<span id="cb13-68"><a href="#cb13-68"></a><span class="in">    return candidate</span></span>
+<span id="cb13-63"><a href="#cb13-63"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
+<span id="cb13-64"><a href="#cb13-64"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
+<span id="cb13-65"><a href="#cb13-65"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-66"><a href="#cb13-66"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
+<span id="cb13-67"><a href="#cb13-67"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
+<span id="cb13-68"><a href="#cb13-68"></a>    <span class="cf">return</span> candidate</span>
 <span id="cb13-69"><a href="#cb13-69"></a></span>
-<span id="cb13-70"><a href="#cb13-70"></a><span class="in">def lcm(a, b):</span></span>
-<span id="cb13-71"><a href="#cb13-71"></a><span class="in">    def gcd(a, b):</span></span>
-<span id="cb13-72"><a href="#cb13-72"></a><span class="in">        while b:</span></span>
-<span id="cb13-73"><a href="#cb13-73"></a><span class="in">            a, b = b, a % b</span></span>
-<span id="cb13-74"><a href="#cb13-74"></a><span class="in">        return a</span></span>
-<span id="cb13-75"><a href="#cb13-75"></a><span class="in">    return a * b // gcd(a, b)</span></span>
+<span id="cb13-70"><a href="#cb13-70"></a><span class="kw">def</span> lcm(a, b):</span>
+<span id="cb13-71"><a href="#cb13-71"></a>    <span class="kw">def</span> gcd(a, b):</span>
+<span id="cb13-72"><a href="#cb13-72"></a>        <span class="cf">while</span> b:</span>
+<span id="cb13-73"><a href="#cb13-73"></a>            a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
+<span id="cb13-74"><a href="#cb13-74"></a>        <span class="cf">return</span> a</span>
+<span id="cb13-75"><a href="#cb13-75"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
 <span id="cb13-76"><a href="#cb13-76"></a></span>
-<span id="cb13-77"><a href="#cb13-77"></a><span class="in">s = "C" # a random string</span></span>
-<span id="cb13-78"><a href="#cb13-78"></a><span class="in">m = ord(s) # to number</span></span>
+<span id="cb13-77"><a href="#cb13-77"></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co"># a random string</span></span>
+<span id="cb13-78"><a href="#cb13-78"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co"># to number</span></span>
 <span id="cb13-79"><a href="#cb13-79"></a></span>
-<span id="cb13-80"><a href="#cb13-80"></a><span class="in">hide_p = lambda: sixkp1(10)</span></span>
-<span id="cb13-81"><a href="#cb13-81"></a><span class="in">hide_q = lambda: sixkp1(15)</span></span>
-<span id="cb13-82"><a href="#cb13-82"></a><span class="in">n = hide_p() * hide_q()</span></span>
+<span id="cb13-80"><a href="#cb13-80"></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: sixkp1(<span class="dv">10</span>)</span>
+<span id="cb13-81"><a href="#cb13-81"></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: sixkp1(<span class="dv">15</span>)</span>
+<span id="cb13-82"><a href="#cb13-82"></a>n <span class="op">=</span> hide_p() <span class="op">*</span> hide_q()</span>
 <span id="cb13-83"><a href="#cb13-83"></a></span>
-<span id="cb13-84"><a href="#cb13-84"></a><span class="in">hide_λ = lambda: lcm(hide_p() - 1,  hide_q() - 1)</span></span>
+<span id="cb13-84"><a href="#cb13-84"></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb13-85"><a href="#cb13-85"></a></span>
-<span id="cb13-86"><a href="#cb13-86"></a><span class="in">e = 65537 # encryptor</span></span>
+<span id="cb13-86"><a href="#cb13-86"></a>e <span class="op">=</span> <span class="dv">65537</span> <span class="co"># encryptor</span></span>
 <span id="cb13-87"><a href="#cb13-87"></a></span>
-<span id="cb13-88"><a href="#cb13-88"></a><span class="in">def find_d():</span></span>
-<span id="cb13-89"><a href="#cb13-89"></a><span class="in">    d = 1</span></span>
-<span id="cb13-90"><a href="#cb13-90"></a><span class="in">    while 1 != (d * e % hide_λ()):</span></span>
-<span id="cb13-91"><a href="#cb13-91"></a><span class="in">        d += 1</span></span>
-<span id="cb13-92"><a href="#cb13-92"></a><span class="in">    return d</span></span>
+<span id="cb13-88"><a href="#cb13-88"></a><span class="kw">def</span> find_d():</span>
+<span id="cb13-89"><a href="#cb13-89"></a>    d <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb13-90"><a href="#cb13-90"></a>    <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
+<span id="cb13-91"><a href="#cb13-91"></a>        d <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb13-92"><a href="#cb13-92"></a>    <span class="cf">return</span> d</span>
 <span id="cb13-93"><a href="#cb13-93"></a></span>
-<span id="cb13-94"><a href="#cb13-94"></a><span class="in">def modexp(m, e, n):</span></span>
-<span id="cb13-95"><a href="#cb13-95"></a><span class="in">    if e == 0:</span></span>
-<span id="cb13-96"><a href="#cb13-96"></a><span class="in">        return 1</span></span>
-<span id="cb13-97"><a href="#cb13-97"></a><span class="in">    if e == 1:</span></span>
-<span id="cb13-98"><a href="#cb13-98"></a><span class="in">        return m % n</span></span>
-<span id="cb13-99"><a href="#cb13-99"></a><span class="in">    if e % 2:</span></span>
-<span id="cb13-100"><a href="#cb13-100"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
-<span id="cb13-101"><a href="#cb13-101"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
+<span id="cb13-94"><a href="#cb13-94"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<span id="cb13-95"><a href="#cb13-95"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-96"><a href="#cb13-96"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-97"><a href="#cb13-97"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb13-98"><a href="#cb13-98"></a>        <span class="cf">return</span> m <span class="op">%</span> n</span>
+<span id="cb13-99"><a href="#cb13-99"></a>    <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb13-100"><a href="#cb13-100"></a>        <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
+<span id="cb13-101"><a href="#cb13-101"></a>    <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
 <span id="cb13-102"><a href="#cb13-102"></a></span>
-<span id="cb13-103"><a href="#cb13-103"></a><span class="in">c = modexp(m, e, n) # ciphertext</span></span>
+<span id="cb13-103"><a href="#cb13-103"></a>c <span class="op">=</span> modexp(m, e, n) <span class="co"># ciphertext</span></span>
 <span id="cb13-104"><a href="#cb13-104"></a></span>
-<span id="cb13-105"><a href="#cb13-105"></a><span class="in">chr(modexp(modexp(ord("C"), e, n), find_d(), n))</span></span>
+<span id="cb13-105"><a href="#cb13-105"></a><span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n))</span>
 <span id="cb13-106"><a href="#cb13-106"></a><span class="in">```</span></span>
 <span id="cb13-107"><a href="#cb13-107"></a></span>
 <span id="cb13-108"><a href="#cb13-108"></a><span class="ss">- </span>I did not show this in class, but it's probably easier to think of as follows:</span>
 <span id="cb13-109"><a href="#cb13-109"></a></span>
 <span id="cb13-110"><a href="#cb13-110"></a><span class="in">```{.python}</span></span>
-<span id="cb13-111"><a href="#cb13-111"></a><span class="in"># make_encrypt takes an </span></span>
-<span id="cb13-112"><a href="#cb13-112"></a><span class="in"># * encryptor e and </span></span>
-<span id="cb13-113"><a href="#cb13-113"></a><span class="in"># * modular base n and </span></span>
-<span id="cb13-114"><a href="#cb13-114"></a><span class="in"># returns a function the performs public key encryption.</span></span>
+<span id="cb13-111"><a href="#cb13-111"></a><span class="co"># make_encrypt takes an </span></span>
+<span id="cb13-112"><a href="#cb13-112"></a><span class="co"># * encryptor e and </span></span>
+<span id="cb13-113"><a href="#cb13-113"></a><span class="co"># * modular base n and </span></span>
+<span id="cb13-114"><a href="#cb13-114"></a><span class="co"># returns a function the performs public key encryption.</span></span>
 <span id="cb13-115"><a href="#cb13-115"></a></span>
-<span id="cb13-116"><a href="#cb13-116"></a><span class="in">make_encrypt = lambda e, n : lambda m : modexp(m,e,n)</span></span>
+<span id="cb13-116"><a href="#cb13-116"></a>make_encrypt <span class="op">=</span> <span class="kw">lambda</span> e, n : <span class="kw">lambda</span> m : modexp(m,e,n)</span>
 <span id="cb13-117"><a href="#cb13-117"></a></span>
-<span id="cb13-118"><a href="#cb13-118"></a><span class="in">encrypt = make_encrypt(e,n)</span></span>
-<span id="cb13-119"><a href="#cb13-119"></a><span class="in">decrypt = make_encrypt(find_d(),n)</span></span>
+<span id="cb13-118"><a href="#cb13-118"></a>encrypt <span class="op">=</span> make_encrypt(e,n)</span>
+<span id="cb13-119"><a href="#cb13-119"></a>decrypt <span class="op">=</span> make_encrypt(find_d(),n)</span>
 <span id="cb13-120"><a href="#cb13-120"></a></span>
-<span id="cb13-121"><a href="#cb13-121"></a><span class="in">chr(decrypt(encrypt(ord("C"))))</span></span>
+<span id="cb13-121"><a href="#cb13-121"></a><span class="bu">chr</span>(decrypt(encrypt(<span class="bu">ord</span>(<span class="st">"C"</span>))))</span>
 <span id="cb13-122"><a href="#cb13-122"></a><span class="in">```</span></span>
 <span id="cb13-123"><a href="#cb13-123"></a></span>
 <span id="cb13-124"><a href="#cb13-124"></a><span class="ss">- </span>There's no graceful (or even ungraceful) way to retuun functions in C, but I thought this was really cool <span class="in">`¯\_(ツ)_/¯ `</span></span>
@@ -1519,12 +1501,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-133"><a href="#cb13-133"></a><span class="ss">- </span>You may use any method but I recommend $6k + 1$</span>
 <span id="cb13-134"><a href="#cb13-134"></a></span>
 <span id="cb13-135"><a href="#cb13-135"></a><span class="in">```{.python filename="fermat.py"}</span></span>
-<span id="cb13-136"><a href="#cb13-136"></a><span class="in">def sixkp1(k): # 6k+1</span></span>
-<span id="cb13-137"><a href="#cb13-137"></a><span class="in">    is_prime = lambda n : any([n % i for i in range(2, int(n **.5))])</span></span>
-<span id="cb13-138"><a href="#cb13-138"></a><span class="in">    candidate = 6 * k + 1</span></span>
-<span id="cb13-139"><a href="#cb13-139"></a><span class="in">    while not is_prime(candidate):</span></span>
-<span id="cb13-140"><a href="#cb13-140"></a><span class="in">        candidate += 6</span></span>
-<span id="cb13-141"><a href="#cb13-141"></a><span class="in">    return candidate</span></span>
+<span id="cb13-136"><a href="#cb13-136"></a><span class="kw">def</span> sixkp1(k): <span class="co"># 6k+1</span></span>
+<span id="cb13-137"><a href="#cb13-137"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
+<span id="cb13-138"><a href="#cb13-138"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-139"><a href="#cb13-139"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
+<span id="cb13-140"><a href="#cb13-140"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
+<span id="cb13-141"><a href="#cb13-141"></a>    <span class="cf">return</span> candidate</span>
 <span id="cb13-142"><a href="#cb13-142"></a><span class="in">```</span></span>
 <span id="cb13-143"><a href="#cb13-143"></a></span>
 <span id="cb13-144"><a href="#cb13-144"></a><span class="ss">- </span>For BigRSA, you will primality testing for the <span class="in">`4096_t`</span>.</span>
@@ -1559,12 +1541,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-173"><a href="#cb13-173"></a><span class="ss">- </span>As with $6k+1$, I will make a non-binding to calculate the gcd - greatest common denominator - as your method.</span>
 <span id="cb13-174"><a href="#cb13-174"></a></span>
 <span id="cb13-175"><a href="#cb13-175"></a><span class="in">```{.python filename="fermat.py"}</span></span>
-<span id="cb13-176"><a href="#cb13-176"></a><span class="in">def lcm(a, b):</span></span>
-<span id="cb13-177"><a href="#cb13-177"></a><span class="in">    def gcd(a, b):</span></span>
-<span id="cb13-178"><a href="#cb13-178"></a><span class="in">        while b:</span></span>
-<span id="cb13-179"><a href="#cb13-179"></a><span class="in">            a, b = b, a % b</span></span>
-<span id="cb13-180"><a href="#cb13-180"></a><span class="in">        return a</span></span>
-<span id="cb13-181"><a href="#cb13-181"></a><span class="in">    return a * b // gcd(a, b)</span></span>
+<span id="cb13-176"><a href="#cb13-176"></a><span class="kw">def</span> lcm(a, b):</span>
+<span id="cb13-177"><a href="#cb13-177"></a>    <span class="kw">def</span> gcd(a, b):</span>
+<span id="cb13-178"><a href="#cb13-178"></a>        <span class="cf">while</span> b:</span>
+<span id="cb13-179"><a href="#cb13-179"></a>            a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
+<span id="cb13-180"><a href="#cb13-180"></a>        <span class="cf">return</span> a</span>
+<span id="cb13-181"><a href="#cb13-181"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
 <span id="cb13-182"><a href="#cb13-182"></a><span class="in">```</span></span>
 <span id="cb13-183"><a href="#cb13-183"></a></span>
 <span id="cb13-184"><a href="#cb13-184"></a><span class="ss">- </span>For BigRSA, this operation will require considerably optimizations related to the "Extended Euclidean Algorithm".</span>
@@ -1622,11 +1604,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-236"><a href="#cb13-236"></a><span class="ss">  - </span>The fifth and final line is the precise footer text.</span>
 <span id="cb13-237"><a href="#cb13-237"></a></span>
 <span id="cb13-238"><a href="#cb13-238"></a><span class="in">```{.email filename="unsafe.bad"}</span></span>
-<span id="cb13-239"><a href="#cb13-239"></a><span class="in">-----BEGIN UNSAFE PRIVATE KEY-----</span></span>
-<span id="cb13-240"><a href="#cb13-240"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb13-241"><a href="#cb13-241"></a><span class="in">10001</span></span>
-<span id="cb13-242"><a href="#cb13-242"></a><span class="in">fbea5e6a3ed31e8f</span></span>
-<span id="cb13-243"><a href="#cb13-243"></a><span class="in">-----END UNSAFE PRIVATE KEY-----</span></span>
+<span id="cb13-239"><a href="#cb13-239"></a>-----BEGIN UNSAFE PRIVATE KEY-----</span>
+<span id="cb13-240"><a href="#cb13-240"></a>95a61f99198bd8e9</span>
+<span id="cb13-241"><a href="#cb13-241"></a>10001</span>
+<span id="cb13-242"><a href="#cb13-242"></a>fbea5e6a3ed31e8f</span>
+<span id="cb13-243"><a href="#cb13-243"></a>-----END UNSAFE PRIVATE KEY-----</span>
 <span id="cb13-244"><a href="#cb13-244"></a><span class="in">```</span></span>
 <span id="cb13-245"><a href="#cb13-245"></a></span>
 <span id="cb13-246"><a href="#cb13-246"></a><span class="ss">- </span>This format is based on the <span class="in">`.pem`</span> format</span>
@@ -1640,22 +1622,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-254"><a href="#cb13-254"></a><span class="ss">  - </span>And separating components may be regarded as less secure.</span>
 <span id="cb13-255"><a href="#cb13-255"></a></span>
 <span id="cb13-256"><a href="#cb13-256"></a><span class="in">```{.email filename="~/.ssh/id_rsa"}</span></span>
-<span id="cb13-257"><a href="#cb13-257"></a><span class="in">-----BEGIN OPENSSH PRIVATE KEY-----</span></span>
-<span id="cb13-258"><a href="#cb13-258"></a><span class="in">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAlwAAAAdzc2gtcn</span></span>
-<span id="cb13-259"><a href="#cb13-259"></a><span class="in">NhAAAAAwEAAQAAAIEAv97YRG/TOK6VnXi3LK8N6z/meRvSo5vkjjm0YUIV5zEx8OyZUdTV</span></span>
-<span id="cb13-260"><a href="#cb13-260"></a><span class="in">cu114ll/eC4ZgrW3bISzyIO0MB5rnt8oPcO5uiSJIqRSKbd2LNJdkefIpMe4LJJLuzfB4z</span></span>
-<span id="cb13-261"><a href="#cb13-261"></a><span class="in">xqtG9vgsxrJNYUMJ6Vsn5YKRQCaCZQdKxMPx+itHkPeQLWQ40AAAIQ0XWwz9F1sM8AAAAH</span></span>
-<span id="cb13-262"><a href="#cb13-262"></a><span class="in">c3NoLXJzYQAAAIEAv97YRG/TOK6VnXi3LK8N6z/meRvSo5vkjjm0YUIV5zEx8OyZUdTVcu</span></span>
-<span id="cb13-263"><a href="#cb13-263"></a><span class="in">114ll/eC4ZgrW3bISzyIO0MB5rnt8oPcO5uiSJIqRSKbd2LNJdkefIpMe4LJJLuzfB4zxq</span></span>
-<span id="cb13-264"><a href="#cb13-264"></a><span class="in">tG9vgsxrJNYUMJ6Vsn5YKRQCaCZQdKxMPx+itHkPeQLWQ40AAAADAQABAAAAgEOvSh2CUU</span></span>
-<span id="cb13-265"><a href="#cb13-265"></a><span class="in">HKnK7rWbrimgdmCFiqzvi2Ur81bgNtO6rN+O8jl8Z9TTr4t8A8kDIGGSu6DNW0TnOqulLL</span></span>
-<span id="cb13-266"><a href="#cb13-266"></a><span class="in">OG3YDSp4UqMyK1ofNE9ikVFlUEyneNtcIoAtRElcqzwV65yQpujqRKtA0t2HxxRTREX4Jb</span></span>
-<span id="cb13-267"><a href="#cb13-267"></a><span class="in">6dHkAPnVC9Yvjede203GVhAAAAQAd79ekwwt++/m6PadnZeLvvWUzHZqkjgOjN5M3a1uS8</span></span>
-<span id="cb13-268"><a href="#cb13-268"></a><span class="in">82Y2LQ1oO8hmVTc4d/Gy8+3YkJ480Kjpxm7nirTdYf4AAABBAOC1HxQeZaQcaK7oEulsAL</span></span>
-<span id="cb13-269"><a href="#cb13-269"></a><span class="in">w3tvwxZXcTAHGyrwXAhwbEym5V/naUGIB8QWlsbG3tZB03V0qnregcYdtQRXTy1KkAAABB</span></span>
-<span id="cb13-270"><a href="#cb13-270"></a><span class="in">ANqXE1Toyq5aPp2DqN5Il1zTK5gmDOcmil+ao8M93Zc5ZDAANG40RcEDBHj1xxMzNCwJDo</span></span>
-<span id="cb13-271"><a href="#cb13-271"></a><span class="in">XTYW2ynMpXNi5QokUAAAAUdXNlckBERVNLVE9QLVRITVMyUEoBAgMEBQYH</span></span>
-<span id="cb13-272"><a href="#cb13-272"></a><span class="in">-----END OPENSSH PRIVATE KEY-----</span></span>
+<span id="cb13-257"><a href="#cb13-257"></a>-----BEGIN OPENSSH PRIVATE KEY-----</span>
+<span id="cb13-258"><a href="#cb13-258"></a>b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAlwAAAAdzc2gtcn</span>
+<span id="cb13-259"><a href="#cb13-259"></a>NhAAAAAwEAAQAAAIEAv97YRG/TOK6VnXi3LK8N6z/meRvSo5vkjjm0YUIV5zEx8OyZUdTV</span>
+<span id="cb13-260"><a href="#cb13-260"></a>cu114ll/eC4ZgrW3bISzyIO0MB5rnt8oPcO5uiSJIqRSKbd2LNJdkefIpMe4LJJLuzfB4z</span>
+<span id="cb13-261"><a href="#cb13-261"></a>xqtG9vgsxrJNYUMJ6Vsn5YKRQCaCZQdKxMPx+itHkPeQLWQ40AAAIQ0XWwz9F1sM8AAAAH</span>
+<span id="cb13-262"><a href="#cb13-262"></a>c3NoLXJzYQAAAIEAv97YRG/TOK6VnXi3LK8N6z/meRvSo5vkjjm0YUIV5zEx8OyZUdTVcu</span>
+<span id="cb13-263"><a href="#cb13-263"></a>114ll/eC4ZgrW3bISzyIO0MB5rnt8oPcO5uiSJIqRSKbd2LNJdkefIpMe4LJJLuzfB4zxq</span>
+<span id="cb13-264"><a href="#cb13-264"></a>tG9vgsxrJNYUMJ6Vsn5YKRQCaCZQdKxMPx+itHkPeQLWQ40AAAADAQABAAAAgEOvSh2CUU</span>
+<span id="cb13-265"><a href="#cb13-265"></a>HKnK7rWbrimgdmCFiqzvi2Ur81bgNtO6rN+O8jl8Z9TTr4t8A8kDIGGSu6DNW0TnOqulLL</span>
+<span id="cb13-266"><a href="#cb13-266"></a>OG3YDSp4UqMyK1ofNE9ikVFlUEyneNtcIoAtRElcqzwV65yQpujqRKtA0t2HxxRTREX4Jb</span>
+<span id="cb13-267"><a href="#cb13-267"></a>6dHkAPnVC9Yvjede203GVhAAAAQAd79ekwwt++/m6PadnZeLvvWUzHZqkjgOjN5M3a1uS8</span>
+<span id="cb13-268"><a href="#cb13-268"></a>82Y2LQ1oO8hmVTc4d/Gy8+3YkJ480Kjpxm7nirTdYf4AAABBAOC1HxQeZaQcaK7oEulsAL</span>
+<span id="cb13-269"><a href="#cb13-269"></a>w3tvwxZXcTAHGyrwXAhwbEym5V/naUGIB8QWlsbG3tZB03V0qnregcYdtQRXTy1KkAAABB</span>
+<span id="cb13-270"><a href="#cb13-270"></a>ANqXE1Toyq5aPp2DqN5Il1zTK5gmDOcmil+ao8M93Zc5ZDAANG40RcEDBHj1xxMzNCwJDo</span>
+<span id="cb13-271"><a href="#cb13-271"></a>XTYW2ynMpXNi5QokUAAAAUdXNlckBERVNLVE9QLVRITVMyUEoBAgMEBQYH</span>
+<span id="cb13-272"><a href="#cb13-272"></a>-----END OPENSSH PRIVATE KEY-----</span>
 <span id="cb13-273"><a href="#cb13-273"></a><span class="in">```</span></span>
 <span id="cb13-274"><a href="#cb13-274"></a></span>
 <span id="cb13-275"><a href="#cb13-275"></a>:::</span>
@@ -1678,10 +1660,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-292"><a href="#cb13-292"></a><span class="ss">- </span>We will right them to a file prefixed and suffixed as follows:</span>
 <span id="cb13-293"><a href="#cb13-293"></a></span>
 <span id="cb13-294"><a href="#cb13-294"></a><span class="in">```{.email filename="unsafe.pub"}</span></span>
-<span id="cb13-295"><a href="#cb13-295"></a><span class="in">-----BEGIN UNSAFE PUBLIC KEY-----</span></span>
-<span id="cb13-296"><a href="#cb13-296"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb13-297"><a href="#cb13-297"></a><span class="in">10001</span></span>
-<span id="cb13-298"><a href="#cb13-298"></a><span class="in">-----END UNSAFE PUBLIC KEY-----</span></span>
+<span id="cb13-295"><a href="#cb13-295"></a>-----BEGIN UNSAFE PUBLIC KEY-----</span>
+<span id="cb13-296"><a href="#cb13-296"></a>95a61f99198bd8e9</span>
+<span id="cb13-297"><a href="#cb13-297"></a>10001</span>
+<span id="cb13-298"><a href="#cb13-298"></a>-----END UNSAFE PUBLIC KEY-----</span>
 <span id="cb13-299"><a href="#cb13-299"></a><span class="in">```</span></span>
 <span id="cb13-300"><a href="#cb13-300"></a></span>
 <span id="cb13-301"><a href="#cb13-301"></a><span class="ss">- </span>Update your <span class="in">`keygen.c`</span> such that each time it runs it:</span>
@@ -1713,39 +1695,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-327"><a href="#cb13-327"></a><span class="ss">- </span>Here is a testing script:</span>
 <span id="cb13-328"><a href="#cb13-328"></a></span>
 <span id="cb13-329"><a href="#cb13-329"></a><span class="in">```{.python filename="tester.py"}</span></span>
-<span id="cb13-330"><a href="#cb13-330"></a><span class="in">def modexp(m, e, n):</span></span>
-<span id="cb13-331"><a href="#cb13-331"></a><span class="in">    if e == 0:</span></span>
-<span id="cb13-332"><a href="#cb13-332"></a><span class="in">        return 1</span></span>
-<span id="cb13-333"><a href="#cb13-333"></a><span class="in">    if e == 1:</span></span>
-<span id="cb13-334"><a href="#cb13-334"></a><span class="in">        return m % n</span></span>
-<span id="cb13-335"><a href="#cb13-335"></a><span class="in">    if e % 2:</span></span>
-<span id="cb13-336"><a href="#cb13-336"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
-<span id="cb13-337"><a href="#cb13-337"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
+<span id="cb13-330"><a href="#cb13-330"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<span id="cb13-331"><a href="#cb13-331"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-332"><a href="#cb13-332"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-333"><a href="#cb13-333"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb13-334"><a href="#cb13-334"></a>        <span class="cf">return</span> m <span class="op">%</span> n</span>
+<span id="cb13-335"><a href="#cb13-335"></a>    <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb13-336"><a href="#cb13-336"></a>        <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
+<span id="cb13-337"><a href="#cb13-337"></a>    <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
 <span id="cb13-338"><a href="#cb13-338"></a></span>
-<span id="cb13-339"><a href="#cb13-339"></a><span class="in">make_encrypt = lambda e, n : lambda m : modexp(m,e,n)</span></span>
+<span id="cb13-339"><a href="#cb13-339"></a>make_encrypt <span class="op">=</span> <span class="kw">lambda</span> e, n : <span class="kw">lambda</span> m : modexp(m,e,n)</span>
 <span id="cb13-340"><a href="#cb13-340"></a></span>
-<span id="cb13-341"><a href="#cb13-341"></a><span class="in">lines = open("unsafe.bad").readlines()</span></span>
-<span id="cb13-342"><a href="#cb13-342"></a><span class="in">n = int(lines[1], 16) </span></span>
-<span id="cb13-343"><a href="#cb13-343"></a><span class="in">e = int(lines[2], 16) </span></span>
-<span id="cb13-344"><a href="#cb13-344"></a><span class="in">d = int(lines[3], 16) </span></span>
+<span id="cb13-341"><a href="#cb13-341"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">"unsafe.bad"</span>).readlines()</span>
+<span id="cb13-342"><a href="#cb13-342"></a>n <span class="op">=</span> <span class="bu">int</span>(lines[<span class="dv">1</span>], <span class="dv">16</span>) </span>
+<span id="cb13-343"><a href="#cb13-343"></a>e <span class="op">=</span> <span class="bu">int</span>(lines[<span class="dv">2</span>], <span class="dv">16</span>) </span>
+<span id="cb13-344"><a href="#cb13-344"></a>d <span class="op">=</span> <span class="bu">int</span>(lines[<span class="dv">3</span>], <span class="dv">16</span>) </span>
 <span id="cb13-345"><a href="#cb13-345"></a></span>
-<span id="cb13-346"><a href="#cb13-346"></a><span class="in">lines = open("unsafe.pub").readlines()</span></span>
-<span id="cb13-347"><a href="#cb13-347"></a><span class="in">if n != int(lines[1], 16) or e != int(lines[2], 16):</span></span>
-<span id="cb13-348"><a href="#cb13-348"></a><span class="in">    print("Public key does not match private key.")</span></span>
-<span id="cb13-349"><a href="#cb13-349"></a><span class="in">    exit()</span></span>
+<span id="cb13-346"><a href="#cb13-346"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">"unsafe.pub"</span>).readlines()</span>
+<span id="cb13-347"><a href="#cb13-347"></a><span class="cf">if</span> n <span class="op">!=</span> <span class="bu">int</span>(lines[<span class="dv">1</span>], <span class="dv">16</span>) <span class="kw">or</span> e <span class="op">!=</span> <span class="bu">int</span>(lines[<span class="dv">2</span>], <span class="dv">16</span>):</span>
+<span id="cb13-348"><a href="#cb13-348"></a>    <span class="bu">print</span>(<span class="st">"Public key does not match private key."</span>)</span>
+<span id="cb13-349"><a href="#cb13-349"></a>    exit()</span>
 <span id="cb13-350"><a href="#cb13-350"></a></span>
-<span id="cb13-351"><a href="#cb13-351"></a><span class="in">encrypt = make_encrypt(e,n)</span></span>
-<span id="cb13-352"><a href="#cb13-352"></a><span class="in">decrypt = make_encrypt(d,n)</span></span>
+<span id="cb13-351"><a href="#cb13-351"></a>encrypt <span class="op">=</span> make_encrypt(e,n)</span>
+<span id="cb13-352"><a href="#cb13-352"></a>decrypt <span class="op">=</span> make_encrypt(d,n)</span>
 <span id="cb13-353"><a href="#cb13-353"></a></span>
-<span id="cb13-354"><a href="#cb13-354"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0x100)]):</span></span>
-<span id="cb13-355"><a href="#cb13-355"></a><span class="in">    print("Keys work for small values.")</span></span>
-<span id="cb13-356"><a href="#cb13-356"></a><span class="in">else:</span></span>
-<span id="cb13-357"><a href="#cb13-357"></a><span class="in">    print("Keys failed on small values.")</span></span>
+<span id="cb13-354"><a href="#cb13-354"></a><span class="cf">if</span> <span class="bu">all</span>([i <span class="op">==</span> decrypt(encrypt(i)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bn">0x100</span>)]):</span>
+<span id="cb13-355"><a href="#cb13-355"></a>    <span class="bu">print</span>(<span class="st">"Keys work for small values."</span>)</span>
+<span id="cb13-356"><a href="#cb13-356"></a><span class="cf">else</span>:</span>
+<span id="cb13-357"><a href="#cb13-357"></a>    <span class="bu">print</span>(<span class="st">"Keys failed on small values."</span>)</span>
 <span id="cb13-358"><a href="#cb13-358"></a></span>
-<span id="cb13-359"><a href="#cb13-359"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0,1 &lt;&lt; 31, 1 &lt;&lt; 29)]):</span></span>
-<span id="cb13-360"><a href="#cb13-360"></a><span class="in">    print("Keys work for larger values.")</span></span>
-<span id="cb13-361"><a href="#cb13-361"></a><span class="in">else:</span></span>
-<span id="cb13-362"><a href="#cb13-362"></a><span class="in">    print("Keys failed on larger values.")</span></span>
+<span id="cb13-359"><a href="#cb13-359"></a><span class="cf">if</span> <span class="bu">all</span>([i <span class="op">==</span> decrypt(encrypt(i)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">31</span>, <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">29</span>)]):</span>
+<span id="cb13-360"><a href="#cb13-360"></a>    <span class="bu">print</span>(<span class="st">"Keys work for larger values."</span>)</span>
+<span id="cb13-361"><a href="#cb13-361"></a><span class="cf">else</span>:</span>
+<span id="cb13-362"><a href="#cb13-362"></a>    <span class="bu">print</span>(<span class="st">"Keys failed on larger values."</span>)</span>
 <span id="cb13-363"><a href="#cb13-363"></a><span class="in">```</span></span>
 <span id="cb13-364"><a href="#cb13-364"></a></span>
 <span id="cb13-365"><a href="#cb13-365"></a><span class="at">&gt; By successfully encrypting and decrypting up to </span><span class="in">`1 &lt;&lt; 31`</span><span class="at">, the key is large enough for some small tasks, such encrypting the string "hi" - a string of length 3 when including the null terminator, which therefore contains 24 bits of information.</span></span>
@@ -1756,39 +1738,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-370"><a href="#cb13-370"></a><span class="ss">- </span>It is not intended for readability.</span>
 <span id="cb13-371"><a href="#cb13-371"></a></span>
 <span id="cb13-372"><a href="#cb13-372"></a><span class="in">```{.python filename="keygen.py"}</span></span>
-<span id="cb13-373"><a href="#cb13-373"></a><span class="in">import random</span></span>
+<span id="cb13-373"><a href="#cb13-373"></a><span class="im">import</span> random</span>
 <span id="cb13-374"><a href="#cb13-374"></a></span>
-<span id="cb13-375"><a href="#cb13-375"></a><span class="in">def find_large_prime():</span></span>
-<span id="cb13-376"><a href="#cb13-376"></a><span class="in">    is_prime = lambda n : all([n % i for i in range(2, int(n **.5))])</span></span>
-<span id="cb13-377"><a href="#cb13-377"></a><span class="in">    candidate = 6 * random.randint(5460,10000) + 1</span></span>
-<span id="cb13-378"><a href="#cb13-378"></a><span class="in">    while not is_prime(candidate):</span></span>
-<span id="cb13-379"><a href="#cb13-379"></a><span class="in">        candidate += 6</span></span>
-<span id="cb13-380"><a href="#cb13-380"></a><span class="in">    return candidate</span></span>
+<span id="cb13-375"><a href="#cb13-375"></a><span class="kw">def</span> find_large_prime():</span>
+<span id="cb13-376"><a href="#cb13-376"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">all</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
+<span id="cb13-377"><a href="#cb13-377"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> random.randint(<span class="dv">5460</span>,<span class="dv">10000</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-378"><a href="#cb13-378"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
+<span id="cb13-379"><a href="#cb13-379"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
+<span id="cb13-380"><a href="#cb13-380"></a>    <span class="cf">return</span> candidate</span>
 <span id="cb13-381"><a href="#cb13-381"></a></span>
-<span id="cb13-382"><a href="#cb13-382"></a><span class="in">def egcd(a, b):</span></span>
-<span id="cb13-383"><a href="#cb13-383"></a><span class="in">    if a == 0:</span></span>
-<span id="cb13-384"><a href="#cb13-384"></a><span class="in">        return (b, 0, 1)</span></span>
-<span id="cb13-385"><a href="#cb13-385"></a><span class="in">    else:</span></span>
-<span id="cb13-386"><a href="#cb13-386"></a><span class="in">        g, y, x = egcd(b % a, a)</span></span>
-<span id="cb13-387"><a href="#cb13-387"></a><span class="in">        return (g, x - (b // a) * y, y)</span></span>
-<span id="cb13-388"><a href="#cb13-388"></a><span class="in">    </span></span>
-<span id="cb13-389"><a href="#cb13-389"></a><span class="in">lcm = lambda a, b: a * b // egcd(a, b)[0]</span></span>
-<span id="cb13-390"><a href="#cb13-390"></a><span class="in">p, q = find_large_prime(), find_large_prime()</span></span>
-<span id="cb13-391"><a href="#cb13-391"></a><span class="in">n = p * q</span></span>
-<span id="cb13-392"><a href="#cb13-392"></a><span class="in">e = 65537</span></span>
-<span id="cb13-393"><a href="#cb13-393"></a><span class="in">lmdb = lcm(p - 1,  q - 1)</span></span>
-<span id="cb13-394"><a href="#cb13-394"></a><span class="in">d = egcd(e, lmdb)[1]</span></span>
-<span id="cb13-395"><a href="#cb13-395"></a><span class="in">while d &lt; 0: # fix sign problem</span></span>
-<span id="cb13-396"><a href="#cb13-396"></a><span class="in">    d += lcm(p - 1,  q - 1)</span></span>
-<span id="cb13-397"><a href="#cb13-397"></a><span class="in">hd = "-----BEGIN"</span></span>
-<span id="cb13-398"><a href="#cb13-398"></a><span class="in">ft = "-----END"</span></span>
-<span id="cb13-399"><a href="#cb13-399"></a><span class="in">tl = " UNSAFE PRIVATE KEY-----\n"</span></span>
-<span id="cb13-400"><a href="#cb13-400"></a><span class="in">open("unsafe.bad", "w").write(f"{hd}{tl}{n:x}\n{e:x}\n{d:x}\n{ft}{tl}")</span></span>
-<span id="cb13-401"><a href="#cb13-401"></a><span class="in">tl = " UNSAFE PUBLIC KEY-----\n"</span></span>
-<span id="cb13-402"><a href="#cb13-402"></a><span class="in">open("unsafe.pub", "w").write(f"{hd}{tl}{n:x}\n{e:x}\n{ft}{tl}")</span></span>
+<span id="cb13-382"><a href="#cb13-382"></a><span class="kw">def</span> egcd(a, b):</span>
+<span id="cb13-383"><a href="#cb13-383"></a>    <span class="cf">if</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-384"><a href="#cb13-384"></a>        <span class="cf">return</span> (b, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb13-385"><a href="#cb13-385"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-386"><a href="#cb13-386"></a>        g, y, x <span class="op">=</span> egcd(b <span class="op">%</span> a, a)</span>
+<span id="cb13-387"><a href="#cb13-387"></a>        <span class="cf">return</span> (g, x <span class="op">-</span> (b <span class="op">//</span> a) <span class="op">*</span> y, y)</span>
+<span id="cb13-388"><a href="#cb13-388"></a>    </span>
+<span id="cb13-389"><a href="#cb13-389"></a>lcm <span class="op">=</span> <span class="kw">lambda</span> a, b: a <span class="op">*</span> b <span class="op">//</span> egcd(a, b)[<span class="dv">0</span>]</span>
+<span id="cb13-390"><a href="#cb13-390"></a>p, q <span class="op">=</span> find_large_prime(), find_large_prime()</span>
+<span id="cb13-391"><a href="#cb13-391"></a>n <span class="op">=</span> p <span class="op">*</span> q</span>
+<span id="cb13-392"><a href="#cb13-392"></a>e <span class="op">=</span> <span class="dv">65537</span></span>
+<span id="cb13-393"><a href="#cb13-393"></a>lmdb <span class="op">=</span> lcm(p <span class="op">-</span> <span class="dv">1</span>,  q <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb13-394"><a href="#cb13-394"></a>d <span class="op">=</span> egcd(e, lmdb)[<span class="dv">1</span>]</span>
+<span id="cb13-395"><a href="#cb13-395"></a><span class="cf">while</span> d <span class="op">&lt;</span> <span class="dv">0</span>: <span class="co"># fix sign problem</span></span>
+<span id="cb13-396"><a href="#cb13-396"></a>    d <span class="op">+=</span> lcm(p <span class="op">-</span> <span class="dv">1</span>,  q <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb13-397"><a href="#cb13-397"></a>hd <span class="op">=</span> <span class="st">"-----BEGIN"</span></span>
+<span id="cb13-398"><a href="#cb13-398"></a>ft <span class="op">=</span> <span class="st">"-----END"</span></span>
+<span id="cb13-399"><a href="#cb13-399"></a>tl <span class="op">=</span> <span class="st">" UNSAFE PRIVATE KEY-----</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb13-400"><a href="#cb13-400"></a><span class="bu">open</span>(<span class="st">"unsafe.bad"</span>, <span class="st">"w"</span>).write(<span class="ss">f"</span><span class="sc">{</span>hd<span class="sc">}{</span>tl<span class="sc">}{</span>n<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>e<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>d<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>ft<span class="sc">}{</span>tl<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-401"><a href="#cb13-401"></a>tl <span class="op">=</span> <span class="st">" UNSAFE PUBLIC KEY-----</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb13-402"><a href="#cb13-402"></a><span class="bu">open</span>(<span class="st">"unsafe.pub"</span>, <span class="st">"w"</span>).write(<span class="ss">f"</span><span class="sc">{</span>hd<span class="sc">}{</span>tl<span class="sc">}{</span>n<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>e<span class="sc">:x}</span><span class="ch">\n</span><span class="sc">{</span>ft<span class="sc">}{</span>tl<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb13-403"><a href="#cb13-403"></a><span class="in">```</span></span>
 <span id="cb13-404"><a href="#cb13-404"></a></span>
-<span id="cb13-405"><a href="#cb13-405"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb13-405"><a href="#cb13-405"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

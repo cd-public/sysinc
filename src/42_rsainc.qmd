@@ -235,9 +235,9 @@ A+
 
 - We note the tester performs no error handling, for which you as the student are responsible.
 - This assignment was essentially as follows:
-  - Create a `keygen.c` that compiles into a `keygen` executable with is functionally identical to `python3 keygen.py`
+  - Create a `keygen.c` that compiles into a `keygen` executable which is functionally identical to `python3 keygen.py`
     - Key generation should create an `unsafe.bad` private key and an `unsafe.pub` public key.
-  - Create a `rsainc.c` that compiles into a `rsainc` executable with is functionally identical to `python3 rsa_py.py`
+  - Create a `rsainc.c` that compiles into a `rsainc` executable which is functionally identical to `python3 rsa_py.py`
     - Encryption and decryption will use a created `unsafe.bad` private key and an `unsafe.pub` public key.
 
 #### Tester
@@ -245,7 +245,7 @@ A+
 - The tester:
   - Ensures the local directory contains no prior message, key, or executable files.
   - Uses `curl` to fetch the latest `keygen.py` and `rsa_py.py` from the instructional GitHub
-  - Compiles `keygen.c` and `rsainc.c` will all flags:
+  - Compiles `keygen.c` and `rsainc.c` with all flags:
 ```{.email}
 gcc keygen.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o keygen
 gcc rsainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o rsainc

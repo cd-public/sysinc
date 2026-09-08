@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.30">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +67,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./61_action.html" rel="next">
 <link href="./52_bigrsa.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-40a160e28a8c0a8ad2fc184c8ba4238c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,9 +132,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Systems in C</a> 
-    </div>
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -503,9 +505,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>Containerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="Containerfile"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>FROM ubuntu </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Containerfile"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>FROM ubuntu </span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="astyle" class="level1">
@@ -521,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sample" class="level1">
 <h1>Sample</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a href="#cb2-1"></a>$ cat octal.c</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a href="#cb2-1"></a>$ cat octal.c</span>
 <span id="cb2-2"><a href="#cb2-2"></a>#include &lt;stdio.h&gt;</span>
 <span id="cb2-3"><a href="#cb2-3"></a>int main(){printf("%o\n",10);/* hm */return/* blah */ 0;}</span>
 <span id="cb2-4"><a href="#cb2-4"></a>$ gcc octal.c</span>
@@ -536,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13"></a>}</span>
 <span id="cb2-14"><a href="#cb2-14"></a>$ gcc octal.c</span>
 <span id="cb2-15"><a href="#cb2-15"></a>$ ./a.out</span>
-<span id="cb2-16"><a href="#cb2-16"></a>12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16"></a>12</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="hightlight" class="level1">
 <h1>Hightlight</h1>
@@ -547,8 +549,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>before</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="before"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">int</span> main<span class="op">(){</span>printf<span class="op">(</span><span class="st">"</span><span class="sc">%o\n</span><span class="st">"</span><span class="op">,</span><span class="dv">10</span><span class="op">);</span><span class="co">/* hm */</span><span class="cf">return</span><span class="co">/* blah */</span> <span class="dv">0</span><span class="op">;}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="before"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">int</span> main<span class="op">(){</span>printf<span class="op">(</span><span class="st">"</span><span class="sc">%o\n</span><span class="st">"</span><span class="op">,</span><span class="dv">10</span><span class="op">);</span><span class="co">/* hm */</span><span class="cf">return</span><span class="co">/* blah */</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><code>astyle octal.c</code></li>
@@ -557,10 +559,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>astyle</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="astyle"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="astyle"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%o\n</span><span class="st">"</span><span class="op">,</span><span class="dv">10</span><span class="op">);</span><span class="co">/* hm */</span><span class="cf">return</span><span class="co">/* blah */</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Learn more <code>astyle -h</code> (I’ve never read it).</li>
@@ -611,11 +613,11 @@ astyle</code></pre>
 </ul></li>
 <li>Mount</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb6-1"><a href="#cb6-1"></a>docker run --mount type=bind,src=&lt;host-path&gt;,dst=&lt;container-path&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb6-1"><a href="#cb6-1"></a>docker run --mount type=bind,src=&lt;host-path&gt;,dst=&lt;container-path&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Volume</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb7-1"><a href="#cb7-1"></a>docker run --volume &lt;host-path&gt;:&lt;container-path&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb7-1"><a href="#cb7-1"></a>docker run --volume &lt;host-path&gt;:&lt;container-path&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="quote-docker" class="level1">
 <h1>Quote Docker</h1>
@@ -636,7 +638,7 @@ astyle</code></pre>
 <ul>
 <li><a href="https://github.com/cd-c89/crypto/blob/main/podman/podman.sh">https://github.com/cd-c89/crypto/blob/main/podman/podman.sh</a></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a href="#cb8-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a href="#cb8-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="breakdown" class="level1">
 <h1>Breakdown</h1>
@@ -697,24 +699,24 @@ astyle</code></pre>
 <ul>
 <li><code>$PWD</code> is a shell built-in like <code>$?</code></li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a href="#cb9-1"></a>$ echo $PWD</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb9-1"><a href="#cb9-1"></a>$ echo $PWD</span>
 <span id="cb9-2"><a href="#cb9-2"></a>/home/user</span>
 <span id="cb9-3"><a href="#cb9-3"></a>$ pwd</span>
-<span id="cb9-4"><a href="#cb9-4"></a>/home/user</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a>/home/user</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Can use it in scripts.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a href="#cb10-1"></a>$ ls $PWD/..</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb10-1"><a href="#cb10-1"></a>$ ls $PWD/..</span>
 <span id="cb10-2"><a href="#cb10-2"></a>user</span>
 <span id="cb10-3"><a href="#cb10-3"></a>$ ls ..</span>
-<span id="cb10-4"><a href="#cb10-4"></a>user</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a>user</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="sample-2" class="level1">
 <h1>Sample</h1>
 <ul>
 <li>Make the <code>..</code> directory on host be visible to container.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb11-1"><a href="#cb11-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb11-1"><a href="#cb11-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="breakdown-2" class="level1">
 <h1>Breakdown</h1>
@@ -774,7 +776,7 @@ astyle</code></pre>
 </section>
 <section id="sample-3" class="level1">
 <h1>Sample</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb12-1"><a href="#cb12-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb12-1"><a href="#cb12-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li>Start a shell</li>
 <li>In a container of the image based on the Containerfile</li>
@@ -783,14 +785,14 @@ astyle</code></pre>
 </section>
 <section id="see-it" class="level1">
 <h1>See it</h1>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a href="#cb13-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ /bin/bash podman.sh</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a href="#cb13-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ /bin/bash podman.sh</span>
 <span id="cb13-2"><a href="#cb13-2"></a>c25d7d0db5d60efca7c1140dd9b8217a27e511caa4f5a5fdf2fc21e90ad45f17</span>
 <span id="cb13-3"><a href="#cb13-3"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ ls ..</span>
 <span id="cb13-4"><a href="#cb13-4"></a>4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span>
 <span id="cb13-5"><a href="#cb13-5"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ podman exec -it c2 /bin/bash</span>
 <span id="cb13-6"><a href="#cb13-6"></a>root@c25d7d0db5d6:/# ls /mnt</span>
 <span id="cb13-7"><a href="#cb13-7"></a>4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span>
-<span id="cb13-8"><a href="#cb13-8"></a>root@c25d7d0db5d6:/#</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-8"><a href="#cb13-8"></a>root@c25d7d0db5d6:/#</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="more-fun" class="level1">
 <h1>More fun</h1>
@@ -804,17 +806,17 @@ astyle</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>hi.c</strong></pre>
 </div>
-<div class="sourceCode" id="cb14" data-filename="hi.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="hi.c"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>        printf<span class="op">(</span><span class="st">"hi</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
 <span id="cb14-5"><a href="#cb14-5"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section" class="level1">
 <h1></h1>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb15-1"><a href="#cb15-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ cd ..</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb15-1"><a href="#cb15-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ cd ..</span>
 <span id="cb15-2"><a href="#cb15-2"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span>
 <span id="cb15-3"><a href="#cb15-3"></a>CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span>
 <span id="cb15-4"><a href="#cb15-4"></a>c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span>
@@ -832,7 +834,7 @@ astyle</code></pre>
 <span id="cb15-16"><a href="#cb15-16"></a>int main() {</span>
 <span id="cb15-17"><a href="#cb15-17"></a>        printf("hi\n");</span>
 <span id="cb15-18"><a href="#cb15-18"></a>        return 0;</span>
-<span id="cb15-19"><a href="#cb15-19"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-19"><a href="#cb15-19"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="compile" class="level1">
 <h1>Compile</h1>
@@ -843,10 +845,10 @@ astyle</code></pre>
 <li>With <code>gcc</code></li>
 <li>With <code>/mnt</code> files</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb16-1"><a href="#cb16-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb16-1"><a href="#cb16-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span>
 <span id="cb16-2"><a href="#cb16-2"></a>CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span>
 <span id="cb16-3"><a href="#cb16-3"></a>c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span>
-<span id="cb16-4"><a href="#cb16-4"></a>podman exec -it c2 gcc /mnt/hi.c -o /mnt/hi.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb16-4"><a href="#cb16-4"></a>podman exec -it c2 gcc /mnt/hi.c -o /mnt/hi.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="run-it" class="level1">
@@ -857,12 +859,12 @@ astyle</code></pre>
 <li>Well, making some pretty heavy assumptions.</li>
 <li>This was ubuntu-to-ubuntu, after all</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb17-1"><a href="#cb17-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ ./hi.out</span>
-<span id="cb17-2"><a href="#cb17-2"></a>hi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb17-1"><a href="#cb17-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ ./hi.out</span>
+<span id="cb17-2"><a href="#cb17-2"></a>hi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li>Can run in the container</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb18-1"><a href="#cb18-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 ./mnt/hi.out</span>
-<span id="cb18-2"><a href="#cb18-2"></a>hi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb18-1"><a href="#cb18-1"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 ./mnt/hi.out</span>
+<span id="cb18-2"><a href="#cb18-2"></a>hi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ubuntu-on-windows" class="level1">
 <h1>Ubuntu on Windows</h1>
@@ -911,7 +913,7 @@ astyle</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>podman.sh</strong></pre>
 </div>
-<div class="sourceCode" id="cb19" data-filename="podman.sh"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb19-1"><a href="#cb19-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-filename="podman.sh"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb19-1"><a href="#cb19-1"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Here is how I run the same under the “Command” shell cmd.exe</li>
@@ -920,7 +922,7 @@ astyle</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>windows.bat</strong></pre>
 </div>
-<div class="sourceCode" id="cb20" data-filename="windows.bat"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb20-1"><a href="#cb20-1"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="windows.bat"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb20-1"><a href="#cb20-1"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="one-difference" class="level1">
@@ -939,7 +941,7 @@ astyle</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>windows.bat</strong></pre>
 </div>
-<div class="sourceCode" id="cb21" data-filename="windows.bat"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb21-1"><a href="#cb21-1"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" data-filename="windows.bat"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb21-1"><a href="#cb21-1"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul></li>
 </ul>
@@ -949,7 +951,7 @@ astyle</code></pre>
 <ul>
 <li>Presumably I can refer to <code>wsl</code> images from the Windows host, I didn’t try.</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb22-1"><a href="#cb22-1"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman machine start</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb22-1"><a href="#cb22-1"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman machine start</span>
 <span id="cb22-2"><a href="#cb22-2"></a>Starting machine "podman-machine-default"</span>
 <span id="cb22-3"><a href="#cb22-3"></a>API forwarding for Docker API clients is not available due to the following startup failures.</span>
 <span id="cb22-4"><a href="#cb22-4"></a>        could not start api proxy since expected pipe is not available: podman-machine-default</span>
@@ -957,23 +959,23 @@ astyle</code></pre>
 <span id="cb22-6"><a href="#cb22-6"></a>Podman clients are still able to connect.</span>
 <span id="cb22-7"><a href="#cb22-7"></a>Machine "podman-machine-default" started successfully</span>
 <span id="cb22-8"><a href="#cb22-8"></a></span>
-<span id="cb22-9"><a href="#cb22-9"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman build -t crypto .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-9"><a href="#cb22-9"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman build -t crypto .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="launch-container" class="level1">
 <h1>Launch Container</h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb23-1"><a href="#cb23-1"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;.\window.bat</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb23-1"><a href="#cb23-1"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;.\window.bat</span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman run --mount type=bind,src=C:\Users\cd-desk\Documents\dev\crypto\podman\..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb23-4"><a href="#cb23-4"></a>9a1b0fb2a8f87d3639149ee41fb2dcb822f5a7cbd971a39cdc77150a79774765</span>
 <span id="cb23-5"><a href="#cb23-5"></a></span>
-<span id="cb23-6"><a href="#cb23-6"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-6"><a href="#cb23-6"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="vim" class="level1">
 <h1>vim</h1>
 <ul>
 <li>I of course <em>also</em> have <code>vim</code> installed on Windows, but I don’t know when I did that or how.</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb24-1"><a href="#cb24-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;vim hi.c</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb24-1"><a href="#cb24-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;vim hi.c</span>
 <span id="cb24-2"><a href="#cb24-2"></a></span>
 <span id="cb24-3"><a href="#cb24-3"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;type hi.c</span>
 <span id="cb24-4"><a href="#cb24-4"></a>#include &lt;stdio.h&gt;</span>
@@ -983,11 +985,11 @@ astyle</code></pre>
 <span id="cb24-8"><a href="#cb24-8"></a>        return 0;</span>
 <span id="cb24-9"><a href="#cb24-9"></a>}</span>
 <span id="cb24-10"><a href="#cb24-10"></a></span>
-<span id="cb24-11"><a href="#cb24-11"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-11"><a href="#cb24-11"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="compile-1" class="level1">
 <h1>Compile</h1>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb25-1"><a href="#cb25-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb25-1"><a href="#cb25-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out</span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;dir hi.out</span>
 <span id="cb25-4"><a href="#cb25-4"></a> Volume in drive C has no label.</span>
@@ -999,14 +1001,14 @@ astyle</code></pre>
 <span id="cb25-10"><a href="#cb25-10"></a>               1 File(s)         15,960 bytes</span>
 <span id="cb25-11"><a href="#cb25-11"></a>               0 Dir(s)  99,378,515,968 bytes free</span>
 <span id="cb25-12"><a href="#cb25-12"></a></span>
-<span id="cb25-13"><a href="#cb25-13"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-13"><a href="#cb25-13"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="run" class="level1">
 <h1>Run</h1>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb26-1"><a href="#cb26-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a ./mnt/hi.out</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb26-1"><a href="#cb26-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a ./mnt/hi.out</span>
 <span id="cb26-2"><a href="#cb26-2"></a>i wrote this on windows lol meow</span>
 <span id="cb26-3"><a href="#cb26-3"></a></span>
-<span id="cb26-4"><a href="#cb26-4"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4"><a href="#cb26-4"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Windows Development: It’s easy.</li>
 </ul>
@@ -1016,9 +1018,9 @@ astyle</code></pre>
 <ul>
 <li>Windows opened a window asking me what to do when I tried to run this.</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb27-1"><a href="#cb27-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;.\hi.out</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb27-1"><a href="#cb27-1"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;.\hi.out</span>
 <span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="exercise" class="level1">
 <h1>Exercise</h1>
@@ -1059,290 +1061,294 @@ astyle</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
         }
-        return container.innerHTML
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1350,185 +1356,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./52_bigrsa.html" class="pagination-link" aria-label="BigRSA">
@@ -1541,7 +1523,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb28" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">---</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="an">title:</span><span class="co"> Mounts</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="an">subtitle:</span><span class="co"> "Week 0x8 I"</span></span>
 <span id="cb28-4"><a href="#cb28-4"></a></span>
@@ -1620,9 +1602,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-77"><a href="#cb28-77"></a></span>
 <span id="cb28-78"><a href="#cb28-78"></a><span class="ss">- </span>I rarely use utilities other than these few.</span>
 <span id="cb28-79"><a href="#cb28-79"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb28-80"><a href="#cb28-80"></a><span class="in">FROM ubuntu </span></span>
+<span id="cb28-80"><a href="#cb28-80"></a>FROM ubuntu </span>
 <span id="cb28-81"><a href="#cb28-81"></a></span>
-<span id="cb28-82"><a href="#cb28-82"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span></span>
+<span id="cb28-82"><a href="#cb28-82"></a>RUN apt update &amp;&amp; apt install gcc vim python3 astyle -y</span>
 <span id="cb28-83"><a href="#cb28-83"></a><span class="in">```</span></span>
 <span id="cb28-84"><a href="#cb28-84"></a></span>
 <span id="cb28-85"><a href="#cb28-85"></a><span class="fu"># Astyle</span></span>
@@ -1637,22 +1619,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-94"><a href="#cb28-94"></a><span class="fu"># Sample</span></span>
 <span id="cb28-95"><a href="#cb28-95"></a></span>
 <span id="cb28-96"><a href="#cb28-96"></a><span class="in">```{.email}</span></span>
-<span id="cb28-97"><a href="#cb28-97"></a><span class="in">$ cat octal.c</span></span>
-<span id="cb28-98"><a href="#cb28-98"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb28-99"><a href="#cb28-99"></a><span class="in">int main(){printf("%o\n",10);/* hm */return/* blah */ 0;}</span></span>
-<span id="cb28-100"><a href="#cb28-100"></a><span class="in">$ gcc octal.c</span></span>
-<span id="cb28-101"><a href="#cb28-101"></a><span class="in">$ ./a.out</span></span>
-<span id="cb28-102"><a href="#cb28-102"></a><span class="in">12</span></span>
-<span id="cb28-103"><a href="#cb28-103"></a><span class="in">$ astyle octal.c</span></span>
-<span id="cb28-104"><a href="#cb28-104"></a><span class="in">Formatted  /home/user/tmp/octal.c</span></span>
-<span id="cb28-105"><a href="#cb28-105"></a><span class="in">$ cat octal.c</span></span>
-<span id="cb28-106"><a href="#cb28-106"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb28-107"><a href="#cb28-107"></a><span class="in">int main() {</span></span>
-<span id="cb28-108"><a href="#cb28-108"></a><span class="in">    printf("%o\n",10);/* hm */return/* blah */ 0;</span></span>
-<span id="cb28-109"><a href="#cb28-109"></a><span class="in">}</span></span>
-<span id="cb28-110"><a href="#cb28-110"></a><span class="in">$ gcc octal.c</span></span>
-<span id="cb28-111"><a href="#cb28-111"></a><span class="in">$ ./a.out</span></span>
-<span id="cb28-112"><a href="#cb28-112"></a><span class="in">12</span></span>
+<span id="cb28-97"><a href="#cb28-97"></a>$ cat octal.c</span>
+<span id="cb28-98"><a href="#cb28-98"></a>#include &lt;stdio.h&gt;</span>
+<span id="cb28-99"><a href="#cb28-99"></a>int main(){printf("%o\n",10);/* hm */return/* blah */ 0;}</span>
+<span id="cb28-100"><a href="#cb28-100"></a>$ gcc octal.c</span>
+<span id="cb28-101"><a href="#cb28-101"></a>$ ./a.out</span>
+<span id="cb28-102"><a href="#cb28-102"></a>12</span>
+<span id="cb28-103"><a href="#cb28-103"></a>$ astyle octal.c</span>
+<span id="cb28-104"><a href="#cb28-104"></a>Formatted  /home/user/tmp/octal.c</span>
+<span id="cb28-105"><a href="#cb28-105"></a>$ cat octal.c</span>
+<span id="cb28-106"><a href="#cb28-106"></a>#include &lt;stdio.h&gt;</span>
+<span id="cb28-107"><a href="#cb28-107"></a>int main() {</span>
+<span id="cb28-108"><a href="#cb28-108"></a>    printf("%o\n",10);/* hm */return/* blah */ 0;</span>
+<span id="cb28-109"><a href="#cb28-109"></a>}</span>
+<span id="cb28-110"><a href="#cb28-110"></a>$ gcc octal.c</span>
+<span id="cb28-111"><a href="#cb28-111"></a>$ ./a.out</span>
+<span id="cb28-112"><a href="#cb28-112"></a>12</span>
 <span id="cb28-113"><a href="#cb28-113"></a><span class="in">```</span></span>
 <span id="cb28-114"><a href="#cb28-114"></a></span>
 <span id="cb28-115"><a href="#cb28-115"></a><span class="fu"># Hightlight</span></span>
@@ -1710,11 +1692,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-167"><a href="#cb28-167"></a><span class="ss">    - </span><span class="in">`podman`</span> I think assumes you know what you are doing (I don't)</span>
 <span id="cb28-168"><a href="#cb28-168"></a><span class="ss">- </span>Mount</span>
 <span id="cb28-169"><a href="#cb28-169"></a><span class="in">```{.email}</span></span>
-<span id="cb28-170"><a href="#cb28-170"></a><span class="in">docker run --mount type=bind,src=&lt;host-path&gt;,dst=&lt;container-path&gt;</span></span>
+<span id="cb28-170"><a href="#cb28-170"></a>docker run --mount type=bind,src=&lt;host-path&gt;,dst=&lt;container-path&gt;</span>
 <span id="cb28-171"><a href="#cb28-171"></a><span class="in">```</span></span>
 <span id="cb28-172"><a href="#cb28-172"></a><span class="ss">- </span>Volume</span>
 <span id="cb28-173"><a href="#cb28-173"></a><span class="in">```{.email}</span></span>
-<span id="cb28-174"><a href="#cb28-174"></a><span class="in">docker run --volume &lt;host-path&gt;:&lt;container-path&gt;</span></span>
+<span id="cb28-174"><a href="#cb28-174"></a>docker run --volume &lt;host-path&gt;:&lt;container-path&gt;</span>
 <span id="cb28-175"><a href="#cb28-175"></a><span class="in">```</span></span>
 <span id="cb28-176"><a href="#cb28-176"></a></span>
 <span id="cb28-177"><a href="#cb28-177"></a><span class="fu"># Quote Docker</span></span>
@@ -1731,43 +1713,43 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-188"><a href="#cb28-188"></a><span class="ss">- </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/crypto/blob/main/podman/podman.sh</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/podman/podman.sh)</span></span>
 <span id="cb28-189"><a href="#cb28-189"></a></span>
 <span id="cb28-190"><a href="#cb28-190"></a><span class="in">```{.email}</span></span>
-<span id="cb28-191"><a href="#cb28-191"></a><span class="in">podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-191"><a href="#cb28-191"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-192"><a href="#cb28-192"></a><span class="in">```</span></span>
 <span id="cb28-193"><a href="#cb28-193"></a></span>
 <span id="cb28-194"><a href="#cb28-194"></a><span class="fu"># Breakdown</span></span>
 <span id="cb28-195"><a href="#cb28-195"></a></span>
-<span id="cb28-196"><a href="#cb28-196"></a>|Arg | Meaning|</span>
-<span id="cb28-197"><a href="#cb28-197"></a>|----| ---|</span>
-<span id="cb28-198"><a href="#cb28-198"></a>|podman|container command|</span>
-<span id="cb28-199"><a href="#cb28-199"></a>|run| start a container from some image |</span>
-<span id="cb28-200"><a href="#cb28-200"></a>| --mount | let container see files that live outside container |</span>
+<span id="cb28-196"><a href="#cb28-196"></a><span class="pp">|</span>Arg <span class="pp">|</span> Meaning<span class="pp">|</span></span>
+<span id="cb28-197"><a href="#cb28-197"></a><span class="pp">|----| ---|</span></span>
+<span id="cb28-198"><a href="#cb28-198"></a><span class="pp">|</span>podman<span class="pp">|</span>container command<span class="pp">|</span></span>
+<span id="cb28-199"><a href="#cb28-199"></a><span class="pp">|</span>run<span class="pp">|</span> start a container from some image <span class="pp">|</span></span>
+<span id="cb28-200"><a href="#cb28-200"></a><span class="pp">|</span> --mount <span class="pp">|</span> let container see files that live outside container <span class="pp">|</span></span>
 <span id="cb28-201"><a href="#cb28-201"></a></span>
 <span id="cb28-202"><a href="#cb28-202"></a><span class="fu"># Breakdown</span></span>
 <span id="cb28-203"><a href="#cb28-203"></a></span>
-<span id="cb28-204"><a href="#cb28-204"></a>|Arg | Meaning|</span>
-<span id="cb28-205"><a href="#cb28-205"></a>|----| ---|</span>
-<span id="cb28-206"><a href="#cb28-206"></a>| type=bind | the files will be the same in a host folder and container folder |</span>
-<span id="cb28-207"><a href="#cb28-207"></a>| src= | This is the folder on the host |</span>
-<span id="cb28-208"><a href="#cb28-208"></a>| $PWD/.. | This is the file above the current working directory |</span>
+<span id="cb28-204"><a href="#cb28-204"></a><span class="pp">|</span>Arg <span class="pp">|</span> Meaning<span class="pp">|</span></span>
+<span id="cb28-205"><a href="#cb28-205"></a><span class="pp">|----| ---|</span></span>
+<span id="cb28-206"><a href="#cb28-206"></a><span class="pp">|</span> type=bind <span class="pp">|</span> the files will be the same in a host folder and container folder <span class="pp">|</span></span>
+<span id="cb28-207"><a href="#cb28-207"></a><span class="pp">|</span> src= <span class="pp">|</span> This is the folder on the host <span class="pp">|</span></span>
+<span id="cb28-208"><a href="#cb28-208"></a><span class="pp">|</span> $PWD/.. <span class="pp">|</span> This is the file above the current working directory <span class="pp">|</span></span>
 <span id="cb28-209"><a href="#cb28-209"></a></span>
 <span id="cb28-210"><a href="#cb28-210"></a><span class="fu"># Try it</span></span>
 <span id="cb28-211"><a href="#cb28-211"></a></span>
 <span id="cb28-212"><a href="#cb28-212"></a><span class="ss">- </span><span class="in">`$PWD`</span> is a shell built-in like <span class="in">`$?`</span></span>
 <span id="cb28-213"><a href="#cb28-213"></a></span>
 <span id="cb28-214"><a href="#cb28-214"></a><span class="in">```{.email}</span></span>
-<span id="cb28-215"><a href="#cb28-215"></a><span class="in">$ echo $PWD</span></span>
-<span id="cb28-216"><a href="#cb28-216"></a><span class="in">/home/user</span></span>
-<span id="cb28-217"><a href="#cb28-217"></a><span class="in">$ pwd</span></span>
-<span id="cb28-218"><a href="#cb28-218"></a><span class="in">/home/user</span></span>
+<span id="cb28-215"><a href="#cb28-215"></a>$ echo $PWD</span>
+<span id="cb28-216"><a href="#cb28-216"></a>/home/user</span>
+<span id="cb28-217"><a href="#cb28-217"></a>$ pwd</span>
+<span id="cb28-218"><a href="#cb28-218"></a>/home/user</span>
 <span id="cb28-219"><a href="#cb28-219"></a><span class="in">```</span></span>
 <span id="cb28-220"><a href="#cb28-220"></a></span>
 <span id="cb28-221"><a href="#cb28-221"></a><span class="ss">- </span>Can use it in scripts.</span>
 <span id="cb28-222"><a href="#cb28-222"></a></span>
 <span id="cb28-223"><a href="#cb28-223"></a><span class="in">```{.email}</span></span>
-<span id="cb28-224"><a href="#cb28-224"></a><span class="in">$ ls $PWD/..</span></span>
-<span id="cb28-225"><a href="#cb28-225"></a><span class="in">user</span></span>
-<span id="cb28-226"><a href="#cb28-226"></a><span class="in">$ ls ..</span></span>
-<span id="cb28-227"><a href="#cb28-227"></a><span class="in">user</span></span>
+<span id="cb28-224"><a href="#cb28-224"></a>$ ls $PWD/..</span>
+<span id="cb28-225"><a href="#cb28-225"></a>user</span>
+<span id="cb28-226"><a href="#cb28-226"></a>$ ls ..</span>
+<span id="cb28-227"><a href="#cb28-227"></a>user</span>
 <span id="cb28-228"><a href="#cb28-228"></a><span class="in">```</span></span>
 <span id="cb28-229"><a href="#cb28-229"></a></span>
 <span id="cb28-230"><a href="#cb28-230"></a><span class="fu"># Sample</span></span>
@@ -1775,17 +1757,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-232"><a href="#cb28-232"></a><span class="ss">- </span>Make the <span class="in">`..`</span> directory on host be visible to container.</span>
 <span id="cb28-233"><a href="#cb28-233"></a></span>
 <span id="cb28-234"><a href="#cb28-234"></a><span class="in">```{.email}</span></span>
-<span id="cb28-235"><a href="#cb28-235"></a><span class="in">podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-235"><a href="#cb28-235"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-236"><a href="#cb28-236"></a><span class="in">```</span></span>
 <span id="cb28-237"><a href="#cb28-237"></a></span>
 <span id="cb28-238"><a href="#cb28-238"></a></span>
 <span id="cb28-239"><a href="#cb28-239"></a><span class="fu"># Breakdown</span></span>
 <span id="cb28-240"><a href="#cb28-240"></a></span>
-<span id="cb28-241"><a href="#cb28-241"></a>|Arg | Meaning|</span>
-<span id="cb28-242"><a href="#cb28-242"></a>|----| ---|</span>
-<span id="cb28-243"><a href="#cb28-243"></a>| target= | This is the folder on the container |</span>
-<span id="cb28-244"><a href="#cb28-244"></a>| /mnt | That is the mnt (mount) directory under root <span class="in">`/`</span> |</span>
-<span id="cb28-245"><a href="#cb28-245"></a>| -d | Start the container *detached* |</span>
+<span id="cb28-241"><a href="#cb28-241"></a><span class="pp">|</span>Arg <span class="pp">|</span> Meaning<span class="pp">|</span></span>
+<span id="cb28-242"><a href="#cb28-242"></a><span class="pp">|----| ---|</span></span>
+<span id="cb28-243"><a href="#cb28-243"></a><span class="pp">|</span> target= <span class="pp">|</span> This is the folder on the container <span class="pp">|</span></span>
+<span id="cb28-244"><a href="#cb28-244"></a><span class="pp">|</span> /mnt <span class="pp">|</span> That is the mnt (mount) directory under root <span class="in">`/`</span> <span class="pp">|</span></span>
+<span id="cb28-245"><a href="#cb28-245"></a><span class="pp">|</span> -d <span class="pp">|</span> Start the container *detached* <span class="pp">|</span></span>
 <span id="cb28-246"><a href="#cb28-246"></a></span>
 <span id="cb28-247"><a href="#cb28-247"></a><span class="ss">- </span>I couldn't get this to work attached (on Windows) but didn't try very hard.</span>
 <span id="cb28-248"><a href="#cb28-248"></a><span class="ss">    - </span>On Linux everything is easy (always)</span>
@@ -1793,17 +1775,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-250"><a href="#cb28-250"></a></span>
 <span id="cb28-251"><a href="#cb28-251"></a><span class="fu"># Breakdown</span></span>
 <span id="cb28-252"><a href="#cb28-252"></a></span>
-<span id="cb28-253"><a href="#cb28-253"></a>|Arg | Meaning|</span>
-<span id="cb28-254"><a href="#cb28-254"></a>|----| ---|</span>
-<span id="cb28-255"><a href="#cb28-255"></a>| -t | What should the name (tag) be of Container image? |</span>
-<span id="cb28-256"><a href="#cb28-256"></a>| crypto | The tag I used during <span class="in">`podman build`</span> |</span>
-<span id="cb28-257"><a href="#cb28-257"></a>| /bin/bash | The executable to run within the container |</span>
+<span id="cb28-253"><a href="#cb28-253"></a><span class="pp">|</span>Arg <span class="pp">|</span> Meaning<span class="pp">|</span></span>
+<span id="cb28-254"><a href="#cb28-254"></a><span class="pp">|----| ---|</span></span>
+<span id="cb28-255"><a href="#cb28-255"></a><span class="pp">|</span> -t <span class="pp">|</span> What should the name (tag) be of Container image? <span class="pp">|</span></span>
+<span id="cb28-256"><a href="#cb28-256"></a><span class="pp">|</span> crypto <span class="pp">|</span> The tag I used during <span class="in">`podman build`</span> <span class="pp">|</span></span>
+<span id="cb28-257"><a href="#cb28-257"></a><span class="pp">|</span> /bin/bash <span class="pp">|</span> The executable to run within the container <span class="pp">|</span></span>
 <span id="cb28-258"><a href="#cb28-258"></a></span>
 <span id="cb28-259"><a href="#cb28-259"></a></span>
 <span id="cb28-260"><a href="#cb28-260"></a><span class="fu"># Sample</span></span>
 <span id="cb28-261"><a href="#cb28-261"></a></span>
 <span id="cb28-262"><a href="#cb28-262"></a><span class="in">```{.email}</span></span>
-<span id="cb28-263"><a href="#cb28-263"></a><span class="in">podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-263"><a href="#cb28-263"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-264"><a href="#cb28-264"></a><span class="in">```</span></span>
 <span id="cb28-265"><a href="#cb28-265"></a></span>
 <span id="cb28-266"><a href="#cb28-266"></a><span class="ss">1. </span>Start a shell</span>
@@ -1813,14 +1795,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-270"><a href="#cb28-270"></a><span class="fu"># See it</span></span>
 <span id="cb28-271"><a href="#cb28-271"></a></span>
 <span id="cb28-272"><a href="#cb28-272"></a><span class="in">```{.email}</span></span>
-<span id="cb28-273"><a href="#cb28-273"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ /bin/bash podman.sh</span></span>
-<span id="cb28-274"><a href="#cb28-274"></a><span class="in">c25d7d0db5d60efca7c1140dd9b8217a27e511caa4f5a5fdf2fc21e90ad45f17</span></span>
-<span id="cb28-275"><a href="#cb28-275"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ ls ..</span></span>
-<span id="cb28-276"><a href="#cb28-276"></a><span class="in">4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span></span>
-<span id="cb28-277"><a href="#cb28-277"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ podman exec -it c2 /bin/bash</span></span>
-<span id="cb28-278"><a href="#cb28-278"></a><span class="in">root@c25d7d0db5d6:/# ls /mnt</span></span>
-<span id="cb28-279"><a href="#cb28-279"></a><span class="in">4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span></span>
-<span id="cb28-280"><a href="#cb28-280"></a><span class="in">root@c25d7d0db5d6:/#</span></span>
+<span id="cb28-273"><a href="#cb28-273"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ /bin/bash podman.sh</span>
+<span id="cb28-274"><a href="#cb28-274"></a>c25d7d0db5d60efca7c1140dd9b8217a27e511caa4f5a5fdf2fc21e90ad45f17</span>
+<span id="cb28-275"><a href="#cb28-275"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ ls ..</span>
+<span id="cb28-276"><a href="#cb28-276"></a>4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span>
+<span id="cb28-277"><a href="#cb28-277"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ podman exec -it c2 /bin/bash</span>
+<span id="cb28-278"><a href="#cb28-278"></a>root@c25d7d0db5d6:/# ls /mnt</span>
+<span id="cb28-279"><a href="#cb28-279"></a>4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc</span>
+<span id="cb28-280"><a href="#cb28-280"></a>root@c25d7d0db5d6:/#</span>
 <span id="cb28-281"><a href="#cb28-281"></a><span class="in">```</span></span>
 <span id="cb28-282"><a href="#cb28-282"></a></span>
 <span id="cb28-283"><a href="#cb28-283"></a><span class="fu"># More fun</span></span>
@@ -1842,25 +1824,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-299"><a href="#cb28-299"></a>#</span>
 <span id="cb28-300"><a href="#cb28-300"></a></span>
 <span id="cb28-301"><a href="#cb28-301"></a><span class="in">```{.email}</span></span>
-<span id="cb28-302"><a href="#cb28-302"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ cd ..</span></span>
-<span id="cb28-303"><a href="#cb28-303"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span></span>
-<span id="cb28-304"><a href="#cb28-304"></a><span class="in">CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span></span>
-<span id="cb28-305"><a href="#cb28-305"></a><span class="in">c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span></span>
-<span id="cb28-306"><a href="#cb28-306"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ vim hi.c</span></span>
-<span id="cb28-307"><a href="#cb28-307"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ cat hi.c</span></span>
-<span id="cb28-308"><a href="#cb28-308"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb28-302"><a href="#cb28-302"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ cd ..</span>
+<span id="cb28-303"><a href="#cb28-303"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span>
+<span id="cb28-304"><a href="#cb28-304"></a>CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span>
+<span id="cb28-305"><a href="#cb28-305"></a>c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span>
+<span id="cb28-306"><a href="#cb28-306"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ vim hi.c</span>
+<span id="cb28-307"><a href="#cb28-307"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ cat hi.c</span>
+<span id="cb28-308"><a href="#cb28-308"></a>#include &lt;stdio.h&gt;</span>
 <span id="cb28-309"><a href="#cb28-309"></a></span>
-<span id="cb28-310"><a href="#cb28-310"></a><span class="in">int main() {</span></span>
-<span id="cb28-311"><a href="#cb28-311"></a><span class="in">        printf("hi\n");</span></span>
-<span id="cb28-312"><a href="#cb28-312"></a><span class="in">        return 0;</span></span>
-<span id="cb28-313"><a href="#cb28-313"></a><span class="in">}</span></span>
-<span id="cb28-314"><a href="#cb28-314"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 cat /mnt/hi.c</span></span>
-<span id="cb28-315"><a href="#cb28-315"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb28-310"><a href="#cb28-310"></a>int main() {</span>
+<span id="cb28-311"><a href="#cb28-311"></a>        printf("hi\n");</span>
+<span id="cb28-312"><a href="#cb28-312"></a>        return 0;</span>
+<span id="cb28-313"><a href="#cb28-313"></a>}</span>
+<span id="cb28-314"><a href="#cb28-314"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 cat /mnt/hi.c</span>
+<span id="cb28-315"><a href="#cb28-315"></a>#include &lt;stdio.h&gt;</span>
 <span id="cb28-316"><a href="#cb28-316"></a></span>
-<span id="cb28-317"><a href="#cb28-317"></a><span class="in">int main() {</span></span>
-<span id="cb28-318"><a href="#cb28-318"></a><span class="in">        printf("hi\n");</span></span>
-<span id="cb28-319"><a href="#cb28-319"></a><span class="in">        return 0;</span></span>
-<span id="cb28-320"><a href="#cb28-320"></a><span class="in">}</span></span>
+<span id="cb28-317"><a href="#cb28-317"></a>int main() {</span>
+<span id="cb28-318"><a href="#cb28-318"></a>        printf("hi\n");</span>
+<span id="cb28-319"><a href="#cb28-319"></a>        return 0;</span>
+<span id="cb28-320"><a href="#cb28-320"></a>}</span>
 <span id="cb28-321"><a href="#cb28-321"></a><span class="in">```</span></span>
 <span id="cb28-322"><a href="#cb28-322"></a></span>
 <span id="cb28-323"><a href="#cb28-323"></a><span class="fu"># Compile</span></span>
@@ -1870,10 +1852,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-327"><a href="#cb28-327"></a><span class="ss">    - </span>With <span class="in">`gcc`</span></span>
 <span id="cb28-328"><a href="#cb28-328"></a><span class="ss">    - </span>With <span class="in">`/mnt`</span> files</span>
 <span id="cb28-329"><a href="#cb28-329"></a><span class="in">```{.email}</span></span>
-<span id="cb28-330"><a href="#cb28-330"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span></span>
-<span id="cb28-331"><a href="#cb28-331"></a><span class="in">CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span></span>
-<span id="cb28-332"><a href="#cb28-332"></a><span class="in">c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span></span>
-<span id="cb28-333"><a href="#cb28-333"></a><span class="in">podman exec -it c2 gcc /mnt/hi.c -o /mnt/hi.out</span></span>
+<span id="cb28-330"><a href="#cb28-330"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps</span>
+<span id="cb28-331"><a href="#cb28-331"></a>CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES</span>
+<span id="cb28-332"><a href="#cb28-332"></a>c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley</span>
+<span id="cb28-333"><a href="#cb28-333"></a>podman exec -it c2 gcc /mnt/hi.c -o /mnt/hi.out</span>
 <span id="cb28-334"><a href="#cb28-334"></a><span class="in">```</span></span>
 <span id="cb28-335"><a href="#cb28-335"></a></span>
 <span id="cb28-336"><a href="#cb28-336"></a><span class="fu"># Run it</span></span>
@@ -1882,13 +1864,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-339"><a href="#cb28-339"></a><span class="ss">    - </span>Well, making some pretty heavy assumptions.</span>
 <span id="cb28-340"><a href="#cb28-340"></a><span class="ss">    - </span>This was ubuntu-to-ubuntu, after all</span>
 <span id="cb28-341"><a href="#cb28-341"></a><span class="in">```{.email}</span></span>
-<span id="cb28-342"><a href="#cb28-342"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ ./hi.out</span></span>
-<span id="cb28-343"><a href="#cb28-343"></a><span class="in">hi</span></span>
+<span id="cb28-342"><a href="#cb28-342"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ ./hi.out</span>
+<span id="cb28-343"><a href="#cb28-343"></a>hi</span>
 <span id="cb28-344"><a href="#cb28-344"></a><span class="in">```</span></span>
 <span id="cb28-345"><a href="#cb28-345"></a><span class="ss">- </span>Can run in the container</span>
 <span id="cb28-346"><a href="#cb28-346"></a><span class="in">```{.email}</span></span>
-<span id="cb28-347"><a href="#cb28-347"></a><span class="in">user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 ./mnt/hi.out</span></span>
-<span id="cb28-348"><a href="#cb28-348"></a><span class="in">hi</span></span>
+<span id="cb28-347"><a href="#cb28-347"></a>user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 ./mnt/hi.out</span>
+<span id="cb28-348"><a href="#cb28-348"></a>hi</span>
 <span id="cb28-349"><a href="#cb28-349"></a><span class="in">```</span></span>
 <span id="cb28-350"><a href="#cb28-350"></a></span>
 <span id="cb28-351"><a href="#cb28-351"></a><span class="fu"># Ubuntu on Windows</span></span>
@@ -1898,10 +1880,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-355"><a href="#cb28-355"></a></span>
 <span id="cb28-356"><a href="#cb28-356"></a><span class="fu"># It's Popular</span></span>
 <span id="cb28-357"><a href="#cb28-357"></a></span>
-<span id="cb28-358"><a href="#cb28-358"></a>  &lt;script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/4031_RC01/embed_loader.js"&gt;&lt;/script&gt;</span>
-<span id="cb28-359"><a href="#cb28-359"></a>  &lt;script type="text/javascript"&gt;</span>
+<span id="cb28-358"><a href="#cb28-358"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://ssl.gstatic.com/trends_nrtr/4031_RC01/embed_loader.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb28-359"><a href="#cb28-359"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="dt">&gt;</span></span>
 <span id="cb28-360"><a href="#cb28-360"></a>    trends<span class="op">.</span><span class="at">embed</span><span class="op">.</span><span class="fu">renderExploreWidget</span>(<span class="st">"TIMESERIES"</span><span class="op">,</span> {<span class="st">"comparisonItem"</span><span class="op">:</span>[{<span class="st">"keyword"</span><span class="op">:</span><span class="st">"windows"</span><span class="op">,</span><span class="st">"geo"</span><span class="op">:</span><span class="st">"US"</span><span class="op">,</span><span class="st">"time"</span><span class="op">:</span><span class="st">"2004-01-01 2025-03-13"</span>}<span class="op">,</span>{<span class="st">"keyword"</span><span class="op">:</span><span class="st">"linux"</span><span class="op">,</span><span class="st">"geo"</span><span class="op">:</span><span class="st">"US"</span><span class="op">,</span><span class="st">"time"</span><span class="op">:</span><span class="st">"2004-01-01 2025-03-13"</span>}]<span class="op">,</span><span class="st">"category"</span><span class="op">:</span><span class="dv">0</span><span class="op">,</span><span class="st">"property"</span><span class="op">:</span><span class="st">""</span>}<span class="op">,</span> {<span class="st">"exploreQuery"</span><span class="op">:</span><span class="st">"date=all&amp;geo=US&amp;q=window,linux&amp;hl=en"</span><span class="op">,</span><span class="st">"guestPath"</span><span class="op">:</span><span class="st">"https://trends.google.com:443/trends/embed/"</span>})<span class="op">;</span></span>
-<span id="cb28-361"><a href="#cb28-361"></a>  &lt;/script&gt;</span>
+<span id="cb28-361"><a href="#cb28-361"></a>  <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb28-362"><a href="#cb28-362"></a></span>
 <span id="cb28-363"><a href="#cb28-363"></a><span class="fu"># Windows Commands</span></span>
 <span id="cb28-364"><a href="#cb28-364"></a></span>
@@ -1922,13 +1904,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-379"><a href="#cb28-379"></a><span class="ss">- </span>For reference, here is my <span class="in">`.sh`</span> script to mount folders:</span>
 <span id="cb28-380"><a href="#cb28-380"></a></span>
 <span id="cb28-381"><a href="#cb28-381"></a><span class="in">```{.email filename="podman.sh"}</span></span>
-<span id="cb28-382"><a href="#cb28-382"></a><span class="in">podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-382"><a href="#cb28-382"></a>podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-383"><a href="#cb28-383"></a><span class="in">```</span></span>
 <span id="cb28-384"><a href="#cb28-384"></a></span>
 <span id="cb28-385"><a href="#cb28-385"></a><span class="ss">- </span>Here is how I run the same under the "Command" shell cmd.exe</span>
 <span id="cb28-386"><a href="#cb28-386"></a></span>
 <span id="cb28-387"><a href="#cb28-387"></a><span class="in">```{.email filename="windows.bat"}</span></span>
-<span id="cb28-388"><a href="#cb28-388"></a><span class="in">podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-388"><a href="#cb28-388"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-389"><a href="#cb28-389"></a><span class="in">```</span></span>
 <span id="cb28-390"><a href="#cb28-390"></a></span>
 <span id="cb28-391"><a href="#cb28-391"></a><span class="fu"># One difference</span></span>
@@ -1940,7 +1922,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-397"><a href="#cb28-397"></a><span class="ss">        - </span>Paths are backslash vs. forward slash delineated</span>
 <span id="cb28-398"><a href="#cb28-398"></a><span class="ss">        - </span><span class="in">`%cd% not `</span>$PWD` gives the current directory.</span>
 <span id="cb28-399"><a href="#cb28-399"></a><span class="in">```{.email filename="windows.bat"}</span></span>
-<span id="cb28-400"><a href="#cb28-400"></a><span class="in">podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span></span>
+<span id="cb28-400"><a href="#cb28-400"></a>podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash</span>
 <span id="cb28-401"><a href="#cb28-401"></a><span class="in">```</span></span>
 <span id="cb28-402"><a href="#cb28-402"></a></span>
 <span id="cb28-403"><a href="#cb28-403"></a><span class="fu"># Windows Image</span></span>
@@ -1948,26 +1930,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-405"><a href="#cb28-405"></a><span class="ss">- </span>Presumably I can refer to <span class="in">`wsl`</span> images from the Windows host, I didn't try.</span>
 <span id="cb28-406"><a href="#cb28-406"></a></span>
 <span id="cb28-407"><a href="#cb28-407"></a><span class="in">```{.email}</span></span>
-<span id="cb28-408"><a href="#cb28-408"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman machine start</span></span>
-<span id="cb28-409"><a href="#cb28-409"></a><span class="in">Starting machine "podman-machine-default"</span></span>
-<span id="cb28-410"><a href="#cb28-410"></a><span class="in">API forwarding for Docker API clients is not available due to the following startup failures.</span></span>
-<span id="cb28-411"><a href="#cb28-411"></a><span class="in">        could not start api proxy since expected pipe is not available: podman-machine-default</span></span>
+<span id="cb28-408"><a href="#cb28-408"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman machine start</span>
+<span id="cb28-409"><a href="#cb28-409"></a>Starting machine "podman-machine-default"</span>
+<span id="cb28-410"><a href="#cb28-410"></a>API forwarding for Docker API clients is not available due to the following startup failures.</span>
+<span id="cb28-411"><a href="#cb28-411"></a>        could not start api proxy since expected pipe is not available: podman-machine-default</span>
 <span id="cb28-412"><a href="#cb28-412"></a></span>
-<span id="cb28-413"><a href="#cb28-413"></a><span class="in">Podman clients are still able to connect.</span></span>
-<span id="cb28-414"><a href="#cb28-414"></a><span class="in">Machine "podman-machine-default" started successfully</span></span>
+<span id="cb28-413"><a href="#cb28-413"></a>Podman clients are still able to connect.</span>
+<span id="cb28-414"><a href="#cb28-414"></a>Machine "podman-machine-default" started successfully</span>
 <span id="cb28-415"><a href="#cb28-415"></a></span>
-<span id="cb28-416"><a href="#cb28-416"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman build -t crypto .</span></span>
+<span id="cb28-416"><a href="#cb28-416"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman build -t crypto .</span>
 <span id="cb28-417"><a href="#cb28-417"></a><span class="in">```</span></span>
 <span id="cb28-418"><a href="#cb28-418"></a></span>
 <span id="cb28-419"><a href="#cb28-419"></a><span class="fu"># Launch Container</span></span>
 <span id="cb28-420"><a href="#cb28-420"></a></span>
 <span id="cb28-421"><a href="#cb28-421"></a><span class="in">```{.email}</span></span>
-<span id="cb28-422"><a href="#cb28-422"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto\podman&gt;.\window.bat</span></span>
+<span id="cb28-422"><a href="#cb28-422"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;.\window.bat</span>
 <span id="cb28-423"><a href="#cb28-423"></a></span>
-<span id="cb28-424"><a href="#cb28-424"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman run --mount type=bind,src=C:\Users\cd-desk\Documents\dev\crypto\podman\..,target=/mnt -d -t crypto /bin/bash</span></span>
-<span id="cb28-425"><a href="#cb28-425"></a><span class="in">9a1b0fb2a8f87d3639149ee41fb2dcb822f5a7cbd971a39cdc77150a79774765</span></span>
+<span id="cb28-424"><a href="#cb28-424"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;podman run --mount type=bind,src=C:\Users\cd-desk\Documents\dev\crypto\podman\..,target=/mnt -d -t crypto /bin/bash</span>
+<span id="cb28-425"><a href="#cb28-425"></a>9a1b0fb2a8f87d3639149ee41fb2dcb822f5a7cbd971a39cdc77150a79774765</span>
 <span id="cb28-426"><a href="#cb28-426"></a></span>
-<span id="cb28-427"><a href="#cb28-427"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto\podman&gt;</span></span>
+<span id="cb28-427"><a href="#cb28-427"></a>C:\Users\cd-desk\Documents\dev\crypto\podman&gt;</span>
 <span id="cb28-428"><a href="#cb28-428"></a><span class="in">```</span></span>
 <span id="cb28-429"><a href="#cb28-429"></a></span>
 <span id="cb28-430"><a href="#cb28-430"></a><span class="fu"># vim</span></span>
@@ -1975,44 +1957,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-432"><a href="#cb28-432"></a><span class="ss">- </span>I of course *also* have <span class="in">`vim`</span> installed on Windows, but I don't know when I did that or how.</span>
 <span id="cb28-433"><a href="#cb28-433"></a></span>
 <span id="cb28-434"><a href="#cb28-434"></a><span class="in">```{.email}</span></span>
-<span id="cb28-435"><a href="#cb28-435"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;vim hi.c</span></span>
+<span id="cb28-435"><a href="#cb28-435"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;vim hi.c</span>
 <span id="cb28-436"><a href="#cb28-436"></a></span>
-<span id="cb28-437"><a href="#cb28-437"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;type hi.c</span></span>
-<span id="cb28-438"><a href="#cb28-438"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb28-437"><a href="#cb28-437"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;type hi.c</span>
+<span id="cb28-438"><a href="#cb28-438"></a>#include &lt;stdio.h&gt;</span>
 <span id="cb28-439"><a href="#cb28-439"></a></span>
-<span id="cb28-440"><a href="#cb28-440"></a><span class="in">int main() {</span></span>
-<span id="cb28-441"><a href="#cb28-441"></a><span class="in">        printf("i wrote this on windows lol meow\n");</span></span>
-<span id="cb28-442"><a href="#cb28-442"></a><span class="in">        return 0;</span></span>
-<span id="cb28-443"><a href="#cb28-443"></a><span class="in">}</span></span>
+<span id="cb28-440"><a href="#cb28-440"></a>int main() {</span>
+<span id="cb28-441"><a href="#cb28-441"></a>        printf("i wrote this on windows lol meow\n");</span>
+<span id="cb28-442"><a href="#cb28-442"></a>        return 0;</span>
+<span id="cb28-443"><a href="#cb28-443"></a>}</span>
 <span id="cb28-444"><a href="#cb28-444"></a></span>
-<span id="cb28-445"><a href="#cb28-445"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;</span></span>
+<span id="cb28-445"><a href="#cb28-445"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span>
 <span id="cb28-446"><a href="#cb28-446"></a><span class="in">```</span></span>
 <span id="cb28-447"><a href="#cb28-447"></a></span>
 <span id="cb28-448"><a href="#cb28-448"></a><span class="fu"># Compile</span></span>
 <span id="cb28-449"><a href="#cb28-449"></a></span>
 <span id="cb28-450"><a href="#cb28-450"></a><span class="in">```{.email}</span></span>
-<span id="cb28-451"><a href="#cb28-451"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out</span></span>
+<span id="cb28-451"><a href="#cb28-451"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out</span>
 <span id="cb28-452"><a href="#cb28-452"></a></span>
-<span id="cb28-453"><a href="#cb28-453"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;dir hi.out</span></span>
-<span id="cb28-454"><a href="#cb28-454"></a><span class="in"> Volume in drive C has no label.</span></span>
-<span id="cb28-455"><a href="#cb28-455"></a><span class="in"> Volume Serial Number is 5CEC-43F9</span></span>
+<span id="cb28-453"><a href="#cb28-453"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;dir hi.out</span>
+<span id="cb28-454"><a href="#cb28-454"></a> Volume in drive C has no label.</span>
+<span id="cb28-455"><a href="#cb28-455"></a> Volume Serial Number is 5CEC-43F9</span>
 <span id="cb28-456"><a href="#cb28-456"></a></span>
-<span id="cb28-457"><a href="#cb28-457"></a><span class="in"> Directory of C:\Users\cd-desk\Documents\dev\crypto</span></span>
+<span id="cb28-457"><a href="#cb28-457"></a> Directory of C:\Users\cd-desk\Documents\dev\crypto</span>
 <span id="cb28-458"><a href="#cb28-458"></a></span>
-<span id="cb28-459"><a href="#cb28-459"></a><span class="in">03/12/2025  05:33 PM            15,960 hi.out</span></span>
-<span id="cb28-460"><a href="#cb28-460"></a><span class="in">               1 File(s)         15,960 bytes</span></span>
-<span id="cb28-461"><a href="#cb28-461"></a><span class="in">               0 Dir(s)  99,378,515,968 bytes free</span></span>
+<span id="cb28-459"><a href="#cb28-459"></a>03/12/2025  05:33 PM            15,960 hi.out</span>
+<span id="cb28-460"><a href="#cb28-460"></a>               1 File(s)         15,960 bytes</span>
+<span id="cb28-461"><a href="#cb28-461"></a>               0 Dir(s)  99,378,515,968 bytes free</span>
 <span id="cb28-462"><a href="#cb28-462"></a></span>
-<span id="cb28-463"><a href="#cb28-463"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;</span></span>
+<span id="cb28-463"><a href="#cb28-463"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span>
 <span id="cb28-464"><a href="#cb28-464"></a><span class="in">```</span></span>
 <span id="cb28-465"><a href="#cb28-465"></a></span>
 <span id="cb28-466"><a href="#cb28-466"></a><span class="fu"># Run</span></span>
 <span id="cb28-467"><a href="#cb28-467"></a></span>
 <span id="cb28-468"><a href="#cb28-468"></a><span class="in">```{.email}</span></span>
-<span id="cb28-469"><a href="#cb28-469"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a ./mnt/hi.out</span></span>
-<span id="cb28-470"><a href="#cb28-470"></a><span class="in">i wrote this on windows lol meow</span></span>
+<span id="cb28-469"><a href="#cb28-469"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;podman exec -it 9a ./mnt/hi.out</span>
+<span id="cb28-470"><a href="#cb28-470"></a>i wrote this on windows lol meow</span>
 <span id="cb28-471"><a href="#cb28-471"></a></span>
-<span id="cb28-472"><a href="#cb28-472"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;</span></span>
+<span id="cb28-472"><a href="#cb28-472"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span>
 <span id="cb28-473"><a href="#cb28-473"></a><span class="in">```</span></span>
 <span id="cb28-474"><a href="#cb28-474"></a></span>
 <span id="cb28-475"><a href="#cb28-475"></a><span class="ss">- </span>Windows Development: It's easy.</span>
@@ -2022,9 +2004,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-479"><a href="#cb28-479"></a><span class="ss">- </span>Windows opened a window asking me what to do when I tried to run this.</span>
 <span id="cb28-480"><a href="#cb28-480"></a></span>
 <span id="cb28-481"><a href="#cb28-481"></a><span class="in">```{.email}</span></span>
-<span id="cb28-482"><a href="#cb28-482"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;.\hi.out</span></span>
+<span id="cb28-482"><a href="#cb28-482"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;.\hi.out</span>
 <span id="cb28-483"><a href="#cb28-483"></a></span>
-<span id="cb28-484"><a href="#cb28-484"></a><span class="in">C:\Users\cd-desk\Documents\dev\crypto&gt;</span></span>
+<span id="cb28-484"><a href="#cb28-484"></a>C:\Users\cd-desk\Documents\dev\crypto&gt;</span>
 <span id="cb28-485"><a href="#cb28-485"></a><span class="in">```</span></span>
 <span id="cb28-486"><a href="#cb28-486"></a></span>
 <span id="cb28-487"><a href="#cb28-487"></a><span class="fu"># Exercise</span></span>
@@ -2043,7 +2025,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-500"><a href="#cb28-500"></a><span class="ss">  - </span>Week off from C</span>
 <span id="cb28-501"><a href="#cb28-501"></a><span class="ss">  - </span>Two lectures with exercises</span>
 <span id="cb28-502"><a href="#cb28-502"></a><span class="ss">- </span>**Action Items**:</span>
-<span id="cb28-503"><a href="#cb28-503"></a><span class="ss">  - </span>BigRSA due 31 Mar</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb28-503"><a href="#cb28-503"></a><span class="ss">  - </span>BigRSA due 31 Mar</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
