@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.6.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,17 +65,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./01_alpine.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-40a160e28a8c0a8ad2fc184c8ba4238c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -134,8 +131,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Systems in C</a> 
+    </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -477,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="enigma">Enigma</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # in</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a href="#cb1-1"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # in</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    |</span>
 <span id="cb1-3"><a href="#cb1-3"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # fast</span>
 <span id="cb1-4"><a href="#cb1-4"></a>    &gt;&gt;&gt;&gt;&gt;&gt;</span>
@@ -487,11 +485,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8"></a> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
 <span id="cb1-9"><a href="#cb1-9"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
 <span id="cb1-10"><a href="#cb1-10"></a> |</span>
-<span id="cb1-11"><a href="#cb1-11"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-11"><a href="#cb1-11"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:10%;">
 <p>→</p>
 </div><div class="column" style="width:45%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a href="#cb2-1"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a href="#cb2-1"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO</span>
 <span id="cb2-2"><a href="#cb2-2"></a> &gt;&gt;&gt;</span>
 <span id="cb2-3"><a href="#cb2-3"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
 <span id="cb2-4"><a href="#cb2-4"></a>   |</span>
@@ -501,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8"></a>   &gt;&gt;&gt;&gt;&gt;</span>
 <span id="cb2-9"><a href="#cb2-9"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # out</span>
 <span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a>## etc etc   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-11"><a href="#cb2-11"></a>## etc etc   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -580,9 +578,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Recursion isn’t too bad…</p></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;&gt;&gt;</span> exp <span class="op">=</span> <span class="kw">lambda</span> b, n : b <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> b<span class="op">*</span>exp(b,n<span class="op">-</span><span class="dv">1</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;&gt;&gt;</span> exp <span class="op">=</span> <span class="kw">lambda</span> b, n : b <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> b<span class="op">*</span>exp(b,n<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;&gt;&gt;</span> exp(<span class="dv">2</span>,<span class="dv">8</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">256</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">256</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pointers" class="level2">
 <h2 class="anchored" data-anchor-id="pointers">Pointers</h2>
@@ -591,21 +589,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="dv">1</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> addx():</span>
 <span id="cb4-3"><a href="#cb4-3"></a>...     x <span class="op">+=</span> <span class="dv">1</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>...</span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="op">&gt;&gt;&gt;</span> addx()</span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="pp">UnboundLocalError</span>:</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="op">&lt;</span>blah blah blah error messages<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="op">&lt;</span>blah blah blah error messages<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> [<span class="dv">1</span>]</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> [<span class="dv">1</span>]</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> addx():</span>
 <span id="cb5-3"><a href="#cb5-3"></a>...     x[<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>...</span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="op">&gt;&gt;&gt;</span> addx()</span>
 <span id="cb5-6"><a href="#cb5-6"></a><span class="op">&gt;&gt;&gt;</span> x</span>
-<span id="cb5-7"><a href="#cb5-7"></a>[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-7"><a href="#cb5-7"></a>[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -700,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sketch" class="level2">
 <h2 class="anchored" data-anchor-id="sketch">Sketch</h2>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1"></a>flowchart LR</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  A( ) --&gt; B(SHA)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  A --&gt; C(RSA)</span>
 <span id="cb6-4"><a href="#cb6-4"></a>  B --&gt; E(Block Chain)</span>
@@ -708,7 +706,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6"></a>  B --&gt; F</span>
 <span id="cb6-7"><a href="#cb6-7"></a>  E --&gt; G(Nakamoto'08)</span>
 <span id="cb6-8"><a href="#cb6-8"></a>  F --&gt; G</span>
-<span id="cb6-9"><a href="#cb6-9"></a>  G --&gt; I((Capstone))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-9"><a href="#cb6-9"></a>  G --&gt; I((Capstone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -949,10 +947,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Linux, because its good, makes you specify:</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="ex">Command</span> <span class="st">'python'</span> not found, did you mean:</span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="bu">command</span> <span class="st">'python3'</span> from deb python3</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="bu">command</span> <span class="st">'python'</span> from deb python-is-python3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="bu">command</span> <span class="st">'python'</span> from deb python-is-python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="bugs" class="level2">
 <h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
@@ -964,13 +962,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>SyntaxError on my prof’s Linux device:</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python2 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python2 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="ex">hello</span> world</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python3 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="ex">File</span> <span class="st">"&lt;string&gt;"</span>, line 1</span>
 <span id="cb8-5"><a href="#cb8-5"></a>    <span class="ex">print</span> <span class="st">'hello world'</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a>    <span class="ex">^^^^^^^^^^^^^^^^^^^</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="ex">SyntaxError:</span> Missing parentheses in call to <span class="st">'print'</span>. Did you mean print<span class="er">(</span><span class="ex">...</span><span class="kw">)</span><span class="ex">?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="ex">SyntaxError:</span> Missing parentheses in call to <span class="st">'print'</span>. Did you mean print<span class="er">(</span><span class="ex">...</span><span class="kw">)</span><span class="ex">?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="versioning" class="level2">
 <h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
@@ -983,12 +981,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Solution: Just run in podman:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">C:\Users\cd-desk</span><span class="op">&gt;</span>podman run <span class="at">-it</span> python:alpine python</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">C:\Users\cd-desk</span><span class="op">&gt;</span>podman run <span class="at">-it</span> python:alpine python</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="ex">Python</span> 3.13.1 <span class="er">(</span><span class="ex">main,</span> Dec  4 2024, 20:31:31<span class="kw">)</span> <span class="ex">[GCC</span> 13.2.1 20240309] on linux</span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="op">&gt;&gt;&gt;</span> print<span class="kw">(</span><span class="st">"hello world"</span><span class="kw">)</span></span>
 <span id="cb9-5"><a href="#cb9-5"></a><span class="ex">hello</span> world</span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="images" class="level2">
 <h2 class="anchored" data-anchor-id="images">Images</h2>
@@ -1102,12 +1100,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We can install and run <code>vim</code> inside a container (which happens to run Debian &amp; ∴ <code>apt</code>)</li>
 <li>Even directly from Python…</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> os</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> os</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt update"</span>) <span class="co"># update the registry of packages</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt install vim -y"</span>) <span class="co"># -y saves us from having to say "yes" to any prompts</span></span>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"vim"</span>) <span class="co"># a vim window will open</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"vim"</span>) <span class="co"># a vim window will open</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This is <code>vim</code> inside <code>python</code> inside <code>podman</code>
 <ul>
@@ -1120,7 +1118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>It looks like this:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">~</span>               VIM <span class="at">-</span> Vi IMproved</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">~</span>               VIM <span class="at">-</span> Vi IMproved</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="ex">~</span>                  version 9.1</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="ex">~</span>            by Bram Moolenaar et al.</span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="ex">~</span>   Vim is open source and freely distributable</span>
@@ -1130,7 +1128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-8"><a href="#cb11-8"></a><span class="ex">~</span></span>
 <span id="cb11-9"><a href="#cb11-9"></a><span class="ex">~</span>  type  :q<span class="op">&lt;</span>Enter<span class="op">&gt;</span>              to exit</span>
 <span id="cb11-10"><a href="#cb11-10"></a><span class="ex">~</span>  type  :help<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  or  <span class="op">&lt;</span>F1<span class="op">&gt;</span> for on-line help</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">~</span>  type  :help version9<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  for version info</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">~</span>  type  :help version9<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  for version info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
@@ -1172,8 +1170,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>(The C language was invented to write an operating system).</li>
 <li><code>python</code> is written in GCC C</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
-<span id="cb12-2"><a href="#cb12-2"></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
+<span id="cb12-2"><a href="#cb12-2"></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="great-freeware" class="level2">
 <h2 class="anchored" data-anchor-id="great-freeware">Great freeware</h2>
@@ -1209,14 +1207,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="py-vs-.c" class="level2">
 <h2 class="anchored" data-anchor-id="py-vs-.c">.py vs .c</h2>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1"></a>flowchart LR</span>
 <span id="cb13-2"><a href="#cb13-2"></a>  A(Python) --&gt; B[fname.py file]</span>
 <span id="cb13-3"><a href="#cb13-3"></a>  B --&gt; C[python fname.py]</span>
 <span id="cb13-4"><a href="#cb13-4"></a>  C --&gt; D{hello world}</span>
 <span id="cb13-5"><a href="#cb13-5"></a>  E(C) --&gt; F[fname.c  file]</span>
 <span id="cb13-6"><a href="#cb13-6"></a>  F --&gt; G[gcc fname.c -o ename]</span>
 <span id="cb13-7"><a href="#cb13-7"></a>  G --&gt; H[./ename]</span>
-<span id="cb13-8"><a href="#cb13-8"></a>  H --&gt; I{hello world}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-8"><a href="#cb13-8"></a>  H --&gt; I{hello world}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1307,8 +1305,8 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>So basically, you have things called repositories or “repos”</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>flowchart LR</span>
-<span id="cb14-2"><a href="#cb14-2"></a>  A(My ️‍🔥 code repo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>flowchart LR</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  A(My ️‍🔥 code repo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1328,8 +1326,8 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>Then you realize you wrote an infinite loop so you update it</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>flowchart LR</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  A(My ️‍🔥 code repo v0 ) --&gt; B(My ️‍🔥 code repo v1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>flowchart LR</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  A(My ️‍🔥 code repo v0 ) --&gt; B(My ️‍🔥 code repo v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1349,8 +1347,8 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>Then you come to class and realize your code is on your gaming rig in your apartment.</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>flowchart LR</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  A(&lt;s&gt;My ️‍🔥 code repo v0&lt;/s&gt;) --&gt; B(&lt;s&gt;My ️‍🔥 code repo v1&lt;/s&gt;)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>flowchart LR</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  A(&lt;s&gt;My ️‍🔥 code repo v0&lt;/s&gt;) --&gt; B(&lt;s&gt;My ️‍🔥 code repo v1&lt;/s&gt;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1373,9 +1371,9 @@ If you want a lot of control and flexibility, you can use the command line.
 </ul></li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1"></a>flowchart LR</span>
 <span id="cb17-2"><a href="#cb17-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>  B --&gt; C(GH.‍🔥 v0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-3"><a href="#cb17-3"></a>  B --&gt; C(GH.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1396,10 +1394,10 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>But you realize you didn’t sanitize your inputs so you update again.</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1"></a>flowchart LR</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb18-3"><a href="#cb18-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>  B --&gt; D(GH.‍🔥 v0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-4"><a href="#cb18-4"></a>  B --&gt; D(GH.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1421,11 +1419,11 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>Then you have class again and grab the GitHub version onto your LT = Laptop</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>flowchart LR</span>
 <span id="cb19-2"><a href="#cb19-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb19-3"><a href="#cb19-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb19-4"><a href="#cb19-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>  D --&gt; E(LT.‍🔥 v0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-5"><a href="#cb19-5"></a>  D --&gt; E(LT.‍🔥 v0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1448,12 +1446,12 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>You notice it has the bug so you fix it again on your laptop in almost the same way</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1"></a>flowchart LR</span>
 <span id="cb20-2"><a href="#cb20-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb20-4"><a href="#cb20-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
 <span id="cb20-5"><a href="#cb20-5"></a>  D --&gt; E(LT.‍🔥 v0)</span>
-<span id="cb20-6"><a href="#cb20-6"></a>  E --&gt; F(LT.‍🔥 v1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-6"><a href="#cb20-6"></a>  E --&gt; F(LT.‍🔥 v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1477,13 +1475,13 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>And save that back to GitHub then head back home to play Nethack on your 12000USD Gaming PC</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1"></a>flowchart LR</span>
 <span id="cb21-2"><a href="#cb21-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb21-3"><a href="#cb21-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb21-4"><a href="#cb21-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
 <span id="cb21-5"><a href="#cb21-5"></a>  D --&gt; E(LT.‍🔥 v0)</span>
 <span id="cb21-6"><a href="#cb21-6"></a>  E --&gt; F(LT.‍🔥 v1)</span>
-<span id="cb21-7"><a href="#cb21-7"></a>  F --&gt; G(GH.‍🔥 v1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-7"><a href="#cb21-7"></a>  F --&gt; G(GH.‍🔥 v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1508,7 +1506,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>You realize you also added some ASCII art and try to send that to GitHub</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1"></a>flowchart LR</span>
 <span id="cb22-2"><a href="#cb22-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb22-3"><a href="#cb22-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb22-4"><a href="#cb22-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
@@ -1516,7 +1514,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb22-6"><a href="#cb22-6"></a>  E --&gt; F(LT.‍🔥 v1)</span>
 <span id="cb22-7"><a href="#cb22-7"></a>  F --&gt; G(GH.‍🔥 v1)</span>
 <span id="cb22-8"><a href="#cb22-8"></a>  G --&gt; H(GH.‍🔥 v2)</span>
-<span id="cb22-9"><a href="#cb22-9"></a>  C --&gt; H</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-9"><a href="#cb22-9"></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1543,7 +1541,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <li>Two arrows into one thing is a merge conflict and out-of-scope for now.</li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1"></a>flowchart LR</span>
 <span id="cb23-2"><a href="#cb23-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb23-3"><a href="#cb23-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb23-4"><a href="#cb23-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
@@ -1551,7 +1549,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb23-6"><a href="#cb23-6"></a>  E --&gt; F(LT.‍🔥 v1)</span>
 <span id="cb23-7"><a href="#cb23-7"></a>  F --&gt; G(GH.‍🔥 v1)</span>
 <span id="cb23-8"><a href="#cb23-8"></a>  G --&gt; H{💥}</span>
-<span id="cb23-9"><a href="#cb23-9"></a>  C --&gt; H</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-9"><a href="#cb23-9"></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1581,7 +1579,7 @@ If you want a lot of control and flexibility, you can use the command line.
 </ul></li>
 </ul>
 <div class="cell" data-theme="Darkly" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1"></a>flowchart LR</span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1"></a>flowchart LR</span>
 <span id="cb24-2"><a href="#cb24-2"></a>  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span>
 <span id="cb24-3"><a href="#cb24-3"></a>  B --&gt; C(GR.️‍🔥 v2)</span>
 <span id="cb24-4"><a href="#cb24-4"></a>  B --&gt; D(GH.‍🔥 v0)</span>
@@ -1589,7 +1587,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb24-6"><a href="#cb24-6"></a>  E --&gt; F(LT.‍🔥 v1)</span>
 <span id="cb24-7"><a href="#cb24-7"></a>  F --&gt; G(GH.‍🔥 v1)</span>
 <span id="cb24-8"><a href="#cb24-8"></a>  G --&gt; H{💥}</span>
-<span id="cb24-9"><a href="#cb24-9"></a>  C --&gt; H</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-9"><a href="#cb24-9"></a>  C --&gt; H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -1646,294 +1644,290 @@ If you want a lot of control and flexibility, you can use the command line.
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
         } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
+          window.location.href = sourceUrl;
         }
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
         }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1941,161 +1935,185 @@ If you want a lot of control and flexibility, you can use the command line.
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
@@ -2105,7 +2123,7 @@ If you want a lot of control and flexibility, you can use the command line.
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">---</span></span>
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">---</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="an">title:</span><span class="co"> Podman</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="an">subtitle:</span><span class="co"> "w0d0"</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a><span class="co">---</span></span>
@@ -2137,17 +2155,17 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb25-30"><a href="#cb25-30"></a>::: {.column width="45%"}</span>
 <span id="cb25-31"><a href="#cb25-31"></a></span>
 <span id="cb25-32"><a href="#cb25-32"></a><span class="in">```{.email}</span></span>
-<span id="cb25-33"><a href="#cb25-33"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # in</span>
-<span id="cb25-34"><a href="#cb25-34"></a>    |</span>
-<span id="cb25-35"><a href="#cb25-35"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # fast</span>
-<span id="cb25-36"><a href="#cb25-36"></a>    &gt;&gt;&gt;&gt;&gt;&gt;</span>
-<span id="cb25-37"><a href="#cb25-37"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
-<span id="cb25-38"><a href="#cb25-38"></a>         |</span>
-<span id="cb25-39"><a href="#cb25-39"></a>AJDKSIRUXBLHWTMCQGZNPYFVOE # mid</span>
-<span id="cb25-40"><a href="#cb25-40"></a> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
-<span id="cb25-41"><a href="#cb25-41"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
-<span id="cb25-42"><a href="#cb25-42"></a> |</span>
-<span id="cb25-43"><a href="#cb25-43"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span>
+<span id="cb25-33"><a href="#cb25-33"></a><span class="in">ABCDEFGHIJKLMNOPQRSTUVWXYZ # in</span></span>
+<span id="cb25-34"><a href="#cb25-34"></a><span class="in">    |</span></span>
+<span id="cb25-35"><a href="#cb25-35"></a><span class="in">BDFHJLCPRTXVZNYEIWGAKMUSQO # fast</span></span>
+<span id="cb25-36"><a href="#cb25-36"></a><span class="in">    &gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb25-37"><a href="#cb25-37"></a><span class="in">ABCDEFGHIJKLMNOPQRSTUVWXYZ </span></span>
+<span id="cb25-38"><a href="#cb25-38"></a><span class="in">         |</span></span>
+<span id="cb25-39"><a href="#cb25-39"></a><span class="in">AJDKSIRUXBLHWTMCQGZNPYFVOE # mid</span></span>
+<span id="cb25-40"><a href="#cb25-40"></a><span class="in"> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></span>
+<span id="cb25-41"><a href="#cb25-41"></a><span class="in">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span></span>
+<span id="cb25-42"><a href="#cb25-42"></a><span class="in"> |</span></span>
+<span id="cb25-43"><a href="#cb25-43"></a><span class="in">BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span></span>
 <span id="cb25-44"><a href="#cb25-44"></a><span class="in">```</span></span>
 <span id="cb25-45"><a href="#cb25-45"></a></span>
 <span id="cb25-46"><a href="#cb25-46"></a>:::</span>
@@ -2159,17 +2177,17 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb25-52"><a href="#cb25-52"></a>::: {.column width="45%"}</span>
 <span id="cb25-53"><a href="#cb25-53"></a></span>
 <span id="cb25-54"><a href="#cb25-54"></a><span class="in">```{.email}</span></span>
-<span id="cb25-55"><a href="#cb25-55"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO</span>
-<span id="cb25-56"><a href="#cb25-56"></a> &gt;&gt;&gt;</span>
-<span id="cb25-57"><a href="#cb25-57"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ </span>
-<span id="cb25-58"><a href="#cb25-58"></a>   |</span>
-<span id="cb25-59"><a href="#cb25-59"></a>IXUHFEZDAOMTKQJWNSRLCYPBVG # reflect</span>
-<span id="cb25-60"><a href="#cb25-60"></a>   |</span>
-<span id="cb25-61"><a href="#cb25-61"></a>BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span>
-<span id="cb25-62"><a href="#cb25-62"></a>   &gt;&gt;&gt;&gt;&gt;</span>
-<span id="cb25-63"><a href="#cb25-63"></a>ABCDEFGHIJKLMNOPQRSTUVWXYZ # out</span>
+<span id="cb25-55"><a href="#cb25-55"></a><span class="in">BDFHJLCPRTXVZNYEIWGAKMUSQO</span></span>
+<span id="cb25-56"><a href="#cb25-56"></a><span class="in"> &gt;&gt;&gt;</span></span>
+<span id="cb25-57"><a href="#cb25-57"></a><span class="in">ABCDEFGHIJKLMNOPQRSTUVWXYZ </span></span>
+<span id="cb25-58"><a href="#cb25-58"></a><span class="in">   |</span></span>
+<span id="cb25-59"><a href="#cb25-59"></a><span class="in">IXUHFEZDAOMTKQJWNSRLCYPBVG # reflect</span></span>
+<span id="cb25-60"><a href="#cb25-60"></a><span class="in">   |</span></span>
+<span id="cb25-61"><a href="#cb25-61"></a><span class="in">BDFHJLCPRTXVZNYEIWGAKMUSQO # slow</span></span>
+<span id="cb25-62"><a href="#cb25-62"></a><span class="in">   &gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb25-63"><a href="#cb25-63"></a><span class="in">ABCDEFGHIJKLMNOPQRSTUVWXYZ # out</span></span>
 <span id="cb25-64"><a href="#cb25-64"></a></span>
-<span id="cb25-65"><a href="#cb25-65"></a>## etc etc   </span>
+<span id="cb25-65"><a href="#cb25-65"></a><span class="in">## etc etc   </span></span>
 <span id="cb25-66"><a href="#cb25-66"></a><span class="in">```</span></span>
 <span id="cb25-67"><a href="#cb25-67"></a></span>
 <span id="cb25-68"><a href="#cb25-68"></a>:::</span>
@@ -2328,568 +2346,568 @@ If you want a lot of control and flexibility, you can use the command line.
 <span id="cb25-221"><a href="#cb25-221"></a><span class="fu">## Sketch</span></span>
 <span id="cb25-222"><a href="#cb25-222"></a></span>
 <span id="cb25-225"><a href="#cb25-225"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-226"><a href="#cb25-226"></a>%%| theme: Darkly</span>
-<span id="cb25-227"><a href="#cb25-227"></a>flowchart LR</span>
-<span id="cb25-228"><a href="#cb25-228"></a>  A( ) --&gt; B(SHA)</span>
-<span id="cb25-229"><a href="#cb25-229"></a>  A --&gt; C(RSA)</span>
-<span id="cb25-230"><a href="#cb25-230"></a>  B --&gt; E(Block Chain)</span>
-<span id="cb25-231"><a href="#cb25-231"></a>  C --&gt; F(Merkle Tree)</span>
-<span id="cb25-232"><a href="#cb25-232"></a>  B --&gt; F</span>
-<span id="cb25-233"><a href="#cb25-233"></a>  E --&gt; G(Nakamoto<span class="ot">'</span><span class="ss">08)</span></span>
-<span id="cb25-234"><a href="#cb25-234"></a><span class="ss">  F --&gt; G</span></span>
-<span id="cb25-235"><a href="#cb25-235"></a><span class="ss">  G --&gt; I((Capstone))</span></span>
-<span id="cb25-236"><a href="#cb25-236"></a><span class="ss">```</span></span>
+<span id="cb25-226"><a href="#cb25-226"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-227"><a href="#cb25-227"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-228"><a href="#cb25-228"></a><span class="in">  A( ) --&gt; B(SHA)</span></span>
+<span id="cb25-229"><a href="#cb25-229"></a><span class="in">  A --&gt; C(RSA)</span></span>
+<span id="cb25-230"><a href="#cb25-230"></a><span class="in">  B --&gt; E(Block Chain)</span></span>
+<span id="cb25-231"><a href="#cb25-231"></a><span class="in">  C --&gt; F(Merkle Tree)</span></span>
+<span id="cb25-232"><a href="#cb25-232"></a><span class="in">  B --&gt; F</span></span>
+<span id="cb25-233"><a href="#cb25-233"></a><span class="in">  E --&gt; G(Nakamoto'08)</span></span>
+<span id="cb25-234"><a href="#cb25-234"></a><span class="in">  F --&gt; G</span></span>
+<span id="cb25-235"><a href="#cb25-235"></a><span class="in">  G --&gt; I((Capstone))</span></span>
+<span id="cb25-236"><a href="#cb25-236"></a><span class="in">```</span></span>
 <span id="cb25-237"><a href="#cb25-237"></a></span>
-<span id="cb25-238"><a href="#cb25-238"></a><span class="ss">## SHA</span></span>
+<span id="cb25-238"><a href="#cb25-238"></a><span class="fu">## SHA</span></span>
 <span id="cb25-239"><a href="#cb25-239"></a></span>
-<span id="cb25-240"><a href="#cb25-240"></a><span class="ss">- **SHA Basics:**</span></span>
-<span id="cb25-241"><a href="#cb25-241"></a><span class="ss">  - Cryptographic hash function family.</span></span>
-<span id="cb25-242"><a href="#cb25-242"></a><span class="ss">  - Input data into fixed-size hash values.</span></span>
-<span id="cb25-243"><a href="#cb25-243"></a><span class="ss">- **Use Cases:**</span></span>
-<span id="cb25-244"><a href="#cb25-244"></a><span class="ss">  - Data integrity.</span></span>
-<span id="cb25-245"><a href="#cb25-245"></a><span class="ss">- **Learning Objectives:**</span></span>
-<span id="cb25-246"><a href="#cb25-246"></a><span class="ss">  - Reason about bits and bytes.</span></span>
+<span id="cb25-240"><a href="#cb25-240"></a><span class="ss">- </span>**SHA Basics:**</span>
+<span id="cb25-241"><a href="#cb25-241"></a><span class="ss">  - </span>Cryptographic hash function family.</span>
+<span id="cb25-242"><a href="#cb25-242"></a><span class="ss">  - </span>Input data into fixed-size hash values.</span>
+<span id="cb25-243"><a href="#cb25-243"></a><span class="ss">- </span>**Use Cases:**</span>
+<span id="cb25-244"><a href="#cb25-244"></a><span class="ss">  - </span>Data integrity.</span>
+<span id="cb25-245"><a href="#cb25-245"></a><span class="ss">- </span>**Learning Objectives:**</span>
+<span id="cb25-246"><a href="#cb25-246"></a><span class="ss">  - </span>Reason about bits and bytes.</span>
 <span id="cb25-247"><a href="#cb25-247"></a></span>
-<span id="cb25-248"><a href="#cb25-248"></a><span class="ss">## RSA</span></span>
+<span id="cb25-248"><a href="#cb25-248"></a><span class="fu">## RSA</span></span>
 <span id="cb25-249"><a href="#cb25-249"></a></span>
-<span id="cb25-250"><a href="#cb25-250"></a><span class="ss">- **RSA Basics:**</span></span>
-<span id="cb25-251"><a href="#cb25-251"></a><span class="ss">  - Public-key cryptography algorithm.</span></span>
-<span id="cb25-252"><a href="#cb25-252"></a><span class="ss">  - Based on prime factorization being hard.</span></span>
-<span id="cb25-253"><a href="#cb25-253"></a><span class="ss">- **Use Cases:**</span></span>
-<span id="cb25-254"><a href="#cb25-254"></a><span class="ss">  - Data confidentiality.</span></span>
-<span id="cb25-255"><a href="#cb25-255"></a><span class="ss">- **Learning Objectives:**</span></span>
-<span id="cb25-256"><a href="#cb25-256"></a><span class="ss">  - Reason about numerical computing.</span></span>
+<span id="cb25-250"><a href="#cb25-250"></a><span class="ss">- </span>**RSA Basics:**</span>
+<span id="cb25-251"><a href="#cb25-251"></a><span class="ss">  - </span>Public-key cryptography algorithm.</span>
+<span id="cb25-252"><a href="#cb25-252"></a><span class="ss">  - </span>Based on prime factorization being hard.</span>
+<span id="cb25-253"><a href="#cb25-253"></a><span class="ss">- </span>**Use Cases:**</span>
+<span id="cb25-254"><a href="#cb25-254"></a><span class="ss">  - </span>Data confidentiality.</span>
+<span id="cb25-255"><a href="#cb25-255"></a><span class="ss">- </span>**Learning Objectives:**</span>
+<span id="cb25-256"><a href="#cb25-256"></a><span class="ss">  - </span>Reason about numerical computing.</span>
 <span id="cb25-257"><a href="#cb25-257"></a></span>
-<span id="cb25-258"><a href="#cb25-258"></a><span class="ss">## RSA + SHA = BTC</span></span>
+<span id="cb25-258"><a href="#cb25-258"></a><span class="fu">## RSA + SHA = BTC</span></span>
 <span id="cb25-259"><a href="#cb25-259"></a></span>
-<span id="cb25-260"><a href="#cb25-260"></a><span class="ss">- **Facilitating Blockchain:**</span></span>
-<span id="cb25-261"><a href="#cb25-261"></a><span class="ss">  - SHA &amp; RSA in play</span></span>
-<span id="cb25-262"><a href="#cb25-262"></a><span class="ss">    - RSA: Keep wallet keys _confidential_</span></span>
-<span id="cb25-263"><a href="#cb25-263"></a><span class="ss">    - SHA: Maintain wallet content _integrity_</span></span>
-<span id="cb25-264"><a href="#cb25-264"></a><span class="ss">- But we need some techniques to implement...</span></span>
-<span id="cb25-265"><a href="#cb25-265"></a><span class="ss">  - Pointers &amp; Recursion</span></span>
+<span id="cb25-260"><a href="#cb25-260"></a><span class="ss">- </span>**Facilitating Blockchain:**</span>
+<span id="cb25-261"><a href="#cb25-261"></a><span class="ss">  - </span>SHA &amp; RSA in play</span>
+<span id="cb25-262"><a href="#cb25-262"></a><span class="ss">    - </span>RSA: Keep wallet keys _confidential_</span>
+<span id="cb25-263"><a href="#cb25-263"></a><span class="ss">    - </span>SHA: Maintain wallet content _integrity_</span>
+<span id="cb25-264"><a href="#cb25-264"></a><span class="ss">- </span>But we need some techniques to implement...</span>
+<span id="cb25-265"><a href="#cb25-265"></a><span class="ss">  - </span>Pointers &amp; Recursion</span>
 <span id="cb25-266"><a href="#cb25-266"></a></span>
-<span id="cb25-267"><a href="#cb25-267"></a><span class="ss">## Blockchain</span></span>
+<span id="cb25-267"><a href="#cb25-267"></a><span class="fu">## Blockchain</span></span>
 <span id="cb25-268"><a href="#cb25-268"></a></span>
-<span id="cb25-269"><a href="#cb25-269"></a><span class="ss">- **Blockchain:**</span></span>
-<span id="cb25-270"><a href="#cb25-270"></a><span class="ss">  - Blockchain structure resembles linked lists.</span></span>
-<span id="cb25-271"><a href="#cb25-271"></a><span class="ss">    - Linked lists use **pointers**</span></span>
-<span id="cb25-272"><a href="#cb25-272"></a><span class="ss">    - **Pointers** are used **recursively**</span></span>
-<span id="cb25-273"><a href="#cb25-273"></a><span class="ss">  - Pointers are validated with **SHA**</span></span>
-<span id="cb25-274"><a href="#cb25-274"></a><span class="ss">    - That is, they have integrity</span></span>
+<span id="cb25-269"><a href="#cb25-269"></a><span class="ss">- </span>**Blockchain:**</span>
+<span id="cb25-270"><a href="#cb25-270"></a><span class="ss">  - </span>Blockchain structure resembles linked lists.</span>
+<span id="cb25-271"><a href="#cb25-271"></a><span class="ss">    - </span>Linked lists use **pointers**</span>
+<span id="cb25-272"><a href="#cb25-272"></a><span class="ss">    - </span>**Pointers** are used **recursively**</span>
+<span id="cb25-273"><a href="#cb25-273"></a><span class="ss">  - </span>Pointers are validated with **SHA**</span>
+<span id="cb25-274"><a href="#cb25-274"></a><span class="ss">    - </span>That is, they have integrity</span>
 <span id="cb25-275"><a href="#cb25-275"></a></span>
-<span id="cb25-276"><a href="#cb25-276"></a><span class="ss">## Merkle Trees</span></span>
+<span id="cb25-276"><a href="#cb25-276"></a><span class="fu">## Merkle Trees</span></span>
 <span id="cb25-277"><a href="#cb25-277"></a></span>
-<span id="cb25-278"><a href="#cb25-278"></a><span class="ss">- **Merkle Trees:**</span></span>
-<span id="cb25-279"><a href="#cb25-279"></a><span class="ss">  - Tree structure using SHA for data integrity.</span></span>
-<span id="cb25-280"><a href="#cb25-280"></a><span class="ss">  - Hashes stored as nodes; pointers link them.</span></span>
-<span id="cb25-281"><a href="#cb25-281"></a><span class="ss">  - Leaf nodes are RSA signatures!</span></span>
-<span id="cb25-282"><a href="#cb25-282"></a><span class="ss">- Merkle Trees are **balanced**</span></span>
-<span id="cb25-283"><a href="#cb25-283"></a><span class="ss">  - We get to see a way to implement complex data structures in a low level language in a way that solves a real problem.</span></span>
+<span id="cb25-278"><a href="#cb25-278"></a><span class="ss">- </span>**Merkle Trees:**</span>
+<span id="cb25-279"><a href="#cb25-279"></a><span class="ss">  - </span>Tree structure using SHA for data integrity.</span>
+<span id="cb25-280"><a href="#cb25-280"></a><span class="ss">  - </span>Hashes stored as nodes; pointers link them.</span>
+<span id="cb25-281"><a href="#cb25-281"></a><span class="ss">  - </span>Leaf nodes are RSA signatures!</span>
+<span id="cb25-282"><a href="#cb25-282"></a><span class="ss">- </span>Merkle Trees are **balanced**</span>
+<span id="cb25-283"><a href="#cb25-283"></a><span class="ss">  - </span>We get to see a way to implement complex data structures in a low level language in a way that solves a real problem.</span>
 <span id="cb25-284"><a href="#cb25-284"></a></span>
-<span id="cb25-285"><a href="#cb25-285"></a><span class="ss">## Final</span></span>
+<span id="cb25-285"><a href="#cb25-285"></a><span class="fu">## Final</span></span>
 <span id="cb25-286"><a href="#cb25-286"></a></span>
-<span id="cb25-287"><a href="#cb25-287"></a><span class="ss">- **Implement Full-Custom BTC**</span></span>
-<span id="cb25-288"><a href="#cb25-288"></a><span class="ss">  - Under absolutely no circumstances use it</span></span>
-<span id="cb25-289"><a href="#cb25-289"></a><span class="ss">    - It</span><span class="ot">'</span>ll be insecure <span class="kw">for</span> reasons out-of-scope</span>
+<span id="cb25-287"><a href="#cb25-287"></a><span class="ss">- </span>**Implement Full-Custom BTC**</span>
+<span id="cb25-288"><a href="#cb25-288"></a><span class="ss">  - </span>Under absolutely no circumstances use it</span>
+<span id="cb25-289"><a href="#cb25-289"></a><span class="ss">    - </span>It'll be insecure for reasons out-of-scope</span>
 <span id="cb25-290"><a href="#cb25-290"></a></span>
-<span id="cb25-291"><a href="#cb25-291"></a><span class="co">## Today</span></span>
+<span id="cb25-291"><a href="#cb25-291"></a><span class="fu">## Today</span></span>
 <span id="cb25-292"><a href="#cb25-292"></a></span>
-<span id="cb25-293"><a href="#cb25-293"></a>- &amp;check; Introduce the course</span>
-<span id="cb25-294"><a href="#cb25-294"></a>  - &amp;check; The C Programming Language</span>
-<span id="cb25-295"><a href="#cb25-295"></a>  - &amp;check; Cryptography + Cryptocurrency</span>
-<span id="cb25-296"><a href="#cb25-296"></a>- Introduce the technologies</span>
-<span id="cb25-297"><a href="#cb25-297"></a>  - <span class="ot">`</span><span class="st">podman</span><span class="ot">`</span></span>
-<span id="cb25-298"><a href="#cb25-298"></a>  - <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span></span>
-<span id="cb25-299"><a href="#cb25-299"></a>  - <span class="ot">`</span><span class="st">gcc</span><span class="ot">`</span></span>
-<span id="cb25-300"><a href="#cb25-300"></a>  - <span class="ot">`</span><span class="st">git</span><span class="ot">`</span></span>
+<span id="cb25-293"><a href="#cb25-293"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the course</span>
+<span id="cb25-294"><a href="#cb25-294"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> The C Programming Language</span>
+<span id="cb25-295"><a href="#cb25-295"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Cryptography + Cryptocurrency</span>
+<span id="cb25-296"><a href="#cb25-296"></a><span class="ss">- </span>Introduce the technologies</span>
+<span id="cb25-297"><a href="#cb25-297"></a><span class="ss">  - </span><span class="in">`podman`</span></span>
+<span id="cb25-298"><a href="#cb25-298"></a><span class="ss">  - </span><span class="in">`vim`</span></span>
+<span id="cb25-299"><a href="#cb25-299"></a><span class="ss">  - </span><span class="in">`gcc`</span></span>
+<span id="cb25-300"><a href="#cb25-300"></a><span class="ss">  - </span><span class="in">`git`</span></span>
 <span id="cb25-301"><a href="#cb25-301"></a>  </span>
-<span id="cb25-302"><a href="#cb25-302"></a><span class="co"># `podman`</span></span>
+<span id="cb25-302"><a href="#cb25-302"></a><span class="fu"># `podman`</span></span>
 <span id="cb25-303"><a href="#cb25-303"></a></span>
-<span id="cb25-304"><a href="#cb25-304"></a><span class="co">## What is Podman?</span></span>
+<span id="cb25-304"><a href="#cb25-304"></a><span class="fu">## What is Podman?</span></span>
 <span id="cb25-305"><a href="#cb25-305"></a></span>
-<span id="cb25-306"><a href="#cb25-306"></a>- *<span class="dt">*Definition</span>:**</span>
-<span id="cb25-307"><a href="#cb25-307"></a>  - Platform to develop, ship, <span class="ot">and</span> run applications in isolated containers.</span>
-<span id="cb25-308"><a href="#cb25-308"></a>- *<span class="dt">*Benefits</span>:**</span>
-<span id="cb25-309"><a href="#cb25-309"></a>  - Portability, consistency across environments.</span>
-<span id="cb25-310"><a href="#cb25-310"></a>- *<span class="dt">*Editorializing</span>:**</span>
-<span id="cb25-311"><a href="#cb25-311"></a>  - Probably all code should be written in a container now that they exist.</span>
+<span id="cb25-306"><a href="#cb25-306"></a><span class="ss">- </span>**Definition:**</span>
+<span id="cb25-307"><a href="#cb25-307"></a><span class="ss">  - </span>Platform to develop, ship, and run applications in isolated containers.</span>
+<span id="cb25-308"><a href="#cb25-308"></a><span class="ss">- </span>**Benefits:**</span>
+<span id="cb25-309"><a href="#cb25-309"></a><span class="ss">  - </span>Portability, consistency across environments.</span>
+<span id="cb25-310"><a href="#cb25-310"></a><span class="ss">- </span>**Editorializing:**</span>
+<span id="cb25-311"><a href="#cb25-311"></a><span class="ss">  - </span>Probably all code should be written in a container now that they exist.</span>
 <span id="cb25-312"><a href="#cb25-312"></a></span>
-<span id="cb25-313"><a href="#cb25-313"></a><span class="co">## In practice:</span></span>
+<span id="cb25-313"><a href="#cb25-313"></a><span class="fu">## In practice:</span></span>
 <span id="cb25-314"><a href="#cb25-314"></a></span>
-<span id="cb25-315"><a href="#cb25-315"></a>- *<span class="dt">*Windows</span>*<span class="ot">*</span> only</span>
-<span id="cb25-316"><a href="#cb25-316"></a>  - Run <span class="ot">`</span><span class="st">wsl --install -d ubuntu</span><span class="ot">`</span> command once</span>
-<span id="cb25-317"><a href="#cb25-317"></a>- *<span class="dt">*Windows</span>+Mac:**</span>
-<span id="cb25-318"><a href="#cb25-318"></a>  - Use Podman Installer once</span>
-<span id="cb25-319"><a href="#cb25-319"></a>  - Launch Podman Desktop <span class="kw">each</span> <span class="fu">time</span> you code</span>
-<span id="cb25-320"><a href="#cb25-320"></a>  - Use <span class="ot">`</span><span class="st">podman</span><span class="ot">`</span> commands</span>
-<span id="cb25-321"><a href="#cb25-321"></a>- *<span class="dt">*Linux</span>:**</span>
-<span id="cb25-322"><a href="#cb25-322"></a>  - Have fun with your <span class="kw">package</span> manager.</span>
+<span id="cb25-315"><a href="#cb25-315"></a><span class="ss">- </span>**Windows** only</span>
+<span id="cb25-316"><a href="#cb25-316"></a><span class="ss">  - </span>Run <span class="in">`wsl --install -d ubuntu`</span> command once</span>
+<span id="cb25-317"><a href="#cb25-317"></a><span class="ss">- </span>**Windows+Mac:**</span>
+<span id="cb25-318"><a href="#cb25-318"></a><span class="ss">  - </span>Use Podman Installer once</span>
+<span id="cb25-319"><a href="#cb25-319"></a><span class="ss">  - </span>Launch Podman Desktop each time you code</span>
+<span id="cb25-320"><a href="#cb25-320"></a><span class="ss">  - </span>Use <span class="in">`podman`</span> commands</span>
+<span id="cb25-321"><a href="#cb25-321"></a><span class="ss">- </span>**Linux:**</span>
+<span id="cb25-322"><a href="#cb25-322"></a><span class="ss">  - </span>Have fun with your package manager.</span>
 <span id="cb25-323"><a href="#cb25-323"></a></span>
-<span id="cb25-324"><a href="#cb25-324"></a><span class="co">## Circa ~2013</span></span>
+<span id="cb25-324"><a href="#cb25-324"></a><span class="fu">## Circa ~2013</span></span>
 <span id="cb25-325"><a href="#cb25-325"></a></span>
-<span id="cb25-326"><a href="#cb25-326"></a>- *<span class="dt">*The</span> problem:**</span>
-<span id="cb25-327"><a href="#cb25-327"></a>  - We want to run code.</span>
-<span id="cb25-328"><a href="#cb25-328"></a>  - We want the code to create programs</span>
-<span id="cb25-329"><a href="#cb25-329"></a>  - We want the programs to work on more than one computer.</span>
-<span id="cb25-330"><a href="#cb25-330"></a>- *<span class="dt">*The</span> solution:**</span>
-<span id="cb25-331"><a href="#cb25-331"></a>  - Realistically, the Java Virtual Machine</span>
-<span id="cb25-332"><a href="#cb25-332"></a>  - But then you have to <span class="fu">write</span> Java (this is pre-Scala, pre-Kotlin)</span>
+<span id="cb25-326"><a href="#cb25-326"></a><span class="ss">- </span>**The problem:**</span>
+<span id="cb25-327"><a href="#cb25-327"></a><span class="ss">  - </span>We want to run code.</span>
+<span id="cb25-328"><a href="#cb25-328"></a><span class="ss">  - </span>We want the code to create programs</span>
+<span id="cb25-329"><a href="#cb25-329"></a><span class="ss">  - </span>We want the programs to work on more than one computer.</span>
+<span id="cb25-330"><a href="#cb25-330"></a><span class="ss">- </span>**The solution:**</span>
+<span id="cb25-331"><a href="#cb25-331"></a><span class="ss">  - </span>Realistically, the Java Virtual Machine</span>
+<span id="cb25-332"><a href="#cb25-332"></a><span class="ss">  - </span>But then you have to write Java (this is pre-Scala, pre-Kotlin)</span>
 <span id="cb25-333"><a href="#cb25-333"></a>  </span>
 <span id="cb25-334"><a href="#cb25-334"></a>  </span>
-<span id="cb25-335"><a href="#cb25-335"></a><span class="co">## Circa ~2008</span></span>
+<span id="cb25-335"><a href="#cb25-335"></a><span class="fu">## Circa ~2008</span></span>
 <span id="cb25-336"><a href="#cb25-336"></a></span>
-<span id="cb25-337"><a href="#cb25-337"></a>- *<span class="dt">*The</span> setting:**</span>
-<span id="cb25-338"><a href="#cb25-338"></a>  - Cloud is taking off, mainly Amazon + Google</span>
-<span id="cb25-339"><a href="#cb25-339"></a>  - They already have to run everything in virtual machine.</span>
-<span id="cb25-340"><a href="#cb25-340"></a>  - They needed a lightweight solution.</span>
-<span id="cb25-341"><a href="#cb25-341"></a>- *<span class="dt">*The</span> solution:**</span>
-<span id="cb25-342"><a href="#cb25-342"></a>  - Docker is written in the Google C-like, Go</span>
-<span id="cb25-343"><a href="#cb25-343"></a>  - It is a lightweight pretend computer.</span>
+<span id="cb25-337"><a href="#cb25-337"></a><span class="ss">- </span>**The setting:**</span>
+<span id="cb25-338"><a href="#cb25-338"></a><span class="ss">  - </span>Cloud is taking off, mainly Amazon + Google</span>
+<span id="cb25-339"><a href="#cb25-339"></a><span class="ss">  - </span>They already have to run everything in virtual machine.</span>
+<span id="cb25-340"><a href="#cb25-340"></a><span class="ss">  - </span>They needed a lightweight solution.</span>
+<span id="cb25-341"><a href="#cb25-341"></a><span class="ss">- </span>**The solution:**</span>
+<span id="cb25-342"><a href="#cb25-342"></a><span class="ss">  - </span>Docker is written in the Google C-like, Go</span>
+<span id="cb25-343"><a href="#cb25-343"></a><span class="ss">  - </span>It is a lightweight pretend computer.</span>
 <span id="cb25-344"><a href="#cb25-344"></a>  </span>
-<span id="cb25-345"><a href="#cb25-345"></a><span class="co">## Docker&amp;rarr;Podman</span></span>
+<span id="cb25-345"><a href="#cb25-345"></a><span class="fu">## Docker&amp;rarr;Podman</span></span>
 <span id="cb25-346"><a href="#cb25-346"></a></span>
-<span id="cb25-347"><a href="#cb25-347"></a>- Docker is closed-source (bad)</span>
-<span id="cb25-348"><a href="#cb25-348"></a>- Docker is critical infastructre in most code bases</span>
-<span id="cb25-349"><a href="#cb25-349"></a>- The Redhat team (from &lt;span style=<span class="ot">"</span><span class="st">color:#4B9CD3</span><span class="ot">"</span>&gt;CAROLINA&lt;/span&gt;) stepped into solve the problem</span>
-<span id="cb25-350"><a href="#cb25-350"></a>- They make Podman - completely compatible, completely <span class="fu">open</span>-source</span>
-<span id="cb25-351"><a href="#cb25-351"></a>- We <span class="fu">use</span> Podman in this class</span>
+<span id="cb25-347"><a href="#cb25-347"></a><span class="ss">- </span>Docker is closed-source (bad)</span>
+<span id="cb25-348"><a href="#cb25-348"></a><span class="ss">- </span>Docker is critical infastructre in most code bases</span>
+<span id="cb25-349"><a href="#cb25-349"></a><span class="ss">- </span>The Redhat team (from &lt;span style="color:#4B9CD3"&gt;CAROLINA&lt;/span&gt;) stepped into solve the problem</span>
+<span id="cb25-350"><a href="#cb25-350"></a><span class="ss">- </span>They make Podman - completely compatible, completely open-source</span>
+<span id="cb25-351"><a href="#cb25-351"></a><span class="ss">- </span>We use Podman in this class</span>
 <span id="cb25-352"><a href="#cb25-352"></a></span>
-<span id="cb25-353"><a href="#cb25-353"></a><span class="co">## Podman</span></span>
+<span id="cb25-353"><a href="#cb25-353"></a><span class="fu">## Podman</span></span>
 <span id="cb25-354"><a href="#cb25-354"></a></span>
-<span id="cb25-355"><a href="#cb25-355"></a>- Podman solves the problem of writing code on one computer <span class="ot">and</span> running it another.</span>
-<span id="cb25-356"><a href="#cb25-356"></a>- Simply specify a Podman image</span>
-<span id="cb25-357"><a href="#cb25-357"></a>  - a description of a imaginary computer</span>
-<span id="cb25-358"><a href="#cb25-358"></a>- Podman will pretend to be that computer</span>
-<span id="cb25-359"><a href="#cb25-359"></a>- We can run code <span class="ot">"</span><span class="st">inside</span><span class="ot">"</span> Podman</span>
-<span id="cb25-360"><a href="#cb25-360"></a>  - Code in the container can<span class="ot">'</span><span class="ss">t tell it</span><span class="ot">'</span>s running inside Podman</span>
+<span id="cb25-355"><a href="#cb25-355"></a><span class="ss">- </span>Podman solves the problem of writing code on one computer and running it another.</span>
+<span id="cb25-356"><a href="#cb25-356"></a><span class="ss">- </span>Simply specify a Podman image</span>
+<span id="cb25-357"><a href="#cb25-357"></a><span class="ss">  - </span>a description of a imaginary computer</span>
+<span id="cb25-358"><a href="#cb25-358"></a><span class="ss">- </span>Podman will pretend to be that computer</span>
+<span id="cb25-359"><a href="#cb25-359"></a><span class="ss">- </span>We can run code "inside" Podman</span>
+<span id="cb25-360"><a href="#cb25-360"></a><span class="ss">  - </span>Code in the container can't tell it's running inside Podman</span>
 <span id="cb25-361"><a href="#cb25-361"></a></span>
-<span id="cb25-362"><a href="#cb25-362"></a><span class="co">## Podman &amp; Python</span></span>
+<span id="cb25-362"><a href="#cb25-362"></a><span class="fu">## Podman &amp; Python</span></span>
 <span id="cb25-363"><a href="#cb25-363"></a></span>
-<span id="cb25-364"><a href="#cb25-364"></a>- *<span class="dt">*Windows</span>, Mac, Linux:**</span>
-<span id="cb25-365"><a href="#cb25-365"></a>  - Win tends to refer to Python3 as <span class="ot">"</span><span class="st">python</span><span class="ot">"</span></span>
-<span id="cb25-366"><a href="#cb25-366"></a>  - Mac tends to refer to Python2 as <span class="ot">"</span><span class="st">python</span><span class="ot">"</span></span>
-<span id="cb25-367"><a href="#cb25-367"></a>  - Linux, because its good, makes you specify:</span>
+<span id="cb25-364"><a href="#cb25-364"></a><span class="ss">- </span>**Windows, Mac, Linux:**</span>
+<span id="cb25-365"><a href="#cb25-365"></a><span class="ss">  - </span>Win tends to refer to Python3 as "python"</span>
+<span id="cb25-366"><a href="#cb25-366"></a><span class="ss">  - </span>Mac tends to refer to Python2 as "python"</span>
+<span id="cb25-367"><a href="#cb25-367"></a><span class="ss">  - </span>Linux, because its good, makes you specify:</span>
 <span id="cb25-368"><a href="#cb25-368"></a>  </span>
-<span id="cb25-369"><a href="#cb25-369"></a><span class="ot">```</span><span class="st">bash</span></span>
-<span id="cb25-370"><a href="#cb25-370"></a><span class="st">user</span><span class="dt">@DESKTOP</span><span class="st">-THMS2PJ:~$ python</span></span>
-<span id="cb25-371"><a href="#cb25-371"></a><span class="st">Command 'python' not found, did you mean:</span></span>
-<span id="cb25-372"><a href="#cb25-372"></a><span class="st">  command 'python3' from deb python3</span></span>
-<span id="cb25-373"><a href="#cb25-373"></a><span class="st">  command 'python' from deb python-is-python3</span></span>
-<span id="cb25-374"><a href="#cb25-374"></a><span class="ot">```</span></span>
+<span id="cb25-369"><a href="#cb25-369"></a><span class="in">```bash</span></span>
+<span id="cb25-370"><a href="#cb25-370"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python</span>
+<span id="cb25-371"><a href="#cb25-371"></a><span class="ex">Command</span> <span class="st">'python'</span> not found, did you mean:</span>
+<span id="cb25-372"><a href="#cb25-372"></a>  <span class="bu">command</span> <span class="st">'python3'</span> from deb python3</span>
+<span id="cb25-373"><a href="#cb25-373"></a>  <span class="bu">command</span> <span class="st">'python'</span> from deb python-is-python3</span>
+<span id="cb25-374"><a href="#cb25-374"></a><span class="in">```</span></span>
 <span id="cb25-375"><a href="#cb25-375"></a></span>
-<span id="cb25-376"><a href="#cb25-376"></a><span class="co">## Bugs</span></span>
+<span id="cb25-376"><a href="#cb25-376"></a><span class="fu">## Bugs</span></span>
 <span id="cb25-377"><a href="#cb25-377"></a></span>
-<span id="cb25-378"><a href="#cb25-378"></a>- This can lead to bugs pretty quickly</span>
-<span id="cb25-379"><a href="#cb25-379"></a>  - Say I <span class="fu">write</span> <span class="ot">and</span> test a .py file on Mac</span>
-<span id="cb25-380"><a href="#cb25-380"></a>  - I email it to <span class="kw">my</span> prof <span class="kw">for</span> help</span>
-<span id="cb25-381"><a href="#cb25-381"></a>  - SyntaxError on <span class="kw">my</span> prof<span class="ot">'</span><span class="ss">s Linux device:</span></span>
-<span id="cb25-382"><a href="#cb25-382"></a><span class="ss">  </span></span>
-<span id="cb25-383"><a href="#cb25-383"></a><span class="ss">```bash</span></span>
-<span id="cb25-384"><a href="#cb25-384"></a><span class="ss">user@DESKTOP-THMS2PJ:~$ python2 -c "print </span><span class="ot">'</span>hello world<span class="ot">'</span><span class="ss">"</span></span>
-<span id="cb25-385"><a href="#cb25-385"></a><span class="ss">hello world</span></span>
-<span id="cb25-386"><a href="#cb25-386"></a><span class="ss">user@DESKTOP-THMS2PJ:~$ python3 -c "print </span><span class="ot">'</span>hello world<span class="ot">'</span><span class="ss">"</span></span>
-<span id="cb25-387"><a href="#cb25-387"></a><span class="ss">  File "&lt;string&gt;", line 1</span></span>
-<span id="cb25-388"><a href="#cb25-388"></a><span class="ss">    print </span><span class="ot">'</span>hello world<span class="ot">'</span></span>
-<span id="cb25-389"><a href="#cb25-389"></a><span class="ss">    ^^^^^^^^^^^^^^^^^^^</span></span>
-<span id="cb25-390"><a href="#cb25-390"></a><span class="ss">SyntaxError: Missing parentheses in call to </span><span class="ot">'</span>print<span class="ot">'</span><span class="ss">. Did you mean print(...)?</span></span>
-<span id="cb25-391"><a href="#cb25-391"></a><span class="ss">```</span></span>
+<span id="cb25-378"><a href="#cb25-378"></a><span class="ss">- </span>This can lead to bugs pretty quickly</span>
+<span id="cb25-379"><a href="#cb25-379"></a><span class="ss">  - </span>Say I write and test a .py file on Mac</span>
+<span id="cb25-380"><a href="#cb25-380"></a><span class="ss">  - </span>I email it to my prof for help</span>
+<span id="cb25-381"><a href="#cb25-381"></a><span class="ss">  - </span>SyntaxError on my prof's Linux device:</span>
+<span id="cb25-382"><a href="#cb25-382"></a>  </span>
+<span id="cb25-383"><a href="#cb25-383"></a><span class="in">```bash</span></span>
+<span id="cb25-384"><a href="#cb25-384"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python2 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
+<span id="cb25-385"><a href="#cb25-385"></a><span class="ex">hello</span> world</span>
+<span id="cb25-386"><a href="#cb25-386"></a><span class="ex">user@DESKTOP-THMS2PJ:~$</span> python3 <span class="at">-c</span> <span class="st">"print 'hello world'"</span></span>
+<span id="cb25-387"><a href="#cb25-387"></a>  <span class="ex">File</span> <span class="st">"&lt;string&gt;"</span>, line 1</span>
+<span id="cb25-388"><a href="#cb25-388"></a>    <span class="ex">print</span> <span class="st">'hello world'</span></span>
+<span id="cb25-389"><a href="#cb25-389"></a>    <span class="ex">^^^^^^^^^^^^^^^^^^^</span></span>
+<span id="cb25-390"><a href="#cb25-390"></a><span class="ex">SyntaxError:</span> Missing parentheses in call to <span class="st">'print'</span>. Did you mean print<span class="er">(</span><span class="ex">...</span><span class="kw">)</span><span class="ex">?</span></span>
+<span id="cb25-391"><a href="#cb25-391"></a><span class="in">```</span></span>
 <span id="cb25-392"><a href="#cb25-392"></a></span>
-<span id="cb25-393"><a href="#cb25-393"></a><span class="ss">## Versioning</span></span>
+<span id="cb25-393"><a href="#cb25-393"></a><span class="fu">## Versioning</span></span>
 <span id="cb25-394"><a href="#cb25-394"></a></span>
-<span id="cb25-395"><a href="#cb25-395"></a><span class="ss">- Python2/3 is just an extreme example</span></span>
-<span id="cb25-396"><a href="#cb25-396"></a><span class="ss">  - Most of code reuse has versioning problems</span></span>
-<span id="cb25-397"><a href="#cb25-397"></a><span class="ss">  - Many CS1 headaches are Win/Mac python</span><span class="ot">'</span>ing</span>
-<span id="cb25-398"><a href="#cb25-398"></a>  - But really: everything breaks all the <span class="fu">time</span></span>
-<span id="cb25-399"><a href="#cb25-399"></a>- Solution: Just run in podman:</span>
-<span id="cb25-400"><a href="#cb25-400"></a><span class="ot">```</span><span class="st">bash</span></span>
-<span id="cb25-401"><a href="#cb25-401"></a><span class="st">C:</span><span class="ch">\U</span><span class="st">sers</span><span class="ch">\cd</span><span class="st">-desk&gt;podman run -it python:alpine python</span></span>
-<span id="cb25-402"><a href="#cb25-402"></a><span class="st">Python 3.13.1 (main, Dec  4 2024, 20:31:31) [GCC 13.2.1 20240309] on linux</span></span>
-<span id="cb25-403"><a href="#cb25-403"></a><span class="st">Type "help", "copyright", "credits" or "license" for more information.</span></span>
-<span id="cb25-404"><a href="#cb25-404"></a><span class="st">&gt;&gt;&gt; print("hello world")</span></span>
-<span id="cb25-405"><a href="#cb25-405"></a><span class="st">hello world</span></span>
-<span id="cb25-406"><a href="#cb25-406"></a><span class="st">&gt;&gt;&gt; exit()</span></span>
-<span id="cb25-407"><a href="#cb25-407"></a><span class="ot">```</span></span>
+<span id="cb25-395"><a href="#cb25-395"></a><span class="ss">- </span>Python2/3 is just an extreme example</span>
+<span id="cb25-396"><a href="#cb25-396"></a><span class="ss">  - </span>Most of code reuse has versioning problems</span>
+<span id="cb25-397"><a href="#cb25-397"></a><span class="ss">  - </span>Many CS1 headaches are Win/Mac python'ing</span>
+<span id="cb25-398"><a href="#cb25-398"></a><span class="ss">  - </span>But really: everything breaks all the time</span>
+<span id="cb25-399"><a href="#cb25-399"></a><span class="ss">- </span>Solution: Just run in podman:</span>
+<span id="cb25-400"><a href="#cb25-400"></a><span class="in">```bash</span></span>
+<span id="cb25-401"><a href="#cb25-401"></a><span class="ex">C:\Users\cd-desk</span><span class="op">&gt;</span>podman run <span class="at">-it</span> python:alpine python</span>
+<span id="cb25-402"><a href="#cb25-402"></a><span class="ex">Python</span> 3.13.1 <span class="er">(</span><span class="ex">main,</span> Dec  4 2024, 20:31:31<span class="kw">)</span> <span class="ex">[GCC</span> 13.2.1 20240309] on linux</span>
+<span id="cb25-403"><a href="#cb25-403"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
+<span id="cb25-404"><a href="#cb25-404"></a><span class="op">&gt;&gt;&gt;</span> print<span class="kw">(</span><span class="st">"hello world"</span><span class="kw">)</span></span>
+<span id="cb25-405"><a href="#cb25-405"></a><span class="ex">hello</span> world</span>
+<span id="cb25-406"><a href="#cb25-406"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span>
+<span id="cb25-407"><a href="#cb25-407"></a><span class="in">```</span></span>
 <span id="cb25-408"><a href="#cb25-408"></a></span>
-<span id="cb25-409"><a href="#cb25-409"></a><span class="co">## Images</span></span>
+<span id="cb25-409"><a href="#cb25-409"></a><span class="fu">## Images</span></span>
 <span id="cb25-410"><a href="#cb25-410"></a></span>
-<span id="cb25-411"><a href="#cb25-411"></a>- Something we <span class="ot">`</span><span class="st">podman run -it</span><span class="ot">`</span> is an _image_</span>
-<span id="cb25-412"><a href="#cb25-412"></a>  - It is a template that correspond to many possible pretend computers</span>
-<span id="cb25-413"><a href="#cb25-413"></a>  - I think of them like object oriented class</span>
-<span id="cb25-414"><a href="#cb25-414"></a>  - They define something that could be</span>
+<span id="cb25-411"><a href="#cb25-411"></a><span class="ss">- </span>Something we <span class="in">`podman run -it`</span> is an _image_</span>
+<span id="cb25-412"><a href="#cb25-412"></a><span class="ss">  - </span>It is a template that correspond to many possible pretend computers</span>
+<span id="cb25-413"><a href="#cb25-413"></a><span class="ss">  - </span>I think of them like object oriented class</span>
+<span id="cb25-414"><a href="#cb25-414"></a><span class="ss">  - </span>They define something that could be</span>
 <span id="cb25-415"><a href="#cb25-415"></a></span>
-<span id="cb25-416"><a href="#cb25-416"></a><span class="co">## Containers</span></span>
+<span id="cb25-416"><a href="#cb25-416"></a><span class="fu">## Containers</span></span>
 <span id="cb25-417"><a href="#cb25-417"></a></span>
-<span id="cb25-418"><a href="#cb25-418"></a>- Each <span class="fu">time</span> we run said command, we have a different _container_</span>
-<span id="cb25-419"><a href="#cb25-419"></a>  - They have different file systems</span>
-<span id="cb25-420"><a href="#cb25-420"></a>  - Things we install don<span class="ot">'</span><span class="ss">t persist to future `run` instances.</span></span>
-<span id="cb25-421"><a href="#cb25-421"></a><span class="ss">  - I think of them like objects of a class</span></span>
-<span id="cb25-422"><a href="#cb25-422"></a><span class="ss">  - Like </span><span class="ot">'</span><span class="dv">1</span><span class="ot">'</span><span class="ss"> instead of </span><span class="ot">'</span>integer<span class="ot">'</span></span>
-<span id="cb25-423"><a href="#cb25-423"></a><span class="ss">  - They actually existing, running code.</span></span>
+<span id="cb25-418"><a href="#cb25-418"></a><span class="ss">- </span>Each time we run said command, we have a different _container_</span>
+<span id="cb25-419"><a href="#cb25-419"></a><span class="ss">  - </span>They have different file systems</span>
+<span id="cb25-420"><a href="#cb25-420"></a><span class="ss">  - </span>Things we install don't persist to future <span class="in">`run`</span> instances.</span>
+<span id="cb25-421"><a href="#cb25-421"></a><span class="ss">  - </span>I think of them like objects of a class</span>
+<span id="cb25-422"><a href="#cb25-422"></a><span class="ss">  - </span>Like '1' instead of 'integer'</span>
+<span id="cb25-423"><a href="#cb25-423"></a><span class="ss">  - </span>They actually existing, running code.</span>
 <span id="cb25-424"><a href="#cb25-424"></a></span>
 <span id="cb25-425"><a href="#cb25-425"></a></span>
 <span id="cb25-426"><a href="#cb25-426"></a></span>
-<span id="cb25-427"><a href="#cb25-427"></a><span class="ss">## Today</span></span>
+<span id="cb25-427"><a href="#cb25-427"></a><span class="fu">## Today</span></span>
 <span id="cb25-428"><a href="#cb25-428"></a></span>
-<span id="cb25-429"><a href="#cb25-429"></a><span class="ss">- &amp;check; Introduce the course</span></span>
-<span id="cb25-430"><a href="#cb25-430"></a><span class="ss">  - &amp;check; The C Programming Language</span></span>
-<span id="cb25-431"><a href="#cb25-431"></a><span class="ss">  - &amp;check; Cryptography + Cryptocurrency</span></span>
-<span id="cb25-432"><a href="#cb25-432"></a><span class="ss">- Introduce the technologies</span></span>
-<span id="cb25-433"><a href="#cb25-433"></a><span class="ss">  - &amp;check; `podman`</span></span>
-<span id="cb25-434"><a href="#cb25-434"></a><span class="ss">  - `vim`</span></span>
-<span id="cb25-435"><a href="#cb25-435"></a><span class="ss">  - `gcc`</span></span>
-<span id="cb25-436"><a href="#cb25-436"></a><span class="ss">  - `git`</span></span>
+<span id="cb25-429"><a href="#cb25-429"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the course</span>
+<span id="cb25-430"><a href="#cb25-430"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> The C Programming Language</span>
+<span id="cb25-431"><a href="#cb25-431"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Cryptography + Cryptocurrency</span>
+<span id="cb25-432"><a href="#cb25-432"></a><span class="ss">- </span>Introduce the technologies</span>
+<span id="cb25-433"><a href="#cb25-433"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`podman`</span></span>
+<span id="cb25-434"><a href="#cb25-434"></a><span class="ss">  - </span><span class="in">`vim`</span></span>
+<span id="cb25-435"><a href="#cb25-435"></a><span class="ss">  - </span><span class="in">`gcc`</span></span>
+<span id="cb25-436"><a href="#cb25-436"></a><span class="ss">  - </span><span class="in">`git`</span></span>
 <span id="cb25-437"><a href="#cb25-437"></a></span>
-<span id="cb25-438"><a href="#cb25-438"></a><span class="ss"># `vim`</span></span>
+<span id="cb25-438"><a href="#cb25-438"></a><span class="fu"># `vim`</span></span>
 <span id="cb25-439"><a href="#cb25-439"></a></span>
-<span id="cb25-440"><a href="#cb25-440"></a><span class="ss">## IDEs</span></span>
+<span id="cb25-440"><a href="#cb25-440"></a><span class="fu">## IDEs</span></span>
 <span id="cb25-441"><a href="#cb25-441"></a></span>
-<span id="cb25-442"><a href="#cb25-442"></a><span class="ss">- At some point in time, code started being written in IDEs.</span></span>
-<span id="cb25-443"><a href="#cb25-443"></a><span class="ss">  - Integrated design environments.</span></span>
-<span id="cb25-444"><a href="#cb25-444"></a><span class="ss">  - To me, the first one was Eclipse (for Java)</span></span>
-<span id="cb25-445"><a href="#cb25-445"></a><span class="ss">- VS Code is the ascendent IDE, and is everywhere.</span></span>
-<span id="cb25-446"><a href="#cb25-446"></a><span class="ss">  - Google Cloud has **browser based** VS Code clone</span></span>
-<span id="cb25-447"><a href="#cb25-447"></a><span class="ss">- VS Code has some nice things - including good `git` and `docker` (less so `podman`) integration.</span></span>
-<span id="cb25-448"><a href="#cb25-448"></a><span class="ss">  </span></span>
-<span id="cb25-449"><a href="#cb25-449"></a><span class="ss">  </span></span>
-<span id="cb25-450"><a href="#cb25-450"></a><span class="ss">## Integration</span></span>
+<span id="cb25-442"><a href="#cb25-442"></a><span class="ss">- </span>At some point in time, code started being written in IDEs.</span>
+<span id="cb25-443"><a href="#cb25-443"></a><span class="ss">  - </span>Integrated design environments.</span>
+<span id="cb25-444"><a href="#cb25-444"></a><span class="ss">  - </span>To me, the first one was Eclipse (for Java)</span>
+<span id="cb25-445"><a href="#cb25-445"></a><span class="ss">- </span>VS Code is the ascendent IDE, and is everywhere.</span>
+<span id="cb25-446"><a href="#cb25-446"></a><span class="ss">  - </span>Google Cloud has **browser based** VS Code clone</span>
+<span id="cb25-447"><a href="#cb25-447"></a><span class="ss">- </span>VS Code has some nice things - including good <span class="in">`git`</span> and <span class="in">`docker`</span> (less so <span class="in">`podman`</span>) integration.</span>
+<span id="cb25-448"><a href="#cb25-448"></a>  </span>
+<span id="cb25-449"><a href="#cb25-449"></a>  </span>
+<span id="cb25-450"><a href="#cb25-450"></a><span class="fu">## Integration</span></span>
 <span id="cb25-451"><a href="#cb25-451"></a></span>
-<span id="cb25-452"><a href="#cb25-452"></a><span class="ss">- VS Code has some nice things </span></span>
-<span id="cb25-453"><a href="#cb25-453"></a><span class="ss">  - Works with `git`/`docker` (less so `podman`).</span></span>
-<span id="cb25-454"><a href="#cb25-454"></a><span class="ss">  - You know what else can do that?</span></span>
-<span id="cb25-455"><a href="#cb25-455"></a><span class="ss">  - The command line</span></span>
-<span id="cb25-456"><a href="#cb25-456"></a><span class="ss">  - Which you don</span><span class="ot">'</span>t have to install</span>
-<span id="cb25-457"><a href="#cb25-457"></a>- IDEs are ~new, the was command line utilities</span>
-<span id="cb25-458"><a href="#cb25-458"></a>  - Vi(m)</span>
-<span id="cb25-459"><a href="#cb25-459"></a>  - Emacs</span>
-<span id="cb25-460"><a href="#cb25-460"></a>  - Nano</span>
+<span id="cb25-452"><a href="#cb25-452"></a><span class="ss">- </span>VS Code has some nice things </span>
+<span id="cb25-453"><a href="#cb25-453"></a><span class="ss">  - </span>Works with <span class="in">`git`</span>/<span class="in">`docker`</span> (less so <span class="in">`podman`</span>).</span>
+<span id="cb25-454"><a href="#cb25-454"></a><span class="ss">  - </span>You know what else can do that?</span>
+<span id="cb25-455"><a href="#cb25-455"></a><span class="ss">  - </span>The command line</span>
+<span id="cb25-456"><a href="#cb25-456"></a><span class="ss">  - </span>Which you don't have to install</span>
+<span id="cb25-457"><a href="#cb25-457"></a><span class="ss">- </span>IDEs are ~new, the was command line utilities</span>
+<span id="cb25-458"><a href="#cb25-458"></a><span class="ss">  - </span>Vi(m)</span>
+<span id="cb25-459"><a href="#cb25-459"></a><span class="ss">  - </span>Emacs</span>
+<span id="cb25-460"><a href="#cb25-460"></a><span class="ss">  - </span>Nano</span>
 <span id="cb25-461"><a href="#cb25-461"></a>  </span>
-<span id="cb25-462"><a href="#cb25-462"></a><span class="co">## Why Vim?</span></span>
+<span id="cb25-462"><a href="#cb25-462"></a><span class="fu">## Why Vim?</span></span>
 <span id="cb25-463"><a href="#cb25-463"></a></span>
-<span id="cb25-464"><a href="#cb25-464"></a>- While IDEs are ascendent...</span>
-<span id="cb25-465"><a href="#cb25-465"></a>  - The are <span class="ot">not</span> installed on every <span class="fu">system</span></span>
-<span id="cb25-466"><a href="#cb25-466"></a>  - They can be hard to <span class="fu">use</span> in cloud</span>
-<span id="cb25-467"><a href="#cb25-467"></a>  - They can start costing money at any <span class="fu">time</span></span>
-<span id="cb25-468"><a href="#cb25-468"></a>  - They seem slower <span class="ot">and</span> to produce worse code</span>
-<span id="cb25-469"><a href="#cb25-469"></a>- Like Python, IDEs are easy!</span>
-<span id="cb25-470"><a href="#cb25-470"></a>  - This is good <span class="kw">for</span> new coders</span>
-<span id="cb25-471"><a href="#cb25-471"></a>  - It is a design decision thereafter</span>
+<span id="cb25-464"><a href="#cb25-464"></a><span class="ss">- </span>While IDEs are ascendent...</span>
+<span id="cb25-465"><a href="#cb25-465"></a><span class="ss">  - </span>The are not installed on every system</span>
+<span id="cb25-466"><a href="#cb25-466"></a><span class="ss">  - </span>They can be hard to use in cloud</span>
+<span id="cb25-467"><a href="#cb25-467"></a><span class="ss">  - </span>They can start costing money at any time</span>
+<span id="cb25-468"><a href="#cb25-468"></a><span class="ss">  - </span>They seem slower and to produce worse code</span>
+<span id="cb25-469"><a href="#cb25-469"></a><span class="ss">- </span>Like Python, IDEs are easy!</span>
+<span id="cb25-470"><a href="#cb25-470"></a><span class="ss">  - </span>This is good for new coders</span>
+<span id="cb25-471"><a href="#cb25-471"></a><span class="ss">  - </span>It is a design decision thereafter</span>
 <span id="cb25-472"><a href="#cb25-472"></a>  </span>
-<span id="cb25-473"><a href="#cb25-473"></a><span class="co">## Vim</span></span>
+<span id="cb25-473"><a href="#cb25-473"></a><span class="fu">## Vim</span></span>
 <span id="cb25-474"><a href="#cb25-474"></a></span>
-<span id="cb25-475"><a href="#cb25-475"></a>- Vim isn<span class="ot">'</span><span class="ss">t too bad</span></span>
-<span id="cb25-476"><a href="#cb25-476"></a><span class="ss">  - It can basically be used as a keyboard navigated text editor.</span></span>
-<span id="cb25-477"><a href="#cb25-477"></a><span class="ss">  - It has really good keyboard shortcuts and modes that we learn over time.</span></span>
-<span id="cb25-478"><a href="#cb25-478"></a><span class="ss">  - It seems to be the pound-for-pound productivity champion of all time.</span></span>
-<span id="cb25-479"><a href="#cb25-479"></a><span class="ss">- It is hard to find people who have learned `vim` who don</span><span class="ot">'</span>t prefer it.</span>
+<span id="cb25-475"><a href="#cb25-475"></a><span class="ss">- </span>Vim isn't too bad</span>
+<span id="cb25-476"><a href="#cb25-476"></a><span class="ss">  - </span>It can basically be used as a keyboard navigated text editor.</span>
+<span id="cb25-477"><a href="#cb25-477"></a><span class="ss">  - </span>It has really good keyboard shortcuts and modes that we learn over time.</span>
+<span id="cb25-478"><a href="#cb25-478"></a><span class="ss">  - </span>It seems to be the pound-for-pound productivity champion of all time.</span>
+<span id="cb25-479"><a href="#cb25-479"></a><span class="ss">- </span>It is hard to find people who have learned <span class="in">`vim`</span> who don't prefer it.</span>
 <span id="cb25-480"><a href="#cb25-480"></a></span>
-<span id="cb25-481"><a href="#cb25-481"></a><span class="co">## Podvim</span></span>
+<span id="cb25-481"><a href="#cb25-481"></a><span class="fu">## Podvim</span></span>
 <span id="cb25-482"><a href="#cb25-482"></a></span>
-<span id="cb25-483"><a href="#cb25-483"></a>- We can install <span class="ot">and</span> run <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span> inside a container (which happens to run Debian &amp; &amp;there4; <span class="ot">`</span><span class="st">apt</span><span class="ot">`</span>)</span>
-<span id="cb25-484"><a href="#cb25-484"></a>- Even directly from Python...</span>
-<span id="cb25-485"><a href="#cb25-485"></a><span class="ot">```</span><span class="st">py</span></span>
-<span id="cb25-486"><a href="#cb25-486"></a><span class="st">&gt;&gt;&gt; import os</span></span>
-<span id="cb25-487"><a href="#cb25-487"></a><span class="st">&gt;&gt;&gt; os.system("apt update") # update the registry of packages</span></span>
-<span id="cb25-488"><a href="#cb25-488"></a><span class="st">&lt;blah blah blah&gt;</span></span>
-<span id="cb25-489"><a href="#cb25-489"></a><span class="st">&gt;&gt;&gt; os.system("apt install vim -y") # -y saves us from having to say "yes" to any prompts</span></span>
-<span id="cb25-490"><a href="#cb25-490"></a><span class="st">&lt;blah blah blah&gt;</span></span>
-<span id="cb25-491"><a href="#cb25-491"></a><span class="st">&gt;&gt;&gt; os.system("vim") # a vim window will open</span></span>
-<span id="cb25-492"><a href="#cb25-492"></a><span class="ot">```</span></span>
-<span id="cb25-493"><a href="#cb25-493"></a>- This is <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span> inside <span class="ot">`</span><span class="st">python</span><span class="ot">`</span> inside <span class="ot">`</span><span class="st">podman</span><span class="ot">`</span></span>
-<span id="cb25-494"><a href="#cb25-494"></a>  - Don<span class="ot">'</span><span class="ss">t do this, it</span><span class="ot">'</span>s a proof-of-concept</span>
+<span id="cb25-483"><a href="#cb25-483"></a><span class="ss">- </span>We can install and run <span class="in">`vim`</span> inside a container (which happens to run Debian &amp; <span class="dv">&amp;there4;</span> <span class="in">`apt`</span>)</span>
+<span id="cb25-484"><a href="#cb25-484"></a><span class="ss">- </span>Even directly from Python...</span>
+<span id="cb25-485"><a href="#cb25-485"></a><span class="in">```py</span></span>
+<span id="cb25-486"><a href="#cb25-486"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> os</span>
+<span id="cb25-487"><a href="#cb25-487"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt update"</span>) <span class="co"># update the registry of packages</span></span>
+<span id="cb25-488"><a href="#cb25-488"></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
+<span id="cb25-489"><a href="#cb25-489"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"apt install vim -y"</span>) <span class="co"># -y saves us from having to say "yes" to any prompts</span></span>
+<span id="cb25-490"><a href="#cb25-490"></a><span class="op">&lt;</span>blah blah blah<span class="op">&gt;</span></span>
+<span id="cb25-491"><a href="#cb25-491"></a><span class="op">&gt;&gt;&gt;</span> os.system(<span class="st">"vim"</span>) <span class="co"># a vim window will open</span></span>
+<span id="cb25-492"><a href="#cb25-492"></a><span class="in">```</span></span>
+<span id="cb25-493"><a href="#cb25-493"></a><span class="ss">- </span>This is <span class="in">`vim`</span> inside <span class="in">`python`</span> inside <span class="in">`podman`</span></span>
+<span id="cb25-494"><a href="#cb25-494"></a><span class="ss">  - </span>Don't do this, it's a proof-of-concept</span>
 <span id="cb25-495"><a href="#cb25-495"></a></span>
-<span id="cb25-496"><a href="#cb25-496"></a><span class="co">## Vim</span></span>
-<span id="cb25-497"><a href="#cb25-497"></a>- It looks like this:</span>
-<span id="cb25-498"><a href="#cb25-498"></a><span class="ot">```</span><span class="st">bash</span></span>
-<span id="cb25-499"><a href="#cb25-499"></a><span class="st">~               VIM - Vi IMproved</span></span>
-<span id="cb25-500"><a href="#cb25-500"></a><span class="st">~                  version 9.1</span></span>
-<span id="cb25-501"><a href="#cb25-501"></a><span class="st">~            by Bram Moolenaar et al.</span></span>
-<span id="cb25-502"><a href="#cb25-502"></a><span class="st">~   Vim is open source and freely distributable</span></span>
-<span id="cb25-503"><a href="#cb25-503"></a><span class="st">~</span></span>
-<span id="cb25-504"><a href="#cb25-504"></a><span class="st">~          Become a registered Vim user!</span></span>
-<span id="cb25-505"><a href="#cb25-505"></a><span class="st">~  type  :help register&lt;Enter&gt;   for information</span></span>
-<span id="cb25-506"><a href="#cb25-506"></a><span class="st">~</span></span>
-<span id="cb25-507"><a href="#cb25-507"></a><span class="st">~  type  :q&lt;Enter&gt;              to exit</span></span>
-<span id="cb25-508"><a href="#cb25-508"></a><span class="st">~  type  :help&lt;Enter&gt;  or  &lt;F1&gt; for on-line help</span></span>
-<span id="cb25-509"><a href="#cb25-509"></a><span class="st">~  type  :help version9&lt;Enter&gt;  for version info</span></span>
-<span id="cb25-510"><a href="#cb25-510"></a><span class="ot">```</span></span>
+<span id="cb25-496"><a href="#cb25-496"></a><span class="fu">## Vim</span></span>
+<span id="cb25-497"><a href="#cb25-497"></a><span class="ss">- </span>It looks like this:</span>
+<span id="cb25-498"><a href="#cb25-498"></a><span class="in">```bash</span></span>
+<span id="cb25-499"><a href="#cb25-499"></a><span class="ex">~</span>               VIM <span class="at">-</span> Vi IMproved</span>
+<span id="cb25-500"><a href="#cb25-500"></a><span class="ex">~</span>                  version 9.1</span>
+<span id="cb25-501"><a href="#cb25-501"></a><span class="ex">~</span>            by Bram Moolenaar et al.</span>
+<span id="cb25-502"><a href="#cb25-502"></a><span class="ex">~</span>   Vim is open source and freely distributable</span>
+<span id="cb25-503"><a href="#cb25-503"></a><span class="ex">~</span></span>
+<span id="cb25-504"><a href="#cb25-504"></a><span class="ex">~</span>          Become a registered Vim user!</span>
+<span id="cb25-505"><a href="#cb25-505"></a><span class="ex">~</span>  type  :help register<span class="op">&lt;</span>Enter<span class="op">&gt;</span>   for information</span>
+<span id="cb25-506"><a href="#cb25-506"></a><span class="ex">~</span></span>
+<span id="cb25-507"><a href="#cb25-507"></a><span class="ex">~</span>  type  :q<span class="op">&lt;</span>Enter<span class="op">&gt;</span>              to exit</span>
+<span id="cb25-508"><a href="#cb25-508"></a><span class="ex">~</span>  type  :help<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  or  <span class="op">&lt;</span>F1<span class="op">&gt;</span> for on-line help</span>
+<span id="cb25-509"><a href="#cb25-509"></a><span class="ex">~</span>  type  :help version9<span class="op">&lt;</span>Enter<span class="op">&gt;</span>  for version info</span>
+<span id="cb25-510"><a href="#cb25-510"></a><span class="in">```</span></span>
 <span id="cb25-511"><a href="#cb25-511"></a></span>
-<span id="cb25-512"><a href="#cb25-512"></a><span class="co">## Usage</span></span>
+<span id="cb25-512"><a href="#cb25-512"></a><span class="fu">## Usage</span></span>
 <span id="cb25-513"><a href="#cb25-513"></a></span>
-<span id="cb25-514"><a href="#cb25-514"></a>- I usually <span class="fu">use</span> vim as <span class="ot">`</span><span class="st">vim filename.py</span><span class="ot">`</span></span>
-<span id="cb25-515"><a href="#cb25-515"></a>  - When <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span> opens I type <span class="ot">`</span><span class="st">i</span><span class="ot">`</span> (<span class="kw">for</span> <span class="ot">"</span><span class="st">insert</span><span class="ot">"</span>)</span>
-<span id="cb25-516"><a href="#cb25-516"></a>  - Then I <span class="fu">write</span> code.</span>
-<span id="cb25-517"><a href="#cb25-517"></a>  - ESC &amp;rarr; <span class="ot">`</span><span class="st">:x</span><span class="ot">`</span> &amp;rarr; ENTER to save+quit</span>
-<span id="cb25-518"><a href="#cb25-518"></a>- Learn <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span> incrementally by using it <span class="kw">for</span> this class - <span class="kw">for</span> code, <span class="kw">for</span> notes, <span class="kw">for</span> whatever.</span>
+<span id="cb25-514"><a href="#cb25-514"></a><span class="ss">- </span>I usually use vim as <span class="in">`vim filename.py`</span></span>
+<span id="cb25-515"><a href="#cb25-515"></a><span class="ss">  - </span>When <span class="in">`vim`</span> opens I type <span class="in">`i`</span> (for "insert")</span>
+<span id="cb25-516"><a href="#cb25-516"></a><span class="ss">  - </span>Then I write code.</span>
+<span id="cb25-517"><a href="#cb25-517"></a><span class="ss">  - </span>ESC <span class="dv">&amp;rarr;</span> <span class="in">`:x`</span> <span class="dv">&amp;rarr;</span> ENTER to save+quit</span>
+<span id="cb25-518"><a href="#cb25-518"></a><span class="ss">- </span>Learn <span class="in">`vim`</span> incrementally by using it for this class - for code, for notes, for whatever.</span>
 <span id="cb25-519"><a href="#cb25-519"></a></span>
 <span id="cb25-520"><a href="#cb25-520"></a></span>
-<span id="cb25-521"><a href="#cb25-521"></a><span class="co">## Today</span></span>
+<span id="cb25-521"><a href="#cb25-521"></a><span class="fu">## Today</span></span>
 <span id="cb25-522"><a href="#cb25-522"></a></span>
-<span id="cb25-523"><a href="#cb25-523"></a>- &amp;check; Introduce the course</span>
-<span id="cb25-524"><a href="#cb25-524"></a>  - &amp;check; The C Programming Language</span>
-<span id="cb25-525"><a href="#cb25-525"></a>  - &amp;check; Cryptography + Cryptocurrency</span>
-<span id="cb25-526"><a href="#cb25-526"></a>- Introduce the technologies</span>
-<span id="cb25-527"><a href="#cb25-527"></a>  - &amp;check; <span class="ot">`</span><span class="st">podman</span><span class="ot">`</span></span>
-<span id="cb25-528"><a href="#cb25-528"></a>  - &amp;check; <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span></span>
-<span id="cb25-529"><a href="#cb25-529"></a>  - <span class="ot">`</span><span class="st">gcc</span><span class="ot">`</span></span>
-<span id="cb25-530"><a href="#cb25-530"></a>  - <span class="ot">`</span><span class="st">git</span><span class="ot">`</span></span>
+<span id="cb25-523"><a href="#cb25-523"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the course</span>
+<span id="cb25-524"><a href="#cb25-524"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> The C Programming Language</span>
+<span id="cb25-525"><a href="#cb25-525"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Cryptography + Cryptocurrency</span>
+<span id="cb25-526"><a href="#cb25-526"></a><span class="ss">- </span>Introduce the technologies</span>
+<span id="cb25-527"><a href="#cb25-527"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`podman`</span></span>
+<span id="cb25-528"><a href="#cb25-528"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`vim`</span></span>
+<span id="cb25-529"><a href="#cb25-529"></a><span class="ss">  - </span><span class="in">`gcc`</span></span>
+<span id="cb25-530"><a href="#cb25-530"></a><span class="ss">  - </span><span class="in">`git`</span></span>
 <span id="cb25-531"><a href="#cb25-531"></a></span>
-<span id="cb25-532"><a href="#cb25-532"></a><span class="co"># `gcc`</span></span>
+<span id="cb25-532"><a href="#cb25-532"></a><span class="fu"># `gcc`</span></span>
 <span id="cb25-533"><a href="#cb25-533"></a></span>
-<span id="cb25-534"><a href="#cb25-534"></a><span class="co">## GCC</span></span>
+<span id="cb25-534"><a href="#cb25-534"></a><span class="fu">## GCC</span></span>
 <span id="cb25-535"><a href="#cb25-535"></a></span>
-<span id="cb25-536"><a href="#cb25-536"></a>- Developed <span class="kw">for</span> the C language to make an <span class="fu">open</span> source operating <span class="fu">system</span> in <span class="dv">1987</span>.</span>
-<span id="cb25-537"><a href="#cb25-537"></a>- Mainly around today <span class="kw">for</span> the C language to make an <span class="fu">open</span> source operating <span class="fu">system</span> (Linux)</span>
-<span id="cb25-538"><a href="#cb25-538"></a>- (The C language was invented to <span class="fu">write</span> an operating <span class="fu">system</span>).</span>
-<span id="cb25-539"><a href="#cb25-539"></a>- <span class="ot">`</span><span class="st">python</span><span class="ot">`</span> is written in GCC C</span>
-<span id="cb25-540"><a href="#cb25-540"></a><span class="ot">```</span><span class="st">python</span></span>
-<span id="cb25-541"><a href="#cb25-541"></a><span class="st">C:</span><span class="ch">\U</span><span class="st">sers</span><span class="ch">\cd</span><span class="st">-desk&gt;podman run -it python</span></span>
-<span id="cb25-542"><a href="#cb25-542"></a><span class="st">Python 3.13.1 (main, Dec  4 2024, 20:40:27) [GCC 12.2.0] on linux</span></span>
-<span id="cb25-543"><a href="#cb25-543"></a><span class="ot">```</span></span>
+<span id="cb25-536"><a href="#cb25-536"></a><span class="ss">- </span>Developed for the C language to make an open source operating system in 1987.</span>
+<span id="cb25-537"><a href="#cb25-537"></a><span class="ss">- </span>Mainly around today for the C language to make an open source operating system (Linux)</span>
+<span id="cb25-538"><a href="#cb25-538"></a><span class="ss">- </span>(The C language was invented to write an operating system).</span>
+<span id="cb25-539"><a href="#cb25-539"></a><span class="ss">- </span><span class="in">`python`</span> is written in GCC C</span>
+<span id="cb25-540"><a href="#cb25-540"></a><span class="in">```python</span></span>
+<span id="cb25-541"><a href="#cb25-541"></a>C:\Users\cd<span class="op">-</span>desk<span class="op">&gt;</span>podman run <span class="op">-</span>it python</span>
+<span id="cb25-542"><a href="#cb25-542"></a>Python <span class="fl">3.13.1</span> (main, Dec  <span class="dv">4</span> <span class="dv">2024</span>, <span class="dv">20</span>:<span class="dv">40</span>:<span class="dv">27</span>) [GCC <span class="fl">12.2.0</span>] on linux</span>
+<span id="cb25-543"><a href="#cb25-543"></a><span class="in">```</span></span>
 <span id="cb25-544"><a href="#cb25-544"></a></span>
-<span id="cb25-545"><a href="#cb25-545"></a><span class="co">## Great freeware</span></span>
+<span id="cb25-545"><a href="#cb25-545"></a><span class="fu">## Great freeware</span></span>
 <span id="cb25-546"><a href="#cb25-546"></a></span>
-<span id="cb25-547"><a href="#cb25-547"></a>- Many legendary programs created using GCC:</span>
-<span id="cb25-548"><a href="#cb25-548"></a>  - HTTPD &amp; NGINX, which serve a majority of webtraffic</span>
-<span id="cb25-549"><a href="#cb25-549"></a>  - Every major Linux <span class="ot">and</span> FreeBSD distribution</span>
-<span id="cb25-550"><a href="#cb25-550"></a>  - Major browsers like Firefox <span class="ot">and</span> Chromium</span>
-<span id="cb25-551"><a href="#cb25-551"></a>    - Firefox is on <span class="ot">`</span><span class="st">clang</span><span class="ot">`</span> now but that<span class="ot">'</span><span class="ss">s new</span></span>
-<span id="cb25-552"><a href="#cb25-552"></a><span class="ss">  - GNU Bash and Coreutils, like `cat`, `ls`, `rm`</span></span>
-<span id="cb25-553"><a href="#cb25-553"></a><span class="ss">  - Bitcoin Core</span></span>
-<span id="cb25-554"><a href="#cb25-554"></a><span class="ss">  </span></span>
-<span id="cb25-555"><a href="#cb25-555"></a><span class="ss">## Compilation</span></span>
+<span id="cb25-547"><a href="#cb25-547"></a><span class="ss">- </span>Many legendary programs created using GCC:</span>
+<span id="cb25-548"><a href="#cb25-548"></a><span class="ss">  - </span>HTTPD &amp; NGINX, which serve a majority of webtraffic</span>
+<span id="cb25-549"><a href="#cb25-549"></a><span class="ss">  - </span>Every major Linux and FreeBSD distribution</span>
+<span id="cb25-550"><a href="#cb25-550"></a><span class="ss">  - </span>Major browsers like Firefox and Chromium</span>
+<span id="cb25-551"><a href="#cb25-551"></a><span class="ss">    - </span>Firefox is on <span class="in">`clang`</span> now but that's new</span>
+<span id="cb25-552"><a href="#cb25-552"></a><span class="ss">  - </span>GNU Bash and Coreutils, like <span class="in">`cat`</span>, <span class="in">`ls`</span>, <span class="in">`rm`</span></span>
+<span id="cb25-553"><a href="#cb25-553"></a><span class="ss">  - </span>Bitcoin Core</span>
+<span id="cb25-554"><a href="#cb25-554"></a>  </span>
+<span id="cb25-555"><a href="#cb25-555"></a><span class="fu">## Compilation</span></span>
 <span id="cb25-556"><a href="#cb25-556"></a></span>
-<span id="cb25-557"><a href="#cb25-557"></a><span class="ss">- Like `python` or `podman` or `vim`, GCC is a command - `gcc`</span></span>
-<span id="cb25-558"><a href="#cb25-558"></a><span class="ss">- `gcc` takes at least one argument: a filename, usually of a C file</span></span>
-<span id="cb25-559"><a href="#cb25-559"></a><span class="ss">- GCC takes this C file and makes an executable </span></span>
-<span id="cb25-560"><a href="#cb25-560"></a><span class="ss">  - a program, sort of</span></span>
-<span id="cb25-561"><a href="#cb25-561"></a><span class="ss">- Executables run as command with `./` prefix</span></span>
-<span id="cb25-562"><a href="#cb25-562"></a><span class="ss">  - This differs from `python` which runs a script **without** creating a corresponding program.</span></span>
+<span id="cb25-557"><a href="#cb25-557"></a><span class="ss">- </span>Like <span class="in">`python`</span> or <span class="in">`podman`</span> or <span class="in">`vim`</span>, GCC is a command - <span class="in">`gcc`</span></span>
+<span id="cb25-558"><a href="#cb25-558"></a><span class="ss">- </span><span class="in">`gcc`</span> takes at least one argument: a filename, usually of a C file</span>
+<span id="cb25-559"><a href="#cb25-559"></a><span class="ss">- </span>GCC takes this C file and makes an executable </span>
+<span id="cb25-560"><a href="#cb25-560"></a><span class="ss">  - </span>a program, sort of</span>
+<span id="cb25-561"><a href="#cb25-561"></a><span class="ss">- </span>Executables run as command with <span class="in">`./`</span> prefix</span>
+<span id="cb25-562"><a href="#cb25-562"></a><span class="ss">  - </span>This differs from <span class="in">`python`</span> which runs a script **without** creating a corresponding program.</span>
 <span id="cb25-563"><a href="#cb25-563"></a></span>
-<span id="cb25-564"><a href="#cb25-564"></a><span class="ss">## .py vs .c</span></span>
+<span id="cb25-564"><a href="#cb25-564"></a><span class="fu">## .py vs .c</span></span>
 <span id="cb25-565"><a href="#cb25-565"></a></span>
 <span id="cb25-568"><a href="#cb25-568"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-569"><a href="#cb25-569"></a><span class="ss">%%| theme: Darkly</span></span>
-<span id="cb25-570"><a href="#cb25-570"></a><span class="ss">flowchart LR</span></span>
-<span id="cb25-571"><a href="#cb25-571"></a><span class="ss">  A(Python) --&gt; B[fname.py file]</span></span>
-<span id="cb25-572"><a href="#cb25-572"></a><span class="ss">  B --&gt; C[python fname.py]</span></span>
-<span id="cb25-573"><a href="#cb25-573"></a><span class="ss">  C --&gt; D{hello world}</span></span>
-<span id="cb25-574"><a href="#cb25-574"></a><span class="ss">  E(C) --&gt; F[fname.c  file]</span></span>
-<span id="cb25-575"><a href="#cb25-575"></a><span class="ss">  F --&gt; G[gcc fname.c -o ename]</span></span>
-<span id="cb25-576"><a href="#cb25-576"></a><span class="ss">  G --&gt; H[./ename]</span></span>
-<span id="cb25-577"><a href="#cb25-577"></a><span class="ss">  H --&gt; I{hello world}</span></span>
-<span id="cb25-578"><a href="#cb25-578"></a><span class="ss">```</span></span>
+<span id="cb25-569"><a href="#cb25-569"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-570"><a href="#cb25-570"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-571"><a href="#cb25-571"></a><span class="in">  A(Python) --&gt; B[fname.py file]</span></span>
+<span id="cb25-572"><a href="#cb25-572"></a><span class="in">  B --&gt; C[python fname.py]</span></span>
+<span id="cb25-573"><a href="#cb25-573"></a><span class="in">  C --&gt; D{hello world}</span></span>
+<span id="cb25-574"><a href="#cb25-574"></a><span class="in">  E(C) --&gt; F[fname.c  file]</span></span>
+<span id="cb25-575"><a href="#cb25-575"></a><span class="in">  F --&gt; G[gcc fname.c -o ename]</span></span>
+<span id="cb25-576"><a href="#cb25-576"></a><span class="in">  G --&gt; H[./ename]</span></span>
+<span id="cb25-577"><a href="#cb25-577"></a><span class="in">  H --&gt; I{hello world}</span></span>
+<span id="cb25-578"><a href="#cb25-578"></a><span class="in">```</span></span>
 <span id="cb25-579"><a href="#cb25-579"></a></span>
-<span id="cb25-580"><a href="#cb25-580"></a><span class="ss">- _You only have to compile once to have the executable forever._</span></span>
-<span id="cb25-581"><a href="#cb25-581"></a><span class="ss">- _Most programs are executables, not scripts._</span></span>
+<span id="cb25-580"><a href="#cb25-580"></a><span class="ss">- </span>_You only have to compile once to have the executable forever._</span>
+<span id="cb25-581"><a href="#cb25-581"></a><span class="ss">- </span>_Most programs are executables, not scripts._</span>
 <span id="cb25-582"><a href="#cb25-582"></a></span>
-<span id="cb25-583"><a href="#cb25-583"></a><span class="ss">## Today</span></span>
+<span id="cb25-583"><a href="#cb25-583"></a><span class="fu">## Today</span></span>
 <span id="cb25-584"><a href="#cb25-584"></a></span>
-<span id="cb25-585"><a href="#cb25-585"></a><span class="ss">- &amp;check; Introduce the course</span></span>
-<span id="cb25-586"><a href="#cb25-586"></a><span class="ss">  - &amp;check; The C Programming Language</span></span>
-<span id="cb25-587"><a href="#cb25-587"></a><span class="ss">  - &amp;check; Cryptography + Cryptocurrency</span></span>
-<span id="cb25-588"><a href="#cb25-588"></a><span class="ss">- Introduce the technologies</span></span>
-<span id="cb25-589"><a href="#cb25-589"></a><span class="ss">  - &amp;check; `podman`</span></span>
-<span id="cb25-590"><a href="#cb25-590"></a><span class="ss">  - &amp;check; `vim`</span></span>
-<span id="cb25-591"><a href="#cb25-591"></a><span class="ss">  - &amp;check; `gcc`</span></span>
-<span id="cb25-592"><a href="#cb25-592"></a><span class="ss">  - `git`</span></span>
-<span id="cb25-593"><a href="#cb25-593"></a><span class="ss">  </span></span>
-<span id="cb25-594"><a href="#cb25-594"></a><span class="ss"># `git`  </span></span>
+<span id="cb25-585"><a href="#cb25-585"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the course</span>
+<span id="cb25-586"><a href="#cb25-586"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> The C Programming Language</span>
+<span id="cb25-587"><a href="#cb25-587"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Cryptography + Cryptocurrency</span>
+<span id="cb25-588"><a href="#cb25-588"></a><span class="ss">- </span>Introduce the technologies</span>
+<span id="cb25-589"><a href="#cb25-589"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`podman`</span></span>
+<span id="cb25-590"><a href="#cb25-590"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`vim`</span></span>
+<span id="cb25-591"><a href="#cb25-591"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`gcc`</span></span>
+<span id="cb25-592"><a href="#cb25-592"></a><span class="ss">  - </span><span class="in">`git`</span></span>
+<span id="cb25-593"><a href="#cb25-593"></a>  </span>
+<span id="cb25-594"><a href="#cb25-594"></a><span class="fu"># `git`  </span></span>
 <span id="cb25-595"><a href="#cb25-595"></a></span>
-<span id="cb25-596"><a href="#cb25-596"></a><span class="ss">## Git</span></span>
+<span id="cb25-596"><a href="#cb25-596"></a><span class="fu">## Git</span></span>
 <span id="cb25-597"><a href="#cb25-597"></a></span>
-<span id="cb25-598"><a href="#cb25-598"></a><span class="ss">&lt;ul&gt;</span></span>
-<span id="cb25-599"><a href="#cb25-599"></a><span class="ss">&lt;li&gt; Git was invented... to store the C language source code for an open source operating system (Linux)&lt;/li&gt;</span></span>
-<span id="cb25-600"><a href="#cb25-600"></a><span class="ss">&lt;li&gt; It is de facto the only way in the universe to store code other than "on my HDD/SSD"&lt;/li&gt;</span></span>
-<span id="cb25-601"><a href="#cb25-601"></a><span class="ss">&lt;li&gt; It is also a very good way to</span></span>
-<span id="cb25-602"><a href="#cb25-602"></a><span class="ss">    &lt;ul&gt;</span></span>
-<span id="cb25-603"><a href="#cb25-603"></a><span class="ss">    &lt;ol&gt;</span></span>
-<span id="cb25-604"><a href="#cb25-604"></a><span class="ss">    &lt;li&gt; Keep track of podman images&lt;/li&gt;</span></span>
-<span id="cb25-605"><a href="#cb25-605"></a><span class="ss">    &lt;li&gt; Keep track of podman containers&lt;/li&gt;</span></span>
-<span id="cb25-606"><a href="#cb25-606"></a><span class="ss">    &lt;li&gt; Keep track of code used inside containers&lt;/li&gt;</span></span>
-<span id="cb25-607"><a href="#cb25-607"></a><span class="ss">    &lt;/ol&gt;</span></span>
-<span id="cb25-608"><a href="#cb25-608"></a><span class="ss">    &lt;/ul&gt;</span></span>
-<span id="cb25-609"><a href="#cb25-609"></a><span class="ss">&lt;/li&gt;</span></span>
+<span id="cb25-598"><a href="#cb25-598"></a>&lt;ul&gt;</span>
+<span id="cb25-599"><a href="#cb25-599"></a>&lt;li&gt; Git was invented... to store the C language source code for an open source operating system (Linux)&lt;/li&gt;</span>
+<span id="cb25-600"><a href="#cb25-600"></a>&lt;li&gt; It is de facto the only way in the universe to store code other than "on my HDD/SSD"&lt;/li&gt;</span>
+<span id="cb25-601"><a href="#cb25-601"></a>&lt;li&gt; It is also a very good way to</span>
+<span id="cb25-602"><a href="#cb25-602"></a>    &lt;ul&gt;</span>
+<span id="cb25-603"><a href="#cb25-603"></a>    &lt;ol&gt;</span>
+<span id="cb25-604"><a href="#cb25-604"></a>    &lt;li&gt; Keep track of podman images&lt;/li&gt;</span>
+<span id="cb25-605"><a href="#cb25-605"></a>    &lt;li&gt; Keep track of podman containers&lt;/li&gt;</span>
+<span id="cb25-606"><a href="#cb25-606"></a>    &lt;li&gt; Keep track of code used inside containers&lt;/li&gt;</span>
+<span id="cb25-607"><a href="#cb25-607"></a>    &lt;/ol&gt;</span>
+<span id="cb25-608"><a href="#cb25-608"></a>    &lt;/ul&gt;</span>
+<span id="cb25-609"><a href="#cb25-609"></a>&lt;/li&gt;</span>
 <span id="cb25-610"><a href="#cb25-610"></a></span>
-<span id="cb25-611"><a href="#cb25-611"></a><span class="ss">## As a command</span></span>
+<span id="cb25-611"><a href="#cb25-611"></a><span class="fu">## As a command</span></span>
 <span id="cb25-612"><a href="#cb25-612"></a></span>
-<span id="cb25-613"><a href="#cb25-613"></a><span class="ss">- Git corresponds, like the others, to a command: `git`</span></span>
-<span id="cb25-614"><a href="#cb25-614"></a><span class="ss">  - It is common now to use other techniques, but the command remains extremely **stable**</span></span>
-<span id="cb25-615"><a href="#cb25-615"></a><span class="ss">- Quoth GitHub, the first and greatest of the collaboration tools:</span></span>
+<span id="cb25-613"><a href="#cb25-613"></a><span class="ss">- </span>Git corresponds, like the others, to a command: <span class="in">`git`</span></span>
+<span id="cb25-614"><a href="#cb25-614"></a><span class="ss">  - </span>It is common now to use other techniques, but the command remains extremely **stable**</span>
+<span id="cb25-615"><a href="#cb25-615"></a><span class="ss">- </span>Quoth GitHub, the first and greatest of the collaboration tools:</span>
 <span id="cb25-616"><a href="#cb25-616"></a></span>
-<span id="cb25-617"><a href="#cb25-617"></a><span class="ss">&lt;a href="https://docs.github.com/en/get-started/using-github/connecting-to-github"&gt;&lt;blockquote&gt;</span></span>
-<span id="cb25-618"><a href="#cb25-618"></a><span class="ss">If you want a lot of control and flexibility, you can use the command line.</span></span>
-<span id="cb25-619"><a href="#cb25-619"></a><span class="ss">&lt;/blockquote&gt;&lt;/a&gt;</span></span>
+<span id="cb25-617"><a href="#cb25-617"></a>&lt;a href="https://docs.github.com/en/get-started/using-github/connecting-to-github"&gt;&lt;blockquote&gt;</span>
+<span id="cb25-618"><a href="#cb25-618"></a>If you want a lot of control and flexibility, you can use the command line.</span>
+<span id="cb25-619"><a href="#cb25-619"></a>&lt;/blockquote&gt;&lt;/a&gt;</span>
 <span id="cb25-620"><a href="#cb25-620"></a></span>
 <span id="cb25-621"><a href="#cb25-621"></a></span>
-<span id="cb25-622"><a href="#cb25-622"></a><span class="ss">## As a technology</span></span>
+<span id="cb25-622"><a href="#cb25-622"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-623"><a href="#cb25-623"></a></span>
-<span id="cb25-624"><a href="#cb25-624"></a><span class="ss">- So basically, you have things called repositories or "repos"</span></span>
+<span id="cb25-624"><a href="#cb25-624"></a><span class="ss">- </span>So basically, you have things called repositories or "repos"</span>
 <span id="cb25-625"><a href="#cb25-625"></a></span>
 <span id="cb25-628"><a href="#cb25-628"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-629"><a href="#cb25-629"></a><span class="ss">%%| theme: Darkly</span></span>
-<span id="cb25-630"><a href="#cb25-630"></a><span class="ss">flowchart LR</span></span>
-<span id="cb25-631"><a href="#cb25-631"></a><span class="ss">  A(My ️‍🔥 code repo)</span></span>
-<span id="cb25-632"><a href="#cb25-632"></a><span class="ss">```</span></span>
+<span id="cb25-629"><a href="#cb25-629"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-630"><a href="#cb25-630"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-631"><a href="#cb25-631"></a><span class="in">  A(My ️‍🔥 code repo)</span></span>
+<span id="cb25-632"><a href="#cb25-632"></a><span class="in">```</span></span>
 <span id="cb25-633"><a href="#cb25-633"></a></span>
-<span id="cb25-634"><a href="#cb25-634"></a><span class="ss">## As a technology</span></span>
+<span id="cb25-634"><a href="#cb25-634"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-635"><a href="#cb25-635"></a></span>
-<span id="cb25-636"><a href="#cb25-636"></a><span class="ss">- Then you realize you wrote an infinite loop so you update it</span></span>
+<span id="cb25-636"><a href="#cb25-636"></a><span class="ss">- </span>Then you realize you wrote an infinite loop so you update it</span>
 <span id="cb25-637"><a href="#cb25-637"></a></span>
 <span id="cb25-640"><a href="#cb25-640"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-641"><a href="#cb25-641"></a><span class="ss">%%| theme: Darkly</span></span>
-<span id="cb25-642"><a href="#cb25-642"></a><span class="ss">flowchart LR</span></span>
-<span id="cb25-643"><a href="#cb25-643"></a><span class="ss">  A(My ️‍🔥 code repo v0 ) --&gt; B(My ️‍🔥 code repo v1)</span></span>
-<span id="cb25-644"><a href="#cb25-644"></a><span class="ss">```</span></span>
+<span id="cb25-641"><a href="#cb25-641"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-642"><a href="#cb25-642"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-643"><a href="#cb25-643"></a><span class="in">  A(My ️‍🔥 code repo v0 ) --&gt; B(My ️‍🔥 code repo v1)</span></span>
+<span id="cb25-644"><a href="#cb25-644"></a><span class="in">```</span></span>
 <span id="cb25-645"><a href="#cb25-645"></a></span>
-<span id="cb25-646"><a href="#cb25-646"></a><span class="ss">## As a technology</span></span>
+<span id="cb25-646"><a href="#cb25-646"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-647"><a href="#cb25-647"></a></span>
-<span id="cb25-648"><a href="#cb25-648"></a><span class="ss">- Then you come to class and realize your code is on your gaming rig in your apartment.</span></span>
+<span id="cb25-648"><a href="#cb25-648"></a><span class="ss">- </span>Then you come to class and realize your code is on your gaming rig in your apartment.</span>
 <span id="cb25-649"><a href="#cb25-649"></a></span>
 <span id="cb25-652"><a href="#cb25-652"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-653"><a href="#cb25-653"></a><span class="ss">%%| theme: Darkly</span></span>
-<span id="cb25-654"><a href="#cb25-654"></a><span class="ss">flowchart LR</span></span>
-<span id="cb25-655"><a href="#cb25-655"></a><span class="ss">  A(&lt;s&gt;My ️‍🔥 code repo v0&lt;/s&gt;) --&gt; B(&lt;s&gt;My ️‍🔥 code repo v1&lt;/s&gt;)</span></span>
-<span id="cb25-656"><a href="#cb25-656"></a><span class="ss">```</span></span>
+<span id="cb25-653"><a href="#cb25-653"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-654"><a href="#cb25-654"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-655"><a href="#cb25-655"></a><span class="in">  A(&lt;s&gt;My ️‍🔥 code repo v0&lt;/s&gt;) --&gt; B(&lt;s&gt;My ️‍🔥 code repo v1&lt;/s&gt;)</span></span>
+<span id="cb25-656"><a href="#cb25-656"></a><span class="in">```</span></span>
 <span id="cb25-657"><a href="#cb25-657"></a></span>
-<span id="cb25-658"><a href="#cb25-658"></a><span class="ss">## As a technology</span></span>
+<span id="cb25-658"><a href="#cb25-658"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-659"><a href="#cb25-659"></a></span>
-<span id="cb25-660"><a href="#cb25-660"></a><span class="ss">- So you save your code on GitHub</span></span>
-<span id="cb25-661"><a href="#cb25-661"></a><span class="ss">  - GH = GitHub, GR = Gaming Rig</span></span>
+<span id="cb25-660"><a href="#cb25-660"></a><span class="ss">- </span>So you save your code on GitHub</span>
+<span id="cb25-661"><a href="#cb25-661"></a><span class="ss">  - </span>GH = GitHub, GR = Gaming Rig</span>
 <span id="cb25-662"><a href="#cb25-662"></a></span>
 <span id="cb25-665"><a href="#cb25-665"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-666"><a href="#cb25-666"></a><span class="ss">%%| theme: Darkly</span></span>
-<span id="cb25-667"><a href="#cb25-667"></a><span class="ss">flowchart LR</span></span>
-<span id="cb25-668"><a href="#cb25-668"></a><span class="ss">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-669"><a href="#cb25-669"></a><span class="ss">  B --&gt; C(GH.‍🔥 v0)</span></span>
-<span id="cb25-670"><a href="#cb25-670"></a><span class="ss">```</span></span>
+<span id="cb25-666"><a href="#cb25-666"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-667"><a href="#cb25-667"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-668"><a href="#cb25-668"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-669"><a href="#cb25-669"></a><span class="in">  B --&gt; C(GH.‍🔥 v0)</span></span>
+<span id="cb25-670"><a href="#cb25-670"></a><span class="in">```</span></span>
 <span id="cb25-671"><a href="#cb25-671"></a></span>
-<span id="cb25-672"><a href="#cb25-672"></a><span class="ss">## As a technology</span></span>
+<span id="cb25-672"><a href="#cb25-672"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-673"><a href="#cb25-673"></a></span>
-<span id="cb25-674"><a href="#cb25-674"></a><span class="ss">- But you realize you didn</span><span class="ot">'</span>t sanitize your inputs so you update again.</span>
+<span id="cb25-674"><a href="#cb25-674"></a><span class="ss">- </span>But you realize you didn't sanitize your inputs so you update again.</span>
 <span id="cb25-675"><a href="#cb25-675"></a></span>
 <span id="cb25-678"><a href="#cb25-678"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-679"><a href="#cb25-679"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-680"><a href="#cb25-680"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-681"><a href="#cb25-681"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-682"><a href="#cb25-682"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-683"><a href="#cb25-683"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-684"><a href="#cb25-684"></a><span class="ot">```</span></span>
+<span id="cb25-679"><a href="#cb25-679"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-680"><a href="#cb25-680"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-681"><a href="#cb25-681"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-682"><a href="#cb25-682"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-683"><a href="#cb25-683"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-684"><a href="#cb25-684"></a><span class="in">```</span></span>
 <span id="cb25-685"><a href="#cb25-685"></a></span>
-<span id="cb25-686"><a href="#cb25-686"></a><span class="co">## As a technology</span></span>
+<span id="cb25-686"><a href="#cb25-686"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-687"><a href="#cb25-687"></a></span>
-<span id="cb25-688"><a href="#cb25-688"></a>- Then you have class again <span class="ot">and</span> grab the GitHub version onto your LT = Laptop</span>
+<span id="cb25-688"><a href="#cb25-688"></a><span class="ss">- </span>Then you have class again and grab the GitHub version onto your LT = Laptop</span>
 <span id="cb25-689"><a href="#cb25-689"></a></span>
 <span id="cb25-692"><a href="#cb25-692"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-693"><a href="#cb25-693"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-694"><a href="#cb25-694"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-695"><a href="#cb25-695"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-696"><a href="#cb25-696"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-697"><a href="#cb25-697"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-698"><a href="#cb25-698"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-699"><a href="#cb25-699"></a><span class="ot">```</span></span>
+<span id="cb25-693"><a href="#cb25-693"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-694"><a href="#cb25-694"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-695"><a href="#cb25-695"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-696"><a href="#cb25-696"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-697"><a href="#cb25-697"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-698"><a href="#cb25-698"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-699"><a href="#cb25-699"></a><span class="in">```</span></span>
 <span id="cb25-700"><a href="#cb25-700"></a></span>
-<span id="cb25-701"><a href="#cb25-701"></a><span class="co">## As a technology</span></span>
+<span id="cb25-701"><a href="#cb25-701"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-702"><a href="#cb25-702"></a></span>
-<span id="cb25-703"><a href="#cb25-703"></a>- You notice it has the bug so you fix it again on your laptop in almost the same way</span>
+<span id="cb25-703"><a href="#cb25-703"></a><span class="ss">- </span>You notice it has the bug so you fix it again on your laptop in almost the same way</span>
 <span id="cb25-704"><a href="#cb25-704"></a></span>
 <span id="cb25-707"><a href="#cb25-707"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-708"><a href="#cb25-708"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-709"><a href="#cb25-709"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-710"><a href="#cb25-710"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-711"><a href="#cb25-711"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-712"><a href="#cb25-712"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-713"><a href="#cb25-713"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-714"><a href="#cb25-714"></a><span class="st">  E --&gt; F(LT.‍🔥 v1)</span></span>
-<span id="cb25-715"><a href="#cb25-715"></a><span class="ot">```</span></span>
+<span id="cb25-708"><a href="#cb25-708"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-709"><a href="#cb25-709"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-710"><a href="#cb25-710"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-711"><a href="#cb25-711"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-712"><a href="#cb25-712"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-713"><a href="#cb25-713"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-714"><a href="#cb25-714"></a><span class="in">  E --&gt; F(LT.‍🔥 v1)</span></span>
+<span id="cb25-715"><a href="#cb25-715"></a><span class="in">```</span></span>
 <span id="cb25-716"><a href="#cb25-716"></a></span>
-<span id="cb25-717"><a href="#cb25-717"></a><span class="co">## As a technology</span></span>
+<span id="cb25-717"><a href="#cb25-717"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-718"><a href="#cb25-718"></a></span>
-<span id="cb25-719"><a href="#cb25-719"></a>- And save that back to GitHub then head back home to play Nethack on your <span class="dv">12000</span>USD Gaming PC</span>
+<span id="cb25-719"><a href="#cb25-719"></a><span class="ss">- </span>And save that back to GitHub then head back home to play Nethack on your 12000USD Gaming PC</span>
 <span id="cb25-720"><a href="#cb25-720"></a></span>
 <span id="cb25-723"><a href="#cb25-723"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-724"><a href="#cb25-724"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-725"><a href="#cb25-725"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-726"><a href="#cb25-726"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-727"><a href="#cb25-727"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-728"><a href="#cb25-728"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-729"><a href="#cb25-729"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-730"><a href="#cb25-730"></a><span class="st">  E --&gt; F(LT.‍🔥 v1)</span></span>
-<span id="cb25-731"><a href="#cb25-731"></a><span class="st">  F --&gt; G(GH.‍🔥 v1)</span></span>
-<span id="cb25-732"><a href="#cb25-732"></a><span class="ot">```</span></span>
+<span id="cb25-724"><a href="#cb25-724"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-725"><a href="#cb25-725"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-726"><a href="#cb25-726"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-727"><a href="#cb25-727"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-728"><a href="#cb25-728"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-729"><a href="#cb25-729"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-730"><a href="#cb25-730"></a><span class="in">  E --&gt; F(LT.‍🔥 v1)</span></span>
+<span id="cb25-731"><a href="#cb25-731"></a><span class="in">  F --&gt; G(GH.‍🔥 v1)</span></span>
+<span id="cb25-732"><a href="#cb25-732"></a><span class="in">```</span></span>
 <span id="cb25-733"><a href="#cb25-733"></a></span>
-<span id="cb25-734"><a href="#cb25-734"></a><span class="co">## As a technology</span></span>
+<span id="cb25-734"><a href="#cb25-734"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-735"><a href="#cb25-735"></a></span>
-<span id="cb25-736"><a href="#cb25-736"></a>- You realize you also added some ASCII art <span class="ot">and</span> try to <span class="fu">send</span> that to GitHub</span>
+<span id="cb25-736"><a href="#cb25-736"></a><span class="ss">- </span>You realize you also added some ASCII art and try to send that to GitHub</span>
 <span id="cb25-737"><a href="#cb25-737"></a></span>
 <span id="cb25-740"><a href="#cb25-740"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-741"><a href="#cb25-741"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-742"><a href="#cb25-742"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-743"><a href="#cb25-743"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-744"><a href="#cb25-744"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-745"><a href="#cb25-745"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-746"><a href="#cb25-746"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-747"><a href="#cb25-747"></a><span class="st">  E --&gt; F(LT.‍🔥 v1)</span></span>
-<span id="cb25-748"><a href="#cb25-748"></a><span class="st">  F --&gt; G(GH.‍🔥 v1)</span></span>
-<span id="cb25-749"><a href="#cb25-749"></a><span class="st">  G --&gt; H(GH.‍🔥 v2)</span></span>
-<span id="cb25-750"><a href="#cb25-750"></a><span class="st">  C --&gt; H</span></span>
-<span id="cb25-751"><a href="#cb25-751"></a><span class="ot">```</span></span>
+<span id="cb25-741"><a href="#cb25-741"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-742"><a href="#cb25-742"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-743"><a href="#cb25-743"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-744"><a href="#cb25-744"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-745"><a href="#cb25-745"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-746"><a href="#cb25-746"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-747"><a href="#cb25-747"></a><span class="in">  E --&gt; F(LT.‍🔥 v1)</span></span>
+<span id="cb25-748"><a href="#cb25-748"></a><span class="in">  F --&gt; G(GH.‍🔥 v1)</span></span>
+<span id="cb25-749"><a href="#cb25-749"></a><span class="in">  G --&gt; H(GH.‍🔥 v2)</span></span>
+<span id="cb25-750"><a href="#cb25-750"></a><span class="in">  C --&gt; H</span></span>
+<span id="cb25-751"><a href="#cb25-751"></a><span class="in">```</span></span>
 <span id="cb25-752"><a href="#cb25-752"></a></span>
-<span id="cb25-753"><a href="#cb25-753"></a><span class="co">## As a technology</span></span>
+<span id="cb25-753"><a href="#cb25-753"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-754"><a href="#cb25-754"></a></span>
-<span id="cb25-755"><a href="#cb25-755"></a>- Two arrows into one thing is a merge conflict <span class="ot">and</span> out-of-scope <span class="kw">for</span> now.</span>
+<span id="cb25-755"><a href="#cb25-755"></a><span class="ss">- </span>Two arrows into one thing is a merge conflict and out-of-scope for now.</span>
 <span id="cb25-756"><a href="#cb25-756"></a></span>
 <span id="cb25-759"><a href="#cb25-759"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-760"><a href="#cb25-760"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-761"><a href="#cb25-761"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-762"><a href="#cb25-762"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-763"><a href="#cb25-763"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-764"><a href="#cb25-764"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-765"><a href="#cb25-765"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-766"><a href="#cb25-766"></a><span class="st">  E --&gt; F(LT.‍🔥 v1)</span></span>
-<span id="cb25-767"><a href="#cb25-767"></a><span class="st">  F --&gt; G(GH.‍🔥 v1)</span></span>
-<span id="cb25-768"><a href="#cb25-768"></a><span class="st">  G --&gt; H{💥}</span></span>
-<span id="cb25-769"><a href="#cb25-769"></a><span class="st">  C --&gt; H</span></span>
-<span id="cb25-770"><a href="#cb25-770"></a><span class="ot">```</span></span>
+<span id="cb25-760"><a href="#cb25-760"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-761"><a href="#cb25-761"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-762"><a href="#cb25-762"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-763"><a href="#cb25-763"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-764"><a href="#cb25-764"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-765"><a href="#cb25-765"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-766"><a href="#cb25-766"></a><span class="in">  E --&gt; F(LT.‍🔥 v1)</span></span>
+<span id="cb25-767"><a href="#cb25-767"></a><span class="in">  F --&gt; G(GH.‍🔥 v1)</span></span>
+<span id="cb25-768"><a href="#cb25-768"></a><span class="in">  G --&gt; H{💥}</span></span>
+<span id="cb25-769"><a href="#cb25-769"></a><span class="in">  C --&gt; H</span></span>
+<span id="cb25-770"><a href="#cb25-770"></a><span class="in">```</span></span>
 <span id="cb25-771"><a href="#cb25-771"></a></span>
-<span id="cb25-772"><a href="#cb25-772"></a><span class="co">## As a technology</span></span>
+<span id="cb25-772"><a href="#cb25-772"></a><span class="fu">## As a technology</span></span>
 <span id="cb25-773"><a href="#cb25-773"></a></span>
-<span id="cb25-774"><a href="#cb25-774"></a>- Basically versions of code can live in more than one place.</span>
-<span id="cb25-775"><a href="#cb25-775"></a>  - Ah, versions, <span class="kw">our</span> old friend...</span>
+<span id="cb25-774"><a href="#cb25-774"></a><span class="ss">- </span>Basically versions of code can live in more than one place.</span>
+<span id="cb25-775"><a href="#cb25-775"></a><span class="ss">  - </span>Ah, versions, our old friend...</span>
 <span id="cb25-776"><a href="#cb25-776"></a></span>
 <span id="cb25-779"><a href="#cb25-779"></a><span class="in">```{mermaid}</span></span>
-<span id="cb25-780"><a href="#cb25-780"></a><span class="st">%%| theme: Darkly</span></span>
-<span id="cb25-781"><a href="#cb25-781"></a><span class="st">flowchart LR</span></span>
-<span id="cb25-782"><a href="#cb25-782"></a><span class="st">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
-<span id="cb25-783"><a href="#cb25-783"></a><span class="st">  B --&gt; C(GR.️‍🔥 v2)</span></span>
-<span id="cb25-784"><a href="#cb25-784"></a><span class="st">  B --&gt; D(GH.‍🔥 v0)</span></span>
-<span id="cb25-785"><a href="#cb25-785"></a><span class="st">  D --&gt; E(LT.‍🔥 v0)</span></span>
-<span id="cb25-786"><a href="#cb25-786"></a><span class="st">  E --&gt; F(LT.‍🔥 v1)</span></span>
-<span id="cb25-787"><a href="#cb25-787"></a><span class="st">  F --&gt; G(GH.‍🔥 v1)</span></span>
-<span id="cb25-788"><a href="#cb25-788"></a><span class="st">  G --&gt; H{💥}</span></span>
-<span id="cb25-789"><a href="#cb25-789"></a><span class="st">  C --&gt; H</span></span>
-<span id="cb25-790"><a href="#cb25-790"></a><span class="ot">```</span></span>
+<span id="cb25-780"><a href="#cb25-780"></a><span class="in">%%| theme: Darkly</span></span>
+<span id="cb25-781"><a href="#cb25-781"></a><span class="in">flowchart LR</span></span>
+<span id="cb25-782"><a href="#cb25-782"></a><span class="in">  A(GR.️‍🔥 v0) --&gt; B(GR.️‍🔥 v1)</span></span>
+<span id="cb25-783"><a href="#cb25-783"></a><span class="in">  B --&gt; C(GR.️‍🔥 v2)</span></span>
+<span id="cb25-784"><a href="#cb25-784"></a><span class="in">  B --&gt; D(GH.‍🔥 v0)</span></span>
+<span id="cb25-785"><a href="#cb25-785"></a><span class="in">  D --&gt; E(LT.‍🔥 v0)</span></span>
+<span id="cb25-786"><a href="#cb25-786"></a><span class="in">  E --&gt; F(LT.‍🔥 v1)</span></span>
+<span id="cb25-787"><a href="#cb25-787"></a><span class="in">  F --&gt; G(GH.‍🔥 v1)</span></span>
+<span id="cb25-788"><a href="#cb25-788"></a><span class="in">  G --&gt; H{💥}</span></span>
+<span id="cb25-789"><a href="#cb25-789"></a><span class="in">  C --&gt; H</span></span>
+<span id="cb25-790"><a href="#cb25-790"></a><span class="in">```</span></span>
 <span id="cb25-791"><a href="#cb25-791"></a></span>
-<span id="cb25-792"><a href="#cb25-792"></a><span class="co">## In Brief</span></span>
+<span id="cb25-792"><a href="#cb25-792"></a><span class="fu">## In Brief</span></span>
 <span id="cb25-793"><a href="#cb25-793"></a></span>
-<span id="cb25-794"><a href="#cb25-794"></a>- Generally create repositories + tokens in browser</span>
-<span id="cb25-795"><a href="#cb25-795"></a>- Use command line <span class="ot">and</span> <span class="fu">use</span> <span class="ot">'</span><span class="ss">git clone &lt;name&gt;</span><span class="ot">'</span> once.</span>
-<span id="cb25-796"><a href="#cb25-796"></a>- Authenticate via access token from browser</span>
-<span id="cb25-797"><a href="#cb25-797"></a>- Then <span class="fu">use</span> <span class="ot">'</span><span class="ss">git add</span><span class="ot">'</span>, <span class="ot">'</span><span class="ss">git commit</span><span class="ot">'</span>, <span class="ot">'</span><span class="ss">git push</span><span class="ot">'</span> to save work</span>
-<span id="cb25-798"><a href="#cb25-798"></a>- Use <span class="ot">'</span><span class="ss">git pull</span><span class="ot">'</span> to grab saved work</span>
-<span id="cb25-799"><a href="#cb25-799"></a>- Use a <span class="ot">"</span><span class="st">.gitignore</span><span class="ot">"</span> file so only code (*<span class="dt">*NOT</span>*<span class="ot">*</span> executables) live on GitHub</span>
+<span id="cb25-794"><a href="#cb25-794"></a><span class="ss">- </span>Generally create repositories + tokens in browser</span>
+<span id="cb25-795"><a href="#cb25-795"></a><span class="ss">- </span>Use command line and use 'git clone &lt;name&gt;' once.</span>
+<span id="cb25-796"><a href="#cb25-796"></a><span class="ss">- </span>Authenticate via access token from browser</span>
+<span id="cb25-797"><a href="#cb25-797"></a><span class="ss">- </span>Then use 'git add', 'git commit', 'git push' to save work</span>
+<span id="cb25-798"><a href="#cb25-798"></a><span class="ss">- </span>Use 'git pull' to grab saved work</span>
+<span id="cb25-799"><a href="#cb25-799"></a><span class="ss">- </span>Use a ".gitignore" file so only code (**NOT** executables) live on GitHub</span>
 <span id="cb25-800"><a href="#cb25-800"></a></span>
-<span id="cb25-801"><a href="#cb25-801"></a><span class="co">## Today</span></span>
+<span id="cb25-801"><a href="#cb25-801"></a><span class="fu">## Today</span></span>
 <span id="cb25-802"><a href="#cb25-802"></a></span>
-<span id="cb25-803"><a href="#cb25-803"></a>- &amp;check; Introduce the course</span>
-<span id="cb25-804"><a href="#cb25-804"></a>  - &amp;check; The C Programming Language</span>
-<span id="cb25-805"><a href="#cb25-805"></a>  - &amp;check; Cryptography + Cryptocurrency</span>
-<span id="cb25-806"><a href="#cb25-806"></a>- &amp;check; Introduce the technologies</span>
-<span id="cb25-807"><a href="#cb25-807"></a>  - &amp;check; <span class="ot">`</span><span class="st">podman</span><span class="ot">`</span></span>
-<span id="cb25-808"><a href="#cb25-808"></a>  - &amp;check; <span class="ot">`</span><span class="st">vim</span><span class="ot">`</span></span>
-<span id="cb25-809"><a href="#cb25-809"></a>  - &amp;check; <span class="ot">`</span><span class="st">gcc</span><span class="ot">`</span></span>
-<span id="cb25-810"><a href="#cb25-810"></a>  - &amp;check; <span class="ot">`</span><span class="st">git</span><span class="ot">`</span></span>
-</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb25-803"><a href="#cb25-803"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the course</span>
+<span id="cb25-804"><a href="#cb25-804"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> The C Programming Language</span>
+<span id="cb25-805"><a href="#cb25-805"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Cryptography + Cryptocurrency</span>
+<span id="cb25-806"><a href="#cb25-806"></a><span class="ss">- </span><span class="dv">&amp;check;</span> Introduce the technologies</span>
+<span id="cb25-807"><a href="#cb25-807"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`podman`</span></span>
+<span id="cb25-808"><a href="#cb25-808"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`vim`</span></span>
+<span id="cb25-809"><a href="#cb25-809"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`gcc`</span></span>
+<span id="cb25-810"><a href="#cb25-810"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> <span class="in">`git`</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

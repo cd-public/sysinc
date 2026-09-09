@@ -440,8 +440,8 @@ void seebig(uint64_t *a) {
   - It uses `gcc 4096_t.c tester.c` to compile the 4096_t code for use in the tester executable.
   - It uses Python `subprocess` to examine the results.
 - I was unable to achieve a bugfree multiply absent this interface, but was able to progress rapidly once I developed it.
-  - [tester.py](https://github.com/cd-c89/crypto/blob/main/4096_t/tester.py)
-  - [tester.c](https://github.com/cd-c89/crypto/blob/main/4096_t/tester.c)
+  - [tester.py](https://github.com/cd-c89/sysinc/blob/main/4096_t/tester.py)
+  - [tester.c](https://github.com/cd-c89/sysinc/blob/main/4096_t/tester.c)
 
 
 :::
