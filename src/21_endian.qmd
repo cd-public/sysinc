@@ -555,7 +555,6 @@ int main() {
     - "Host to network long"
     - In 1989, `uint32_t` was commonly called a (unsigned) long.
     - Endianness and signedness are non-interactive.
-      - Recall the [Encode](../encode.html) lecture on signedness.
   - In 2024, often use `htobe32`
     - "Host to big endian 32bit"
     - From C99 `endian.h` 
@@ -598,7 +597,7 @@ int main() {
 - You can compare against the `htobe64` from `endian.h`
   - Not using `htobe64` is not just a learning goal.
   - Removing `endian.h` from my code sped it up 5x in testing.
-- I note I will assume the "host" is litte endian.
+- I note I will assume the "host" is little endian.
   - It is trivial to check, and you may do so, or use a `#define`
 
 ### Memory
@@ -843,7 +842,7 @@ char *new_hash(uint32_t *m_i, uint32_t *h_i) {
 - This will cause a segmentation fault for the following reason.
   - `h_i_1` refers to a memory location.
   - That memory location is a local variable of the `new_hash` function
-  - When `new_hash` returns, it no longer manages it's local variables.
+  - When `new_hash` returns, it no longer manages its local variables.
   - Therefore, it is no longer safe to access that memory location.
     - It is, essentially, reclaimed by the operating system.
     - This occurs probabilitistically, but at high probability.

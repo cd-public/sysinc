@@ -1100,10 +1100,7 @@ Note
 <ul>
 <li>“Host to network long”</li>
 <li>In 1989, <code>uint32_t</code> was commonly called a (unsigned) long.</li>
-<li>Endianness and signedness are non-interactive.
-<ul>
-<li>Recall the <a href="../encode.html">Encode</a> lecture on signedness.</li>
-</ul></li>
+<li>Endianness and signedness are non-interactive.</li>
 </ul></li>
 <li>In 2024, often use <code>htobe32</code>
 <ul>
@@ -1157,7 +1154,7 @@ Note
 <li>Not using <code>htobe64</code> is not just a learning goal.</li>
 <li>Removing <code>endian.h</code> from my code sped it up 5x in testing.</li>
 </ul></li>
-<li>I note I will assume the “host” is litte endian.
+<li>I note I will assume the “host” is little endian.
 <ul>
 <li>It is trivial to check, and you may do so, or use a <code>#define</code></li>
 </ul></li>
@@ -1428,7 +1425,7 @@ Note
 <ul>
 <li><code>h_i_1</code> refers to a memory location.</li>
 <li>That memory location is a local variable of the <code>new_hash</code> function</li>
-<li>When <code>new_hash</code> returns, it no longer manages it’s local variables.</li>
+<li>When <code>new_hash</code> returns, it no longer manages its local variables.</li>
 <li>Therefore, it is no longer safe to access that memory location.
 <ul>
 <li>It is, essentially, reclaimed by the operating system.</li>
@@ -2512,323 +2509,322 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb43-555"><a href="#cb43-555"></a><span class="ss">    - </span>"Host to network long"</span>
 <span id="cb43-556"><a href="#cb43-556"></a><span class="ss">    - </span>In 1989, <span class="in">`uint32_t`</span> was commonly called a (unsigned) long.</span>
 <span id="cb43-557"><a href="#cb43-557"></a><span class="ss">    - </span>Endianness and signedness are non-interactive.</span>
-<span id="cb43-558"><a href="#cb43-558"></a><span class="ss">      - </span>Recall the <span class="co">[</span><span class="ot">Encode</span><span class="co">](../encode.html)</span> lecture on signedness.</span>
-<span id="cb43-559"><a href="#cb43-559"></a><span class="ss">  - </span>In 2024, often use <span class="in">`htobe32`</span></span>
-<span id="cb43-560"><a href="#cb43-560"></a><span class="ss">    - </span>"Host to big endian 32bit"</span>
-<span id="cb43-561"><a href="#cb43-561"></a><span class="ss">    - </span>From C99 <span class="in">`endian.h`</span> </span>
-<span id="cb43-562"><a href="#cb43-562"></a><span class="ss">    - </span>As with <span class="in">`%b`</span>, you may use to debug but not to solve your homework.</span>
-<span id="cb43-563"><a href="#cb43-563"></a><span class="ss">      - </span>That said, it is better to turn in a solution using <span class="in">`endian.h`</span> than no solution.</span>
-<span id="cb43-564"><a href="#cb43-564"></a><span class="ss">      - </span>This is an exception to the typical "no partial credit" policy.</span>
-<span id="cb43-565"><a href="#cb43-565"></a></span>
-<span id="cb43-566"><a href="#cb43-566"></a><span class="in">```{.C filename="endian.c"}</span></span>
-<span id="cb43-567"><a href="#cb43-567"></a><span class="in">/* endian.c - &amp;exists; C99+ &lt;endian.h&gt; be advised */</span></span>
-<span id="cb43-568"><a href="#cb43-568"></a></span>
-<span id="cb43-569"><a href="#cb43-569"></a><span class="in">/*</span></span>
-<span id="cb43-570"><a href="#cb43-570"></a><span class="in">gcc endian.c -O2 -o endian</span></span>
-<span id="cb43-571"><a href="#cb43-571"></a><span class="in">*/</span></span>
-<span id="cb43-572"><a href="#cb43-572"></a></span>
-<span id="cb43-573"><a href="#cb43-573"></a><span class="in">#include &lt;stdio.h&gt;  /* fileio   */</span></span>
-<span id="cb43-574"><a href="#cb43-574"></a><span class="in">#include &lt;stdint.h&gt; /* uint32_t */</span></span>
-<span id="cb43-575"><a href="#cb43-575"></a></span>
-<span id="cb43-576"><a href="#cb43-576"></a><span class="in">/* Optionally - endianness compatability.  */</span></span>
-<span id="cb43-577"><a href="#cb43-577"></a><span class="in">#include &lt;arpa/inet.h&gt; /* htonl */</span></span>
-<span id="cb43-578"><a href="#cb43-578"></a><span class="in">#include &lt;endian.h&gt; /* htobe32 */</span></span>
-<span id="cb43-579"><a href="#cb43-579"></a></span>
-<span id="cb43-580"><a href="#cb43-580"></a><span class="in">uint32_t my_htonl(uint32_t n) {</span></span>
-<span id="cb43-581"><a href="#cb43-581"></a><span class="in">    return n;</span></span>
-<span id="cb43-582"><a href="#cb43-582"></a><span class="in">}</span></span>
-<span id="cb43-583"><a href="#cb43-583"></a></span>
-<span id="cb43-584"><a href="#cb43-584"></a><span class="in">int main() {</span></span>
-<span id="cb43-585"><a href="#cb43-585"></a><span class="in">    uint32_t test = 0x1234ABCD;</span></span>
-<span id="cb43-586"><a href="#cb43-586"></a><span class="in">    printf("%08X\n%08X\n%08X\n",</span></span>
-<span id="cb43-587"><a href="#cb43-587"></a><span class="in">           test,</span></span>
-<span id="cb43-588"><a href="#cb43-588"></a><span class="in">           htonl(test),</span></span>
-<span id="cb43-589"><a href="#cb43-589"></a><span class="in">           htobe32(test),</span></span>
-<span id="cb43-590"><a href="#cb43-590"></a><span class="in">           my_htonl(test)</span></span>
-<span id="cb43-591"><a href="#cb43-591"></a><span class="in">          );</span></span>
-<span id="cb43-592"><a href="#cb43-592"></a><span class="in">    return 0;</span></span>
-<span id="cb43-593"><a href="#cb43-593"></a><span class="in">}</span></span>
-<span id="cb43-594"><a href="#cb43-594"></a><span class="in">```</span></span>
-<span id="cb43-595"><a href="#cb43-595"></a></span>
-<span id="cb43-596"><a href="#cb43-596"></a><span class="ss">- </span>We will now step through an example solution to <span class="in">`my_htonl`</span>.</span>
-<span id="cb43-597"><a href="#cb43-597"></a><span class="ss">- </span>We will leave as an exercise <span class="in">`htonll`</span> - the 64 bit variant.</span>
-<span id="cb43-598"><a href="#cb43-598"></a><span class="ss">- </span>You can compare against the <span class="in">`htobe64`</span> from <span class="in">`endian.h`</span></span>
-<span id="cb43-599"><a href="#cb43-599"></a><span class="ss">  - </span>Not using <span class="in">`htobe64`</span> is not just a learning goal.</span>
-<span id="cb43-600"><a href="#cb43-600"></a><span class="ss">  - </span>Removing <span class="in">`endian.h`</span> from my code sped it up 5x in testing.</span>
-<span id="cb43-601"><a href="#cb43-601"></a><span class="ss">- </span>I note I will assume the "host" is litte endian.</span>
-<span id="cb43-602"><a href="#cb43-602"></a><span class="ss">  - </span>It is trivial to check, and you may do so, or use a <span class="in">`#define`</span></span>
-<span id="cb43-603"><a href="#cb43-603"></a></span>
-<span id="cb43-604"><a href="#cb43-604"></a><span class="fu">### Memory</span></span>
-<span id="cb43-605"><a href="#cb43-605"></a></span>
-<span id="cb43-606"><a href="#cb43-606"></a><span class="ss">- </span>The core insight of endianness is that it refers to bits in memory.</span>
-<span id="cb43-607"><a href="#cb43-607"></a><span class="ss">- </span>Recall we have used the notion of memory a few times:</span>
-<span id="cb43-608"><a href="#cb43-608"></a><span class="ss">  - </span>Strings in C are characters in adjacent memory locations.</span>
-<span id="cb43-609"><a href="#cb43-609"></a><span class="ss">  - </span>Bitwise operations act on bits in adjacent memory locations.</span>
-<span id="cb43-610"><a href="#cb43-610"></a><span class="ss">  - </span>The star <span class="in">`*`</span> operator and array notation <span class="in">`[n]`</span> are similar.</span>
-<span id="cb43-611"><a href="#cb43-611"></a><span class="ss">- </span>We will rearrange bits using a novel operator - <span class="in">`&amp;`</span>, which negates <span class="in">`*`</span>.</span>
-<span id="cb43-612"><a href="#cb43-612"></a><span class="ss">  - </span>We note that unary prefix  <span class="in">`&amp;`</span> is a memory operator, distinct from</span>
-<span id="cb43-613"><a href="#cb43-613"></a><span class="ss">  - </span>Binary infix <span class="in">`&amp;`</span> which is a bitwise operator.</span>
-<span id="cb43-614"><a href="#cb43-614"></a></span>
-<span id="cb43-615"><a href="#cb43-615"></a><span class="fu">### Initial State</span></span>
-<span id="cb43-616"><a href="#cb43-616"></a></span>
-<span id="cb43-617"><a href="#cb43-617"></a><span class="ss">- </span>We begin with the indentity operation on <span class="in">`uint32_t`</span>.</span>
-<span id="cb43-618"><a href="#cb43-618"></a></span>
-<span id="cb43-619"><a href="#cb43-619"></a><span class="in">```c</span></span>
-<span id="cb43-620"><a href="#cb43-620"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-621"><a href="#cb43-621"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-622"><a href="#cb43-622"></a><span class="op">}</span></span>
-<span id="cb43-623"><a href="#cb43-623"></a><span class="in">```</span></span>
-<span id="cb43-624"><a href="#cb43-624"></a></span>
-<span id="cb43-625"><a href="#cb43-625"></a><span class="fu">### Variables</span></span>
-<span id="cb43-626"><a href="#cb43-626"></a></span>
-<span id="cb43-627"><a href="#cb43-627"></a><span class="ss">- </span>In C89 style, we first declare variables.</span>
-<span id="cb43-628"><a href="#cb43-628"></a><span class="ss">- </span>First is an alias for <span class="in">`n`</span>.</span>
-<span id="cb43-629"><a href="#cb43-629"></a><span class="ss">  - </span>We will treat the 32 bit int as an array of 8 bit ints.</span>
-<span id="cb43-630"><a href="#cb43-630"></a><span class="ss">  - </span>An 8 bit int is of type <span class="in">`uint8_t`</span></span>
-<span id="cb43-631"><a href="#cb43-631"></a><span class="ss">  - </span>An array is of type <span class="in">`*`</span></span>
-<span id="cb43-632"><a href="#cb43-632"></a><span class="ss">- </span>We initialize it to no value, for now.</span>
-<span id="cb43-633"><a href="#cb43-633"></a></span>
-<span id="cb43-634"><a href="#cb43-634"></a><span class="in">```c</span></span>
-<span id="cb43-635"><a href="#cb43-635"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-636"><a href="#cb43-636"></a>    <span class="dt">uint8_t</span> <span class="op">*</span>alias<span class="op">;</span></span>
-<span id="cb43-637"><a href="#cb43-637"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-638"><a href="#cb43-638"></a><span class="op">}</span></span>
-<span id="cb43-639"><a href="#cb43-639"></a><span class="in">```</span></span>
-<span id="cb43-640"><a href="#cb43-640"></a></span>
-<span id="cb43-641"><a href="#cb43-641"></a><span class="ss">- </span>We will also be swapping bits around.</span>
-<span id="cb43-642"><a href="#cb43-642"></a><span class="ss">- </span>In Python we can use *multiple assignment*</span>
-<span id="cb43-643"><a href="#cb43-643"></a><span class="in">```py</span></span>
-<span id="cb43-644"><a href="#cb43-644"></a>x, y <span class="op">=</span> y, x</span>
-<span id="cb43-645"><a href="#cb43-645"></a><span class="in">```</span></span>
-<span id="cb43-646"><a href="#cb43-646"></a><span class="ss">- </span>This only works with key-value pairs, not arrays.</span>
-<span id="cb43-647"><a href="#cb43-647"></a><span class="ss">- </span>We use a swapping variable, a la</span>
-<span id="cb43-648"><a href="#cb43-648"></a><span class="in">```py</span></span>
-<span id="cb43-649"><a href="#cb43-649"></a>t : <span class="bu">int</span></span>
-<span id="cb43-650"><a href="#cb43-650"></a>t <span class="op">=</span> x</span>
-<span id="cb43-651"><a href="#cb43-651"></a>x <span class="op">=</span> y</span>
-<span id="cb43-652"><a href="#cb43-652"></a>y <span class="op">=</span> t</span>
-<span id="cb43-653"><a href="#cb43-653"></a><span class="kw">del</span> t</span>
-<span id="cb43-654"><a href="#cb43-654"></a><span class="in">```</span></span>
-<span id="cb43-655"><a href="#cb43-655"></a><span class="ss">- </span>In C:</span>
-<span id="cb43-656"><a href="#cb43-656"></a><span class="in">```c</span></span>
-<span id="cb43-657"><a href="#cb43-657"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-658"><a href="#cb43-658"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias<span class="op">;</span></span>
-<span id="cb43-659"><a href="#cb43-659"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-660"><a href="#cb43-660"></a><span class="op">}</span></span>
-<span id="cb43-661"><a href="#cb43-661"></a><span class="in">```</span></span>
-<span id="cb43-662"><a href="#cb43-662"></a><span class="ss">- </span>We will be looping over something that is quite like an array, so we need an index variable.</span>
-<span id="cb43-663"><a href="#cb43-663"></a><span class="ss">  - </span>I create this variable of type <span class="in">`size_t`</span> because:</span>
-<span id="cb43-664"><a href="#cb43-664"></a><span class="ss">    - </span>We will compare it to a <span class="in">`sizeof`</span></span>
-<span id="cb43-665"><a href="#cb43-665"></a><span class="ss">    - </span>We will use it as an array index to denote memory locations.</span>
-<span id="cb43-666"><a href="#cb43-666"></a><span class="ss">    - </span>So the C implementation will guarantee <span class="in">`size_t`</span> is appropriate for array indices.</span>
-<span id="cb43-667"><a href="#cb43-667"></a><span class="ss">    - </span>You can determine what a <span class="in">`size_t`</span> is using the usual methods for examining C code.</span>
-<span id="cb43-668"><a href="#cb43-668"></a></span>
-<span id="cb43-669"><a href="#cb43-669"></a><span class="in">```c</span></span>
-<span id="cb43-670"><a href="#cb43-670"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-671"><a href="#cb43-671"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias<span class="op">;</span></span>
-<span id="cb43-672"><a href="#cb43-672"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
-<span id="cb43-673"><a href="#cb43-673"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-674"><a href="#cb43-674"></a><span class="op">}</span></span>
-<span id="cb43-675"><a href="#cb43-675"></a><span class="in">```</span></span>
-<span id="cb43-676"><a href="#cb43-676"></a></span>
-<span id="cb43-677"><a href="#cb43-677"></a><span class="fu">### Ampersand</span></span>
-<span id="cb43-678"><a href="#cb43-678"></a></span>
-<span id="cb43-679"><a href="#cb43-679"></a><span class="ss">- </span>We will now use the ampersand <span class="in">`&amp;`</span> operator.</span>
-<span id="cb43-680"><a href="#cb43-680"></a><span class="ss">  - </span>We want the <span class="in">`uint8_t *`</span> array alias to refer to the same bits and the <span class="in">`uint32_t`</span> numerical value <span class="in">`n`</span>.</span>
-<span id="cb43-681"><a href="#cb43-681"></a><span class="ss">  - </span>The location of the bits that constitute <span class="in">`n`</span> in memory is given by <span class="in">`&amp;n`</span>.</span>
-<span id="cb43-682"><a href="#cb43-682"></a><span class="ss">  - </span>So we set the alias equal to that location.</span>
-<span id="cb43-683"><a href="#cb43-683"></a><span class="in">```c</span></span>
-<span id="cb43-684"><a href="#cb43-684"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-685"><a href="#cb43-685"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">&amp;</span>n<span class="op">;</span></span>
-<span id="cb43-686"><a href="#cb43-686"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
-<span id="cb43-687"><a href="#cb43-687"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-688"><a href="#cb43-688"></a><span class="op">}</span></span>
-<span id="cb43-689"><a href="#cb43-689"></a><span class="in">```</span></span>
-<span id="cb43-690"><a href="#cb43-690"></a><span class="ss">- </span>If you are confused at all, you should stop and print out, minimally:</span>
-<span id="cb43-691"><a href="#cb43-691"></a><span class="ss">  - </span>The values of the star, amperand, and unmodified alias and n variables.</span>
-<span id="cb43-692"><a href="#cb43-692"></a><span class="ss">  - </span>Anything else you think of.</span>
-<span id="cb43-693"><a href="#cb43-693"></a><span class="ss">  - </span>You should do these all in different lines in case you get an error.</span>
-<span id="cb43-694"><a href="#cb43-694"></a><span class="ss">  - </span>You should think of the <span class="in">`&amp;n`</span> as the key of <span class="in">`n`</span> in the key-value memory storage of the system.</span>
-<span id="cb43-695"><a href="#cb43-695"></a></span>
-<span id="cb43-696"><a href="#cb43-696"></a><span class="fu">### Casting</span></span>
-<span id="cb43-697"><a href="#cb43-697"></a></span>
-<span id="cb43-698"><a href="#cb43-698"></a><span class="ss">- </span>When I run this code, I get this warning:</span>
-<span id="cb43-699"><a href="#cb43-699"></a><span class="in">```email</span></span>
-<span id="cb43-700"><a href="#cb43-700"></a>endian.c: In function ‘my_htonl’:</span>
-<span id="cb43-701"><a href="#cb43-701"></a>endian.c:15:26: warning: initialization of ‘uint8_t *’ {aka ‘unsigned char *’} from incompatible pointer type ‘uint32_t *’ {aka ‘unsigned int *’} [-Wincompatible-pointer-types]</span>
-<span id="cb43-702"><a href="#cb43-702"></a>   15 |     uint8_t swap, *arr = &amp;n;</span>
-<span id="cb43-703"><a href="#cb43-703"></a>      |        </span>
-<span id="cb43-704"><a href="#cb43-704"></a><span class="in">```</span></span>
-<span id="cb43-705"><a href="#cb43-705"></a><span class="ss">- </span>That's a good warning, I am doing something extremely sketchy.</span>
-<span id="cb43-706"><a href="#cb43-706"></a><span class="ss">  - </span>After all, I told <span class="in">`gcc`</span> that <span class="in">`n`</span> was a 32 bit integer.</span>
-<span id="cb43-707"><a href="#cb43-707"></a><span class="ss">  - </span>Then I told it that the the location <span class="in">`n`</span> was in held an array of 8 bit integers.</span>
-<span id="cb43-708"><a href="#cb43-708"></a><span class="ss">  - </span>Those things can't both be true.</span>
-<span id="cb43-709"><a href="#cb43-709"></a><span class="ss">- </span>We assure <span class="in">`gcc`</span> that we know what we are doing with a *cast*</span>
-<span id="cb43-710"><a href="#cb43-710"></a><span class="ss">  - </span>We apply a *cast* to a value, like the value of the memory location of <span class="in">`n`</span></span>
-<span id="cb43-711"><a href="#cb43-711"></a><span class="ss">  - </span>A cast is a type name in parenthesis as a prefix.</span>
-<span id="cb43-712"><a href="#cb43-712"></a><span class="ss">  - </span>A cast assures the compiler of the intentionality of this mapping of bits to variable names.</span>
-<span id="cb43-713"><a href="#cb43-713"></a><span class="ss">  - </span>We are claiming we want to regard <span class="in">`n`</span> as an array of 8 bit integers, as a <span class="in">`uint8_t *`</span>.</span>
-<span id="cb43-714"><a href="#cb43-714"></a><span class="ss">- </span>So:</span>
-<span id="cb43-715"><a href="#cb43-715"></a><span class="in">```c</span></span>
-<span id="cb43-716"><a href="#cb43-716"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-717"><a href="#cb43-717"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">uint8_t</span> <span class="op">*)&amp;</span>n<span class="op">;</span></span>
-<span id="cb43-718"><a href="#cb43-718"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
-<span id="cb43-719"><a href="#cb43-719"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-720"><a href="#cb43-720"></a><span class="op">}</span></span>
-<span id="cb43-721"><a href="#cb43-721"></a><span class="in">```</span></span>
-<span id="cb43-722"><a href="#cb43-722"></a><span class="ss">- </span>This silenced all my <span class="in">`gcc`</span> warnings and errors.</span>
+<span id="cb43-558"><a href="#cb43-558"></a><span class="ss">  - </span>In 2024, often use <span class="in">`htobe32`</span></span>
+<span id="cb43-559"><a href="#cb43-559"></a><span class="ss">    - </span>"Host to big endian 32bit"</span>
+<span id="cb43-560"><a href="#cb43-560"></a><span class="ss">    - </span>From C99 <span class="in">`endian.h`</span> </span>
+<span id="cb43-561"><a href="#cb43-561"></a><span class="ss">    - </span>As with <span class="in">`%b`</span>, you may use to debug but not to solve your homework.</span>
+<span id="cb43-562"><a href="#cb43-562"></a><span class="ss">      - </span>That said, it is better to turn in a solution using <span class="in">`endian.h`</span> than no solution.</span>
+<span id="cb43-563"><a href="#cb43-563"></a><span class="ss">      - </span>This is an exception to the typical "no partial credit" policy.</span>
+<span id="cb43-564"><a href="#cb43-564"></a></span>
+<span id="cb43-565"><a href="#cb43-565"></a><span class="in">```{.C filename="endian.c"}</span></span>
+<span id="cb43-566"><a href="#cb43-566"></a><span class="in">/* endian.c - &amp;exists; C99+ &lt;endian.h&gt; be advised */</span></span>
+<span id="cb43-567"><a href="#cb43-567"></a></span>
+<span id="cb43-568"><a href="#cb43-568"></a><span class="in">/*</span></span>
+<span id="cb43-569"><a href="#cb43-569"></a><span class="in">gcc endian.c -O2 -o endian</span></span>
+<span id="cb43-570"><a href="#cb43-570"></a><span class="in">*/</span></span>
+<span id="cb43-571"><a href="#cb43-571"></a></span>
+<span id="cb43-572"><a href="#cb43-572"></a><span class="in">#include &lt;stdio.h&gt;  /* fileio   */</span></span>
+<span id="cb43-573"><a href="#cb43-573"></a><span class="in">#include &lt;stdint.h&gt; /* uint32_t */</span></span>
+<span id="cb43-574"><a href="#cb43-574"></a></span>
+<span id="cb43-575"><a href="#cb43-575"></a><span class="in">/* Optionally - endianness compatability.  */</span></span>
+<span id="cb43-576"><a href="#cb43-576"></a><span class="in">#include &lt;arpa/inet.h&gt; /* htonl */</span></span>
+<span id="cb43-577"><a href="#cb43-577"></a><span class="in">#include &lt;endian.h&gt; /* htobe32 */</span></span>
+<span id="cb43-578"><a href="#cb43-578"></a></span>
+<span id="cb43-579"><a href="#cb43-579"></a><span class="in">uint32_t my_htonl(uint32_t n) {</span></span>
+<span id="cb43-580"><a href="#cb43-580"></a><span class="in">    return n;</span></span>
+<span id="cb43-581"><a href="#cb43-581"></a><span class="in">}</span></span>
+<span id="cb43-582"><a href="#cb43-582"></a></span>
+<span id="cb43-583"><a href="#cb43-583"></a><span class="in">int main() {</span></span>
+<span id="cb43-584"><a href="#cb43-584"></a><span class="in">    uint32_t test = 0x1234ABCD;</span></span>
+<span id="cb43-585"><a href="#cb43-585"></a><span class="in">    printf("%08X\n%08X\n%08X\n",</span></span>
+<span id="cb43-586"><a href="#cb43-586"></a><span class="in">           test,</span></span>
+<span id="cb43-587"><a href="#cb43-587"></a><span class="in">           htonl(test),</span></span>
+<span id="cb43-588"><a href="#cb43-588"></a><span class="in">           htobe32(test),</span></span>
+<span id="cb43-589"><a href="#cb43-589"></a><span class="in">           my_htonl(test)</span></span>
+<span id="cb43-590"><a href="#cb43-590"></a><span class="in">          );</span></span>
+<span id="cb43-591"><a href="#cb43-591"></a><span class="in">    return 0;</span></span>
+<span id="cb43-592"><a href="#cb43-592"></a><span class="in">}</span></span>
+<span id="cb43-593"><a href="#cb43-593"></a><span class="in">```</span></span>
+<span id="cb43-594"><a href="#cb43-594"></a></span>
+<span id="cb43-595"><a href="#cb43-595"></a><span class="ss">- </span>We will now step through an example solution to <span class="in">`my_htonl`</span>.</span>
+<span id="cb43-596"><a href="#cb43-596"></a><span class="ss">- </span>We will leave as an exercise <span class="in">`htonll`</span> - the 64 bit variant.</span>
+<span id="cb43-597"><a href="#cb43-597"></a><span class="ss">- </span>You can compare against the <span class="in">`htobe64`</span> from <span class="in">`endian.h`</span></span>
+<span id="cb43-598"><a href="#cb43-598"></a><span class="ss">  - </span>Not using <span class="in">`htobe64`</span> is not just a learning goal.</span>
+<span id="cb43-599"><a href="#cb43-599"></a><span class="ss">  - </span>Removing <span class="in">`endian.h`</span> from my code sped it up 5x in testing.</span>
+<span id="cb43-600"><a href="#cb43-600"></a><span class="ss">- </span>I note I will assume the "host" is little endian.</span>
+<span id="cb43-601"><a href="#cb43-601"></a><span class="ss">  - </span>It is trivial to check, and you may do so, or use a <span class="in">`#define`</span></span>
+<span id="cb43-602"><a href="#cb43-602"></a></span>
+<span id="cb43-603"><a href="#cb43-603"></a><span class="fu">### Memory</span></span>
+<span id="cb43-604"><a href="#cb43-604"></a></span>
+<span id="cb43-605"><a href="#cb43-605"></a><span class="ss">- </span>The core insight of endianness is that it refers to bits in memory.</span>
+<span id="cb43-606"><a href="#cb43-606"></a><span class="ss">- </span>Recall we have used the notion of memory a few times:</span>
+<span id="cb43-607"><a href="#cb43-607"></a><span class="ss">  - </span>Strings in C are characters in adjacent memory locations.</span>
+<span id="cb43-608"><a href="#cb43-608"></a><span class="ss">  - </span>Bitwise operations act on bits in adjacent memory locations.</span>
+<span id="cb43-609"><a href="#cb43-609"></a><span class="ss">  - </span>The star <span class="in">`*`</span> operator and array notation <span class="in">`[n]`</span> are similar.</span>
+<span id="cb43-610"><a href="#cb43-610"></a><span class="ss">- </span>We will rearrange bits using a novel operator - <span class="in">`&amp;`</span>, which negates <span class="in">`*`</span>.</span>
+<span id="cb43-611"><a href="#cb43-611"></a><span class="ss">  - </span>We note that unary prefix  <span class="in">`&amp;`</span> is a memory operator, distinct from</span>
+<span id="cb43-612"><a href="#cb43-612"></a><span class="ss">  - </span>Binary infix <span class="in">`&amp;`</span> which is a bitwise operator.</span>
+<span id="cb43-613"><a href="#cb43-613"></a></span>
+<span id="cb43-614"><a href="#cb43-614"></a><span class="fu">### Initial State</span></span>
+<span id="cb43-615"><a href="#cb43-615"></a></span>
+<span id="cb43-616"><a href="#cb43-616"></a><span class="ss">- </span>We begin with the indentity operation on <span class="in">`uint32_t`</span>.</span>
+<span id="cb43-617"><a href="#cb43-617"></a></span>
+<span id="cb43-618"><a href="#cb43-618"></a><span class="in">```c</span></span>
+<span id="cb43-619"><a href="#cb43-619"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-620"><a href="#cb43-620"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-621"><a href="#cb43-621"></a><span class="op">}</span></span>
+<span id="cb43-622"><a href="#cb43-622"></a><span class="in">```</span></span>
+<span id="cb43-623"><a href="#cb43-623"></a></span>
+<span id="cb43-624"><a href="#cb43-624"></a><span class="fu">### Variables</span></span>
+<span id="cb43-625"><a href="#cb43-625"></a></span>
+<span id="cb43-626"><a href="#cb43-626"></a><span class="ss">- </span>In C89 style, we first declare variables.</span>
+<span id="cb43-627"><a href="#cb43-627"></a><span class="ss">- </span>First is an alias for <span class="in">`n`</span>.</span>
+<span id="cb43-628"><a href="#cb43-628"></a><span class="ss">  - </span>We will treat the 32 bit int as an array of 8 bit ints.</span>
+<span id="cb43-629"><a href="#cb43-629"></a><span class="ss">  - </span>An 8 bit int is of type <span class="in">`uint8_t`</span></span>
+<span id="cb43-630"><a href="#cb43-630"></a><span class="ss">  - </span>An array is of type <span class="in">`*`</span></span>
+<span id="cb43-631"><a href="#cb43-631"></a><span class="ss">- </span>We initialize it to no value, for now.</span>
+<span id="cb43-632"><a href="#cb43-632"></a></span>
+<span id="cb43-633"><a href="#cb43-633"></a><span class="in">```c</span></span>
+<span id="cb43-634"><a href="#cb43-634"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-635"><a href="#cb43-635"></a>    <span class="dt">uint8_t</span> <span class="op">*</span>alias<span class="op">;</span></span>
+<span id="cb43-636"><a href="#cb43-636"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-637"><a href="#cb43-637"></a><span class="op">}</span></span>
+<span id="cb43-638"><a href="#cb43-638"></a><span class="in">```</span></span>
+<span id="cb43-639"><a href="#cb43-639"></a></span>
+<span id="cb43-640"><a href="#cb43-640"></a><span class="ss">- </span>We will also be swapping bits around.</span>
+<span id="cb43-641"><a href="#cb43-641"></a><span class="ss">- </span>In Python we can use *multiple assignment*</span>
+<span id="cb43-642"><a href="#cb43-642"></a><span class="in">```py</span></span>
+<span id="cb43-643"><a href="#cb43-643"></a>x, y <span class="op">=</span> y, x</span>
+<span id="cb43-644"><a href="#cb43-644"></a><span class="in">```</span></span>
+<span id="cb43-645"><a href="#cb43-645"></a><span class="ss">- </span>This only works with key-value pairs, not arrays.</span>
+<span id="cb43-646"><a href="#cb43-646"></a><span class="ss">- </span>We use a swapping variable, a la</span>
+<span id="cb43-647"><a href="#cb43-647"></a><span class="in">```py</span></span>
+<span id="cb43-648"><a href="#cb43-648"></a>t : <span class="bu">int</span></span>
+<span id="cb43-649"><a href="#cb43-649"></a>t <span class="op">=</span> x</span>
+<span id="cb43-650"><a href="#cb43-650"></a>x <span class="op">=</span> y</span>
+<span id="cb43-651"><a href="#cb43-651"></a>y <span class="op">=</span> t</span>
+<span id="cb43-652"><a href="#cb43-652"></a><span class="kw">del</span> t</span>
+<span id="cb43-653"><a href="#cb43-653"></a><span class="in">```</span></span>
+<span id="cb43-654"><a href="#cb43-654"></a><span class="ss">- </span>In C:</span>
+<span id="cb43-655"><a href="#cb43-655"></a><span class="in">```c</span></span>
+<span id="cb43-656"><a href="#cb43-656"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-657"><a href="#cb43-657"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias<span class="op">;</span></span>
+<span id="cb43-658"><a href="#cb43-658"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-659"><a href="#cb43-659"></a><span class="op">}</span></span>
+<span id="cb43-660"><a href="#cb43-660"></a><span class="in">```</span></span>
+<span id="cb43-661"><a href="#cb43-661"></a><span class="ss">- </span>We will be looping over something that is quite like an array, so we need an index variable.</span>
+<span id="cb43-662"><a href="#cb43-662"></a><span class="ss">  - </span>I create this variable of type <span class="in">`size_t`</span> because:</span>
+<span id="cb43-663"><a href="#cb43-663"></a><span class="ss">    - </span>We will compare it to a <span class="in">`sizeof`</span></span>
+<span id="cb43-664"><a href="#cb43-664"></a><span class="ss">    - </span>We will use it as an array index to denote memory locations.</span>
+<span id="cb43-665"><a href="#cb43-665"></a><span class="ss">    - </span>So the C implementation will guarantee <span class="in">`size_t`</span> is appropriate for array indices.</span>
+<span id="cb43-666"><a href="#cb43-666"></a><span class="ss">    - </span>You can determine what a <span class="in">`size_t`</span> is using the usual methods for examining C code.</span>
+<span id="cb43-667"><a href="#cb43-667"></a></span>
+<span id="cb43-668"><a href="#cb43-668"></a><span class="in">```c</span></span>
+<span id="cb43-669"><a href="#cb43-669"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-670"><a href="#cb43-670"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias<span class="op">;</span></span>
+<span id="cb43-671"><a href="#cb43-671"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
+<span id="cb43-672"><a href="#cb43-672"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-673"><a href="#cb43-673"></a><span class="op">}</span></span>
+<span id="cb43-674"><a href="#cb43-674"></a><span class="in">```</span></span>
+<span id="cb43-675"><a href="#cb43-675"></a></span>
+<span id="cb43-676"><a href="#cb43-676"></a><span class="fu">### Ampersand</span></span>
+<span id="cb43-677"><a href="#cb43-677"></a></span>
+<span id="cb43-678"><a href="#cb43-678"></a><span class="ss">- </span>We will now use the ampersand <span class="in">`&amp;`</span> operator.</span>
+<span id="cb43-679"><a href="#cb43-679"></a><span class="ss">  - </span>We want the <span class="in">`uint8_t *`</span> array alias to refer to the same bits and the <span class="in">`uint32_t`</span> numerical value <span class="in">`n`</span>.</span>
+<span id="cb43-680"><a href="#cb43-680"></a><span class="ss">  - </span>The location of the bits that constitute <span class="in">`n`</span> in memory is given by <span class="in">`&amp;n`</span>.</span>
+<span id="cb43-681"><a href="#cb43-681"></a><span class="ss">  - </span>So we set the alias equal to that location.</span>
+<span id="cb43-682"><a href="#cb43-682"></a><span class="in">```c</span></span>
+<span id="cb43-683"><a href="#cb43-683"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-684"><a href="#cb43-684"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">&amp;</span>n<span class="op">;</span></span>
+<span id="cb43-685"><a href="#cb43-685"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
+<span id="cb43-686"><a href="#cb43-686"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-687"><a href="#cb43-687"></a><span class="op">}</span></span>
+<span id="cb43-688"><a href="#cb43-688"></a><span class="in">```</span></span>
+<span id="cb43-689"><a href="#cb43-689"></a><span class="ss">- </span>If you are confused at all, you should stop and print out, minimally:</span>
+<span id="cb43-690"><a href="#cb43-690"></a><span class="ss">  - </span>The values of the star, amperand, and unmodified alias and n variables.</span>
+<span id="cb43-691"><a href="#cb43-691"></a><span class="ss">  - </span>Anything else you think of.</span>
+<span id="cb43-692"><a href="#cb43-692"></a><span class="ss">  - </span>You should do these all in different lines in case you get an error.</span>
+<span id="cb43-693"><a href="#cb43-693"></a><span class="ss">  - </span>You should think of the <span class="in">`&amp;n`</span> as the key of <span class="in">`n`</span> in the key-value memory storage of the system.</span>
+<span id="cb43-694"><a href="#cb43-694"></a></span>
+<span id="cb43-695"><a href="#cb43-695"></a><span class="fu">### Casting</span></span>
+<span id="cb43-696"><a href="#cb43-696"></a></span>
+<span id="cb43-697"><a href="#cb43-697"></a><span class="ss">- </span>When I run this code, I get this warning:</span>
+<span id="cb43-698"><a href="#cb43-698"></a><span class="in">```email</span></span>
+<span id="cb43-699"><a href="#cb43-699"></a>endian.c: In function ‘my_htonl’:</span>
+<span id="cb43-700"><a href="#cb43-700"></a>endian.c:15:26: warning: initialization of ‘uint8_t *’ {aka ‘unsigned char *’} from incompatible pointer type ‘uint32_t *’ {aka ‘unsigned int *’} [-Wincompatible-pointer-types]</span>
+<span id="cb43-701"><a href="#cb43-701"></a>   15 |     uint8_t swap, *arr = &amp;n;</span>
+<span id="cb43-702"><a href="#cb43-702"></a>      |        </span>
+<span id="cb43-703"><a href="#cb43-703"></a><span class="in">```</span></span>
+<span id="cb43-704"><a href="#cb43-704"></a><span class="ss">- </span>That's a good warning, I am doing something extremely sketchy.</span>
+<span id="cb43-705"><a href="#cb43-705"></a><span class="ss">  - </span>After all, I told <span class="in">`gcc`</span> that <span class="in">`n`</span> was a 32 bit integer.</span>
+<span id="cb43-706"><a href="#cb43-706"></a><span class="ss">  - </span>Then I told it that the the location <span class="in">`n`</span> was in held an array of 8 bit integers.</span>
+<span id="cb43-707"><a href="#cb43-707"></a><span class="ss">  - </span>Those things can't both be true.</span>
+<span id="cb43-708"><a href="#cb43-708"></a><span class="ss">- </span>We assure <span class="in">`gcc`</span> that we know what we are doing with a *cast*</span>
+<span id="cb43-709"><a href="#cb43-709"></a><span class="ss">  - </span>We apply a *cast* to a value, like the value of the memory location of <span class="in">`n`</span></span>
+<span id="cb43-710"><a href="#cb43-710"></a><span class="ss">  - </span>A cast is a type name in parenthesis as a prefix.</span>
+<span id="cb43-711"><a href="#cb43-711"></a><span class="ss">  - </span>A cast assures the compiler of the intentionality of this mapping of bits to variable names.</span>
+<span id="cb43-712"><a href="#cb43-712"></a><span class="ss">  - </span>We are claiming we want to regard <span class="in">`n`</span> as an array of 8 bit integers, as a <span class="in">`uint8_t *`</span>.</span>
+<span id="cb43-713"><a href="#cb43-713"></a><span class="ss">- </span>So:</span>
+<span id="cb43-714"><a href="#cb43-714"></a><span class="in">```c</span></span>
+<span id="cb43-715"><a href="#cb43-715"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-716"><a href="#cb43-716"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">uint8_t</span> <span class="op">*)&amp;</span>n<span class="op">;</span></span>
+<span id="cb43-717"><a href="#cb43-717"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
+<span id="cb43-718"><a href="#cb43-718"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-719"><a href="#cb43-719"></a><span class="op">}</span></span>
+<span id="cb43-720"><a href="#cb43-720"></a><span class="in">```</span></span>
+<span id="cb43-721"><a href="#cb43-721"></a><span class="ss">- </span>This silenced all my <span class="in">`gcc`</span> warnings and errors.</span>
+<span id="cb43-722"><a href="#cb43-722"></a></span>
 <span id="cb43-723"><a href="#cb43-723"></a></span>
-<span id="cb43-724"><a href="#cb43-724"></a></span>
-<span id="cb43-725"><a href="#cb43-725"></a><span class="fu">### Main loop</span></span>
-<span id="cb43-726"><a href="#cb43-726"></a></span>
-<span id="cb43-727"><a href="#cb43-727"></a><span class="ss">- </span>It now suffices to rearrange the bits within 32 bit integer <span class="in">`n`</span></span>
-<span id="cb43-728"><a href="#cb43-728"></a><span class="ss">- </span>Helpfully, we can refer to these bits using the aliasing 8 bit integer array <span class="in">`alias`</span>.</span>
-<span id="cb43-729"><a href="#cb43-729"></a><span class="in">```c</span></span>
-<span id="cb43-730"><a href="#cb43-730"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-731"><a href="#cb43-731"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">uint8_t</span> <span class="op">*)&amp;</span>n<span class="op">;</span></span>
-<span id="cb43-732"><a href="#cb43-732"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
-<span id="cb43-733"><a href="#cb43-733"></a>    swap <span class="op">=</span> alias<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
-<span id="cb43-734"><a href="#cb43-734"></a>    alias<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> alias<span class="op">[</span><span class="dv">3</span><span class="op">];</span></span>
-<span id="cb43-735"><a href="#cb43-735"></a>    alias<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> swap<span class="op">;</span></span>
-<span id="cb43-736"><a href="#cb43-736"></a>    swap <span class="op">=</span> alias<span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
-<span id="cb43-737"><a href="#cb43-737"></a>    alias<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> alias<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
-<span id="cb43-738"><a href="#cb43-738"></a>    alias<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> swap<span class="op">;</span></span>
-<span id="cb43-739"><a href="#cb43-739"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
-<span id="cb43-740"><a href="#cb43-740"></a><span class="op">}</span></span>
-<span id="cb43-741"><a href="#cb43-741"></a><span class="in">```</span></span>
-<span id="cb43-742"><a href="#cb43-742"></a><span class="ss">- </span>You will note this contains repeated code, and is therefore *de facto* wrong, though it runs correctly.</span>
-<span id="cb43-743"><a href="#cb43-743"></a></span>
-<span id="cb43-744"><a href="#cb43-744"></a>:::</span>
+<span id="cb43-724"><a href="#cb43-724"></a><span class="fu">### Main loop</span></span>
+<span id="cb43-725"><a href="#cb43-725"></a></span>
+<span id="cb43-726"><a href="#cb43-726"></a><span class="ss">- </span>It now suffices to rearrange the bits within 32 bit integer <span class="in">`n`</span></span>
+<span id="cb43-727"><a href="#cb43-727"></a><span class="ss">- </span>Helpfully, we can refer to these bits using the aliasing 8 bit integer array <span class="in">`alias`</span>.</span>
+<span id="cb43-728"><a href="#cb43-728"></a><span class="in">```c</span></span>
+<span id="cb43-729"><a href="#cb43-729"></a><span class="dt">uint32_t</span> my_htonl<span class="op">(</span><span class="dt">uint32_t</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-730"><a href="#cb43-730"></a>    <span class="dt">uint8_t</span> swap<span class="op">,</span> <span class="op">*</span>alias <span class="op">=</span> <span class="op">(</span><span class="dt">uint8_t</span> <span class="op">*)&amp;</span>n<span class="op">;</span></span>
+<span id="cb43-731"><a href="#cb43-731"></a>    <span class="dt">size_t</span> index<span class="op">;</span></span>
+<span id="cb43-732"><a href="#cb43-732"></a>    swap <span class="op">=</span> alias<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb43-733"><a href="#cb43-733"></a>    alias<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> alias<span class="op">[</span><span class="dv">3</span><span class="op">];</span></span>
+<span id="cb43-734"><a href="#cb43-734"></a>    alias<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> swap<span class="op">;</span></span>
+<span id="cb43-735"><a href="#cb43-735"></a>    swap <span class="op">=</span> alias<span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb43-736"><a href="#cb43-736"></a>    alias<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> alias<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
+<span id="cb43-737"><a href="#cb43-737"></a>    alias<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> swap<span class="op">;</span></span>
+<span id="cb43-738"><a href="#cb43-738"></a>    <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb43-739"><a href="#cb43-739"></a><span class="op">}</span></span>
+<span id="cb43-740"><a href="#cb43-740"></a><span class="in">```</span></span>
+<span id="cb43-741"><a href="#cb43-741"></a><span class="ss">- </span>You will note this contains repeated code, and is therefore *de facto* wrong, though it runs correctly.</span>
+<span id="cb43-742"><a href="#cb43-742"></a></span>
+<span id="cb43-743"><a href="#cb43-743"></a>:::</span>
+<span id="cb43-744"><a href="#cb43-744"></a></span>
 <span id="cb43-745"><a href="#cb43-745"></a></span>
-<span id="cb43-746"><a href="#cb43-746"></a></span>
-<span id="cb43-747"><a href="#cb43-747"></a><span class="fu"># htonll&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#htonll" role="button" aria-expanded="false" aria-controls = "htonll"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb43-748"><a href="#cb43-748"></a></span>
-<span id="cb43-749"><a href="#cb43-749"></a>::: {#htonll .collapse .multi-collapse}</span>
-<span id="cb43-750"><a href="#cb43-750"></a></span>
-<span id="cb43-751"><a href="#cb43-751"></a><span class="fu">## htonll</span></span>
-<span id="cb43-752"><a href="#cb43-752"></a></span>
-<span id="cb43-753"><a href="#cb43-753"></a><span class="ss">- </span>Write a 64 bit endianness inverter.</span>
-<span id="cb43-754"><a href="#cb43-754"></a><span class="ss">- </span>You should start with your <span class="in">`my_htonl`</span> code if you are stuck.</span>
-<span id="cb43-755"><a href="#cb43-755"></a><span class="ss">  - </span>Refactor the internals into a loop</span>
-<span id="cb43-756"><a href="#cb43-756"></a><span class="ss">  - </span>Use <span class="in">`sizeof`</span> for the loop termination.</span>
-<span id="cb43-757"><a href="#cb43-757"></a><span class="ss">- </span>Advanced students may wish to write a size agnostic <span class="in">`HTON`</span> macro.</span>
-<span id="cb43-758"><a href="#cb43-758"></a><span class="ss">  - </span>This is non-trivial but probably possible (I didn't check).</span>
-<span id="cb43-759"><a href="#cb43-759"></a></span>
-<span id="cb43-760"><a href="#cb43-760"></a>:::</span>
-<span id="cb43-761"><a href="#cb43-761"></a></span>
-<span id="cb43-762"><a href="#cb43-762"></a><span class="fu"># memset&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#memset" role="button" aria-expanded="false" aria-controls = "memset"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb43-763"><a href="#cb43-763"></a></span>
-<span id="cb43-764"><a href="#cb43-764"></a>::: {#memset .collapse .multi-collapse}</span>
-<span id="cb43-765"><a href="#cb43-765"></a></span>
-<span id="cb43-766"><a href="#cb43-766"></a><span class="fu">## memset</span></span>
-<span id="cb43-767"><a href="#cb43-767"></a></span>
-<span id="cb43-768"><a href="#cb43-768"></a><span class="ss">- </span>The C89 "string.h" library contains a helpful function <span class="in">`memset`</span>.</span>
-<span id="cb43-769"><a href="#cb43-769"></a></span>
-<span id="cb43-770"><a href="#cb43-770"></a><span class="in">```email</span></span>
-<span id="cb43-771"><a href="#cb43-771"></a>NAME</span>
-<span id="cb43-772"><a href="#cb43-772"></a>       memset - fill memory with a constant byte</span>
-<span id="cb43-773"><a href="#cb43-773"></a></span>
-<span id="cb43-774"><a href="#cb43-774"></a>SYNOPSIS</span>
-<span id="cb43-775"><a href="#cb43-775"></a>       #include &lt;string.h&gt;</span>
-<span id="cb43-776"><a href="#cb43-776"></a></span>
-<span id="cb43-777"><a href="#cb43-777"></a>       void *memset(void *s, int c, size_t n);</span>
-<span id="cb43-778"><a href="#cb43-778"></a></span>
-<span id="cb43-779"><a href="#cb43-779"></a>DESCRIPTION</span>
-<span id="cb43-780"><a href="#cb43-780"></a>       The memset() function fills the first n bytes of the</span>
-<span id="cb43-781"><a href="#cb43-781"></a>       memory area pointed to by s with the  constant  byte</span>
-<span id="cb43-782"><a href="#cb43-782"></a>       c.</span>
-<span id="cb43-783"><a href="#cb43-783"></a></span>
-<span id="cb43-784"><a href="#cb43-784"></a>RETURN VALUE</span>
-<span id="cb43-785"><a href="#cb43-785"></a>       The  memset() function returns a pointer to the mem‐</span>
-<span id="cb43-786"><a href="#cb43-786"></a>       ory area s.</span>
-<span id="cb43-787"><a href="#cb43-787"></a><span class="in">```</span></span>
-<span id="cb43-788"><a href="#cb43-788"></a></span>
-<span id="cb43-789"><a href="#cb43-789"></a><span class="ss">- </span>I use <span class="in">`memset`</span> to zero out all my arrays before I use them.</span>
-<span id="cb43-790"><a href="#cb43-790"></a><span class="ss">- </span>This usually doesn't matter but is very nice with string data.</span>
-<span id="cb43-791"><a href="#cb43-791"></a></span>
-<span id="cb43-792"><a href="#cb43-792"></a><span class="fu">## memcpy</span></span>
-<span id="cb43-793"><a href="#cb43-793"></a></span>
-<span id="cb43-794"><a href="#cb43-794"></a><span class="ss">- </span>The C89 "string.h" library contains a helpful function <span class="in">`memcpy`</span>.</span>
-<span id="cb43-795"><a href="#cb43-795"></a><span class="ss">  - </span>I have never once in my life remembered destination is first, not source.</span>
-<span id="cb43-796"><a href="#cb43-796"></a><span class="ss">  - </span>I spent an hour trying to figure out a bug caused by that.</span>
-<span id="cb43-797"><a href="#cb43-797"></a></span>
-<span id="cb43-798"><a href="#cb43-798"></a><span class="in">```email</span></span>
-<span id="cb43-799"><a href="#cb43-799"></a>NAME</span>
-<span id="cb43-800"><a href="#cb43-800"></a>       memcpy - copy memory area</span>
-<span id="cb43-801"><a href="#cb43-801"></a></span>
-<span id="cb43-802"><a href="#cb43-802"></a>SYNOPSIS</span>
-<span id="cb43-803"><a href="#cb43-803"></a>       #include &lt;string.h&gt;</span>
-<span id="cb43-804"><a href="#cb43-804"></a></span>
-<span id="cb43-805"><a href="#cb43-805"></a>       void *memcpy(void *dest, const void *src, size_t n);</span>
-<span id="cb43-806"><a href="#cb43-806"></a></span>
-<span id="cb43-807"><a href="#cb43-807"></a>DESCRIPTION</span>
-<span id="cb43-808"><a href="#cb43-808"></a>       The memcpy() function copies n bytes from memory area src to memory area dest.  The memory</span>
-<span id="cb43-809"><a href="#cb43-809"></a>       areas must not overlap.  Use memmove(3) if the memory areas do overlap.</span>
-<span id="cb43-810"><a href="#cb43-810"></a></span>
-<span id="cb43-811"><a href="#cb43-811"></a>RETURN VALUE</span>
-<span id="cb43-812"><a href="#cb43-812"></a>       The memcpy() function returns a pointer to dest.</span>
-<span id="cb43-813"><a href="#cb43-813"></a></span>
-<span id="cb43-814"><a href="#cb43-814"></a>ATTRIBUTES</span>
-<span id="cb43-815"><a href="#cb43-815"></a>       For an explanation of the terms used in this section, see attributes(7).</span>
-<span id="cb43-816"><a href="#cb43-816"></a><span class="in">```</span></span>
-<span id="cb43-817"><a href="#cb43-817"></a></span>
-<span id="cb43-818"><a href="#cb43-818"></a><span class="ss">- </span>I use <span class="in">`memcpy`</span> to move data into and out of SHA internal state:</span>
-<span id="cb43-819"><a href="#cb43-819"></a><span class="ss">  - </span>The working variables.</span>
-<span id="cb43-820"><a href="#cb43-820"></a><span class="ss">  - </span>The current $H_i$ hash value.</span>
-<span id="cb43-821"><a href="#cb43-821"></a><span class="ss">  - </span>The current $M_i$ message data.</span>
-<span id="cb43-822"><a href="#cb43-822"></a></span>
-<span id="cb43-823"><a href="#cb43-823"></a>:::</span>
+<span id="cb43-746"><a href="#cb43-746"></a><span class="fu"># htonll&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#htonll" role="button" aria-expanded="false" aria-controls = "htonll"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb43-747"><a href="#cb43-747"></a></span>
+<span id="cb43-748"><a href="#cb43-748"></a>::: {#htonll .collapse .multi-collapse}</span>
+<span id="cb43-749"><a href="#cb43-749"></a></span>
+<span id="cb43-750"><a href="#cb43-750"></a><span class="fu">## htonll</span></span>
+<span id="cb43-751"><a href="#cb43-751"></a></span>
+<span id="cb43-752"><a href="#cb43-752"></a><span class="ss">- </span>Write a 64 bit endianness inverter.</span>
+<span id="cb43-753"><a href="#cb43-753"></a><span class="ss">- </span>You should start with your <span class="in">`my_htonl`</span> code if you are stuck.</span>
+<span id="cb43-754"><a href="#cb43-754"></a><span class="ss">  - </span>Refactor the internals into a loop</span>
+<span id="cb43-755"><a href="#cb43-755"></a><span class="ss">  - </span>Use <span class="in">`sizeof`</span> for the loop termination.</span>
+<span id="cb43-756"><a href="#cb43-756"></a><span class="ss">- </span>Advanced students may wish to write a size agnostic <span class="in">`HTON`</span> macro.</span>
+<span id="cb43-757"><a href="#cb43-757"></a><span class="ss">  - </span>This is non-trivial but probably possible (I didn't check).</span>
+<span id="cb43-758"><a href="#cb43-758"></a></span>
+<span id="cb43-759"><a href="#cb43-759"></a>:::</span>
+<span id="cb43-760"><a href="#cb43-760"></a></span>
+<span id="cb43-761"><a href="#cb43-761"></a><span class="fu"># memset&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#memset" role="button" aria-expanded="false" aria-controls = "memset"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb43-762"><a href="#cb43-762"></a></span>
+<span id="cb43-763"><a href="#cb43-763"></a>::: {#memset .collapse .multi-collapse}</span>
+<span id="cb43-764"><a href="#cb43-764"></a></span>
+<span id="cb43-765"><a href="#cb43-765"></a><span class="fu">## memset</span></span>
+<span id="cb43-766"><a href="#cb43-766"></a></span>
+<span id="cb43-767"><a href="#cb43-767"></a><span class="ss">- </span>The C89 "string.h" library contains a helpful function <span class="in">`memset`</span>.</span>
+<span id="cb43-768"><a href="#cb43-768"></a></span>
+<span id="cb43-769"><a href="#cb43-769"></a><span class="in">```email</span></span>
+<span id="cb43-770"><a href="#cb43-770"></a>NAME</span>
+<span id="cb43-771"><a href="#cb43-771"></a>       memset - fill memory with a constant byte</span>
+<span id="cb43-772"><a href="#cb43-772"></a></span>
+<span id="cb43-773"><a href="#cb43-773"></a>SYNOPSIS</span>
+<span id="cb43-774"><a href="#cb43-774"></a>       #include &lt;string.h&gt;</span>
+<span id="cb43-775"><a href="#cb43-775"></a></span>
+<span id="cb43-776"><a href="#cb43-776"></a>       void *memset(void *s, int c, size_t n);</span>
+<span id="cb43-777"><a href="#cb43-777"></a></span>
+<span id="cb43-778"><a href="#cb43-778"></a>DESCRIPTION</span>
+<span id="cb43-779"><a href="#cb43-779"></a>       The memset() function fills the first n bytes of the</span>
+<span id="cb43-780"><a href="#cb43-780"></a>       memory area pointed to by s with the  constant  byte</span>
+<span id="cb43-781"><a href="#cb43-781"></a>       c.</span>
+<span id="cb43-782"><a href="#cb43-782"></a></span>
+<span id="cb43-783"><a href="#cb43-783"></a>RETURN VALUE</span>
+<span id="cb43-784"><a href="#cb43-784"></a>       The  memset() function returns a pointer to the mem‐</span>
+<span id="cb43-785"><a href="#cb43-785"></a>       ory area s.</span>
+<span id="cb43-786"><a href="#cb43-786"></a><span class="in">```</span></span>
+<span id="cb43-787"><a href="#cb43-787"></a></span>
+<span id="cb43-788"><a href="#cb43-788"></a><span class="ss">- </span>I use <span class="in">`memset`</span> to zero out all my arrays before I use them.</span>
+<span id="cb43-789"><a href="#cb43-789"></a><span class="ss">- </span>This usually doesn't matter but is very nice with string data.</span>
+<span id="cb43-790"><a href="#cb43-790"></a></span>
+<span id="cb43-791"><a href="#cb43-791"></a><span class="fu">## memcpy</span></span>
+<span id="cb43-792"><a href="#cb43-792"></a></span>
+<span id="cb43-793"><a href="#cb43-793"></a><span class="ss">- </span>The C89 "string.h" library contains a helpful function <span class="in">`memcpy`</span>.</span>
+<span id="cb43-794"><a href="#cb43-794"></a><span class="ss">  - </span>I have never once in my life remembered destination is first, not source.</span>
+<span id="cb43-795"><a href="#cb43-795"></a><span class="ss">  - </span>I spent an hour trying to figure out a bug caused by that.</span>
+<span id="cb43-796"><a href="#cb43-796"></a></span>
+<span id="cb43-797"><a href="#cb43-797"></a><span class="in">```email</span></span>
+<span id="cb43-798"><a href="#cb43-798"></a>NAME</span>
+<span id="cb43-799"><a href="#cb43-799"></a>       memcpy - copy memory area</span>
+<span id="cb43-800"><a href="#cb43-800"></a></span>
+<span id="cb43-801"><a href="#cb43-801"></a>SYNOPSIS</span>
+<span id="cb43-802"><a href="#cb43-802"></a>       #include &lt;string.h&gt;</span>
+<span id="cb43-803"><a href="#cb43-803"></a></span>
+<span id="cb43-804"><a href="#cb43-804"></a>       void *memcpy(void *dest, const void *src, size_t n);</span>
+<span id="cb43-805"><a href="#cb43-805"></a></span>
+<span id="cb43-806"><a href="#cb43-806"></a>DESCRIPTION</span>
+<span id="cb43-807"><a href="#cb43-807"></a>       The memcpy() function copies n bytes from memory area src to memory area dest.  The memory</span>
+<span id="cb43-808"><a href="#cb43-808"></a>       areas must not overlap.  Use memmove(3) if the memory areas do overlap.</span>
+<span id="cb43-809"><a href="#cb43-809"></a></span>
+<span id="cb43-810"><a href="#cb43-810"></a>RETURN VALUE</span>
+<span id="cb43-811"><a href="#cb43-811"></a>       The memcpy() function returns a pointer to dest.</span>
+<span id="cb43-812"><a href="#cb43-812"></a></span>
+<span id="cb43-813"><a href="#cb43-813"></a>ATTRIBUTES</span>
+<span id="cb43-814"><a href="#cb43-814"></a>       For an explanation of the terms used in this section, see attributes(7).</span>
+<span id="cb43-815"><a href="#cb43-815"></a><span class="in">```</span></span>
+<span id="cb43-816"><a href="#cb43-816"></a></span>
+<span id="cb43-817"><a href="#cb43-817"></a><span class="ss">- </span>I use <span class="in">`memcpy`</span> to move data into and out of SHA internal state:</span>
+<span id="cb43-818"><a href="#cb43-818"></a><span class="ss">  - </span>The working variables.</span>
+<span id="cb43-819"><a href="#cb43-819"></a><span class="ss">  - </span>The current $H_i$ hash value.</span>
+<span id="cb43-820"><a href="#cb43-820"></a><span class="ss">  - </span>The current $M_i$ message data.</span>
+<span id="cb43-821"><a href="#cb43-821"></a></span>
+<span id="cb43-822"><a href="#cb43-822"></a>:::</span>
+<span id="cb43-823"><a href="#cb43-823"></a></span>
 <span id="cb43-824"><a href="#cb43-824"></a></span>
-<span id="cb43-825"><a href="#cb43-825"></a></span>
-<span id="cb43-826"><a href="#cb43-826"></a><span class="fu"># Arrays&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#arrays" role="button" aria-expanded="false" aria-controls = "arrays"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb43-827"><a href="#cb43-827"></a></span>
-<span id="cb43-828"><a href="#cb43-828"></a>::: {#arrays .collapse .multi-collapse}</span>
-<span id="cb43-829"><a href="#cb43-829"></a></span>
-<span id="cb43-830"><a href="#cb43-830"></a><span class="fu">## Arrays</span></span>
-<span id="cb43-831"><a href="#cb43-831"></a></span>
-<span id="cb43-832"><a href="#cb43-832"></a><span class="ss">- </span>You will be tempted to write functions of this form:</span>
-<span id="cb43-833"><a href="#cb43-833"></a></span>
-<span id="cb43-834"><a href="#cb43-834"></a><span class="in">```C</span></span>
-<span id="cb43-835"><a href="#cb43-835"></a><span class="in">/* Take two arrays and a return a new array */</span></span>
-<span id="cb43-836"><a href="#cb43-836"></a><span class="in">char *new_hash(uint32_t *m_i, uint32_t *h_i) {</span></span>
-<span id="cb43-837"><a href="#cb43-837"></a><span class="in">    uint32_t h_i_1[8];</span></span>
-<span id="cb43-838"><a href="#cb43-838"></a><span class="in">    /* some operations */</span></span>
-<span id="cb43-839"><a href="#cb43-839"></a><span class="in">    return h_i_1;</span></span>
-<span id="cb43-840"><a href="#cb43-840"></a><span class="in">}</span></span>
-<span id="cb43-841"><a href="#cb43-841"></a><span class="in">```</span></span>
-<span id="cb43-842"><a href="#cb43-842"></a></span>
-<span id="cb43-843"><a href="#cb43-843"></a><span class="ss">- </span>This will cause a segmentation fault for the following reason.</span>
-<span id="cb43-844"><a href="#cb43-844"></a><span class="ss">  - </span><span class="in">`h_i_1`</span> refers to a memory location.</span>
-<span id="cb43-845"><a href="#cb43-845"></a><span class="ss">  - </span>That memory location is a local variable of the <span class="in">`new_hash`</span> function</span>
-<span id="cb43-846"><a href="#cb43-846"></a><span class="ss">  - </span>When <span class="in">`new_hash`</span> returns, it no longer manages it's local variables.</span>
-<span id="cb43-847"><a href="#cb43-847"></a><span class="ss">  - </span>Therefore, it is no longer safe to access that memory location.</span>
-<span id="cb43-848"><a href="#cb43-848"></a><span class="ss">    - </span>It is, essentially, reclaimed by the operating system.</span>
-<span id="cb43-849"><a href="#cb43-849"></a><span class="ss">    - </span>This occurs probabilitistically, but at high probability.</span>
-<span id="cb43-850"><a href="#cb43-850"></a><span class="ss">  - </span>So the next effort to access a value in <span class="in">`h_i_1`</span> will trigger the OS to terminate your program.</span>
-<span id="cb43-851"><a href="#cb43-851"></a><span class="ss">- </span>Here is the C alternative:</span>
-<span id="cb43-852"><a href="#cb43-852"></a></span>
-<span id="cb43-853"><a href="#cb43-853"></a><span class="in">```C</span></span>
-<span id="cb43-854"><a href="#cb43-854"></a><span class="in">/* Take two arrays as arguments and update the second */</span></span>
-<span id="cb43-855"><a href="#cb43-855"></a><span class="in">void new_hash(uint32_t *m_i, uint32_t *h_i) {</span></span>
-<span id="cb43-856"><a href="#cb43-856"></a><span class="in">    uint32_t h_i_1[8];</span></span>
-<span id="cb43-857"><a href="#cb43-857"></a><span class="in">    /* some operations */</span></span>
-<span id="cb43-858"><a href="#cb43-858"></a><span class="in">    memcpy(h_i, h_i_1, sizeof(h_i_1));</span></span>
-<span id="cb43-859"><a href="#cb43-859"></a><span class="in">    return;</span></span>
-<span id="cb43-860"><a href="#cb43-860"></a><span class="in">}</span></span>
-<span id="cb43-861"><a href="#cb43-861"></a><span class="in">```</span></span>
-<span id="cb43-862"><a href="#cb43-862"></a></span>
-<span id="cb43-863"><a href="#cb43-863"></a><span class="ss">- </span><span class="in">`h_i`</span> is safe because it is managed by some other function.</span>
-<span id="cb43-864"><a href="#cb43-864"></a><span class="ss">  - </span>Likely <span class="in">`main`</span> or some other function that called <span class="in">`new_hash`</span>.</span>
-<span id="cb43-865"><a href="#cb43-865"></a><span class="ss">- </span>Therefore, it will not be reclaimed by the OS on return from <span class="in">`new_hash`</span>.</span>
-<span id="cb43-866"><a href="#cb43-866"></a></span>
-<span id="cb43-867"><a href="#cb43-867"></a><span class="fu">## Take-aways</span></span>
-<span id="cb43-868"><a href="#cb43-868"></a></span>
-<span id="cb43-869"><a href="#cb43-869"></a><span class="ss">- </span>Don't return arrays.</span>
-<span id="cb43-870"><a href="#cb43-870"></a><span class="ss">- </span>Provide arrays as arguments and update the provided arrays.</span>
-<span id="cb43-871"><a href="#cb43-871"></a><span class="ss">- </span>There are other ways to do this that we will learn in time.</span>
-<span id="cb43-872"><a href="#cb43-872"></a><span class="ss">  - </span>But they are unhelpful on SHA-256, and would enable low quality solutions.</span>
-<span id="cb43-873"><a href="#cb43-873"></a></span>
-<span id="cb43-874"><a href="#cb43-874"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb43-825"><a href="#cb43-825"></a><span class="fu"># Arrays&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#arrays" role="button" aria-expanded="false" aria-controls = "arrays"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb43-826"><a href="#cb43-826"></a></span>
+<span id="cb43-827"><a href="#cb43-827"></a>::: {#arrays .collapse .multi-collapse}</span>
+<span id="cb43-828"><a href="#cb43-828"></a></span>
+<span id="cb43-829"><a href="#cb43-829"></a><span class="fu">## Arrays</span></span>
+<span id="cb43-830"><a href="#cb43-830"></a></span>
+<span id="cb43-831"><a href="#cb43-831"></a><span class="ss">- </span>You will be tempted to write functions of this form:</span>
+<span id="cb43-832"><a href="#cb43-832"></a></span>
+<span id="cb43-833"><a href="#cb43-833"></a><span class="in">```C</span></span>
+<span id="cb43-834"><a href="#cb43-834"></a><span class="in">/* Take two arrays and a return a new array */</span></span>
+<span id="cb43-835"><a href="#cb43-835"></a><span class="in">char *new_hash(uint32_t *m_i, uint32_t *h_i) {</span></span>
+<span id="cb43-836"><a href="#cb43-836"></a><span class="in">    uint32_t h_i_1[8];</span></span>
+<span id="cb43-837"><a href="#cb43-837"></a><span class="in">    /* some operations */</span></span>
+<span id="cb43-838"><a href="#cb43-838"></a><span class="in">    return h_i_1;</span></span>
+<span id="cb43-839"><a href="#cb43-839"></a><span class="in">}</span></span>
+<span id="cb43-840"><a href="#cb43-840"></a><span class="in">```</span></span>
+<span id="cb43-841"><a href="#cb43-841"></a></span>
+<span id="cb43-842"><a href="#cb43-842"></a><span class="ss">- </span>This will cause a segmentation fault for the following reason.</span>
+<span id="cb43-843"><a href="#cb43-843"></a><span class="ss">  - </span><span class="in">`h_i_1`</span> refers to a memory location.</span>
+<span id="cb43-844"><a href="#cb43-844"></a><span class="ss">  - </span>That memory location is a local variable of the <span class="in">`new_hash`</span> function</span>
+<span id="cb43-845"><a href="#cb43-845"></a><span class="ss">  - </span>When <span class="in">`new_hash`</span> returns, it no longer manages its local variables.</span>
+<span id="cb43-846"><a href="#cb43-846"></a><span class="ss">  - </span>Therefore, it is no longer safe to access that memory location.</span>
+<span id="cb43-847"><a href="#cb43-847"></a><span class="ss">    - </span>It is, essentially, reclaimed by the operating system.</span>
+<span id="cb43-848"><a href="#cb43-848"></a><span class="ss">    - </span>This occurs probabilitistically, but at high probability.</span>
+<span id="cb43-849"><a href="#cb43-849"></a><span class="ss">  - </span>So the next effort to access a value in <span class="in">`h_i_1`</span> will trigger the OS to terminate your program.</span>
+<span id="cb43-850"><a href="#cb43-850"></a><span class="ss">- </span>Here is the C alternative:</span>
+<span id="cb43-851"><a href="#cb43-851"></a></span>
+<span id="cb43-852"><a href="#cb43-852"></a><span class="in">```C</span></span>
+<span id="cb43-853"><a href="#cb43-853"></a><span class="in">/* Take two arrays as arguments and update the second */</span></span>
+<span id="cb43-854"><a href="#cb43-854"></a><span class="in">void new_hash(uint32_t *m_i, uint32_t *h_i) {</span></span>
+<span id="cb43-855"><a href="#cb43-855"></a><span class="in">    uint32_t h_i_1[8];</span></span>
+<span id="cb43-856"><a href="#cb43-856"></a><span class="in">    /* some operations */</span></span>
+<span id="cb43-857"><a href="#cb43-857"></a><span class="in">    memcpy(h_i, h_i_1, sizeof(h_i_1));</span></span>
+<span id="cb43-858"><a href="#cb43-858"></a><span class="in">    return;</span></span>
+<span id="cb43-859"><a href="#cb43-859"></a><span class="in">}</span></span>
+<span id="cb43-860"><a href="#cb43-860"></a><span class="in">```</span></span>
+<span id="cb43-861"><a href="#cb43-861"></a></span>
+<span id="cb43-862"><a href="#cb43-862"></a><span class="ss">- </span><span class="in">`h_i`</span> is safe because it is managed by some other function.</span>
+<span id="cb43-863"><a href="#cb43-863"></a><span class="ss">  - </span>Likely <span class="in">`main`</span> or some other function that called <span class="in">`new_hash`</span>.</span>
+<span id="cb43-864"><a href="#cb43-864"></a><span class="ss">- </span>Therefore, it will not be reclaimed by the OS on return from <span class="in">`new_hash`</span>.</span>
+<span id="cb43-865"><a href="#cb43-865"></a></span>
+<span id="cb43-866"><a href="#cb43-866"></a><span class="fu">## Take-aways</span></span>
+<span id="cb43-867"><a href="#cb43-867"></a></span>
+<span id="cb43-868"><a href="#cb43-868"></a><span class="ss">- </span>Don't return arrays.</span>
+<span id="cb43-869"><a href="#cb43-869"></a><span class="ss">- </span>Provide arrays as arguments and update the provided arrays.</span>
+<span id="cb43-870"><a href="#cb43-870"></a><span class="ss">- </span>There are other ways to do this that we will learn in time.</span>
+<span id="cb43-871"><a href="#cb43-871"></a><span class="ss">  - </span>But they are unhelpful on SHA-256, and would enable low quality solutions.</span>
+<span id="cb43-872"><a href="#cb43-872"></a></span>
+<span id="cb43-873"><a href="#cb43-873"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
