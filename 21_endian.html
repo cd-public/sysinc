@@ -766,7 +766,7 @@ Note
 </ul></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">size_t</span> l <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">/* SHA-256 length variable 'l' */</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>l <span class="op">+=</span> fread<span class="op">(</span>bytes<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">64</span><span class="op">,</span> fp<span class="op">)</span> <span class="op">&gt;&gt;</span> <span class="dv">3</span><span class="op">;</span> <span class="co">/* 2^3 bits per byte */</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-2"><a href="#cb14-2"></a>l <span class="op">+=</span> fread<span class="op">(</span>bytes<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">64</span><span class="op">,</span> fp<span class="op">);</span> <span class="co">/* Think about what type of thing "l" is counting */</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="fprintf" class="level3">
@@ -828,7 +828,7 @@ Note
 <li>Given a file name at command line…</li>
 <li>Prints out the contents of the file…</li>
 <li>In hexadecimal…</li>
-<li>In chunks of size 512 bytes.</li>
+<li>In chunks of size 512 bits.</li>
 </ul></li>
 <li>Sample input:</li>
 </ul>
@@ -898,7 +898,7 @@ Note
 <span id="cb22-3"><a href="#cb22-3"></a><span class="co"> *</span></span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="co"> * Write a C language executable that given a file name </span></span>
 <span id="cb22-5"><a href="#cb22-5"></a><span class="co"> * prints out the contents of the file in hexadecimal </span></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="co"> * in chunks of size 512 bytes.</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co"> * in chunks of size 512 bits.</span></span>
 <span id="cb22-7"><a href="#cb22-7"></a><span class="co"> */</span></span>
 <span id="cb22-8"><a href="#cb22-8"></a></span>
 <span id="cb22-9"><a href="#cb22-9"></a><span class="co">/*</span></span>
@@ -2209,7 +2209,7 @@ Note
 <span id="cb43-270"><a href="#cb43-270"></a></span>
 <span id="cb43-271"><a href="#cb43-271"></a><span class="in">```{.C}</span></span>
 <span id="cb43-272"><a href="#cb43-272"></a><span class="in">size_t l = 0; /* SHA-256 length variable 'l' */</span></span>
-<span id="cb43-273"><a href="#cb43-273"></a><span class="in">l += fread(bytes, 1, 64, fp) &gt;&gt; 3; /* 2^3 bits per byte */</span></span>
+<span id="cb43-273"><a href="#cb43-273"></a><span class="in">l += fread(bytes, 1, 64, fp); /* Think about what type of thing "l" is counting */</span></span>
 <span id="cb43-274"><a href="#cb43-274"></a><span class="in">```</span></span>
 <span id="cb43-275"><a href="#cb43-275"></a></span>
 <span id="cb43-276"><a href="#cb43-276"></a><span class="fu">### fprintf</span></span>
@@ -2264,7 +2264,7 @@ Note
 <span id="cb43-325"><a href="#cb43-325"></a><span class="ss">  - </span>Given a file name at command line...</span>
 <span id="cb43-326"><a href="#cb43-326"></a><span class="ss">  - </span>Prints out the contents of the file...</span>
 <span id="cb43-327"><a href="#cb43-327"></a><span class="ss">  - </span>In hexadecimal...</span>
-<span id="cb43-328"><a href="#cb43-328"></a><span class="ss">  - </span>In chunks of size 512 bytes.</span>
+<span id="cb43-328"><a href="#cb43-328"></a><span class="ss">  - </span>In chunks of size 512 bits.</span>
 <span id="cb43-329"><a href="#cb43-329"></a><span class="ss">- </span>Sample input:</span>
 <span id="cb43-330"><a href="#cb43-330"></a><span class="in">```{.html .code-overflow-wrap filename="lipsum.txt"}</span></span>
 <span id="cb43-331"><a href="#cb43-331"></a>Lorem ipsum dolor sit amet<span class="op">,</span> consectetur adipiscing elit<span class="op">,</span> sed <span class="cf">do</span> eiusmod tempor incididunt ut labore et dolore magna aliqua<span class="op">.</span> Ut enim ad minim veniam<span class="op">,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<span class="op">.</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur<span class="op">.</span> Excepteur sint occaecat cupidatat non proident<span class="op">,</span> sunt in culpa qui officia deserunt mollit anim id est laborum<span class="op">.</span></span>
@@ -2326,7 +2326,7 @@ Note
 <span id="cb43-387"><a href="#cb43-387"></a><span class="in"> *</span></span>
 <span id="cb43-388"><a href="#cb43-388"></a><span class="in"> * Write a C language executable that given a file name </span></span>
 <span id="cb43-389"><a href="#cb43-389"></a><span class="in"> * prints out the contents of the file in hexadecimal </span></span>
-<span id="cb43-390"><a href="#cb43-390"></a><span class="in"> * in chunks of size 512 bytes.</span></span>
+<span id="cb43-390"><a href="#cb43-390"></a><span class="in"> * in chunks of size 512 bits.</span></span>
 <span id="cb43-391"><a href="#cb43-391"></a><span class="in"> */</span></span>
 <span id="cb43-392"><a href="#cb43-392"></a></span>
 <span id="cb43-393"><a href="#cb43-393"></a><span class="in">/*</span></span>
