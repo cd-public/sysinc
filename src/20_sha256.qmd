@@ -1,11 +1,11 @@
 ---
 title: SHA256
-subtitle: "0x1.3"
+subtitle: "w2d0"
 ---
 
 ## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
 - **Action Items**:
   - How was Macros?
   - Next homework - SHAinC
@@ -13,8 +13,7 @@ subtitle: "0x1.3"
 ## Today
 
 - SHA256
-    -   Why?
-    -   What?
+    -   Why?    -   What?
     -   How?
 
 ## Slide Credit

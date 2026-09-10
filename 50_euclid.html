@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.6.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -67,17 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./51_ops_ui.html" rel="next">
 <link href="./42_rsainc.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-40a160e28a8c0a8ad2fc184c8ba4238c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-fc9c1a4fc1048689359919db0170c3de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -120,7 +117,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -138,7 +135,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -161,8 +158,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Systems in C</a> 
+    </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -492,7 +490,7 @@ window.Quarto = {
 <ul>
 <li>Least common multiple</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> gcd(a, b):</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> gcd(a, b):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">while</span> b:</span>
 <span id="cb1-4"><a href="#cb1-4"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
@@ -500,32 +498,32 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6"></a></span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="kw">def</span> lcm(a, b):</span>
 <span id="cb1-8"><a href="#cb1-8"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mmi" class="level1">
 <h1>MMI</h1>
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> find_d():</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> find_d():</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="cf">return</span> d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="cf">return</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modexp" class="level1">
 <h1>ModExp</h1>
 <ul>
 <li>Exponentation modulo <span class="math inline">\(n\)</span>.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> modexp(m, e, n):</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb3-3"><a href="#cb3-3"></a>      <span class="cf">return</span> <span class="dv">1</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
 <span id="cb3-5"><a href="#cb3-5"></a>      <span class="cf">return</span> m <span class="op">%</span> n</span>
 <span id="cb3-6"><a href="#cb3-6"></a>  <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
 <span id="cb3-7"><a href="#cb3-7"></a>      <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="context" class="level1">
 <h1>Context</h1>
@@ -541,7 +539,7 @@ window.Quarto = {
 <ul>
 <li>Division as implemented by “bigdiv”:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">uint64_t</span> bigdiv<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>quo<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>rem<span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">uint64_t</span> bigdiv<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>num<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>den<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>quo<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>rem<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="op">}</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a></span>
@@ -555,7 +553,7 @@ window.Quarto = {
 <span id="cb4-12"><a href="#cb4-12"></a>    <span class="dt">uint64_t</span> quo<span class="op">[</span>S<span class="op">];</span></span>
 <span id="cb4-13"><a href="#cb4-13"></a>    bigdiv<span class="op">(</span>num<span class="op">,</span>den<span class="op">,</span>quo<span class="op">,</span>rem<span class="op">);</span></span>
 <span id="cb4-14"><a href="#cb4-14"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="naive-division" class="level1">
 <h1>Naive Division</h1>
@@ -623,9 +621,9 @@ window.Quarto = {
 <ul>
 <li>In Python:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> div(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]:</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> div(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]:</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    <span class="co"># Euclidean Division</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">return</span> x <span class="op">//</span> y, x <span class="op">%</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">return</span> x <span class="op">//</span> y, x <span class="op">%</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>In Latex: <span class="math inline">\(\mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \times \mathbb{N}\)</span></li>
 </ul>
@@ -710,7 +708,7 @@ window.Quarto = {
 <ul>
 <li>Suppose we have</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>a, b <span class="op">=</span> <span class="dv">1071</span>, <span class="dv">462</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>a, b <span class="op">=</span> <span class="dv">1071</span>, <span class="dv">462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>We wish to find their <em>greatest common denominator</em></li>
 </ul>
@@ -720,39 +718,39 @@ window.Quarto = {
 <ol type="1">
 <li>Take the larger value</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x, y <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x, y <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="substract" class="level1">
 <h1>Substract</h1>
 <ol start="2" type="1">
 <li>Subtract the smaller value from the larger value until it is no longer larger.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">while</span> x <span class="op">&gt;=</span> y:</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    x <span class="op">-=</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">while</span> x <span class="op">&gt;=</span> y:</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    x <span class="op">-=</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="loop" class="level1">
 <h1>Loop</h1>
 <ol start="3" type="1">
 <li>Repeat…</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x, y <span class="op">=</span> <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x, y <span class="op">=</span> <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="terminate" class="level1">
 <h1>Terminate</h1>
 <ol start="4" type="1">
 <li>Stop when either x or y is zero</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x, y <span class="op">=</span> x <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> y <span class="op">!=</span> <span class="dv">0</span> ? <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y) : exit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x, y <span class="op">=</span> x <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> y <span class="op">!=</span> <span class="dv">0</span> ? <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y) : exit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="iteratively" class="level1">
 <h1>Iteratively</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># i am not about to try to spell "uelcidan lagorhtim"</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># i am not about to try to spell "uelcidan lagorhtim"</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
 <span id="cb11-3"><a href="#cb11-3"></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb11-4"><a href="#cb11-4"></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
 <span id="cb11-5"><a href="#cb11-5"></a>        <span class="cf">while</span> a <span class="op">&gt;=</span> b:</span>
 <span id="cb11-6"><a href="#cb11-6"></a>            a <span class="op">-=</span> b</span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modulo" class="level1">
 <h1>Modulo</h1>
@@ -760,12 +758,12 @@ window.Quarto = {
 <li>Essential we calculate a modulo or remainder (depending)</li>
 <li>Then… do that again.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># i am not about to try to spell "udelcian altoghtn"</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># i am not about to try to spell "udelcian altoghtn"</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
 <span id="cb12-3"><a href="#cb12-3"></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb12-4"><a href="#cb12-4"></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
 <span id="cb12-5"><a href="#cb12-5"></a>        a <span class="op">%=</span> b</span>
-<span id="cb12-6"><a href="#cb12-6"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-6"><a href="#cb12-6"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Recall - this <em>invented</em> division and modulo, so it can be done without assuming division and modulo.
 <ul>
@@ -781,8 +779,8 @@ window.Quarto = {
 <li>Here’s one mod implementation.</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Have to make a lot of design decisions here, this is one variant</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>recmod <span class="op">=</span> <span class="kw">lambda</span> a, b: recmod (a <span class="op">-</span> b, b) <span class="cf">if</span> a <span class="op">-</span> b <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Have to make a lot of design decisions here, this is one variant</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>recmod <span class="op">=</span> <span class="kw">lambda</span> a, b: recmod (a <span class="op">-</span> b, b) <span class="cf">if</span> a <span class="op">-</span> b <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="recursively-1" class="level1">
 <h1>Recursively</h1>
@@ -792,36 +790,36 @@ window.Quarto = {
 <li>Here’s recursive EA</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Much easier if we assume argument order, of course</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Much easier if we assume argument order, of course</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : rec_ea(<span class="bu">max</span>(a,b) <span class="op">%</span> <span class="bu">min</span>(a,b), <span class="bu">min</span>(a,b)) <span class="cf">if</span> <span class="bu">min</span>(a,b) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">max</span>(a,b)</span>
 <span id="cb14-3"><a href="#cb14-3"></a></span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="co"># I much prefer</span></span>
 <span id="cb14-5"><a href="#cb14-5"></a>helper <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(b, a <span class="op">%</span> b) <span class="cf">if</span> b <span class="cf">else</span> a</span>
-<span id="cb14-6"><a href="#cb14-6"></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(<span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-6"><a href="#cb14-6"></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(<span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="with-def" class="level1">
 <h1>With <code>def</code></h1>
 <ul>
 <li>We do not all love inlining, and that’s okay!</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb15-2"><a href="#cb15-2"></a>    a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
 <span id="cb15-3"><a href="#cb15-3"></a>    <span class="kw">def</span> inner(a, b):</span>
 <span id="cb15-4"><a href="#cb15-4"></a>        <span class="cf">if</span> b:</span>
 <span id="cb15-5"><a href="#cb15-5"></a>            <span class="cf">return</span> inner(b, a <span class="op">%</span> b)</span>
 <span id="cb15-6"><a href="#cb15-6"></a>        <span class="cf">else</span>: </span>
 <span id="cb15-7"><a href="#cb15-7"></a>            <span class="cf">return</span> a</span>
-<span id="cb15-8"><a href="#cb15-8"></a>    <span class="cf">return</span> inner(a,b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-8"><a href="#cb15-8"></a>    <span class="cf">return</span> inner(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="simplest" class="level1">
 <h1>Simplest</h1>
 <ul>
 <li>We can remove type hints and just trust bigger first.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> ea(a, b):</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> ea(a, b):</span>
 <span id="cb16-2"><a href="#cb16-2"></a>    <span class="cf">if</span> b:</span>
 <span id="cb16-3"><a href="#cb16-3"></a>        <span class="cf">return</span> ea(b, a <span class="op">%</span> b)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    <span class="cf">return</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-1" class="level1">
 <h1>Example</h1>
@@ -829,36 +827,36 @@ window.Quarto = {
 <li><code>ea(1071, 462)</code></li>
 <li>I will use the following:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> ea(a, b):</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> ea(a, b):</span>
 <span id="cb17-2"><a href="#cb17-2"></a>    <span class="bu">print</span>(<span class="ss">f"a = </span><span class="sc">{</span>a<span class="sc">:4d}</span><span class="ss">, b = </span><span class="sc">{</span>b<span class="sc">:4d}</span><span class="ss">"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a>    <span class="cf">if</span> b:</span>
 <span id="cb17-4"><a href="#cb17-4"></a>        <span class="cf">return</span> ea(b, a <span class="op">%</span> b)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>    <span class="cf">return</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>We get:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb18-1"><a href="#cb18-1"></a>a = 1071, b =  462</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb18-1"><a href="#cb18-1"></a>a = 1071, b =  462</span>
 <span id="cb18-2"><a href="#cb18-2"></a>a =  462, b =  147</span>
 <span id="cb18-3"><a href="#cb18-3"></a>a =  147, b =   21</span>
 <span id="cb18-4"><a href="#cb18-4"></a>a =   21, b =    0</span>
-<span id="cb18-5"><a href="#cb18-5"></a>21</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-5"><a href="#cb18-5"></a>21</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="test-it" class="level1">
 <h1>Test it</h1>
 <ul>
 <li>Both are divisible by 21!</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span><span class="op">/</span><span class="dv">21</span></span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span><span class="op">/</span><span class="dv">21</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="fl">51.0</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">462</span><span class="op">/</span><span class="dv">21</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="fl">22.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="fl">22.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="anyways" class="level1">
 <h1>Anyways</h1>
 <ul>
 <li>This is what GitHub Copilot did, I don’t know if we understood it at the time.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> gcd(a, b):</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> gcd(a, b):</span>
 <span id="cb20-2"><a href="#cb20-2"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a>    <span class="cf">while</span> b:</span>
 <span id="cb20-4"><a href="#cb20-4"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
@@ -866,7 +864,7 @@ window.Quarto = {
 <span id="cb20-6"><a href="#cb20-6"></a></span>
 <span id="cb20-7"><a href="#cb20-7"></a><span class="kw">def</span> lcm(a, b):</span>
 <span id="cb20-8"><a href="#cb20-8"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="section" class="level1">
 <h1></h1>
@@ -903,11 +901,11 @@ window.Quarto = {
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> find_d():</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> find_d():</span>
 <span id="cb21-2"><a href="#cb21-2"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
 <span id="cb21-4"><a href="#cb21-4"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="cf">return</span> d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="cf">return</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This is bad!
 <ul>
@@ -920,8 +918,8 @@ window.Quarto = {
 <ul>
 <li>It could loop this many times.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python code-overflow-wrap number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">4096</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="dv">1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python code-overflow-wrap number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">4096</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="dv">1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="we-note-1" class="level1">
 <h1>We note</h1>
@@ -1003,11 +1001,11 @@ window.Quarto = {
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> find_d():</span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> find_d():</span>
 <span id="cb23-2"><a href="#cb23-2"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
 <span id="cb23-4"><a href="#cb23-4"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="cf">return</span> d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="cf">return</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This is bad!
 <ul>
@@ -1035,7 +1033,7 @@ window.Quarto = {
 </section>
 <section id="section-1" class="level1">
 <h1></h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb24-1"><a href="#cb24-1"></a>function extended_gcd(a, b)</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb24-1"><a href="#cb24-1"></a>function extended_gcd(a, b)</span>
 <span id="cb24-2"><a href="#cb24-2"></a>    s := 0;    old_s := 1</span>
 <span id="cb24-3"><a href="#cb24-3"></a>    r := b;    old_r := a</span>
 <span id="cb24-4"><a href="#cb24-4"></a>         </span>
@@ -1050,17 +1048,17 @@ window.Quarto = {
 <span id="cb24-13"><a href="#cb24-13"></a>        bezout_t := 0</span>
 <span id="cb24-14"><a href="#cb24-14"></a>    </span>
 <span id="cb24-15"><a href="#cb24-15"></a>    output "Bézout coefficients:", (old_s, bezout_t)</span>
-<span id="cb24-16"><a href="#cb24-16"></a>    output "greatest common divisor:", old_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-16"><a href="#cb24-16"></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="x-and-y" class="level1">
 <h1><span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></h1>
 <ul>
 <li>We don’t need this:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb25-1"><a href="#cb25-1"></a>    if b ≠ 0 then</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb25-1"><a href="#cb25-1"></a>    if b ≠ 0 then</span>
 <span id="cb25-2"><a href="#cb25-2"></a>        bezout_t := (old_r − old_s × a) div b</span>
 <span id="cb25-3"><a href="#cb25-3"></a>    else</span>
-<span id="cb25-4"><a href="#cb25-4"></a>        bezout_t := 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-4"><a href="#cb25-4"></a>        bezout_t := 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>In Bézout’s identity: <span class="math display">\[
 \forall a, b \in \mathbb{Z} : \exists x, y \in \mathbb{Z} : a \times x + b \times y = \gcd(a,b)
@@ -1070,7 +1068,7 @@ window.Quarto = {
 </section>
 <section id="section-2" class="level1">
 <h1></h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb26-1"><a href="#cb26-1"></a>function extended_gcd(a, b)</span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb26-1"><a href="#cb26-1"></a>function extended_gcd(a, b)</span>
 <span id="cb26-2"><a href="#cb26-2"></a>    s := 0;    old_s := 1</span>
 <span id="cb26-3"><a href="#cb26-3"></a>    r := b;    old_r := a</span>
 <span id="cb26-4"><a href="#cb26-4"></a>         </span>
@@ -1080,24 +1078,24 @@ window.Quarto = {
 <span id="cb26-8"><a href="#cb26-8"></a>        (old_s, s) := (s, old_s − quotient × s)</span>
 <span id="cb26-9"><a href="#cb26-9"></a>    </span>
 <span id="cb26-10"><a href="#cb26-10"></a>    output "Bézout coefficient:", old_s</span>
-<span id="cb26-11"><a href="#cb26-11"></a>    output "greatest common divisor:", old_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-11"><a href="#cb26-11"></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modulo-1" class="level1">
 <h1>Modulo</h1>
 <ul>
 <li>This implementation does not calculate modulo</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb27-1"><a href="#cb27-1"></a>quotient := old_r div r</span>
-<span id="cb27-2"><a href="#cb27-2"></a>(old_r, r) := (r, old_r − quotient × r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb27-1"><a href="#cb27-1"></a>quotient := old_r div r</span>
+<span id="cb27-2"><a href="#cb27-2"></a>(old_r, r) := (r, old_r − quotient × r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>That is equal to</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb28-1"><a href="#cb28-1"></a>quotient := old_r div r</span>
-<span id="cb28-2"><a href="#cb28-2"></a>(old_r, r) := (r, old_r mod quotient)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb28-1"><a href="#cb28-1"></a>quotient := old_r div r</span>
+<span id="cb28-2"><a href="#cb28-2"></a>(old_r, r) := (r, old_r mod quotient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="section-3" class="level1">
 <h1></h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb29-1"><a href="#cb29-1"></a>function extended_gcd(a, b)</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb29-1"><a href="#cb29-1"></a>function extended_gcd(a, b)</span>
 <span id="cb29-2"><a href="#cb29-2"></a>    s := 0;    old_s := 1</span>
 <span id="cb29-3"><a href="#cb29-3"></a>    r := b;    old_r := a</span>
 <span id="cb29-4"><a href="#cb29-4"></a>         </span>
@@ -1107,7 +1105,7 @@ window.Quarto = {
 <span id="cb29-8"><a href="#cb29-8"></a>        (old_s, s) := (s, old_s mod quotient)</span>
 <span id="cb29-9"><a href="#cb29-9"></a>    </span>
 <span id="cb29-10"><a href="#cb29-10"></a>    output "Bézout coefficient:", old_s</span>
-<span id="cb29-11"><a href="#cb29-11"></a>    output "greatest common divisor:", old_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-11"><a href="#cb29-11"></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="recursion" class="level1">
 <h1>Recursion</h1>
@@ -1121,28 +1119,28 @@ window.Quarto = {
 </section>
 <section id="we-can-recurse" class="level1">
 <h1>We can recurse</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb30-1"><a href="#cb30-1"></a>function extended_gcd(a, b)</span>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb30-1"><a href="#cb30-1"></a>function extended_gcd(a, b)</span>
 <span id="cb30-2"><a href="#cb30-2"></a>    if b is 0 do</span>
 <span id="cb30-3"><a href="#cb30-3"></a>        output a, 1, 0</span>
 <span id="cb30-4"><a href="#cb30-4"></a>        </span>
 <span id="cb30-5"><a href="#cb30-5"></a>    r, s, t := extended_gcd(b, a mod b)</span>
 <span id="cb30-6"><a href="#cb30-6"></a>    </span>
-<span id="cb30-7"><a href="#cb30-7"></a>    output r, t, s - (a div b) × t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-7"><a href="#cb30-7"></a>    output r, t, s - (a div b) × t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="to-python" class="level1">
 <h1>To Python</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">def</span> extended_gcd(a, b):</span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">def</span> extended_gcd(a, b):</span>
 <span id="cb31-2"><a href="#cb31-2"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb31-3"><a href="#cb31-3"></a>        <span class="cf">return</span> a, <span class="dv">1</span>, <span class="dv">0</span></span>
 <span id="cb31-4"><a href="#cb31-4"></a>    r, s, t <span class="op">=</span> extended_gcd(b, a <span class="op">%</span> b)</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co"># no graceful mod here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-5"><a href="#cb31-5"></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co"># no graceful mod here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-2" class="level1">
 <h1>Example</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">&gt;&gt;&gt;</span> extended_gcd(<span class="dv">1071</span>, <span class="dv">462</span>)</span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">&gt;&gt;&gt;</span> extended_gcd(<span class="dv">1071</span>, <span class="dv">462</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>(<span class="dv">21</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>)</span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span> <span class="op">*</span> <span class="op">-</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">462</span> <span class="op">*</span> <span class="dv">7</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="dv">21</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="dv">21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wait-a-minute" class="level1">
 <h1>Wait a minute!</h1>
@@ -1158,11 +1156,11 @@ window.Quarto = {
 <li>The modular base is the totient.</li>
 <li>That is also the <code>b</code> value we use in the eea.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">def</span> find_d():</span>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">def</span> find_d():</span>
 <span id="cb33-2"><a href="#cb33-2"></a>    start <span class="op">=</span> extended_gcd(e,hide_λ())[<span class="dv">1</span>]</span>
 <span id="cb33-3"><a href="#cb33-3"></a>    <span class="cf">while</span> start <span class="op">&lt;</span> <span class="dv">0</span>:</span>
 <span id="cb33-4"><a href="#cb33-4"></a>        start <span class="op">+=</span> hide_λ()</span>
-<span id="cb33-5"><a href="#cb33-5"></a>    <span class="cf">return</span> start</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-5"><a href="#cb33-5"></a>    <span class="cf">return</span> start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reorder-2" class="level1">
 <h1>Reorder</h1>
@@ -1178,8 +1176,8 @@ window.Quarto = {
 <ul>
 <li>You have have noticed <code>bigmul</code> &amp; co cannot be used as infix operators.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>r <span class="op">=</span> m <span class="op">%</span> n <span class="co"># this is a little mul</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>bigmul(m, n, r) <span class="co"># this is the format of a big mul - not possible in Py</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>r <span class="op">=</span> m <span class="op">%</span> n <span class="co"># this is a little mul</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>bigmul(m, n, r) <span class="co"># this is the format of a big mul - not possible in Py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You will need to:
 <ul>
@@ -1191,7 +1189,7 @@ window.Quarto = {
 </section>
 <section id="all" class="level1">
 <h1>All</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">def</span> find_large_prime(k):</span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">def</span> find_large_prime(k):</span>
 <span id="cb35-2"><a href="#cb35-2"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
 <span id="cb35-3"><a href="#cb35-3"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb35-4"><a href="#cb35-4"></a>    <span class="co"># you need a prime tester</span></span>
@@ -1239,7 +1237,7 @@ window.Quarto = {
 <span id="cb35-46"><a href="#cb35-46"></a></span>
 <span id="cb35-47"><a href="#cb35-47"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
 <span id="cb35-48"><a href="#cb35-48"></a></span>
-<span id="cb35-49"><a href="#cb35-49"></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-49"><a href="#cb35-49"></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <!-- -->
@@ -1248,294 +1246,290 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
         } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
+          window.location.href = sourceUrl;
         }
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
         }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1543,161 +1537,185 @@ window.Quarto = {
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./42_rsainc.html" class="pagination-link" aria-label="RSAinC">
@@ -1710,7 +1728,7 @@ window.Quarto = {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">---</span></span>
+<div class="sourceCode" id="cb36" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">---</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="an">title:</span><span class="co"> Euclid</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="an">subtitle:</span><span class="co"> "Week 0x3.3"</span></span>
 <span id="cb36-4"><a href="#cb36-4"></a></span>
@@ -1750,15 +1768,15 @@ window.Quarto = {
 <span id="cb36-38"><a href="#cb36-38"></a><span class="ss">- </span>Least common multiple</span>
 <span id="cb36-39"><a href="#cb36-39"></a></span>
 <span id="cb36-40"><a href="#cb36-40"></a><span class="in">```{.python}</span></span>
-<span id="cb36-41"><a href="#cb36-41"></a><span class="kw">def</span> gcd(a, b):</span>
-<span id="cb36-42"><a href="#cb36-42"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
-<span id="cb36-43"><a href="#cb36-43"></a>    <span class="cf">while</span> b:</span>
-<span id="cb36-44"><a href="#cb36-44"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
-<span id="cb36-45"><a href="#cb36-45"></a>    <span class="cf">return</span> a</span>
+<span id="cb36-41"><a href="#cb36-41"></a><span class="in">def gcd(a, b):</span></span>
+<span id="cb36-42"><a href="#cb36-42"></a><span class="in">    """Calculate the Greatest Common Divisor of a and b."""</span></span>
+<span id="cb36-43"><a href="#cb36-43"></a><span class="in">    while b:</span></span>
+<span id="cb36-44"><a href="#cb36-44"></a><span class="in">        a, b = b, a % b</span></span>
+<span id="cb36-45"><a href="#cb36-45"></a><span class="in">    return a</span></span>
 <span id="cb36-46"><a href="#cb36-46"></a></span>
-<span id="cb36-47"><a href="#cb36-47"></a><span class="kw">def</span> lcm(a, b):</span>
-<span id="cb36-48"><a href="#cb36-48"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
-<span id="cb36-49"><a href="#cb36-49"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
+<span id="cb36-47"><a href="#cb36-47"></a><span class="in">def lcm(a, b):</span></span>
+<span id="cb36-48"><a href="#cb36-48"></a><span class="in">    """Calculate the Least Common Multiple of a and b."""</span></span>
+<span id="cb36-49"><a href="#cb36-49"></a><span class="in">    return a * b // gcd(a, b)</span></span>
 <span id="cb36-50"><a href="#cb36-50"></a><span class="in">```</span></span>
 <span id="cb36-51"><a href="#cb36-51"></a></span>
 <span id="cb36-52"><a href="#cb36-52"></a><span class="fu"># MMI</span></span>
@@ -1766,11 +1784,11 @@ window.Quarto = {
 <span id="cb36-54"><a href="#cb36-54"></a><span class="ss">- </span>Multiplicative Modular Inverse</span>
 <span id="cb36-55"><a href="#cb36-55"></a></span>
 <span id="cb36-56"><a href="#cb36-56"></a><span class="in">```{.python}</span></span>
-<span id="cb36-57"><a href="#cb36-57"></a><span class="kw">def</span> find_d():</span>
-<span id="cb36-58"><a href="#cb36-58"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb36-59"><a href="#cb36-59"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
-<span id="cb36-60"><a href="#cb36-60"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb36-61"><a href="#cb36-61"></a>  <span class="cf">return</span> d</span>
+<span id="cb36-57"><a href="#cb36-57"></a><span class="in">def find_d():</span></span>
+<span id="cb36-58"><a href="#cb36-58"></a><span class="in">  d = 1</span></span>
+<span id="cb36-59"><a href="#cb36-59"></a><span class="in">  while 1 != (d * e % hide_λ()):</span></span>
+<span id="cb36-60"><a href="#cb36-60"></a><span class="in">    d += 1</span></span>
+<span id="cb36-61"><a href="#cb36-61"></a><span class="in">  return d</span></span>
 <span id="cb36-62"><a href="#cb36-62"></a><span class="in">```</span></span>
 <span id="cb36-63"><a href="#cb36-63"></a></span>
 <span id="cb36-64"><a href="#cb36-64"></a><span class="fu"># ModExp</span></span>
@@ -1778,14 +1796,14 @@ window.Quarto = {
 <span id="cb36-66"><a href="#cb36-66"></a><span class="ss">- </span>Exponentation modulo $n$.</span>
 <span id="cb36-67"><a href="#cb36-67"></a></span>
 <span id="cb36-68"><a href="#cb36-68"></a><span class="in">```{.python}</span></span>
-<span id="cb36-69"><a href="#cb36-69"></a><span class="kw">def</span> modexp(m, e, n):</span>
-<span id="cb36-70"><a href="#cb36-70"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb36-71"><a href="#cb36-71"></a>      <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb36-72"><a href="#cb36-72"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb36-73"><a href="#cb36-73"></a>      <span class="cf">return</span> m <span class="op">%</span> n</span>
-<span id="cb36-74"><a href="#cb36-74"></a>  <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb36-75"><a href="#cb36-75"></a>      <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
-<span id="cb36-76"><a href="#cb36-76"></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
+<span id="cb36-69"><a href="#cb36-69"></a><span class="in">def modexp(m, e, n):</span></span>
+<span id="cb36-70"><a href="#cb36-70"></a><span class="in">  if e == 0:</span></span>
+<span id="cb36-71"><a href="#cb36-71"></a><span class="in">      return 1</span></span>
+<span id="cb36-72"><a href="#cb36-72"></a><span class="in">  if e == 1:</span></span>
+<span id="cb36-73"><a href="#cb36-73"></a><span class="in">      return m % n</span></span>
+<span id="cb36-74"><a href="#cb36-74"></a><span class="in">  if e % 2:</span></span>
+<span id="cb36-75"><a href="#cb36-75"></a><span class="in">      return (m * modexp(m*m % n, e//2, n)) % n</span></span>
+<span id="cb36-76"><a href="#cb36-76"></a><span class="in">  return  modexp(m*m % n, e//2, n) % n</span></span>
 <span id="cb36-77"><a href="#cb36-77"></a><span class="in">```</span></span>
 <span id="cb36-78"><a href="#cb36-78"></a></span>
 <span id="cb36-79"><a href="#cb36-79"></a><span class="fu"># Context</span></span>
@@ -1858,9 +1876,9 @@ window.Quarto = {
 <span id="cb36-146"><a href="#cb36-146"></a><span class="ss">- </span>In Python:</span>
 <span id="cb36-147"><a href="#cb36-147"></a></span>
 <span id="cb36-148"><a href="#cb36-148"></a><span class="in">```{.python}</span></span>
-<span id="cb36-149"><a href="#cb36-149"></a><span class="kw">def</span> div(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]:</span>
-<span id="cb36-150"><a href="#cb36-150"></a>    <span class="co"># Euclidean Division</span></span>
-<span id="cb36-151"><a href="#cb36-151"></a>    <span class="cf">return</span> x <span class="op">//</span> y, x <span class="op">%</span> y</span>
+<span id="cb36-149"><a href="#cb36-149"></a><span class="in">def div(x:int, y:int) -&gt; tuple[int, int]:</span></span>
+<span id="cb36-150"><a href="#cb36-150"></a><span class="in">    # Euclidean Division</span></span>
+<span id="cb36-151"><a href="#cb36-151"></a><span class="in">    return x // y, x % y</span></span>
 <span id="cb36-152"><a href="#cb36-152"></a><span class="in">```</span></span>
 <span id="cb36-153"><a href="#cb36-153"></a></span>
 <span id="cb36-154"><a href="#cb36-154"></a><span class="ss">- </span>In Latex: $\mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \times \mathbb{N}$</span>
@@ -1922,7 +1940,7 @@ window.Quarto = {
 <span id="cb36-210"><a href="#cb36-210"></a></span>
 <span id="cb36-211"><a href="#cb36-211"></a><span class="ss">- </span>Suppose we have</span>
 <span id="cb36-212"><a href="#cb36-212"></a><span class="in">```{.python}</span></span>
-<span id="cb36-213"><a href="#cb36-213"></a>a, b <span class="op">=</span> <span class="dv">1071</span>, <span class="dv">462</span></span>
+<span id="cb36-213"><a href="#cb36-213"></a><span class="in">a, b = 1071, 462</span></span>
 <span id="cb36-214"><a href="#cb36-214"></a><span class="in">```</span></span>
 <span id="cb36-215"><a href="#cb36-215"></a><span class="ss">- </span>We wish to find their *greatest common denominator*</span>
 <span id="cb36-216"><a href="#cb36-216"></a></span>
@@ -1930,7 +1948,7 @@ window.Quarto = {
 <span id="cb36-218"><a href="#cb36-218"></a></span>
 <span id="cb36-219"><a href="#cb36-219"></a><span class="ss">1. </span>Take the larger value</span>
 <span id="cb36-220"><a href="#cb36-220"></a><span class="in">```{.python}</span></span>
-<span id="cb36-221"><a href="#cb36-221"></a>x, y <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
+<span id="cb36-221"><a href="#cb36-221"></a><span class="in">x, y = max(a,b), min(a,b)</span></span>
 <span id="cb36-222"><a href="#cb36-222"></a><span class="in">```</span></span>
 <span id="cb36-223"><a href="#cb36-223"></a></span>
 <span id="cb36-224"><a href="#cb36-224"></a></span>
@@ -1938,8 +1956,8 @@ window.Quarto = {
 <span id="cb36-226"><a href="#cb36-226"></a></span>
 <span id="cb36-227"><a href="#cb36-227"></a><span class="ss">2. </span>Subtract the smaller value from the larger value until it is no longer larger.</span>
 <span id="cb36-228"><a href="#cb36-228"></a><span class="in">```{.python}</span></span>
-<span id="cb36-229"><a href="#cb36-229"></a><span class="cf">while</span> x <span class="op">&gt;=</span> y:</span>
-<span id="cb36-230"><a href="#cb36-230"></a>    x <span class="op">-=</span> y</span>
+<span id="cb36-229"><a href="#cb36-229"></a><span class="in">while x &gt;= y:</span></span>
+<span id="cb36-230"><a href="#cb36-230"></a><span class="in">    x -= y</span></span>
 <span id="cb36-231"><a href="#cb36-231"></a><span class="in">```</span></span>
 <span id="cb36-232"><a href="#cb36-232"></a></span>
 <span id="cb36-233"><a href="#cb36-233"></a><span class="fu"># Loop</span></span>
@@ -1947,7 +1965,7 @@ window.Quarto = {
 <span id="cb36-235"><a href="#cb36-235"></a><span class="ss">3. </span>Repeat...</span>
 <span id="cb36-236"><a href="#cb36-236"></a></span>
 <span id="cb36-237"><a href="#cb36-237"></a><span class="in">```{.python}</span></span>
-<span id="cb36-238"><a href="#cb36-238"></a>x, y <span class="op">=</span> <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y)</span>
+<span id="cb36-238"><a href="#cb36-238"></a><span class="in">x, y = max(x,y), min(x,y)</span></span>
 <span id="cb36-239"><a href="#cb36-239"></a><span class="in">```</span></span>
 <span id="cb36-240"><a href="#cb36-240"></a></span>
 <span id="cb36-241"><a href="#cb36-241"></a><span class="fu"># Terminate</span></span>
@@ -1955,19 +1973,19 @@ window.Quarto = {
 <span id="cb36-243"><a href="#cb36-243"></a><span class="ss">4. </span>Stop when either x or y is zero</span>
 <span id="cb36-244"><a href="#cb36-244"></a></span>
 <span id="cb36-245"><a href="#cb36-245"></a><span class="in">```{.python}</span></span>
-<span id="cb36-246"><a href="#cb36-246"></a>x, y <span class="op">=</span> x <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> y <span class="op">!=</span> <span class="dv">0</span> ? <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y) : exit()</span>
+<span id="cb36-246"><a href="#cb36-246"></a><span class="in">x, y = x != 0 and y != 0 ? max(x,y), min(x,y) : exit()</span></span>
 <span id="cb36-247"><a href="#cb36-247"></a><span class="in">```</span></span>
 <span id="cb36-248"><a href="#cb36-248"></a></span>
 <span id="cb36-249"><a href="#cb36-249"></a><span class="fu"># Iteratively</span></span>
 <span id="cb36-250"><a href="#cb36-250"></a></span>
 <span id="cb36-251"><a href="#cb36-251"></a><span class="in">```{.python}</span></span>
-<span id="cb36-252"><a href="#cb36-252"></a><span class="co"># i am not about to try to spell "uelcidan lagorhtim"</span></span>
-<span id="cb36-253"><a href="#cb36-253"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
-<span id="cb36-254"><a href="#cb36-254"></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb36-255"><a href="#cb36-255"></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
-<span id="cb36-256"><a href="#cb36-256"></a>        <span class="cf">while</span> a <span class="op">&gt;=</span> b:</span>
-<span id="cb36-257"><a href="#cb36-257"></a>            a <span class="op">-=</span> b</span>
-<span id="cb36-258"><a href="#cb36-258"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span>
+<span id="cb36-252"><a href="#cb36-252"></a><span class="in"># i am not about to try to spell "uelcidan lagorhtim"</span></span>
+<span id="cb36-253"><a href="#cb36-253"></a><span class="in">def ea(a:int, b:int) -&gt; int: </span></span>
+<span id="cb36-254"><a href="#cb36-254"></a><span class="in">    while min(a,b) != 0:</span></span>
+<span id="cb36-255"><a href="#cb36-255"></a><span class="in">        a, b = max(a,b), min(a,b)</span></span>
+<span id="cb36-256"><a href="#cb36-256"></a><span class="in">        while a &gt;= b:</span></span>
+<span id="cb36-257"><a href="#cb36-257"></a><span class="in">            a -= b</span></span>
+<span id="cb36-258"><a href="#cb36-258"></a><span class="in">    return max(a,b)</span></span>
 <span id="cb36-259"><a href="#cb36-259"></a><span class="in">```</span></span>
 <span id="cb36-260"><a href="#cb36-260"></a></span>
 <span id="cb36-261"><a href="#cb36-261"></a><span class="fu"># Modulo</span></span>
@@ -1976,12 +1994,12 @@ window.Quarto = {
 <span id="cb36-264"><a href="#cb36-264"></a><span class="ss">- </span>Then... do that again.</span>
 <span id="cb36-265"><a href="#cb36-265"></a>    </span>
 <span id="cb36-266"><a href="#cb36-266"></a><span class="in">```{.python}</span></span>
-<span id="cb36-267"><a href="#cb36-267"></a><span class="co"># i am not about to try to spell "udelcian altoghtn"</span></span>
-<span id="cb36-268"><a href="#cb36-268"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
-<span id="cb36-269"><a href="#cb36-269"></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb36-270"><a href="#cb36-270"></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
-<span id="cb36-271"><a href="#cb36-271"></a>        a <span class="op">%=</span> b</span>
-<span id="cb36-272"><a href="#cb36-272"></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span>
+<span id="cb36-267"><a href="#cb36-267"></a><span class="in"># i am not about to try to spell "udelcian altoghtn"</span></span>
+<span id="cb36-268"><a href="#cb36-268"></a><span class="in">def ea(a:int, b:int) -&gt; int: </span></span>
+<span id="cb36-269"><a href="#cb36-269"></a><span class="in">    while min(a,b) != 0:</span></span>
+<span id="cb36-270"><a href="#cb36-270"></a><span class="in">        a, b = max(a,b), min(a,b)</span></span>
+<span id="cb36-271"><a href="#cb36-271"></a><span class="in">        a %= b</span></span>
+<span id="cb36-272"><a href="#cb36-272"></a><span class="in">    return max(a,b)</span></span>
 <span id="cb36-273"><a href="#cb36-273"></a><span class="in">```</span></span>
 <span id="cb36-274"><a href="#cb36-274"></a></span>
 <span id="cb36-275"><a href="#cb36-275"></a><span class="ss">- </span>Recall - this *invented* division and modulo, so it can be done without assuming division and modulo.</span>
@@ -1993,8 +2011,8 @@ window.Quarto = {
 <span id="cb36-281"><a href="#cb36-281"></a><span class="ss">    - </span>Here's one mod implementation.</span>
 <span id="cb36-282"><a href="#cb36-282"></a></span>
 <span id="cb36-283"><a href="#cb36-283"></a><span class="in">```{.python}</span></span>
-<span id="cb36-284"><a href="#cb36-284"></a><span class="co"># Have to make a lot of design decisions here, this is one variant</span></span>
-<span id="cb36-285"><a href="#cb36-285"></a>recmod <span class="op">=</span> <span class="kw">lambda</span> a, b: recmod (a <span class="op">-</span> b, b) <span class="cf">if</span> a <span class="op">-</span> b <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> a</span>
+<span id="cb36-284"><a href="#cb36-284"></a><span class="in"># Have to make a lot of design decisions here, this is one variant</span></span>
+<span id="cb36-285"><a href="#cb36-285"></a><span class="in">recmod = lambda a, b: recmod (a - b, b) if a - b &gt;= 0 else a</span></span>
 <span id="cb36-286"><a href="#cb36-286"></a><span class="in">```</span></span>
 <span id="cb36-287"><a href="#cb36-287"></a></span>
 <span id="cb36-288"><a href="#cb36-288"></a></span>
@@ -2004,12 +2022,12 @@ window.Quarto = {
 <span id="cb36-292"><a href="#cb36-292"></a><span class="ss">    - </span>Here's recursive EA</span>
 <span id="cb36-293"><a href="#cb36-293"></a></span>
 <span id="cb36-294"><a href="#cb36-294"></a><span class="in">```{.python}</span></span>
-<span id="cb36-295"><a href="#cb36-295"></a><span class="co"># Much easier if we assume argument order, of course</span></span>
-<span id="cb36-296"><a href="#cb36-296"></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : rec_ea(<span class="bu">max</span>(a,b) <span class="op">%</span> <span class="bu">min</span>(a,b), <span class="bu">min</span>(a,b)) <span class="cf">if</span> <span class="bu">min</span>(a,b) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">max</span>(a,b)</span>
+<span id="cb36-295"><a href="#cb36-295"></a><span class="in"># Much easier if we assume argument order, of course</span></span>
+<span id="cb36-296"><a href="#cb36-296"></a><span class="in">rec_ea = lambda a, b : rec_ea(max(a,b) % min(a,b), min(a,b)) if min(a,b) &gt; 0 else max(a,b)</span></span>
 <span id="cb36-297"><a href="#cb36-297"></a></span>
-<span id="cb36-298"><a href="#cb36-298"></a><span class="co"># I much prefer</span></span>
-<span id="cb36-299"><a href="#cb36-299"></a>helper <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(b, a <span class="op">%</span> b) <span class="cf">if</span> b <span class="cf">else</span> a</span>
-<span id="cb36-300"><a href="#cb36-300"></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(<span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b))</span>
+<span id="cb36-298"><a href="#cb36-298"></a><span class="in"># I much prefer</span></span>
+<span id="cb36-299"><a href="#cb36-299"></a><span class="in">helper = lambda a, b : helper(b, a % b) if b else a</span></span>
+<span id="cb36-300"><a href="#cb36-300"></a><span class="in">rec_ea = lambda a, b : helper(max(a,b), min(a,b))</span></span>
 <span id="cb36-301"><a href="#cb36-301"></a><span class="in">```</span></span>
 <span id="cb36-302"><a href="#cb36-302"></a></span>
 <span id="cb36-303"><a href="#cb36-303"></a><span class="fu"># With `def`</span></span>
@@ -2017,14 +2035,14 @@ window.Quarto = {
 <span id="cb36-305"><a href="#cb36-305"></a><span class="ss">- </span>We do not all love inlining, and that's okay!</span>
 <span id="cb36-306"><a href="#cb36-306"></a></span>
 <span id="cb36-307"><a href="#cb36-307"></a><span class="in">```{.python}</span></span>
-<span id="cb36-308"><a href="#cb36-308"></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb36-309"><a href="#cb36-309"></a>    a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
-<span id="cb36-310"><a href="#cb36-310"></a>    <span class="kw">def</span> inner(a, b):</span>
-<span id="cb36-311"><a href="#cb36-311"></a>        <span class="cf">if</span> b:</span>
-<span id="cb36-312"><a href="#cb36-312"></a>            <span class="cf">return</span> inner(b, a <span class="op">%</span> b)</span>
-<span id="cb36-313"><a href="#cb36-313"></a>        <span class="cf">else</span>: </span>
-<span id="cb36-314"><a href="#cb36-314"></a>            <span class="cf">return</span> a</span>
-<span id="cb36-315"><a href="#cb36-315"></a>    <span class="cf">return</span> inner(a,b)</span>
+<span id="cb36-308"><a href="#cb36-308"></a><span class="in">def ea(a:int, b:int) -&gt; int:</span></span>
+<span id="cb36-309"><a href="#cb36-309"></a><span class="in">    a, b = max(a,b), min(a,b)</span></span>
+<span id="cb36-310"><a href="#cb36-310"></a><span class="in">    def inner(a, b):</span></span>
+<span id="cb36-311"><a href="#cb36-311"></a><span class="in">        if b:</span></span>
+<span id="cb36-312"><a href="#cb36-312"></a><span class="in">            return inner(b, a % b)</span></span>
+<span id="cb36-313"><a href="#cb36-313"></a><span class="in">        else: </span></span>
+<span id="cb36-314"><a href="#cb36-314"></a><span class="in">            return a</span></span>
+<span id="cb36-315"><a href="#cb36-315"></a><span class="in">    return inner(a,b)</span></span>
 <span id="cb36-316"><a href="#cb36-316"></a><span class="in">```</span></span>
 <span id="cb36-317"><a href="#cb36-317"></a></span>
 <span id="cb36-318"><a href="#cb36-318"></a><span class="fu"># Simplest</span></span>
@@ -2032,10 +2050,10 @@ window.Quarto = {
 <span id="cb36-320"><a href="#cb36-320"></a><span class="ss">- </span>We can remove type hints and just trust bigger first.</span>
 <span id="cb36-321"><a href="#cb36-321"></a></span>
 <span id="cb36-322"><a href="#cb36-322"></a><span class="in">```{.python}</span></span>
-<span id="cb36-323"><a href="#cb36-323"></a><span class="kw">def</span> ea(a, b):</span>
-<span id="cb36-324"><a href="#cb36-324"></a>    <span class="cf">if</span> b:</span>
-<span id="cb36-325"><a href="#cb36-325"></a>        <span class="cf">return</span> ea(b, a <span class="op">%</span> b)</span>
-<span id="cb36-326"><a href="#cb36-326"></a>    <span class="cf">return</span> a</span>
+<span id="cb36-323"><a href="#cb36-323"></a><span class="in">def ea(a, b):</span></span>
+<span id="cb36-324"><a href="#cb36-324"></a><span class="in">    if b:</span></span>
+<span id="cb36-325"><a href="#cb36-325"></a><span class="in">        return ea(b, a % b)</span></span>
+<span id="cb36-326"><a href="#cb36-326"></a><span class="in">    return a</span></span>
 <span id="cb36-327"><a href="#cb36-327"></a><span class="in">```</span></span>
 <span id="cb36-328"><a href="#cb36-328"></a></span>
 <span id="cb36-329"><a href="#cb36-329"></a><span class="fu"># Example</span></span>
@@ -2043,19 +2061,19 @@ window.Quarto = {
 <span id="cb36-331"><a href="#cb36-331"></a><span class="ss">- </span><span class="in">`ea(1071, 462)`</span></span>
 <span id="cb36-332"><a href="#cb36-332"></a><span class="ss">- </span>I will use the following:</span>
 <span id="cb36-333"><a href="#cb36-333"></a><span class="in">```{.python}</span></span>
-<span id="cb36-334"><a href="#cb36-334"></a><span class="kw">def</span> ea(a, b):</span>
-<span id="cb36-335"><a href="#cb36-335"></a>    <span class="bu">print</span>(<span class="ss">f"a = </span><span class="sc">{</span>a<span class="sc">:4d}</span><span class="ss">, b = </span><span class="sc">{</span>b<span class="sc">:4d}</span><span class="ss">"</span>)</span>
-<span id="cb36-336"><a href="#cb36-336"></a>    <span class="cf">if</span> b:</span>
-<span id="cb36-337"><a href="#cb36-337"></a>        <span class="cf">return</span> ea(b, a <span class="op">%</span> b)</span>
-<span id="cb36-338"><a href="#cb36-338"></a>    <span class="cf">return</span> a</span>
+<span id="cb36-334"><a href="#cb36-334"></a><span class="in">def ea(a, b):</span></span>
+<span id="cb36-335"><a href="#cb36-335"></a><span class="in">    print(f"a = {a:4d}, b = {b:4d}")</span></span>
+<span id="cb36-336"><a href="#cb36-336"></a><span class="in">    if b:</span></span>
+<span id="cb36-337"><a href="#cb36-337"></a><span class="in">        return ea(b, a % b)</span></span>
+<span id="cb36-338"><a href="#cb36-338"></a><span class="in">    return a</span></span>
 <span id="cb36-339"><a href="#cb36-339"></a><span class="in">```</span></span>
 <span id="cb36-340"><a href="#cb36-340"></a><span class="ss">- </span>We get:</span>
 <span id="cb36-341"><a href="#cb36-341"></a><span class="in">```{.email}</span></span>
-<span id="cb36-342"><a href="#cb36-342"></a>a = 1071, b =  462</span>
-<span id="cb36-343"><a href="#cb36-343"></a>a =  462, b =  147</span>
-<span id="cb36-344"><a href="#cb36-344"></a>a =  147, b =   21</span>
-<span id="cb36-345"><a href="#cb36-345"></a>a =   21, b =    0</span>
-<span id="cb36-346"><a href="#cb36-346"></a>21</span>
+<span id="cb36-342"><a href="#cb36-342"></a><span class="in">a = 1071, b =  462</span></span>
+<span id="cb36-343"><a href="#cb36-343"></a><span class="in">a =  462, b =  147</span></span>
+<span id="cb36-344"><a href="#cb36-344"></a><span class="in">a =  147, b =   21</span></span>
+<span id="cb36-345"><a href="#cb36-345"></a><span class="in">a =   21, b =    0</span></span>
+<span id="cb36-346"><a href="#cb36-346"></a><span class="in">21</span></span>
 <span id="cb36-347"><a href="#cb36-347"></a><span class="in">```</span></span>
 <span id="cb36-348"><a href="#cb36-348"></a></span>
 <span id="cb36-349"><a href="#cb36-349"></a><span class="fu"># Test it</span></span>
@@ -2063,10 +2081,10 @@ window.Quarto = {
 <span id="cb36-351"><a href="#cb36-351"></a><span class="ss">- </span>Both are divisible by 21!</span>
 <span id="cb36-352"><a href="#cb36-352"></a></span>
 <span id="cb36-353"><a href="#cb36-353"></a><span class="in">```{.python}</span></span>
-<span id="cb36-354"><a href="#cb36-354"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span><span class="op">/</span><span class="dv">21</span></span>
-<span id="cb36-355"><a href="#cb36-355"></a><span class="fl">51.0</span></span>
-<span id="cb36-356"><a href="#cb36-356"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">462</span><span class="op">/</span><span class="dv">21</span></span>
-<span id="cb36-357"><a href="#cb36-357"></a><span class="fl">22.0</span></span>
+<span id="cb36-354"><a href="#cb36-354"></a><span class="in">&gt;&gt;&gt; 1071/21</span></span>
+<span id="cb36-355"><a href="#cb36-355"></a><span class="in">51.0</span></span>
+<span id="cb36-356"><a href="#cb36-356"></a><span class="in">&gt;&gt;&gt; 462/21</span></span>
+<span id="cb36-357"><a href="#cb36-357"></a><span class="in">22.0</span></span>
 <span id="cb36-358"><a href="#cb36-358"></a><span class="in">```</span></span>
 <span id="cb36-359"><a href="#cb36-359"></a></span>
 <span id="cb36-360"><a href="#cb36-360"></a><span class="fu"># Anyways</span></span>
@@ -2074,15 +2092,15 @@ window.Quarto = {
 <span id="cb36-362"><a href="#cb36-362"></a><span class="ss">- </span>This is what GitHub Copilot did, I don't know if we understood it at the time.</span>
 <span id="cb36-363"><a href="#cb36-363"></a></span>
 <span id="cb36-364"><a href="#cb36-364"></a><span class="in">```{.python}</span></span>
-<span id="cb36-365"><a href="#cb36-365"></a><span class="kw">def</span> gcd(a, b):</span>
-<span id="cb36-366"><a href="#cb36-366"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
-<span id="cb36-367"><a href="#cb36-367"></a>    <span class="cf">while</span> b:</span>
-<span id="cb36-368"><a href="#cb36-368"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
-<span id="cb36-369"><a href="#cb36-369"></a>    <span class="cf">return</span> a</span>
+<span id="cb36-365"><a href="#cb36-365"></a><span class="in">def gcd(a, b):</span></span>
+<span id="cb36-366"><a href="#cb36-366"></a><span class="in">    """Calculate the Greatest Common Divisor of a and b."""</span></span>
+<span id="cb36-367"><a href="#cb36-367"></a><span class="in">    while b:</span></span>
+<span id="cb36-368"><a href="#cb36-368"></a><span class="in">        a, b = b, a % b</span></span>
+<span id="cb36-369"><a href="#cb36-369"></a><span class="in">    return a</span></span>
 <span id="cb36-370"><a href="#cb36-370"></a></span>
-<span id="cb36-371"><a href="#cb36-371"></a><span class="kw">def</span> lcm(a, b):</span>
-<span id="cb36-372"><a href="#cb36-372"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
-<span id="cb36-373"><a href="#cb36-373"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
+<span id="cb36-371"><a href="#cb36-371"></a><span class="in">def lcm(a, b):</span></span>
+<span id="cb36-372"><a href="#cb36-372"></a><span class="in">    """Calculate the Least Common Multiple of a and b."""</span></span>
+<span id="cb36-373"><a href="#cb36-373"></a><span class="in">    return a * b // gcd(a, b)</span></span>
 <span id="cb36-374"><a href="#cb36-374"></a><span class="in">```</span></span>
 <span id="cb36-375"><a href="#cb36-375"></a></span>
 <span id="cb36-376"><a href="#cb36-376"></a>#</span>
@@ -2122,11 +2140,11 @@ window.Quarto = {
 <span id="cb36-410"><a href="#cb36-410"></a><span class="ss">- </span>Multiplicative Modular Inverse</span>
 <span id="cb36-411"><a href="#cb36-411"></a></span>
 <span id="cb36-412"><a href="#cb36-412"></a><span class="in">```{.python}</span></span>
-<span id="cb36-413"><a href="#cb36-413"></a><span class="kw">def</span> find_d():</span>
-<span id="cb36-414"><a href="#cb36-414"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb36-415"><a href="#cb36-415"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
-<span id="cb36-416"><a href="#cb36-416"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb36-417"><a href="#cb36-417"></a>  <span class="cf">return</span> d</span>
+<span id="cb36-413"><a href="#cb36-413"></a><span class="in">def find_d():</span></span>
+<span id="cb36-414"><a href="#cb36-414"></a><span class="in">  d = 1</span></span>
+<span id="cb36-415"><a href="#cb36-415"></a><span class="in">  while 1 != (d * e % hide_λ()):</span></span>
+<span id="cb36-416"><a href="#cb36-416"></a><span class="in">    d += 1</span></span>
+<span id="cb36-417"><a href="#cb36-417"></a><span class="in">  return d</span></span>
 <span id="cb36-418"><a href="#cb36-418"></a><span class="in">```</span></span>
 <span id="cb36-419"><a href="#cb36-419"></a></span>
 <span id="cb36-420"><a href="#cb36-420"></a><span class="ss">- </span>This is bad!</span>
@@ -2136,8 +2154,8 @@ window.Quarto = {
 <span id="cb36-424"><a href="#cb36-424"></a></span>
 <span id="cb36-425"><a href="#cb36-425"></a><span class="ss">- </span>It could loop this many times.</span>
 <span id="cb36-426"><a href="#cb36-426"></a><span class="in">```{.python .code-overflow-wrap}</span></span>
-<span id="cb36-427"><a href="#cb36-427"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">4096</span></span>
-<span id="cb36-428"><a href="#cb36-428"></a><span class="dv">1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336</span></span>
+<span id="cb36-427"><a href="#cb36-427"></a><span class="in">&gt;&gt;&gt; 1 &lt;&lt; 4096</span></span>
+<span id="cb36-428"><a href="#cb36-428"></a><span class="in">1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336</span></span>
 <span id="cb36-429"><a href="#cb36-429"></a><span class="in">```</span></span>
 <span id="cb36-430"><a href="#cb36-430"></a></span>
 <span id="cb36-431"><a href="#cb36-431"></a><span class="fu"># We note</span></span>
@@ -2198,11 +2216,11 @@ window.Quarto = {
 <span id="cb36-486"><a href="#cb36-486"></a><span class="ss">- </span>Multiplicative Modular Inverse</span>
 <span id="cb36-487"><a href="#cb36-487"></a></span>
 <span id="cb36-488"><a href="#cb36-488"></a><span class="in">```{.python}</span></span>
-<span id="cb36-489"><a href="#cb36-489"></a><span class="kw">def</span> find_d():</span>
-<span id="cb36-490"><a href="#cb36-490"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb36-491"><a href="#cb36-491"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
-<span id="cb36-492"><a href="#cb36-492"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb36-493"><a href="#cb36-493"></a>  <span class="cf">return</span> d</span>
+<span id="cb36-489"><a href="#cb36-489"></a><span class="in">def find_d():</span></span>
+<span id="cb36-490"><a href="#cb36-490"></a><span class="in">  d = 1</span></span>
+<span id="cb36-491"><a href="#cb36-491"></a><span class="in">  while 1 != (d * e % hide_λ()):</span></span>
+<span id="cb36-492"><a href="#cb36-492"></a><span class="in">    d += 1</span></span>
+<span id="cb36-493"><a href="#cb36-493"></a><span class="in">  return d</span></span>
 <span id="cb36-494"><a href="#cb36-494"></a><span class="in">```</span></span>
 <span id="cb36-495"><a href="#cb36-495"></a></span>
 <span id="cb36-496"><a href="#cb36-496"></a><span class="ss">- </span>This is bad!</span>
@@ -2222,22 +2240,22 @@ window.Quarto = {
 <span id="cb36-510"><a href="#cb36-510"></a>#</span>
 <span id="cb36-511"><a href="#cb36-511"></a></span>
 <span id="cb36-512"><a href="#cb36-512"></a><span class="in">```{.email}</span></span>
-<span id="cb36-513"><a href="#cb36-513"></a>function extended_gcd(a, b)</span>
-<span id="cb36-514"><a href="#cb36-514"></a>    s := 0;    old_s := 1</span>
-<span id="cb36-515"><a href="#cb36-515"></a>    r := b;    old_r := a</span>
-<span id="cb36-516"><a href="#cb36-516"></a>         </span>
-<span id="cb36-517"><a href="#cb36-517"></a>    while r ≠ 0 do</span>
-<span id="cb36-518"><a href="#cb36-518"></a>        quotient := old_r div r</span>
-<span id="cb36-519"><a href="#cb36-519"></a>        (old_r, r) := (r, old_r − quotient × r)</span>
-<span id="cb36-520"><a href="#cb36-520"></a>        (old_s, s) := (s, old_s − quotient × s)</span>
-<span id="cb36-521"><a href="#cb36-521"></a>    </span>
-<span id="cb36-522"><a href="#cb36-522"></a>    if b ≠ 0 then</span>
-<span id="cb36-523"><a href="#cb36-523"></a>        bezout_t := (old_r − old_s × a) div b</span>
-<span id="cb36-524"><a href="#cb36-524"></a>    else</span>
-<span id="cb36-525"><a href="#cb36-525"></a>        bezout_t := 0</span>
-<span id="cb36-526"><a href="#cb36-526"></a>    </span>
-<span id="cb36-527"><a href="#cb36-527"></a>    output "Bézout coefficients:", (old_s, bezout_t)</span>
-<span id="cb36-528"><a href="#cb36-528"></a>    output "greatest common divisor:", old_r</span>
+<span id="cb36-513"><a href="#cb36-513"></a><span class="in">function extended_gcd(a, b)</span></span>
+<span id="cb36-514"><a href="#cb36-514"></a><span class="in">    s := 0;    old_s := 1</span></span>
+<span id="cb36-515"><a href="#cb36-515"></a><span class="in">    r := b;    old_r := a</span></span>
+<span id="cb36-516"><a href="#cb36-516"></a><span class="in">         </span></span>
+<span id="cb36-517"><a href="#cb36-517"></a><span class="in">    while r ≠ 0 do</span></span>
+<span id="cb36-518"><a href="#cb36-518"></a><span class="in">        quotient := old_r div r</span></span>
+<span id="cb36-519"><a href="#cb36-519"></a><span class="in">        (old_r, r) := (r, old_r − quotient × r)</span></span>
+<span id="cb36-520"><a href="#cb36-520"></a><span class="in">        (old_s, s) := (s, old_s − quotient × s)</span></span>
+<span id="cb36-521"><a href="#cb36-521"></a><span class="in">    </span></span>
+<span id="cb36-522"><a href="#cb36-522"></a><span class="in">    if b ≠ 0 then</span></span>
+<span id="cb36-523"><a href="#cb36-523"></a><span class="in">        bezout_t := (old_r − old_s × a) div b</span></span>
+<span id="cb36-524"><a href="#cb36-524"></a><span class="in">    else</span></span>
+<span id="cb36-525"><a href="#cb36-525"></a><span class="in">        bezout_t := 0</span></span>
+<span id="cb36-526"><a href="#cb36-526"></a><span class="in">    </span></span>
+<span id="cb36-527"><a href="#cb36-527"></a><span class="in">    output "Bézout coefficients:", (old_s, bezout_t)</span></span>
+<span id="cb36-528"><a href="#cb36-528"></a><span class="in">    output "greatest common divisor:", old_r</span></span>
 <span id="cb36-529"><a href="#cb36-529"></a><span class="in">```</span></span>
 <span id="cb36-530"><a href="#cb36-530"></a></span>
 <span id="cb36-531"><a href="#cb36-531"></a></span>
@@ -2245,10 +2263,10 @@ window.Quarto = {
 <span id="cb36-533"><a href="#cb36-533"></a></span>
 <span id="cb36-534"><a href="#cb36-534"></a><span class="ss">- </span>We don't need this:</span>
 <span id="cb36-535"><a href="#cb36-535"></a><span class="in">```{.email}</span></span>
-<span id="cb36-536"><a href="#cb36-536"></a>    if b ≠ 0 then</span>
-<span id="cb36-537"><a href="#cb36-537"></a>        bezout_t := (old_r − old_s × a) div b</span>
-<span id="cb36-538"><a href="#cb36-538"></a>    else</span>
-<span id="cb36-539"><a href="#cb36-539"></a>        bezout_t := 0</span>
+<span id="cb36-536"><a href="#cb36-536"></a><span class="in">    if b ≠ 0 then</span></span>
+<span id="cb36-537"><a href="#cb36-537"></a><span class="in">        bezout_t := (old_r − old_s × a) div b</span></span>
+<span id="cb36-538"><a href="#cb36-538"></a><span class="in">    else</span></span>
+<span id="cb36-539"><a href="#cb36-539"></a><span class="in">        bezout_t := 0</span></span>
 <span id="cb36-540"><a href="#cb36-540"></a><span class="in">```</span></span>
 <span id="cb36-541"><a href="#cb36-541"></a><span class="ss">- </span>In Bézout's identity:</span>
 <span id="cb36-542"><a href="#cb36-542"></a>$$</span>
@@ -2259,17 +2277,17 @@ window.Quarto = {
 <span id="cb36-547"><a href="#cb36-547"></a>#</span>
 <span id="cb36-548"><a href="#cb36-548"></a></span>
 <span id="cb36-549"><a href="#cb36-549"></a><span class="in">```{.email}</span></span>
-<span id="cb36-550"><a href="#cb36-550"></a>function extended_gcd(a, b)</span>
-<span id="cb36-551"><a href="#cb36-551"></a>    s := 0;    old_s := 1</span>
-<span id="cb36-552"><a href="#cb36-552"></a>    r := b;    old_r := a</span>
-<span id="cb36-553"><a href="#cb36-553"></a>         </span>
-<span id="cb36-554"><a href="#cb36-554"></a>    while r ≠ 0 do</span>
-<span id="cb36-555"><a href="#cb36-555"></a>        quotient := old_r div r</span>
-<span id="cb36-556"><a href="#cb36-556"></a>        (old_r, r) := (r, old_r − quotient × r)</span>
-<span id="cb36-557"><a href="#cb36-557"></a>        (old_s, s) := (s, old_s − quotient × s)</span>
-<span id="cb36-558"><a href="#cb36-558"></a>    </span>
-<span id="cb36-559"><a href="#cb36-559"></a>    output "Bézout coefficient:", old_s</span>
-<span id="cb36-560"><a href="#cb36-560"></a>    output "greatest common divisor:", old_r</span>
+<span id="cb36-550"><a href="#cb36-550"></a><span class="in">function extended_gcd(a, b)</span></span>
+<span id="cb36-551"><a href="#cb36-551"></a><span class="in">    s := 0;    old_s := 1</span></span>
+<span id="cb36-552"><a href="#cb36-552"></a><span class="in">    r := b;    old_r := a</span></span>
+<span id="cb36-553"><a href="#cb36-553"></a><span class="in">         </span></span>
+<span id="cb36-554"><a href="#cb36-554"></a><span class="in">    while r ≠ 0 do</span></span>
+<span id="cb36-555"><a href="#cb36-555"></a><span class="in">        quotient := old_r div r</span></span>
+<span id="cb36-556"><a href="#cb36-556"></a><span class="in">        (old_r, r) := (r, old_r − quotient × r)</span></span>
+<span id="cb36-557"><a href="#cb36-557"></a><span class="in">        (old_s, s) := (s, old_s − quotient × s)</span></span>
+<span id="cb36-558"><a href="#cb36-558"></a><span class="in">    </span></span>
+<span id="cb36-559"><a href="#cb36-559"></a><span class="in">    output "Bézout coefficient:", old_s</span></span>
+<span id="cb36-560"><a href="#cb36-560"></a><span class="in">    output "greatest common divisor:", old_r</span></span>
 <span id="cb36-561"><a href="#cb36-561"></a><span class="in">```</span></span>
 <span id="cb36-562"><a href="#cb36-562"></a></span>
 <span id="cb36-563"><a href="#cb36-563"></a></span>
@@ -2277,29 +2295,29 @@ window.Quarto = {
 <span id="cb36-565"><a href="#cb36-565"></a></span>
 <span id="cb36-566"><a href="#cb36-566"></a><span class="ss">- </span>This implementation does not calculate modulo</span>
 <span id="cb36-567"><a href="#cb36-567"></a><span class="in">```{.email}</span></span>
-<span id="cb36-568"><a href="#cb36-568"></a>quotient := old_r div r</span>
-<span id="cb36-569"><a href="#cb36-569"></a>(old_r, r) := (r, old_r − quotient × r)</span>
+<span id="cb36-568"><a href="#cb36-568"></a><span class="in">quotient := old_r div r</span></span>
+<span id="cb36-569"><a href="#cb36-569"></a><span class="in">(old_r, r) := (r, old_r − quotient × r)</span></span>
 <span id="cb36-570"><a href="#cb36-570"></a><span class="in">```</span></span>
 <span id="cb36-571"><a href="#cb36-571"></a><span class="ss">- </span>That is equal to </span>
 <span id="cb36-572"><a href="#cb36-572"></a><span class="in">```{.email}</span></span>
-<span id="cb36-573"><a href="#cb36-573"></a>quotient := old_r div r</span>
-<span id="cb36-574"><a href="#cb36-574"></a>(old_r, r) := (r, old_r mod quotient)</span>
+<span id="cb36-573"><a href="#cb36-573"></a><span class="in">quotient := old_r div r</span></span>
+<span id="cb36-574"><a href="#cb36-574"></a><span class="in">(old_r, r) := (r, old_r mod quotient)</span></span>
 <span id="cb36-575"><a href="#cb36-575"></a><span class="in">```</span></span>
 <span id="cb36-576"><a href="#cb36-576"></a></span>
 <span id="cb36-577"><a href="#cb36-577"></a>#</span>
 <span id="cb36-578"><a href="#cb36-578"></a></span>
 <span id="cb36-579"><a href="#cb36-579"></a><span class="in">```{.email}</span></span>
-<span id="cb36-580"><a href="#cb36-580"></a>function extended_gcd(a, b)</span>
-<span id="cb36-581"><a href="#cb36-581"></a>    s := 0;    old_s := 1</span>
-<span id="cb36-582"><a href="#cb36-582"></a>    r := b;    old_r := a</span>
-<span id="cb36-583"><a href="#cb36-583"></a>         </span>
-<span id="cb36-584"><a href="#cb36-584"></a>    while r ≠ 0 do</span>
-<span id="cb36-585"><a href="#cb36-585"></a>        quotient := old_r div r</span>
-<span id="cb36-586"><a href="#cb36-586"></a>        (old_r, r) := (r, old_r mod quotient)</span>
-<span id="cb36-587"><a href="#cb36-587"></a>        (old_s, s) := (s, old_s mod quotient)</span>
-<span id="cb36-588"><a href="#cb36-588"></a>    </span>
-<span id="cb36-589"><a href="#cb36-589"></a>    output "Bézout coefficient:", old_s</span>
-<span id="cb36-590"><a href="#cb36-590"></a>    output "greatest common divisor:", old_r</span>
+<span id="cb36-580"><a href="#cb36-580"></a><span class="in">function extended_gcd(a, b)</span></span>
+<span id="cb36-581"><a href="#cb36-581"></a><span class="in">    s := 0;    old_s := 1</span></span>
+<span id="cb36-582"><a href="#cb36-582"></a><span class="in">    r := b;    old_r := a</span></span>
+<span id="cb36-583"><a href="#cb36-583"></a><span class="in">         </span></span>
+<span id="cb36-584"><a href="#cb36-584"></a><span class="in">    while r ≠ 0 do</span></span>
+<span id="cb36-585"><a href="#cb36-585"></a><span class="in">        quotient := old_r div r</span></span>
+<span id="cb36-586"><a href="#cb36-586"></a><span class="in">        (old_r, r) := (r, old_r mod quotient)</span></span>
+<span id="cb36-587"><a href="#cb36-587"></a><span class="in">        (old_s, s) := (s, old_s mod quotient)</span></span>
+<span id="cb36-588"><a href="#cb36-588"></a><span class="in">    </span></span>
+<span id="cb36-589"><a href="#cb36-589"></a><span class="in">    output "Bézout coefficient:", old_s</span></span>
+<span id="cb36-590"><a href="#cb36-590"></a><span class="in">    output "greatest common divisor:", old_r</span></span>
 <span id="cb36-591"><a href="#cb36-591"></a><span class="in">```</span></span>
 <span id="cb36-592"><a href="#cb36-592"></a></span>
 <span id="cb36-593"><a href="#cb36-593"></a><span class="fu"># Recursion</span></span>
@@ -2311,32 +2329,32 @@ window.Quarto = {
 <span id="cb36-599"><a href="#cb36-599"></a><span class="fu"># We can recurse</span></span>
 <span id="cb36-600"><a href="#cb36-600"></a></span>
 <span id="cb36-601"><a href="#cb36-601"></a><span class="in">```{.email}</span></span>
-<span id="cb36-602"><a href="#cb36-602"></a>function extended_gcd(a, b)</span>
-<span id="cb36-603"><a href="#cb36-603"></a>    if b is 0 do</span>
-<span id="cb36-604"><a href="#cb36-604"></a>        output a, 1, 0</span>
-<span id="cb36-605"><a href="#cb36-605"></a>        </span>
-<span id="cb36-606"><a href="#cb36-606"></a>    r, s, t := extended_gcd(b, a mod b)</span>
-<span id="cb36-607"><a href="#cb36-607"></a>    </span>
-<span id="cb36-608"><a href="#cb36-608"></a>    output r, t, s - (a div b) × t</span>
+<span id="cb36-602"><a href="#cb36-602"></a><span class="in">function extended_gcd(a, b)</span></span>
+<span id="cb36-603"><a href="#cb36-603"></a><span class="in">    if b is 0 do</span></span>
+<span id="cb36-604"><a href="#cb36-604"></a><span class="in">        output a, 1, 0</span></span>
+<span id="cb36-605"><a href="#cb36-605"></a><span class="in">        </span></span>
+<span id="cb36-606"><a href="#cb36-606"></a><span class="in">    r, s, t := extended_gcd(b, a mod b)</span></span>
+<span id="cb36-607"><a href="#cb36-607"></a><span class="in">    </span></span>
+<span id="cb36-608"><a href="#cb36-608"></a><span class="in">    output r, t, s - (a div b) × t</span></span>
 <span id="cb36-609"><a href="#cb36-609"></a><span class="in">```</span></span>
 <span id="cb36-610"><a href="#cb36-610"></a></span>
 <span id="cb36-611"><a href="#cb36-611"></a><span class="fu"># To Python</span></span>
 <span id="cb36-612"><a href="#cb36-612"></a></span>
 <span id="cb36-613"><a href="#cb36-613"></a><span class="in">```{.python}</span></span>
-<span id="cb36-614"><a href="#cb36-614"></a><span class="kw">def</span> extended_gcd(a, b):</span>
-<span id="cb36-615"><a href="#cb36-615"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb36-616"><a href="#cb36-616"></a>        <span class="cf">return</span> a, <span class="dv">1</span>, <span class="dv">0</span></span>
-<span id="cb36-617"><a href="#cb36-617"></a>    r, s, t <span class="op">=</span> extended_gcd(b, a <span class="op">%</span> b)</span>
-<span id="cb36-618"><a href="#cb36-618"></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co"># no graceful mod here</span></span>
+<span id="cb36-614"><a href="#cb36-614"></a><span class="in">def extended_gcd(a, b):</span></span>
+<span id="cb36-615"><a href="#cb36-615"></a><span class="in">    if b == 0:</span></span>
+<span id="cb36-616"><a href="#cb36-616"></a><span class="in">        return a, 1, 0</span></span>
+<span id="cb36-617"><a href="#cb36-617"></a><span class="in">    r, s, t = extended_gcd(b, a % b)</span></span>
+<span id="cb36-618"><a href="#cb36-618"></a><span class="in">    return r, t, s - (a // b) * t # no graceful mod here</span></span>
 <span id="cb36-619"><a href="#cb36-619"></a><span class="in">```</span></span>
 <span id="cb36-620"><a href="#cb36-620"></a></span>
 <span id="cb36-621"><a href="#cb36-621"></a><span class="fu"># Example</span></span>
 <span id="cb36-622"><a href="#cb36-622"></a></span>
 <span id="cb36-623"><a href="#cb36-623"></a><span class="in">```{.python}</span></span>
-<span id="cb36-624"><a href="#cb36-624"></a><span class="op">&gt;&gt;&gt;</span> extended_gcd(<span class="dv">1071</span>, <span class="dv">462</span>)</span>
-<span id="cb36-625"><a href="#cb36-625"></a>(<span class="dv">21</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>)</span>
-<span id="cb36-626"><a href="#cb36-626"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span> <span class="op">*</span> <span class="op">-</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">462</span> <span class="op">*</span> <span class="dv">7</span></span>
-<span id="cb36-627"><a href="#cb36-627"></a><span class="dv">21</span></span>
+<span id="cb36-624"><a href="#cb36-624"></a><span class="in">&gt;&gt;&gt; extended_gcd(1071, 462)</span></span>
+<span id="cb36-625"><a href="#cb36-625"></a><span class="in">(21, -3, 7)</span></span>
+<span id="cb36-626"><a href="#cb36-626"></a><span class="in">&gt;&gt;&gt; 1071 * -3 + 462 * 7</span></span>
+<span id="cb36-627"><a href="#cb36-627"></a><span class="in">21</span></span>
 <span id="cb36-628"><a href="#cb36-628"></a><span class="in">```</span></span>
 <span id="cb36-629"><a href="#cb36-629"></a></span>
 <span id="cb36-630"><a href="#cb36-630"></a><span class="fu"># Wait a minute!</span></span>
@@ -2350,11 +2368,11 @@ window.Quarto = {
 <span id="cb36-638"><a href="#cb36-638"></a><span class="ss">- </span>The modular base is the totient.</span>
 <span id="cb36-639"><a href="#cb36-639"></a><span class="ss">- </span>That is also the <span class="in">`b`</span> value we use in the eea.</span>
 <span id="cb36-640"><a href="#cb36-640"></a><span class="in">```{.python}</span></span>
-<span id="cb36-641"><a href="#cb36-641"></a><span class="kw">def</span> find_d():</span>
-<span id="cb36-642"><a href="#cb36-642"></a>    start <span class="op">=</span> extended_gcd(e,hide_λ())[<span class="dv">1</span>]</span>
-<span id="cb36-643"><a href="#cb36-643"></a>    <span class="cf">while</span> start <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb36-644"><a href="#cb36-644"></a>        start <span class="op">+=</span> hide_λ()</span>
-<span id="cb36-645"><a href="#cb36-645"></a>    <span class="cf">return</span> start</span>
+<span id="cb36-641"><a href="#cb36-641"></a><span class="in">def find_d():</span></span>
+<span id="cb36-642"><a href="#cb36-642"></a><span class="in">    start = extended_gcd(e,hide_λ())[1]</span></span>
+<span id="cb36-643"><a href="#cb36-643"></a><span class="in">    while start &lt; 0:</span></span>
+<span id="cb36-644"><a href="#cb36-644"></a><span class="in">        start += hide_λ()</span></span>
+<span id="cb36-645"><a href="#cb36-645"></a><span class="in">    return start</span></span>
 <span id="cb36-646"><a href="#cb36-646"></a><span class="in">```</span></span>
 <span id="cb36-647"><a href="#cb36-647"></a></span>
 <span id="cb36-648"><a href="#cb36-648"></a><span class="fu"># Reorder</span></span>
@@ -2368,8 +2386,8 @@ window.Quarto = {
 <span id="cb36-656"><a href="#cb36-656"></a></span>
 <span id="cb36-657"><a href="#cb36-657"></a><span class="ss">- </span>You have have noticed <span class="in">`bigmul`</span> &amp; co cannot be used as infix operators.</span>
 <span id="cb36-658"><a href="#cb36-658"></a><span class="in">```{.python}</span></span>
-<span id="cb36-659"><a href="#cb36-659"></a>r <span class="op">=</span> m <span class="op">%</span> n <span class="co"># this is a little mul</span></span>
-<span id="cb36-660"><a href="#cb36-660"></a>bigmul(m, n, r) <span class="co"># this is the format of a big mul - not possible in Py</span></span>
+<span id="cb36-659"><a href="#cb36-659"></a><span class="in">r = m % n # this is a little mul</span></span>
+<span id="cb36-660"><a href="#cb36-660"></a><span class="in">bigmul(m, n, r) # this is the format of a big mul - not possible in Py</span></span>
 <span id="cb36-661"><a href="#cb36-661"></a><span class="in">```</span></span>
 <span id="cb36-662"><a href="#cb36-662"></a><span class="ss">- </span>You will need to:</span>
 <span id="cb36-663"><a href="#cb36-663"></a><span class="ss">    - </span>Track the sign of values</span>
@@ -2428,7 +2446,7 @@ window.Quarto = {
 <span id="cb36-716"><a href="#cb36-716"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
 <span id="cb36-717"><a href="#cb36-717"></a></span>
 <span id="cb36-718"><a href="#cb36-718"></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span>
-<span id="cb36-719"><a href="#cb36-719"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb36-719"><a href="#cb36-719"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
