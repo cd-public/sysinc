@@ -1,6 +1,6 @@
 ---
 title: Finite
-subtitle: "w3d0"
+subtitle: "w3d?"
 ---
 
 ## Announcements

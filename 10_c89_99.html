@@ -1441,13 +1441,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>I opened a new terminal and tested</li>
 </ul>
 <pre><code>gcc samp.c --std=c89</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
 <span id="cb37-3"><a href="#cb37-3"></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
 <span id="cb37-4"><a href="#cb37-4"></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
 <span id="cb37-5"><a href="#cb37-5"></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
 <span id="cb37-6"><a href="#cb37-6"></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
-<span id="cb37-7"><a href="#cb37-7"></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wall-etc" class="level2">
 <h2 class="anchored" data-anchor-id="wall-etc">-Wall etc</h2>
@@ -1759,7 +1759,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <ul>
 <li>GitHub Container Registry</li>
 </ul></li>
-<li>In the meantime, I’d just keep a Containerfile at top level in your “crypto” repo.</li>
+<li>In the meantime, I’d just keep a Containerfile at top level in your “sysinc” repo.</li>
 </ul>
 </section>
 <section id="today-4" class="level2">
@@ -3020,13 +3020,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb47-732"><a href="#cb47-732"></a><span class="in">```</span></span>
 <span id="cb47-733"><a href="#cb47-733"></a></span>
 <span id="cb47-734"><a href="#cb47-734"></a><span class="in">```bash</span></span>
-<span id="cb47-735"><a href="#cb47-735"></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
+<span id="cb47-735"><a href="#cb47-735"></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
 <span id="cb47-736"><a href="#cb47-736"></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
 <span id="cb47-737"><a href="#cb47-737"></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
 <span id="cb47-738"><a href="#cb47-738"></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
 <span id="cb47-739"><a href="#cb47-739"></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
 <span id="cb47-740"><a href="#cb47-740"></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
-<span id="cb47-741"><a href="#cb47-741"></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span>
+<span id="cb47-741"><a href="#cb47-741"></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span>
 <span id="cb47-742"><a href="#cb47-742"></a><span class="in">```</span></span>
 <span id="cb47-743"><a href="#cb47-743"></a></span>
 <span id="cb47-744"><a href="#cb47-744"></a><span class="fu">## -Wall etc</span></span>
@@ -3271,7 +3271,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb47-983"><a href="#cb47-983"></a><span class="ss">- </span>Over time, we'll try to operationalize code better and better</span>
 <span id="cb47-984"><a href="#cb47-984"></a><span class="ss">- </span>Eventually, I plan to ask for a container in "ghcr"</span>
 <span id="cb47-985"><a href="#cb47-985"></a><span class="ss">  - </span>GitHub Container Registry</span>
-<span id="cb47-986"><a href="#cb47-986"></a><span class="ss">- </span>In the meantime, I'd just keep a Containerfile at top level in your "crypto" repo.</span>
+<span id="cb47-986"><a href="#cb47-986"></a><span class="ss">- </span>In the meantime, I'd just keep a Containerfile at top level in your "sysinc" repo.</span>
 <span id="cb47-987"><a href="#cb47-987"></a></span>
 <span id="cb47-988"><a href="#cb47-988"></a><span class="fu">## Today</span></span>
 <span id="cb47-989"><a href="#cb47-989"></a></span>

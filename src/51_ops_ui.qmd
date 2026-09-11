@@ -1,5 +1,6 @@
 ---
 title: Ops_ui
+subtitle: "w6d1"
 format: html
 ---
 
@@ -38,8 +39,8 @@ RUN apt update && apt install gcc vim python3 libgmp3-dev -y
 - You will note it includes LibGMP.
   - [Read more](https://gist.github.com/cd-public/f22d9bde9ab546ae846eb40a9296b97d)
   - [Watch more](https://www.youtube.com/live/jEVIdGabjEk)
-  - LibGMP shouldn't be used in the final product but can be helpful in testing.
-  - I will make no use of LibGMP but you may wish to do so while working on the lab.
+  - LibGMP will help us latter but we need to learn what it is doing first.
+    - It will be helpful in testing.
     - I will refer to it frequently and it may be worth fiddling around with.
 - I worked in an `ops_ui.c` and `ops_ui.h` file, that I used in BigRSA
   - It can be helpful to directly add todays work to `4096_t` - or not, up to you.

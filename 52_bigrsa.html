@@ -363,9 +363,26 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#goal-implement-the-rivestshamiradleman-public-key-cryptosystem" id="toc-goal-implement-the-rivestshamiradleman-public-key-cryptosystem" class="nav-link" data-scroll-target="#goal-implement-the-rivestshamiradleman-public-key-cryptosystem">Goal: Implement the Rivest–Shamir–Adleman public-key cryptosystem</a></li>
   </ul></li>
-  <li><a href="#primes-show" id="toc-primes-show" class="nav-link" data-scroll-target="#primes-show">Primes&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls="primes" data-scroll-target="#primes">Show</a></li>
-  <li><a href="#biggcd-show" id="toc-biggcd-show" class="nav-link" data-scroll-target="#biggcd-show">BigGCD&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#biggcd" role="button" aria-expanded="false" aria-controls="biggcd" data-scroll-target="#biggcd">Show</a></li>
-  <li><a href="#bigkey-show" id="toc-bigkey-show" class="nav-link" data-scroll-target="#bigkey-show">BigKey&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls="keygen" data-scroll-target="#keygen">Show</a></li>
+  <li><a href="#primes-show" id="toc-primes-show" class="nav-link" data-scroll-target="#primes-show">Primes&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls="primes" data-scroll-target="#primes">Show</a>
+  <ul class="collapse">
+  <li><a href="#implement-big-primality-testing" id="toc-implement-big-primality-testing" class="nav-link" data-scroll-target="#implement-big-primality-testing">Implement Big Primality Testing</a>
+  <ul class="collapse">
+  <li><a href="#implement-randomization-via-devrandom" id="toc-implement-randomization-via-devrandom" class="nav-link" data-scroll-target="#implement-randomization-via-devrandom">Implement randomization via <code>/dev/random</code></a></li>
+  <li><a href="#implement-big-prime-generation" id="toc-implement-big-prime-generation" class="nav-link" data-scroll-target="#implement-big-prime-generation">Implement Big Prime Generation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#biggcd-show" id="toc-biggcd-show" class="nav-link" data-scroll-target="#biggcd-show">BigGCD&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#biggcd" role="button" aria-expanded="false" aria-controls="biggcd" data-scroll-target="#biggcd">Show</a>
+  <ul class="collapse">
+  <li><a href="#implement-biggcd" id="toc-implement-biggcd" class="nav-link" data-scroll-target="#implement-biggcd">Implement BigGCD</a></li>
+  </ul></li>
+  <li><a href="#bigkey-show" id="toc-bigkey-show" class="nav-link" data-scroll-target="#bigkey-show">BigKey&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls="keygen" data-scroll-target="#keygen">Show</a>
+  <ul class="collapse">
+  <li><a href="#generate-keys" id="toc-generate-keys" class="nav-link" data-scroll-target="#generate-keys">Generate Keys</a>
+  <ul class="collapse">
+  <li><a href="#a-private-key-in-3-parts" id="toc-a-private-key-in-3-parts" class="nav-link" data-scroll-target="#a-private-key-in-3-parts">A Private Key in 3 Parts</a></li>
+  <li><a href="#a-public-key-in-2-parts" id="toc-a-public-key-in-2-parts" class="nav-link" data-scroll-target="#a-public-key-in-2-parts">A Public Key in 2 Parts</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#bigrsa-show" id="toc-bigrsa-show" class="nav-link" data-scroll-target="#bigrsa-show">BigRSA&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#bigrsa" role="button" aria-expanded="false" aria-controls="bigrsa" data-scroll-target="#bigrsa">Show</a></li>
   <li><a href="#tester-show" id="toc-tester-show" class="nav-link" data-scroll-target="#tester-show">Tester&nbsp;</a><a class="btn btn-primary nav-link" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls="tester" data-scroll-target="#tester">Show</a>
   <ul class="collapse">
@@ -381,7 +398,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">BigRSA</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
-<p class="subtitle lead">HW 0x3: Due Mon, 04 Aug</p>
+<p class="subtitle lead">Due Mon, 29 Oct</p>
 </div>
 
 
@@ -406,7 +423,7 @@ window.Quarto = {
 <ul>
 <li>This is cumulative homework assignment across 4096_t and RSAinC</li>
 <li>Implement 4096 bit RSA.</li>
-<li>This is an extended homework of more than week, due after break. I recommend:</li>
+<li>This is an extended homework of more than week, due after break the midterm. I recommend:</li>
 </ul>
 <table class="caption-top table">
 <thead>
@@ -417,20 +434,16 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td>10 Mar</td>
+<td>15 Oct</td>
 <td>2048 bit prime generation</td>
 </tr>
 <tr class="even">
-<td>17 Mar</td>
+<td>22 Oct</td>
 <td>Unsigned big extended GCD</td>
 </tr>
 <tr class="odd">
-<td>24 Mar</td>
+<td>29 Oct</td>
 <td>Finish Key Generation and File I/O</td>
-</tr>
-<tr class="even">
-<td>31 Mar</td>
-<td>Implement BigRSA</td>
 </tr>
 </tbody>
 </table>
@@ -438,13 +451,25 @@ window.Quarto = {
 <li>You will also probably need to manage a file structure wherein 4096_t and ops_ui are includeded into your BigRSA.</li>
 <li>Use header files and examples from the labs.</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+It’s impossible.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the impossible assignment. Implement the entire assignment using your <code>4096_t</code>. At some point it will become clear that your <code>4096_t</code> is not performant enough to every compute a key. At that time, switch to using the GMP library and procede. However, you should in all cases ensure that it <em>could</em> be the case that could use your own code if you had infinite time or computing resources.</p>
+</div>
+</div>
 </section>
 </div>
 </section>
 <section id="primes-show" class="level1">
 <h1>Primes&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls="primes">Show</a></h1>
 <div id="primes" class="collapse multi-collapse">
-<p><em>Work on week of 10 Mar</em></p>
 <section id="implement-big-primality-testing" class="level2">
 <h2 class="anchored" data-anchor-id="implement-big-primality-testing">Implement Big Primality Testing</h2>
 <ul>
@@ -519,7 +544,6 @@ window.Quarto = {
 <section id="biggcd-show" class="level1">
 <h1>BigGCD&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#biggcd" role="button" aria-expanded="false" aria-controls="biggcd">Show</a></h1>
 <div id="biggcd" class="collapse multi-collapse">
-<p><em>Work on week of 17 Mar</em></p>
 <section id="implement-biggcd" class="level2">
 <h2 class="anchored" data-anchor-id="implement-biggcd">Implement BigGCD</h2>
 <ul>
@@ -542,7 +566,6 @@ window.Quarto = {
 <section id="bigkey-show" class="level1">
 <h1>BigKey&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls="keygen">Show</a></h1>
 <div id="keygen" class="collapse multi-collapse">
-<p><em>Work on week of 24 Mar</em></p>
 <section id="generate-keys" class="level2">
 <h2 class="anchored" data-anchor-id="generate-keys">Generate Keys</h2>
 <ul>
@@ -624,7 +647,6 @@ window.Quarto = {
 <section id="bigrsa-show" class="level1">
 <h1>BigRSA&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#bigrsa" role="button" aria-expanded="false" aria-controls="bigrsa">Show</a></h1>
 <div id="bigrsa" class="collapse multi-collapse">
-<p><em>Work on week of 31 Mar</em></p>
 <section id="implement-end-to-end-4096-bit-rsa" class="level2">
 <h2 class="anchored" data-anchor-id="implement-end-to-end-4096-bit-rsa">Implement End-to-end 4096 bit RSA</h2>
 <ul>
@@ -654,7 +676,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="a-note">A Note</h2>
 <ul>
 <li>Be advised that the square of a 4096 bit value requires 8198 bits to specify.</li>
-<li>It is reasonable to test of 512 (<code>openssl</code> minimum) or 1024 (<code>ssh-keygen</code> minumum size)</li>
+<li>It is reasonable to test 512 (<code>openssl</code> minimum) or 1024 (<code>ssh-keygen</code> minumum size)</li>
 </ul>
 </section>
 </div>
@@ -757,7 +779,7 @@ Spoiler Alert!
 </ul></li>
 <li>I am trusting you to either look at, or not look at, my code, based on what works best for your learning.
 <ul>
-<li>It is provided as is, and likely has few bugs, but probably not that few.</li>
+<li>It is provided as is, and likely has few bugs, but probably not too many.</li>
 </ul></li>
 <li>I am not requiring you to have any particular interfacing, though I am providing one as an example.</li>
 </ul></li>
@@ -819,7 +841,7 @@ Spoiler Alert!
 <section id="the-repository" class="level2">
 <h2 class="anchored" data-anchor-id="the-repository">The Repository</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -828,7 +850,7 @@ Expand for Reference Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>The repository is publicly visible at <a href="https://github.com/cd-c89/refrsa">github.com/cd-c89/refrsa</a></li>
@@ -1330,7 +1352,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">---</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="an">title:</span><span class="co"> BigRSA</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="an">subtitle:</span><span class="co"> "HW 0x3: Due Mon, 04 Aug"</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="an">subtitle:</span><span class="co"> "Due Mon, 29 Oct"</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="co">---</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a></span>
@@ -1343,321 +1365,320 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-13"><a href="#cb8-13"></a></span>
 <span id="cb8-14"><a href="#cb8-14"></a><span class="ss">- </span>This is cumulative homework assignment across 4096_t and RSAinC</span>
 <span id="cb8-15"><a href="#cb8-15"></a><span class="ss">- </span>Implement 4096 bit RSA.</span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="ss">- </span>This is an extended homework of more than week, due after break. I recommend:</span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="ss">- </span>This is an extended homework of more than week, due after break the midterm. I recommend:</span>
 <span id="cb8-17"><a href="#cb8-17"></a></span>
 <span id="cb8-18"><a href="#cb8-18"></a>| Week:    | Tasks:    |</span>
 <span id="cb8-19"><a href="#cb8-19"></a>| --------- | ---------- |</span>
-<span id="cb8-20"><a href="#cb8-20"></a>| 10 Mar | 2048 bit prime generation  |</span>
-<span id="cb8-21"><a href="#cb8-21"></a>| 17 Mar | Unsigned big extended GCD |</span>
-<span id="cb8-22"><a href="#cb8-22"></a>| 24 Mar | Finish Key Generation and File I/O |</span>
-<span id="cb8-23"><a href="#cb8-23"></a>| 31 Mar | Implement BigRSA |  </span>
-<span id="cb8-24"><a href="#cb8-24"></a></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="ss">- </span>You will also probably need to manage a file structure wherein 4096_t and ops_ui are includeded into your BigRSA.</span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="ss">- </span>Use header files and examples from the labs.</span>
-<span id="cb8-27"><a href="#cb8-27"></a></span>
-<span id="cb8-28"><a href="#cb8-28"></a>:::</span>
-<span id="cb8-29"><a href="#cb8-29"></a></span>
-<span id="cb8-30"><a href="#cb8-30"></a><span class="fu"># Primes&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls = "primes"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a></span>
-<span id="cb8-32"><a href="#cb8-32"></a>::: {#primes .collapse .multi-collapse}</span>
-<span id="cb8-33"><a href="#cb8-33"></a></span>
-<span id="cb8-34"><a href="#cb8-34"></a>*Work on week of 10 Mar*</span>
-<span id="cb8-35"><a href="#cb8-35"></a></span>
-<span id="cb8-36"><a href="#cb8-36"></a><span class="fu">## Implement Big Primality Testing</span></span>
-<span id="cb8-37"><a href="#cb8-37"></a></span>
-<span id="cb8-38"><a href="#cb8-38"></a><span class="ss">- </span>It turns out this is impossible. Nevertheless, we have a plan.</span>
-<span id="cb8-39"><a href="#cb8-39"></a></span>
-<span id="cb8-40"><a href="#cb8-40"></a><span class="fu">### Implement randomization via `/dev/random`</span></span>
-<span id="cb8-41"><a href="#cb8-41"></a></span>
-<span id="cb8-42"><a href="#cb8-42"></a><span class="ss">- </span><span class="in">`/dev/random`</span> and the more prefered but less established <span class="in">`/dev/urandom`</span> are file-like random number generations that could plausibly be cryptographically secure on your system.</span>
-<span id="cb8-43"><a href="#cb8-43"></a><span class="ss">- </span>We will not be able to implement cryptographically secure RSA, but we should follow the random number generation convention.</span>
-<span id="cb8-44"><a href="#cb8-44"></a><span class="ss">- </span>Basically, we read from <span class="in">`/dev/random`</span> as we would any other file, here is an example of reading and printing 4096 "random" bits.</span>
-<span id="cb8-45"><a href="#cb8-45"></a><span class="ss">  - </span><span class="in">`S`</span> is a constant defined in 4096_t</span>
+<span id="cb8-20"><a href="#cb8-20"></a>| 15 Oct | 2048 bit prime generation  |</span>
+<span id="cb8-21"><a href="#cb8-21"></a>| 22 Oct | Unsigned big extended GCD |</span>
+<span id="cb8-22"><a href="#cb8-22"></a>| 29 Oct | Finish Key Generation and File I/O |</span>
+<span id="cb8-23"><a href="#cb8-23"></a></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="ss">- </span>You will also probably need to manage a file structure wherein 4096_t and ops_ui are includeded into your BigRSA.</span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="ss">- </span>Use header files and examples from the labs.</span>
+<span id="cb8-26"><a href="#cb8-26"></a></span>
+<span id="cb8-27"><a href="#cb8-27"></a>::: {.callout-note appearance="simple"}</span>
+<span id="cb8-28"><a href="#cb8-28"></a></span>
+<span id="cb8-29"><a href="#cb8-29"></a><span class="fu">### It's impossible.</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a></span>
+<span id="cb8-31"><a href="#cb8-31"></a>This is the impossible assignment. Implement the entire assignment using your <span class="in">`4096_t`</span>. At some point it will become clear that your <span class="in">`4096_t`</span> is not performant enough to every compute a key. At that time, switch to using the GMP library and procede. However, you should in all cases ensure that it *could* be the case that could use your own code if you had infinite time or computing resources.</span>
+<span id="cb8-32"><a href="#cb8-32"></a></span>
+<span id="cb8-33"><a href="#cb8-33"></a>:::</span>
+<span id="cb8-34"><a href="#cb8-34"></a></span>
+<span id="cb8-35"><a href="#cb8-35"></a>:::</span>
+<span id="cb8-36"><a href="#cb8-36"></a></span>
+<span id="cb8-37"><a href="#cb8-37"></a><span class="fu"># Primes&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls = "primes"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-38"><a href="#cb8-38"></a></span>
+<span id="cb8-39"><a href="#cb8-39"></a>::: {#primes .collapse .multi-collapse}</span>
+<span id="cb8-40"><a href="#cb8-40"></a></span>
+<span id="cb8-41"><a href="#cb8-41"></a><span class="fu">## Implement Big Primality Testing</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a></span>
+<span id="cb8-43"><a href="#cb8-43"></a><span class="ss">- </span>It turns out this is impossible. Nevertheless, we have a plan.</span>
+<span id="cb8-44"><a href="#cb8-44"></a></span>
+<span id="cb8-45"><a href="#cb8-45"></a><span class="fu">### Implement randomization via `/dev/random`</span></span>
 <span id="cb8-46"><a href="#cb8-46"></a></span>
-<span id="cb8-47"><a href="#cb8-47"></a><span class="in">```{.C filename="BigRNG.c"}</span></span>
-<span id="cb8-48"><a href="#cb8-48"></a><span class="in">#include "4096_t.h"</span></span>
-<span id="cb8-49"><a href="#cb8-49"></a></span>
-<span id="cb8-50"><a href="#cb8-50"></a><span class="in">int main() {</span></span>
-<span id="cb8-51"><a href="#cb8-51"></a><span class="in">        uint64_t bignum[S];</span></span>
-<span id="cb8-52"><a href="#cb8-52"></a><span class="in">        FILE *fp = fopen("/dev/random", "r");</span></span>
-<span id="cb8-53"><a href="#cb8-53"></a><span class="in">        fread(bignum, sizeof(uint64_t), S, fp);</span></span>
-<span id="cb8-54"><a href="#cb8-54"></a><span class="in">        fclose(fp);</span></span>
-<span id="cb8-55"><a href="#cb8-55"></a><span class="in">        seebig(bignum);</span></span>
-<span id="cb8-56"><a href="#cb8-56"></a><span class="in">        return 0;</span></span>
-<span id="cb8-57"><a href="#cb8-57"></a><span class="in">}</span></span>
-<span id="cb8-58"><a href="#cb8-58"></a><span class="in">```</span></span>
-<span id="cb8-59"><a href="#cb8-59"></a></span>
-<span id="cb8-60"><a href="#cb8-60"></a><span class="ss">- </span>You will need to use randomization to select your primes.</span>
-<span id="cb8-61"><a href="#cb8-61"></a></span>
-<span id="cb8-62"><a href="#cb8-62"></a><span class="fu">### Implement Big Prime Generation</span></span>
-<span id="cb8-63"><a href="#cb8-63"></a></span>
-<span id="cb8-64"><a href="#cb8-64"></a><span class="ss">- </span>Use:</span>
-<span id="cb8-65"><a href="#cb8-65"></a><span class="ss">  - </span>libgmp</span>
-<span id="cb8-66"><a href="#cb8-66"></a><span class="ss">  - </span><span class="in">`/dev/random`</span></span>
-<span id="cb8-67"><a href="#cb8-67"></a><span class="ss">- </span>Basically, get this to work.</span>
-<span id="cb8-68"><a href="#cb8-68"></a><span class="ss">  - </span>It seemed fine for me.</span>
-<span id="cb8-69"><a href="#cb8-69"></a><span class="ss">  - </span><span class="in">`-lgmp`</span></span>
-<span id="cb8-70"><a href="#cb8-70"></a></span>
-<span id="cb8-71"><a href="#cb8-71"></a><span class="in">```{.C filename="BigRNG.c"}</span></span>
-<span id="cb8-72"><a href="#cb8-72"></a><span class="in">void prigmp(uint64_t *big, uint8_t words) {</span></span>
-<span id="cb8-73"><a href="#cb8-73"></a><span class="in">    /* populate from buffer */</span></span>
-<span id="cb8-74"><a href="#cb8-74"></a><span class="in">    mpz_t m;</span></span>
-<span id="cb8-75"><a href="#cb8-75"></a><span class="in">    FILE *fp = fopen("/dev/random", "r");</span></span>
-<span id="cb8-76"><a href="#cb8-76"></a><span class="in">    memset(big, 0, BYTES);</span></span>
-<span id="cb8-77"><a href="#cb8-77"></a><span class="in">    fread(big, sizeof(uint64_t), words, fp);</span></span>
-<span id="cb8-78"><a href="#cb8-78"></a><span class="in">    fclose(fp);</span></span>
-<span id="cb8-79"><a href="#cb8-79"></a><span class="in">    mpz_init(m);</span></span>
-<span id="cb8-80"><a href="#cb8-80"></a><span class="in">    mpz_import(m, S, -1, sizeof(uint64_t), 0, 0, big);</span></span>
-<span id="cb8-81"><a href="#cb8-81"></a><span class="in">    mpz_nextprime(m, m);</span></span>
-<span id="cb8-82"><a href="#cb8-82"></a><span class="in">    mpz_export(big, NULL, -1, sizeof(uint64_t), 0, 0, m);</span></span>
-<span id="cb8-83"><a href="#cb8-83"></a><span class="in">    mpz_clear(m);</span></span>
-<span id="cb8-84"><a href="#cb8-84"></a><span class="in">    return;</span></span>
-<span id="cb8-85"><a href="#cb8-85"></a><span class="in">}</span></span>
-<span id="cb8-86"><a href="#cb8-86"></a><span class="in">```</span></span>
-<span id="cb8-87"><a href="#cb8-87"></a></span>
-<span id="cb8-88"><a href="#cb8-88"></a>:::</span>
-<span id="cb8-89"><a href="#cb8-89"></a></span>
-<span id="cb8-90"><a href="#cb8-90"></a></span>
-<span id="cb8-91"><a href="#cb8-91"></a><span class="fu"># BigGCD&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#biggcd" role="button" aria-expanded="false" aria-controls = "biggcd"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-47"><a href="#cb8-47"></a><span class="ss">- </span><span class="in">`/dev/random`</span> and the more prefered but less established <span class="in">`/dev/urandom`</span> are file-like random number generations that could plausibly be cryptographically secure on your system.</span>
+<span id="cb8-48"><a href="#cb8-48"></a><span class="ss">- </span>We will not be able to implement cryptographically secure RSA, but we should follow the random number generation convention.</span>
+<span id="cb8-49"><a href="#cb8-49"></a><span class="ss">- </span>Basically, we read from <span class="in">`/dev/random`</span> as we would any other file, here is an example of reading and printing 4096 "random" bits.</span>
+<span id="cb8-50"><a href="#cb8-50"></a><span class="ss">  - </span><span class="in">`S`</span> is a constant defined in 4096_t</span>
+<span id="cb8-51"><a href="#cb8-51"></a></span>
+<span id="cb8-52"><a href="#cb8-52"></a><span class="in">```{.C filename="BigRNG.c"}</span></span>
+<span id="cb8-53"><a href="#cb8-53"></a><span class="in">#include "4096_t.h"</span></span>
+<span id="cb8-54"><a href="#cb8-54"></a></span>
+<span id="cb8-55"><a href="#cb8-55"></a><span class="in">int main() {</span></span>
+<span id="cb8-56"><a href="#cb8-56"></a><span class="in">        uint64_t bignum[S];</span></span>
+<span id="cb8-57"><a href="#cb8-57"></a><span class="in">        FILE *fp = fopen("/dev/random", "r");</span></span>
+<span id="cb8-58"><a href="#cb8-58"></a><span class="in">        fread(bignum, sizeof(uint64_t), S, fp);</span></span>
+<span id="cb8-59"><a href="#cb8-59"></a><span class="in">        fclose(fp);</span></span>
+<span id="cb8-60"><a href="#cb8-60"></a><span class="in">        seebig(bignum);</span></span>
+<span id="cb8-61"><a href="#cb8-61"></a><span class="in">        return 0;</span></span>
+<span id="cb8-62"><a href="#cb8-62"></a><span class="in">}</span></span>
+<span id="cb8-63"><a href="#cb8-63"></a><span class="in">```</span></span>
+<span id="cb8-64"><a href="#cb8-64"></a></span>
+<span id="cb8-65"><a href="#cb8-65"></a><span class="ss">- </span>You will need to use randomization to select your primes.</span>
+<span id="cb8-66"><a href="#cb8-66"></a></span>
+<span id="cb8-67"><a href="#cb8-67"></a><span class="fu">### Implement Big Prime Generation</span></span>
+<span id="cb8-68"><a href="#cb8-68"></a></span>
+<span id="cb8-69"><a href="#cb8-69"></a><span class="ss">- </span>Use:</span>
+<span id="cb8-70"><a href="#cb8-70"></a><span class="ss">  - </span>libgmp</span>
+<span id="cb8-71"><a href="#cb8-71"></a><span class="ss">  - </span><span class="in">`/dev/random`</span></span>
+<span id="cb8-72"><a href="#cb8-72"></a><span class="ss">- </span>Basically, get this to work.</span>
+<span id="cb8-73"><a href="#cb8-73"></a><span class="ss">  - </span>It seemed fine for me.</span>
+<span id="cb8-74"><a href="#cb8-74"></a><span class="ss">  - </span><span class="in">`-lgmp`</span></span>
+<span id="cb8-75"><a href="#cb8-75"></a></span>
+<span id="cb8-76"><a href="#cb8-76"></a><span class="in">```{.C filename="BigRNG.c"}</span></span>
+<span id="cb8-77"><a href="#cb8-77"></a><span class="in">void prigmp(uint64_t *big, uint8_t words) {</span></span>
+<span id="cb8-78"><a href="#cb8-78"></a><span class="in">    /* populate from buffer */</span></span>
+<span id="cb8-79"><a href="#cb8-79"></a><span class="in">    mpz_t m;</span></span>
+<span id="cb8-80"><a href="#cb8-80"></a><span class="in">    FILE *fp = fopen("/dev/random", "r");</span></span>
+<span id="cb8-81"><a href="#cb8-81"></a><span class="in">    memset(big, 0, BYTES);</span></span>
+<span id="cb8-82"><a href="#cb8-82"></a><span class="in">    fread(big, sizeof(uint64_t), words, fp);</span></span>
+<span id="cb8-83"><a href="#cb8-83"></a><span class="in">    fclose(fp);</span></span>
+<span id="cb8-84"><a href="#cb8-84"></a><span class="in">    mpz_init(m);</span></span>
+<span id="cb8-85"><a href="#cb8-85"></a><span class="in">    mpz_import(m, S, -1, sizeof(uint64_t), 0, 0, big);</span></span>
+<span id="cb8-86"><a href="#cb8-86"></a><span class="in">    mpz_nextprime(m, m);</span></span>
+<span id="cb8-87"><a href="#cb8-87"></a><span class="in">    mpz_export(big, NULL, -1, sizeof(uint64_t), 0, 0, m);</span></span>
+<span id="cb8-88"><a href="#cb8-88"></a><span class="in">    mpz_clear(m);</span></span>
+<span id="cb8-89"><a href="#cb8-89"></a><span class="in">    return;</span></span>
+<span id="cb8-90"><a href="#cb8-90"></a><span class="in">}</span></span>
+<span id="cb8-91"><a href="#cb8-91"></a><span class="in">```</span></span>
 <span id="cb8-92"><a href="#cb8-92"></a></span>
-<span id="cb8-93"><a href="#cb8-93"></a>::: {#biggcd .collapse .multi-collapse}</span>
+<span id="cb8-93"><a href="#cb8-93"></a>:::</span>
 <span id="cb8-94"><a href="#cb8-94"></a></span>
-<span id="cb8-95"><a href="#cb8-95"></a>*Work on week of 17 Mar*</span>
-<span id="cb8-96"><a href="#cb8-96"></a></span>
-<span id="cb8-97"><a href="#cb8-97"></a><span class="fu">## Implement BigGCD</span></span>
-<span id="cb8-98"><a href="#cb8-98"></a>        </span>
-<span id="cb8-99"><a href="#cb8-99"></a><span class="ss">- </span>Modifying the extended Euclidean algorithm / extended gcd for use with the 4096_t ints.</span>
-<span id="cb8-100"><a href="#cb8-100"></a><span class="ss">- </span>I had to do the following:</span>
-<span id="cb8-101"><a href="#cb8-101"></a><span class="ss">  - </span>Change all arithmetic operations from using infix operators like $+$ or $/$.</span>
-<span id="cb8-102"><a href="#cb8-102"></a><span class="ss">  - </span>Modifying the Euclidean algorithm to use only positive values.</span>
-<span id="cb8-103"><a href="#cb8-103"></a><span class="ss">  - </span>Test extensively.</span>
-<span id="cb8-104"><a href="#cb8-104"></a><span class="ss">- </span>You can also implement 4096_t to accomodate negative values (which I did not do).</span>
-<span id="cb8-105"><a href="#cb8-105"></a><span class="ss">  - </span>I instead created different local values with my EEA function that tracked whether everything was positive or negative.</span>
-<span id="cb8-106"><a href="#cb8-106"></a><span class="ss">  - </span>Then wrote wrapper functions around the "big" operations that tracked the sign values.</span>
-<span id="cb8-107"><a href="#cb8-107"></a></span>
-<span id="cb8-108"><a href="#cb8-108"></a>:::</span>
-<span id="cb8-109"><a href="#cb8-109"></a></span>
-<span id="cb8-110"><a href="#cb8-110"></a><span class="fu"># BigKey&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls = "keygen"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb8-111"><a href="#cb8-111"></a></span>
-<span id="cb8-112"><a href="#cb8-112"></a>::: {#keygen .collapse .multi-collapse}</span>
-<span id="cb8-113"><a href="#cb8-113"></a></span>
-<span id="cb8-114"><a href="#cb8-114"></a>*Work on week of 24 Mar*</span>
-<span id="cb8-115"><a href="#cb8-115"></a></span>
-<span id="cb8-116"><a href="#cb8-116"></a><span class="fu">## Generate Keys</span></span>
-<span id="cb8-117"><a href="#cb8-117"></a></span>
-<span id="cb8-118"><a href="#cb8-118"></a><span class="ss">- </span>Write a 4096 bit .bad and .pub file.</span>
-<span id="cb8-119"><a href="#cb8-119"></a><span class="ss">- </span>Implement in a .c file called "bigkey.c"</span>
-<span id="cb8-120"><a href="#cb8-120"></a><span class="ss">  - </span>It should behave identically to "keygen.c", but generate 4096 bit keys.</span>
-<span id="cb8-121"><a href="#cb8-121"></a><span class="ss">  - </span>The 4096 bit refers to how large the $n$ value should be</span>
-<span id="cb8-122"><a href="#cb8-122"></a><span class="ss">  - </span>E.g. the $e$ value may still be (decimal) 65537</span>
-<span id="cb8-123"><a href="#cb8-123"></a><span class="ss">- </span>The KeyGen description from "RSAinC" in provided below, as reference:</span>
-<span id="cb8-124"><a href="#cb8-124"></a></span>
-<span id="cb8-125"><a href="#cb8-125"></a><span class="fu">### A Private Key in 3 Parts</span></span>
-<span id="cb8-126"><a href="#cb8-126"></a></span>
-<span id="cb8-127"><a href="#cb8-127"></a><span class="ss">- </span>We recall that the private key minimally contains:</span>
-<span id="cb8-128"><a href="#cb8-128"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base</span>
-<span id="cb8-129"><a href="#cb8-129"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor, and </span>
-<span id="cb8-130"><a href="#cb8-130"></a><span class="ss">  - </span><span class="in">`d`</span>, a descryptor.</span>
-<span id="cb8-131"><a href="#cb8-131"></a></span>
-<span id="cb8-132"><a href="#cb8-132"></a><span class="ss">- </span>Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.</span>
-<span id="cb8-133"><a href="#cb8-133"></a><span class="ss">- </span>We will use <span class="in">`.bad`</span> instead of <span class="in">`.pem`</span> and insecurely store these values in plaintext.</span>
-<span id="cb8-134"><a href="#cb8-134"></a><span class="ss">- </span>We will then make executables to generate <span class="in">`.bad`</span> and encrypt content provided a <span class="in">`.bad`</span></span>
-<span id="cb8-135"><a href="#cb8-135"></a><span class="ss">    - </span>We name a <span class="in">`.bad`</span> so helpfully we don't use it by accident.</span>
-<span id="cb8-136"><a href="#cb8-136"></a><span class="ss">- </span>We will naively print 3 lines of hexademical values, <span class="in">`n`</span>, <span class="in">`e`</span>, then <span class="in">`d`</span>.</span>
-<span id="cb8-137"><a href="#cb8-137"></a><span class="ss">- </span>We will write them to a 5-line file as follows:</span>
-<span id="cb8-138"><a href="#cb8-138"></a><span class="ss">  - </span>The first line is the precise header text.</span>
-<span id="cb8-139"><a href="#cb8-139"></a><span class="ss">  - </span>The second line is the <span class="in">`n`</span> value in hexadecimal.</span>
-<span id="cb8-140"><a href="#cb8-140"></a><span class="ss">  - </span>The third line is the <span class="in">`e`</span> value, which is <span class="in">`10001`</span>.</span>
-<span id="cb8-141"><a href="#cb8-141"></a><span class="ss">  - </span>The fourth line is the <span class="in">`d`</span> value, which should be kept secret.</span>
-<span id="cb8-142"><a href="#cb8-142"></a><span class="ss">  - </span>The fifth and final line is the precise footer text.</span>
-<span id="cb8-143"><a href="#cb8-143"></a></span>
-<span id="cb8-144"><a href="#cb8-144"></a><span class="in">```{.email filename="unsafe.bad"}</span></span>
-<span id="cb8-145"><a href="#cb8-145"></a><span class="in">-----BEGIN UNSAFE PRIVATE KEY-----</span></span>
-<span id="cb8-146"><a href="#cb8-146"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb8-147"><a href="#cb8-147"></a><span class="in">10001</span></span>
-<span id="cb8-148"><a href="#cb8-148"></a><span class="in">fbea5e6a3ed31e8f</span></span>
-<span id="cb8-149"><a href="#cb8-149"></a><span class="in">-----END UNSAFE PRIVATE KEY-----</span></span>
-<span id="cb8-150"><a href="#cb8-150"></a><span class="in">```</span></span>
-<span id="cb8-151"><a href="#cb8-151"></a><span class="fu">### A Public Key in 2 Parts</span></span>
-<span id="cb8-152"><a href="#cb8-152"></a></span>
-<span id="cb8-153"><a href="#cb8-153"></a><span class="ss">- </span>We recall that the public key contains, and should only contain:</span>
-<span id="cb8-154"><a href="#cb8-154"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base, and</span>
-<span id="cb8-155"><a href="#cb8-155"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor</span>
-<span id="cb8-156"><a href="#cb8-156"></a></span>
-<span id="cb8-157"><a href="#cb8-157"></a><span class="ss">- </span>Based on the KeyGen lab, we already have the ability to write these values to file.</span>
-<span id="cb8-158"><a href="#cb8-158"></a><span class="ss">- </span>We will use <span class="in">`.pub`</span> instead of <span class="in">`.pem`</span> or <span class="in">`.bad`</span></span>
-<span id="cb8-159"><a href="#cb8-159"></a><span class="ss">  - </span>Not a huge deal how these are stored, actually.</span>
-<span id="cb8-160"><a href="#cb8-160"></a><span class="ss">  - </span>The key itself though, is still unsafe to use.</span>
-<span id="cb8-161"><a href="#cb8-161"></a><span class="ss">- </span>We will naively print 2 lines of hexademical values, <span class="in">`n`</span>, then <span class="in">`e`</span>.</span>
-<span id="cb8-162"><a href="#cb8-162"></a><span class="ss">- </span>We will right them to a file prefixed and suffixed as follows:</span>
-<span id="cb8-163"><a href="#cb8-163"></a></span>
-<span id="cb8-164"><a href="#cb8-164"></a><span class="in">```{.email filename="unsafe.pub"}</span></span>
-<span id="cb8-165"><a href="#cb8-165"></a><span class="in">-----BEGIN UNSAFE PUBLIC KEY-----</span></span>
-<span id="cb8-166"><a href="#cb8-166"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb8-167"><a href="#cb8-167"></a><span class="in">10001</span></span>
-<span id="cb8-168"><a href="#cb8-168"></a><span class="in">-----END UNSAFE PUBLIC KEY-----</span></span>
-<span id="cb8-169"><a href="#cb8-169"></a><span class="in">```</span></span>
-<span id="cb8-170"><a href="#cb8-170"></a></span>
-<span id="cb8-171"><a href="#cb8-171"></a>:::</span>
-<span id="cb8-172"><a href="#cb8-172"></a></span>
-<span id="cb8-173"><a href="#cb8-173"></a><span class="fu"># BigRSA&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#bigrsa" role="button" aria-expanded="false" aria-controls = "bigrsa"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb8-174"><a href="#cb8-174"></a></span>
-<span id="cb8-175"><a href="#cb8-175"></a>::: {#bigrsa .collapse .multi-collapse}</span>
-<span id="cb8-176"><a href="#cb8-176"></a></span>
-<span id="cb8-177"><a href="#cb8-177"></a>*Work on week of 31 Mar*</span>
-<span id="cb8-178"><a href="#cb8-178"></a></span>
-<span id="cb8-179"><a href="#cb8-179"></a><span class="fu">## Implement End-to-end 4096 bit RSA</span></span>
-<span id="cb8-180"><a href="#cb8-180"></a></span>
-<span id="cb8-181"><a href="#cb8-181"></a><span class="ss">- </span>Do so in a novel file, <span class="in">`bigrsa.c`</span>, which should:</span>
-<span id="cb8-182"><a href="#cb8-182"></a><span class="ss">  - </span>Accept 3 command line arguments:</span>
-<span id="cb8-183"><a href="#cb8-183"></a><span class="ss">    - </span>A flag <span class="in">`-d`</span> or <span class="in">`-e`</span> for decrypt or encrypt</span>
-<span id="cb8-184"><a href="#cb8-184"></a><span class="ss">    - </span>The file name of an input file.</span>
-<span id="cb8-185"><a href="#cb8-185"></a><span class="ss">    - </span>The file name of an output file.</span>
-<span id="cb8-186"><a href="#cb8-186"></a><span class="ss">  - </span>It should:</span>
-<span id="cb8-187"><a href="#cb8-187"></a><span class="ss">    - </span>Read the content of the input file.</span>
-<span id="cb8-188"><a href="#cb8-188"></a><span class="ss">    - </span>Encrypt or decrypt, as specified, the file contents.</span>
-<span id="cb8-189"><a href="#cb8-189"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`d`</span> from "unsafe.bad" to decrypt.</span>
-<span id="cb8-190"><a href="#cb8-190"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`e`</span> from "unsafe.pub" to encrypt.</span>
-<span id="cb8-191"><a href="#cb8-191"></a><span class="ss">    - </span>Write the encrypted or decrypted content to the output file.</span>
-<span id="cb8-192"><a href="#cb8-192"></a><span class="ss">- </span>Your BigRSA should function over either "keygen.c" 32 bit keys or "bigkey.c" 4096 bit keys.</span>
-<span id="cb8-193"><a href="#cb8-193"></a></span>
-<span id="cb8-194"><a href="#cb8-194"></a><span class="fu">## A Note</span></span>
-<span id="cb8-195"><a href="#cb8-195"></a></span>
-<span id="cb8-196"><a href="#cb8-196"></a><span class="ss">- </span>Be advised that the square of a 4096 bit value requires 8198 bits to specify.</span>
-<span id="cb8-197"><a href="#cb8-197"></a><span class="ss">- </span>It is reasonable to test of 512 (<span class="in">`openssl`</span> minimum) or 1024 (<span class="in">`ssh-keygen`</span> minumum size)</span>
-<span id="cb8-198"><a href="#cb8-198"></a></span>
-<span id="cb8-199"><a href="#cb8-199"></a>:::</span>
-<span id="cb8-200"><a href="#cb8-200"></a></span>
-<span id="cb8-201"><a href="#cb8-201"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb8-202"><a href="#cb8-202"></a></span>
-<span id="cb8-203"><a href="#cb8-203"></a>::: {#tester .collapse .multi-collapse}</span>
-<span id="cb8-204"><a href="#cb8-204"></a></span>
-<span id="cb8-205"><a href="#cb8-205"></a><span class="fu">## "Tester"</span></span>
-<span id="cb8-206"><a href="#cb8-206"></a></span>
-<span id="cb8-207"><a href="#cb8-207"></a><span class="ss">- </span>Rather than provide an end-to-end containerized autograder, I am providing a Makefile.</span>
-<span id="cb8-208"><a href="#cb8-208"></a><span class="in">```{.email}</span></span>
-<span id="cb8-209"><a href="#cb8-209"></a><span class="in">wget https://github.com/cd-c89/refrsa/raw/refs/heads/main/Makefile # curl was struggling</span></span>
-<span id="cb8-210"><a href="#cb8-210"></a><span class="in">```</span></span>
-<span id="cb8-211"><a href="#cb8-211"></a></span>
-<span id="cb8-212"><a href="#cb8-212"></a><span class="in">```{.Makefile filename="Makefile"}</span></span>
-<span id="cb8-213"><a href="#cb8-213"></a><span class="in">CC = gcc # or clang</span></span>
-<span id="cb8-214"><a href="#cb8-214"></a><span class="in">CFLAGS = -std=c89 -Wall -Wextra -Werror -Wpedantic -O2</span></span>
-<span id="cb8-215"><a href="#cb8-215"></a><span class="in">CLIBS = -lgmp # for biggmp and primes</span></span>
-<span id="cb8-216"><a href="#cb8-216"></a><span class="in">BIGNUM = biggmp.c # or use 4096_t.c</span></span>
-<span id="cb8-217"><a href="#cb8-217"></a></span>
-<span id="cb8-218"><a href="#cb8-218"></a><span class="in">all: bigrsa bigkey</span></span>
-<span id="cb8-219"><a href="#cb8-219"></a></span>
-<span id="cb8-220"><a href="#cb8-220"></a><span class="in">bigrsa: bigrsa.c $(BIGNUM) 4096_t.h</span></span>
-<span id="cb8-221"><a href="#cb8-221"></a><span class="in">    $(CC) bigrsa.c $(BIGNUM) $(CFLAGS) -o bigrsa $(CLIBS)</span></span>
-<span id="cb8-222"><a href="#cb8-222"></a><span class="in">    </span></span>
-<span id="cb8-223"><a href="#cb8-223"></a><span class="in">bigkey: bigkey.c $(BIGNUM) 4096_t.h</span></span>
-<span id="cb8-224"><a href="#cb8-224"></a><span class="in">    $(CC) bigkey.c $(BIGNUM) $(CFLAGS) -o bigkey $(CLIBS)</span></span>
-<span id="cb8-225"><a href="#cb8-225"></a></span>
-<span id="cb8-226"><a href="#cb8-226"></a><span class="in">clean:</span></span>
-<span id="cb8-227"><a href="#cb8-227"></a><span class="in">    rm -f bigrsa bigkey unsafe.* *.txt</span></span>
-<span id="cb8-228"><a href="#cb8-228"></a></span>
-<span id="cb8-229"><a href="#cb8-229"></a><span class="in">check: bigrsa bigkey</span></span>
-<span id="cb8-230"><a href="#cb8-230"></a><span class="in">    ./bigkey</span></span>
-<span id="cb8-231"><a href="#cb8-231"></a><span class="in">    echo "Multiple of four chars." &gt; m.txt</span></span>
-<span id="cb8-232"><a href="#cb8-232"></a><span class="in">    ./bigrsa -e m.txt c.txt</span></span>
-<span id="cb8-233"><a href="#cb8-233"></a><span class="in">    ./bigrsa -d c.txt n.txt</span></span>
-<span id="cb8-234"><a href="#cb8-234"></a><span class="in">    diff m.txt n.txt</span></span>
-<span id="cb8-235"><a href="#cb8-235"></a><span class="in">```</span></span>
-<span id="cb8-236"><a href="#cb8-236"></a></span>
-<span id="cb8-237"><a href="#cb8-237"></a><span class="ss">- </span>I am also providing:</span>
-<span id="cb8-238"><a href="#cb8-238"></a><span class="ss">  - </span>A reference solution that uses this Makefile.</span>
-<span id="cb8-239"><a href="#cb8-239"></a><span class="ss">  - </span>A GitHub action that uses this Makefile:</span>
-<span id="cb8-240"><a href="#cb8-240"></a></span>
-<span id="cb8-241"><a href="#cb8-241"></a><span class="in">```{.yml filename="C89.yml"}</span></span>
-<span id="cb8-242"><a href="#cb8-242"></a><span class="in">name: C89 CI</span></span>
-<span id="cb8-243"><a href="#cb8-243"></a></span>
-<span id="cb8-244"><a href="#cb8-244"></a><span class="in">on: push</span></span>
-<span id="cb8-245"><a href="#cb8-245"></a><span class="in">    </span></span>
-<span id="cb8-246"><a href="#cb8-246"></a><span class="in">jobs:</span></span>
-<span id="cb8-247"><a href="#cb8-247"></a><span class="in">  build:</span></span>
-<span id="cb8-248"><a href="#cb8-248"></a><span class="in">    runs-on: ubuntu-latest</span></span>
-<span id="cb8-249"><a href="#cb8-249"></a></span>
-<span id="cb8-250"><a href="#cb8-250"></a><span class="in">    steps:</span></span>
-<span id="cb8-251"><a href="#cb8-251"></a><span class="in">    - uses: actions/checkout@v4</span></span>
-<span id="cb8-252"><a href="#cb8-252"></a><span class="in">    - run: make check</span></span>
-<span id="cb8-253"><a href="#cb8-253"></a><span class="in">```</span></span>
-<span id="cb8-254"><a href="#cb8-254"></a></span>
-<span id="cb8-255"><a href="#cb8-255"></a><span class="ss">- </span>Read more in "Solved"</span>
-<span id="cb8-256"><a href="#cb8-256"></a></span>
-<span id="cb8-257"><a href="#cb8-257"></a>:::</span>
-<span id="cb8-258"><a href="#cb8-258"></a></span>
-<span id="cb8-259"><a href="#cb8-259"></a><span class="fu"># Solved&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#solved" role="button" aria-expanded="false" aria-controls = "solved"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb8-260"><a href="#cb8-260"></a></span>
-<span id="cb8-261"><a href="#cb8-261"></a>::: {#solved .collapse .multi-collapse}</span>
-<span id="cb8-262"><a href="#cb8-262"></a></span>
-<span id="cb8-263"><a href="#cb8-263"></a><span class="fu">## Solution</span></span>
-<span id="cb8-264"><a href="#cb8-264"></a></span>
-<span id="cb8-265"><a href="#cb8-265"></a>::: {.callout-danger}</span>
-<span id="cb8-266"><a href="#cb8-266"></a></span>
-<span id="cb8-267"><a href="#cb8-267"></a>*Spoiler alert*: This section contains spoilers, including a working solution, to the BigRSA assignment.</span>
-<span id="cb8-268"><a href="#cb8-268"></a></span>
-<span id="cb8-269"><a href="#cb8-269"></a>:::</span>
-<span id="cb8-270"><a href="#cb8-270"></a></span>
-<span id="cb8-271"><a href="#cb8-271"></a>::: {.callout-tip}</span>
-<span id="cb8-272"><a href="#cb8-272"></a><span class="fu">## Spoiler Alert!</span></span>
-<span id="cb8-273"><a href="#cb8-273"></a></span>
-<span id="cb8-274"><a href="#cb8-274"></a>This section contains spoilers, including a working solution, to the BigRSA assignment.</span>
-<span id="cb8-275"><a href="#cb8-275"></a></span>
-<span id="cb8-276"><a href="#cb8-276"></a>:::</span>
-<span id="cb8-277"><a href="#cb8-277"></a></span>
-<span id="cb8-278"><a href="#cb8-278"></a><span class="fu">## A Reference Solution</span></span>
-<span id="cb8-279"><a href="#cb8-279"></a></span>
-<span id="cb8-280"><a href="#cb8-280"></a><span class="ss">- </span>After careful reflection, the weight and challenge of this assignment made a single, in-container script insufficient, in my view, for testing.</span>
-<span id="cb8-281"><a href="#cb8-281"></a><span class="ss">- </span>In lieu, I am providing a full reference implementation, with a few caveats:</span>
-<span id="cb8-282"><a href="#cb8-282"></a><span class="ss">  - </span>I have maintained 4096_t solutions as closed source.</span>
-<span id="cb8-283"><a href="#cb8-283"></a><span class="ss">    - </span>Instead, I have implemented an interface to libgmp mpz_t numbers in <span class="in">`biggmp.c`</span></span>
-<span id="cb8-284"><a href="#cb8-284"></a><span class="ss">    - </span>If you are stuck on 4096_t, you should use this as well.</span>
-<span id="cb8-285"><a href="#cb8-285"></a><span class="ss">  - </span>I am trusting you to either look at, or not look at, my code, based on what works best for your learning.</span>
-<span id="cb8-286"><a href="#cb8-286"></a><span class="ss">    - </span>It is provided as is, and likely has few bugs, but probably not that few.</span>
-<span id="cb8-287"><a href="#cb8-287"></a><span class="ss">  - </span>I am not requiring you to have any particular interfacing, though I am providing one as an example.</span>
-<span id="cb8-288"><a href="#cb8-288"></a></span>
-<span id="cb8-289"><a href="#cb8-289"></a><span class="fu">## A Perfect System</span></span>
-<span id="cb8-290"><a href="#cb8-290"></a></span>
-<span id="cb8-291"><a href="#cb8-291"></a><span class="ss">- </span>A perfect project will:</span>
-<span id="cb8-292"><a href="#cb8-292"></a><span class="ss">  - </span>Use a 'bigkey' executable once to perform key generation:</span>
-<span id="cb8-293"><a href="#cb8-293"></a><span class="ss">    - </span>Write keys to two files, one public and one private.</span>
-<span id="cb8-294"><a href="#cb8-294"></a><span class="ss">  - </span>Use a 'bigrsa' executable twice to perform "round trip" encryption on a greater than 64 bit data file.</span>
-<span id="cb8-295"><a href="#cb8-295"></a><span class="ss">    - </span>Write more than 64 bits to a data file.</span>
-<span id="cb8-296"><a href="#cb8-296"></a><span class="ss">      - </span>It is easier to do a precise multiple of 64</span>
-<span id="cb8-297"><a href="#cb8-297"></a><span class="ss">    - </span>Encrypt this file and store the ciphertext as a new file.</span>
-<span id="cb8-298"><a href="#cb8-298"></a><span class="ss">    - </span>Decrypt the cipher text file.</span>
-<span id="cb8-299"><a href="#cb8-299"></a><span class="ss">    - </span>Take a <span class="in">`diff`</span> of the input file and the decrypted file.</span>
-<span id="cb8-300"><a href="#cb8-300"></a><span class="ss">      - </span>If the return code of diff <span class="in">`$?`</span> is 0, the project is a success.</span>
-<span id="cb8-301"><a href="#cb8-301"></a></span>
-<span id="cb8-302"><a href="#cb8-302"></a><span class="fu">## An explanation</span></span>
-<span id="cb8-303"><a href="#cb8-303"></a></span>
-<span id="cb8-304"><a href="#cb8-304"></a><span class="ss">- </span>Why this implementation?</span>
-<span id="cb8-305"><a href="#cb8-305"></a><span class="ss">  - </span>I could not find a way I liked to specify:</span>
-<span id="cb8-306"><a href="#cb8-306"></a><span class="ss">    - </span>Storing keys</span>
-<span id="cb8-307"><a href="#cb8-307"></a><span class="ss">    - </span>Story cipher texts</span>
-<span id="cb8-308"><a href="#cb8-308"></a><span class="ss">    - </span>Setting key lengths</span>
-<span id="cb8-309"><a href="#cb8-309"></a><span class="ss">  - </span>I felt any specification was unfairly restrictive.</span>
-<span id="cb8-310"><a href="#cb8-310"></a></span>
-<span id="cb8-311"><a href="#cb8-311"></a><span class="fu">## How to use the reference repository</span></span>
-<span id="cb8-312"><a href="#cb8-312"></a></span>
-<span id="cb8-313"><a href="#cb8-313"></a><span class="ss">- </span>Either clone the repository and include your own <span class="in">`bigrsa`</span> and <span class="in">`bigkey`</span> or,</span>
-<span id="cb8-314"><a href="#cb8-314"></a><span class="ss">- </span>Add the relevant files to your <span class="in">`crypto`</span> repository.</span>
-<span id="cb8-315"><a href="#cb8-315"></a><span class="ss">- </span>Study the Makefile closely, and use this reference material or <span class="in">`#help-line`</span> if you are confused.</span>
-<span id="cb8-316"><a href="#cb8-316"></a><span class="ss">  - </span>My favorite <span class="co">[</span><span class="ot">Makefile tutorial</span><span class="co">](https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)</span></span>
-<span id="cb8-317"><a href="#cb8-317"></a><span class="ss">- </span>You are not required to use GitHub actions (or containers, conspiciously absent) but may wish to do so.</span>
-<span id="cb8-318"><a href="#cb8-318"></a><span class="ss">- </span>You don't need to think about <span class="in">`clang`</span> vs <span class="in">`gcc`</span>, but I wanted to show you clang and Makefile variables.</span>
-<span id="cb8-319"><a href="#cb8-319"></a></span>
-<span id="cb8-320"><a href="#cb8-320"></a><span class="fu">## The Repository</span></span>
-<span id="cb8-321"><a href="#cb8-321"></a></span>
-<span id="cb8-322"><a href="#cb8-322"></a>::: {.callout-warning collapse="true"}</span>
-<span id="cb8-323"><a href="#cb8-323"></a><span class="fu">## Expand for Reference Solution</span></span>
-<span id="cb8-324"><a href="#cb8-324"></a></span>
-<span id="cb8-325"><a href="#cb8-325"></a><span class="ss">- </span>The repository is publicly visible at <span class="co">[</span><span class="ot">github.com/cd-c89/refrsa</span><span class="co">](https://github.com/cd-c89/refrsa)</span></span>
-<span id="cb8-326"><a href="#cb8-326"></a></span>
-<span id="cb8-327"><a href="#cb8-327"></a>:::</span>
+<span id="cb8-95"><a href="#cb8-95"></a></span>
+<span id="cb8-96"><a href="#cb8-96"></a><span class="fu"># BigGCD&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#biggcd" role="button" aria-expanded="false" aria-controls = "biggcd"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-97"><a href="#cb8-97"></a></span>
+<span id="cb8-98"><a href="#cb8-98"></a>::: {#biggcd .collapse .multi-collapse}</span>
+<span id="cb8-99"><a href="#cb8-99"></a></span>
+<span id="cb8-100"><a href="#cb8-100"></a><span class="fu">## Implement BigGCD</span></span>
+<span id="cb8-101"><a href="#cb8-101"></a>        </span>
+<span id="cb8-102"><a href="#cb8-102"></a><span class="ss">- </span>Modifying the extended Euclidean algorithm / extended gcd for use with the 4096_t ints.</span>
+<span id="cb8-103"><a href="#cb8-103"></a><span class="ss">- </span>I had to do the following:</span>
+<span id="cb8-104"><a href="#cb8-104"></a><span class="ss">  - </span>Change all arithmetic operations from using infix operators like $+$ or $/$.</span>
+<span id="cb8-105"><a href="#cb8-105"></a><span class="ss">  - </span>Modifying the Euclidean algorithm to use only positive values.</span>
+<span id="cb8-106"><a href="#cb8-106"></a><span class="ss">  - </span>Test extensively.</span>
+<span id="cb8-107"><a href="#cb8-107"></a><span class="ss">- </span>You can also implement 4096_t to accomodate negative values (which I did not do).</span>
+<span id="cb8-108"><a href="#cb8-108"></a><span class="ss">  - </span>I instead created different local values with my EEA function that tracked whether everything was positive or negative.</span>
+<span id="cb8-109"><a href="#cb8-109"></a><span class="ss">  - </span>Then wrote wrapper functions around the "big" operations that tracked the sign values.</span>
+<span id="cb8-110"><a href="#cb8-110"></a></span>
+<span id="cb8-111"><a href="#cb8-111"></a>:::</span>
+<span id="cb8-112"><a href="#cb8-112"></a></span>
+<span id="cb8-113"><a href="#cb8-113"></a><span class="fu"># BigKey&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls = "keygen"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-114"><a href="#cb8-114"></a></span>
+<span id="cb8-115"><a href="#cb8-115"></a>::: {#keygen .collapse .multi-collapse}</span>
+<span id="cb8-116"><a href="#cb8-116"></a></span>
+<span id="cb8-117"><a href="#cb8-117"></a><span class="fu">## Generate Keys</span></span>
+<span id="cb8-118"><a href="#cb8-118"></a></span>
+<span id="cb8-119"><a href="#cb8-119"></a><span class="ss">- </span>Write a 4096 bit .bad and .pub file.</span>
+<span id="cb8-120"><a href="#cb8-120"></a><span class="ss">- </span>Implement in a .c file called "bigkey.c"</span>
+<span id="cb8-121"><a href="#cb8-121"></a><span class="ss">  - </span>It should behave identically to "keygen.c", but generate 4096 bit keys.</span>
+<span id="cb8-122"><a href="#cb8-122"></a><span class="ss">  - </span>The 4096 bit refers to how large the $n$ value should be</span>
+<span id="cb8-123"><a href="#cb8-123"></a><span class="ss">  - </span>E.g. the $e$ value may still be (decimal) 65537</span>
+<span id="cb8-124"><a href="#cb8-124"></a><span class="ss">- </span>The KeyGen description from "RSAinC" in provided below, as reference:</span>
+<span id="cb8-125"><a href="#cb8-125"></a></span>
+<span id="cb8-126"><a href="#cb8-126"></a><span class="fu">### A Private Key in 3 Parts</span></span>
+<span id="cb8-127"><a href="#cb8-127"></a></span>
+<span id="cb8-128"><a href="#cb8-128"></a><span class="ss">- </span>We recall that the private key minimally contains:</span>
+<span id="cb8-129"><a href="#cb8-129"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base</span>
+<span id="cb8-130"><a href="#cb8-130"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor, and </span>
+<span id="cb8-131"><a href="#cb8-131"></a><span class="ss">  - </span><span class="in">`d`</span>, a descryptor.</span>
+<span id="cb8-132"><a href="#cb8-132"></a></span>
+<span id="cb8-133"><a href="#cb8-133"></a><span class="ss">- </span>Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.</span>
+<span id="cb8-134"><a href="#cb8-134"></a><span class="ss">- </span>We will use <span class="in">`.bad`</span> instead of <span class="in">`.pem`</span> and insecurely store these values in plaintext.</span>
+<span id="cb8-135"><a href="#cb8-135"></a><span class="ss">- </span>We will then make executables to generate <span class="in">`.bad`</span> and encrypt content provided a <span class="in">`.bad`</span></span>
+<span id="cb8-136"><a href="#cb8-136"></a><span class="ss">    - </span>We name a <span class="in">`.bad`</span> so helpfully we don't use it by accident.</span>
+<span id="cb8-137"><a href="#cb8-137"></a><span class="ss">- </span>We will naively print 3 lines of hexademical values, <span class="in">`n`</span>, <span class="in">`e`</span>, then <span class="in">`d`</span>.</span>
+<span id="cb8-138"><a href="#cb8-138"></a><span class="ss">- </span>We will write them to a 5-line file as follows:</span>
+<span id="cb8-139"><a href="#cb8-139"></a><span class="ss">  - </span>The first line is the precise header text.</span>
+<span id="cb8-140"><a href="#cb8-140"></a><span class="ss">  - </span>The second line is the <span class="in">`n`</span> value in hexadecimal.</span>
+<span id="cb8-141"><a href="#cb8-141"></a><span class="ss">  - </span>The third line is the <span class="in">`e`</span> value, which is <span class="in">`10001`</span>.</span>
+<span id="cb8-142"><a href="#cb8-142"></a><span class="ss">  - </span>The fourth line is the <span class="in">`d`</span> value, which should be kept secret.</span>
+<span id="cb8-143"><a href="#cb8-143"></a><span class="ss">  - </span>The fifth and final line is the precise footer text.</span>
+<span id="cb8-144"><a href="#cb8-144"></a></span>
+<span id="cb8-145"><a href="#cb8-145"></a><span class="in">```{.email filename="unsafe.bad"}</span></span>
+<span id="cb8-146"><a href="#cb8-146"></a><span class="in">-----BEGIN UNSAFE PRIVATE KEY-----</span></span>
+<span id="cb8-147"><a href="#cb8-147"></a><span class="in">95a61f99198bd8e9</span></span>
+<span id="cb8-148"><a href="#cb8-148"></a><span class="in">10001</span></span>
+<span id="cb8-149"><a href="#cb8-149"></a><span class="in">fbea5e6a3ed31e8f</span></span>
+<span id="cb8-150"><a href="#cb8-150"></a><span class="in">-----END UNSAFE PRIVATE KEY-----</span></span>
+<span id="cb8-151"><a href="#cb8-151"></a><span class="in">```</span></span>
+<span id="cb8-152"><a href="#cb8-152"></a><span class="fu">### A Public Key in 2 Parts</span></span>
+<span id="cb8-153"><a href="#cb8-153"></a></span>
+<span id="cb8-154"><a href="#cb8-154"></a><span class="ss">- </span>We recall that the public key contains, and should only contain:</span>
+<span id="cb8-155"><a href="#cb8-155"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base, and</span>
+<span id="cb8-156"><a href="#cb8-156"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor</span>
+<span id="cb8-157"><a href="#cb8-157"></a></span>
+<span id="cb8-158"><a href="#cb8-158"></a><span class="ss">- </span>Based on the KeyGen lab, we already have the ability to write these values to file.</span>
+<span id="cb8-159"><a href="#cb8-159"></a><span class="ss">- </span>We will use <span class="in">`.pub`</span> instead of <span class="in">`.pem`</span> or <span class="in">`.bad`</span></span>
+<span id="cb8-160"><a href="#cb8-160"></a><span class="ss">  - </span>Not a huge deal how these are stored, actually.</span>
+<span id="cb8-161"><a href="#cb8-161"></a><span class="ss">  - </span>The key itself though, is still unsafe to use.</span>
+<span id="cb8-162"><a href="#cb8-162"></a><span class="ss">- </span>We will naively print 2 lines of hexademical values, <span class="in">`n`</span>, then <span class="in">`e`</span>.</span>
+<span id="cb8-163"><a href="#cb8-163"></a><span class="ss">- </span>We will right them to a file prefixed and suffixed as follows:</span>
+<span id="cb8-164"><a href="#cb8-164"></a></span>
+<span id="cb8-165"><a href="#cb8-165"></a><span class="in">```{.email filename="unsafe.pub"}</span></span>
+<span id="cb8-166"><a href="#cb8-166"></a><span class="in">-----BEGIN UNSAFE PUBLIC KEY-----</span></span>
+<span id="cb8-167"><a href="#cb8-167"></a><span class="in">95a61f99198bd8e9</span></span>
+<span id="cb8-168"><a href="#cb8-168"></a><span class="in">10001</span></span>
+<span id="cb8-169"><a href="#cb8-169"></a><span class="in">-----END UNSAFE PUBLIC KEY-----</span></span>
+<span id="cb8-170"><a href="#cb8-170"></a><span class="in">```</span></span>
+<span id="cb8-171"><a href="#cb8-171"></a></span>
+<span id="cb8-172"><a href="#cb8-172"></a>:::</span>
+<span id="cb8-173"><a href="#cb8-173"></a></span>
+<span id="cb8-174"><a href="#cb8-174"></a><span class="fu"># BigRSA&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#bigrsa" role="button" aria-expanded="false" aria-controls = "bigrsa"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-175"><a href="#cb8-175"></a></span>
+<span id="cb8-176"><a href="#cb8-176"></a>::: {#bigrsa .collapse .multi-collapse}</span>
+<span id="cb8-177"><a href="#cb8-177"></a></span>
+<span id="cb8-178"><a href="#cb8-178"></a><span class="fu">## Implement End-to-end 4096 bit RSA</span></span>
+<span id="cb8-179"><a href="#cb8-179"></a></span>
+<span id="cb8-180"><a href="#cb8-180"></a><span class="ss">- </span>Do so in a novel file, <span class="in">`bigrsa.c`</span>, which should:</span>
+<span id="cb8-181"><a href="#cb8-181"></a><span class="ss">  - </span>Accept 3 command line arguments:</span>
+<span id="cb8-182"><a href="#cb8-182"></a><span class="ss">    - </span>A flag <span class="in">`-d`</span> or <span class="in">`-e`</span> for decrypt or encrypt</span>
+<span id="cb8-183"><a href="#cb8-183"></a><span class="ss">    - </span>The file name of an input file.</span>
+<span id="cb8-184"><a href="#cb8-184"></a><span class="ss">    - </span>The file name of an output file.</span>
+<span id="cb8-185"><a href="#cb8-185"></a><span class="ss">  - </span>It should:</span>
+<span id="cb8-186"><a href="#cb8-186"></a><span class="ss">    - </span>Read the content of the input file.</span>
+<span id="cb8-187"><a href="#cb8-187"></a><span class="ss">    - </span>Encrypt or decrypt, as specified, the file contents.</span>
+<span id="cb8-188"><a href="#cb8-188"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`d`</span> from "unsafe.bad" to decrypt.</span>
+<span id="cb8-189"><a href="#cb8-189"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`e`</span> from "unsafe.pub" to encrypt.</span>
+<span id="cb8-190"><a href="#cb8-190"></a><span class="ss">    - </span>Write the encrypted or decrypted content to the output file.</span>
+<span id="cb8-191"><a href="#cb8-191"></a><span class="ss">- </span>Your BigRSA should function over either "keygen.c" 32 bit keys or "bigkey.c" 4096 bit keys.</span>
+<span id="cb8-192"><a href="#cb8-192"></a></span>
+<span id="cb8-193"><a href="#cb8-193"></a><span class="fu">## A Note</span></span>
+<span id="cb8-194"><a href="#cb8-194"></a></span>
+<span id="cb8-195"><a href="#cb8-195"></a><span class="ss">- </span>Be advised that the square of a 4096 bit value requires 8198 bits to specify.</span>
+<span id="cb8-196"><a href="#cb8-196"></a><span class="ss">- </span>It is reasonable to test 512 (<span class="in">`openssl`</span> minimum) or 1024 (<span class="in">`ssh-keygen`</span> minumum size)</span>
+<span id="cb8-197"><a href="#cb8-197"></a></span>
+<span id="cb8-198"><a href="#cb8-198"></a>:::</span>
+<span id="cb8-199"><a href="#cb8-199"></a></span>
+<span id="cb8-200"><a href="#cb8-200"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-201"><a href="#cb8-201"></a></span>
+<span id="cb8-202"><a href="#cb8-202"></a>::: {#tester .collapse .multi-collapse}</span>
+<span id="cb8-203"><a href="#cb8-203"></a></span>
+<span id="cb8-204"><a href="#cb8-204"></a><span class="fu">## "Tester"</span></span>
+<span id="cb8-205"><a href="#cb8-205"></a></span>
+<span id="cb8-206"><a href="#cb8-206"></a><span class="ss">- </span>Rather than provide an end-to-end containerized autograder, I am providing a Makefile.</span>
+<span id="cb8-207"><a href="#cb8-207"></a><span class="in">```{.email}</span></span>
+<span id="cb8-208"><a href="#cb8-208"></a><span class="in">wget https://github.com/cd-c89/refrsa/raw/refs/heads/main/Makefile # curl was struggling</span></span>
+<span id="cb8-209"><a href="#cb8-209"></a><span class="in">```</span></span>
+<span id="cb8-210"><a href="#cb8-210"></a></span>
+<span id="cb8-211"><a href="#cb8-211"></a><span class="in">```{.Makefile filename="Makefile"}</span></span>
+<span id="cb8-212"><a href="#cb8-212"></a><span class="in">CC = gcc # or clang</span></span>
+<span id="cb8-213"><a href="#cb8-213"></a><span class="in">CFLAGS = -std=c89 -Wall -Wextra -Werror -Wpedantic -O2</span></span>
+<span id="cb8-214"><a href="#cb8-214"></a><span class="in">CLIBS = -lgmp # for biggmp and primes</span></span>
+<span id="cb8-215"><a href="#cb8-215"></a><span class="in">BIGNUM = biggmp.c # or use 4096_t.c</span></span>
+<span id="cb8-216"><a href="#cb8-216"></a></span>
+<span id="cb8-217"><a href="#cb8-217"></a><span class="in">all: bigrsa bigkey</span></span>
+<span id="cb8-218"><a href="#cb8-218"></a></span>
+<span id="cb8-219"><a href="#cb8-219"></a><span class="in">bigrsa: bigrsa.c $(BIGNUM) 4096_t.h</span></span>
+<span id="cb8-220"><a href="#cb8-220"></a><span class="in">    $(CC) bigrsa.c $(BIGNUM) $(CFLAGS) -o bigrsa $(CLIBS)</span></span>
+<span id="cb8-221"><a href="#cb8-221"></a><span class="in">    </span></span>
+<span id="cb8-222"><a href="#cb8-222"></a><span class="in">bigkey: bigkey.c $(BIGNUM) 4096_t.h</span></span>
+<span id="cb8-223"><a href="#cb8-223"></a><span class="in">    $(CC) bigkey.c $(BIGNUM) $(CFLAGS) -o bigkey $(CLIBS)</span></span>
+<span id="cb8-224"><a href="#cb8-224"></a></span>
+<span id="cb8-225"><a href="#cb8-225"></a><span class="in">clean:</span></span>
+<span id="cb8-226"><a href="#cb8-226"></a><span class="in">    rm -f bigrsa bigkey unsafe.* *.txt</span></span>
+<span id="cb8-227"><a href="#cb8-227"></a></span>
+<span id="cb8-228"><a href="#cb8-228"></a><span class="in">check: bigrsa bigkey</span></span>
+<span id="cb8-229"><a href="#cb8-229"></a><span class="in">    ./bigkey</span></span>
+<span id="cb8-230"><a href="#cb8-230"></a><span class="in">    echo "Multiple of four chars." &gt; m.txt</span></span>
+<span id="cb8-231"><a href="#cb8-231"></a><span class="in">    ./bigrsa -e m.txt c.txt</span></span>
+<span id="cb8-232"><a href="#cb8-232"></a><span class="in">    ./bigrsa -d c.txt n.txt</span></span>
+<span id="cb8-233"><a href="#cb8-233"></a><span class="in">    diff m.txt n.txt</span></span>
+<span id="cb8-234"><a href="#cb8-234"></a><span class="in">```</span></span>
+<span id="cb8-235"><a href="#cb8-235"></a></span>
+<span id="cb8-236"><a href="#cb8-236"></a><span class="ss">- </span>I am also providing:</span>
+<span id="cb8-237"><a href="#cb8-237"></a><span class="ss">  - </span>A reference solution that uses this Makefile.</span>
+<span id="cb8-238"><a href="#cb8-238"></a><span class="ss">  - </span>A GitHub action that uses this Makefile:</span>
+<span id="cb8-239"><a href="#cb8-239"></a></span>
+<span id="cb8-240"><a href="#cb8-240"></a><span class="in">```{.yml filename="C89.yml"}</span></span>
+<span id="cb8-241"><a href="#cb8-241"></a><span class="in">name: C89 CI</span></span>
+<span id="cb8-242"><a href="#cb8-242"></a></span>
+<span id="cb8-243"><a href="#cb8-243"></a><span class="in">on: push</span></span>
+<span id="cb8-244"><a href="#cb8-244"></a><span class="in">    </span></span>
+<span id="cb8-245"><a href="#cb8-245"></a><span class="in">jobs:</span></span>
+<span id="cb8-246"><a href="#cb8-246"></a><span class="in">  build:</span></span>
+<span id="cb8-247"><a href="#cb8-247"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb8-248"><a href="#cb8-248"></a></span>
+<span id="cb8-249"><a href="#cb8-249"></a><span class="in">    steps:</span></span>
+<span id="cb8-250"><a href="#cb8-250"></a><span class="in">    - uses: actions/checkout@v4</span></span>
+<span id="cb8-251"><a href="#cb8-251"></a><span class="in">    - run: make check</span></span>
+<span id="cb8-252"><a href="#cb8-252"></a><span class="in">```</span></span>
+<span id="cb8-253"><a href="#cb8-253"></a></span>
+<span id="cb8-254"><a href="#cb8-254"></a><span class="ss">- </span>Read more in "Solved"</span>
+<span id="cb8-255"><a href="#cb8-255"></a></span>
+<span id="cb8-256"><a href="#cb8-256"></a>:::</span>
+<span id="cb8-257"><a href="#cb8-257"></a></span>
+<span id="cb8-258"><a href="#cb8-258"></a><span class="fu"># Solved&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#solved" role="button" aria-expanded="false" aria-controls = "solved"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb8-259"><a href="#cb8-259"></a></span>
+<span id="cb8-260"><a href="#cb8-260"></a>::: {#solved .collapse .multi-collapse}</span>
+<span id="cb8-261"><a href="#cb8-261"></a></span>
+<span id="cb8-262"><a href="#cb8-262"></a><span class="fu">## Solution</span></span>
+<span id="cb8-263"><a href="#cb8-263"></a></span>
+<span id="cb8-264"><a href="#cb8-264"></a>::: {.callout-danger}</span>
+<span id="cb8-265"><a href="#cb8-265"></a></span>
+<span id="cb8-266"><a href="#cb8-266"></a>*Spoiler alert*: This section contains spoilers, including a working solution, to the BigRSA assignment.</span>
+<span id="cb8-267"><a href="#cb8-267"></a></span>
+<span id="cb8-268"><a href="#cb8-268"></a>:::</span>
+<span id="cb8-269"><a href="#cb8-269"></a></span>
+<span id="cb8-270"><a href="#cb8-270"></a>::: {.callout-tip}</span>
+<span id="cb8-271"><a href="#cb8-271"></a><span class="fu">## Spoiler Alert!</span></span>
+<span id="cb8-272"><a href="#cb8-272"></a></span>
+<span id="cb8-273"><a href="#cb8-273"></a>This section contains spoilers, including a working solution, to the BigRSA assignment.</span>
+<span id="cb8-274"><a href="#cb8-274"></a></span>
+<span id="cb8-275"><a href="#cb8-275"></a>:::</span>
+<span id="cb8-276"><a href="#cb8-276"></a></span>
+<span id="cb8-277"><a href="#cb8-277"></a><span class="fu">## A Reference Solution</span></span>
+<span id="cb8-278"><a href="#cb8-278"></a></span>
+<span id="cb8-279"><a href="#cb8-279"></a><span class="ss">- </span>After careful reflection, the weight and challenge of this assignment made a single, in-container script insufficient, in my view, for testing.</span>
+<span id="cb8-280"><a href="#cb8-280"></a><span class="ss">- </span>In lieu, I am providing a full reference implementation, with a few caveats:</span>
+<span id="cb8-281"><a href="#cb8-281"></a><span class="ss">  - </span>I have maintained 4096_t solutions as closed source.</span>
+<span id="cb8-282"><a href="#cb8-282"></a><span class="ss">    - </span>Instead, I have implemented an interface to libgmp mpz_t numbers in <span class="in">`biggmp.c`</span></span>
+<span id="cb8-283"><a href="#cb8-283"></a><span class="ss">    - </span>If you are stuck on 4096_t, you should use this as well.</span>
+<span id="cb8-284"><a href="#cb8-284"></a><span class="ss">  - </span>I am trusting you to either look at, or not look at, my code, based on what works best for your learning.</span>
+<span id="cb8-285"><a href="#cb8-285"></a><span class="ss">    - </span>It is provided as is, and likely has few bugs, but probably not too many.</span>
+<span id="cb8-286"><a href="#cb8-286"></a><span class="ss">  - </span>I am not requiring you to have any particular interfacing, though I am providing one as an example.</span>
+<span id="cb8-287"><a href="#cb8-287"></a></span>
+<span id="cb8-288"><a href="#cb8-288"></a><span class="fu">## A Perfect System</span></span>
+<span id="cb8-289"><a href="#cb8-289"></a></span>
+<span id="cb8-290"><a href="#cb8-290"></a><span class="ss">- </span>A perfect project will:</span>
+<span id="cb8-291"><a href="#cb8-291"></a><span class="ss">  - </span>Use a 'bigkey' executable once to perform key generation:</span>
+<span id="cb8-292"><a href="#cb8-292"></a><span class="ss">    - </span>Write keys to two files, one public and one private.</span>
+<span id="cb8-293"><a href="#cb8-293"></a><span class="ss">  - </span>Use a 'bigrsa' executable twice to perform "round trip" encryption on a greater than 64 bit data file.</span>
+<span id="cb8-294"><a href="#cb8-294"></a><span class="ss">    - </span>Write more than 64 bits to a data file.</span>
+<span id="cb8-295"><a href="#cb8-295"></a><span class="ss">      - </span>It is easier to do a precise multiple of 64</span>
+<span id="cb8-296"><a href="#cb8-296"></a><span class="ss">    - </span>Encrypt this file and store the ciphertext as a new file.</span>
+<span id="cb8-297"><a href="#cb8-297"></a><span class="ss">    - </span>Decrypt the cipher text file.</span>
+<span id="cb8-298"><a href="#cb8-298"></a><span class="ss">    - </span>Take a <span class="in">`diff`</span> of the input file and the decrypted file.</span>
+<span id="cb8-299"><a href="#cb8-299"></a><span class="ss">      - </span>If the return code of diff <span class="in">`$?`</span> is 0, the project is a success.</span>
+<span id="cb8-300"><a href="#cb8-300"></a></span>
+<span id="cb8-301"><a href="#cb8-301"></a><span class="fu">## An explanation</span></span>
+<span id="cb8-302"><a href="#cb8-302"></a></span>
+<span id="cb8-303"><a href="#cb8-303"></a><span class="ss">- </span>Why this implementation?</span>
+<span id="cb8-304"><a href="#cb8-304"></a><span class="ss">  - </span>I could not find a way I liked to specify:</span>
+<span id="cb8-305"><a href="#cb8-305"></a><span class="ss">    - </span>Storing keys</span>
+<span id="cb8-306"><a href="#cb8-306"></a><span class="ss">    - </span>Story cipher texts</span>
+<span id="cb8-307"><a href="#cb8-307"></a><span class="ss">    - </span>Setting key lengths</span>
+<span id="cb8-308"><a href="#cb8-308"></a><span class="ss">  - </span>I felt any specification was unfairly restrictive.</span>
+<span id="cb8-309"><a href="#cb8-309"></a></span>
+<span id="cb8-310"><a href="#cb8-310"></a><span class="fu">## How to use the reference repository</span></span>
+<span id="cb8-311"><a href="#cb8-311"></a></span>
+<span id="cb8-312"><a href="#cb8-312"></a><span class="ss">- </span>Either clone the repository and include your own <span class="in">`bigrsa`</span> and <span class="in">`bigkey`</span> or,</span>
+<span id="cb8-313"><a href="#cb8-313"></a><span class="ss">- </span>Add the relevant files to your <span class="in">`crypto`</span> repository.</span>
+<span id="cb8-314"><a href="#cb8-314"></a><span class="ss">- </span>Study the Makefile closely, and use this reference material or <span class="in">`#help-line`</span> if you are confused.</span>
+<span id="cb8-315"><a href="#cb8-315"></a><span class="ss">  - </span>My favorite <span class="co">[</span><span class="ot">Makefile tutorial</span><span class="co">](https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)</span></span>
+<span id="cb8-316"><a href="#cb8-316"></a><span class="ss">- </span>You are not required to use GitHub actions (or containers, conspiciously absent) but may wish to do so.</span>
+<span id="cb8-317"><a href="#cb8-317"></a><span class="ss">- </span>You don't need to think about <span class="in">`clang`</span> vs <span class="in">`gcc`</span>, but I wanted to show you clang and Makefile variables.</span>
+<span id="cb8-318"><a href="#cb8-318"></a></span>
+<span id="cb8-319"><a href="#cb8-319"></a><span class="fu">## The Repository</span></span>
+<span id="cb8-320"><a href="#cb8-320"></a></span>
+<span id="cb8-321"><a href="#cb8-321"></a>::: {.callout-warning collapse="true"}</span>
+<span id="cb8-322"><a href="#cb8-322"></a><span class="fu">## Expand for Reference Solution</span></span>
+<span id="cb8-323"><a href="#cb8-323"></a></span>
+<span id="cb8-324"><a href="#cb8-324"></a><span class="ss">- </span>The repository is publicly visible at <span class="co">[</span><span class="ot">github.com/cd-c89/refrsa</span><span class="co">](https://github.com/cd-c89/refrsa)</span></span>
+<span id="cb8-325"><a href="#cb8-325"></a></span>
+<span id="cb8-326"><a href="#cb8-326"></a>:::</span>
+<span id="cb8-327"><a href="#cb8-327"></a></span>
 <span id="cb8-328"><a href="#cb8-328"></a></span>
-<span id="cb8-329"><a href="#cb8-329"></a></span>
-<span id="cb8-330"><a href="#cb8-330"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb8-329"><a href="#cb8-329"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

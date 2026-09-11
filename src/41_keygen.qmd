@@ -1,7 +1,6 @@
 ---
 title: KeyGen
-subtitle: "0x3.1"
-
+subtitle: "Lab after `Fermat`"
 format: html
 ---
 
@@ -141,7 +140,7 @@ def sixkp1(k): # 6k+1
     return candidate
 ```
 
-- For BigRSA, you will primality testing for the `4096_t`.
+- For BigRSA, you will need primality testing for the `4096_t`.
 - Likewise, for BigRSA, you will need fairly narrow bounds on *precision*, or how many bits your primes take up.
 - That said, for now the following should be sufficient:
 

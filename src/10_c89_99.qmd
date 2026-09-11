@@ -730,13 +730,13 @@ gcc samp.c --std=c89
 ```
 
 ```bash
-user@DESKTOP-THMS2PJ:~/crypto/c89_99$ podman exec -it -l gcc samp.c --std=c89
+user@DESKTOP-THMS2PJ:~/sysinc/c89_99$ podman exec -it -l gcc samp.c --std=c89
 samp.c: In function 'main':
 samp.c:5:9: error: C++ style comments are not allowed in ISO C90
     5 |         // This is a C++ style comment
       |         ^
 samp.c:5:9: note: (this will be reported only once per input file)
-user@DESKTOP-THMS2PJ:~/crypto/c89_99$ podman exec -it -l gcc samp.c
+user@DESKTOP-THMS2PJ:~/sysinc/c89_99$ podman exec -it -l gcc samp.c
 ```
 
 ## -Wall etc
@@ -981,7 +981,7 @@ If you want a lot of control and flexibility, you can use the command line.
 - Over time, we'll try to operationalize code better and better
 - Eventually, I plan to ask for a container in "ghcr"
   - GitHub Container Registry
-- In the meantime, I'd just keep a Containerfile at top level in your "crypto" repo.
+- In the meantime, I'd just keep a Containerfile at top level in your "sysinc" repo.
 
 ## Today
 

@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">RSAinC</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
-<p class="subtitle lead">0x3.2</p>
+<p class="subtitle lead">Due Thu, 08 Oct</p>
 </div>
 
 
@@ -612,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6"></a></span>
 <span id="cb6-7"><a href="#cb6-7"></a>COPY rsainc.c .</span>
 <span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/rsainc/tester.py -o tester.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9"></a>RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/rsainc/tester.py -o tester.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="usage" class="level4">
 <h4 class="anchored" data-anchor-id="usage">Usage</h4>
@@ -1173,227 +1173,227 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">---</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="an">title:</span><span class="co"> RSAinC</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="an">subtitle:</span><span class="co"> "0x3.2"</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">---</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="fu"># Review&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a></span>
-<span id="cb11-10"><a href="#cb11-10"></a>::: {#review .collapse .multi-collapse}</span>
-<span id="cb11-11"><a href="#cb11-11"></a></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="fu">### Goal: Public Key Encryption</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a></span>
-<span id="cb11-14"><a href="#cb11-14"></a>|Review:    | Newish:    |</span>
-<span id="cb11-15"><a href="#cb11-15"></a>| --------- | ---------- |</span>
-<span id="cb11-16"><a href="#cb11-16"></a>|- RSA      | - modexp    |</span>
-<span id="cb11-17"><a href="#cb11-17"></a>|- FileIO   |    |</span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-19"><a href="#cb11-19"></a><span class="ss">- </span>In the lab you should've finished key generation.</span>
-<span id="cb11-20"><a href="#cb11-20"></a><span class="ss">  - </span>Otherwise, return to a complete the lab.</span>
-<span id="cb11-21"><a href="#cb11-21"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">KeyGen</span><span class="co">](keygen.html)</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a><span class="ss">- </span>This assignment concerns two distinct executable files:</span>
-<span id="cb11-23"><a href="#cb11-23"></a><span class="ss">  - </span>Write keys to files</span>
-<span id="cb11-24"><a href="#cb11-24"></a><span class="ss">    - </span><span class="in">`keygen.c`</span></span>
-<span id="cb11-25"><a href="#cb11-25"></a><span class="ss">    - </span>Covered in the lab section.</span>
-<span id="cb11-26"><a href="#cb11-26"></a><span class="ss">  - </span>Encrpyt and decrypt based those keys.</span>
-<span id="cb11-27"><a href="#cb11-27"></a><span class="ss">    - </span><span class="in">`rsainc.c`</span></span>
-<span id="cb11-28"><a href="#cb11-28"></a><span class="ss">    - </span>Covered here, but requiring <span class="in">`keygen.c`</span></span>
-<span id="cb11-29"><a href="#cb11-29"></a></span>
-<span id="cb11-30"><a href="#cb11-30"></a>:::</span>
-<span id="cb11-31"><a href="#cb11-31"></a></span>
-<span id="cb11-32"><a href="#cb11-32"></a><span class="fu"># KeyGen&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls = "keygen"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb11-33"><a href="#cb11-33"></a></span>
-<span id="cb11-34"><a href="#cb11-34"></a>::: {#keygen .collapse .multi-collapse}</span>
-<span id="cb11-35"><a href="#cb11-35"></a></span>
-<span id="cb11-36"><a href="#cb11-36"></a><span class="ss">- </span>*This section summarizes the lab. If you completed the lab, you may move onto "ModExp"*</span>
-<span id="cb11-37"><a href="#cb11-37"></a><span class="ss">- </span>Recall a sample Python implementation was provided, but was not very readable.</span>
-<span id="cb11-38"><a href="#cb11-38"></a></span>
-<span id="cb11-39"><a href="#cb11-39"></a><span class="fu">### A Private Key in 3 Parts</span></span>
-<span id="cb11-40"><a href="#cb11-40"></a></span>
-<span id="cb11-41"><a href="#cb11-41"></a><span class="ss">- </span>We recall that the private key minimally contains:</span>
-<span id="cb11-42"><a href="#cb11-42"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base</span>
-<span id="cb11-43"><a href="#cb11-43"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor, and </span>
-<span id="cb11-44"><a href="#cb11-44"></a><span class="ss">  - </span><span class="in">`d`</span>, a descryptor.</span>
-<span id="cb11-45"><a href="#cb11-45"></a></span>
-<span id="cb11-46"><a href="#cb11-46"></a><span class="ss">- </span>Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.</span>
-<span id="cb11-47"><a href="#cb11-47"></a><span class="ss">- </span>We will use <span class="in">`.bad`</span> instead of <span class="in">`.pem`</span> and insecurely store these values in plaintext.</span>
-<span id="cb11-48"><a href="#cb11-48"></a><span class="ss">- </span>We will then make executables to generate <span class="in">`.bad`</span> and encrypt content provided a <span class="in">`.bad`</span></span>
-<span id="cb11-49"><a href="#cb11-49"></a><span class="ss">    - </span>We name a <span class="in">`.bad`</span> so helpfully we don't use it by accident.</span>
-<span id="cb11-50"><a href="#cb11-50"></a><span class="ss">- </span>We will naively print 3 lines of hexademical values, <span class="in">`n`</span>, <span class="in">`e`</span>, then <span class="in">`d`</span>.</span>
-<span id="cb11-51"><a href="#cb11-51"></a><span class="ss">- </span>We will write them to a 5-line file as follows:</span>
-<span id="cb11-52"><a href="#cb11-52"></a><span class="ss">  - </span>The first line is the precise header text.</span>
-<span id="cb11-53"><a href="#cb11-53"></a><span class="ss">  - </span>The second line is the <span class="in">`n`</span> value in hexadecimal.</span>
-<span id="cb11-54"><a href="#cb11-54"></a><span class="ss">  - </span>The third line is the <span class="in">`e`</span> value, which is <span class="in">`10001`</span>.</span>
-<span id="cb11-55"><a href="#cb11-55"></a><span class="ss">  - </span>The fourth line is the <span class="in">`d`</span> value, which should be kept secret.</span>
-<span id="cb11-56"><a href="#cb11-56"></a><span class="ss">  - </span>The fifth and final line is the precise footer text.</span>
-<span id="cb11-57"><a href="#cb11-57"></a></span>
-<span id="cb11-58"><a href="#cb11-58"></a><span class="in">```{.email filename="unsafe.bad"}</span></span>
-<span id="cb11-59"><a href="#cb11-59"></a><span class="in">-----BEGIN UNSAFE PRIVATE KEY-----</span></span>
-<span id="cb11-60"><a href="#cb11-60"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb11-61"><a href="#cb11-61"></a><span class="in">10001</span></span>
-<span id="cb11-62"><a href="#cb11-62"></a><span class="in">fbea5e6a3ed31e8f</span></span>
-<span id="cb11-63"><a href="#cb11-63"></a><span class="in">-----END UNSAFE PRIVATE KEY-----</span></span>
-<span id="cb11-64"><a href="#cb11-64"></a><span class="in">```</span></span>
-<span id="cb11-65"><a href="#cb11-65"></a><span class="fu">### A Public Key in 2 Parts</span></span>
-<span id="cb11-66"><a href="#cb11-66"></a></span>
-<span id="cb11-67"><a href="#cb11-67"></a><span class="ss">- </span>We recall that the public key contains, and should only contain:</span>
-<span id="cb11-68"><a href="#cb11-68"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base, and</span>
-<span id="cb11-69"><a href="#cb11-69"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor</span>
-<span id="cb11-70"><a href="#cb11-70"></a></span>
-<span id="cb11-71"><a href="#cb11-71"></a><span class="ss">- </span>Based on the KeyGen lab, we already have the ability to write these values to file.</span>
-<span id="cb11-72"><a href="#cb11-72"></a><span class="ss">- </span>We will use <span class="in">`.pub`</span> instead of <span class="in">`.pem`</span> or <span class="in">`.bad`</span></span>
-<span id="cb11-73"><a href="#cb11-73"></a><span class="ss">  - </span>Not a huge deal how these are stored, actually.</span>
-<span id="cb11-74"><a href="#cb11-74"></a><span class="ss">  - </span>The key itself though, is still unsafe to use.</span>
-<span id="cb11-75"><a href="#cb11-75"></a><span class="ss">- </span>We will naively print 2 lines of hexademical values, <span class="in">`n`</span>, then <span class="in">`e`</span>.</span>
-<span id="cb11-76"><a href="#cb11-76"></a><span class="ss">- </span>We will right them to a file prefixed and suffixed as follows:</span>
-<span id="cb11-77"><a href="#cb11-77"></a></span>
-<span id="cb11-78"><a href="#cb11-78"></a><span class="in">```{.email filename="unsafe.pub"}</span></span>
-<span id="cb11-79"><a href="#cb11-79"></a><span class="in">-----BEGIN UNSAFE PUBLIC KEY-----</span></span>
-<span id="cb11-80"><a href="#cb11-80"></a><span class="in">95a61f99198bd8e9</span></span>
-<span id="cb11-81"><a href="#cb11-81"></a><span class="in">10001</span></span>
-<span id="cb11-82"><a href="#cb11-82"></a><span class="in">-----END UNSAFE PUBLIC KEY-----</span></span>
-<span id="cb11-83"><a href="#cb11-83"></a><span class="in">```</span></span>
-<span id="cb11-84"><a href="#cb11-84"></a></span>
-<span id="cb11-85"><a href="#cb11-85"></a><span class="ss">- </span>Ensure your keys are 32 bit.</span>
-<span id="cb11-86"><a href="#cb11-86"></a><span class="ss">  - </span>Simply encrypt values up to <span class="in">`1 &lt;&lt; 31`</span> in size. </span>
-<span id="cb11-87"><a href="#cb11-87"></a><span class="ss">- </span>Here is a testing script:</span>
-<span id="cb11-88"><a href="#cb11-88"></a></span>
-<span id="cb11-89"><a href="#cb11-89"></a><span class="in">```{.python}</span></span>
-<span id="cb11-90"><a href="#cb11-90"></a><span class="in">def modexp(m, e, n):</span></span>
-<span id="cb11-91"><a href="#cb11-91"></a><span class="in">    if e == 0:</span></span>
-<span id="cb11-92"><a href="#cb11-92"></a><span class="in">        return 1</span></span>
-<span id="cb11-93"><a href="#cb11-93"></a><span class="in">    if e == 1:</span></span>
-<span id="cb11-94"><a href="#cb11-94"></a><span class="in">        return m % n</span></span>
-<span id="cb11-95"><a href="#cb11-95"></a><span class="in">    if e % 2:</span></span>
-<span id="cb11-96"><a href="#cb11-96"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
-<span id="cb11-97"><a href="#cb11-97"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
-<span id="cb11-98"><a href="#cb11-98"></a></span>
-<span id="cb11-99"><a href="#cb11-99"></a><span class="in">make_encrypt = lambda e, n : lambda m : modexp(m,e,n)</span></span>
-<span id="cb11-100"><a href="#cb11-100"></a></span>
-<span id="cb11-101"><a href="#cb11-101"></a><span class="in">lines = open("unsafe.bad").readlines()</span></span>
-<span id="cb11-102"><a href="#cb11-102"></a><span class="in">n = int(lines[1], 16) </span></span>
-<span id="cb11-103"><a href="#cb11-103"></a><span class="in">e = int(lines[2], 16) </span></span>
-<span id="cb11-104"><a href="#cb11-104"></a><span class="in">d = int(lines[3], 16) </span></span>
-<span id="cb11-105"><a href="#cb11-105"></a></span>
-<span id="cb11-106"><a href="#cb11-106"></a><span class="in">lines = open("unsafe.pub").readlines()</span></span>
-<span id="cb11-107"><a href="#cb11-107"></a><span class="in">if n != int(lines[1], 16) or e != int(lines[2], 16):</span></span>
-<span id="cb11-108"><a href="#cb11-108"></a><span class="in">    print("Public key does not match private key.")</span></span>
-<span id="cb11-109"><a href="#cb11-109"></a><span class="in">    exit()</span></span>
-<span id="cb11-110"><a href="#cb11-110"></a></span>
-<span id="cb11-111"><a href="#cb11-111"></a><span class="in">encrypt = make_encrypt(e,n)</span></span>
-<span id="cb11-112"><a href="#cb11-112"></a><span class="in">decrypt = make_encrypt(d,n)</span></span>
-<span id="cb11-113"><a href="#cb11-113"></a></span>
-<span id="cb11-114"><a href="#cb11-114"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0x100)]):</span></span>
-<span id="cb11-115"><a href="#cb11-115"></a><span class="in">    print("Keys work for small values.")</span></span>
-<span id="cb11-116"><a href="#cb11-116"></a><span class="in">else:</span></span>
-<span id="cb11-117"><a href="#cb11-117"></a><span class="in">    print("Keys failed on small values.")</span></span>
-<span id="cb11-118"><a href="#cb11-118"></a></span>
-<span id="cb11-119"><a href="#cb11-119"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0,1 &lt;&lt; 31, 1 &lt;&lt; 29)]):</span></span>
-<span id="cb11-120"><a href="#cb11-120"></a><span class="in">    print("Keys work for larger values.")</span></span>
-<span id="cb11-121"><a href="#cb11-121"></a><span class="in">else:</span></span>
-<span id="cb11-122"><a href="#cb11-122"></a><span class="in">    print("Keys failed on larger values.")</span></span>
-<span id="cb11-123"><a href="#cb11-123"></a><span class="in">```</span></span>
-<span id="cb11-124"><a href="#cb11-124"></a></span>
-<span id="cb11-125"><a href="#cb11-125"></a><span class="at">&gt; By successfully encrypting and decrypting up to </span><span class="in">`1 &lt;&lt; 31`</span><span class="at">, the key is large enough for some small tasks, such encrypting the string "hi" - a string of length 3 when including the null terminator, which therefore contains 24 bits of information.</span></span>
-<span id="cb11-126"><a href="#cb11-126"></a></span>
-<span id="cb11-127"><a href="#cb11-127"></a>:::</span>
-<span id="cb11-128"><a href="#cb11-128"></a></span>
-<span id="cb11-129"><a href="#cb11-129"></a><span class="fu"># ModExp&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#modexp" role="button" aria-expanded="false" aria-controls = "modexp"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb11-130"><a href="#cb11-130"></a></span>
-<span id="cb11-131"><a href="#cb11-131"></a>::: {#modexp .collapse .multi-collapse}</span>
-<span id="cb11-132"><a href="#cb11-132"></a></span>
-<span id="cb11-133"><a href="#cb11-133"></a><span class="ss">- </span>For C language encryption and decryption, it is necessary to implement "modexp" in C.</span>
-<span id="cb11-134"><a href="#cb11-134"></a><span class="ss">- </span>Do so in a novel file, <span class="in">`rsainc.c`</span>, which should:</span>
-<span id="cb11-135"><a href="#cb11-135"></a><span class="ss">  - </span>Accept 3 command line arguments:</span>
-<span id="cb11-136"><a href="#cb11-136"></a><span class="ss">    - </span>A flag <span class="in">`-d`</span> or <span class="in">`-e`</span> for decrypt or encrypt</span>
-<span id="cb11-137"><a href="#cb11-137"></a><span class="ss">    - </span>The file name of an input file.</span>
-<span id="cb11-138"><a href="#cb11-138"></a><span class="ss">    - </span>The file name of an output file.</span>
-<span id="cb11-139"><a href="#cb11-139"></a><span class="ss">  - </span>It should:</span>
-<span id="cb11-140"><a href="#cb11-140"></a><span class="ss">    - </span>Read the content of the input file.</span>
-<span id="cb11-141"><a href="#cb11-141"></a><span class="ss">    - </span>Encrypt or decrypt, as specified, the file contents.</span>
-<span id="cb11-142"><a href="#cb11-142"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`d`</span> from "unsafe.bad" to decrypt.</span>
-<span id="cb11-143"><a href="#cb11-143"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`e`</span> from "unsafe.pub" to encrypt.</span>
-<span id="cb11-144"><a href="#cb11-144"></a><span class="ss">    - </span>Write the encrypted or decrypted content to the output file.</span>
-<span id="cb11-145"><a href="#cb11-145"></a><span class="ss">- </span>Here is a Python implementation.</span>
-<span id="cb11-146"><a href="#cb11-146"></a><span class="ss">  - </span>It is exceptionally annoying because Python doesn't like to treat files as holding data rather than text.</span>
-<span id="cb11-147"><a href="#cb11-147"></a></span>
-<span id="cb11-148"><a href="#cb11-148"></a><span class="in">```{.python filename="rsa_py.py"}</span></span>
-<span id="cb11-149"><a href="#cb11-149"></a><span class="in">if __name__ != "__main__":</span></span>
-<span id="cb11-150"><a href="#cb11-150"></a><span class="in">    exit()</span></span>
-<span id="cb11-151"><a href="#cb11-151"></a></span>
-<span id="cb11-152"><a href="#cb11-152"></a><span class="in">import sys</span></span>
-<span id="cb11-153"><a href="#cb11-153"></a></span>
-<span id="cb11-154"><a href="#cb11-154"></a><span class="in">def modexp(m, e, n):</span></span>
-<span id="cb11-155"><a href="#cb11-155"></a><span class="in">    if e == 0:</span></span>
-<span id="cb11-156"><a href="#cb11-156"></a><span class="in">        return 1</span></span>
-<span id="cb11-157"><a href="#cb11-157"></a><span class="in">    if e == 1:</span></span>
-<span id="cb11-158"><a href="#cb11-158"></a><span class="in">        return m % n</span></span>
-<span id="cb11-159"><a href="#cb11-159"></a><span class="in">    if e % 2:</span></span>
-<span id="cb11-160"><a href="#cb11-160"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
-<span id="cb11-161"><a href="#cb11-161"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
-<span id="cb11-162"><a href="#cb11-162"></a></span>
-<span id="cb11-163"><a href="#cb11-163"></a><span class="in">if 'e' in sys.argv[1]:</span></span>
-<span id="cb11-164"><a href="#cb11-164"></a><span class="in">    lines = open("unsafe.pub").readlines()</span></span>
-<span id="cb11-165"><a href="#cb11-165"></a><span class="in">    n, e = int(lines[1], 16), int(lines[2], 16) </span></span>
-<span id="cb11-166"><a href="#cb11-166"></a><span class="in">elif 'd' in sys.argv[1]:</span></span>
-<span id="cb11-167"><a href="#cb11-167"></a><span class="in">    lines = open("unsafe.bad").readlines()</span></span>
-<span id="cb11-168"><a href="#cb11-168"></a><span class="in">    n, e = int(lines[1], 16), int(lines[3], 16) # have to call it e, not d</span></span>
-<span id="cb11-169"><a href="#cb11-169"></a><span class="in">else:</span></span>
-<span id="cb11-170"><a href="#cb11-170"></a><span class="in">    exit()</span></span>
-<span id="cb11-171"><a href="#cb11-171"></a><span class="in">s = open(sys.argv[2], "rb").read()</span></span>
-<span id="cb11-172"><a href="#cb11-172"></a><span class="in">m = int.from_bytes(s, byteorder=sys.byteorder, signed=False)</span></span>
-<span id="cb11-173"><a href="#cb11-173"></a><span class="in">c = modexp(m,e,n)</span></span>
-<span id="cb11-174"><a href="#cb11-174"></a><span class="in">s = open(sys.argv[3], "wb").write(c.to_bytes(4, byteorder=sys.byteorder))</span></span>
-<span id="cb11-175"><a href="#cb11-175"></a><span class="in">```</span></span>
-<span id="cb11-176"><a href="#cb11-176"></a></span>
-<span id="cb11-177"><a href="#cb11-177"></a><span class="fu">#### Hint </span></span>
-<span id="cb11-178"><a href="#cb11-178"></a></span>
-<span id="cb11-179"><a href="#cb11-179"></a><span class="ss">- </span>You will probably want to use something like this:</span>
-<span id="cb11-180"><a href="#cb11-180"></a></span>
-<span id="cb11-181"><a href="#cb11-181"></a><span class="in">```{.C}</span></span>
-<span id="cb11-182"><a href="#cb11-182"></a><span class="in">fscanf(key, "-----BEGIN UNSAFE PRIVATE KEY-----\n%lx\n%lx\n-----END UNSAFE PRIVATE KEY-----\n", &amp;n, &amp;e);</span></span>
-<span id="cb11-183"><a href="#cb11-183"></a><span class="in">```</span></span>
-<span id="cb11-184"><a href="#cb11-184"></a></span>
-<span id="cb11-185"><a href="#cb11-185"></a>:::</span>
-<span id="cb11-186"><a href="#cb11-186"></a></span>
-<span id="cb11-187"><a href="#cb11-187"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb11-188"><a href="#cb11-188"></a></span>
-<span id="cb11-189"><a href="#cb11-189"></a>::: {#tester .collapse .multi-collapse}</span>
-<span id="cb11-190"><a href="#cb11-190"></a></span>
-<span id="cb11-191"><a href="#cb11-191"></a><span class="ss">- </span>I am providing the following Containerfile, which will serve as a minimal autograder.</span>
-<span id="cb11-192"><a href="#cb11-192"></a><span class="ss">- </span>*Use the tester with caution outside of containers as it deletes files you may want to preserve*</span>
-<span id="cb11-193"><a href="#cb11-193"></a></span>
-<span id="cb11-194"><a href="#cb11-194"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb11-195"><a href="#cb11-195"></a><span class="in">FROM ubuntu </span></span>
-<span id="cb11-196"><a href="#cb11-196"></a></span>
-<span id="cb11-197"><a href="#cb11-197"></a><span class="in">RUN apt update &amp;&amp; apt install gcc curl python3 -y</span></span>
-<span id="cb11-198"><a href="#cb11-198"></a></span>
-<span id="cb11-199"><a href="#cb11-199"></a><span class="in">COPY keygen.c .</span></span>
-<span id="cb11-200"><a href="#cb11-200"></a></span>
-<span id="cb11-201"><a href="#cb11-201"></a><span class="in">COPY rsainc.c .</span></span>
-<span id="cb11-202"><a href="#cb11-202"></a></span>
-<span id="cb11-203"><a href="#cb11-203"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/rsainc/tester.py -o tester.py</span></span>
-<span id="cb11-204"><a href="#cb11-204"></a><span class="in">```</span></span>
-<span id="cb11-205"><a href="#cb11-205"></a></span>
-<span id="cb11-206"><a href="#cb11-206"></a><span class="fu">#### Usage</span></span>
-<span id="cb11-207"><a href="#cb11-207"></a></span>
-<span id="cb11-208"><a href="#cb11-208"></a><span class="ss">- </span>I built my container via:</span>
-<span id="cb11-209"><a href="#cb11-209"></a></span>
-<span id="cb11-210"><a href="#cb11-210"></a><span class="in">```email</span></span>
-<span id="cb11-211"><a href="#cb11-211"></a>podman build -t tester .</span>
-<span id="cb11-212"><a href="#cb11-212"></a><span class="in">```</span></span>
-<span id="cb11-213"><a href="#cb11-213"></a></span>
-<span id="cb11-214"><a href="#cb11-214"></a><span class="ss">- </span>I tested my code via:</span>
-<span id="cb11-215"><a href="#cb11-215"></a></span>
-<span id="cb11-216"><a href="#cb11-216"></a><span class="in">```email</span></span>
-<span id="cb11-217"><a href="#cb11-217"></a>podman run tester python3 tester.py</span>
-<span id="cb11-218"><a href="#cb11-218"></a><span class="in">```</span></span>
-<span id="cb11-219"><a href="#cb11-219"></a></span>
-<span id="cb11-220"><a href="#cb11-220"></a><span class="ss">- </span>If the above script returns the following you are done:</span>
-<span id="cb11-221"><a href="#cb11-221"></a><span class="ss">    - </span>Upload your code to your GitHub on which I am a collaborator.</span>
-<span id="cb11-222"><a href="#cb11-222"></a><span class="ss">- </span>I will review the most recent version prior to the due date.</span>
-<span id="cb11-223"><a href="#cb11-223"></a><span class="in">```email</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="an">subtitle:</span><span class="co"> "Due Thu, 08 Oct"</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">---</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="fu"># Review&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a>::: {#review .collapse .multi-collapse}</span>
+<span id="cb11-10"><a href="#cb11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="fu">### Goal: Public Key Encryption</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a>|Review:    | Newish:    |</span>
+<span id="cb11-14"><a href="#cb11-14"></a>| --------- | ---------- |</span>
+<span id="cb11-15"><a href="#cb11-15"></a>|- RSA      | - modexp    |</span>
+<span id="cb11-16"><a href="#cb11-16"></a>|- FileIO   |    |</span>
+<span id="cb11-17"><a href="#cb11-17"></a></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="ss">- </span>In the lab you should've finished key generation.</span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="ss">  - </span>Otherwise, return to a complete the lab.</span>
+<span id="cb11-20"><a href="#cb11-20"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">KeyGen</span><span class="co">](keygen.html)</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="ss">- </span>This assignment concerns two distinct executable files:</span>
+<span id="cb11-22"><a href="#cb11-22"></a><span class="ss">  - </span>Write keys to files</span>
+<span id="cb11-23"><a href="#cb11-23"></a><span class="ss">    - </span><span class="in">`keygen.c`</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="ss">    - </span>Covered in the lab section.</span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="ss">  - </span>Encrpyt and decrypt based those keys.</span>
+<span id="cb11-26"><a href="#cb11-26"></a><span class="ss">    - </span><span class="in">`rsainc.c`</span></span>
+<span id="cb11-27"><a href="#cb11-27"></a><span class="ss">    - </span>Covered here, but requiring <span class="in">`keygen.c`</span></span>
+<span id="cb11-28"><a href="#cb11-28"></a></span>
+<span id="cb11-29"><a href="#cb11-29"></a>:::</span>
+<span id="cb11-30"><a href="#cb11-30"></a></span>
+<span id="cb11-31"><a href="#cb11-31"></a><span class="fu"># KeyGen&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls = "keygen"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb11-32"><a href="#cb11-32"></a></span>
+<span id="cb11-33"><a href="#cb11-33"></a>::: {#keygen .collapse .multi-collapse}</span>
+<span id="cb11-34"><a href="#cb11-34"></a></span>
+<span id="cb11-35"><a href="#cb11-35"></a><span class="ss">- </span>*This section summarizes the lab. If you completed the lab, you may move onto "ModExp"*</span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="ss">- </span>Recall a sample Python implementation was provided, but was not very readable.</span>
+<span id="cb11-37"><a href="#cb11-37"></a></span>
+<span id="cb11-38"><a href="#cb11-38"></a><span class="fu">### A Private Key in 3 Parts</span></span>
+<span id="cb11-39"><a href="#cb11-39"></a></span>
+<span id="cb11-40"><a href="#cb11-40"></a><span class="ss">- </span>We recall that the private key minimally contains:</span>
+<span id="cb11-41"><a href="#cb11-41"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base</span>
+<span id="cb11-42"><a href="#cb11-42"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor, and </span>
+<span id="cb11-43"><a href="#cb11-43"></a><span class="ss">  - </span><span class="in">`d`</span>, a descryptor.</span>
+<span id="cb11-44"><a href="#cb11-44"></a></span>
+<span id="cb11-45"><a href="#cb11-45"></a><span class="ss">- </span>Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.</span>
+<span id="cb11-46"><a href="#cb11-46"></a><span class="ss">- </span>We will use <span class="in">`.bad`</span> instead of <span class="in">`.pem`</span> and insecurely store these values in plaintext.</span>
+<span id="cb11-47"><a href="#cb11-47"></a><span class="ss">- </span>We will then make executables to generate <span class="in">`.bad`</span> and encrypt content provided a <span class="in">`.bad`</span></span>
+<span id="cb11-48"><a href="#cb11-48"></a><span class="ss">    - </span>We name a <span class="in">`.bad`</span> so helpfully we don't use it by accident.</span>
+<span id="cb11-49"><a href="#cb11-49"></a><span class="ss">- </span>We will naively print 3 lines of hexademical values, <span class="in">`n`</span>, <span class="in">`e`</span>, then <span class="in">`d`</span>.</span>
+<span id="cb11-50"><a href="#cb11-50"></a><span class="ss">- </span>We will write them to a 5-line file as follows:</span>
+<span id="cb11-51"><a href="#cb11-51"></a><span class="ss">  - </span>The first line is the precise header text.</span>
+<span id="cb11-52"><a href="#cb11-52"></a><span class="ss">  - </span>The second line is the <span class="in">`n`</span> value in hexadecimal.</span>
+<span id="cb11-53"><a href="#cb11-53"></a><span class="ss">  - </span>The third line is the <span class="in">`e`</span> value, which is <span class="in">`10001`</span>.</span>
+<span id="cb11-54"><a href="#cb11-54"></a><span class="ss">  - </span>The fourth line is the <span class="in">`d`</span> value, which should be kept secret.</span>
+<span id="cb11-55"><a href="#cb11-55"></a><span class="ss">  - </span>The fifth and final line is the precise footer text.</span>
+<span id="cb11-56"><a href="#cb11-56"></a></span>
+<span id="cb11-57"><a href="#cb11-57"></a><span class="in">```{.email filename="unsafe.bad"}</span></span>
+<span id="cb11-58"><a href="#cb11-58"></a><span class="in">-----BEGIN UNSAFE PRIVATE KEY-----</span></span>
+<span id="cb11-59"><a href="#cb11-59"></a><span class="in">95a61f99198bd8e9</span></span>
+<span id="cb11-60"><a href="#cb11-60"></a><span class="in">10001</span></span>
+<span id="cb11-61"><a href="#cb11-61"></a><span class="in">fbea5e6a3ed31e8f</span></span>
+<span id="cb11-62"><a href="#cb11-62"></a><span class="in">-----END UNSAFE PRIVATE KEY-----</span></span>
+<span id="cb11-63"><a href="#cb11-63"></a><span class="in">```</span></span>
+<span id="cb11-64"><a href="#cb11-64"></a><span class="fu">### A Public Key in 2 Parts</span></span>
+<span id="cb11-65"><a href="#cb11-65"></a></span>
+<span id="cb11-66"><a href="#cb11-66"></a><span class="ss">- </span>We recall that the public key contains, and should only contain:</span>
+<span id="cb11-67"><a href="#cb11-67"></a><span class="ss">  - </span><span class="in">`n`</span>, a modular base, and</span>
+<span id="cb11-68"><a href="#cb11-68"></a><span class="ss">  - </span><span class="in">`e`</span>, an encryptor</span>
+<span id="cb11-69"><a href="#cb11-69"></a></span>
+<span id="cb11-70"><a href="#cb11-70"></a><span class="ss">- </span>Based on the KeyGen lab, we already have the ability to write these values to file.</span>
+<span id="cb11-71"><a href="#cb11-71"></a><span class="ss">- </span>We will use <span class="in">`.pub`</span> instead of <span class="in">`.pem`</span> or <span class="in">`.bad`</span></span>
+<span id="cb11-72"><a href="#cb11-72"></a><span class="ss">  - </span>Not a huge deal how these are stored, actually.</span>
+<span id="cb11-73"><a href="#cb11-73"></a><span class="ss">  - </span>The key itself though, is still unsafe to use.</span>
+<span id="cb11-74"><a href="#cb11-74"></a><span class="ss">- </span>We will naively print 2 lines of hexademical values, <span class="in">`n`</span>, then <span class="in">`e`</span>.</span>
+<span id="cb11-75"><a href="#cb11-75"></a><span class="ss">- </span>We will right them to a file prefixed and suffixed as follows:</span>
+<span id="cb11-76"><a href="#cb11-76"></a></span>
+<span id="cb11-77"><a href="#cb11-77"></a><span class="in">```{.email filename="unsafe.pub"}</span></span>
+<span id="cb11-78"><a href="#cb11-78"></a><span class="in">-----BEGIN UNSAFE PUBLIC KEY-----</span></span>
+<span id="cb11-79"><a href="#cb11-79"></a><span class="in">95a61f99198bd8e9</span></span>
+<span id="cb11-80"><a href="#cb11-80"></a><span class="in">10001</span></span>
+<span id="cb11-81"><a href="#cb11-81"></a><span class="in">-----END UNSAFE PUBLIC KEY-----</span></span>
+<span id="cb11-82"><a href="#cb11-82"></a><span class="in">```</span></span>
+<span id="cb11-83"><a href="#cb11-83"></a></span>
+<span id="cb11-84"><a href="#cb11-84"></a><span class="ss">- </span>Ensure your keys are 32 bit.</span>
+<span id="cb11-85"><a href="#cb11-85"></a><span class="ss">  - </span>Simply encrypt values up to <span class="in">`1 &lt;&lt; 31`</span> in size. </span>
+<span id="cb11-86"><a href="#cb11-86"></a><span class="ss">- </span>Here is a testing script:</span>
+<span id="cb11-87"><a href="#cb11-87"></a></span>
+<span id="cb11-88"><a href="#cb11-88"></a><span class="in">```{.python}</span></span>
+<span id="cb11-89"><a href="#cb11-89"></a><span class="in">def modexp(m, e, n):</span></span>
+<span id="cb11-90"><a href="#cb11-90"></a><span class="in">    if e == 0:</span></span>
+<span id="cb11-91"><a href="#cb11-91"></a><span class="in">        return 1</span></span>
+<span id="cb11-92"><a href="#cb11-92"></a><span class="in">    if e == 1:</span></span>
+<span id="cb11-93"><a href="#cb11-93"></a><span class="in">        return m % n</span></span>
+<span id="cb11-94"><a href="#cb11-94"></a><span class="in">    if e % 2:</span></span>
+<span id="cb11-95"><a href="#cb11-95"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
+<span id="cb11-96"><a href="#cb11-96"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
+<span id="cb11-97"><a href="#cb11-97"></a></span>
+<span id="cb11-98"><a href="#cb11-98"></a><span class="in">make_encrypt = lambda e, n : lambda m : modexp(m,e,n)</span></span>
+<span id="cb11-99"><a href="#cb11-99"></a></span>
+<span id="cb11-100"><a href="#cb11-100"></a><span class="in">lines = open("unsafe.bad").readlines()</span></span>
+<span id="cb11-101"><a href="#cb11-101"></a><span class="in">n = int(lines[1], 16) </span></span>
+<span id="cb11-102"><a href="#cb11-102"></a><span class="in">e = int(lines[2], 16) </span></span>
+<span id="cb11-103"><a href="#cb11-103"></a><span class="in">d = int(lines[3], 16) </span></span>
+<span id="cb11-104"><a href="#cb11-104"></a></span>
+<span id="cb11-105"><a href="#cb11-105"></a><span class="in">lines = open("unsafe.pub").readlines()</span></span>
+<span id="cb11-106"><a href="#cb11-106"></a><span class="in">if n != int(lines[1], 16) or e != int(lines[2], 16):</span></span>
+<span id="cb11-107"><a href="#cb11-107"></a><span class="in">    print("Public key does not match private key.")</span></span>
+<span id="cb11-108"><a href="#cb11-108"></a><span class="in">    exit()</span></span>
+<span id="cb11-109"><a href="#cb11-109"></a></span>
+<span id="cb11-110"><a href="#cb11-110"></a><span class="in">encrypt = make_encrypt(e,n)</span></span>
+<span id="cb11-111"><a href="#cb11-111"></a><span class="in">decrypt = make_encrypt(d,n)</span></span>
+<span id="cb11-112"><a href="#cb11-112"></a></span>
+<span id="cb11-113"><a href="#cb11-113"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0x100)]):</span></span>
+<span id="cb11-114"><a href="#cb11-114"></a><span class="in">    print("Keys work for small values.")</span></span>
+<span id="cb11-115"><a href="#cb11-115"></a><span class="in">else:</span></span>
+<span id="cb11-116"><a href="#cb11-116"></a><span class="in">    print("Keys failed on small values.")</span></span>
+<span id="cb11-117"><a href="#cb11-117"></a></span>
+<span id="cb11-118"><a href="#cb11-118"></a><span class="in">if all([i == decrypt(encrypt(i)) for i in range(0,1 &lt;&lt; 31, 1 &lt;&lt; 29)]):</span></span>
+<span id="cb11-119"><a href="#cb11-119"></a><span class="in">    print("Keys work for larger values.")</span></span>
+<span id="cb11-120"><a href="#cb11-120"></a><span class="in">else:</span></span>
+<span id="cb11-121"><a href="#cb11-121"></a><span class="in">    print("Keys failed on larger values.")</span></span>
+<span id="cb11-122"><a href="#cb11-122"></a><span class="in">```</span></span>
+<span id="cb11-123"><a href="#cb11-123"></a></span>
+<span id="cb11-124"><a href="#cb11-124"></a><span class="at">&gt; By successfully encrypting and decrypting up to </span><span class="in">`1 &lt;&lt; 31`</span><span class="at">, the key is large enough for some small tasks, such encrypting the string "hi" - a string of length 3 when including the null terminator, which therefore contains 24 bits of information.</span></span>
+<span id="cb11-125"><a href="#cb11-125"></a></span>
+<span id="cb11-126"><a href="#cb11-126"></a>:::</span>
+<span id="cb11-127"><a href="#cb11-127"></a></span>
+<span id="cb11-128"><a href="#cb11-128"></a><span class="fu"># ModExp&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#modexp" role="button" aria-expanded="false" aria-controls = "modexp"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb11-129"><a href="#cb11-129"></a></span>
+<span id="cb11-130"><a href="#cb11-130"></a>::: {#modexp .collapse .multi-collapse}</span>
+<span id="cb11-131"><a href="#cb11-131"></a></span>
+<span id="cb11-132"><a href="#cb11-132"></a><span class="ss">- </span>For C language encryption and decryption, it is necessary to implement "modexp" in C.</span>
+<span id="cb11-133"><a href="#cb11-133"></a><span class="ss">- </span>Do so in a novel file, <span class="in">`rsainc.c`</span>, which should:</span>
+<span id="cb11-134"><a href="#cb11-134"></a><span class="ss">  - </span>Accept 3 command line arguments:</span>
+<span id="cb11-135"><a href="#cb11-135"></a><span class="ss">    - </span>A flag <span class="in">`-d`</span> or <span class="in">`-e`</span> for decrypt or encrypt</span>
+<span id="cb11-136"><a href="#cb11-136"></a><span class="ss">    - </span>The file name of an input file.</span>
+<span id="cb11-137"><a href="#cb11-137"></a><span class="ss">    - </span>The file name of an output file.</span>
+<span id="cb11-138"><a href="#cb11-138"></a><span class="ss">  - </span>It should:</span>
+<span id="cb11-139"><a href="#cb11-139"></a><span class="ss">    - </span>Read the content of the input file.</span>
+<span id="cb11-140"><a href="#cb11-140"></a><span class="ss">    - </span>Encrypt or decrypt, as specified, the file contents.</span>
+<span id="cb11-141"><a href="#cb11-141"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`d`</span> from "unsafe.bad" to decrypt.</span>
+<span id="cb11-142"><a href="#cb11-142"></a><span class="ss">      - </span>It should read <span class="in">`n`</span> and <span class="in">`e`</span> from "unsafe.pub" to encrypt.</span>
+<span id="cb11-143"><a href="#cb11-143"></a><span class="ss">    - </span>Write the encrypted or decrypted content to the output file.</span>
+<span id="cb11-144"><a href="#cb11-144"></a><span class="ss">- </span>Here is a Python implementation.</span>
+<span id="cb11-145"><a href="#cb11-145"></a><span class="ss">  - </span>It is exceptionally annoying because Python doesn't like to treat files as holding data rather than text.</span>
+<span id="cb11-146"><a href="#cb11-146"></a></span>
+<span id="cb11-147"><a href="#cb11-147"></a><span class="in">```{.python filename="rsa_py.py"}</span></span>
+<span id="cb11-148"><a href="#cb11-148"></a><span class="in">if __name__ != "__main__":</span></span>
+<span id="cb11-149"><a href="#cb11-149"></a><span class="in">    exit()</span></span>
+<span id="cb11-150"><a href="#cb11-150"></a></span>
+<span id="cb11-151"><a href="#cb11-151"></a><span class="in">import sys</span></span>
+<span id="cb11-152"><a href="#cb11-152"></a></span>
+<span id="cb11-153"><a href="#cb11-153"></a><span class="in">def modexp(m, e, n):</span></span>
+<span id="cb11-154"><a href="#cb11-154"></a><span class="in">    if e == 0:</span></span>
+<span id="cb11-155"><a href="#cb11-155"></a><span class="in">        return 1</span></span>
+<span id="cb11-156"><a href="#cb11-156"></a><span class="in">    if e == 1:</span></span>
+<span id="cb11-157"><a href="#cb11-157"></a><span class="in">        return m % n</span></span>
+<span id="cb11-158"><a href="#cb11-158"></a><span class="in">    if e % 2:</span></span>
+<span id="cb11-159"><a href="#cb11-159"></a><span class="in">        return (m * modexp(m*m % n, e//2, n)) % n</span></span>
+<span id="cb11-160"><a href="#cb11-160"></a><span class="in">    return  modexp(m*m % n, e//2, n) % n</span></span>
+<span id="cb11-161"><a href="#cb11-161"></a></span>
+<span id="cb11-162"><a href="#cb11-162"></a><span class="in">if 'e' in sys.argv[1]:</span></span>
+<span id="cb11-163"><a href="#cb11-163"></a><span class="in">    lines = open("unsafe.pub").readlines()</span></span>
+<span id="cb11-164"><a href="#cb11-164"></a><span class="in">    n, e = int(lines[1], 16), int(lines[2], 16) </span></span>
+<span id="cb11-165"><a href="#cb11-165"></a><span class="in">elif 'd' in sys.argv[1]:</span></span>
+<span id="cb11-166"><a href="#cb11-166"></a><span class="in">    lines = open("unsafe.bad").readlines()</span></span>
+<span id="cb11-167"><a href="#cb11-167"></a><span class="in">    n, e = int(lines[1], 16), int(lines[3], 16) # have to call it e, not d</span></span>
+<span id="cb11-168"><a href="#cb11-168"></a><span class="in">else:</span></span>
+<span id="cb11-169"><a href="#cb11-169"></a><span class="in">    exit()</span></span>
+<span id="cb11-170"><a href="#cb11-170"></a><span class="in">s = open(sys.argv[2], "rb").read()</span></span>
+<span id="cb11-171"><a href="#cb11-171"></a><span class="in">m = int.from_bytes(s, byteorder=sys.byteorder, signed=False)</span></span>
+<span id="cb11-172"><a href="#cb11-172"></a><span class="in">c = modexp(m,e,n)</span></span>
+<span id="cb11-173"><a href="#cb11-173"></a><span class="in">s = open(sys.argv[3], "wb").write(c.to_bytes(4, byteorder=sys.byteorder))</span></span>
+<span id="cb11-174"><a href="#cb11-174"></a><span class="in">```</span></span>
+<span id="cb11-175"><a href="#cb11-175"></a></span>
+<span id="cb11-176"><a href="#cb11-176"></a><span class="fu">#### Hint </span></span>
+<span id="cb11-177"><a href="#cb11-177"></a></span>
+<span id="cb11-178"><a href="#cb11-178"></a><span class="ss">- </span>You will probably want to use something like this:</span>
+<span id="cb11-179"><a href="#cb11-179"></a></span>
+<span id="cb11-180"><a href="#cb11-180"></a><span class="in">```{.C}</span></span>
+<span id="cb11-181"><a href="#cb11-181"></a><span class="in">fscanf(key, "-----BEGIN UNSAFE PRIVATE KEY-----\n%lx\n%lx\n-----END UNSAFE PRIVATE KEY-----\n", &amp;n, &amp;e);</span></span>
+<span id="cb11-182"><a href="#cb11-182"></a><span class="in">```</span></span>
+<span id="cb11-183"><a href="#cb11-183"></a></span>
+<span id="cb11-184"><a href="#cb11-184"></a>:::</span>
+<span id="cb11-185"><a href="#cb11-185"></a></span>
+<span id="cb11-186"><a href="#cb11-186"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb11-187"><a href="#cb11-187"></a></span>
+<span id="cb11-188"><a href="#cb11-188"></a>::: {#tester .collapse .multi-collapse}</span>
+<span id="cb11-189"><a href="#cb11-189"></a></span>
+<span id="cb11-190"><a href="#cb11-190"></a><span class="ss">- </span>I am providing the following Containerfile, which will serve as a minimal autograder.</span>
+<span id="cb11-191"><a href="#cb11-191"></a><span class="ss">- </span>*Use the tester with caution outside of containers as it deletes files you may want to preserve*</span>
+<span id="cb11-192"><a href="#cb11-192"></a></span>
+<span id="cb11-193"><a href="#cb11-193"></a><span class="in">```{.email filename="Containerfile"}</span></span>
+<span id="cb11-194"><a href="#cb11-194"></a><span class="in">FROM ubuntu </span></span>
+<span id="cb11-195"><a href="#cb11-195"></a></span>
+<span id="cb11-196"><a href="#cb11-196"></a><span class="in">RUN apt update &amp;&amp; apt install gcc curl python3 -y</span></span>
+<span id="cb11-197"><a href="#cb11-197"></a></span>
+<span id="cb11-198"><a href="#cb11-198"></a><span class="in">COPY keygen.c .</span></span>
+<span id="cb11-199"><a href="#cb11-199"></a></span>
+<span id="cb11-200"><a href="#cb11-200"></a><span class="in">COPY rsainc.c .</span></span>
+<span id="cb11-201"><a href="#cb11-201"></a></span>
+<span id="cb11-202"><a href="#cb11-202"></a><span class="in">RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/rsainc/tester.py -o tester.py</span></span>
+<span id="cb11-203"><a href="#cb11-203"></a><span class="in">```</span></span>
+<span id="cb11-204"><a href="#cb11-204"></a></span>
+<span id="cb11-205"><a href="#cb11-205"></a><span class="fu">#### Usage</span></span>
+<span id="cb11-206"><a href="#cb11-206"></a></span>
+<span id="cb11-207"><a href="#cb11-207"></a><span class="ss">- </span>I built my container via:</span>
+<span id="cb11-208"><a href="#cb11-208"></a></span>
+<span id="cb11-209"><a href="#cb11-209"></a><span class="in">```email</span></span>
+<span id="cb11-210"><a href="#cb11-210"></a>podman build -t tester .</span>
+<span id="cb11-211"><a href="#cb11-211"></a><span class="in">```</span></span>
+<span id="cb11-212"><a href="#cb11-212"></a></span>
+<span id="cb11-213"><a href="#cb11-213"></a><span class="ss">- </span>I tested my code via:</span>
+<span id="cb11-214"><a href="#cb11-214"></a></span>
+<span id="cb11-215"><a href="#cb11-215"></a><span class="in">```email</span></span>
+<span id="cb11-216"><a href="#cb11-216"></a>podman run tester python3 tester.py</span>
+<span id="cb11-217"><a href="#cb11-217"></a><span class="in">```</span></span>
+<span id="cb11-218"><a href="#cb11-218"></a></span>
+<span id="cb11-219"><a href="#cb11-219"></a><span class="ss">- </span>If the above script returns the following you are done:</span>
+<span id="cb11-220"><a href="#cb11-220"></a><span class="ss">    - </span>Upload your code to your GitHub on which I am a collaborator.</span>
+<span id="cb11-221"><a href="#cb11-221"></a><span class="ss">- </span>I will review the most recent version prior to the due date.</span>
+<span id="cb11-222"><a href="#cb11-222"></a><span class="in">```email</span></span>
+<span id="cb11-223"><a href="#cb11-223"></a>A+</span>
 <span id="cb11-224"><a href="#cb11-224"></a>A+</span>
 <span id="cb11-225"><a href="#cb11-225"></a>A+</span>
 <span id="cb11-226"><a href="#cb11-226"></a>A+</span>
@@ -1401,36 +1401,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-228"><a href="#cb11-228"></a>A+</span>
 <span id="cb11-229"><a href="#cb11-229"></a>A+</span>
 <span id="cb11-230"><a href="#cb11-230"></a>A+</span>
-<span id="cb11-231"><a href="#cb11-231"></a>A+</span>
-<span id="cb11-232"><a href="#cb11-232"></a><span class="in">```</span></span>
-<span id="cb11-233"><a href="#cb11-233"></a></span>
-<span id="cb11-234"><a href="#cb11-234"></a><span class="fu">#### Sketch</span></span>
-<span id="cb11-235"><a href="#cb11-235"></a></span>
-<span id="cb11-236"><a href="#cb11-236"></a><span class="ss">- </span>We note the tester performs no error handling, for which you as the student are responsible.</span>
-<span id="cb11-237"><a href="#cb11-237"></a><span class="ss">- </span>This assignment was essentially as follows:</span>
-<span id="cb11-238"><a href="#cb11-238"></a><span class="ss">  - </span>Create a <span class="in">`keygen.c`</span> that compiles into a <span class="in">`keygen`</span> executable which is functionally identical to <span class="in">`python3 keygen.py`</span></span>
-<span id="cb11-239"><a href="#cb11-239"></a><span class="ss">    - </span>Key generation should create an <span class="in">`unsafe.bad`</span> private key and an <span class="in">`unsafe.pub`</span> public key.</span>
-<span id="cb11-240"><a href="#cb11-240"></a><span class="ss">  - </span>Create a <span class="in">`rsainc.c`</span> that compiles into a <span class="in">`rsainc`</span> executable which is functionally identical to <span class="in">`python3 rsa_py.py`</span></span>
-<span id="cb11-241"><a href="#cb11-241"></a><span class="ss">    - </span>Encryption and decryption will use a created <span class="in">`unsafe.bad`</span> private key and an <span class="in">`unsafe.pub`</span> public key.</span>
-<span id="cb11-242"><a href="#cb11-242"></a></span>
-<span id="cb11-243"><a href="#cb11-243"></a><span class="fu">#### Tester</span></span>
-<span id="cb11-244"><a href="#cb11-244"></a></span>
-<span id="cb11-245"><a href="#cb11-245"></a><span class="ss">- </span>The tester:</span>
-<span id="cb11-246"><a href="#cb11-246"></a><span class="ss">  - </span>Ensures the local directory contains no prior message, key, or executable files.</span>
-<span id="cb11-247"><a href="#cb11-247"></a><span class="ss">  - </span>Uses <span class="in">`curl`</span> to fetch the latest <span class="in">`keygen.py`</span> and <span class="in">`rsa_py.py`</span> from the instructional GitHub</span>
-<span id="cb11-248"><a href="#cb11-248"></a><span class="ss">  - </span>Compiles <span class="in">`keygen.c`</span> and <span class="in">`rsainc.c`</span> with all flags:</span>
-<span id="cb11-249"><a href="#cb11-249"></a><span class="in">```{.email}</span></span>
-<span id="cb11-250"><a href="#cb11-250"></a><span class="in">gcc keygen.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o keygen</span></span>
-<span id="cb11-251"><a href="#cb11-251"></a><span class="in">gcc rsainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o rsainc</span></span>
-<span id="cb11-252"><a href="#cb11-252"></a><span class="in">```</span></span>
-<span id="cb11-253"><a href="#cb11-253"></a><span class="ss">  - </span>Creates a short message file containing at most two characters.</span>
-<span id="cb11-254"><a href="#cb11-254"></a><span class="ss">  - </span>Tests RSA for all permutations of C and Python for each stage:</span>
-<span id="cb11-255"><a href="#cb11-255"></a><span class="ss">    - </span>Generates keys</span>
-<span id="cb11-256"><a href="#cb11-256"></a><span class="ss">    - </span>Encrypts the message, and </span>
-<span id="cb11-257"><a href="#cb11-257"></a><span class="ss">    - </span>Decrypts the message, then</span>
-<span id="cb11-258"><a href="#cb11-258"></a><span class="ss">    - </span>Prints the output.</span>
-<span id="cb11-259"><a href="#cb11-259"></a></span>
-<span id="cb11-260"><a href="#cb11-260"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb11-231"><a href="#cb11-231"></a><span class="in">```</span></span>
+<span id="cb11-232"><a href="#cb11-232"></a></span>
+<span id="cb11-233"><a href="#cb11-233"></a><span class="fu">#### Sketch</span></span>
+<span id="cb11-234"><a href="#cb11-234"></a></span>
+<span id="cb11-235"><a href="#cb11-235"></a><span class="ss">- </span>We note the tester performs no error handling, for which you as the student are responsible.</span>
+<span id="cb11-236"><a href="#cb11-236"></a><span class="ss">- </span>This assignment was essentially as follows:</span>
+<span id="cb11-237"><a href="#cb11-237"></a><span class="ss">  - </span>Create a <span class="in">`keygen.c`</span> that compiles into a <span class="in">`keygen`</span> executable which is functionally identical to <span class="in">`python3 keygen.py`</span></span>
+<span id="cb11-238"><a href="#cb11-238"></a><span class="ss">    - </span>Key generation should create an <span class="in">`unsafe.bad`</span> private key and an <span class="in">`unsafe.pub`</span> public key.</span>
+<span id="cb11-239"><a href="#cb11-239"></a><span class="ss">  - </span>Create a <span class="in">`rsainc.c`</span> that compiles into a <span class="in">`rsainc`</span> executable which is functionally identical to <span class="in">`python3 rsa_py.py`</span></span>
+<span id="cb11-240"><a href="#cb11-240"></a><span class="ss">    - </span>Encryption and decryption will use a created <span class="in">`unsafe.bad`</span> private key and an <span class="in">`unsafe.pub`</span> public key.</span>
+<span id="cb11-241"><a href="#cb11-241"></a></span>
+<span id="cb11-242"><a href="#cb11-242"></a><span class="fu">#### Tester</span></span>
+<span id="cb11-243"><a href="#cb11-243"></a></span>
+<span id="cb11-244"><a href="#cb11-244"></a><span class="ss">- </span>The tester:</span>
+<span id="cb11-245"><a href="#cb11-245"></a><span class="ss">  - </span>Ensures the local directory contains no prior message, key, or executable files.</span>
+<span id="cb11-246"><a href="#cb11-246"></a><span class="ss">  - </span>Uses <span class="in">`curl`</span> to fetch the latest <span class="in">`keygen.py`</span> and <span class="in">`rsa_py.py`</span> from the instructional GitHub</span>
+<span id="cb11-247"><a href="#cb11-247"></a><span class="ss">  - </span>Compiles <span class="in">`keygen.c`</span> and <span class="in">`rsainc.c`</span> with all flags:</span>
+<span id="cb11-248"><a href="#cb11-248"></a><span class="in">```{.email}</span></span>
+<span id="cb11-249"><a href="#cb11-249"></a><span class="in">gcc keygen.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o keygen</span></span>
+<span id="cb11-250"><a href="#cb11-250"></a><span class="in">gcc rsainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o rsainc</span></span>
+<span id="cb11-251"><a href="#cb11-251"></a><span class="in">```</span></span>
+<span id="cb11-252"><a href="#cb11-252"></a><span class="ss">  - </span>Creates a short message file containing at most two characters.</span>
+<span id="cb11-253"><a href="#cb11-253"></a><span class="ss">  - </span>Tests RSA for all permutations of C and Python for each stage:</span>
+<span id="cb11-254"><a href="#cb11-254"></a><span class="ss">    - </span>Generates keys</span>
+<span id="cb11-255"><a href="#cb11-255"></a><span class="ss">    - </span>Encrypts the message, and </span>
+<span id="cb11-256"><a href="#cb11-256"></a><span class="ss">    - </span>Decrypts the message, then</span>
+<span id="cb11-257"><a href="#cb11-257"></a><span class="ss">    - </span>Prints the output.</span>
+<span id="cb11-258"><a href="#cb11-258"></a></span>
+<span id="cb11-259"><a href="#cb11-259"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

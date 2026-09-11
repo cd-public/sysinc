@@ -390,28 +390,28 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Euclid</h1>
-  <p class="subtitle">Week 0x3.3</p>
+  <p class="subtitle">w6d0</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
-<li><strong>Welcome</strong> to Computing Security
+<li><strong>Welcome</strong> to Systems in C
 <ul>
 <li>We introduce an algorithm that makes key generation viable.</li>
 </ul></li>
 <li><strong>Action Items</strong>:
 <ul>
-<li>BigRSA ongoing.</li>
+<li>BigRSA.</li>
+<li>Midterm next week.</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Euclidean division</li>
 <li>Euclidean algorithm</li>
@@ -419,14 +419,13 @@
 <li>Bézout’s identity</li>
 </ul>
 </section>
-
+<section>
 <section id="review" class="title-slide slide level1 center">
 <h1>Review</h1>
 
 </section>
-
-<section id="lambdan" class="title-slide slide level1 center">
-<h1>3. <span class="math inline">\(\lambda(n)\)</span></h1>
+<section id="lambdan" class="slide level2">
+<h2>3. <span class="math inline">\(\lambda(n)\)</span></h2>
 <ul>
 <li>This one is kept secret by the way.</li>
 <li>It so happens: <span class="math display">\[
@@ -435,9 +434,8 @@
 <li>There’s fast ways to this, but anything goes this week.</li>
 </ul>
 </section>
-
-<section id="lcm" class="title-slide slide level1 center">
-<h1>LCM</h1>
+<section id="lcm" class="slide level2">
+<h2>LCM</h2>
 <ul>
 <li>Least common multiple</li>
 </ul>
@@ -451,9 +449,8 @@
 <span id="cb1-8"><a></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
 <span id="cb1-9"><a></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="mmi" class="title-slide slide level1 center">
-<h1>MMI</h1>
+<section id="mmi" class="slide level2">
+<h2>MMI</h2>
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
@@ -463,9 +460,8 @@
 <span id="cb2-4"><a></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
 <span id="cb2-5"><a></a>  <span class="cf">return</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="modexp" class="title-slide slide level1 center">
-<h1>ModExp</h1>
+<section id="modexp" class="slide level2">
+<h2>ModExp</h2>
 <ul>
 <li>Exponentation modulo <span class="math inline">\(n\)</span>.</li>
 </ul>
@@ -478,19 +474,22 @@
 <span id="cb3-7"><a></a>      <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
 <span id="cb3-8"><a></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="context" class="title-slide slide level1 center">
-<h1>Context</h1>
+<section id="context" class="slide level2">
+<h2>Context</h2>
 <ul>
 <li>Each of these operations are dealing with, fundamentally, the same problem.</li>
 <li>We have big numbers we want to work with but,</li>
 <li>None are bigger than <span class="math inline">\(n\)</span>, and</li>
 <li>The bigger the number, the harder the work.</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="division" class="title-slide slide level1 center">
+<h1>Division</h1>
 
-<section id="euclidean-division" class="title-slide slide level1 center">
-<h1>Euclidean Division</h1>
+</section>
+<section id="euclidean-division" class="slide level2">
+<h2>Euclidean Division</h2>
 <ul>
 <li>Division as implemented by “bigdiv”:</li>
 </ul>
@@ -510,9 +509,8 @@
 <span id="cb4-14"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-15"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="naive-division" class="title-slide slide level1 center">
-<h1>Naive Division</h1>
+<section id="naive-division" class="slide level2">
+<h2>Naive Division</h2>
 <ul>
 <li>Entry-level categorization, term it “naive”
 <ul>
@@ -523,9 +521,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="integer-division" class="title-slide slide level1 center">
-<h1>Integer Division</h1>
+<section id="integer-division" class="slide level2">
+<h2>Integer Division</h2>
 <ul>
 <li>Integer division - often over <span class="math inline">\(\mathbb{N}\)</span> or <span class="math inline">\(\mathbb{Z}\)</span>
 <ul>
@@ -534,9 +531,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="we-note" class="title-slide slide level1 center">
-<h1>We note</h1>
+<section id="we-note" class="slide level2">
+<h2>We note</h2>
 <ul>
 <li>Many sets of numbers are not closed under division
 <ul>
@@ -549,9 +545,8 @@
 <li>These are all bad!</li>
 </ul>
 </section>
-
-<section id="euclidean-division-1" class="title-slide slide level1 center">
-<h1>Euclidean Division</h1>
+<section id="euclidean-division-1" class="slide level2">
+<h2>Euclidean Division</h2>
 <ul>
 <li>Euclidean division solves this problem by <em>changing the type of the function</em>
 <ul>
@@ -564,9 +559,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="euclidean-division-2" class="title-slide slide level1 center">
-<h1>Euclidean Division</h1>
+<section id="euclidean-division-2" class="slide level2">
+<h2>Euclidean Division</h2>
 <ul>
 <li>Also called “division with remainder”.
 <ul>
@@ -576,22 +570,20 @@
 <li>Named as a result of “Euclidean Algorithm”, which is used in cryptography!</li>
 </ul>
 </section>
-
-<section id="euclidean-division-3" class="title-slide slide level1 center">
-<h1>Euclidean Division</h1>
+<section id="euclidean-division-3" class="slide level2">
+<h2>Euclidean Division</h2>
 <ul>
 <li>In Python:</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> div(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]:</span>
-<span id="cb5-2"><a></a>    <span class="co"># Euclidean Division</span></span>
+<span id="cb5-2"><a></a>    <span class="co">## Euclidean Division</span></span>
 <span id="cb5-3"><a></a>    <span class="cf">return</span> x <span class="op">//</span> y, x <span class="op">%</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>In Latex: <span class="math inline">\(\mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \times \mathbb{N}\)</span></li>
 </ul>
 </section>
-
-<section id="terminology" class="title-slide slide level1 center">
-<h1>Terminology</h1>
+<section id="terminology" class="slide level2">
+<h2>Terminology</h2>
 <ul>
 <li>Dividend / Divisor = Quotient</li>
 <li>Dividend % Divisor = Remainder</li>
@@ -601,53 +593,52 @@
 <li>Remainder is modulo if dividend and divisor are naturals.</li>
 </ul>
 </section>
-
-<section id="equality" class="title-slide slide level1 center">
-<h1>Equality</h1>
+<section id="equality" class="slide level2">
+<h2>Equality</h2>
 <ul>
 <li>Divisor <span class="math inline">\(\times\)</span> Quotient + Remainder = Dividend</li>
 </ul>
 </section>
-
-<section id="constraints" class="title-slide slide level1 center">
-<h1>Constraints</h1>
+<section id="constraints" class="slide level2">
+<h2>Constraints</h2>
 <ul>
 <li>The remainder is restricted to the naturals, even for division over the integers.</li>
 <li>The remainder is restricted to be smaller than divisor - the thing by which we divide.</li>
 </ul>
 </section>
-
-<section id="constraints-1" class="title-slide slide level1 center">
-<h1>Constraints</h1>
+<section id="constraints-1" class="slide level2">
+<h2>Constraints</h2>
 <ul>
 <li>The quotient is the number of largest number absolute by which the divisor may be multipled such the product is absolutely less than the divisend.</li>
 <li>The remainder is the smallest positive value such that the sum of the remainder and the product of the quotient and divisor is equal to the divisend.</li>
 </ul>
 </section>
-
-<section id="takeaways" class="title-slide slide level1 center">
-<h1>Takeaways</h1>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
 <ul>
 <li>Remainders are small and positive (good).</li>
 <li>We get to keep using integers, and through some effort can stick to naturals.</li>
 <li>This is good if we want to work with unsigned integers.</li>
 </ul>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Euclidean division</li>
 <li>Euclidean algorithm</li>
 <li>Extended Euclidean algorithm</li>
 <li>Bézout’s identity</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="algorithm" class="title-slide slide level1 center">
+<h1>Algorithm</h1>
 
-<section id="sidebar" class="title-slide slide level1 center">
-<h1>Sidebar</h1>
+</section>
+<section id="sidebar" class="slide level2">
+<h2>Sidebar</h2>
 <ul>
-<li>The Euclidean algorith is:
+<li>The Euclidean algorithm is:
 <ul>
 <li>An algorithm with,</li>
 <li>Algorithm in the name</li>
@@ -660,9 +651,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="goals" class="title-slide slide level1 center">
-<h1>Goals</h1>
+<section id="goals" class="slide level2">
+<h2>Goals</h2>
 <ul>
 <li>Given two values, the Euclidean algorithm finds the greatest common denominator.</li>
 <li>Generally, it proceeds either iteratively or recursively.
@@ -672,9 +662,8 @@
 <li>Historically used to synthesize integer division from integer subtraction, now primary use in cryptography.</li>
 </ul>
 </section>
-
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>Suppose we have</li>
 </ul>
@@ -683,43 +672,38 @@
 <li>We wish to find their <em>greatest common denominator</em></li>
 </ul>
 </section>
-
-<section id="initialize" class="title-slide slide level1 center">
-<h1>Initialize</h1>
+<section id="initialize" class="slide level2">
+<h2>Initialize</h2>
 <ol type="1">
 <li>Take the larger value</li>
 </ol>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>x, y <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="substract" class="title-slide slide level1 center">
-<h1>Substract</h1>
+<section id="substract" class="slide level2">
+<h2>Substract</h2>
 <ol start="2" type="1">
 <li>Subtract the smaller value from the larger value until it is no longer larger.</li>
 </ol>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="cf">while</span> x <span class="op">&gt;=</span> y:</span>
 <span id="cb8-2"><a></a>    x <span class="op">-=</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="loop" class="title-slide slide level1 center">
-<h1>Loop</h1>
+<section id="loop" class="slide level2">
+<h2>Loop</h2>
 <ol start="3" type="1">
 <li>Repeat…</li>
 </ol>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x, y <span class="op">=</span> <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="terminate" class="title-slide slide level1 center">
-<h1>Terminate</h1>
+<section id="terminate" class="slide level2">
+<h2>Terminate</h2>
 <ol start="4" type="1">
 <li>Stop when either x or y is zero</li>
 </ol>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x, y <span class="op">=</span> x <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> y <span class="op">!=</span> <span class="dv">0</span> ? <span class="bu">max</span>(x,y), <span class="bu">min</span>(x,y) : exit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="iteratively" class="title-slide slide level1 center">
-<h1>Iteratively</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># i am not about to try to spell "uelcidan lagorhtim"</span></span>
+<section id="iteratively" class="slide level2">
+<h2>Iteratively</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co">## i am not about to try to spell "uelcidan lagorhtim"</span></span>
 <span id="cb11-2"><a></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
 <span id="cb11-3"><a></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb11-4"><a></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
@@ -727,14 +711,13 @@
 <span id="cb11-6"><a></a>            a <span class="op">-=</span> b</span>
 <span id="cb11-7"><a></a>    <span class="cf">return</span> <span class="bu">max</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="modulo" class="title-slide slide level1 center">
-<h1>Modulo</h1>
+<section id="modulo" class="slide level2">
+<h2>Modulo</h2>
 <ul>
 <li>Essential we calculate a modulo or remainder (depending)</li>
 <li>Then… do that again.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># i am not about to try to spell "udelcian altoghtn"</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co">## i am not about to try to spell "udelcian altoghtn"</span></span>
 <span id="cb12-2"><a></a><span class="kw">def</span> ea(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
 <span id="cb12-3"><a></a>    <span class="cf">while</span> <span class="bu">min</span>(a,b) <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb12-4"><a></a>        a, b <span class="op">=</span> <span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b)</span>
@@ -747,37 +730,34 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="recursively" class="title-slide slide level1 center">
-<h1>Recursively</h1>
+<section id="recursively" class="slide level2">
+<h2>Recursively</h2>
 <ul>
 <li>Easier for me to understand recursively, either with mod or without.
 <ul>
 <li>Here’s one mod implementation.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Have to make a lot of design decisions here, this is one variant</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">## Have to make a lot of design decisions here, this is one variant</span></span>
 <span id="cb13-2"><a></a>recmod <span class="op">=</span> <span class="kw">lambda</span> a, b: recmod (a <span class="op">-</span> b, b) <span class="cf">if</span> a <span class="op">-</span> b <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="recursively-1" class="title-slide slide level1 center">
-<h1>Recursively</h1>
+<section id="recursively-1" class="slide level2">
+<h2>Recursively</h2>
 <ul>
 <li>Easier for me to understand recursively, either with mod or without.
 <ul>
 <li>Here’s recursive EA</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Much easier if we assume argument order, of course</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co">## Much easier if we assume argument order, of course</span></span>
 <span id="cb14-2"><a></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : rec_ea(<span class="bu">max</span>(a,b) <span class="op">%</span> <span class="bu">min</span>(a,b), <span class="bu">min</span>(a,b)) <span class="cf">if</span> <span class="bu">min</span>(a,b) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">max</span>(a,b)</span>
 <span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a><span class="co"># I much prefer</span></span>
+<span id="cb14-4"><a></a><span class="co">## I much prefer</span></span>
 <span id="cb14-5"><a></a>helper <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(b, a <span class="op">%</span> b) <span class="cf">if</span> b <span class="cf">else</span> a</span>
 <span id="cb14-6"><a></a>rec_ea <span class="op">=</span> <span class="kw">lambda</span> a, b : helper(<span class="bu">max</span>(a,b), <span class="bu">min</span>(a,b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="with-def" class="title-slide slide level1 center">
-<h1>With <code>def</code></h1>
+<section id="with-def" class="slide level2">
+<h2>With <code>def</code></h2>
 <ul>
 <li>We do not all love inlining, and that’s okay!</li>
 </ul>
@@ -790,9 +770,8 @@
 <span id="cb15-7"><a></a>            <span class="cf">return</span> a</span>
 <span id="cb15-8"><a></a>    <span class="cf">return</span> inner(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="simplest" class="title-slide slide level1 center">
-<h1>Simplest</h1>
+<section id="simplest" class="slide level2">
+<h2>Simplest</h2>
 <ul>
 <li>We can remove type hints and just trust bigger first.</li>
 </ul>
@@ -801,9 +780,8 @@
 <span id="cb16-3"><a></a>        <span class="cf">return</span> ea(b, a <span class="op">%</span> b)</span>
 <span id="cb16-4"><a></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="example-1" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li><code>ea(1071, 462)</code></li>
 <li>I will use the following:</li>
@@ -822,9 +800,8 @@
 <span id="cb18-4"><a></a>a =   21, b =    0</span>
 <span id="cb18-5"><a></a>21</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="test-it" class="title-slide slide level1 center">
-<h1>Test it</h1>
+<section id="test-it" class="slide level2">
+<h2>Test it</h2>
 <ul>
 <li>Both are divisible by 21!</li>
 </ul>
@@ -833,9 +810,8 @@
 <span id="cb19-3"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">462</span><span class="op">/</span><span class="dv">21</span></span>
 <span id="cb19-4"><a></a><span class="fl">22.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="anyways" class="title-slide slide level1 center">
-<h1>Anyways</h1>
+<section id="anyways" class="slide level2">
+<h2>Anyways</h2>
 <ul>
 <li>This is what GitHub Copilot did, I don’t know if we understood it at the time.</li>
 </ul>
@@ -849,9 +825,8 @@
 <span id="cb20-8"><a></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
 <span id="cb20-9"><a></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="columns">
 <div class="column" style="width:25%;">
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Euclidean_algorithm_1071_462.gif"></p>
@@ -861,9 +836,8 @@
 </blockquote>
 </div></div>
 </section>
-
-<section id="today-2" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Euclidean division</li>
 <li>✓ Euclidean algorithm</li>
@@ -871,19 +845,22 @@
 <li>Bézout’s identity</li>
 </ul>
 </section>
-
-<section id="reorder" class="title-slide slide level1 center">
-<h1>Reorder</h1>
+<section id="reorder" class="slide level2">
+<h2>Reorder</h2>
 <ul>
 <li>✓ Euclidean division</li>
 <li>✓ Euclidean algorithm</li>
 <li>Bézout’s identity</li>
 <li>Extended Euclidean algorithm</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="bézout" class="title-slide slide level1 center">
+<h1>Bézout</h1>
 
-<section id="mmi-1" class="title-slide slide level1 center">
-<h1>MMI</h1>
+</section>
+<section id="mmi-1" class="slide level2">
+<h2>MMI</h2>
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
@@ -899,18 +876,16 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="slow" class="title-slide slide level1 center">
-<h1>Slow</h1>
+<section id="slow" class="slide level2">
+<h2>Slow</h2>
 <ul>
 <li>It could loop this many times.</li>
 </ul>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python code-overflow-wrap number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">4096</span></span>
 <span id="cb22-2"><a></a><span class="dv">1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="we-note-1" class="title-slide slide level1 center">
-<h1>We note</h1>
+<section id="we-note-1" class="slide level2">
+<h2>We note</h2>
 <ul>
 <li>In the Euclidean algorithm, we were tracking only remainders.
 <ul>
@@ -923,9 +898,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="bézouts-identity" class="title-slide slide level1 center">
-<h1>Bézout’s identity</h1>
+<section id="bézouts-identity" class="slide level2">
+<h2>Bézout’s identity</h2>
 <p><span class="math display">\[
 \forall a, b \in \mathbb{Z} : \exists x, y \in \mathbb{Z} : a \times x + b \times y = \gcd(a,b)
 \]</span></p>
@@ -933,9 +907,8 @@
 <li>The linear combinations of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are exactly the multiples of <span class="math inline">\(\gcd(a,b)\)</span></li>
 </ul>
 </section>
-
-<section id="recall" class="title-slide slide level1 center">
-<h1>Recall</h1>
+<section id="recall" class="slide level2">
+<h2>Recall</h2>
 <ul>
 <li>To get <span class="math inline">\((m^e)^d \equiv m \pmod{n}\)</span></li>
 <li>We needed some <span class="math inline">\(d\)</span> that was the:
@@ -945,9 +918,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="goals-1" class="title-slide slide level1 center">
-<h1>Goals</h1>
+<section id="goals-1" class="slide level2">
+<h2>Goals</h2>
 <ul>
 <li>So we need that <span class="math inline">\(e\)</span>, times something, equals 1.
 <ul>
@@ -965,9 +937,8 @@
 <li>And we are taking this <span class="math inline">\(\pmod{\lambda(n)}\)</span> so</li>
 </ul>
 </section>
-
-<section id="put-it-all-together" class="title-slide slide level1 center">
-<h1>Put it all together</h1>
+<section id="put-it-all-together" class="slide level2">
+<h2>Put it all together</h2>
 <p><span class="math display">\[
 \forall e, \lambda(n) \in \mathbb{Z} : \exists x \in \mathbb{Z} : e \times x \equiv 1 \pmod{\lambda(n)}
 \]</span></p>
@@ -979,19 +950,22 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="reorder-1" class="title-slide slide level1 center">
-<h1>Reorder</h1>
+<section id="reorder-1" class="slide level2">
+<h2>Reorder</h2>
 <ul>
 <li>✓ Euclidean division</li>
 <li>✓ Euclidean algorithm</li>
 <li>✓ Bézout’s identity</li>
 <li>Extended Euclidean algorithm</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="extend" class="title-slide slide level1 center">
+<h1>Extend</h1>
 
-<section id="mmi-2" class="title-slide slide level1 center">
-<h1>MMI</h1>
+</section>
+<section id="mmi-2" class="slide level2">
+<h2>MMI</h2>
 <ul>
 <li>Multiplicative Modular Inverse</li>
 </ul>
@@ -1007,9 +981,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="eea" class="title-slide slide level1 center">
-<h1>EEA</h1>
+<section id="eea" class="slide level2">
+<h2>EEA</h2>
 <ul>
 <li>The EEA is akin to the EA but tracks quotients as well as remainders.
 <ul>
@@ -1017,19 +990,17 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="ground-truth" class="title-slide slide level1 center">
-<h1>Ground truth</h1>
+<section id="ground-truth" class="slide level2">
+<h2>Ground truth</h2>
 <ul>
-<li>I regard the Wikipedia simplifed pseudocode as ground thrust for eea.
+<li>I regard the Wikipedia simplifed pseudocode as ground truth for eea.
 <ul>
 <li>They call it <code>extended_gcd</code>, which I do like.</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb24-1"><a></a>function extended_gcd(a, b)</span>
 <span id="cb24-2"><a></a>    s := 0;    old_s := 1</span>
 <span id="cb24-3"><a></a>    r := b;    old_r := a</span>
@@ -1047,9 +1018,8 @@
 <span id="cb24-15"><a></a>    output "Bézout coefficients:", (old_s, bezout_t)</span>
 <span id="cb24-16"><a></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="x-and-y" class="title-slide slide level1 center">
-<h1><span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></h1>
+<section id="x-and-y" class="slide level2">
+<h2><span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></h2>
 <ul>
 <li>We don’t need this:</li>
 </ul>
@@ -1064,9 +1034,8 @@
 <li>We need only <span class="math inline">\(x\)</span>, not <span class="math inline">\(y\)</span>.</li>
 </ul>
 </section>
-
-<section id="section-2" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb26-1"><a></a>function extended_gcd(a, b)</span>
 <span id="cb26-2"><a></a>    s := 0;    old_s := 1</span>
 <span id="cb26-3"><a></a>    r := b;    old_r := a</span>
@@ -1079,9 +1048,8 @@
 <span id="cb26-10"><a></a>    output "Bézout coefficient:", old_s</span>
 <span id="cb26-11"><a></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="modulo-1" class="title-slide slide level1 center">
-<h1>Modulo</h1>
+<section id="modulo-1" class="slide level2">
+<h2>Modulo</h2>
 <ul>
 <li>This implementation does not calculate modulo</li>
 </ul>
@@ -1093,9 +1061,8 @@
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb28-1"><a></a>quotient := old_r div r</span>
 <span id="cb28-2"><a></a>(old_r, r) := (r, old_r mod quotient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="section-3" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-3" class="slide level2">
+<h2></h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb29-1"><a></a>function extended_gcd(a, b)</span>
 <span id="cb29-2"><a></a>    s := 0;    old_s := 1</span>
 <span id="cb29-3"><a></a>    r := b;    old_r := a</span>
@@ -1108,9 +1075,8 @@
 <span id="cb29-10"><a></a>    output "Bézout coefficient:", old_s</span>
 <span id="cb29-11"><a></a>    output "greatest common divisor:", old_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="recursion" class="title-slide slide level1 center">
-<h1>Recursion</h1>
+<section id="recursion" class="slide level2">
+<h2>Recursion</h2>
 <ul>
 <li>The usage of “old s” and “old r” a holdovers from a conversion from recursion to iteration.
 <ul>
@@ -1119,9 +1085,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="we-can-recurse" class="title-slide slide level1 center">
-<h1>We can recurse</h1>
+<section id="we-can-recurse" class="slide level2">
+<h2>We can recurse</h2>
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb30-1"><a></a>function extended_gcd(a, b)</span>
 <span id="cb30-2"><a></a>    if b is 0 do</span>
 <span id="cb30-3"><a></a>        output a, 1, 0</span>
@@ -1130,35 +1095,31 @@
 <span id="cb30-6"><a></a>    </span>
 <span id="cb30-7"><a></a>    output r, t, s - (a div b) × t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="to-python" class="title-slide slide level1 center">
-<h1>To Python</h1>
+<section id="to-python" class="slide level2">
+<h2>To Python</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">def</span> extended_gcd(a, b):</span>
 <span id="cb31-2"><a></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb31-3"><a></a>        <span class="cf">return</span> a, <span class="dv">1</span>, <span class="dv">0</span></span>
 <span id="cb31-4"><a></a>    r, s, t <span class="op">=</span> extended_gcd(b, a <span class="op">%</span> b)</span>
-<span id="cb31-5"><a></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co"># no graceful mod here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-5"><a></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co">## no graceful mod here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="example-2" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="op">&gt;&gt;&gt;</span> extended_gcd(<span class="dv">1071</span>, <span class="dv">462</span>)</span>
 <span id="cb32-2"><a></a>(<span class="dv">21</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>)</span>
 <span id="cb32-3"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1071</span> <span class="op">*</span> <span class="op">-</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">462</span> <span class="op">*</span> <span class="dv">7</span></span>
 <span id="cb32-4"><a></a><span class="dv">21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="wait-a-minute" class="title-slide slide level1 center">
-<h1>Wait a minute!</h1>
+<section id="wait-a-minute" class="slide level2">
+<h2>Wait a minute!</h2>
 <ul>
 <li>Negatives are <em>a problem</em></li>
 <li>We deal with this modwise</li>
 <li>Just add the modular base.</li>
 </ul>
 </section>
-
-<section id="in-practice" class="title-slide slide level1 center">
-<h1>In Practice</h1>
+<section id="in-practice" class="slide level2">
+<h2>In Practice</h2>
 <ul>
 <li>The modular base is the totient.</li>
 <li>That is also the <code>b</code> value we use in the eea.</li>
@@ -1169,24 +1130,23 @@
 <span id="cb33-4"><a></a>        start <span class="op">+=</span> hide_λ()</span>
 <span id="cb33-5"><a></a>    <span class="cf">return</span> start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="reorder-2" class="title-slide slide level1 center">
-<h1>Reorder</h1>
+<section id="reorder-2" class="slide level2">
+<h2>Reorder</h2>
 <ul>
 <li>✓ Euclidean division</li>
 <li>✓ Euclidean algorithm</li>
 <li>✓ Bézout’s identity</li>
 <li>✓ Extended Euclidean algorithm</li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="closing" class="title-slide slide level1 center">
 <h1>Closing</h1>
 <ul>
 <li>You have have noticed <code>bigmul</code> &amp; co cannot be used as infix operators.</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>r <span class="op">=</span> m <span class="op">%</span> n <span class="co"># this is a little mul</span></span>
-<span id="cb34-2"><a></a>bigmul(m, n, r) <span class="co"># this is the format of a big mul - not possible in Py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>r <span class="op">=</span> m <span class="op">%</span> n <span class="co">## this is a little mul</span></span>
+<span id="cb34-2"><a></a>bigmul(m, n, r) <span class="co">## this is the format of a big mul - not possible in Py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You will need to:
 <ul>
@@ -1196,13 +1156,12 @@
 <li>Start thinking about it now!</li>
 </ul>
 </section>
-
-<section id="all" class="title-slide slide level1 center">
-<h1>All</h1>
+<section id="all" class="slide level2">
+<h2>All</h2>
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="kw">def</span> find_large_prime(k):</span>
 <span id="cb35-2"><a></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
 <span id="cb35-3"><a></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb35-4"><a></a>    <span class="co"># you need a prime tester</span></span>
+<span id="cb35-4"><a></a>    <span class="co">## you need a prime tester</span></span>
 <span id="cb35-5"><a></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
 <span id="cb35-6"><a></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
 <span id="cb35-7"><a></a>    <span class="cf">return</span> candidate</span>
@@ -1211,14 +1170,14 @@
 <span id="cb35-10"><a></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb35-11"><a></a>        <span class="cf">return</span> a, <span class="dv">1</span>, <span class="dv">0</span></span>
 <span id="cb35-12"><a></a>    r, s, t <span class="op">=</span> extended_gcd(b, a <span class="op">%</span> b)</span>
-<span id="cb35-13"><a></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co"># no graceful mod here</span></span>
+<span id="cb35-13"><a></a>    <span class="cf">return</span> r, t, s <span class="op">-</span> (a <span class="op">//</span> b) <span class="op">*</span> t <span class="co">## no graceful mod here</span></span>
 <span id="cb35-14"><a></a></span>
 <span id="cb35-15"><a></a></span>
 <span id="cb35-16"><a></a><span class="kw">def</span> lcm(a, b):</span>
 <span id="cb35-17"><a></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> extended_gcd(a,b)[<span class="dv">0</span>]</span>
 <span id="cb35-18"><a></a></span>
-<span id="cb35-19"><a></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co"># a random string</span></span>
-<span id="cb35-20"><a></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co"># to number</span></span>
+<span id="cb35-19"><a></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co">## a random string</span></span>
+<span id="cb35-20"><a></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co">## to number</span></span>
 <span id="cb35-21"><a></a></span>
 <span id="cb35-22"><a></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">6</span>)</span>
 <span id="cb35-23"><a></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="dv">7</span>)</span>
@@ -1226,7 +1185,7 @@
 <span id="cb35-25"><a></a></span>
 <span id="cb35-26"><a></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb35-27"><a></a></span>
-<span id="cb35-28"><a></a>e <span class="op">=</span> <span class="dv">65537</span> <span class="co"># encryptor</span></span>
+<span id="cb35-28"><a></a>e <span class="op">=</span> <span class="dv">65537</span> <span class="co">## encryptor</span></span>
 <span id="cb35-29"><a></a></span>
 <span id="cb35-30"><a></a><span class="kw">def</span> find_d():</span>
 <span id="cb35-31"><a></a>    start <span class="op">=</span> extended_gcd(e,hide_λ())[<span class="dv">1</span>]</span>
@@ -1243,14 +1202,14 @@
 <span id="cb35-42"><a></a>        <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
 <span id="cb35-43"><a></a>    <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
 <span id="cb35-44"><a></a></span>
-<span id="cb35-45"><a></a>c <span class="op">=</span> modexp(m, e, n) <span class="co"># ciphertext</span></span>
+<span id="cb35-45"><a></a>c <span class="op">=</span> modexp(m, e, n) <span class="co">## ciphertext</span></span>
 <span id="cb35-46"><a></a></span>
 <span id="cb35-47"><a></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
 <span id="cb35-48"><a></a></span>
 <span id="cb35-49"><a></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

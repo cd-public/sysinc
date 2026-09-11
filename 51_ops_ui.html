@@ -386,7 +386,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Ops_ui</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
-<p class="subtitle lead">Systems in C</p>
+<p class="subtitle lead">w6d1</p>
 </div>
 
 
@@ -462,9 +462,9 @@ window.Quarto = {
 <ul>
 <li><a href="https://gist.github.com/cd-public/f22d9bde9ab546ae846eb40a9296b97d">Read more</a></li>
 <li><a href="https://www.youtube.com/live/jEVIdGabjEk">Watch more</a></li>
-<li>LibGMP shouldn’t be used in the final product but can be helpful in testing.</li>
-<li>I will make no use of LibGMP but you may wish to do so while working on the lab.
+<li>LibGMP will help us latter but we need to learn what it is doing first.
 <ul>
+<li>It will be helpful in testing.</li>
 <li>I will refer to it frequently and it may be worth fiddling around with.</li>
 </ul></li>
 </ul></li>
@@ -1427,438 +1427,439 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">---</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="an">title:</span><span class="co"> Ops_ui</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co">---</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="fu"># Review&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a></span>
-<span id="cb22-8"><a href="#cb22-8"></a>::: {#review .collapse .multi-collapse}</span>
-<span id="cb22-9"><a href="#cb22-9"></a></span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="fu">### Goal: Learn Higher Order Functions</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a></span>
-<span id="cb22-12"><a href="#cb22-12"></a>|Review:    | Newish:    |</span>
-<span id="cb22-13"><a href="#cb22-13"></a>| --------- | ---------- |</span>
-<span id="cb22-14"><a href="#cb22-14"></a>|- bigint/4096_t  | - headers  |</span>
-<span id="cb22-15"><a href="#cb22-15"></a>|- extended GCD | - high order functions |</span>
-<span id="cb22-16"><a href="#cb22-16"></a>|- headers   |   </span>
-<span id="cb22-17"><a href="#cb22-17"></a></span>
-<span id="cb22-18"><a href="#cb22-18"></a><span class="ss">- </span>There are no required exercises of this lab.</span>
-<span id="cb22-19"><a href="#cb22-19"></a><span class="ss">- </span>It is supplementary material to the BigRSA homework.</span>
-<span id="cb22-20"><a href="#cb22-20"></a><span class="ss">  - </span>Specifically, it provides helper functions for BigRSA</span>
-<span id="cb22-21"><a href="#cb22-21"></a></span>
-<span id="cb22-22"><a href="#cb22-22"></a>:::</span>
-<span id="cb22-23"><a href="#cb22-23"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="an">subtitle:</span><span class="co"> "w6d1"</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="co">---</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="fu"># Review&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a>::: {#review .collapse .multi-collapse}</span>
+<span id="cb22-10"><a href="#cb22-10"></a></span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="fu">### Goal: Learn Higher Order Functions</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a></span>
+<span id="cb22-13"><a href="#cb22-13"></a>|Review:    | Newish:    |</span>
+<span id="cb22-14"><a href="#cb22-14"></a>| --------- | ---------- |</span>
+<span id="cb22-15"><a href="#cb22-15"></a>|- bigint/4096_t  | - headers  |</span>
+<span id="cb22-16"><a href="#cb22-16"></a>|- extended GCD | - high order functions |</span>
+<span id="cb22-17"><a href="#cb22-17"></a>|- headers   |   </span>
+<span id="cb22-18"><a href="#cb22-18"></a></span>
+<span id="cb22-19"><a href="#cb22-19"></a><span class="ss">- </span>There are no required exercises of this lab.</span>
+<span id="cb22-20"><a href="#cb22-20"></a><span class="ss">- </span>It is supplementary material to the BigRSA homework.</span>
+<span id="cb22-21"><a href="#cb22-21"></a><span class="ss">  - </span>Specifically, it provides helper functions for BigRSA</span>
+<span id="cb22-22"><a href="#cb22-22"></a></span>
+<span id="cb22-23"><a href="#cb22-23"></a>:::</span>
 <span id="cb22-24"><a href="#cb22-24"></a></span>
-<span id="cb22-25"><a href="#cb22-25"></a><span class="fu"># Podman&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#podman" role="button" aria-expanded="false" aria-controls="podman"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-26"><a href="#cb22-26"></a></span>
-<span id="cb22-27"><a href="#cb22-27"></a>::: {#podman .collapse .multi-collapse}</span>
-<span id="cb22-28"><a href="#cb22-28"></a></span>
-<span id="cb22-29"><a href="#cb22-29"></a><span class="fu"># Setup</span></span>
-<span id="cb22-30"><a href="#cb22-30"></a></span>
-<span id="cb22-31"><a href="#cb22-31"></a><span class="ss">- </span>For this lab, I used the following Containerfile</span>
-<span id="cb22-32"><a href="#cb22-32"></a></span>
-<span id="cb22-33"><a href="#cb22-33"></a><span class="in">```{.email filename="Containerfile"}</span></span>
-<span id="cb22-34"><a href="#cb22-34"></a><span class="in">FROM ubuntu</span></span>
-<span id="cb22-35"><a href="#cb22-35"></a></span>
-<span id="cb22-36"><a href="#cb22-36"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim python3 libgmp3-dev -y</span></span>
-<span id="cb22-37"><a href="#cb22-37"></a><span class="in">```</span></span>
-<span id="cb22-38"><a href="#cb22-38"></a><span class="ss">- </span>You will note it includes LibGMP.</span>
-<span id="cb22-39"><a href="#cb22-39"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://gist.github.com/cd-public/f22d9bde9ab546ae846eb40a9296b97d)</span></span>
-<span id="cb22-40"><a href="#cb22-40"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Watch more</span><span class="co">](https://www.youtube.com/live/jEVIdGabjEk)</span></span>
-<span id="cb22-41"><a href="#cb22-41"></a><span class="ss">  - </span>LibGMP shouldn't be used in the final product but can be helpful in testing.</span>
-<span id="cb22-42"><a href="#cb22-42"></a><span class="ss">  - </span>I will make no use of LibGMP but you may wish to do so while working on the lab.</span>
-<span id="cb22-43"><a href="#cb22-43"></a><span class="ss">    - </span>I will refer to it frequently and it may be worth fiddling around with.</span>
-<span id="cb22-44"><a href="#cb22-44"></a><span class="ss">- </span>I worked in an <span class="in">`ops_ui.c`</span> and <span class="in">`ops_ui.h`</span> file, that I used in BigRSA</span>
-<span id="cb22-45"><a href="#cb22-45"></a><span class="ss">  - </span>It can be helpful to directly add todays work to <span class="in">`4096_t`</span> - or not, up to you.</span>
-<span id="cb22-46"><a href="#cb22-46"></a></span>
-<span id="cb22-47"><a href="#cb22-47"></a>:::</span>
-<span id="cb22-48"><a href="#cb22-48"></a></span>
+<span id="cb22-25"><a href="#cb22-25"></a></span>
+<span id="cb22-26"><a href="#cb22-26"></a><span class="fu"># Podman&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#podman" role="button" aria-expanded="false" aria-controls="podman"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-27"><a href="#cb22-27"></a></span>
+<span id="cb22-28"><a href="#cb22-28"></a>::: {#podman .collapse .multi-collapse}</span>
+<span id="cb22-29"><a href="#cb22-29"></a></span>
+<span id="cb22-30"><a href="#cb22-30"></a><span class="fu"># Setup</span></span>
+<span id="cb22-31"><a href="#cb22-31"></a></span>
+<span id="cb22-32"><a href="#cb22-32"></a><span class="ss">- </span>For this lab, I used the following Containerfile</span>
+<span id="cb22-33"><a href="#cb22-33"></a></span>
+<span id="cb22-34"><a href="#cb22-34"></a><span class="in">```{.email filename="Containerfile"}</span></span>
+<span id="cb22-35"><a href="#cb22-35"></a><span class="in">FROM ubuntu</span></span>
+<span id="cb22-36"><a href="#cb22-36"></a></span>
+<span id="cb22-37"><a href="#cb22-37"></a><span class="in">RUN apt update &amp;&amp; apt install gcc vim python3 libgmp3-dev -y</span></span>
+<span id="cb22-38"><a href="#cb22-38"></a><span class="in">```</span></span>
+<span id="cb22-39"><a href="#cb22-39"></a><span class="ss">- </span>You will note it includes LibGMP.</span>
+<span id="cb22-40"><a href="#cb22-40"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://gist.github.com/cd-public/f22d9bde9ab546ae846eb40a9296b97d)</span></span>
+<span id="cb22-41"><a href="#cb22-41"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">Watch more</span><span class="co">](https://www.youtube.com/live/jEVIdGabjEk)</span></span>
+<span id="cb22-42"><a href="#cb22-42"></a><span class="ss">  - </span>LibGMP will help us latter but we need to learn what it is doing first.</span>
+<span id="cb22-43"><a href="#cb22-43"></a><span class="ss">    - </span>It will be helpful in testing.</span>
+<span id="cb22-44"><a href="#cb22-44"></a><span class="ss">    - </span>I will refer to it frequently and it may be worth fiddling around with.</span>
+<span id="cb22-45"><a href="#cb22-45"></a><span class="ss">- </span>I worked in an <span class="in">`ops_ui.c`</span> and <span class="in">`ops_ui.h`</span> file, that I used in BigRSA</span>
+<span id="cb22-46"><a href="#cb22-46"></a><span class="ss">  - </span>It can be helpful to directly add todays work to <span class="in">`4096_t`</span> - or not, up to you.</span>
+<span id="cb22-47"><a href="#cb22-47"></a></span>
+<span id="cb22-48"><a href="#cb22-48"></a>:::</span>
 <span id="cb22-49"><a href="#cb22-49"></a></span>
-<span id="cb22-50"><a href="#cb22-50"></a><span class="fu"># Header&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#header" role="button" aria-expanded="false" aria-controls = "header"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-51"><a href="#cb22-51"></a></span>
-<span id="cb22-52"><a href="#cb22-52"></a>::: {#header .collapse .multi-collapse}</span>
-<span id="cb22-53"><a href="#cb22-53"></a></span>
-<span id="cb22-54"><a href="#cb22-54"></a>*This is a partial refresh from [`bigadd`](bigadd.html) and should be familiar, but contain novel material.*</span>
-<span id="cb22-55"><a href="#cb22-55"></a></span>
-<span id="cb22-56"><a href="#cb22-56"></a><span class="fu">## The .h file</span></span>
-<span id="cb22-57"><a href="#cb22-57"></a></span>
-<span id="cb22-58"><a href="#cb22-58"></a><span class="ss">- </span>There are two main types of C files.</span>
-<span id="cb22-59"><a href="#cb22-59"></a><span class="ss">  - </span>The .c files we have been working with.</span>
-<span id="cb22-60"><a href="#cb22-60"></a><span class="ss">  - </span>The .h files we have incorporated via <span class="in">`#include`</span></span>
-<span id="cb22-61"><a href="#cb22-61"></a></span>
-<span id="cb22-62"><a href="#cb22-62"></a><span class="fu">## ops_ui.h</span></span>
-<span id="cb22-63"><a href="#cb22-63"></a></span>
-<span id="cb22-64"><a href="#cb22-64"></a><span class="ss">- </span>Create two new files.</span>
-<span id="cb22-65"><a href="#cb22-65"></a><span class="ss">  - </span>ops_ui.c, and</span>
-<span id="cb22-66"><a href="#cb22-66"></a><span class="ss">  - </span>ops_ui.h</span>
-<span id="cb22-67"><a href="#cb22-67"></a><span class="ss">- </span>We will work within both.</span>
-<span id="cb22-68"><a href="#cb22-68"></a><span class="ss">  - </span>You may, perhaps, which to keep both open in separate vim windows, or</span>
-<span id="cb22-69"><a href="#cb22-69"></a><span class="ss">  - </span>Implement completely in 4096_t.c then split latter.</span>
-<span id="cb22-70"><a href="#cb22-70"></a><span class="ss">- </span>We will want to be able to <span class="in">`#include`</span> this work into BigRSA.c next week.</span>
-<span id="cb22-71"><a href="#cb22-71"></a></span>
-<span id="cb22-72"><a href="#cb22-72"></a><span class="fu">### Double Inclusion</span></span>
-<span id="cb22-73"><a href="#cb22-73"></a></span>
-<span id="cb22-74"><a href="#cb22-74"></a><span class="ss">- </span>By convention, there is a <span class="in">`double inclusion`</span> guard</span>
-<span id="cb22-75"><a href="#cb22-75"></a></span>
-<span id="cb22-76"><a href="#cb22-76"></a>::::{.columns}</span>
-<span id="cb22-77"><a href="#cb22-77"></a></span>
-<span id="cb22-78"><a href="#cb22-78"></a>:::{.column width="50%"}</span>
-<span id="cb22-79"><a href="#cb22-79"></a></span>
-<span id="cb22-80"><a href="#cb22-80"></a><span class="in">```{.C filename="ops_ui.h"}</span></span>
-<span id="cb22-81"><a href="#cb22-81"></a><span class="in">/* ops_ui.h */</span></span>
-<span id="cb22-82"><a href="#cb22-82"></a></span>
-<span id="cb22-83"><a href="#cb22-83"></a><span class="in">#ifndef _ops_ui_H</span></span>
-<span id="cb22-84"><a href="#cb22-84"></a><span class="in">#define _ops_ui_H</span></span>
-<span id="cb22-85"><a href="#cb22-85"></a></span>
-<span id="cb22-86"><a href="#cb22-86"></a><span class="in">/* We will put stuff here soon */</span></span>
-<span id="cb22-87"><a href="#cb22-87"></a></span>
-<span id="cb22-88"><a href="#cb22-88"></a><span class="in">#endif /* _ops_u_H */</span></span>
-<span id="cb22-89"><a href="#cb22-89"></a><span class="in">```</span></span>
-<span id="cb22-90"><a href="#cb22-90"></a></span>
-<span id="cb22-91"><a href="#cb22-91"></a>:::</span>
-<span id="cb22-92"><a href="#cb22-92"></a></span>
-<span id="cb22-93"><a href="#cb22-93"></a>:::{.column width="50%"}</span>
-<span id="cb22-94"><a href="#cb22-94"></a></span>
-<span id="cb22-95"><a href="#cb22-95"></a><span class="in">```{.C filename="ops_ui.c"}</span></span>
-<span id="cb22-96"><a href="#cb22-96"></a><span class="in">/* ops_ui.c */</span></span>
-<span id="cb22-97"><a href="#cb22-97"></a></span>
+<span id="cb22-50"><a href="#cb22-50"></a></span>
+<span id="cb22-51"><a href="#cb22-51"></a><span class="fu"># Header&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#header" role="button" aria-expanded="false" aria-controls = "header"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-52"><a href="#cb22-52"></a></span>
+<span id="cb22-53"><a href="#cb22-53"></a>::: {#header .collapse .multi-collapse}</span>
+<span id="cb22-54"><a href="#cb22-54"></a></span>
+<span id="cb22-55"><a href="#cb22-55"></a>*This is a partial refresh from [`bigadd`](bigadd.html) and should be familiar, but contain novel material.*</span>
+<span id="cb22-56"><a href="#cb22-56"></a></span>
+<span id="cb22-57"><a href="#cb22-57"></a><span class="fu">## The .h file</span></span>
+<span id="cb22-58"><a href="#cb22-58"></a></span>
+<span id="cb22-59"><a href="#cb22-59"></a><span class="ss">- </span>There are two main types of C files.</span>
+<span id="cb22-60"><a href="#cb22-60"></a><span class="ss">  - </span>The .c files we have been working with.</span>
+<span id="cb22-61"><a href="#cb22-61"></a><span class="ss">  - </span>The .h files we have incorporated via <span class="in">`#include`</span></span>
+<span id="cb22-62"><a href="#cb22-62"></a></span>
+<span id="cb22-63"><a href="#cb22-63"></a><span class="fu">## ops_ui.h</span></span>
+<span id="cb22-64"><a href="#cb22-64"></a></span>
+<span id="cb22-65"><a href="#cb22-65"></a><span class="ss">- </span>Create two new files.</span>
+<span id="cb22-66"><a href="#cb22-66"></a><span class="ss">  - </span>ops_ui.c, and</span>
+<span id="cb22-67"><a href="#cb22-67"></a><span class="ss">  - </span>ops_ui.h</span>
+<span id="cb22-68"><a href="#cb22-68"></a><span class="ss">- </span>We will work within both.</span>
+<span id="cb22-69"><a href="#cb22-69"></a><span class="ss">  - </span>You may, perhaps, which to keep both open in separate vim windows, or</span>
+<span id="cb22-70"><a href="#cb22-70"></a><span class="ss">  - </span>Implement completely in 4096_t.c then split latter.</span>
+<span id="cb22-71"><a href="#cb22-71"></a><span class="ss">- </span>We will want to be able to <span class="in">`#include`</span> this work into BigRSA.c next week.</span>
+<span id="cb22-72"><a href="#cb22-72"></a></span>
+<span id="cb22-73"><a href="#cb22-73"></a><span class="fu">### Double Inclusion</span></span>
+<span id="cb22-74"><a href="#cb22-74"></a></span>
+<span id="cb22-75"><a href="#cb22-75"></a><span class="ss">- </span>By convention, there is a <span class="in">`double inclusion`</span> guard</span>
+<span id="cb22-76"><a href="#cb22-76"></a></span>
+<span id="cb22-77"><a href="#cb22-77"></a>::::{.columns}</span>
+<span id="cb22-78"><a href="#cb22-78"></a></span>
+<span id="cb22-79"><a href="#cb22-79"></a>:::{.column width="50%"}</span>
+<span id="cb22-80"><a href="#cb22-80"></a></span>
+<span id="cb22-81"><a href="#cb22-81"></a><span class="in">```{.C filename="ops_ui.h"}</span></span>
+<span id="cb22-82"><a href="#cb22-82"></a><span class="in">/* ops_ui.h */</span></span>
+<span id="cb22-83"><a href="#cb22-83"></a></span>
+<span id="cb22-84"><a href="#cb22-84"></a><span class="in">#ifndef _ops_ui_H</span></span>
+<span id="cb22-85"><a href="#cb22-85"></a><span class="in">#define _ops_ui_H</span></span>
+<span id="cb22-86"><a href="#cb22-86"></a></span>
+<span id="cb22-87"><a href="#cb22-87"></a><span class="in">/* We will put stuff here soon */</span></span>
+<span id="cb22-88"><a href="#cb22-88"></a></span>
+<span id="cb22-89"><a href="#cb22-89"></a><span class="in">#endif /* _ops_u_H */</span></span>
+<span id="cb22-90"><a href="#cb22-90"></a><span class="in">```</span></span>
+<span id="cb22-91"><a href="#cb22-91"></a></span>
+<span id="cb22-92"><a href="#cb22-92"></a>:::</span>
+<span id="cb22-93"><a href="#cb22-93"></a></span>
+<span id="cb22-94"><a href="#cb22-94"></a>:::{.column width="50%"}</span>
+<span id="cb22-95"><a href="#cb22-95"></a></span>
+<span id="cb22-96"><a href="#cb22-96"></a><span class="in">```{.C filename="ops_ui.c"}</span></span>
+<span id="cb22-97"><a href="#cb22-97"></a><span class="in">/* ops_ui.c */</span></span>
 <span id="cb22-98"><a href="#cb22-98"></a></span>
-<span id="cb22-99"><a href="#cb22-99"></a><span class="in">/* We will put stuff here soon */</span></span>
-<span id="cb22-100"><a href="#cb22-100"></a><span class="in">```</span></span>
-<span id="cb22-101"><a href="#cb22-101"></a></span>
-<span id="cb22-102"><a href="#cb22-102"></a>:::</span>
-<span id="cb22-103"><a href="#cb22-103"></a></span>
-<span id="cb22-104"><a href="#cb22-104"></a>::::</span>
-<span id="cb22-105"><a href="#cb22-105"></a></span>
-<span id="cb22-106"><a href="#cb22-106"></a><span class="fu">### Other headers</span></span>
-<span id="cb22-107"><a href="#cb22-107"></a></span>
-<span id="cb22-108"><a href="#cb22-108"></a><span class="ss">- </span>Vs. <span class="in">`4096_t.h`</span>, I implemented <span class="in">`ops_ui.h`</span> on top of <span class="in">`4096_t.h`</span>.</span>
-<span id="cb22-109"><a href="#cb22-109"></a><span class="ss">  - </span>So no system header files - like <span class="in">`stdio`</span></span>
-<span id="cb22-110"><a href="#cb22-110"></a><span class="ss">  - </span>But included <span class="in">`4096_t.h`</span>.</span>
-<span id="cb22-111"><a href="#cb22-111"></a><span class="ss">  - </span>But that file is in another directory!</span>
-<span id="cb22-112"><a href="#cb22-112"></a><span class="ss">- </span>My file system looked something like this:</span>
-<span id="cb22-113"><a href="#cb22-113"></a><span class="in">```{.email}</span></span>
-<span id="cb22-114"><a href="#cb22-114"></a><span class="in">.</span></span>
-<span id="cb22-115"><a href="#cb22-115"></a><span class="in">├── 4096_t</span></span>
-<span id="cb22-116"><a href="#cb22-116"></a><span class="in">│   ├── 4096_t.c</span></span>
-<span id="cb22-117"><a href="#cb22-117"></a><span class="in">│   ├── 4096_t.h</span></span>
-<span id="cb22-118"><a href="#cb22-118"></a><span class="in">│   └── biggmp.c</span></span>
-<span id="cb22-119"><a href="#cb22-119"></a><span class="in">└── ops_ui</span></span>
-<span id="cb22-120"><a href="#cb22-120"></a><span class="in">    ├── ops_ui.c</span></span>
-<span id="cb22-121"><a href="#cb22-121"></a><span class="in">    └── ops_ui.h</span></span>
-<span id="cb22-122"><a href="#cb22-122"></a><span class="in">```</span></span>
-<span id="cb22-123"><a href="#cb22-123"></a><span class="ss">- </span>It actually had way more stuff, but I cut out everything that isn't relevant.</span>
-<span id="cb22-124"><a href="#cb22-124"></a></span>
-<span id="cb22-125"><a href="#cb22-125"></a><span class="fu">#### Relative paths</span></span>
-<span id="cb22-126"><a href="#cb22-126"></a></span>
-<span id="cb22-127"><a href="#cb22-127"></a><span class="ss">- </span>4096_t is in another directory so I can simply write:</span>
-<span id="cb22-128"><a href="#cb22-128"></a><span class="in">```{.C}</span></span>
-<span id="cb22-129"><a href="#cb22-129"></a><span class="in">#include "4096_t.h"</span></span>
-<span id="cb22-130"><a href="#cb22-130"></a><span class="in">```</span></span>
-<span id="cb22-131"><a href="#cb22-131"></a><span class="ss">- </span>Rather, I must give the *relative path* - how to navigate from <span class="in">`ops_ui.h`</span> to <span class="in">`4096_t.h`</span></span>
-<span id="cb22-132"><a href="#cb22-132"></a><span class="ss">  - </span>If I wanted to navigate through the filesystem, I may do something like the following:</span>
-<span id="cb22-133"><a href="#cb22-133"></a><span class="in">```{.email}</span></span>
-<span id="cb22-134"><a href="#cb22-134"></a><span class="in">$ pwd</span></span>
-<span id="cb22-135"><a href="#cb22-135"></a><span class="in">/home/user/dev/crypto/ops_ui</span></span>
-<span id="cb22-136"><a href="#cb22-136"></a><span class="in">$ cd ..</span></span>
-<span id="cb22-137"><a href="#cb22-137"></a><span class="in">$ pwd</span></span>
-<span id="cb22-138"><a href="#cb22-138"></a><span class="in">/home/user/dev/crypto</span></span>
-<span id="cb22-139"><a href="#cb22-139"></a><span class="in">$ cd 4096_t</span></span>
-<span id="cb22-140"><a href="#cb22-140"></a><span class="in">$ pwd         </span></span>
-<span id="cb22-141"><a href="#cb22-141"></a><span class="in">/home/user/dev/crypto/4096_t</span></span>
-<span id="cb22-142"><a href="#cb22-142"></a><span class="in">$ head -1 4096_t.h</span></span>
-<span id="cb22-143"><a href="#cb22-143"></a><span class="in">/* 4096_t.h */</span></span>
-<span id="cb22-144"><a href="#cb22-144"></a><span class="in">```</span></span>
-<span id="cb22-145"><a href="#cb22-145"></a><span class="ss">  - </span>Or I may do something much shorter:</span>
-<span id="cb22-146"><a href="#cb22-146"></a><span class="in">```{.email}</span></span>
-<span id="cb22-147"><a href="#cb22-147"></a><span class="in">$ pwd</span></span>
-<span id="cb22-148"><a href="#cb22-148"></a><span class="in">/home/user/dev/crypto/ops_ui</span></span>
-<span id="cb22-149"><a href="#cb22-149"></a><span class="in">$ head -1 ../4096_t/4096_t.h</span></span>
-<span id="cb22-150"><a href="#cb22-150"></a><span class="in">/* 4096_t.h */</span></span>
-<span id="cb22-151"><a href="#cb22-151"></a><span class="in">```</span></span>
-<span id="cb22-152"><a href="#cb22-152"></a><span class="ss">  - </span>I can refer to to files the same way from within C:</span>
-<span id="cb22-153"><a href="#cb22-153"></a><span class="in">```{.C}</span></span>
-<span id="cb22-154"><a href="#cb22-154"></a><span class="in">#include "../4096_t/4096_t.h"</span></span>
-<span id="cb22-155"><a href="#cb22-155"></a><span class="in">```</span></span>
-<span id="cb22-156"><a href="#cb22-156"></a><span class="ss">  - </span>Note - this will only work if you have a setup with a similar file structure!</span>
-<span id="cb22-157"><a href="#cb22-157"></a></span>
-<span id="cb22-158"><a href="#cb22-158"></a><span class="fu">### Functions</span></span>
-<span id="cb22-159"><a href="#cb22-159"></a></span>
-<span id="cb22-160"><a href="#cb22-160"></a><span class="ss">- </span>I noticed when working on BigRSA I often:</span>
-<span id="cb22-161"><a href="#cb22-161"></a><span class="ss">  - </span>Had a big 4096-bit integer</span>
-<span id="cb22-162"><a href="#cb22-162"></a><span class="ss">  - </span>That I wanted to add <span class="in">`1`</span> or <span class="in">`6`</span> to</span>
-<span id="cb22-163"><a href="#cb22-163"></a><span class="ss">  - </span>Or compare to <span class="in">`0`</span></span>
-<span id="cb22-164"><a href="#cb22-164"></a><span class="ss">- </span>This is a common problem, and reolved in our reference implementation (LibGMP) using the <span class="in">`_ui`</span> suffix.</span>
-<span id="cb22-165"><a href="#cb22-165"></a><span class="ss">- </span>Quoth <span class="co">[</span><span class="ot">LibGMP</span><span class="co">](https://gmplib.org/manual/Integer-Arithmetic)</span></span>
-<span id="cb22-166"><a href="#cb22-166"></a><span class="in">```{.email}</span></span>
-<span id="cb22-167"><a href="#cb22-167"></a><span class="in">Function: void mpz_add (mpz_t rop, const mpz_t op1, const mpz_t op2)</span></span>
-<span id="cb22-168"><a href="#cb22-168"></a><span class="in">Function: void mpz_add_ui (mpz_t rop, const mpz_t op1, unsigned long int op2) </span></span>
-<span id="cb22-169"><a href="#cb22-169"></a><span class="in">```</span></span>
-<span id="cb22-170"><a href="#cb22-170"></a><span class="ss">  - </span>Both add together a big number named <span class="in">`op1`</span></span>
-<span id="cb22-171"><a href="#cb22-171"></a><span class="ss">    - </span>That is, <span class="in">`mpz_add`</span> adds it to a big number <span class="in">`op2`</span> </span>
-<span id="cb22-172"><a href="#cb22-172"></a><span class="ss">    - </span>And <span class="in">`mpz_add_ui`</span> adds it to an unsigned long int <span class="in">`op2`</span></span>
-<span id="cb22-173"><a href="#cb22-173"></a><span class="ss">  - </span>Both store the sum in the big number <span class="in">`rop`</span></span>
-<span id="cb22-174"><a href="#cb22-174"></a><span class="ss">- </span>I recommend implementing each of the following.</span>
-<span id="cb22-175"><a href="#cb22-175"></a><span class="ss">  - </span>Note that I place the return value *last* not *first*</span>
-<span id="cb22-176"><a href="#cb22-176"></a></span>
-<span id="cb22-177"><a href="#cb22-177"></a><span class="in">```{.C filename="ops_ui.h"}</span></span>
-<span id="cb22-178"><a href="#cb22-178"></a><span class="in">uint64_t add_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
-<span id="cb22-179"><a href="#cb22-179"></a><span class="in">uint64_t sub_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
-<span id="cb22-180"><a href="#cb22-180"></a><span class="in">uint64_t mul_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
-<span id="cb22-181"><a href="#cb22-181"></a><span class="in">uint64_t quo_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
-<span id="cb22-182"><a href="#cb22-182"></a><span class="in">uint64_t rem_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
-<span id="cb22-183"><a href="#cb22-183"></a><span class="in">```</span></span>
-<span id="cb22-184"><a href="#cb22-184"></a></span>
-<span id="cb22-185"><a href="#cb22-185"></a><span class="ss">- </span>Before you start implementing these operations, read the <span class="in">`lambda`</span> heading.</span>
-<span id="cb22-186"><a href="#cb22-186"></a></span>
-<span id="cb22-187"><a href="#cb22-187"></a>:::</span>
-<span id="cb22-188"><a href="#cb22-188"></a></span>
-<span id="cb22-189"><a href="#cb22-189"></a><span class="fu"># Lambda&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#lambda" role="button" aria-expanded="false" aria-controls = "lambda"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-190"><a href="#cb22-190"></a></span>
-<span id="cb22-191"><a href="#cb22-191"></a>::: {#lambda .collapse .multi-collapse}</span>
-<span id="cb22-192"><a href="#cb22-192"></a></span>
-<span id="cb22-193"><a href="#cb22-193"></a><span class="fu">## Higher Order Functions</span></span>
-<span id="cb22-194"><a href="#cb22-194"></a></span>
-<span id="cb22-195"><a href="#cb22-195"></a><span class="ss">- </span>Despite my best efforts, there is no graceful way to implement within C functions which return other functions.</span>
-<span id="cb22-196"><a href="#cb22-196"></a><span class="ss">  - </span>I did not say no way! I said no *graceful* way.</span>
-<span id="cb22-197"><a href="#cb22-197"></a><span class="ss">  - </span>Using C++ is *not* graceful!</span>
-<span id="cb22-198"><a href="#cb22-198"></a><span class="ss">- </span>There is, I think, an extraordinarily graceful to implement functions which accept as a parameter/argument some other function(s).</span>
-<span id="cb22-199"><a href="#cb22-199"></a><span class="ss">  - </span>We simply specify that an argument has some function type.</span>
-<span id="cb22-200"><a href="#cb22-200"></a><span class="ss">- </span>We begin with a minimal example.</span>
-<span id="cb22-201"><a href="#cb22-201"></a></span>
-<span id="cb22-202"><a href="#cb22-202"></a><span class="fu">### `ctype.h`</span></span>
-<span id="cb22-203"><a href="#cb22-203"></a></span>
-<span id="cb22-204"><a href="#cb22-204"></a><span class="ss">- </span>One common application for functions is to check if a character is a printing character:</span>
-<span id="cb22-205"><a href="#cb22-205"></a><span class="ss">    - </span>A number, like <span class="in">`0`</span> or <span class="in">`i`</span>?</span>
-<span id="cb22-206"><a href="#cb22-206"></a><span class="ss">    - </span>A letter, like <span class="in">`O`</span> or <span class="in">`i`</span>?</span>
-<span id="cb22-207"><a href="#cb22-207"></a><span class="ss">    - </span>A control character, like <span class="in">`\0`</span> or <span class="in">`\n`</span></span>
-<span id="cb22-208"><a href="#cb22-208"></a><span class="ss">    - </span>A digit, like <span class="in">`0`</span> or <span class="in">`1`</span></span>
-<span id="cb22-209"><a href="#cb22-209"></a><span class="ss">    - </span>A space, like <span class="in">` `</span> or <span class="in">`\n`</span></span>
-<span id="cb22-210"><a href="#cb22-210"></a><span class="ss">- </span><span class="in">`ctypes.h`</span> provides functions to test each of these.</span>
-<span id="cb22-211"><a href="#cb22-211"></a><span class="in">```{.C}</span></span>
-<span id="cb22-212"><a href="#cb22-212"></a><span class="in">/* For some reason this is int -&gt; int *?</span></span>
-<span id="cb22-213"><a href="#cb22-213"></a><span class="in">int isalnum( int ch );</span></span>
-<span id="cb22-214"><a href="#cb22-214"></a><span class="in">```</span></span>
-<span id="cb22-215"><a href="#cb22-215"></a><span class="ss">- </span>Let's make a table.</span>
-<span id="cb22-216"><a href="#cb22-216"></a><span class="ss">    - </span>In the leftmost column, we will print each of the first 127 characters</span>
-<span id="cb22-217"><a href="#cb22-217"></a><span class="ss">    - </span>Then we we will have a column for each of the <span class="in">`ctypes`</span></span>
-<span id="cb22-218"><a href="#cb22-218"></a><span class="ss">    - </span>We will specify <span class="in">`T`</span> or <span class="in">`F`</span> for "True" or "False" membership in the ctype.</span>
-<span id="cb22-219"><a href="#cb22-219"></a><span class="ss">    - </span>So we need a way to go from character-to-character with a bunch of int-to-int functions.</span>
-<span id="cb22-220"><a href="#cb22-220"></a><span class="ss">- </span>Here are some functions to use:</span>
-<span id="cb22-221"><a href="#cb22-221"></a><span class="in">```{.C}</span></span>
-<span id="cb22-222"><a href="#cb22-222"></a><span class="in">isalnum</span></span>
-<span id="cb22-223"><a href="#cb22-223"></a><span class="in">isalpha</span></span>
-<span id="cb22-224"><a href="#cb22-224"></a><span class="in">isdigit</span></span>
-<span id="cb22-225"><a href="#cb22-225"></a><span class="in">islower</span></span>
-<span id="cb22-226"><a href="#cb22-226"></a><span class="in">isprint</span></span>
-<span id="cb22-227"><a href="#cb22-227"></a><span class="in">ispunct</span></span>
-<span id="cb22-228"><a href="#cb22-228"></a><span class="in">isspace</span></span>
-<span id="cb22-229"><a href="#cb22-229"></a><span class="in">isupper</span></span>
-<span id="cb22-230"><a href="#cb22-230"></a><span class="in">```</span></span>
-<span id="cb22-231"><a href="#cb22-231"></a><span class="ss">- </span>We can use them as follows:</span>
-<span id="cb22-232"><a href="#cb22-232"></a><span class="in">```{.C filename="tedious.c"}</span></span>
-<span id="cb22-233"><a href="#cb22-233"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb22-234"><a href="#cb22-234"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
-<span id="cb22-235"><a href="#cb22-235"></a></span>
-<span id="cb22-236"><a href="#cb22-236"></a><span class="in">int main() {</span></span>
-<span id="cb22-237"><a href="#cb22-237"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
-<span id="cb22-238"><a href="#cb22-238"></a><span class="in">    if (isalnum(buf[0])) {</span></span>
-<span id="cb22-239"><a href="#cb22-239"></a><span class="in">        printf("T");</span></span>
-<span id="cb22-240"><a href="#cb22-240"></a><span class="in">    } else {</span></span>
-<span id="cb22-241"><a href="#cb22-241"></a><span class="in">        printf("F");</span></span>
-<span id="cb22-242"><a href="#cb22-242"></a><span class="in">    }</span></span>
-<span id="cb22-243"><a href="#cb22-243"></a><span class="in">    printf("\n");</span></span>
-<span id="cb22-244"><a href="#cb22-244"></a><span class="in">    return 0;</span></span>
-<span id="cb22-245"><a href="#cb22-245"></a><span class="in">}</span></span>
-<span id="cb22-246"><a href="#cb22-246"></a><span class="in">```</span></span>
-<span id="cb22-247"><a href="#cb22-247"></a></span>
-<span id="cb22-248"><a href="#cb22-248"></a><span class="ss">- </span>It would be tedious to write a wrapper function for each of these.</span>
-<span id="cb22-249"><a href="#cb22-249"></a><span class="ss">    - </span>We treat them as a *lambda* function, a function for which we neither know nor care the name, and know only the type.</span>
-<span id="cb22-250"><a href="#cb22-250"></a><span class="ss">- </span>Let's examine more closely these lines:</span>
-<span id="cb22-251"><a href="#cb22-251"></a><span class="in">```{.C}</span></span>
-<span id="cb22-252"><a href="#cb22-252"></a><span class="in">    if (isalnum(buf[0])) {</span></span>
-<span id="cb22-253"><a href="#cb22-253"></a><span class="in">        printf("T");</span></span>
-<span id="cb22-254"><a href="#cb22-254"></a><span class="in">    } else {</span></span>
-<span id="cb22-255"><a href="#cb22-255"></a><span class="in">        printf("F");</span></span>
-<span id="cb22-256"><a href="#cb22-256"></a><span class="in">    }</span></span>
-<span id="cb22-257"><a href="#cb22-257"></a><span class="in">```</span></span>
-<span id="cb22-258"><a href="#cb22-258"></a><span class="ss">- </span>We:</span>
-<span id="cb22-259"><a href="#cb22-259"></a><span class="ss">    - </span>Take a function name</span>
-<span id="cb22-260"><a href="#cb22-260"></a><span class="ss">    - </span>Take an array name</span>
-<span id="cb22-261"><a href="#cb22-261"></a><span class="ss">    - </span>Take an array index</span>
-<span id="cb22-262"><a href="#cb22-262"></a><span class="ss">    - </span>Apply the function name to index element of the array.</span>
-<span id="cb22-263"><a href="#cb22-263"></a><span class="ss">    - </span>Print based on the result.</span>
-<span id="cb22-264"><a href="#cb22-264"></a><span class="ss">- </span>Let's write a function.</span>
-<span id="cb22-265"><a href="#cb22-265"></a><span class="ss">    - </span>It doesn't return anything, it just prints.</span>
-<span id="cb22-266"><a href="#cb22-266"></a><span class="ss">    - </span>It takes a function... somehow.</span>
-<span id="cb22-267"><a href="#cb22-267"></a><span class="ss">    - </span>It takes a character pointer for an array.</span>
-<span id="cb22-268"><a href="#cb22-268"></a><span class="ss">    - </span>It takes a numberical value for an array index.</span>
-<span id="cb22-269"><a href="#cb22-269"></a><span class="in">```{.C}</span></span>
-<span id="cb22-270"><a href="#cb22-270"></a><span class="in">char_to_bool(function, array, index)</span></span>
-<span id="cb22-271"><a href="#cb22-271"></a><span class="in">```</span></span>
-<span id="cb22-272"><a href="#cb22-272"></a><span class="ss">- </span>This is not well-formed C - let's add types.</span>
-<span id="cb22-273"><a href="#cb22-273"></a><span class="in">```{.C}</span></span>
-<span id="cb22-274"><a href="#cb22-274"></a><span class="in">void char_to_bool(function, char *array, int index) # should be size_t, but.</span></span>
-<span id="cb22-275"><a href="#cb22-275"></a><span class="in">```</span></span>
-<span id="cb22-276"><a href="#cb22-276"></a><span class="ss">- </span><span class="in">`isalnum`</span> also has a type - the type <span class="in">`int -&gt; int`</span> in Python, but in C?</span>
-<span id="cb22-277"><a href="#cb22-277"></a><span class="in">```{.C}</span></span>
-<span id="cb22-278"><a href="#cb22-278"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index).</span></span>
-<span id="cb22-279"><a href="#cb22-279"></a><span class="in">```</span></span>
-<span id="cb22-280"><a href="#cb22-280"></a></span>
-<span id="cb22-281"><a href="#cb22-281"></a><span class="ss">    - </span>We say <span class="in">`function`</span> is a type that given some <span class="in">`int`</span> returns some <span class="in">`int`</span></span>
-<span id="cb22-282"><a href="#cb22-282"></a><span class="ss">- </span>How do we use it?</span>
-<span id="cb22-283"><a href="#cb22-283"></a><span class="ss">    - </span>The same way we would any other function for which we know a name or alias!</span>
-<span id="cb22-284"><a href="#cb22-284"></a><span class="in">```{.C}</span></span>
-<span id="cb22-285"><a href="#cb22-285"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
-<span id="cb22-286"><a href="#cb22-286"></a><span class="in">    if (function(array[index])) {</span></span>
-<span id="cb22-287"><a href="#cb22-287"></a><span class="in">        printf("T");</span></span>
-<span id="cb22-288"><a href="#cb22-288"></a><span class="in">    } else {</span></span>
-<span id="cb22-289"><a href="#cb22-289"></a><span class="in">        printf("F");</span></span>
-<span id="cb22-290"><a href="#cb22-290"></a><span class="in">    }</span></span>
-<span id="cb22-291"><a href="#cb22-291"></a><span class="in">    return;</span></span>
-<span id="cb22-292"><a href="#cb22-292"></a><span class="in">}</span></span>
-<span id="cb22-293"><a href="#cb22-293"></a><span class="in">```</span></span>
-<span id="cb22-294"><a href="#cb22-294"></a><span class="ss">- </span>Put it altogether</span>
-<span id="cb22-295"><a href="#cb22-295"></a><span class="in">```{.C filename="goated.c"}</span></span>
-<span id="cb22-296"><a href="#cb22-296"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb22-297"><a href="#cb22-297"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
-<span id="cb22-298"><a href="#cb22-298"></a></span>
-<span id="cb22-299"><a href="#cb22-299"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
-<span id="cb22-300"><a href="#cb22-300"></a><span class="in">    if (function(array[index])) {</span></span>
-<span id="cb22-301"><a href="#cb22-301"></a><span class="in">        printf("T");</span></span>
-<span id="cb22-302"><a href="#cb22-302"></a><span class="in">    } else {</span></span>
-<span id="cb22-303"><a href="#cb22-303"></a><span class="in">        printf("F");</span></span>
-<span id="cb22-304"><a href="#cb22-304"></a><span class="in">    }</span></span>
-<span id="cb22-305"><a href="#cb22-305"></a><span class="in">    return;</span></span>
-<span id="cb22-306"><a href="#cb22-306"></a><span class="in">}</span></span>
-<span id="cb22-307"><a href="#cb22-307"></a></span>
-<span id="cb22-308"><a href="#cb22-308"></a><span class="in">int main() {</span></span>
-<span id="cb22-309"><a href="#cb22-309"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
-<span id="cb22-310"><a href="#cb22-310"></a><span class="in">    char_to_bool(isalnum, buf, 0);</span></span>
-<span id="cb22-311"><a href="#cb22-311"></a><span class="in">    printf("\n");</span></span>
-<span id="cb22-312"><a href="#cb22-312"></a><span class="in">    return 0;</span></span>
-<span id="cb22-313"><a href="#cb22-313"></a><span class="in">}</span></span>
-<span id="cb22-314"><a href="#cb22-314"></a><span class="in">```</span></span>
-<span id="cb22-315"><a href="#cb22-315"></a></span>
-<span id="cb22-316"><a href="#cb22-316"></a><span class="fu">### Longer arrays</span></span>
-<span id="cb22-317"><a href="#cb22-317"></a></span>
-<span id="cb22-318"><a href="#cb22-318"></a><span class="ss">- </span>Why not examine the char in multiple ways?</span>
-<span id="cb22-319"><a href="#cb22-319"></a><span class="ss">    - </span>We </span>
-<span id="cb22-320"><a href="#cb22-320"></a></span>
-<span id="cb22-321"><a href="#cb22-321"></a><span class="in">```{.C filename="goated.c"}</span></span>
-<span id="cb22-322"><a href="#cb22-322"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
-<span id="cb22-323"><a href="#cb22-323"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
-<span id="cb22-324"><a href="#cb22-324"></a></span>
-<span id="cb22-325"><a href="#cb22-325"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
-<span id="cb22-326"><a href="#cb22-326"></a><span class="in">    if (function(array[index])) {</span></span>
-<span id="cb22-327"><a href="#cb22-327"></a><span class="in">        printf("T");</span></span>
-<span id="cb22-328"><a href="#cb22-328"></a><span class="in">    } else {</span></span>
-<span id="cb22-329"><a href="#cb22-329"></a><span class="in">        printf("F");</span></span>
-<span id="cb22-330"><a href="#cb22-330"></a><span class="in">    }</span></span>
-<span id="cb22-331"><a href="#cb22-331"></a><span class="in">    return;</span></span>
-<span id="cb22-332"><a href="#cb22-332"></a><span class="in">}</span></span>
-<span id="cb22-333"><a href="#cb22-333"></a></span>
-<span id="cb22-334"><a href="#cb22-334"></a><span class="in">void char_to_bools(char *array, int index) {</span></span>
-<span id="cb22-335"><a href="#cb22-335"></a><span class="in">    int (*functions[8])(int) = {</span></span>
-<span id="cb22-336"><a href="#cb22-336"></a><span class="in">        isalnum,</span></span>
-<span id="cb22-337"><a href="#cb22-337"></a><span class="in">        isalpha,</span></span>
-<span id="cb22-338"><a href="#cb22-338"></a><span class="in">        isdigit,</span></span>
-<span id="cb22-339"><a href="#cb22-339"></a><span class="in">        islower,</span></span>
-<span id="cb22-340"><a href="#cb22-340"></a><span class="in">        isprint,</span></span>
-<span id="cb22-341"><a href="#cb22-341"></a><span class="in">        ispunct,</span></span>
-<span id="cb22-342"><a href="#cb22-342"></a><span class="in">        isspace,</span></span>
-<span id="cb22-343"><a href="#cb22-343"></a><span class="in">        isupper</span></span>
-<span id="cb22-344"><a href="#cb22-344"></a><span class="in">    }, i;</span></span>
-<span id="cb22-345"><a href="#cb22-345"></a><span class="in">    for (i = 0 ; i &lt; 8 ; i++) {</span></span>
-<span id="cb22-346"><a href="#cb22-346"></a><span class="in">        char_to_bool(functions[i], array, index);</span></span>
-<span id="cb22-347"><a href="#cb22-347"></a><span class="in">    }</span></span>
-<span id="cb22-348"><a href="#cb22-348"></a><span class="in">    return;</span></span>
-<span id="cb22-349"><a href="#cb22-349"></a><span class="in">}</span></span>
-<span id="cb22-350"><a href="#cb22-350"></a></span>
-<span id="cb22-351"><a href="#cb22-351"></a><span class="in">int main() {</span></span>
-<span id="cb22-352"><a href="#cb22-352"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
-<span id="cb22-353"><a href="#cb22-353"></a><span class="in">    char_to_bools(buf, 0);</span></span>
-<span id="cb22-354"><a href="#cb22-354"></a><span class="in">    printf("\n");</span></span>
-<span id="cb22-355"><a href="#cb22-355"></a><span class="in">    return 0;</span></span>
-<span id="cb22-356"><a href="#cb22-356"></a><span class="in">}</span></span>
-<span id="cb22-357"><a href="#cb22-357"></a><span class="in">```</span></span>
-<span id="cb22-358"><a href="#cb22-358"></a><span class="ss">- </span>We can see the output:</span>
-<span id="cb22-359"><a href="#cb22-359"></a></span>
-<span id="cb22-360"><a href="#cb22-360"></a><span class="in">```{.email}}</span></span>
-<span id="cb22-361"><a href="#cb22-361"></a><span class="in">TTFTTFFF</span></span>
-<span id="cb22-362"><a href="#cb22-362"></a><span class="in">```</span></span>
-<span id="cb22-363"><a href="#cb22-363"></a></span>
-<span id="cb22-364"><a href="#cb22-364"></a><span class="fu">### Closing thoughts</span></span>
-<span id="cb22-365"><a href="#cb22-365"></a></span>
-<span id="cb22-366"><a href="#cb22-366"></a><span class="ss">- </span>An astute will have noticed that:</span>
-<span id="cb22-367"><a href="#cb22-367"></a><span class="ss">    - </span>All of the "big" operations have the same function type.</span>
-<span id="cb22-368"><a href="#cb22-368"></a><span class="ss">    - </span>All of the "_ui" operations have the same function type.</span>
-<span id="cb22-369"><a href="#cb22-369"></a><span class="ss">    - </span>All of the "_ui" operations can utilize the underlying "big" operation.</span>
-<span id="cb22-370"><a href="#cb22-370"></a><span class="ss">        - </span>This is not efficient for computing performance, but is efficient from code reuse.</span>
-<span id="cb22-371"><a href="#cb22-371"></a>:::</span>
-<span id="cb22-372"><a href="#cb22-372"></a></span>
+<span id="cb22-99"><a href="#cb22-99"></a></span>
+<span id="cb22-100"><a href="#cb22-100"></a><span class="in">/* We will put stuff here soon */</span></span>
+<span id="cb22-101"><a href="#cb22-101"></a><span class="in">```</span></span>
+<span id="cb22-102"><a href="#cb22-102"></a></span>
+<span id="cb22-103"><a href="#cb22-103"></a>:::</span>
+<span id="cb22-104"><a href="#cb22-104"></a></span>
+<span id="cb22-105"><a href="#cb22-105"></a>::::</span>
+<span id="cb22-106"><a href="#cb22-106"></a></span>
+<span id="cb22-107"><a href="#cb22-107"></a><span class="fu">### Other headers</span></span>
+<span id="cb22-108"><a href="#cb22-108"></a></span>
+<span id="cb22-109"><a href="#cb22-109"></a><span class="ss">- </span>Vs. <span class="in">`4096_t.h`</span>, I implemented <span class="in">`ops_ui.h`</span> on top of <span class="in">`4096_t.h`</span>.</span>
+<span id="cb22-110"><a href="#cb22-110"></a><span class="ss">  - </span>So no system header files - like <span class="in">`stdio`</span></span>
+<span id="cb22-111"><a href="#cb22-111"></a><span class="ss">  - </span>But included <span class="in">`4096_t.h`</span>.</span>
+<span id="cb22-112"><a href="#cb22-112"></a><span class="ss">  - </span>But that file is in another directory!</span>
+<span id="cb22-113"><a href="#cb22-113"></a><span class="ss">- </span>My file system looked something like this:</span>
+<span id="cb22-114"><a href="#cb22-114"></a><span class="in">```{.email}</span></span>
+<span id="cb22-115"><a href="#cb22-115"></a><span class="in">.</span></span>
+<span id="cb22-116"><a href="#cb22-116"></a><span class="in">├── 4096_t</span></span>
+<span id="cb22-117"><a href="#cb22-117"></a><span class="in">│   ├── 4096_t.c</span></span>
+<span id="cb22-118"><a href="#cb22-118"></a><span class="in">│   ├── 4096_t.h</span></span>
+<span id="cb22-119"><a href="#cb22-119"></a><span class="in">│   └── biggmp.c</span></span>
+<span id="cb22-120"><a href="#cb22-120"></a><span class="in">└── ops_ui</span></span>
+<span id="cb22-121"><a href="#cb22-121"></a><span class="in">    ├── ops_ui.c</span></span>
+<span id="cb22-122"><a href="#cb22-122"></a><span class="in">    └── ops_ui.h</span></span>
+<span id="cb22-123"><a href="#cb22-123"></a><span class="in">```</span></span>
+<span id="cb22-124"><a href="#cb22-124"></a><span class="ss">- </span>It actually had way more stuff, but I cut out everything that isn't relevant.</span>
+<span id="cb22-125"><a href="#cb22-125"></a></span>
+<span id="cb22-126"><a href="#cb22-126"></a><span class="fu">#### Relative paths</span></span>
+<span id="cb22-127"><a href="#cb22-127"></a></span>
+<span id="cb22-128"><a href="#cb22-128"></a><span class="ss">- </span>4096_t is in another directory so I can simply write:</span>
+<span id="cb22-129"><a href="#cb22-129"></a><span class="in">```{.C}</span></span>
+<span id="cb22-130"><a href="#cb22-130"></a><span class="in">#include "4096_t.h"</span></span>
+<span id="cb22-131"><a href="#cb22-131"></a><span class="in">```</span></span>
+<span id="cb22-132"><a href="#cb22-132"></a><span class="ss">- </span>Rather, I must give the *relative path* - how to navigate from <span class="in">`ops_ui.h`</span> to <span class="in">`4096_t.h`</span></span>
+<span id="cb22-133"><a href="#cb22-133"></a><span class="ss">  - </span>If I wanted to navigate through the filesystem, I may do something like the following:</span>
+<span id="cb22-134"><a href="#cb22-134"></a><span class="in">```{.email}</span></span>
+<span id="cb22-135"><a href="#cb22-135"></a><span class="in">$ pwd</span></span>
+<span id="cb22-136"><a href="#cb22-136"></a><span class="in">/home/user/dev/crypto/ops_ui</span></span>
+<span id="cb22-137"><a href="#cb22-137"></a><span class="in">$ cd ..</span></span>
+<span id="cb22-138"><a href="#cb22-138"></a><span class="in">$ pwd</span></span>
+<span id="cb22-139"><a href="#cb22-139"></a><span class="in">/home/user/dev/crypto</span></span>
+<span id="cb22-140"><a href="#cb22-140"></a><span class="in">$ cd 4096_t</span></span>
+<span id="cb22-141"><a href="#cb22-141"></a><span class="in">$ pwd         </span></span>
+<span id="cb22-142"><a href="#cb22-142"></a><span class="in">/home/user/dev/crypto/4096_t</span></span>
+<span id="cb22-143"><a href="#cb22-143"></a><span class="in">$ head -1 4096_t.h</span></span>
+<span id="cb22-144"><a href="#cb22-144"></a><span class="in">/* 4096_t.h */</span></span>
+<span id="cb22-145"><a href="#cb22-145"></a><span class="in">```</span></span>
+<span id="cb22-146"><a href="#cb22-146"></a><span class="ss">  - </span>Or I may do something much shorter:</span>
+<span id="cb22-147"><a href="#cb22-147"></a><span class="in">```{.email}</span></span>
+<span id="cb22-148"><a href="#cb22-148"></a><span class="in">$ pwd</span></span>
+<span id="cb22-149"><a href="#cb22-149"></a><span class="in">/home/user/dev/crypto/ops_ui</span></span>
+<span id="cb22-150"><a href="#cb22-150"></a><span class="in">$ head -1 ../4096_t/4096_t.h</span></span>
+<span id="cb22-151"><a href="#cb22-151"></a><span class="in">/* 4096_t.h */</span></span>
+<span id="cb22-152"><a href="#cb22-152"></a><span class="in">```</span></span>
+<span id="cb22-153"><a href="#cb22-153"></a><span class="ss">  - </span>I can refer to to files the same way from within C:</span>
+<span id="cb22-154"><a href="#cb22-154"></a><span class="in">```{.C}</span></span>
+<span id="cb22-155"><a href="#cb22-155"></a><span class="in">#include "../4096_t/4096_t.h"</span></span>
+<span id="cb22-156"><a href="#cb22-156"></a><span class="in">```</span></span>
+<span id="cb22-157"><a href="#cb22-157"></a><span class="ss">  - </span>Note - this will only work if you have a setup with a similar file structure!</span>
+<span id="cb22-158"><a href="#cb22-158"></a></span>
+<span id="cb22-159"><a href="#cb22-159"></a><span class="fu">### Functions</span></span>
+<span id="cb22-160"><a href="#cb22-160"></a></span>
+<span id="cb22-161"><a href="#cb22-161"></a><span class="ss">- </span>I noticed when working on BigRSA I often:</span>
+<span id="cb22-162"><a href="#cb22-162"></a><span class="ss">  - </span>Had a big 4096-bit integer</span>
+<span id="cb22-163"><a href="#cb22-163"></a><span class="ss">  - </span>That I wanted to add <span class="in">`1`</span> or <span class="in">`6`</span> to</span>
+<span id="cb22-164"><a href="#cb22-164"></a><span class="ss">  - </span>Or compare to <span class="in">`0`</span></span>
+<span id="cb22-165"><a href="#cb22-165"></a><span class="ss">- </span>This is a common problem, and reolved in our reference implementation (LibGMP) using the <span class="in">`_ui`</span> suffix.</span>
+<span id="cb22-166"><a href="#cb22-166"></a><span class="ss">- </span>Quoth <span class="co">[</span><span class="ot">LibGMP</span><span class="co">](https://gmplib.org/manual/Integer-Arithmetic)</span></span>
+<span id="cb22-167"><a href="#cb22-167"></a><span class="in">```{.email}</span></span>
+<span id="cb22-168"><a href="#cb22-168"></a><span class="in">Function: void mpz_add (mpz_t rop, const mpz_t op1, const mpz_t op2)</span></span>
+<span id="cb22-169"><a href="#cb22-169"></a><span class="in">Function: void mpz_add_ui (mpz_t rop, const mpz_t op1, unsigned long int op2) </span></span>
+<span id="cb22-170"><a href="#cb22-170"></a><span class="in">```</span></span>
+<span id="cb22-171"><a href="#cb22-171"></a><span class="ss">  - </span>Both add together a big number named <span class="in">`op1`</span></span>
+<span id="cb22-172"><a href="#cb22-172"></a><span class="ss">    - </span>That is, <span class="in">`mpz_add`</span> adds it to a big number <span class="in">`op2`</span> </span>
+<span id="cb22-173"><a href="#cb22-173"></a><span class="ss">    - </span>And <span class="in">`mpz_add_ui`</span> adds it to an unsigned long int <span class="in">`op2`</span></span>
+<span id="cb22-174"><a href="#cb22-174"></a><span class="ss">  - </span>Both store the sum in the big number <span class="in">`rop`</span></span>
+<span id="cb22-175"><a href="#cb22-175"></a><span class="ss">- </span>I recommend implementing each of the following.</span>
+<span id="cb22-176"><a href="#cb22-176"></a><span class="ss">  - </span>Note that I place the return value *last* not *first*</span>
+<span id="cb22-177"><a href="#cb22-177"></a></span>
+<span id="cb22-178"><a href="#cb22-178"></a><span class="in">```{.C filename="ops_ui.h"}</span></span>
+<span id="cb22-179"><a href="#cb22-179"></a><span class="in">uint64_t add_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
+<span id="cb22-180"><a href="#cb22-180"></a><span class="in">uint64_t sub_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
+<span id="cb22-181"><a href="#cb22-181"></a><span class="in">uint64_t mul_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
+<span id="cb22-182"><a href="#cb22-182"></a><span class="in">uint64_t quo_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
+<span id="cb22-183"><a href="#cb22-183"></a><span class="in">uint64_t rem_ui(uint64_t *big, uint64_t lil, uint64_t *out);</span></span>
+<span id="cb22-184"><a href="#cb22-184"></a><span class="in">```</span></span>
+<span id="cb22-185"><a href="#cb22-185"></a></span>
+<span id="cb22-186"><a href="#cb22-186"></a><span class="ss">- </span>Before you start implementing these operations, read the <span class="in">`lambda`</span> heading.</span>
+<span id="cb22-187"><a href="#cb22-187"></a></span>
+<span id="cb22-188"><a href="#cb22-188"></a>:::</span>
+<span id="cb22-189"><a href="#cb22-189"></a></span>
+<span id="cb22-190"><a href="#cb22-190"></a><span class="fu"># Lambda&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#lambda" role="button" aria-expanded="false" aria-controls = "lambda"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-191"><a href="#cb22-191"></a></span>
+<span id="cb22-192"><a href="#cb22-192"></a>::: {#lambda .collapse .multi-collapse}</span>
+<span id="cb22-193"><a href="#cb22-193"></a></span>
+<span id="cb22-194"><a href="#cb22-194"></a><span class="fu">## Higher Order Functions</span></span>
+<span id="cb22-195"><a href="#cb22-195"></a></span>
+<span id="cb22-196"><a href="#cb22-196"></a><span class="ss">- </span>Despite my best efforts, there is no graceful way to implement within C functions which return other functions.</span>
+<span id="cb22-197"><a href="#cb22-197"></a><span class="ss">  - </span>I did not say no way! I said no *graceful* way.</span>
+<span id="cb22-198"><a href="#cb22-198"></a><span class="ss">  - </span>Using C++ is *not* graceful!</span>
+<span id="cb22-199"><a href="#cb22-199"></a><span class="ss">- </span>There is, I think, an extraordinarily graceful to implement functions which accept as a parameter/argument some other function(s).</span>
+<span id="cb22-200"><a href="#cb22-200"></a><span class="ss">  - </span>We simply specify that an argument has some function type.</span>
+<span id="cb22-201"><a href="#cb22-201"></a><span class="ss">- </span>We begin with a minimal example.</span>
+<span id="cb22-202"><a href="#cb22-202"></a></span>
+<span id="cb22-203"><a href="#cb22-203"></a><span class="fu">### `ctype.h`</span></span>
+<span id="cb22-204"><a href="#cb22-204"></a></span>
+<span id="cb22-205"><a href="#cb22-205"></a><span class="ss">- </span>One common application for functions is to check if a character is a printing character:</span>
+<span id="cb22-206"><a href="#cb22-206"></a><span class="ss">    - </span>A number, like <span class="in">`0`</span> or <span class="in">`i`</span>?</span>
+<span id="cb22-207"><a href="#cb22-207"></a><span class="ss">    - </span>A letter, like <span class="in">`O`</span> or <span class="in">`i`</span>?</span>
+<span id="cb22-208"><a href="#cb22-208"></a><span class="ss">    - </span>A control character, like <span class="in">`\0`</span> or <span class="in">`\n`</span></span>
+<span id="cb22-209"><a href="#cb22-209"></a><span class="ss">    - </span>A digit, like <span class="in">`0`</span> or <span class="in">`1`</span></span>
+<span id="cb22-210"><a href="#cb22-210"></a><span class="ss">    - </span>A space, like <span class="in">` `</span> or <span class="in">`\n`</span></span>
+<span id="cb22-211"><a href="#cb22-211"></a><span class="ss">- </span><span class="in">`ctypes.h`</span> provides functions to test each of these.</span>
+<span id="cb22-212"><a href="#cb22-212"></a><span class="in">```{.C}</span></span>
+<span id="cb22-213"><a href="#cb22-213"></a><span class="in">/* For some reason this is int -&gt; int *?</span></span>
+<span id="cb22-214"><a href="#cb22-214"></a><span class="in">int isalnum( int ch );</span></span>
+<span id="cb22-215"><a href="#cb22-215"></a><span class="in">```</span></span>
+<span id="cb22-216"><a href="#cb22-216"></a><span class="ss">- </span>Let's make a table.</span>
+<span id="cb22-217"><a href="#cb22-217"></a><span class="ss">    - </span>In the leftmost column, we will print each of the first 127 characters</span>
+<span id="cb22-218"><a href="#cb22-218"></a><span class="ss">    - </span>Then we we will have a column for each of the <span class="in">`ctypes`</span></span>
+<span id="cb22-219"><a href="#cb22-219"></a><span class="ss">    - </span>We will specify <span class="in">`T`</span> or <span class="in">`F`</span> for "True" or "False" membership in the ctype.</span>
+<span id="cb22-220"><a href="#cb22-220"></a><span class="ss">    - </span>So we need a way to go from character-to-character with a bunch of int-to-int functions.</span>
+<span id="cb22-221"><a href="#cb22-221"></a><span class="ss">- </span>Here are some functions to use:</span>
+<span id="cb22-222"><a href="#cb22-222"></a><span class="in">```{.C}</span></span>
+<span id="cb22-223"><a href="#cb22-223"></a><span class="in">isalnum</span></span>
+<span id="cb22-224"><a href="#cb22-224"></a><span class="in">isalpha</span></span>
+<span id="cb22-225"><a href="#cb22-225"></a><span class="in">isdigit</span></span>
+<span id="cb22-226"><a href="#cb22-226"></a><span class="in">islower</span></span>
+<span id="cb22-227"><a href="#cb22-227"></a><span class="in">isprint</span></span>
+<span id="cb22-228"><a href="#cb22-228"></a><span class="in">ispunct</span></span>
+<span id="cb22-229"><a href="#cb22-229"></a><span class="in">isspace</span></span>
+<span id="cb22-230"><a href="#cb22-230"></a><span class="in">isupper</span></span>
+<span id="cb22-231"><a href="#cb22-231"></a><span class="in">```</span></span>
+<span id="cb22-232"><a href="#cb22-232"></a><span class="ss">- </span>We can use them as follows:</span>
+<span id="cb22-233"><a href="#cb22-233"></a><span class="in">```{.C filename="tedious.c"}</span></span>
+<span id="cb22-234"><a href="#cb22-234"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb22-235"><a href="#cb22-235"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
+<span id="cb22-236"><a href="#cb22-236"></a></span>
+<span id="cb22-237"><a href="#cb22-237"></a><span class="in">int main() {</span></span>
+<span id="cb22-238"><a href="#cb22-238"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
+<span id="cb22-239"><a href="#cb22-239"></a><span class="in">    if (isalnum(buf[0])) {</span></span>
+<span id="cb22-240"><a href="#cb22-240"></a><span class="in">        printf("T");</span></span>
+<span id="cb22-241"><a href="#cb22-241"></a><span class="in">    } else {</span></span>
+<span id="cb22-242"><a href="#cb22-242"></a><span class="in">        printf("F");</span></span>
+<span id="cb22-243"><a href="#cb22-243"></a><span class="in">    }</span></span>
+<span id="cb22-244"><a href="#cb22-244"></a><span class="in">    printf("\n");</span></span>
+<span id="cb22-245"><a href="#cb22-245"></a><span class="in">    return 0;</span></span>
+<span id="cb22-246"><a href="#cb22-246"></a><span class="in">}</span></span>
+<span id="cb22-247"><a href="#cb22-247"></a><span class="in">```</span></span>
+<span id="cb22-248"><a href="#cb22-248"></a></span>
+<span id="cb22-249"><a href="#cb22-249"></a><span class="ss">- </span>It would be tedious to write a wrapper function for each of these.</span>
+<span id="cb22-250"><a href="#cb22-250"></a><span class="ss">    - </span>We treat them as a *lambda* function, a function for which we neither know nor care the name, and know only the type.</span>
+<span id="cb22-251"><a href="#cb22-251"></a><span class="ss">- </span>Let's examine more closely these lines:</span>
+<span id="cb22-252"><a href="#cb22-252"></a><span class="in">```{.C}</span></span>
+<span id="cb22-253"><a href="#cb22-253"></a><span class="in">    if (isalnum(buf[0])) {</span></span>
+<span id="cb22-254"><a href="#cb22-254"></a><span class="in">        printf("T");</span></span>
+<span id="cb22-255"><a href="#cb22-255"></a><span class="in">    } else {</span></span>
+<span id="cb22-256"><a href="#cb22-256"></a><span class="in">        printf("F");</span></span>
+<span id="cb22-257"><a href="#cb22-257"></a><span class="in">    }</span></span>
+<span id="cb22-258"><a href="#cb22-258"></a><span class="in">```</span></span>
+<span id="cb22-259"><a href="#cb22-259"></a><span class="ss">- </span>We:</span>
+<span id="cb22-260"><a href="#cb22-260"></a><span class="ss">    - </span>Take a function name</span>
+<span id="cb22-261"><a href="#cb22-261"></a><span class="ss">    - </span>Take an array name</span>
+<span id="cb22-262"><a href="#cb22-262"></a><span class="ss">    - </span>Take an array index</span>
+<span id="cb22-263"><a href="#cb22-263"></a><span class="ss">    - </span>Apply the function name to index element of the array.</span>
+<span id="cb22-264"><a href="#cb22-264"></a><span class="ss">    - </span>Print based on the result.</span>
+<span id="cb22-265"><a href="#cb22-265"></a><span class="ss">- </span>Let's write a function.</span>
+<span id="cb22-266"><a href="#cb22-266"></a><span class="ss">    - </span>It doesn't return anything, it just prints.</span>
+<span id="cb22-267"><a href="#cb22-267"></a><span class="ss">    - </span>It takes a function... somehow.</span>
+<span id="cb22-268"><a href="#cb22-268"></a><span class="ss">    - </span>It takes a character pointer for an array.</span>
+<span id="cb22-269"><a href="#cb22-269"></a><span class="ss">    - </span>It takes a numberical value for an array index.</span>
+<span id="cb22-270"><a href="#cb22-270"></a><span class="in">```{.C}</span></span>
+<span id="cb22-271"><a href="#cb22-271"></a><span class="in">char_to_bool(function, array, index)</span></span>
+<span id="cb22-272"><a href="#cb22-272"></a><span class="in">```</span></span>
+<span id="cb22-273"><a href="#cb22-273"></a><span class="ss">- </span>This is not well-formed C - let's add types.</span>
+<span id="cb22-274"><a href="#cb22-274"></a><span class="in">```{.C}</span></span>
+<span id="cb22-275"><a href="#cb22-275"></a><span class="in">void char_to_bool(function, char *array, int index) # should be size_t, but.</span></span>
+<span id="cb22-276"><a href="#cb22-276"></a><span class="in">```</span></span>
+<span id="cb22-277"><a href="#cb22-277"></a><span class="ss">- </span><span class="in">`isalnum`</span> also has a type - the type <span class="in">`int -&gt; int`</span> in Python, but in C?</span>
+<span id="cb22-278"><a href="#cb22-278"></a><span class="in">```{.C}</span></span>
+<span id="cb22-279"><a href="#cb22-279"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index).</span></span>
+<span id="cb22-280"><a href="#cb22-280"></a><span class="in">```</span></span>
+<span id="cb22-281"><a href="#cb22-281"></a></span>
+<span id="cb22-282"><a href="#cb22-282"></a><span class="ss">    - </span>We say <span class="in">`function`</span> is a type that given some <span class="in">`int`</span> returns some <span class="in">`int`</span></span>
+<span id="cb22-283"><a href="#cb22-283"></a><span class="ss">- </span>How do we use it?</span>
+<span id="cb22-284"><a href="#cb22-284"></a><span class="ss">    - </span>The same way we would any other function for which we know a name or alias!</span>
+<span id="cb22-285"><a href="#cb22-285"></a><span class="in">```{.C}</span></span>
+<span id="cb22-286"><a href="#cb22-286"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
+<span id="cb22-287"><a href="#cb22-287"></a><span class="in">    if (function(array[index])) {</span></span>
+<span id="cb22-288"><a href="#cb22-288"></a><span class="in">        printf("T");</span></span>
+<span id="cb22-289"><a href="#cb22-289"></a><span class="in">    } else {</span></span>
+<span id="cb22-290"><a href="#cb22-290"></a><span class="in">        printf("F");</span></span>
+<span id="cb22-291"><a href="#cb22-291"></a><span class="in">    }</span></span>
+<span id="cb22-292"><a href="#cb22-292"></a><span class="in">    return;</span></span>
+<span id="cb22-293"><a href="#cb22-293"></a><span class="in">}</span></span>
+<span id="cb22-294"><a href="#cb22-294"></a><span class="in">```</span></span>
+<span id="cb22-295"><a href="#cb22-295"></a><span class="ss">- </span>Put it altogether</span>
+<span id="cb22-296"><a href="#cb22-296"></a><span class="in">```{.C filename="goated.c"}</span></span>
+<span id="cb22-297"><a href="#cb22-297"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb22-298"><a href="#cb22-298"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
+<span id="cb22-299"><a href="#cb22-299"></a></span>
+<span id="cb22-300"><a href="#cb22-300"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
+<span id="cb22-301"><a href="#cb22-301"></a><span class="in">    if (function(array[index])) {</span></span>
+<span id="cb22-302"><a href="#cb22-302"></a><span class="in">        printf("T");</span></span>
+<span id="cb22-303"><a href="#cb22-303"></a><span class="in">    } else {</span></span>
+<span id="cb22-304"><a href="#cb22-304"></a><span class="in">        printf("F");</span></span>
+<span id="cb22-305"><a href="#cb22-305"></a><span class="in">    }</span></span>
+<span id="cb22-306"><a href="#cb22-306"></a><span class="in">    return;</span></span>
+<span id="cb22-307"><a href="#cb22-307"></a><span class="in">}</span></span>
+<span id="cb22-308"><a href="#cb22-308"></a></span>
+<span id="cb22-309"><a href="#cb22-309"></a><span class="in">int main() {</span></span>
+<span id="cb22-310"><a href="#cb22-310"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
+<span id="cb22-311"><a href="#cb22-311"></a><span class="in">    char_to_bool(isalnum, buf, 0);</span></span>
+<span id="cb22-312"><a href="#cb22-312"></a><span class="in">    printf("\n");</span></span>
+<span id="cb22-313"><a href="#cb22-313"></a><span class="in">    return 0;</span></span>
+<span id="cb22-314"><a href="#cb22-314"></a><span class="in">}</span></span>
+<span id="cb22-315"><a href="#cb22-315"></a><span class="in">```</span></span>
+<span id="cb22-316"><a href="#cb22-316"></a></span>
+<span id="cb22-317"><a href="#cb22-317"></a><span class="fu">### Longer arrays</span></span>
+<span id="cb22-318"><a href="#cb22-318"></a></span>
+<span id="cb22-319"><a href="#cb22-319"></a><span class="ss">- </span>Why not examine the char in multiple ways?</span>
+<span id="cb22-320"><a href="#cb22-320"></a><span class="ss">    - </span>We </span>
+<span id="cb22-321"><a href="#cb22-321"></a></span>
+<span id="cb22-322"><a href="#cb22-322"></a><span class="in">```{.C filename="goated.c"}</span></span>
+<span id="cb22-323"><a href="#cb22-323"></a><span class="in">#include &lt;stdio.h&gt;</span></span>
+<span id="cb22-324"><a href="#cb22-324"></a><span class="in">#include &lt;ctype.h&gt;</span></span>
+<span id="cb22-325"><a href="#cb22-325"></a></span>
+<span id="cb22-326"><a href="#cb22-326"></a><span class="in">void char_to_bool(int (function)(int), char *array, int index) {</span></span>
+<span id="cb22-327"><a href="#cb22-327"></a><span class="in">    if (function(array[index])) {</span></span>
+<span id="cb22-328"><a href="#cb22-328"></a><span class="in">        printf("T");</span></span>
+<span id="cb22-329"><a href="#cb22-329"></a><span class="in">    } else {</span></span>
+<span id="cb22-330"><a href="#cb22-330"></a><span class="in">        printf("F");</span></span>
+<span id="cb22-331"><a href="#cb22-331"></a><span class="in">    }</span></span>
+<span id="cb22-332"><a href="#cb22-332"></a><span class="in">    return;</span></span>
+<span id="cb22-333"><a href="#cb22-333"></a><span class="in">}</span></span>
+<span id="cb22-334"><a href="#cb22-334"></a></span>
+<span id="cb22-335"><a href="#cb22-335"></a><span class="in">void char_to_bools(char *array, int index) {</span></span>
+<span id="cb22-336"><a href="#cb22-336"></a><span class="in">    int (*functions[8])(int) = {</span></span>
+<span id="cb22-337"><a href="#cb22-337"></a><span class="in">        isalnum,</span></span>
+<span id="cb22-338"><a href="#cb22-338"></a><span class="in">        isalpha,</span></span>
+<span id="cb22-339"><a href="#cb22-339"></a><span class="in">        isdigit,</span></span>
+<span id="cb22-340"><a href="#cb22-340"></a><span class="in">        islower,</span></span>
+<span id="cb22-341"><a href="#cb22-341"></a><span class="in">        isprint,</span></span>
+<span id="cb22-342"><a href="#cb22-342"></a><span class="in">        ispunct,</span></span>
+<span id="cb22-343"><a href="#cb22-343"></a><span class="in">        isspace,</span></span>
+<span id="cb22-344"><a href="#cb22-344"></a><span class="in">        isupper</span></span>
+<span id="cb22-345"><a href="#cb22-345"></a><span class="in">    }, i;</span></span>
+<span id="cb22-346"><a href="#cb22-346"></a><span class="in">    for (i = 0 ; i &lt; 8 ; i++) {</span></span>
+<span id="cb22-347"><a href="#cb22-347"></a><span class="in">        char_to_bool(functions[i], array, index);</span></span>
+<span id="cb22-348"><a href="#cb22-348"></a><span class="in">    }</span></span>
+<span id="cb22-349"><a href="#cb22-349"></a><span class="in">    return;</span></span>
+<span id="cb22-350"><a href="#cb22-350"></a><span class="in">}</span></span>
+<span id="cb22-351"><a href="#cb22-351"></a></span>
+<span id="cb22-352"><a href="#cb22-352"></a><span class="in">int main() {</span></span>
+<span id="cb22-353"><a href="#cb22-353"></a><span class="in">    char buf[8] = "aA1. _\t";</span></span>
+<span id="cb22-354"><a href="#cb22-354"></a><span class="in">    char_to_bools(buf, 0);</span></span>
+<span id="cb22-355"><a href="#cb22-355"></a><span class="in">    printf("\n");</span></span>
+<span id="cb22-356"><a href="#cb22-356"></a><span class="in">    return 0;</span></span>
+<span id="cb22-357"><a href="#cb22-357"></a><span class="in">}</span></span>
+<span id="cb22-358"><a href="#cb22-358"></a><span class="in">```</span></span>
+<span id="cb22-359"><a href="#cb22-359"></a><span class="ss">- </span>We can see the output:</span>
+<span id="cb22-360"><a href="#cb22-360"></a></span>
+<span id="cb22-361"><a href="#cb22-361"></a><span class="in">```{.email}}</span></span>
+<span id="cb22-362"><a href="#cb22-362"></a><span class="in">TTFTTFFF</span></span>
+<span id="cb22-363"><a href="#cb22-363"></a><span class="in">```</span></span>
+<span id="cb22-364"><a href="#cb22-364"></a></span>
+<span id="cb22-365"><a href="#cb22-365"></a><span class="fu">### Closing thoughts</span></span>
+<span id="cb22-366"><a href="#cb22-366"></a></span>
+<span id="cb22-367"><a href="#cb22-367"></a><span class="ss">- </span>An astute will have noticed that:</span>
+<span id="cb22-368"><a href="#cb22-368"></a><span class="ss">    - </span>All of the "big" operations have the same function type.</span>
+<span id="cb22-369"><a href="#cb22-369"></a><span class="ss">    - </span>All of the "_ui" operations have the same function type.</span>
+<span id="cb22-370"><a href="#cb22-370"></a><span class="ss">    - </span>All of the "_ui" operations can utilize the underlying "big" operation.</span>
+<span id="cb22-371"><a href="#cb22-371"></a><span class="ss">        - </span>This is not efficient for computing performance, but is efficient from code reuse.</span>
+<span id="cb22-372"><a href="#cb22-372"></a>:::</span>
 <span id="cb22-373"><a href="#cb22-373"></a></span>
-<span id="cb22-374"><a href="#cb22-374"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-375"><a href="#cb22-375"></a></span>
-<span id="cb22-376"><a href="#cb22-376"></a>::: {#tester .collapse .multi-collapse}</span>
-<span id="cb22-377"><a href="#cb22-377"></a></span>
-<span id="cb22-378"><a href="#cb22-378"></a><span class="ss">- </span>Unusually for this lab I have provided a tester for the <span class="in">`ops_ui`</span> files.</span>
-<span id="cb22-379"><a href="#cb22-379"></a><span class="ss">- </span>Separately, I have provided <span class="in">`biggmp.c`</span></span>
-<span id="cb22-380"><a href="#cb22-380"></a><span class="ss">    - </span>This file uses the GMP library to implement 4096_t.</span>
-<span id="cb22-381"><a href="#cb22-381"></a><span class="ss">    - </span>It is a "drop in replacement"</span>
-<span id="cb22-382"><a href="#cb22-382"></a><span class="ss">        - </span>Remove <span class="in">`4096_t.c`</span> from your <span class="in">`gcc`</span> command.</span>
-<span id="cb22-383"><a href="#cb22-383"></a><span class="ss">        - </span>Replace it with <span class="in">`biggmp.c`</span></span>
-<span id="cb22-384"><a href="#cb22-384"></a><span class="ss">            - </span><span class="co">[</span><span class="ot">biggmp.c</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/biggmp.c)</span></span>
-<span id="cb22-385"><a href="#cb22-385"></a><span class="ss">        - </span>Add <span class="in">`-lgmp`</span> flag to <span class="in">`gcc`</span></span>
-<span id="cb22-386"><a href="#cb22-386"></a><span class="ss">    - </span>Compiling with <span class="in">`4096_t`</span> and <span class="in">`biggmp`</span> should be functionally identical.</span>
-<span id="cb22-387"><a href="#cb22-387"></a><span class="ss">        - </span>They will differ in how they handle overload, but there are notes in <span class="in">`biggmp`</span> on how to fix that at a small performance cost.</span>
-<span id="cb22-388"><a href="#cb22-388"></a>        </span>
-<span id="cb22-389"><a href="#cb22-389"></a><span class="fu">## Autograder</span></span>
-<span id="cb22-390"><a href="#cb22-390"></a></span>
-<span id="cb22-391"><a href="#cb22-391"></a><span class="ss">- </span>The interface implemented by the autograder may be informative here.</span>
-<span id="cb22-392"><a href="#cb22-392"></a><span class="ss">  - </span>It uses a Python script.</span>
-<span id="cb22-393"><a href="#cb22-393"></a><span class="ss">  - </span>It uses a dedicated .c file with a <span class="in">`main`</span> function.</span>
-<span id="cb22-394"><a href="#cb22-394"></a><span class="ss">  - </span>It differents from the 4096_t grader:</span>
-<span id="cb22-395"><a href="#cb22-395"></a><span class="ss">    - </span>It uses <span class="in">`gcc ../4096_t/4096_t.c ops_ui.c tester.c`</span></span>
-<span id="cb22-396"><a href="#cb22-396"></a><span class="ss">    - </span>It can use <span class="in">`gcc ../4096_t/biggmp.c ops_ui.c tester.c -lgmp`</span></span>
-<span id="cb22-397"><a href="#cb22-397"></a><span class="ss">    - </span>You can change this if you use a different directory structure.</span>
-<span id="cb22-398"><a href="#cb22-398"></a><span class="ss">    - </span>There is a better way to write these gcc commands that we will cover after midterm.</span>
-<span id="cb22-399"><a href="#cb22-399"></a><span class="ss">  - </span>It uses Python <span class="in">`subprocess`</span> to examine the results.</span>
-<span id="cb22-400"><a href="#cb22-400"></a><span class="ss">- </span>I was unable to achieve a bugfree multiply absent this interface, but was able to progress rapidly once I developed it.</span>
-<span id="cb22-401"><a href="#cb22-401"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">tester.py</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.py)</span></span>
-<span id="cb22-402"><a href="#cb22-402"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">tester.c</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.c)</span></span>
-<span id="cb22-403"><a href="#cb22-403"></a></span>
+<span id="cb22-374"><a href="#cb22-374"></a></span>
+<span id="cb22-375"><a href="#cb22-375"></a><span class="fu"># Tester&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#tester" role="button" aria-expanded="false" aria-controls = "tester"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-376"><a href="#cb22-376"></a></span>
+<span id="cb22-377"><a href="#cb22-377"></a>::: {#tester .collapse .multi-collapse}</span>
+<span id="cb22-378"><a href="#cb22-378"></a></span>
+<span id="cb22-379"><a href="#cb22-379"></a><span class="ss">- </span>Unusually for this lab I have provided a tester for the <span class="in">`ops_ui`</span> files.</span>
+<span id="cb22-380"><a href="#cb22-380"></a><span class="ss">- </span>Separately, I have provided <span class="in">`biggmp.c`</span></span>
+<span id="cb22-381"><a href="#cb22-381"></a><span class="ss">    - </span>This file uses the GMP library to implement 4096_t.</span>
+<span id="cb22-382"><a href="#cb22-382"></a><span class="ss">    - </span>It is a "drop in replacement"</span>
+<span id="cb22-383"><a href="#cb22-383"></a><span class="ss">        - </span>Remove <span class="in">`4096_t.c`</span> from your <span class="in">`gcc`</span> command.</span>
+<span id="cb22-384"><a href="#cb22-384"></a><span class="ss">        - </span>Replace it with <span class="in">`biggmp.c`</span></span>
+<span id="cb22-385"><a href="#cb22-385"></a><span class="ss">            - </span><span class="co">[</span><span class="ot">biggmp.c</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/biggmp.c)</span></span>
+<span id="cb22-386"><a href="#cb22-386"></a><span class="ss">        - </span>Add <span class="in">`-lgmp`</span> flag to <span class="in">`gcc`</span></span>
+<span id="cb22-387"><a href="#cb22-387"></a><span class="ss">    - </span>Compiling with <span class="in">`4096_t`</span> and <span class="in">`biggmp`</span> should be functionally identical.</span>
+<span id="cb22-388"><a href="#cb22-388"></a><span class="ss">        - </span>They will differ in how they handle overload, but there are notes in <span class="in">`biggmp`</span> on how to fix that at a small performance cost.</span>
+<span id="cb22-389"><a href="#cb22-389"></a>        </span>
+<span id="cb22-390"><a href="#cb22-390"></a><span class="fu">## Autograder</span></span>
+<span id="cb22-391"><a href="#cb22-391"></a></span>
+<span id="cb22-392"><a href="#cb22-392"></a><span class="ss">- </span>The interface implemented by the autograder may be informative here.</span>
+<span id="cb22-393"><a href="#cb22-393"></a><span class="ss">  - </span>It uses a Python script.</span>
+<span id="cb22-394"><a href="#cb22-394"></a><span class="ss">  - </span>It uses a dedicated .c file with a <span class="in">`main`</span> function.</span>
+<span id="cb22-395"><a href="#cb22-395"></a><span class="ss">  - </span>It differents from the 4096_t grader:</span>
+<span id="cb22-396"><a href="#cb22-396"></a><span class="ss">    - </span>It uses <span class="in">`gcc ../4096_t/4096_t.c ops_ui.c tester.c`</span></span>
+<span id="cb22-397"><a href="#cb22-397"></a><span class="ss">    - </span>It can use <span class="in">`gcc ../4096_t/biggmp.c ops_ui.c tester.c -lgmp`</span></span>
+<span id="cb22-398"><a href="#cb22-398"></a><span class="ss">    - </span>You can change this if you use a different directory structure.</span>
+<span id="cb22-399"><a href="#cb22-399"></a><span class="ss">    - </span>There is a better way to write these gcc commands that we will cover after midterm.</span>
+<span id="cb22-400"><a href="#cb22-400"></a><span class="ss">  - </span>It uses Python <span class="in">`subprocess`</span> to examine the results.</span>
+<span id="cb22-401"><a href="#cb22-401"></a><span class="ss">- </span>I was unable to achieve a bugfree multiply absent this interface, but was able to progress rapidly once I developed it.</span>
+<span id="cb22-402"><a href="#cb22-402"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">tester.py</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.py)</span></span>
+<span id="cb22-403"><a href="#cb22-403"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">tester.c</span><span class="co">](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.c)</span></span>
 <span id="cb22-404"><a href="#cb22-404"></a></span>
 <span id="cb22-405"><a href="#cb22-405"></a></span>
-<span id="cb22-406"><a href="#cb22-406"></a>:::</span>
-<span id="cb22-407"><a href="#cb22-407"></a></span>
-<span id="cb22-408"><a href="#cb22-408"></a><span class="fu"># BigMax&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#BigMax" role="button" aria-expanded="false" aria-controls = "BigMax"&gt;Show&lt;/a&gt;</span></span>
-<span id="cb22-409"><a href="#cb22-409"></a></span>
-<span id="cb22-410"><a href="#cb22-410"></a>::: {#BigMax .collapse .multi-collapse}</span>
-<span id="cb22-411"><a href="#cb22-411"></a></span>
-<span id="cb22-412"><a href="#cb22-412"></a><span class="ss">- </span>I wrote two other "big" helper functions.</span>
-<span id="cb22-413"><a href="#cb22-413"></a><span class="ss">- </span>Can be completed as part of this lab, part of BigRSA, or not at all.</span>
-<span id="cb22-414"><a href="#cb22-414"></a><span class="ss">- </span>They aren't exactly big x unsigned operations, but could live in the same file.</span>
-<span id="cb22-415"><a href="#cb22-415"></a></span>
-<span id="cb22-416"><a href="#cb22-416"></a><span class="fu">## BigMax</span></span>
-<span id="cb22-417"><a href="#cb22-417"></a></span>
-<span id="cb22-418"><a href="#cb22-418"></a><span class="ss">- </span>I needed a way to see if things were bigger than other things.</span>
-<span id="cb22-419"><a href="#cb22-419"></a><span class="ss">- </span>My subtraction only worked if the initial argument, the minuend, was larger than the final argument, the subtrahend.</span>
-<span id="cb22-420"><a href="#cb22-420"></a><span class="ss">- </span>Additionally, computing extended gcd's generally involves finding a maximal and minimal value.</span>
-<span id="cb22-421"><a href="#cb22-421"></a><span class="ss">- </span>I just returned a <span class="in">`0`</span> or a <span class="in">`1`</span> depending on whether the initial argument was the max.</span>
-<span id="cb22-422"><a href="#cb22-422"></a></span>
-<span id="cb22-423"><a href="#cb22-423"></a><span class="fu">## BigMid, mid_ui</span></span>
-<span id="cb22-424"><a href="#cb22-424"></a></span>
-<span id="cb22-425"><a href="#cb22-425"></a><span class="ss">- </span>In LaTeX I am accustomed to denoted "$a$ is divisible by $b$" or "$b$ divides $a$" as follows:</span>
-<span id="cb22-426"><a href="#cb22-426"></a>$$</span>
-<span id="cb22-427"><a href="#cb22-427"></a>a \mid b</span>
-<span id="cb22-428"><a href="#cb22-428"></a>$$</span>
-<span id="cb22-429"><a href="#cb22-429"></a><span class="ss">- </span>This uses the LaTeX <span class="in">`\mid`</span> command.</span>
-<span id="cb22-430"><a href="#cb22-430"></a><span class="ss">- </span>It is the same idea as <span class="in">`a % b == 0`</span></span>
-<span id="cb22-431"><a href="#cb22-431"></a><span class="ss">- </span>I wanted to call this <span class="in">`div`</span> but that was already used for division.</span>
-<span id="cb22-432"><a href="#cb22-432"></a><span class="ss">- </span>I mostly used this for prime generation.</span>
-<span id="cb22-433"><a href="#cb22-433"></a></span>
-<span id="cb22-434"><a href="#cb22-434"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb22-406"><a href="#cb22-406"></a></span>
+<span id="cb22-407"><a href="#cb22-407"></a>:::</span>
+<span id="cb22-408"><a href="#cb22-408"></a></span>
+<span id="cb22-409"><a href="#cb22-409"></a><span class="fu"># BigMax&amp;nbsp;&lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#BigMax" role="button" aria-expanded="false" aria-controls = "BigMax"&gt;Show&lt;/a&gt;</span></span>
+<span id="cb22-410"><a href="#cb22-410"></a></span>
+<span id="cb22-411"><a href="#cb22-411"></a>::: {#BigMax .collapse .multi-collapse}</span>
+<span id="cb22-412"><a href="#cb22-412"></a></span>
+<span id="cb22-413"><a href="#cb22-413"></a><span class="ss">- </span>I wrote two other "big" helper functions.</span>
+<span id="cb22-414"><a href="#cb22-414"></a><span class="ss">- </span>Can be completed as part of this lab, part of BigRSA, or not at all.</span>
+<span id="cb22-415"><a href="#cb22-415"></a><span class="ss">- </span>They aren't exactly big x unsigned operations, but could live in the same file.</span>
+<span id="cb22-416"><a href="#cb22-416"></a></span>
+<span id="cb22-417"><a href="#cb22-417"></a><span class="fu">## BigMax</span></span>
+<span id="cb22-418"><a href="#cb22-418"></a></span>
+<span id="cb22-419"><a href="#cb22-419"></a><span class="ss">- </span>I needed a way to see if things were bigger than other things.</span>
+<span id="cb22-420"><a href="#cb22-420"></a><span class="ss">- </span>My subtraction only worked if the initial argument, the minuend, was larger than the final argument, the subtrahend.</span>
+<span id="cb22-421"><a href="#cb22-421"></a><span class="ss">- </span>Additionally, computing extended gcd's generally involves finding a maximal and minimal value.</span>
+<span id="cb22-422"><a href="#cb22-422"></a><span class="ss">- </span>I just returned a <span class="in">`0`</span> or a <span class="in">`1`</span> depending on whether the initial argument was the max.</span>
+<span id="cb22-423"><a href="#cb22-423"></a></span>
+<span id="cb22-424"><a href="#cb22-424"></a><span class="fu">## BigMid, mid_ui</span></span>
+<span id="cb22-425"><a href="#cb22-425"></a></span>
+<span id="cb22-426"><a href="#cb22-426"></a><span class="ss">- </span>In LaTeX I am accustomed to denoted "$a$ is divisible by $b$" or "$b$ divides $a$" as follows:</span>
+<span id="cb22-427"><a href="#cb22-427"></a>$$</span>
+<span id="cb22-428"><a href="#cb22-428"></a>a \mid b</span>
+<span id="cb22-429"><a href="#cb22-429"></a>$$</span>
+<span id="cb22-430"><a href="#cb22-430"></a><span class="ss">- </span>This uses the LaTeX <span class="in">`\mid`</span> command.</span>
+<span id="cb22-431"><a href="#cb22-431"></a><span class="ss">- </span>It is the same idea as <span class="in">`a % b == 0`</span></span>
+<span id="cb22-432"><a href="#cb22-432"></a><span class="ss">- </span>I wanted to call this <span class="in">`div`</span> but that was already used for division.</span>
+<span id="cb22-433"><a href="#cb22-433"></a><span class="ss">- </span>I mostly used this for prime generation.</span>
+<span id="cb22-434"><a href="#cb22-434"></a></span>
+<span id="cb22-435"><a href="#cb22-435"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

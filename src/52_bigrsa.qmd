@@ -1,6 +1,6 @@
 ---
 title: BigRSA
-subtitle: "HW 0x3: Due Mon, 04 Aug"
+subtitle: "Due Mon, 29 Oct"
 format: html
 ---
 
@@ -13,25 +13,30 @@ format: html
 
 - This is cumulative homework assignment across 4096_t and RSAinC
 - Implement 4096 bit RSA.
-- This is an extended homework of more than week, due after break. I recommend:
+- This is an extended homework of more than week, due after break the midterm. I recommend:
 
 | Week:    | Tasks:    |
 | --------- | ---------- |
-| 10 Mar | 2048 bit prime generation  |
-| 17 Mar | Unsigned big extended GCD |
-| 24 Mar | Finish Key Generation and File I/O |
-| 31 Mar | Implement BigRSA |  
+| 15 Oct | 2048 bit prime generation  |
+| 22 Oct | Unsigned big extended GCD |
+| 29 Oct | Finish Key Generation and File I/O |
 
 - You will also probably need to manage a file structure wherein 4096_t and ops_ui are includeded into your BigRSA.
 - Use header files and examples from the labs.
+
+::: {.callout-note appearance="simple"}
+
+### It's impossible.
+
+This is the impossible assignment. Implement the entire assignment using your `4096_t`. At some point it will become clear that your `4096_t` is not performant enough to every compute a key. At that time, switch to using the GMP library and procede. However, you should in all cases ensure that it *could* be the case that could use your own code if you had infinite time or computing resources.
+
+:::
 
 :::
 
 # Primes&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#primes" role="button" aria-expanded="false" aria-controls = "primes">Show</a>
 
 ::: {#primes .collapse .multi-collapse}
-
-*Work on week of 10 Mar*
 
 ## Implement Big Primality Testing
 
@@ -92,8 +97,6 @@ void prigmp(uint64_t *big, uint8_t words) {
 
 ::: {#biggcd .collapse .multi-collapse}
 
-*Work on week of 17 Mar*
-
 ## Implement BigGCD
         
 - Modifying the extended Euclidean algorithm / extended gcd for use with the 4096_t ints.
@@ -110,8 +113,6 @@ void prigmp(uint64_t *big, uint8_t words) {
 # BigKey&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#keygen" role="button" aria-expanded="false" aria-controls = "keygen">Show</a>
 
 ::: {#keygen .collapse .multi-collapse}
-
-*Work on week of 24 Mar*
 
 ## Generate Keys
 
@@ -174,8 +175,6 @@ fbea5e6a3ed31e8f
 
 ::: {#bigrsa .collapse .multi-collapse}
 
-*Work on week of 31 Mar*
-
 ## Implement End-to-end 4096 bit RSA
 
 - Do so in a novel file, `bigrsa.c`, which should:
@@ -194,7 +193,7 @@ fbea5e6a3ed31e8f
 ## A Note
 
 - Be advised that the square of a 4096 bit value requires 8198 bits to specify.
-- It is reasonable to test of 512 (`openssl` minimum) or 1024 (`ssh-keygen` minumum size)
+- It is reasonable to test 512 (`openssl` minimum) or 1024 (`ssh-keygen` minumum size)
 
 :::
 
@@ -283,7 +282,7 @@ This section contains spoilers, including a working solution, to the BigRSA assi
     - Instead, I have implemented an interface to libgmp mpz_t numbers in `biggmp.c`
     - If you are stuck on 4096_t, you should use this as well.
   - I am trusting you to either look at, or not look at, my code, based on what works best for your learning.
-    - It is provided as is, and likely has few bugs, but probably not that few.
+    - It is provided as is, and likely has few bugs, but probably not too many.
   - I am not requiring you to have any particular interfacing, though I am providing one as an example.
 
 ## A Perfect System

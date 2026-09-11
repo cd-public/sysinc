@@ -1,22 +1,23 @@
 ---
 title: Euclid
-subtitle: "Week 0x3.3"
+subtitle: "w6d0"
 
 execute:
     echo: true
     cache: true
-    freeze: true  # never re-render during project render
+    freeze: true  ## never re-render during project render
     code-fold: false
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
   - We introduce an algorithm that makes key generation viable.
 - **Action Items**:
-  - BigRSA ongoing.
+  - BigRSA.
+  - Midterm next week.
   
-# Today
+## Today
 - Euclidean division
 - Euclidean algorithm
 - Extended Euclidean algorithm
@@ -24,7 +25,7 @@ execute:
 
 # Review
 
-# 3. $\lambda(n)$
+## 3. $\lambda(n)$
 
 - This one is kept secret by the way.
 - It so happens:
@@ -33,7 +34,7 @@ $$
 $$
 - There's fast ways to this, but anything goes this week.
 
-# LCM
+## LCM
 
 - Least common multiple
 
@@ -49,7 +50,7 @@ def lcm(a, b):
     return a * b // gcd(a, b)
 ```
 
-# MMI
+## MMI
 
 - Multiplicative Modular Inverse
 
@@ -61,7 +62,7 @@ def find_d():
   return d
 ```
 
-# ModExp
+## ModExp
 
 - Exponentation modulo $n$.
 
@@ -76,13 +77,15 @@ def modexp(m, e, n):
   return  modexp(m*m % n, e//2, n) % n
 ```
 
-# Context
+## Context
 - Each of these operations are dealing with, fundamentally, the same problem.
 - We have big numbers we want to work with but,
 - None are bigger than $n$, and
 - The bigger the number, the harder the work.
 
-# Euclidean Division
+# Division
+
+## Euclidean Division
 
 - Division as implemented by "bigdiv":
 
@@ -104,7 +107,7 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem) {
 }
 ```
 
-# Naive Division
+## Naive Division
 
 - Entry-level categorization, term it "naive"
     - often over $\mathbb{Q}$ or $\mathbb{R}$
@@ -112,13 +115,13 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem) {
     - In Python $\mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Q}$
     - Python `/` for all values, C `/` for float types.
     
-# Integer Division
+## Integer Division
 
 - Integer division - often over $\mathbb{N}$ or $\mathbb{Z}$
     - `quotient:int = division(dividided:int,divisor:int)`
     - Python `//` for int types, C `/` for int types.
     
-# We note
+## We note
 
 - Many sets of numbers are not closed under division
     - $\exists x,y \in \mathbb{N} : x/y \not\in \mathbb{N}$
@@ -126,7 +129,7 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem) {
     - $\exists n \in \mathbb{N} : \nexists m \in \mathbb{N} : n \times m \in \mathbb{N}$
 - These are all bad!
 
-# Euclidean Division
+## Euclidean Division
 
 - Euclidean division solves this problem by *changing the type of the function*
     - **NOT** by changing the types of the operands (inputs, divisor, divisend, numerator, denominator)
@@ -134,26 +137,26 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem) {
 - We will simply have two return values.
     - We recall this impossible in C (loud cheers)
     
-# Euclidean Division
+## Euclidean Division
 
 - Also called "division with remainder".
     - Generally regarded as being applied to the integers, and works well for unsigned ints.
     - Often termed `div`, `/`, `\`, and `%`, I used div for "bigdiv" since the others were taken.
 - Named as a result of "Euclidean Algorithm", which is used in cryptography!
 
-# Euclidean Division
+## Euclidean Division
 
 - In Python:
 
 ```{.python}
 def div(x:int, y:int) -> tuple[int, int]:
-    # Euclidean Division
+    ## Euclidean Division
     return x // y, x % y
 ```
 
 - In Latex: $\mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \times \mathbb{N}$
 
-# Terminology
+## Terminology
 
 - Dividend / Divisor = Quotient
 - Dividend % Divisor = Remainder
@@ -162,35 +165,37 @@ def div(x:int, y:int) -> tuple[int, int]:
 - Quotient ~= Fraction ~= Ratio
 - Remainder is modulo if dividend and divisor are naturals.
 
-# Equality
+## Equality
 
 - Divisor $\times$ Quotient + Remainder = Dividend
 
-# Constraints
+## Constraints
 
 - The remainder is restricted to the naturals, even for division over the integers.
 - The remainder is restricted to be smaller than divisor - the thing by which we divide.
 
-# Constraints
+## Constraints
 
 - The quotient is the number of largest number absolute by which the divisor may be multipled such the product is absolutely less than the divisend.
 - The remainder is the smallest positive value such that the sum of the remainder and the product of the quotient and divisor is equal to the divisend.
 
-# Takeaways
+## Takeaways
 
 - Remainders are small and positive (good).
 - We get to keep using integers, and through some effort can stick to naturals.
 - This is good if we want to work with unsigned integers.
 
-# Today
+## Today
 - &check; Euclidean division
 - Euclidean algorithm
 - Extended Euclidean algorithm
 - Bézout's identity
 
-# Sidebar
+# Algorithm
 
-- The Euclidean algorith is:
+## Sidebar
+
+- The Euclidean algorithm is:
     - An algorithm with,
     - Algorithm in the name
 - We love to see it.
@@ -198,7 +203,7 @@ def div(x:int, y:int) -> tuple[int, int]:
     - Greek scholar preserved by Islamic scholars
     - Thank you محمد بن موسى خوارزمی
 
-# Goals
+## Goals
 
 - Given two values, the Euclidean algorithm finds the greatest common denominator.
 - Generally, it proceeds either iteratively or recursively.
@@ -206,7 +211,7 @@ def div(x:int, y:int) -> tuple[int, int]:
 - Historically used to synthesize integer division from integer subtraction, now primary use in cryptography.
 
 
-# Example
+## Example
 
 - Suppose we have
 ```{.python}
@@ -214,7 +219,7 @@ a, b = 1071, 462
 ```
 - We wish to find their *greatest common denominator*
 
-# Initialize
+## Initialize
 
 1. Take the larger value
 ```{.python}
@@ -222,7 +227,7 @@ x, y = max(a,b), min(a,b)
 ```
 
 
-# Substract 
+## Substract 
 
 2. Subtract the smaller value from the larger value until it is no longer larger.
 ```{.python}
@@ -230,7 +235,7 @@ while x >= y:
     x -= y
 ```
 
-# Loop
+## Loop
 
 3. Repeat...
 
@@ -238,7 +243,7 @@ while x >= y:
 x, y = max(x,y), min(x,y)
 ```
 
-# Terminate
+## Terminate
 
 4. Stop when either x or y is zero
 
@@ -246,10 +251,10 @@ x, y = max(x,y), min(x,y)
 x, y = x != 0 and y != 0 ? max(x,y), min(x,y) : exit()
 ```
 
-# Iteratively
+## Iteratively
 
 ```{.python}
-# i am not about to try to spell "uelcidan lagorhtim"
+## i am not about to try to spell "uelcidan lagorhtim"
 def ea(a:int, b:int) -> int: 
     while min(a,b) != 0:
         a, b = max(a,b), min(a,b)
@@ -258,13 +263,13 @@ def ea(a:int, b:int) -> int:
     return max(a,b)
 ```
 
-# Modulo
+## Modulo
 
 - Essential we calculate a modulo or remainder (depending)
 - Then... do that again.
     
 ```{.python}
-# i am not about to try to spell "udelcian altoghtn"
+## i am not about to try to spell "udelcian altoghtn"
 def ea(a:int, b:int) -> int: 
     while min(a,b) != 0:
         a, b = max(a,b), min(a,b)
@@ -275,32 +280,32 @@ def ea(a:int, b:int) -> int:
 - Recall - this *invented* division and modulo, so it can be done without assuming division and modulo.
     - We are using it to do `gcd`, and exist in a world with division and modulo.
     
-# Recursively
+## Recursively
 
 - Easier for me to understand recursively, either with mod or without.
     - Here's one mod implementation.
 
 ```{.python}
-# Have to make a lot of design decisions here, this is one variant
+## Have to make a lot of design decisions here, this is one variant
 recmod = lambda a, b: recmod (a - b, b) if a - b >= 0 else a
 ```
 
 
-# Recursively
+## Recursively
 
 - Easier for me to understand recursively, either with mod or without.
     - Here's recursive EA
 
 ```{.python}
-# Much easier if we assume argument order, of course
+## Much easier if we assume argument order, of course
 rec_ea = lambda a, b : rec_ea(max(a,b) % min(a,b), min(a,b)) if min(a,b) > 0 else max(a,b)
 
-# I much prefer
+## I much prefer
 helper = lambda a, b : helper(b, a % b) if b else a
 rec_ea = lambda a, b : helper(max(a,b), min(a,b))
 ```
 
-# With `def`
+## With `def`
 
 - We do not all love inlining, and that's okay!
 
@@ -315,7 +320,7 @@ def ea(a:int, b:int) -> int:
     return inner(a,b)
 ```
 
-# Simplest
+## Simplest
 
 - We can remove type hints and just trust bigger first.
 
@@ -326,7 +331,7 @@ def ea(a, b):
     return a
 ```
 
-# Example
+## Example
 
 - `ea(1071, 462)`
 - I will use the following:
@@ -346,7 +351,7 @@ a =   21, b =    0
 21
 ```
 
-# Test it
+## Test it
 
 - Both are divisible by 21!
 
@@ -357,7 +362,7 @@ a =   21, b =    0
 22.0
 ```
 
-# Anyways
+## Anyways
 
 - This is what GitHub Copilot did, I don't know if we understood it at the time.
 
@@ -373,7 +378,7 @@ def lcm(a, b):
     return a * b // gcd(a, b)
 ```
 
-#
+## 
 
 ::::{.columns}
 
@@ -391,21 +396,22 @@ def lcm(a, b):
 
 ::::
 
-# Today
+## Today
 - &check; Euclidean division
 - &check; Euclidean algorithm
 - Extended Euclidean algorithm
 - Bézout's identity
 
 
-# Reorder
+## Reorder
 - &check; Euclidean division
 - &check; Euclidean algorithm
 - Bézout's identity
 - Extended Euclidean algorithm
 
+# Bézout
 
-# MMI
+## MMI
 
 - Multiplicative Modular Inverse
 
@@ -420,7 +426,7 @@ def find_d():
 - This is bad!
     - This could be a loop over a 4096 bit integer!
     
-# Slow
+## Slow
 
 - It could loop this many times.
 ```{.python .code-overflow-wrap}
@@ -428,7 +434,7 @@ def find_d():
 1044388881413152506691752710716624382579964249047383780384233483283953907971557456848826811934997558340890106714439262837987573438185793607263236087851365277945956976543709998340361590134383718314428070011855946226376318839397712745672334684344586617496807908705803704071284048740118609114467977783598029006686938976881787785946905630190260940599579453432823469303026696443059025015972399867714215541693835559885291486318237914434496734087811872639496475100189041349008417061675093668333850551032972088269550769983616369411933015213796825837188091833656751221318492846368125550225998300412344784862595674492194617023806505913245610825731835380087608622102834270197698202313169017678006675195485079921636419370285375124784014907159135459982790513399611551794271106831134090584272884279791554849782954323534517065223269061394905987693002122963395687782878948440616007412945674919823050571642377154816321380631045902916136926708342856440730447899971901781465763473223850267253059899795996090799469201774624817718449867455659250178329070473119433165550807568221846571746373296884912819520317457002440926616910874148385078411929804522981857338977648103126085903001302413467189726673216491511131602920781738033436090243804708340403154190336
 ```
 
-# We note
+## We note
 
 - In the Euclidean algorithm, we were tracking only remainders.
     - What if we also tracked quotients?
@@ -436,7 +442,7 @@ def find_d():
     - Named after a 1700s French scholar
     - Of note: subordinate result to 300s Chinese scholarship
 
-# Bézout's identity
+## Bézout's identity
 
 $$
 \forall a, b \in \mathbb{Z} : \exists x, y \in \mathbb{Z} : a \times x + b \times y = \gcd(a,b)
@@ -444,14 +450,14 @@ $$
 
 - The linear combinations of $a$ and $b$ are exactly the multiples of $\gcd(a,b)$
 
-# Recall
+## Recall
 
 - To get $(m^e)^d \equiv m \pmod{n}$
 - We needed some $d$ that was the:
     - Multiplicative inverse of $e$
     - Mod the *totient*, the lcm of one less than each prime.
     
-# Goals
+## Goals
     
 - So we need that $e$, times something, equals 1.
     - That's a linear combination!
@@ -464,7 +470,7 @@ $$
 
 - And we are taking this $\pmod{\lambda(n)}$ so
 
-# Put it all together
+## Put it all together
 
 $$
 \forall e, \lambda(n) \in \mathbb{Z} : \exists x \in \mathbb{Z} : e \times x \equiv 1 \pmod{\lambda(n)}
@@ -475,13 +481,15 @@ $$
     - But if you need to look it up, mention Euclid.
 
 
-# Reorder
+## Reorder
 - &check; Euclidean division
 - &check; Euclidean algorithm
 - &check; Bézout's identity
 - Extended Euclidean algorithm
 
-# MMI
+# Extend
+
+## MMI
 
 - Multiplicative Modular Inverse
 
@@ -496,18 +504,18 @@ def find_d():
 - This is bad!
     - This could be a loop over a 4096 bit integer!
     
-# EEA
+## EEA
 
 - The EEA is akin to the EA but tracks quotients as well as remainders.
     - This dramatically increases overhead.
 
 
-# Ground truth
+## Ground truth
 
-- I regard the Wikipedia simplifed pseudocode as ground thrust for eea.
+- I regard the Wikipedia simplifed pseudocode as ground truth for eea.
     - They call it `extended_gcd`, which I do like.
 
-#
+##
 
 ```{.email}
 function extended_gcd(a, b)
@@ -529,7 +537,7 @@ function extended_gcd(a, b)
 ```
 
 
-# $x$ and $y$
+## $x$ and $y$
 
 - We don't need this:
 ```{.email}
@@ -544,7 +552,7 @@ $$
 $$
 - We need only $x$, not $y$.
 
-#
+##
 
 ```{.email}
 function extended_gcd(a, b)
@@ -561,7 +569,7 @@ function extended_gcd(a, b)
 ```
 
 
-# Modulo
+## Modulo
 
 - This implementation does not calculate modulo
 ```{.email}
@@ -574,7 +582,7 @@ quotient := old_r div r
 (old_r, r) := (r, old_r mod quotient)
 ```
 
-#
+## 
 
 ```{.email}
 function extended_gcd(a, b)
@@ -590,13 +598,13 @@ function extended_gcd(a, b)
     output "greatest common divisor:", old_r
 ```
 
-# Recursion
+## Recursion
 
 - The usage of "old s" and "old r" a holdovers from a conversion from recursion to iteration.
     - Recall the `gcd` is calculable by any implementation
     - As is the algorithm
 
-# We can recurse
+## We can recurse
 
 ```{.email}
 function extended_gcd(a, b)
@@ -608,17 +616,17 @@ function extended_gcd(a, b)
     output r, t, s - (a div b) × t
 ```
 
-# To Python
+## To Python
 
 ```{.python}
 def extended_gcd(a, b):
     if b == 0:
         return a, 1, 0
     r, s, t = extended_gcd(b, a % b)
-    return r, t, s - (a // b) * t # no graceful mod here
+    return r, t, s - (a // b) * t ## no graceful mod here
 ```
 
-# Example
+## Example
 
 ```{.python}
 >>> extended_gcd(1071, 462)
@@ -627,13 +635,13 @@ def extended_gcd(a, b):
 21
 ```
 
-# Wait a minute!
+## Wait a minute!
 
 - Negatives are *a problem*
 - We deal with this modwise
 - Just add the modular base.
 
-# In Practice
+## In Practice
 
 - The modular base is the totient.
 - That is also the `b` value we use in the eea.
@@ -645,7 +653,7 @@ def find_d():
     return start
 ```
 
-# Reorder
+## Reorder
 - &check; Euclidean division
 - &check; Euclidean algorithm
 - &check; Bézout's identity
@@ -656,21 +664,21 @@ def find_d():
 
 - You have have noticed `bigmul` & co cannot be used as infix operators.
 ```{.python}
-r = m % n # this is a little mul
-bigmul(m, n, r) # this is the format of a big mul - not possible in Py
+r = m % n ## this is a little mul
+bigmul(m, n, r) ## this is the format of a big mul - not possible in Py
 ```
 - You will need to:
     - Track the sign of values
     - Use big operations.
 - Start thinking about it now!
 
-# All
+## All
 
 ```python
 def find_large_prime(k):
     is_prime = lambda n : any([n % i for i in range(2, int(n **.5))])
     candidate = 6 * k + 1
-    # you need a prime tester
+    ## you need a prime tester
     while not is_prime(candidate):
         candidate += 6
     return candidate
@@ -679,14 +687,14 @@ def extended_gcd(a, b):
     if b == 0:
         return a, 1, 0
     r, s, t = extended_gcd(b, a % b)
-    return r, t, s - (a // b) * t # no graceful mod here
+    return r, t, s - (a // b) * t ## no graceful mod here
 
 
 def lcm(a, b):
     return a * b // extended_gcd(a,b)[0]
 
-s = "C" # a random string
-m = ord(s) # to number
+s = "C" ## a random string
+m = ord(s) ## to number
 
 hide_p = lambda: find_large_prime(1 << 6)
 hide_q = lambda: find_large_prime(1 << 7)
@@ -694,7 +702,7 @@ n = hide_p() * hide_q()
 
 hide_λ = lambda: lcm(hide_p() - 1,  hide_q() - 1)
 
-e = 65537 # encryptor
+e = 65537 ## encryptor
 
 def find_d():
     start = extended_gcd(e,hide_λ())[1]
@@ -711,7 +719,7 @@ def modexp(m, e, n):
         return (m * modexp(m*m % n, e//2, n)) % n
     return  modexp(m*m % n, e//2, n) % n
 
-c = modexp(m, e, n) # ciphertext
+c = modexp(m, e, n) ## ciphertext
 
 new_m = modexp(c % n, find_d(), n)
 

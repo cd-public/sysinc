@@ -1,9 +1,8 @@
 
 ---
 title: 4096_t
-subtitle: "HW 0x2: Due Mon, 28 Jul"
-
-format:  html
+subtitle: "Due Thu, 01 Oct"
+format: html
 ---
 
 # Review&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review">Show</a>
@@ -18,7 +17,7 @@ format:  html
   - You will implement a 4096 bit unsigned integer in C89 as:
     - "4096_t.c" implementation file, and
     - "4096_t.h" header file.
-  - You will store your "4096_t" files in the "4096_t" folder on your "crypto" GitHub repository.
+  - You will store your "4096_t" files in the "4096_t" folder on your "sysinc" GitHub repository.
   
 ### Topic Areas
 
@@ -145,11 +144,11 @@ FROM alpine
 
 RUN apk add build-base gcc curl python3
 
-RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/4096_t/4096_t.h -o 4096_t.h
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/4096_t.h -o 4096_t.h
 
-RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/4096_t/tester.c -o tester.c
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/tester.c -o tester.c
 
-RUN curl https://raw.githubusercontent.com/cd-c89/crypto/refs/heads/main/4096_t/tester.py -o tester.py
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/tester.py -o tester.py
 
 COPY 4096_t.c .
 ```

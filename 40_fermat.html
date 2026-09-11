@@ -1608,24 +1608,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">---</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="an">title:</span><span class="co"> Fermat</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="an">subtitle:</span><span class="co"> "Week 0x3.0"</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="an">subtitle:</span><span class="co"> "w4d?"</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a><span class="an">execute:</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a><span class="co">    echo: true</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a><span class="co">    cache: true</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="co">    freeze: true  # never re-render during project render</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="co">    freeze: true  ## never re-render during project render</span></span>
 <span id="cb26-8"><a href="#cb26-8"></a><span class="co">    code-fold: false</span></span>
 <span id="cb26-9"><a href="#cb26-9"></a><span class="co">---</span></span>
 <span id="cb26-10"><a href="#cb26-10"></a></span>
-<span id="cb26-11"><a href="#cb26-11"></a><span class="fu"># Announcements</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="fu">## Announcements</span></span>
 <span id="cb26-12"><a href="#cb26-12"></a></span>
-<span id="cb26-13"><a href="#cb26-13"></a><span class="ss">- </span>**Welcome** to Computing Security</span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="ss">- </span>**Welcome** to Systems in C</span>
 <span id="cb26-14"><a href="#cb26-14"></a><span class="ss">  - </span>We introduce RSA, and </span>
 <span id="cb26-15"><a href="#cb26-15"></a><span class="ss">  - </span>Why it makes sense, courtesy Fermat</span>
 <span id="cb26-16"><a href="#cb26-16"></a><span class="ss">- </span>**Action Items**:</span>
-<span id="cb26-17"><a href="#cb26-17"></a><span class="ss">  - </span>4096_t due today</span>
-<span id="cb26-18"><a href="#cb26-18"></a><span class="ss">  - </span>BigRSA due next week</span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="ss">  - </span>SHAinC today</span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="ss">  - </span>No class Tuesday - I have conference travel.</span>
 <span id="cb26-19"><a href="#cb26-19"></a>  </span>
-<span id="cb26-20"><a href="#cb26-20"></a><span class="fu"># Today</span></span>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="fu">## Today</span></span>
 <span id="cb26-21"><a href="#cb26-21"></a><span class="ss">- </span>New</span>
 <span id="cb26-22"><a href="#cb26-22"></a><span class="ss">  - </span>Public Key Cryptography</span>
 <span id="cb26-23"><a href="#cb26-23"></a><span class="ss">  - </span>Fermat's little theorem</span>
@@ -1633,7 +1633,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-25"><a href="#cb26-25"></a></span>
 <span id="cb26-26"><a href="#cb26-26"></a><span class="fu"># Public Key Cryptography</span></span>
 <span id="cb26-27"><a href="#cb26-27"></a></span>
-<span id="cb26-28"><a href="#cb26-28"></a><span class="fu"># Motivating Example</span></span>
+<span id="cb26-28"><a href="#cb26-28"></a><span class="fu">## Motivating Example</span></span>
 <span id="cb26-29"><a href="#cb26-29"></a></span>
 <span id="cb26-30"><a href="#cb26-30"></a><span class="ss">- </span>Canonical Example is Snowden x Greenwald 2013</span>
 <span id="cb26-31"><a href="#cb26-31"></a><span class="ss">  - </span>Snowden wished to communicate a secret to Greenwald</span>
@@ -1641,39 +1641,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-33"><a href="#cb26-33"></a><span class="ss">  - </span>Snowden could not transmit the secret in plain text</span>
 <span id="cb26-34"><a href="#cb26-34"></a><span class="ss">- </span>Vs enigma, no prior agreement on how to encrypt/decrypt</span>
 <span id="cb26-35"><a href="#cb26-35"></a></span>
-<span id="cb26-36"><a href="#cb26-36"></a><span class="fu"># Reads [Cryptobook](https://toc.cryptobook.us/book.pdf)</span></span>
+<span id="cb26-36"><a href="#cb26-36"></a><span class="fu">## Reads [Cryptobook](https://toc.cryptobook.us/book.pdf)</span></span>
 <span id="cb26-37"><a href="#cb26-37"></a></span>
 <span id="cb26-38"><a href="#cb26-38"></a><span class="at">&gt; A key exchange protocol $P$ is a pair of probabilistic machines $(A, B)$ that take turns in sending messages to each other.</span></span>
 <span id="cb26-39"><a href="#cb26-39"></a><span class="at">At the end of the protocol, when both machines terminate, they both obtain the same value $k$. A</span></span>
 <span id="cb26-40"><a href="#cb26-40"></a><span class="at">protocol transcript $T_P$ is the sequence of messages exchanged between the parties in one exe-</span></span>
 <span id="cb26-41"><a href="#cb26-41"></a><span class="at">cution of the protocol. </span></span>
 <span id="cb26-42"><a href="#cb26-42"></a></span>
-<span id="cb26-43"><a href="#cb26-43"></a><span class="fu"># Reads [Cryptobook](https://toc.cryptobook.us/book.pdf)</span></span>
+<span id="cb26-43"><a href="#cb26-43"></a><span class="fu">## Reads [Cryptobook](https://toc.cryptobook.us/book.pdf)</span></span>
 <span id="cb26-44"><a href="#cb26-44"></a></span>
 <span id="cb26-45"><a href="#cb26-45"></a><span class="at">&gt; Since $A$ and $B$ are probabilistic machines, we obtain a different transcript</span></span>
 <span id="cb26-46"><a href="#cb26-46"></a><span class="at">every time we run the protocol. Formally, the transcript $T_P$ of protocol $P$ is a random variable, which is a function of the random bits generated by $A$ and $B$. The eavesdropping adversary $E$ sees the entire transcript $T_P$ and its goal is to figure out the secret $k$.</span></span>
 <span id="cb26-47"><a href="#cb26-47"></a></span>
-<span id="cb26-48"><a href="#cb26-48"></a><span class="fu"># Set the Stage</span></span>
+<span id="cb26-48"><a href="#cb26-48"></a><span class="fu">## Set the Stage</span></span>
 <span id="cb26-49"><a href="#cb26-49"></a></span>
 <span id="cb26-50"><a href="#cb26-50"></a><span class="ss">- </span>Snowden has e.g. files on a harddrive</span>
 <span id="cb26-51"><a href="#cb26-51"></a><span class="ss">  - </span>The files contain keywords that cannot be safely transmitted over US-based internet connections.</span>
 <span id="cb26-52"><a href="#cb26-52"></a><span class="ss">  - </span>Snowden is based in Hawai'i with no access to non-US-based connections.</span>
 <span id="cb26-53"><a href="#cb26-53"></a><span class="ss">  - </span>Snowden needs to encrypt the files in such as a way that *only* a trusted destination may read them.</span>
 <span id="cb26-54"><a href="#cb26-54"></a></span>
-<span id="cb26-55"><a href="#cb26-55"></a><span class="fu"># First Contact</span></span>
+<span id="cb26-55"><a href="#cb26-55"></a><span class="fu">## First Contact</span></span>
 <span id="cb26-56"><a href="#cb26-56"></a></span>
 <span id="cb26-57"><a href="#cb26-57"></a><span class="ss">- </span>Snowden contacts Greenwald to agree to use a secure messaging protocol</span>
 <span id="cb26-58"><a href="#cb26-58"></a><span class="ss">  - </span>Use of such protocols is relatively non-suspicious, used for banking etc.</span>
 <span id="cb26-59"><a href="#cb26-59"></a><span class="ss">  - </span>It was enough to raise alarms for Snowden, but not quickly enough to stop him.</span>
 <span id="cb26-60"><a href="#cb26-60"></a><span class="ss">- </span>Greenwald agrees to a recommended protocol</span>
 <span id="cb26-61"><a href="#cb26-61"></a></span>
-<span id="cb26-62"><a href="#cb26-62"></a><span class="fu"># Initialization</span></span>
+<span id="cb26-62"><a href="#cb26-62"></a><span class="fu">## Initialization</span></span>
 <span id="cb26-63"><a href="#cb26-63"></a></span>
 <span id="cb26-64"><a href="#cb26-64"></a><span class="ss">- </span>Greenwald generates a combination of numerical values on a local computing device.</span>
 <span id="cb26-65"><a href="#cb26-65"></a><span class="ss">  - </span>One of these is the public-key, which Greenwalk may circulate broadly.</span>
 <span id="cb26-66"><a href="#cb26-66"></a><span class="ss">- </span>We see an example of such a technology on the next slide.</span>
 <span id="cb26-67"><a href="#cb26-67"></a></span>
-<span id="cb26-68"><a href="#cb26-68"></a><span class="fu"># SecureDrop</span></span>
+<span id="cb26-68"><a href="#cb26-68"></a><span class="fu">## SecureDrop</span></span>
 <span id="cb26-69"><a href="#cb26-69"></a></span>
 <span id="cb26-70"><a href="#cb26-70"></a><span class="ss">- </span>Embed doesn't work for what are likely obvious reasons:</span>
 <span id="cb26-71"><a href="#cb26-71"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Link</span><span class="co">](https://theintercept.com/source/)</span></span>
@@ -1685,26 +1685,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-77"><a href="#cb26-77"></a>  height="70%"</span>
 <span id="cb26-78"><a href="#cb26-78"></a>  src="https://theintercept.com/source/"&gt;&lt;/iframe&gt;</span>
 <span id="cb26-79"><a href="#cb26-79"></a></span>
-<span id="cb26-80"><a href="#cb26-80"></a><span class="fu"># Safety Note</span></span>
+<span id="cb26-80"><a href="#cb26-80"></a><span class="fu">## Safety Note</span></span>
 <span id="cb26-81"><a href="#cb26-81"></a></span>
 <span id="cb26-82"><a href="#cb26-82"></a><span class="ss">- </span>Probably dropping to *The Intercept* is not recommended.</span>
 <span id="cb26-83"><a href="#cb26-83"></a><span class="ss">- </span>Reality Winner is currently incarcerated due to a leak fumbled by *The Intercept*</span>
 <span id="cb26-84"><a href="#cb26-84"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Read more</span><span class="co">](https://www.google.com/search?client=firefox-b-1-d&amp;q=reality+winner)</span></span>
 <span id="cb26-85"><a href="#cb26-85"></a></span>
-<span id="cb26-86"><a href="#cb26-86"></a><span class="fu"># Step 2</span></span>
+<span id="cb26-86"><a href="#cb26-86"></a><span class="fu">## Step 2</span></span>
 <span id="cb26-87"><a href="#cb26-87"></a></span>
 <span id="cb26-88"><a href="#cb26-88"></a><span class="ss">- </span>Greenwald &amp; co. hold in reserve a *private-key*</span>
 <span id="cb26-89"><a href="#cb26-89"></a><span class="ss">- </span>They defend it like lives depend on it, as they did for Winner and Snowden.</span>
 <span id="cb26-90"><a href="#cb26-90"></a><span class="ss">- </span>So: not stored in plaintext on a hard-drive</span>
 <span id="cb26-91"><a href="#cb26-91"></a><span class="ss">- </span>So: if on a hard-drive, hard-drive is in a secure site from e.g. federal law enforcement.</span>
 <span id="cb26-92"><a href="#cb26-92"></a></span>
-<span id="cb26-93"><a href="#cb26-93"></a><span class="fu"># Step 3</span></span>
+<span id="cb26-93"><a href="#cb26-93"></a><span class="fu">## Step 3</span></span>
 <span id="cb26-94"><a href="#cb26-94"></a></span>
 <span id="cb26-95"><a href="#cb26-95"></a><span class="ss">- </span>Snowden, and hopefully enough others to avoid suspicion, use the public key to encrypt their payload.</span>
 <span id="cb26-96"><a href="#cb26-96"></a><span class="ss">- </span>In addition to e.g. top secret documents, concerned community members could send in less-secret materials such as analysis of policing data with which they would rather not be affiliated.</span>
 <span id="cb26-97"><a href="#cb26-97"></a><span class="ss">- </span>Journalists sift through the inputs.</span>
 <span id="cb26-98"><a href="#cb26-98"></a></span>
-<span id="cb26-99"><a href="#cb26-99"></a><span class="fu"># It's that simple</span></span>
+<span id="cb26-99"><a href="#cb26-99"></a><span class="fu">## It's that simple</span></span>
 <span id="cb26-100"><a href="#cb26-100"></a></span>
 <span id="cb26-101"><a href="#cb26-101"></a><span class="ss">- </span>Okay but like how do we do that:</span>
 <span id="cb26-102"><a href="#cb26-102"></a><span class="ss">  - </span>Any eaves-dropping adversary can see the public key.</span>
@@ -1712,7 +1712,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-104"><a href="#cb26-104"></a><span class="ss">  - </span>All this encryption/decryption needs to be managable by e.g. non-computing specialized journalists.</span>
 <span id="cb26-105"><a href="#cb26-105"></a></span>
 <span id="cb26-106"><a href="#cb26-106"></a></span>
-<span id="cb26-107"><a href="#cb26-107"></a><span class="fu"># Today</span></span>
+<span id="cb26-107"><a href="#cb26-107"></a><span class="fu">## Today</span></span>
 <span id="cb26-108"><a href="#cb26-108"></a><span class="ss">- </span>New</span>
 <span id="cb26-109"><a href="#cb26-109"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Public Key Cryptography</span>
 <span id="cb26-110"><a href="#cb26-110"></a><span class="ss">  - </span>Fermat's little theorem</span>
@@ -1721,13 +1721,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-113"><a href="#cb26-113"></a></span>
 <span id="cb26-114"><a href="#cb26-114"></a><span class="fu"># Fermat's Little Theorem</span></span>
 <span id="cb26-115"><a href="#cb26-115"></a></span>
-<span id="cb26-116"><a href="#cb26-116"></a><span class="fu"># Numbers</span></span>
+<span id="cb26-116"><a href="#cb26-116"></a><span class="fu">## Numbers</span></span>
 <span id="cb26-117"><a href="#cb26-117"></a></span>
 <span id="cb26-118"><a href="#cb26-118"></a><span class="ss">- </span>We have already learned from SHA and others, that if 'its in' a computer we can say it's a number.</span>
 <span id="cb26-119"><a href="#cb26-119"></a><span class="ss">- </span>We have already learned, from 4096_t and others, that numbers of arbitrarily large sizes can undertake operations in a computer.</span>
 <span id="cb26-120"><a href="#cb26-120"></a><span class="ss">- </span>We find a numerical operation that scrambles bits given a public key that is reversible only with a private key.</span>
 <span id="cb26-121"><a href="#cb26-121"></a></span>
-<span id="cb26-122"><a href="#cb26-122"></a><span class="fu"># Theorem</span></span>
+<span id="cb26-122"><a href="#cb26-122"></a><span class="fu">## Theorem</span></span>
 <span id="cb26-123"><a href="#cb26-123"></a></span>
 <span id="cb26-124"><a href="#cb26-124"></a>$$</span>
 <span id="cb26-125"><a href="#cb26-125"></a>\exists e, d, p, q \in \mathbb{N} : \forall m \in \mathbb{N} : (m^e)^d \equiv m \pmod{pq}</span>
@@ -1737,7 +1737,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-129"><a href="#cb26-129"></a><span class="ss">- </span>$e$ : encryptor, the public key, that Greenwald or bandcamp post pubicly</span>
 <span id="cb26-130"><a href="#cb26-130"></a><span class="ss">- </span>$d$ : decryptor, the private key, that Greenwald stores in a bombproof safe or a dubiously secure AWS instance.</span>
 <span id="cb26-131"><a href="#cb26-131"></a></span>
-<span id="cb26-132"><a href="#cb26-132"></a><span class="fu"># Strategy</span></span>
+<span id="cb26-132"><a href="#cb26-132"></a><span class="fu">## Strategy</span></span>
 <span id="cb26-133"><a href="#cb26-133"></a></span>
 <span id="cb26-134"><a href="#cb26-134"></a><span class="ss">- </span>We show Fermat's little theorem.</span>
 <span id="cb26-135"><a href="#cb26-135"></a></span>
@@ -1749,14 +1749,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-141"><a href="#cb26-141"></a></span>
 <span id="cb26-142"><a href="#cb26-142"></a><span class="ss">- </span>That is, there's a prime you can raise a number to in order to get <span class="in">`1`</span> mod that prime.</span>
 <span id="cb26-143"><a href="#cb26-143"></a></span>
-<span id="cb26-144"><a href="#cb26-144"></a><span class="fu"># Proof</span></span>
+<span id="cb26-144"><a href="#cb26-144"></a><span class="fu">## Proof</span></span>
 <span id="cb26-145"><a href="#cb26-145"></a></span>
 <span id="cb26-146"><a href="#cb26-146"></a><span class="ss">- </span>This is called "combinatorics"</span>
 <span id="cb26-147"><a href="#cb26-147"></a><span class="ss">  - </span>Look, I thought it was gonna be a CS class too.</span>
 <span id="cb26-148"><a href="#cb26-148"></a><span class="ss">- </span>We go live to a proof I never learned but love, "counting necklaces"</span>
 <span id="cb26-149"><a href="#cb26-149"></a><span class="ss">  - </span>Wikipedia is my legal guardian.</span>
 <span id="cb26-150"><a href="#cb26-150"></a></span>
-<span id="cb26-151"><a href="#cb26-151"></a><span class="fu"># Necklaces</span></span>
+<span id="cb26-151"><a href="#cb26-151"></a><span class="fu">## Necklaces</span></span>
 <span id="cb26-152"><a href="#cb26-152"></a></span>
 <span id="cb26-153"><a href="#cb26-153"></a><span class="ss">-   </span>Simplest known proof.</span>
 <span id="cb26-154"><a href="#cb26-154"></a><span class="ss">-   </span>Combinatorial proof.</span>
@@ -1764,7 +1764,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-156"><a href="#cb26-156"></a><span class="ss">    - </span>Golomb is an electrical engineer who allegedly invented Tetris</span>
 <span id="cb26-157"><a href="#cb26-157"></a><span class="ss">    - </span>A lot of people allegedly did that though.</span>
 <span id="cb26-158"><a href="#cb26-158"></a></span>
-<span id="cb26-159"><a href="#cb26-159"></a><span class="fu"># Simplification</span></span>
+<span id="cb26-159"><a href="#cb26-159"></a><span class="fu">## Simplification</span></span>
 <span id="cb26-160"><a href="#cb26-160"></a></span>
 <span id="cb26-161"><a href="#cb26-161"></a><span class="ss">*   </span>Assume:</span>
 <span id="cb26-162"><a href="#cb26-162"></a>$$</span>
@@ -1776,7 +1776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-168"><a href="#cb26-168"></a>$$</span>
 <span id="cb26-169"><a href="#cb26-169"></a></span>
 <span id="cb26-170"><a href="#cb26-170"></a></span>
-<span id="cb26-171"><a href="#cb26-171"></a><span class="fu"># Simplification</span></span>
+<span id="cb26-171"><a href="#cb26-171"></a><span class="fu">## Simplification</span></span>
 <span id="cb26-172"><a href="#cb26-172"></a></span>
 <span id="cb26-173"><a href="#cb26-173"></a><span class="ss">- </span>We note the following expressions are logicially equivalent.</span>
 <span id="cb26-174"><a href="#cb26-174"></a></span>
@@ -1791,7 +1791,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-183"><a href="#cb26-183"></a>$$</span>
 <span id="cb26-184"><a href="#cb26-184"></a></span>
 <span id="cb26-185"><a href="#cb26-185"></a></span>
-<span id="cb26-186"><a href="#cb26-186"></a><span class="fu"># Strings</span></span>
+<span id="cb26-186"><a href="#cb26-186"></a><span class="fu">## Strings</span></span>
 <span id="cb26-187"><a href="#cb26-187"></a></span>
 <span id="cb26-188"><a href="#cb26-188"></a><span class="ss">-   </span>Consider strings/necklaces of length $p$.</span>
 <span id="cb26-189"><a href="#cb26-189"></a><span class="ss">-   </span>Alphabet with $a$ symbols.</span>
@@ -1809,7 +1809,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-201"><a href="#cb26-201"></a><span class="in">```</span></span>
 <span id="cb26-202"><a href="#cb26-202"></a></span>
 <span id="cb26-203"><a href="#cb26-203"></a></span>
-<span id="cb26-204"><a href="#cb26-204"></a><span class="fu"># Necklaces</span></span>
+<span id="cb26-204"><a href="#cb26-204"></a><span class="fu">## Necklaces</span></span>
 <span id="cb26-205"><a href="#cb26-205"></a></span>
 <span id="cb26-206"><a href="#cb26-206"></a><span class="ss">-   </span>Strings as necklaces.</span>
 <span id="cb26-207"><a href="#cb26-207"></a><span class="ss">-   </span>Regard rotationally related necklaces as friends.</span>
@@ -1820,7 +1820,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-212"><a href="#cb26-212"></a><span class="in">assert(friends("AAABB", "BBAAA"))</span></span>
 <span id="cb26-213"><a href="#cb26-213"></a><span class="in">```</span></span>
 <span id="cb26-214"><a href="#cb26-214"></a></span>
-<span id="cb26-215"><a href="#cb26-215"></a><span class="fu"># Friends 5gether</span></span>
+<span id="cb26-215"><a href="#cb26-215"></a><span class="fu">## Friends 5gether</span></span>
 <span id="cb26-216"><a href="#cb26-216"></a></span>
 <span id="cb26-217"><a href="#cb26-217"></a><span class="ss">- </span>Get it? Not 2gether?</span>
 <span id="cb26-218"><a href="#cb26-218"></a></span>
@@ -1837,7 +1837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-229"><a href="#cb26-229"></a><span class="in">]</span></span>
 <span id="cb26-230"><a href="#cb26-230"></a><span class="in">```</span></span>
 <span id="cb26-231"><a href="#cb26-231"></a></span>
-<span id="cb26-232"><a href="#cb26-232"></a><span class="fu"># Aside</span></span>
+<span id="cb26-232"><a href="#cb26-232"></a><span class="fu">## Aside</span></span>
 <span id="cb26-233"><a href="#cb26-233"></a></span>
 <span id="cb26-234"><a href="#cb26-234"></a><span class="ss">- </span>We note this suffices as a proof that:</span>
 <span id="cb26-235"><a href="#cb26-235"></a></span>
@@ -1845,7 +1845,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-237"><a href="#cb26-237"></a>2^5 = 32 \equiv 2 \pmod{5}</span>
 <span id="cb26-238"><a href="#cb26-238"></a>$$</span>
 <span id="cb26-239"><a href="#cb26-239"></a></span>
-<span id="cb26-240"><a href="#cb26-240"></a><span class="fu"># Counting Friends</span></span>
+<span id="cb26-240"><a href="#cb26-240"></a><span class="fu">## Counting Friends</span></span>
 <span id="cb26-241"><a href="#cb26-241"></a></span>
 <span id="cb26-242"><a href="#cb26-242"></a><span class="ss">- </span>We note:</span>
 <span id="cb26-243"><a href="#cb26-243"></a><span class="ss">  - </span>There are exactly the same number of unique rotations as the length of the necklace</span>
@@ -1855,7 +1855,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-247"><a href="#cb26-247"></a><span class="ss">    - </span>There are exactly $a$ unique symbols, so</span>
 <span id="cb26-248"><a href="#cb26-248"></a><span class="ss">    - </span>Exactly $a$ strings of this form.</span>
 <span id="cb26-249"><a href="#cb26-249"></a></span>
-<span id="cb26-250"><a href="#cb26-250"></a><span class="fu"># Strategy</span></span>
+<span id="cb26-250"><a href="#cb26-250"></a><span class="fu">## Strategy</span></span>
 <span id="cb26-251"><a href="#cb26-251"></a></span>
 <span id="cb26-252"><a href="#cb26-252"></a><span class="ss">- </span>We show Fermat's little theorem.</span>
 <span id="cb26-253"><a href="#cb26-253"></a></span>
@@ -1874,295 +1874,297 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-266"><a href="#cb26-266"></a><span class="in">```</span></span>
 <span id="cb26-267"><a href="#cb26-267"></a></span>
 <span id="cb26-268"><a href="#cb26-268"></a></span>
-<span id="cb26-269"><a href="#cb26-269"></a><span class="fu"># Today</span></span>
+<span id="cb26-269"><a href="#cb26-269"></a><span class="fu">## Today</span></span>
 <span id="cb26-270"><a href="#cb26-270"></a><span class="ss">- </span>New</span>
 <span id="cb26-271"><a href="#cb26-271"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Public Key Cryptography</span>
 <span id="cb26-272"><a href="#cb26-272"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Fermat's little theorem</span>
 <span id="cb26-273"><a href="#cb26-273"></a><span class="ss">  - </span>RSA</span>
 <span id="cb26-274"><a href="#cb26-274"></a></span>
 <span id="cb26-275"><a href="#cb26-275"></a></span>
-<span id="cb26-276"><a href="#cb26-276"></a><span class="fu"># New Goal</span></span>
+<span id="cb26-276"><a href="#cb26-276"></a><span class="fu"># RSA</span></span>
 <span id="cb26-277"><a href="#cb26-277"></a></span>
-<span id="cb26-278"><a href="#cb26-278"></a><span class="ss">- </span>We want:</span>
-<span id="cb26-279"><a href="#cb26-279"></a>$$</span>
-<span id="cb26-280"><a href="#cb26-280"></a>a^p \equiv a \pmod{p} \implies </span>
+<span id="cb26-278"><a href="#cb26-278"></a><span class="fu">## New Goal</span></span>
+<span id="cb26-279"><a href="#cb26-279"></a></span>
+<span id="cb26-280"><a href="#cb26-280"></a><span class="ss">- </span>We want:</span>
 <span id="cb26-281"><a href="#cb26-281"></a>$$</span>
-<span id="cb26-282"><a href="#cb26-282"></a>$$</span>
-<span id="cb26-283"><a href="#cb26-283"></a>\exists e, d, p, q \in \mathbb{N} : \forall m \in \mathbb{N} : (m^e)^d \equiv m \pmod{pq}</span>
+<span id="cb26-282"><a href="#cb26-282"></a>a^p \equiv a \pmod{p} \implies </span>
+<span id="cb26-283"><a href="#cb26-283"></a>$$</span>
 <span id="cb26-284"><a href="#cb26-284"></a>$$</span>
-<span id="cb26-285"><a href="#cb26-285"></a><span class="ss">- </span>We can restrict $e,d,p,q$</span>
+<span id="cb26-285"><a href="#cb26-285"></a>\exists e, d, p, q \in \mathbb{N} : \forall m \in \mathbb{N} : (m^e)^d \equiv m \pmod{pq}</span>
 <span id="cb26-286"><a href="#cb26-286"></a>$$</span>
-<span id="cb26-287"><a href="#cb26-287"></a>\exists e, d\in \mathbb{N},  p, q \in \mathbb{P}: \forall m \in \mathbb{N} : (m^e)^d \equiv m \pmod{pq}</span>
+<span id="cb26-287"><a href="#cb26-287"></a><span class="ss">- </span>We can restrict $e,d,p,q$</span>
 <span id="cb26-288"><a href="#cb26-288"></a>$$</span>
-<span id="cb26-289"><a href="#cb26-289"></a></span>
-<span id="cb26-290"><a href="#cb26-290"></a><span class="fu"># Insight</span></span>
+<span id="cb26-289"><a href="#cb26-289"></a>\exists e, d\in \mathbb{N},  p, q \in \mathbb{P}: \forall m \in \mathbb{N} : (m^e)^d \equiv m \pmod{pq}</span>
+<span id="cb26-290"><a href="#cb26-290"></a>$$</span>
 <span id="cb26-291"><a href="#cb26-291"></a></span>
-<span id="cb26-292"><a href="#cb26-292"></a><span class="ss">- </span>We use something called the "Carmichael function" denoted, confusingly, as $\lambda$:</span>
+<span id="cb26-292"><a href="#cb26-292"></a><span class="fu">## Insight</span></span>
 <span id="cb26-293"><a href="#cb26-293"></a></span>
-<span id="cb26-294"><a href="#cb26-294"></a>$$</span>
-<span id="cb26-295"><a href="#cb26-295"></a>\lambda(n) = \text{min}(<span class="sc">\{</span>m : \forall a : gcd(a,n) = 1 : a^m \equiv 1 \pmod{n}<span class="sc">\}</span>)</span>
+<span id="cb26-294"><a href="#cb26-294"></a><span class="ss">- </span>We use something called the "Carmichael function" denoted, confusingly, as $\lambda$:</span>
+<span id="cb26-295"><a href="#cb26-295"></a></span>
 <span id="cb26-296"><a href="#cb26-296"></a>$$</span>
-<span id="cb26-297"><a href="#cb26-297"></a></span>
-<span id="cb26-298"><a href="#cb26-298"></a><span class="ss">- </span>Say, $\lambda(n)$ is the smallest number that coprimes to $n$ are equivalent to zero mod $n$.</span>
-<span id="cb26-299"><a href="#cb26-299"></a><span class="ss">- </span>Easy for prime $p$, its $\lambda(p) = p - 1$.</span>
-<span id="cb26-300"><a href="#cb26-300"></a><span class="ss">  - </span>Just try <span class="in">`5`</span>, it's not too bad.</span>
-<span id="cb26-301"><a href="#cb26-301"></a></span>
-<span id="cb26-302"><a href="#cb26-302"></a><span class="fu"># RSA</span></span>
+<span id="cb26-297"><a href="#cb26-297"></a>\lambda(n) = \text{min}(<span class="sc">\{</span>m : \forall a : gcd(a,n) = 1 : a^m \equiv 1 \pmod{n}<span class="sc">\}</span>)</span>
+<span id="cb26-298"><a href="#cb26-298"></a>$$</span>
+<span id="cb26-299"><a href="#cb26-299"></a></span>
+<span id="cb26-300"><a href="#cb26-300"></a><span class="ss">- </span>Say, $\lambda(n)$ is the smallest number that coprimes to $n$ are equivalent to zero mod $n$.</span>
+<span id="cb26-301"><a href="#cb26-301"></a><span class="ss">- </span>Easy for prime $p$, its $\lambda(p) = p - 1$.</span>
+<span id="cb26-302"><a href="#cb26-302"></a><span class="ss">  - </span>Just try <span class="in">`5`</span>, it's not too bad.</span>
 <span id="cb26-303"><a href="#cb26-303"></a></span>
-<span id="cb26-304"><a href="#cb26-304"></a><span class="ss">1. </span>Choose two big primes $p$, $q$</span>
-<span id="cb26-305"><a href="#cb26-305"></a><span class="ss">2. </span>Find $n = pq$</span>
-<span id="cb26-306"><a href="#cb26-306"></a><span class="ss">3. </span>Find $\lambda(n)$</span>
-<span id="cb26-307"><a href="#cb26-307"></a><span class="ss">4. </span>Find $e : e \lt \lambda(n) \land \gcd(e, \lambda (n)) = 1$</span>
-<span id="cb26-308"><a href="#cb26-308"></a><span class="ss">5. </span>Find $d : d \equiv e^{-1} \pmod{\lambda (n)}$</span>
-<span id="cb26-309"><a href="#cb26-309"></a></span>
-<span id="cb26-310"><a href="#cb26-310"></a><span class="fu"># 1. $p$, $q$</span></span>
+<span id="cb26-304"><a href="#cb26-304"></a><span class="fu">## RSA</span></span>
+<span id="cb26-305"><a href="#cb26-305"></a></span>
+<span id="cb26-306"><a href="#cb26-306"></a><span class="ss">1. </span>Choose two big primes $p$, $q$</span>
+<span id="cb26-307"><a href="#cb26-307"></a><span class="ss">2. </span>Find $n = pq$</span>
+<span id="cb26-308"><a href="#cb26-308"></a><span class="ss">3. </span>Find $\lambda(n)$</span>
+<span id="cb26-309"><a href="#cb26-309"></a><span class="ss">4. </span>Find $e : e \lt \lambda(n) \land \gcd(e, \lambda (n)) = 1$</span>
+<span id="cb26-310"><a href="#cb26-310"></a><span class="ss">5. </span>Find $d : d \equiv e^{-1} \pmod{\lambda (n)}$</span>
 <span id="cb26-311"><a href="#cb26-311"></a></span>
-<span id="cb26-312"><a href="#cb26-312"></a><span class="ss">- </span>Do <span class="in">`4096_t`</span> and use, probably, 6k+1 or a performance optimization.</span>
-<span id="cb26-315"><a href="#cb26-315"></a><span class="in">```{python}</span></span>
-<span id="cb26-316"><a href="#cb26-316"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-317"><a href="#cb26-317"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-318"><a href="#cb26-318"></a><span class="co"># this will still be slow with big numbers</span></span>
-<span id="cb26-319"><a href="#cb26-319"></a><span class="kw">def</span> find_large_prime(k):</span>
-<span id="cb26-320"><a href="#cb26-320"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb26-321"><a href="#cb26-321"></a>    <span class="co"># you need a prime tester</span></span>
-<span id="cb26-322"><a href="#cb26-322"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
-<span id="cb26-323"><a href="#cb26-323"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
-<span id="cb26-324"><a href="#cb26-324"></a>    <span class="cf">return</span> candidate</span>
-<span id="cb26-325"><a href="#cb26-325"></a><span class="in">```</span></span>
-<span id="cb26-326"><a href="#cb26-326"></a><span class="ss">- </span>LibGMP provides <span class="in">`gmp_nextprime`</span></span>
-<span id="cb26-327"><a href="#cb26-327"></a></span>
-<span id="cb26-328"><a href="#cb26-328"></a></span>
-<span id="cb26-329"><a href="#cb26-329"></a><span class="fu"># 2. $n$</span></span>
+<span id="cb26-312"><a href="#cb26-312"></a><span class="fu">## 1. $p$, $q$</span></span>
+<span id="cb26-313"><a href="#cb26-313"></a></span>
+<span id="cb26-314"><a href="#cb26-314"></a><span class="ss">- </span>Do <span class="in">`4096_t`</span> and use, probably, 6k+1 or a performance optimization.</span>
+<span id="cb26-317"><a href="#cb26-317"></a><span class="in">```{python}</span></span>
+<span id="cb26-318"><a href="#cb26-318"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-319"><a href="#cb26-319"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-320"><a href="#cb26-320"></a><span class="co">## this will still be slow with big numbers</span></span>
+<span id="cb26-321"><a href="#cb26-321"></a><span class="kw">def</span> find_large_prime(k):</span>
+<span id="cb26-322"><a href="#cb26-322"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb26-323"><a href="#cb26-323"></a>    <span class="co">## you need a prime tester</span></span>
+<span id="cb26-324"><a href="#cb26-324"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
+<span id="cb26-325"><a href="#cb26-325"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
+<span id="cb26-326"><a href="#cb26-326"></a>    <span class="cf">return</span> candidate</span>
+<span id="cb26-327"><a href="#cb26-327"></a><span class="in">```</span></span>
+<span id="cb26-328"><a href="#cb26-328"></a><span class="ss">- </span>LibGMP provides <span class="in">`gmp_nextprime`</span></span>
+<span id="cb26-329"><a href="#cb26-329"></a></span>
 <span id="cb26-330"><a href="#cb26-330"></a></span>
-<span id="cb26-331"><a href="#cb26-331"></a><span class="in">```{.C}</span></span>
-<span id="cb26-332"><a href="#cb26-332"></a><span class="in">n = p * q;</span></span>
-<span id="cb26-333"><a href="#cb26-333"></a><span class="in">```</span></span>
-<span id="cb26-334"><a href="#cb26-334"></a></span>
-<span id="cb26-335"><a href="#cb26-335"></a><span class="fu"># 3. $\lambda(n)$</span></span>
+<span id="cb26-331"><a href="#cb26-331"></a><span class="fu">## 2. $n$</span></span>
+<span id="cb26-332"><a href="#cb26-332"></a></span>
+<span id="cb26-333"><a href="#cb26-333"></a><span class="in">```{.C}</span></span>
+<span id="cb26-334"><a href="#cb26-334"></a><span class="in">n = p * q;</span></span>
+<span id="cb26-335"><a href="#cb26-335"></a><span class="in">```</span></span>
 <span id="cb26-336"><a href="#cb26-336"></a></span>
-<span id="cb26-337"><a href="#cb26-337"></a><span class="ss">- </span>This one is kept secret by the way.</span>
-<span id="cb26-338"><a href="#cb26-338"></a><span class="ss">- </span>It so happens:</span>
-<span id="cb26-339"><a href="#cb26-339"></a>$$</span>
-<span id="cb26-340"><a href="#cb26-340"></a>\forall p,q \in \mathbb{P} : \lambda(pq) = \text{lcm}(p-1, q-1)</span>
+<span id="cb26-337"><a href="#cb26-337"></a><span class="fu">## 3. $\lambda(n)$</span></span>
+<span id="cb26-338"><a href="#cb26-338"></a></span>
+<span id="cb26-339"><a href="#cb26-339"></a><span class="ss">- </span>This one is kept secret by the way.</span>
+<span id="cb26-340"><a href="#cb26-340"></a><span class="ss">- </span>It so happens:</span>
 <span id="cb26-341"><a href="#cb26-341"></a>$$</span>
-<span id="cb26-342"><a href="#cb26-342"></a><span class="ss">- </span>There's fast ways to this, but anything goes this week.</span>
-<span id="cb26-343"><a href="#cb26-343"></a></span>
-<span id="cb26-344"><a href="#cb26-344"></a><span class="fu"># Aside: lcm</span></span>
+<span id="cb26-342"><a href="#cb26-342"></a>\forall p,q \in \mathbb{P} : \lambda(pq) = \text{lcm}(p-1, q-1)</span>
+<span id="cb26-343"><a href="#cb26-343"></a>$$</span>
+<span id="cb26-344"><a href="#cb26-344"></a><span class="ss">- </span>There's fast ways to this, but anything goes this week.</span>
 <span id="cb26-345"><a href="#cb26-345"></a></span>
-<span id="cb26-346"><a href="#cb26-346"></a><span class="ss">- </span>GitHub Copilot provides:</span>
-<span id="cb26-349"><a href="#cb26-349"></a><span class="in">```{python}</span></span>
-<span id="cb26-350"><a href="#cb26-350"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-351"><a href="#cb26-351"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-352"><a href="#cb26-352"></a><span class="kw">def</span> gcd(a, b):</span>
-<span id="cb26-353"><a href="#cb26-353"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
-<span id="cb26-354"><a href="#cb26-354"></a>    <span class="cf">while</span> b:</span>
-<span id="cb26-355"><a href="#cb26-355"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
-<span id="cb26-356"><a href="#cb26-356"></a>    <span class="cf">return</span> a</span>
-<span id="cb26-357"><a href="#cb26-357"></a></span>
-<span id="cb26-358"><a href="#cb26-358"></a><span class="kw">def</span> lcm(a, b):</span>
-<span id="cb26-359"><a href="#cb26-359"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
-<span id="cb26-360"><a href="#cb26-360"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
-<span id="cb26-361"><a href="#cb26-361"></a><span class="in">```</span></span>
-<span id="cb26-362"><a href="#cb26-362"></a></span>
-<span id="cb26-363"><a href="#cb26-363"></a><span class="fu"># 4. $e$</span></span>
+<span id="cb26-346"><a href="#cb26-346"></a><span class="fu">## Aside: lcm</span></span>
+<span id="cb26-347"><a href="#cb26-347"></a></span>
+<span id="cb26-348"><a href="#cb26-348"></a><span class="ss">- </span>GitHub Copilot provides:</span>
+<span id="cb26-351"><a href="#cb26-351"></a><span class="in">```{python}</span></span>
+<span id="cb26-352"><a href="#cb26-352"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-353"><a href="#cb26-353"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-354"><a href="#cb26-354"></a><span class="kw">def</span> gcd(a, b):</span>
+<span id="cb26-355"><a href="#cb26-355"></a>    <span class="co">"""Calculate the Greatest Common Divisor of a and b."""</span></span>
+<span id="cb26-356"><a href="#cb26-356"></a>    <span class="cf">while</span> b:</span>
+<span id="cb26-357"><a href="#cb26-357"></a>        a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
+<span id="cb26-358"><a href="#cb26-358"></a>    <span class="cf">return</span> a</span>
+<span id="cb26-359"><a href="#cb26-359"></a></span>
+<span id="cb26-360"><a href="#cb26-360"></a><span class="kw">def</span> lcm(a, b):</span>
+<span id="cb26-361"><a href="#cb26-361"></a>    <span class="co">"""Calculate the Least Common Multiple of a and b."""</span></span>
+<span id="cb26-362"><a href="#cb26-362"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
+<span id="cb26-363"><a href="#cb26-363"></a><span class="in">```</span></span>
 <span id="cb26-364"><a href="#cb26-364"></a></span>
-<span id="cb26-365"><a href="#cb26-365"></a><span class="ss">- </span>Find $e : e \lt \lambda(n) \land \gcd(e, \lambda (n)) = 1$</span>
-<span id="cb26-366"><a href="#cb26-366"></a><span class="ss">- </span>You know what is comprime with whatever $\lambda (n)$ is?</span>
-<span id="cb26-367"><a href="#cb26-367"></a><span class="ss">- </span>A prime number.</span>
-<span id="cb26-368"><a href="#cb26-368"></a><span class="in">```{.C}</span></span>
-<span id="cb26-369"><a href="#cb26-369"></a><span class="in">e = 65537; // 2 ^ 16 + 1</span></span>
-<span id="cb26-370"><a href="#cb26-370"></a><span class="in">```</span></span>
-<span id="cb26-371"><a href="#cb26-371"></a></span>
-<span id="cb26-372"><a href="#cb26-372"></a><span class="fu"># Aside: Hamming weight</span></span>
+<span id="cb26-365"><a href="#cb26-365"></a><span class="fu">## 4. $e$</span></span>
+<span id="cb26-366"><a href="#cb26-366"></a></span>
+<span id="cb26-367"><a href="#cb26-367"></a><span class="ss">- </span>Find $e : e \lt \lambda(n) \land \gcd(e, \lambda (n)) = 1$</span>
+<span id="cb26-368"><a href="#cb26-368"></a><span class="ss">- </span>You know what is comprime with whatever $\lambda (n)$ is?</span>
+<span id="cb26-369"><a href="#cb26-369"></a><span class="ss">- </span>A prime number.</span>
+<span id="cb26-370"><a href="#cb26-370"></a><span class="in">```{.C}</span></span>
+<span id="cb26-371"><a href="#cb26-371"></a><span class="in">e = 65537; // 2 ^ 16 + 1</span></span>
+<span id="cb26-372"><a href="#cb26-372"></a><span class="in">```</span></span>
 <span id="cb26-373"><a href="#cb26-373"></a></span>
-<span id="cb26-374"><a href="#cb26-374"></a><span class="ss">1. </span>What is <span class="in">`65537`</span> in binary?</span>
-<span id="cb26-375"><a href="#cb26-375"></a><span class="ss">2. </span>Is multiplying hard?</span>
-<span id="cb26-376"><a href="#cb26-376"></a><span class="ss">3. </span>Is bit-shifting hard?</span>
-<span id="cb26-377"><a href="#cb26-377"></a><span class="ss">4. </span>Can we combine bit-shifts to multiple?</span>
-<span id="cb26-378"><a href="#cb26-378"></a><span class="ss">5. </span>If we did that, what numbers would be easiest to multiply by?</span>
-<span id="cb26-379"><a href="#cb26-379"></a></span>
-<span id="cb26-380"><a href="#cb26-380"></a><span class="fu"># 5. $d$</span></span>
+<span id="cb26-374"><a href="#cb26-374"></a><span class="fu">## Aside: Hamming weight</span></span>
+<span id="cb26-375"><a href="#cb26-375"></a></span>
+<span id="cb26-376"><a href="#cb26-376"></a><span class="ss">1. </span>What is <span class="in">`65537`</span> in binary?</span>
+<span id="cb26-377"><a href="#cb26-377"></a><span class="ss">2. </span>Is multiplying hard?</span>
+<span id="cb26-378"><a href="#cb26-378"></a><span class="ss">3. </span>Is bit-shifting hard?</span>
+<span id="cb26-379"><a href="#cb26-379"></a><span class="ss">4. </span>Can we combine bit-shifts to multiple?</span>
+<span id="cb26-380"><a href="#cb26-380"></a><span class="ss">5. </span>If we did that, what numbers would be easiest to multiply by?</span>
 <span id="cb26-381"><a href="#cb26-381"></a></span>
-<span id="cb26-382"><a href="#cb26-382"></a><span class="ss">- </span>This one is very secret!</span>
-<span id="cb26-383"><a href="#cb26-383"></a><span class="ss">- </span>Find $d : d \equiv e^{-1} \pmod{\lambda (n)}$</span>
-<span id="cb26-384"><a href="#cb26-384"></a><span class="ss">- </span>There's a good way to do this, or...</span>
-<span id="cb26-385"><a href="#cb26-385"></a><span class="ss">- </span>Find $de \equiv 1 \pmod{\lambda (n)}$</span>
-<span id="cb26-386"><a href="#cb26-386"></a><span class="ss">  - </span>Just start at $d = 1$ and go up until you find it.</span>
-<span id="cb26-387"><a href="#cb26-387"></a><span class="ss">  - </span>It'll be less than $\lambda (n)$</span>
-<span id="cb26-388"><a href="#cb26-388"></a></span>
-<span id="cb26-389"><a href="#cb26-389"></a><span class="fu"># Today</span></span>
-<span id="cb26-390"><a href="#cb26-390"></a><span class="ss">- </span>New</span>
-<span id="cb26-391"><a href="#cb26-391"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Public Key Cryptography</span>
-<span id="cb26-392"><a href="#cb26-392"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Fermat's little theorem</span>
-<span id="cb26-393"><a href="#cb26-393"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> RSA</span>
-<span id="cb26-394"><a href="#cb26-394"></a></span>
-<span id="cb26-395"><a href="#cb26-395"></a><span class="fu"># Using RSA</span></span>
+<span id="cb26-382"><a href="#cb26-382"></a><span class="fu">## 5. $d$</span></span>
+<span id="cb26-383"><a href="#cb26-383"></a></span>
+<span id="cb26-384"><a href="#cb26-384"></a><span class="ss">- </span>This one is very secret!</span>
+<span id="cb26-385"><a href="#cb26-385"></a><span class="ss">- </span>Find $d : d \equiv e^{-1} \pmod{\lambda (n)}$</span>
+<span id="cb26-386"><a href="#cb26-386"></a><span class="ss">- </span>There's a good way to do this, or...</span>
+<span id="cb26-387"><a href="#cb26-387"></a><span class="ss">- </span>Find $de \equiv 1 \pmod{\lambda (n)}$</span>
+<span id="cb26-388"><a href="#cb26-388"></a><span class="ss">  - </span>Just start at $d = 1$ and go up until you find it.</span>
+<span id="cb26-389"><a href="#cb26-389"></a><span class="ss">  - </span>It'll be less than $\lambda (n)$</span>
+<span id="cb26-390"><a href="#cb26-390"></a></span>
+<span id="cb26-391"><a href="#cb26-391"></a><span class="fu">## Today</span></span>
+<span id="cb26-392"><a href="#cb26-392"></a><span class="ss">- </span>New</span>
+<span id="cb26-393"><a href="#cb26-393"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Public Key Cryptography</span>
+<span id="cb26-394"><a href="#cb26-394"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> Fermat's little theorem</span>
+<span id="cb26-395"><a href="#cb26-395"></a><span class="ss">  - </span><span class="dv">&amp;check;</span> RSA</span>
 <span id="cb26-396"><a href="#cb26-396"></a></span>
-<span id="cb26-397"><a href="#cb26-397"></a><span class="fu"># Let's make a secret</span></span>
+<span id="cb26-397"><a href="#cb26-397"></a><span class="fu"># Using RSA</span></span>
 <span id="cb26-398"><a href="#cb26-398"></a></span>
-<span id="cb26-401"><a href="#cb26-401"></a><span class="in">```{python}</span></span>
-<span id="cb26-402"><a href="#cb26-402"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-403"><a href="#cb26-403"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-404"><a href="#cb26-404"></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co"># a random string</span></span>
-<span id="cb26-405"><a href="#cb26-405"></a><span class="in">```</span></span>
-<span id="cb26-406"><a href="#cb26-406"></a></span>
-<span id="cb26-407"><a href="#cb26-407"></a><span class="fu"># Prime checker</span></span>
+<span id="cb26-399"><a href="#cb26-399"></a><span class="fu">## Let's make a secret</span></span>
+<span id="cb26-400"><a href="#cb26-400"></a></span>
+<span id="cb26-403"><a href="#cb26-403"></a><span class="in">```{python}</span></span>
+<span id="cb26-404"><a href="#cb26-404"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-405"><a href="#cb26-405"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-406"><a href="#cb26-406"></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co">## a random string</span></span>
+<span id="cb26-407"><a href="#cb26-407"></a><span class="in">```</span></span>
 <span id="cb26-408"><a href="#cb26-408"></a></span>
-<span id="cb26-411"><a href="#cb26-411"></a><span class="in">```{python}</span></span>
-<span id="cb26-412"><a href="#cb26-412"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-413"><a href="#cb26-413"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-414"><a href="#cb26-414"></a>is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">all</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>)<span class="op">+</span><span class="dv">1</span>)])</span>
-<span id="cb26-415"><a href="#cb26-415"></a>is_prime(<span class="dv">60</span>), is_prime(<span class="dv">61</span>)</span>
-<span id="cb26-416"><a href="#cb26-416"></a><span class="in">```</span></span>
-<span id="cb26-417"><a href="#cb26-417"></a></span>
-<span id="cb26-418"><a href="#cb26-418"></a></span>
-<span id="cb26-419"><a href="#cb26-419"></a><span class="fu"># Two primes</span></span>
+<span id="cb26-409"><a href="#cb26-409"></a><span class="fu">## Prime checker</span></span>
+<span id="cb26-410"><a href="#cb26-410"></a></span>
+<span id="cb26-413"><a href="#cb26-413"></a><span class="in">```{python}</span></span>
+<span id="cb26-414"><a href="#cb26-414"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-415"><a href="#cb26-415"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-416"><a href="#cb26-416"></a>is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">all</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>)<span class="op">+</span><span class="dv">1</span>)])</span>
+<span id="cb26-417"><a href="#cb26-417"></a>is_prime(<span class="dv">60</span>), is_prime(<span class="dv">61</span>)</span>
+<span id="cb26-418"><a href="#cb26-418"></a><span class="in">```</span></span>
+<span id="cb26-419"><a href="#cb26-419"></a></span>
 <span id="cb26-420"><a href="#cb26-420"></a></span>
-<span id="cb26-423"><a href="#cb26-423"></a><span class="in">```{python}</span></span>
-<span id="cb26-424"><a href="#cb26-424"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-425"><a href="#cb26-425"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-426"><a href="#cb26-426"></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">10</span>)</span>
-<span id="cb26-427"><a href="#cb26-427"></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">15</span>)</span>
-<span id="cb26-428"><a href="#cb26-428"></a>n <span class="op">=</span> hide_p() <span class="op">*</span> hide_q()</span>
-<span id="cb26-429"><a href="#cb26-429"></a>n</span>
-<span id="cb26-430"><a href="#cb26-430"></a><span class="in">```</span></span>
-<span id="cb26-431"><a href="#cb26-431"></a></span>
-<span id="cb26-432"><a href="#cb26-432"></a><span class="fu"># Confusingly Named</span></span>
+<span id="cb26-421"><a href="#cb26-421"></a><span class="fu">## Two primes</span></span>
+<span id="cb26-422"><a href="#cb26-422"></a></span>
+<span id="cb26-425"><a href="#cb26-425"></a><span class="in">```{python}</span></span>
+<span id="cb26-426"><a href="#cb26-426"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-427"><a href="#cb26-427"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-428"><a href="#cb26-428"></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">10</span>)</span>
+<span id="cb26-429"><a href="#cb26-429"></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">15</span>)</span>
+<span id="cb26-430"><a href="#cb26-430"></a>n <span class="op">=</span> hide_p() <span class="op">*</span> hide_q()</span>
+<span id="cb26-431"><a href="#cb26-431"></a>n</span>
+<span id="cb26-432"><a href="#cb26-432"></a><span class="in">```</span></span>
 <span id="cb26-433"><a href="#cb26-433"></a></span>
-<span id="cb26-436"><a href="#cb26-436"></a><span class="in">```{python}</span></span>
-<span id="cb26-437"><a href="#cb26-437"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-438"><a href="#cb26-438"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-439"><a href="#cb26-439"></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb26-440"><a href="#cb26-440"></a><span class="in">```</span></span>
-<span id="cb26-441"><a href="#cb26-441"></a></span>
-<span id="cb26-442"><a href="#cb26-442"></a><span class="fu"># Public Key</span></span>
+<span id="cb26-434"><a href="#cb26-434"></a><span class="fu">## Confusingly Named</span></span>
+<span id="cb26-435"><a href="#cb26-435"></a></span>
+<span id="cb26-438"><a href="#cb26-438"></a><span class="in">```{python}</span></span>
+<span id="cb26-439"><a href="#cb26-439"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-440"><a href="#cb26-440"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-441"><a href="#cb26-441"></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb26-442"><a href="#cb26-442"></a><span class="in">```</span></span>
 <span id="cb26-443"><a href="#cb26-443"></a></span>
-<span id="cb26-446"><a href="#cb26-446"></a><span class="in">```{python}</span></span>
-<span id="cb26-447"><a href="#cb26-447"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-448"><a href="#cb26-448"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-449"><a href="#cb26-449"></a>e <span class="op">=</span> <span class="dv">65537</span></span>
-<span id="cb26-450"><a href="#cb26-450"></a><span class="in">```</span></span>
-<span id="cb26-451"><a href="#cb26-451"></a></span>
-<span id="cb26-452"><a href="#cb26-452"></a><span class="fu"># $d$ (decryptor)</span></span>
+<span id="cb26-444"><a href="#cb26-444"></a><span class="fu">## Public Key</span></span>
+<span id="cb26-445"><a href="#cb26-445"></a></span>
+<span id="cb26-448"><a href="#cb26-448"></a><span class="in">```{python}</span></span>
+<span id="cb26-449"><a href="#cb26-449"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-450"><a href="#cb26-450"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-451"><a href="#cb26-451"></a>e <span class="op">=</span> <span class="dv">65537</span></span>
+<span id="cb26-452"><a href="#cb26-452"></a><span class="in">```</span></span>
 <span id="cb26-453"><a href="#cb26-453"></a></span>
-<span id="cb26-456"><a href="#cb26-456"></a><span class="in">```{python}</span></span>
-<span id="cb26-457"><a href="#cb26-457"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-458"><a href="#cb26-458"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-459"><a href="#cb26-459"></a><span class="kw">def</span> find_d():</span>
-<span id="cb26-460"><a href="#cb26-460"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb26-461"><a href="#cb26-461"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
-<span id="cb26-462"><a href="#cb26-462"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb26-463"><a href="#cb26-463"></a>  <span class="cf">return</span> d</span>
-<span id="cb26-464"><a href="#cb26-464"></a><span class="in">```</span></span>
-<span id="cb26-465"><a href="#cb26-465"></a></span>
-<span id="cb26-466"><a href="#cb26-466"></a><span class="fu"># The Process</span></span>
+<span id="cb26-454"><a href="#cb26-454"></a><span class="fu">## $d$ (decryptor)</span></span>
+<span id="cb26-455"><a href="#cb26-455"></a></span>
+<span id="cb26-458"><a href="#cb26-458"></a><span class="in">```{python}</span></span>
+<span id="cb26-459"><a href="#cb26-459"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-460"><a href="#cb26-460"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-461"><a href="#cb26-461"></a><span class="kw">def</span> find_d():</span>
+<span id="cb26-462"><a href="#cb26-462"></a>  d <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb26-463"><a href="#cb26-463"></a>  <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
+<span id="cb26-464"><a href="#cb26-464"></a>    d <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb26-465"><a href="#cb26-465"></a>  <span class="cf">return</span> d</span>
+<span id="cb26-466"><a href="#cb26-466"></a><span class="in">```</span></span>
 <span id="cb26-467"><a href="#cb26-467"></a></span>
-<span id="cb26-468"><a href="#cb26-468"></a><span class="ss">- </span>Encrypt our message.</span>
-<span id="cb26-471"><a href="#cb26-471"></a><span class="in">```{python}</span></span>
-<span id="cb26-472"><a href="#cb26-472"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-473"><a href="#cb26-473"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-474"><a href="#cb26-474"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co"># to number</span></span>
-<span id="cb26-475"><a href="#cb26-475"></a>c <span class="op">=</span> m <span class="op">**</span> e</span>
-<span id="cb26-476"><a href="#cb26-476"></a>m, c, c <span class="op">%</span> n</span>
-<span id="cb26-477"><a href="#cb26-477"></a><span class="in">```</span></span>
-<span id="cb26-478"><a href="#cb26-478"></a></span>
-<span id="cb26-479"><a href="#cb26-479"></a><span class="fu"># Too Big</span></span>
+<span id="cb26-468"><a href="#cb26-468"></a><span class="fu">## The Process</span></span>
+<span id="cb26-469"><a href="#cb26-469"></a></span>
+<span id="cb26-470"><a href="#cb26-470"></a><span class="ss">- </span>Encrypt our message.</span>
+<span id="cb26-473"><a href="#cb26-473"></a><span class="in">```{python}</span></span>
+<span id="cb26-474"><a href="#cb26-474"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-475"><a href="#cb26-475"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-476"><a href="#cb26-476"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co">## to number</span></span>
+<span id="cb26-477"><a href="#cb26-477"></a>c <span class="op">=</span> m <span class="op">**</span> e</span>
+<span id="cb26-478"><a href="#cb26-478"></a>m, c, c <span class="op">%</span> n</span>
+<span id="cb26-479"><a href="#cb26-479"></a><span class="in">```</span></span>
 <span id="cb26-480"><a href="#cb26-480"></a></span>
-<span id="cb26-481"><a href="#cb26-481"></a><span class="ss">- </span>Haha Python can't handle big numbers.</span>
-<span id="cb26-482"><a href="#cb26-482"></a><span class="ss">- </span>Not to worry, we're working in modular arithmetic.</span>
-<span id="cb26-485"><a href="#cb26-485"></a><span class="in">```{python}</span></span>
-<span id="cb26-486"><a href="#cb26-486"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-487"><a href="#cb26-487"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-488"><a href="#cb26-488"></a><span class="kw">def</span> modexp(m, e, n):</span>
-<span id="cb26-489"><a href="#cb26-489"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb26-490"><a href="#cb26-490"></a>      <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb26-491"><a href="#cb26-491"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb26-492"><a href="#cb26-492"></a>      <span class="cf">return</span> m <span class="op">%</span> n</span>
-<span id="cb26-493"><a href="#cb26-493"></a>  <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb26-494"><a href="#cb26-494"></a>      <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
-<span id="cb26-495"><a href="#cb26-495"></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
-<span id="cb26-496"><a href="#cb26-496"></a><span class="in">```</span></span>
-<span id="cb26-497"><a href="#cb26-497"></a></span>
-<span id="cb26-498"><a href="#cb26-498"></a><span class="fu"># Encrypt</span></span>
+<span id="cb26-481"><a href="#cb26-481"></a><span class="fu">## Too Big</span></span>
+<span id="cb26-482"><a href="#cb26-482"></a></span>
+<span id="cb26-483"><a href="#cb26-483"></a><span class="ss">- </span>Haha Python can't handle big numbers.</span>
+<span id="cb26-484"><a href="#cb26-484"></a><span class="ss">- </span>Not to worry, we're working in modular arithmetic.</span>
+<span id="cb26-487"><a href="#cb26-487"></a><span class="in">```{python}</span></span>
+<span id="cb26-488"><a href="#cb26-488"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-489"><a href="#cb26-489"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-490"><a href="#cb26-490"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<span id="cb26-491"><a href="#cb26-491"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-492"><a href="#cb26-492"></a>      <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb26-493"><a href="#cb26-493"></a>  <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb26-494"><a href="#cb26-494"></a>      <span class="cf">return</span> m <span class="op">%</span> n</span>
+<span id="cb26-495"><a href="#cb26-495"></a>  <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb26-496"><a href="#cb26-496"></a>      <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
+<span id="cb26-497"><a href="#cb26-497"></a>  <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
+<span id="cb26-498"><a href="#cb26-498"></a><span class="in">```</span></span>
 <span id="cb26-499"><a href="#cb26-499"></a></span>
-<span id="cb26-500"><a href="#cb26-500"></a><span class="ss">- </span>Encrypt our message.</span>
-<span id="cb26-503"><a href="#cb26-503"></a><span class="in">```{python}</span></span>
-<span id="cb26-504"><a href="#cb26-504"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-505"><a href="#cb26-505"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-506"><a href="#cb26-506"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co"># to number</span></span>
-<span id="cb26-507"><a href="#cb26-507"></a>c <span class="op">=</span> modexp(m, e, n)</span>
-<span id="cb26-508"><a href="#cb26-508"></a>m, c</span>
-<span id="cb26-509"><a href="#cb26-509"></a><span class="in">```</span></span>
-<span id="cb26-510"><a href="#cb26-510"></a></span>
-<span id="cb26-511"><a href="#cb26-511"></a></span>
-<span id="cb26-512"><a href="#cb26-512"></a><span class="fu"># Decrypt</span></span>
+<span id="cb26-500"><a href="#cb26-500"></a><span class="fu">## Encrypt</span></span>
+<span id="cb26-501"><a href="#cb26-501"></a></span>
+<span id="cb26-502"><a href="#cb26-502"></a><span class="ss">- </span>Encrypt our message.</span>
+<span id="cb26-505"><a href="#cb26-505"></a><span class="in">```{python}</span></span>
+<span id="cb26-506"><a href="#cb26-506"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-507"><a href="#cb26-507"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-508"><a href="#cb26-508"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co">## to number</span></span>
+<span id="cb26-509"><a href="#cb26-509"></a>c <span class="op">=</span> modexp(m, e, n)</span>
+<span id="cb26-510"><a href="#cb26-510"></a>m, c</span>
+<span id="cb26-511"><a href="#cb26-511"></a><span class="in">```</span></span>
+<span id="cb26-512"><a href="#cb26-512"></a></span>
 <span id="cb26-513"><a href="#cb26-513"></a></span>
-<span id="cb26-514"><a href="#cb26-514"></a><span class="ss">- </span>Decrypt our message.</span>
-<span id="cb26-517"><a href="#cb26-517"></a><span class="in">```{python}</span></span>
-<span id="cb26-518"><a href="#cb26-518"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-519"><a href="#cb26-519"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-520"><a href="#cb26-520"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
-<span id="cb26-521"><a href="#cb26-521"></a>new_m, m</span>
-<span id="cb26-522"><a href="#cb26-522"></a><span class="in">```</span></span>
-<span id="cb26-523"><a href="#cb26-523"></a></span>
-<span id="cb26-524"><a href="#cb26-524"></a><span class="fu"># Is it good?</span></span>
+<span id="cb26-514"><a href="#cb26-514"></a><span class="fu">## Decrypt</span></span>
+<span id="cb26-515"><a href="#cb26-515"></a></span>
+<span id="cb26-516"><a href="#cb26-516"></a><span class="ss">- </span>Decrypt our message.</span>
+<span id="cb26-519"><a href="#cb26-519"></a><span class="in">```{python}</span></span>
+<span id="cb26-520"><a href="#cb26-520"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-521"><a href="#cb26-521"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-522"><a href="#cb26-522"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
+<span id="cb26-523"><a href="#cb26-523"></a>new_m, m</span>
+<span id="cb26-524"><a href="#cb26-524"></a><span class="in">```</span></span>
 <span id="cb26-525"><a href="#cb26-525"></a></span>
-<span id="cb26-528"><a href="#cb26-528"></a><span class="in">```{python}</span></span>
-<span id="cb26-529"><a href="#cb26-529"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-530"><a href="#cb26-530"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-531"><a href="#cb26-531"></a><span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n))</span>
-<span id="cb26-532"><a href="#cb26-532"></a><span class="in">```</span></span>
-<span id="cb26-533"><a href="#cb26-533"></a></span>
-<span id="cb26-534"><a href="#cb26-534"></a><span class="fu"># All</span></span>
+<span id="cb26-526"><a href="#cb26-526"></a><span class="fu">## Is it good?</span></span>
+<span id="cb26-527"><a href="#cb26-527"></a></span>
+<span id="cb26-530"><a href="#cb26-530"></a><span class="in">```{python}</span></span>
+<span id="cb26-531"><a href="#cb26-531"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-532"><a href="#cb26-532"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-533"><a href="#cb26-533"></a><span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n))</span>
+<span id="cb26-534"><a href="#cb26-534"></a><span class="in">```</span></span>
 <span id="cb26-535"><a href="#cb26-535"></a></span>
-<span id="cb26-536"><a href="#cb26-536"></a><span class="in">```python</span></span>
-<span id="cb26-537"><a href="#cb26-537"></a><span class="kw">def</span> find_large_prime(k):</span>
-<span id="cb26-538"><a href="#cb26-538"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
-<span id="cb26-539"><a href="#cb26-539"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb26-540"><a href="#cb26-540"></a>    <span class="co"># you need a prime tester</span></span>
-<span id="cb26-541"><a href="#cb26-541"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
-<span id="cb26-542"><a href="#cb26-542"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
-<span id="cb26-543"><a href="#cb26-543"></a>    <span class="cf">return</span> candidate</span>
-<span id="cb26-544"><a href="#cb26-544"></a></span>
-<span id="cb26-545"><a href="#cb26-545"></a><span class="kw">def</span> lcm(a, b):</span>
-<span id="cb26-546"><a href="#cb26-546"></a>    <span class="kw">def</span> gcd(a, b):</span>
-<span id="cb26-547"><a href="#cb26-547"></a>        <span class="cf">while</span> b:</span>
-<span id="cb26-548"><a href="#cb26-548"></a>            a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
-<span id="cb26-549"><a href="#cb26-549"></a>        <span class="cf">return</span> a</span>
-<span id="cb26-550"><a href="#cb26-550"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
-<span id="cb26-551"><a href="#cb26-551"></a></span>
-<span id="cb26-552"><a href="#cb26-552"></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co"># a random string</span></span>
-<span id="cb26-553"><a href="#cb26-553"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co"># to number</span></span>
-<span id="cb26-554"><a href="#cb26-554"></a></span>
-<span id="cb26-555"><a href="#cb26-555"></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">10</span>)</span>
-<span id="cb26-556"><a href="#cb26-556"></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">15</span>)</span>
-<span id="cb26-557"><a href="#cb26-557"></a>n <span class="op">=</span> hide_p() <span class="op">*</span> hide_q()</span>
-<span id="cb26-558"><a href="#cb26-558"></a></span>
-<span id="cb26-559"><a href="#cb26-559"></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb26-536"><a href="#cb26-536"></a><span class="fu">## All</span></span>
+<span id="cb26-537"><a href="#cb26-537"></a></span>
+<span id="cb26-538"><a href="#cb26-538"></a><span class="in">```python</span></span>
+<span id="cb26-539"><a href="#cb26-539"></a><span class="kw">def</span> find_large_prime(k):</span>
+<span id="cb26-540"><a href="#cb26-540"></a>    is_prime <span class="op">=</span> <span class="kw">lambda</span> n : <span class="bu">any</span>([n <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n <span class="op">**</span><span class="fl">.5</span>))])</span>
+<span id="cb26-541"><a href="#cb26-541"></a>    candidate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb26-542"><a href="#cb26-542"></a>    <span class="co">## you need a prime tester</span></span>
+<span id="cb26-543"><a href="#cb26-543"></a>    <span class="cf">while</span> <span class="kw">not</span> is_prime(candidate):</span>
+<span id="cb26-544"><a href="#cb26-544"></a>        candidate <span class="op">+=</span> <span class="dv">6</span></span>
+<span id="cb26-545"><a href="#cb26-545"></a>    <span class="cf">return</span> candidate</span>
+<span id="cb26-546"><a href="#cb26-546"></a></span>
+<span id="cb26-547"><a href="#cb26-547"></a><span class="kw">def</span> lcm(a, b):</span>
+<span id="cb26-548"><a href="#cb26-548"></a>    <span class="kw">def</span> gcd(a, b):</span>
+<span id="cb26-549"><a href="#cb26-549"></a>        <span class="cf">while</span> b:</span>
+<span id="cb26-550"><a href="#cb26-550"></a>            a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
+<span id="cb26-551"><a href="#cb26-551"></a>        <span class="cf">return</span> a</span>
+<span id="cb26-552"><a href="#cb26-552"></a>    <span class="cf">return</span> a <span class="op">*</span> b <span class="op">//</span> gcd(a, b)</span>
+<span id="cb26-553"><a href="#cb26-553"></a></span>
+<span id="cb26-554"><a href="#cb26-554"></a>s <span class="op">=</span> <span class="st">"C"</span> <span class="co">## a random string</span></span>
+<span id="cb26-555"><a href="#cb26-555"></a>m <span class="op">=</span> <span class="bu">ord</span>(s) <span class="co">## to number</span></span>
+<span id="cb26-556"><a href="#cb26-556"></a></span>
+<span id="cb26-557"><a href="#cb26-557"></a>hide_p <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">10</span>)</span>
+<span id="cb26-558"><a href="#cb26-558"></a>hide_q <span class="op">=</span> <span class="kw">lambda</span>: find_large_prime(<span class="dv">15</span>)</span>
+<span id="cb26-559"><a href="#cb26-559"></a>n <span class="op">=</span> hide_p() <span class="op">*</span> hide_q()</span>
 <span id="cb26-560"><a href="#cb26-560"></a></span>
-<span id="cb26-561"><a href="#cb26-561"></a>e <span class="op">=</span> <span class="dv">65537</span> <span class="co"># encryptor</span></span>
+<span id="cb26-561"><a href="#cb26-561"></a>hide_λ <span class="op">=</span> <span class="kw">lambda</span>: lcm(hide_p() <span class="op">-</span> <span class="dv">1</span>,  hide_q() <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb26-562"><a href="#cb26-562"></a></span>
-<span id="cb26-563"><a href="#cb26-563"></a><span class="kw">def</span> find_d():</span>
-<span id="cb26-564"><a href="#cb26-564"></a>    d <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb26-565"><a href="#cb26-565"></a>    <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
-<span id="cb26-566"><a href="#cb26-566"></a>        d <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb26-567"><a href="#cb26-567"></a>    <span class="cf">return</span> d</span>
-<span id="cb26-568"><a href="#cb26-568"></a></span>
-<span id="cb26-569"><a href="#cb26-569"></a><span class="kw">def</span> modexp(m, e, n):</span>
-<span id="cb26-570"><a href="#cb26-570"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb26-571"><a href="#cb26-571"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb26-572"><a href="#cb26-572"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb26-573"><a href="#cb26-573"></a>        <span class="cf">return</span> m <span class="op">%</span> n</span>
-<span id="cb26-574"><a href="#cb26-574"></a>    <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb26-575"><a href="#cb26-575"></a>        <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
-<span id="cb26-576"><a href="#cb26-576"></a>    <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
-<span id="cb26-577"><a href="#cb26-577"></a></span>
-<span id="cb26-578"><a href="#cb26-578"></a>c <span class="op">=</span> modexp(m, e, n) <span class="co"># ciphertext</span></span>
+<span id="cb26-563"><a href="#cb26-563"></a>e <span class="op">=</span> <span class="dv">65537</span> <span class="co">## encryptor</span></span>
+<span id="cb26-564"><a href="#cb26-564"></a></span>
+<span id="cb26-565"><a href="#cb26-565"></a><span class="kw">def</span> find_d():</span>
+<span id="cb26-566"><a href="#cb26-566"></a>    d <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb26-567"><a href="#cb26-567"></a>    <span class="cf">while</span> <span class="dv">1</span> <span class="op">!=</span> (d <span class="op">*</span> e <span class="op">%</span> hide_λ()):</span>
+<span id="cb26-568"><a href="#cb26-568"></a>        d <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb26-569"><a href="#cb26-569"></a>    <span class="cf">return</span> d</span>
+<span id="cb26-570"><a href="#cb26-570"></a></span>
+<span id="cb26-571"><a href="#cb26-571"></a><span class="kw">def</span> modexp(m, e, n):</span>
+<span id="cb26-572"><a href="#cb26-572"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-573"><a href="#cb26-573"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb26-574"><a href="#cb26-574"></a>    <span class="cf">if</span> e <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb26-575"><a href="#cb26-575"></a>        <span class="cf">return</span> m <span class="op">%</span> n</span>
+<span id="cb26-576"><a href="#cb26-576"></a>    <span class="cf">if</span> e <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb26-577"><a href="#cb26-577"></a>        <span class="cf">return</span> (m <span class="op">*</span> modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n)) <span class="op">%</span> n</span>
+<span id="cb26-578"><a href="#cb26-578"></a>    <span class="cf">return</span>  modexp(m<span class="op">*</span>m <span class="op">%</span> n, e<span class="op">//</span><span class="dv">2</span>, n) <span class="op">%</span> n</span>
 <span id="cb26-579"><a href="#cb26-579"></a></span>
-<span id="cb26-580"><a href="#cb26-580"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
+<span id="cb26-580"><a href="#cb26-580"></a>c <span class="op">=</span> modexp(m, e, n) <span class="co">## ciphertext</span></span>
 <span id="cb26-581"><a href="#cb26-581"></a></span>
-<span id="cb26-582"><a href="#cb26-582"></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span>
-<span id="cb26-583"><a href="#cb26-583"></a><span class="in">```</span></span>
+<span id="cb26-582"><a href="#cb26-582"></a>new_m <span class="op">=</span> modexp(c <span class="op">%</span> n, find_d(), n)</span>
+<span id="cb26-583"><a href="#cb26-583"></a></span>
+<span id="cb26-584"><a href="#cb26-584"></a><span class="bu">print</span>(<span class="bu">chr</span>(modexp(modexp(<span class="bu">ord</span>(<span class="st">"C"</span>), e, n), find_d(), n)))</span>
+<span id="cb26-585"><a href="#cb26-585"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
