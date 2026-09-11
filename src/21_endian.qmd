@@ -270,7 +270,7 @@ int main() {}
 
 ```{.C}
 size_t l = 0; /* SHA-256 length variable 'l' */
-l += fread(bytes, 1, 64, fp) >> 3; /* 2^3 bits per byte */
+l += fread(bytes, 1, 64, fp); /* Think about what type of thing "l" is counting */
 ```
 
 ### fprintf
@@ -325,7 +325,7 @@ if (fclose(fp) == EOF) {
   - Given a file name at command line...
   - Prints out the contents of the file...
   - In hexadecimal...
-  - In chunks of size 512 bytes.
+  - In chunks of size 512 bits.
 - Sample input:
 ```{.html .code-overflow-wrap filename="lipsum.txt"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -387,7 +387,7 @@ chr(0x4c)
  *
  * Write a C language executable that given a file name 
  * prints out the contents of the file in hexadecimal 
- * in chunks of size 512 bytes.
+ * in chunks of size 512 bits.
  */
 
 /*

@@ -133,20 +133,20 @@ RUN apt update && apt install gcc vim python3 libgmp3-dev -y
   - If I wanted to navigate through the filesystem, I may do something like the following:
 ```{.email}
 $ pwd
-/home/user/dev/crypto/ops_ui
+/home/user/dev/sysinc/ops_ui
 $ cd ..
 $ pwd
-/home/user/dev/crypto
+/home/user/dev/sysinc
 $ cd 4096_t
 $ pwd         
-/home/user/dev/crypto/4096_t
+/home/user/dev/sysinc/4096_t
 $ head -1 4096_t.h
 /* 4096_t.h */
 ```
   - Or I may do something much shorter:
 ```{.email}
 $ pwd
-/home/user/dev/crypto/ops_ui
+/home/user/dev/sysinc/ops_ui
 $ head -1 ../4096_t/4096_t.h
 /* 4096_t.h */
 ```
@@ -382,7 +382,7 @@ TTFTTFFF
     - It is a "drop in replacement"
         - Remove `4096_t.c` from your `gcc` command.
         - Replace it with `biggmp.c`
-            - [biggmp.c](https://github.com/cd-c89/crypto/blob/main/ops_ui/biggmp.c)
+            - [biggmp.c](https://github.com/cd-c89/sysinc/blob/main/ops_ui/biggmp.c)
         - Add `-lgmp` flag to `gcc`
     - Compiling with `4096_t` and `biggmp` should be functionally identical.
         - They will differ in how they handle overload, but there are notes in `biggmp` on how to fix that at a small performance cost.
@@ -399,8 +399,8 @@ TTFTTFFF
     - There is a better way to write these gcc commands that we will cover after midterm.
   - It uses Python `subprocess` to examine the results.
 - I was unable to achieve a bugfree multiply absent this interface, but was able to progress rapidly once I developed it.
-  - [tester.py](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.py)
-  - [tester.c](https://github.com/cd-c89/crypto/blob/main/ops_ui/tester.c)
+  - [tester.py](https://github.com/cd-c89/sysinc/blob/main/ops_ui/tester.py)
+  - [tester.c](https://github.com/cd-c89/sysinc/blob/main/ops_ui/tester.c)
 
 
 
