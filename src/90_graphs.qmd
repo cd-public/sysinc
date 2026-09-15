@@ -1,14 +1,9 @@
 ---
 title: Graphs
-subtitle: "Week 0x4.3"
-execute:
-    echo: true
-    cache: true
-    freeze: true  # never re-render during project render
-    code-fold: false
+subtitle: "wBd1"
 ---
 
-# Announcements
+## Announcements
 
 - **Welcome** to Computing Security
   - Graphs, to introduce
@@ -18,15 +13,17 @@ execute:
 - **Action Items**:
   - BTCinC
 
-# Today
+## Today
 
 - Graphs
     - DAGs
     - Trees
 
-# Trees
+# Graphs
 
-# $n$-ary Trees
+## Trees
+
+## $n$-ary Trees
 
 - A tree is a type of graph.
 - A graph is a pair of
@@ -35,7 +32,7 @@ execute:
         - They may be ordered pairs or not.
 
 
-# Graphs
+## Graphs
 
 * There are many ways to understand graphs, but I actually think graph theory is quite accessible.
 * I think it's also easier when using a running example.
@@ -44,13 +41,13 @@ execute:
     * I am training... to run?????
     * ???????????
     
-# Amtrak 🚄
+## Amtrak 🚄
 
 <center>
 <img style="border-radius: 50%;height:100%" src="https://www.amtrak.com/content/dam/projects/dotcom/english/public/images/Carousel/Landing_Feature_03.gif">
 </center>
 
-# Graph: Definition
+## Graph: Definition
 
 * A graph is an **ordered pair**.
     * That is: two things, in a fixed order.
@@ -62,7 +59,7 @@ execute:
         ordered_pair = [a,b]
         ```
 
-# Not Sets
+## Not Sets
         
 * A graph is not a set:
         
@@ -77,7 +74,7 @@ TypeError: 'set' object is not subscriptable
 ```
 * [I just set them up just to knock them down.](https://www.youtube.com/watch?v=dvf--10EYXw)
 
-# Aside: Pairs
+## Aside: Pairs
 
 -  Take a number plane (click):
 
@@ -104,7 +101,7 @@ function draw1()
 }</script>
 
 
-# Aside: Pairs
+## Aside: Pairs
 
 * Denote ordered pair (.5,1.5) in <span style="color:red">red</span>. 
 
@@ -133,7 +130,7 @@ function draw2()
 	ctx1.fillRect(245, 45, 10, 10) ;
 }</script>
 
-# Pair: Definition
+## Pair: Definition
 
 * We construct pairs from sets.
     * An ordered pair is a set of cardinality two. (2 elements)
@@ -141,15 +138,15 @@ function draw2()
     * The other element of the set is a set of cardinality two (2 elements)
     * The element of the set of cardinality one is one of the two elements of the set of cardinality two.
 
-# Pair: Definition
+## Pair: Definition
 
 * The element of both sets is regarded as the first element.
 * This doesn't work in Python since Python sets can't contain other sets:
         
 ```{.python}
->>> [a,b] # ordered pair
+>>> [a,b] ## ordered pair
 ['one thing', 'another thing']
->>> {{a},{a,b}} # ordered pair with sets
+>>> {{a},{a,b}} ## ordered pair with sets
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'set'
@@ -157,11 +154,11 @@ TypeError: unhashable type: 'set'
 ```
 * But this is an implementation hurdle, and not a logical one.
 
-# Pair: Definition
+## Pair: Definition
 
 ::: {.callout-note appearance="simple"}
 
-# Ordered Pair
+## Ordered Pair
 
 An ordered pair is a set of two elements, a set containing the head element of the pair, and a set containing both elements of the pair.
 
@@ -171,7 +168,7 @@ An ordered pair is a set of two elements, a set containing the head element of t
 (a, b) := p : { {a} , {a, b} }
 ```
 
-# "Head"
+## "Head"
 
 * Extract the head item by taking the intersection of all of the elements of p
     * I denote this 'Head(p)'
@@ -183,7 +180,7 @@ $$
 \end{align*}
 $$
 
-# "Tail"
+## "Tail"
 
 * The tail is the sole element of the union that is not an element of the intersection, with the caveat that we do not consider the case in which the head and tail differ
     * I denote this 'Tail(p)'
@@ -196,7 +193,7 @@ $$
 $$
 
 
-# Graph: Definition
+## Graph: Definition
 
 * A graph is an **ordered pair** $G$
 * We denote the two elements of the pair as:
@@ -206,7 +203,7 @@ $$
 G = (V, E) := \{ \{V\}, \{V,E\}\}
 $$
 
-# In Amtrak
+## In Amtrak
 
 * $V$, the vertices or nodes, stations or stops or cities,
     * like Portland and Seattle, or
@@ -214,7 +211,7 @@ $$
 * $E$, the edges, are the connections to adjacent stations
     * like Portland and Oregon City, or Portland and Vancouver, WA.
 
-# Graph: Definition
+## Graph: Definition
 
 * An `Amtrak` is an **ordered pair**
 * We denote the two elements of the pair as:
@@ -223,7 +220,7 @@ $$
 
 Amtrak = (Stations, Trains)
 
-# Nodes, Vertices, or $V$
+## Nodes, Vertices, or $V$
 
 * Let us consider the "Amtrak Cascades"
 * The set of vertices is the set of stations:
@@ -235,7 +232,7 @@ Amtrak = (Stations, Trains)
 | CENTRALIA       | MOUNT VERNON    | SEATTLE         | VANCOUVER WA | TACOMA          |  
 | EDMONDS         | OLYMPIA/LACEY   | STANWOOD        |
 
-# Nodes, Vertices, or $V$
+## Nodes, Vertices, or $V$
 
 * Restrict our example to the PDX<->SEA 6x daily trains:
 
@@ -244,7 +241,7 @@ Amtrak = (Stations, Trains)
 | CENTRALIA      | OLYMPIA/LACEY | SEATTLE   | TUKWILA    |
 | KELSO/LONGVIEW | PORTLAND      | TACOMA    | VANCOUVER WA |
 
-# Edges or $E$
+## Edges or $E$
 
 * $E$ is a set of elements termed 'edges', 'links', or 'lines'
     * The edges are pairs of vertices
@@ -252,7 +249,7 @@ Amtrak = (Stations, Trains)
     * In an *directed graph*, edges are ordered pairs (not subsets then)
     * Amtrak is undirected, trains are directed.
 
-# Directionality
+## Directionality
 
 * The internet is directed.
     * We may use 'curl' to download files from a url, but going the other way (creating files at a url) is highly nontrivial.
@@ -261,7 +258,7 @@ Amtrak = (Stations, Trains)
     * `**p` does not refer to to `p`, rather, we would use `&` to go in the reverse direction.
 
 
-# Route
+## Route
 
 * Order north-to-south:
     
@@ -279,7 +276,7 @@ Amtrak = (Stations, Trains)
 * Centralia and Keslo/Longview is an edge.
 * The others, like Seattle and Tacoma, are not edges.
 
-# Edges or $E$
+## Edges or $E$
 
 * Our edges are pairs of *adjacent* stations
 * There are 8 stations so there are 7 edges
@@ -292,14 +289,14 @@ Amtrak = (Stations, Trains)
 | (OLYMPIA,   CENTRALIA)   |                     |
 
 
-# Notation
+## Notation
 
 
 * I use tuple notion here, with parens, but it would be equally proper to use set notatation for an undirected graph.
 * Also I maintained geographic ordering (as a convenience) but it would be more proper to have no particular order since E is a set.
 
 
-# Graph: Definition
+## Graph: Definition
 
 * We can express G using only sets over elements of stations (this is basically JSON):
     
@@ -347,26 +344,28 @@ Amtrak = (Stations, Trains)
     }
     ```
 
-# Graph: Exercise
+## Graph: Exercise
 
 * Amtrak recently added lines, including the Hiawatha, with service from Milwaukee to the world's greatest city, Chicago.
     
     > From the grandeur of Grant Park’s Buckingham Fountain to iconic museums and skyscrapers, see for yourself why Chicago was once dubbed “Paris on the Prairie.” Engage in retail therapy on the Magnificent Mile or root for the home team within the friendly confines of famed Wrigley Field.
     
-# Graph: Exercise
+## Graph: Exercise
 
 * As an exercise, construct the graph of the Hiawatha route using the JSON-ish notation I used for Cascades.
 * The route is described [here](https://www.amtrak.com/routes/hiawatha-train.html) and contains five stations.
 * You may use the three letter codes like "MKE" and "CHI" as a notational convenience if you would like.
 * As a bonus: Write valid json. Here's a [tester](https://jsonformatter.curiousconcept.com/#).
 
-# Today
+## Today
 
 - &check; Graphs
     - DAGs
     - Trees
-
+    
 # DAGs
+
+## Definition
 
 ::::{columns}
 
@@ -389,7 +388,7 @@ Amtrak = (Stations, Trains)
 
 
 
-# Cycles
+## Cycles
 
 
 * *E* is a set of pairs of elements of *V*.
@@ -398,16 +397,16 @@ Amtrak = (Stations, Trains)
     * Binary: Over two elements (just like edges)
     * Relation: A set (of pairs)
 
-# Closures
+## Closures
 
 * "Transitive closures" are defined over homogenous binary relations, so we can take a "transitive closure" over edges.
 
-# Cartesian product
+## Cartesian product
 
 * A relation $R$ over a set $S$ is a set of pairs of elements of $S$
     * Or: a subset of the set of all pairs of elements
 
-# Use $\times$
+## Use $\times$
 
 * We denote all pairs using a "Cartesian product":
 
@@ -422,7 +421,7 @@ S \times S
 <em>S</em> &times; <em>S</em>
 ```
 
-# Colors
+## Colors
 
 * For example, over the set of traffic light colors $C$:
 $$
@@ -436,7 +435,7 @@ $$
 
 * Order matters.
 
-# Relation
+## Relation
 
 * A relation *R* over a set *S* is a set of pairs of elements of *S*
     * Or: a subset of the set of all pairs of elements in is transitive
@@ -448,7 +447,7 @@ $$
 
 * Define traffic light $L \subset C \times C$
 
-# Properties
+## Properties
 
 * Construct $L$, the traffic light relation
     * No red without prior yellow
@@ -460,7 +459,7 @@ $$
         \forall X \in C, \exists Y, Z \in C : \{ (X,Y), (Z,X) \} \subset L
         $$ 
 
-# This gives
+## This gives
 
 - The relation then is
 $$
@@ -468,7 +467,7 @@ L = \{ (G, Y), (Y, R), (R, G)\}
 $$
 - We not this is a subset of $C \times C$
 
-# Notation
+## Notation
 
 - Variety of ways to express this.
     - Function application
@@ -476,7 +475,7 @@ $$
     - Infix notation
         - `gLy`
 
-# Matrix      
+## Matrix      
 
 - Starting state on top, ending state on side
 
@@ -488,13 +487,13 @@ $G$||x||
 
 - Astute blah blah its 9 bits
 
-# Rainbow
+## Rainbow
 
 - Vs. traffic light, we can take "wavelength" where colors are sorted by something physics something optics help I don't know this stuff.
 
 <a title="Eric Rolph at English Wikipedia, CC BY-SA 2.5 &lt;https://creativecommons.org/licenses/by-sa/2.5&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Double-alaskan-rainbow.jpg"><img width="100%" alt="Double-alaskan-rainbow" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Double-alaskan-rainbow.jpg/512px-Double-alaskan-rainbow.jpg?20070714083004"></a>
 
-# Rainbow
+## Rainbow
 
 - We note red is higher than yellow which is higher than green.
     - Green is higher than *nothing* or $\varnothing$
@@ -505,7 +504,7 @@ $G$||x||
 |$Y$|||x|
 |$R$||||
 
-# Rainbow
+## Rainbow
 
 - We note that Rainbow $B$ ($R$ is taken) is also a binary relation.
 - We will explore its properties.
@@ -515,7 +514,7 @@ $$
 
 - We additionally note that while $R$ is immediately above $Y$, it is *also* above $G$
 
-# Transitivitity
+## Transitivitity
 
 * Transitivity is over relation $R$  as follows.
 
@@ -529,7 +528,7 @@ $$
 $$
 * In the rainbow case, this is true, $R$ appears above $G$ in the rainbow because $R$ is above $Y$ and $Y$ is above $G$.
 
-# Closure
+## Closure
 
 * Our initial relation was not transitive.
 
@@ -541,12 +540,12 @@ $G$||x||
 
 * As in the Amtrak case, we considered only adjacent elements as a convenience, but that doesn't tell us if e.g. we can get from Seattle to Eugene.
 
-# Closure
+## Closure
 
 * To do that, we need to to preserve transitivity - and we do so using the notion of **transitive closure**
 * A closure is an operation over sets, and in the case of binary relations, which are sets of pairs, is an operation over the relation itself, or the sets of pairs themselves (which are equivalent).
 
-# Closure
+## Closure
 
 * We denote the transitive closure of some relation $R$ as $R^+$
 * First, the transitive closure *R⁺* of some relation *R* must contain all elements of *R*.
@@ -559,7 +558,7 @@ $$
 
 *R⁺* ⊃ *R*
 
-# Superset review
+## Superset review
 
 - That means that for all pairs (of colors, for example) in the binary relation $R$, each one of them is also in $R^+$
 
@@ -572,7 +571,7 @@ $$
 $$
 
 
-# Closure
+## Closure
 
 * The transitive closure $R^+$ of some relation $R$ must be transitive.
 * Recall:
@@ -582,13 +581,13 @@ $$
 $$
 
 
-# Discussion
+## Discussion
 
 * Note: since this is a "for all", it means as we are required to add new elements to maintain transitivity, transitivity must apply to those new elements.
 * So, if we add *SeattleAmtrakTacoma* because we have *SeattleAmtrakTukwila* and *TukwilaAmtrakTacoma*...
 * We will then have to add *SeattleAmtrakOlympia* because *Amtrak* also contains *TukwilaAmtrakOlympia*
 
-# Color Example
+## Color Example
 
 * If in rainbow relation $B$ we find <span style="color:red">$R$</span> is higher in the rainbow than <span style="color:yellow">$Y$</span> and <span style="color:yellow">$Y$</span> is higher in the rainbow than <span style="color:green">$G$</span> then 
 $$
@@ -599,18 +598,18 @@ $$
 \{ (R,Y), (Y,G), (R,G) \} \subseteq B^+
 $$
 
-# Closure
+## Closure
 
 * *R⁺* must be the smallest possible relation for that is a transitive superset of *R*.
     * Cartesian Product is always transitive and a superset, but not always the smallest satisfying set.
 
-# A note on graphs
+## A note on graphs
 
 * By the way those binary relations are graph edges between graph nodes (the elements of the original set).
 * And by the way those edges are pointers.
 * Okay keep going.
 
-# Cycles
+## Cycles
 
 * We use transitive closure to define cycles
     * We consider a graph $G$
@@ -622,18 +621,18 @@ $$
 * We note that $E$ is a homogenous binary relation over $V$
 * Take $E^+$ the transitive closure of $E$
 
-# Cycles
+## Cycles
 
 * $G$ contains a cycle (has the property of being cyclic) if $E^+$ contains an edge from a node to itself.
 
 $\text{Cyclic}(G = (V, E)) := \exists v \in V: \{v, v\} \in E^+$
 
-# Note
+## Note
 
 * Cycles are defined to be non-trivial, which means they don't contain "loops", so  an edge from a node to itself.
     * We don't think about this with Amtrak because we don't take a train from Portland to Portland
 
-# Other Terms
+## Other Terms
 
 * Circuits, walks, paths, and trails are also defined in graph theory and are related.
 * Direct paths and undirected paths are, of course, distinct but intuitively so.
@@ -641,7 +640,7 @@ $\text{Cyclic}(G = (V, E)) := \exists v \in V: \{v, v\} \in E^+$
     * The Cascades route, which runs service between Vancouver, BC and Eugene, has both edges.
 
 
-# DAGs
+## DAGs
 
 ::::{columns}
 
@@ -663,7 +662,7 @@ $\text{Cyclic}(G = (V, E)) := \exists v \in V: \{v, v\} \in E^+$
 ::::
 
 
-# DAGs
+## DAGs
 
 * Cascades 503 is a directed acyclic graph.
     * It has edges from all relative northern stations to all relative southern stations for all stations between Seattle and Portland inclusive.
@@ -671,7 +670,7 @@ $\text{Cyclic}(G = (V, E)) := \exists v \in V: \{v, v\} \in E^+$
     * It is not directed - SLM->PDX or PDX->SLM
     * It contains cycles - PDX->SLM->PDX
 
-# DAGs
+## DAGs
 
 * Color wavelength is a directed acyclic graph.
 ```{dot}
@@ -690,7 +689,7 @@ digraph finite_automata {
 }
 ```
 
-# DAGs
+## DAGs
 
 * A traffic light is not a directed graph but not an acyclic graph.
 
@@ -709,7 +708,7 @@ digraph finite_automata {
 }
 ```
 
-# DAGs
+## DAGs
 
 * Friendship, via mutual enthusiastic consent, is a neither directed nor, necessarily, acyclic.
 * Facebook is not a DAG.
@@ -727,17 +726,19 @@ graph G {
 }
 ```
 
-# CS Major DAG
+## CS Major DAG
 
 <a style="filter: invert(1);" title="Vector version of Image:Tred-G.png, Public domain, via Wikimedia Commons" href="https://cd-public.github.io/advising/cse.html"><img height="80%" alt="Tred-G" src="https://cd-public.github.io/advising/photos/cse.png"></a>
 
-# Today
+## Today
 
 - &check; Graphs
     - &check; DAGs
     - Trees
 
 # Trees
+
+## Definition
 
 - A tree is DAG where every node has at most one incoming edge.
     - $\exists$ undirected trees but we do not consider them.
@@ -747,29 +748,29 @@ $$
 $$
 - For all vertexes, the cardinality of the set of incoming edges is less than or equal to one.
 
-# Decision Trees
+## Decision Trees
 
 <a title="User:Gokul Jadhav, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Manual_decision_tree.jpg"><img width="256" alt="Manual decision tree" src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Manual_decision_tree.jpg?20080718223209"></a>
 
 
-# Decision Trees
+## Decision Trees
 
 <a style="filter: invert(.9);" title="IPWAI, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:DecisionCalcs.jpg"><img width="512" alt="DecisionCalcs" src="https://upload.wikimedia.org/wikipedia/commons/4/48/DecisionCalcs.jpg?20120618060749"></a>
 
-# River Systems
+## River Systems
 
 <a title="Kmusser, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Columbiarivermap.png"><img width="512" alt="Columbiarivermap" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Columbiarivermap.png/512px-Columbiarivermap.png?20220901045624"></a>
 
-# Data Structure
+## Data Structure
 
 <a style="filter: invert(.9);" title="Paddy3118, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Tree_(computer_science).svg"><img width="256" alt="A rooted, non-binary, tree" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Tree_%28computer_science%29.svg/256px-Tree_%28computer_science%29.svg.png?20191020090628"></a>
 
-# Why trees?
+## Why trees?
 
 - If trying to store data, really only need one unique path to the data.
 - If trying to assure integrity of data with hashing, really only need to hash once.
 
-# Sample Tree
+## Sample Tree
 
 - By convention, given a directed edge $(v,v')$, vertex $v$ is denoted the parent and vertex $v'$ is denoted the child.
 
@@ -781,7 +782,7 @@ struct tree_struct {
 }
 ```
 
-# Binary Tree
+## Binary Tree
 
 - In computing, we often use binary trees, which are equivalently expressive and have other nice properties.
 - Commonly, the two children are referred to as "right" and "left"
@@ -794,30 +795,30 @@ struct binary_tree_struct {
 }
 ```
 
-# By The Way
+## By The Way
 
 - It would have been fairly straightforward to implement `list_t` using trees.
 - Just why bother...
     - Minimally, can use just the right or left side and you have a linked list.
 
-# BST
+## BST
 
 - In 100-level CS classes, students often implement a binary search tree.
 - These trees store lower values on lesser/left side
 - It basically implements quicksort in structures.
 
-# Merkle
+## Merkle
 
 - In this class, we will do instead a Merkle tree or hash tree.
 - Merkle trees are unsorted but they are verified, which is what we want to do with our transactions.
 - In a block, we then store the root, the ultimate ancestor of all nodes, and store the transactions elsewhere.
 - This verifies the entire transaction tree.
 
-# Merkle
+## Merkle
 
 <a  style="filter: invert(1);" title="Azaghal, CC0, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Hash_Tree.svg"><img width="80%" alt="Graphical representation of the Merkle Tree. Illustration by David Göthberg" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Hash_Tree.svg"></a>
 
-# Tree Terms
+## Tree Terms
 
 - Connected
 - Root
@@ -827,7 +828,7 @@ struct binary_tree_struct {
 - Height/depth
 - Size
 
-# Connected
+## Connected
 
 - Trees are *connected* 
     - That is, if we take the transitive closure of edges
@@ -835,19 +836,19 @@ struct binary_tree_struct {
     - The transitive closure of the edges is the set of paths.
 - Connectedness is usually defined over undirected graphs.
 
-# Root
+## Root
 
 - The root is the node which has a path to every other edge.
 - It is the "ancestor" of all nodes.
 - Often in computing, we treat a descriptor or pointer to the root as a descriptor or pointer to the graph.
 - A Bitcoin block contains a "Merkle root" of a transaction tree.
 
-# Leaf
+## Leaf
 
 - Not every node has outgoing edges.
 - We refer to nodes without such edges as leafs (leaves?)
 
-# Diagram
+## Diagram
 
 ::::{columns}
 
@@ -868,7 +869,7 @@ struct binary_tree_struct {
 
 ::::
 
-# Parent/Child
+## Parent/Child
 
 ```{dot}
 //| echo: false
@@ -883,7 +884,7 @@ digraph finite_automata {
 }
 ```
 
-# Height/Depth
+## Height/Depth
 
 ::::{columns}
 
@@ -927,7 +928,7 @@ digraph finite_automata {
 
 ::::
 
-# Height
+## Height
 
 ::::{columns}
 
@@ -968,7 +969,7 @@ digraph finite_automata {
 
 ::::
 
-# Depth
+## Depth
 
 ::::{columns}
 
@@ -1011,7 +1012,7 @@ digraph finite_automata {
 ::::
 
 
-# Size
+## Size
 
 ::::{columns}
 
@@ -1049,7 +1050,7 @@ digraph finite_automata {
 
 ::::
 
-# Today
+## Today
 
 - &check; Graphs
     - &check; DAGs

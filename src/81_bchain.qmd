@@ -1,15 +1,15 @@
 ---
 title: bchain
+subtitle: "wBd0"
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
+  - "Long have I waited" - Emperor Palpatine
   - Blockchain
-- **Action Items**:
-  - BTCinC
   
-# Today
+## Today
 
 - Background
 - Blocks
@@ -17,16 +17,16 @@ title: bchain
 
 # Background
 
-# 2000s
+## 2000s
 
 *   Dotcom crash (~2000)
-    *   Many digital currency failed
+    *   Many digital currencies failed
     *   Many ecommerce sites failed
     *   Many internet banks (e.g. Net.B@nk) fail
     *   Most large sites (Amazon, Cisco) contracted ~80%
 *   Centralized servers are politically weak.
 
-# 2008
+## 2008
 
 *   Great Recession (~2007-)
     *   Traditional currency liquity crises
@@ -35,7 +35,7 @@ title: bchain
     *   Huge pressure on governments, central currencies
 *   Centralized banks are politically week
 
-# Open question
+## Open question
 
 -   How can the client of a currency system:
     -   Have access to currency that is
@@ -44,7 +44,7 @@ title: bchain
         -   Non-*repudiable*
             -   Transactions cannot be denied to have happened
 
-# Bitcoin
+## Bitcoin
 
 *   Bitcoin is the first blockchain
     *   Has no central server
@@ -53,7 +53,7 @@ title: bchain
     *   Allows **transactions**
         *   I can transfer _n_ coins to someone
 
-# Features
+## Features
 
 *   Achieves consensus
     *   Transactions cannot be 'repudiated' (no chargeback)
@@ -63,13 +63,13 @@ title: bchain
     *   Uses SHA for nonrepudiation
 *   Uses 'proof of work' [C. Dwork '92](http://www.hashcash.org/papers/pvp.pdf)
 
-# Nakamoto '08
+## Nakamoto '08
 
 - We now follow the Nakamoto '08 paper, 
 - [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)
 - You should read it.
 
-# Genesis Block
+## Genesis Block
 
 ```{.email}
 00000000   01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
@@ -94,7 +94,7 @@ title: bchain
 
 # Blocks
 
-# Bitcoin
+## Bitcoin
 
 > In this paper, we propose a solution to the double-spending problem using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions
 
@@ -119,7 +119,7 @@ title: bchain
 
 ::::
 
-# Transactions
+## Transactions
 
 > A *chain* of digital signatures
 
@@ -130,7 +130,7 @@ title: bchain
         *   "My" coins don't have my name on them.
         *   "My" bitcoins *do*
 
-# A transaction
+## A transaction
 
 > Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin
 
@@ -139,7 +139,7 @@ title: bchain
 - We transfer those coins to $p$ new owners
 - We write this down.
 
-# Signage
+## Signage
 
 - To verify it is (1) our coins and (2) use transferring them, we:
     - Write down the details.
@@ -147,14 +147,14 @@ title: bchain
     - RSA encrypt with our **private key**
     - Release the hash and cipher text
 
-# Verify
+## Verify
 
 - The general public:
     - Decrypts the ciphertext with our **public key**
     - SHA256 hashes the decrypted text
     - If the hash matches our released hash, then it had to be us and the transaction is valid.
 
-# 
+## 
 
 ```{dot}
 //| fig-width: 800px
@@ -202,7 +202,7 @@ digraph RSA_Encryption {
 }
 ```
 
-# 
+## 
 
 <div style="max-height: 500px;  overflow-y: auto;">
 
@@ -306,30 +306,30 @@ digraph RSA_Encryption {
 
 </div>
 
-# Demo
+## Demo
 
 ```{.email}
 $ pwd
 ~/crypto/bigrsa
-$ make # featuring libgmp because I'm scared of prime generation
+$ make ## featuring libgmp because I'm scared of prime generation
 gcc bigrsa.c biggmp.c -std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -lgmp -o bigrsa -lgmp
 gcc bigkey.c biggmp.c -std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -lgmp -o bigkey -lgmp
 $ ./bigkey
-$ echo "CD pays PC n buckerinos" > m.txt # home persona -> work persona
-$ ./bigrsa -d m.txt c.txt # -d as we sign with private key
-$ cat c.txt # this will be unprintable
+$ echo "CD pays PC n buckerinos" > m.txt ## home persona -> work persona
+$ ./bigrsa -d m.txt c.txt ## -d as we sign with private key
+$ cat c.txt ## this will be unprintable
 8�s4�������}���9�xh�/��1�␦8��v����̃�[M�����]�'3�>Vv
 $ ./bigrsa -e c.txt n.txt
-$ cat n.txt # will be original message
+$ cat n.txt ## will be original message
 CD pays PC n buckerinos
-$ ../shainc/shainc m.txt # just happen to have a sha256 around
+$ ../shainc/shainc m.txt ## just happen to have a sha256 around
 f7208b993f0ad6a7277dee1bf4bb5478a57562c76e5bf18e011d6729f91caaa8  m.txt
 $ ../shainc/shainc n.txt
 f7208b993f0ad6a7277dee1bf4bb5478a57562c76e5bf18e011d6729f91caaa8  n.txt
 ```
 - Buckerinos accepted, who needs banks 👍
 
-# Wait a minute
+## Wait a minute
 
 ```{.email}
 $ echo "CD pays PC infinity buckerinos" > m.txt
@@ -338,20 +338,20 @@ $ echo "CD pays PC infinity buckerinos" > m.txt
 - What stops this from happening?
 
 
-# Doublecount
+## Doublecount
 
 > The problem of course is the payee can't verify that one of the owners did not double-spend the coin.
 
 *   Banks with only _n_ coins are **the exact problem**
 
-# With Physicalcoin
+## With Physicalcoin
 
 *   The (central?) bank is sole arbiter of providing credit with those coins.
 *   Banks with finite coins are vulnerable to bank runs.
 *   Banks have operating expenses that incur transaction costs.
 *   A bank must be trusted (very tough in early 2009, or... [ever](https://web.archive.org/web/20230310171005/https://www.nytimes.com/2023/03/10/business/silicon-valley-bank-stock.html)?)
 
-# Ledgers
+## Ledgers
 
 *   All transactions are logged publicly (and verifiable publicly)
     * A "public ledger"
@@ -360,20 +360,20 @@ $ echo "CD pays PC infinity buckerinos" > m.txt
 *   It can be "pruned" down to ~5 GB
 *   Remember, transactions = coins.  
 
-# Aside: Metadata
+## Aside: Metadata
 
 *   In theory, Bitcoin can be anonymous.
     *   I generate a key, never tell anyone.
     *   Participate like anyone else.
     *   The key has nothing in common with my identity.
 
-# Aside: Limits
+## Aside: Limits
 *   If a coin is used for something illegal (e.g. ransom), its full ownership is known.
 *   If that coin is ever exchanged for currency/material, someone (e.g. DoJ) can seize assets.
 *   Users take on risks trading 'tainted' coins
 * [Department of Justice Seizes $2.3 Million in Cryptocurrency Paid to the Ransomware Extortionists Darkside](https://www.justice.gov/opa/pr/department-justice-seizes-23-million-cryptocurrency-paid-ransomware-extortionists-darkside%22)
 
-# Timestamps
+## Timestamps
 
 - Time is *hard* (actually [impossible](https://lamport.azurewebsites.net/pubs/time-clocks.pdf))
 - Oh well.
@@ -384,13 +384,13 @@ $ echo "CD pays PC infinity buckerinos" > m.txt
 - Throw in a struct.
 - Hash it every 10 minutes.
 
-# From Paper
+## From Paper
 
 > Each timestamp includes the previous timestamp in sits hash, forming a chain, with each additional timestamp reinforcing the ones before it.
 
 ![](https://www.researchgate.net/profile/Umar-Ruhi-2/publication/325464908/figure/fig2/AS:632226425360385@1527745934849/Nakamotos-Blockchain-Proposal-Nakamoto-2008.png)
 
-# Abstract Tx's
+## Abstract Tx's
 
 - For now, we abstract how transactions are handled.
     - We assume the existence of `merkle.h`
@@ -398,7 +398,7 @@ $ echo "CD pays PC infinity buckerinos" > m.txt
 - We can get timestamps froms `<times.h>`
 - We can get hashes from `shainc` or `sha256sum`
 
-# Block
+## Block
 
 ```{.c filename="bchain.h"}
 typedef struct digest_struct {
@@ -417,14 +417,14 @@ struct blockchain_struct {
 };
 ```
 
-# Doublespend
+## Doublespend
 
 - How does this help?
     - In theory, evidence of past transactions, but...
     - Isn't it easy enough to spend twice and there be different chains of blocks?
     - With the no central server, what is authoritative.
 
-# Solution
+## Solution
 
 - Two parts:
     - First spend is authoritative
@@ -432,7 +432,7 @@ struct blockchain_struct {
     - Blocks are expensive to forge
         - This is "bitcoin mining"
 
-# Proof of work
+## Proof of work
 
 *   Make a block except the `nonce`.
     *   "Number used once"
@@ -442,7 +442,7 @@ struct blockchain_struct {
     *   While the hash of the block doesn't have some trailing zeros...
     *   Pick a new nonce.
 
-# It's hard.
+## It's hard.
 
 - Let's get one trailing zero. 
 - Add utf-8 "nonce".
@@ -462,7 +462,7 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 741f4fee0582ccb44db1503f8e3f326b2ae6c4ee94c3d0f31427e933b40a9fc0  tx.txt
 ```
 
-# Difficulty
+## Difficulty
 
 - Bitcoin has a scaling difficulty.
     - Every binary trailing zero is 2x as hard.
@@ -471,14 +471,14 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 - It targets 1 block per 10 minutes across as bitcoin miners
     - So every participant tries to find the nonce and it takes 10 minutes.
 
-# Quoth SN:
+## Quoth SN:
 
 *   SN: Proof-of-work is "one-CPU-one-vote"
     *   Me: In absolutely no way is this decentralized
     *   Me: ~65% of active/public CPUs are owned by AWS/AZ/GCP
     *   Me: A cryptography expert happens to have a proposed a currency that would be de facto centralized by the NSA and its tera+scale cryptography datacenters at time of proposal.
 
-# Logging
+## Logging
 
 > The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it.
 
@@ -487,7 +487,7 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 *   Most famous fork: Bitcoin and Bitcoin Cash
 *   The chain gets more secure every 10 minutes.
 
-# Compute
+## Compute
 
 > If a majority of CPU power is controlled by honest nodes, the honest chain will grow the fastest and outpace any competing chains.
 
@@ -495,16 +495,16 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 *   Bitcoin good at "dubiously legal"
 *   The same authorities with majority of CPU power (trillion dollar companies, US Govt) also influence or control fiat currency (USD, Apple/Google Pay)
 
-# Climate
+## Climate
 
 > To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour.
 
 *   Bitcoin becomes less efficient/more costly to use over time (by necessity)
 *   Miners are more efficient *per hash* -  driving GPU development and a little bit the AI boom.
 
-# The Network
+## The Network
 
-# Bitcoin Network
+## Bitcoin Network
 
 1.  New transactions are broadcast to all nodes
 2.  Each node collects makes a block.
@@ -513,7 +513,7 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 5.  Nodes accept the block only if all transactions in it are valid (no doublespend).
 6.  Nodes accept via starting on the *next* block.
 
-# Broadcast
+## Broadcast
 
 > New transactions are broadcast to all nodes
 
@@ -524,13 +524,13 @@ $ echo "CD-1>PCF" > tx.txt ; ./shainc tx.txt
 *   There is nothing wrong with thinking of the Bitcoin network as many Node.js servers pinging each other.
 *   Doing this well, much less exhaustively, is non-trivial, but doing it "at all" is easy.
 
-# Aside: Example
+## Aside: Example
 
 - This implements the message server of the famous impossibility result from Nancy Lynch that led to the eventual bitcoin result.
 
 <iframe width="800px" height="300px" src="https://cd-public.github.io/calvinism/?uri=https://gist.githubusercontent.com/cd-public/d434b316dc027a4808571e1690fd592c/raw/318522d9691c44a96c8bac09388a4efac593c0e7/flpMsgSys.js"></iframe>
 
-# Collect
+## Collect
 
 
 > Each node collects new transactions into a block.
@@ -548,7 +548,7 @@ struct blockchain_struct {
 };
 ``` 
 
-# Work / Mine
+## Work / Mine
 
 - Just hash in a loop with a counter.
     - Hash
@@ -558,7 +558,7 @@ struct blockchain_struct {
         - If no, incrememnt counter.
 - Broadcasting out-of-scope for now.
 
-# Broadcast II
+## Broadcast II
 
 > When a node finds a proof-of-work, it broadcasts the block to all nodes.
 
@@ -567,7 +567,7 @@ struct blockchain_struct {
 *   When your transaction is in a block, its means you gained/lost a coin.
 *   Until then, in flux.
 
-# Accept
+## Accept
 
 > Nodes accept the block only if all transactions in it are valid and not already spent.
 
@@ -575,14 +575,14 @@ struct blockchain_struct {
 *   If found, they keep working on the 'old' block, which isn't fraudulent
 *   Fraudelent blocks are expensive to make and unlikely to be accepted.
 
-# Express
+## Express
 
 > Nodes express their acceptance of the block by working on creating the next block in the chain, using the hash of the accepted block as the previous hash.
 
 - A block is known to have been expected once it is a previous block to a working block.
 - So, block `n-2` is known accepted, `n-1` is likely accepted but there may be candidates, `n` is currently being mined.
 
-# In my words:
+## In my words:
 
 1.  Broadcast (Transactions)
 2.  Collect
@@ -591,13 +591,13 @@ struct blockchain_struct {
 5.  Accept
 6.  Express
 
-# Today
+## Today
 
 - &check; Background
 - &check; Blocks
     - Just `struct`s
 
-# Closing thoughts
+## Closing thoughts
 
 - Make a block
 - Put in a list

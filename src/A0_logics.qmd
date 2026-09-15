@@ -1,19 +1,19 @@
 ---
 title: Logics
-subtitle: "Week 0xE"
+subtitle: "wD"
 ---
 
-# Announcements
+## Announcements
 
 - Last Lecture
-    - Security topics unrelated to crypto
+    - Security topics generally
     - Some automata theory
 - Action items
     - `heap_t` due now
     - `BTCinC` final is out
 
 
-# Today
+## Today
 
 - Threat and Threat Models
 - (Trace) Properties
@@ -24,8 +24,9 @@ subtitle: "Week 0xE"
     - Safety & Liveness
 - CIA Triad
 
-
 # Threat
+
+## Threat
 
 - "Security" is incomplete as a concept.
 
@@ -33,19 +34,19 @@ subtitle: "Week 0xE"
     *   **For whom** is the 'what' secure?
     *   **From whom** is the 'what' secure?
 
-# Bitcoin
+## Bitcoin
 
 *   **Bitcoins** are secure.
 *   **For all senders and receivers** the ownership is secured.
 *   **From any third party** the doublespending is secured.
 
-# Limitations
+## Limitations
 
 *   Can a third party tell **who** uses the service?
 *   Can a third party tell **when** coins are being sent?
 *   Can a third party tell the **amount** of the transaction?
 
-# Models
+## Models
 
 Use **threat modeling**:
 
@@ -58,7 +59,7 @@ Use **threat modeling**:
 Read more: [OWASP.org](https://owasp.org/www-community/Threat_Modeling)
 
 
-# 
+## 
 
 |Informally|Formally|
 |-|-|
@@ -68,7 +69,7 @@ Read more: [OWASP.org](https://owasp.org/www-community/Threat_Modeling)
 |**Any limitations?**|Assumptions that can be checked|
 |**How?**|Actions that can be taken to mitigate each threat|
 
-# BTC
+## BTC
 
 |Informally|Formally|
 |-|-|
@@ -79,7 +80,7 @@ Read more: [OWASP.org](https://owasp.org/www-community/Threat_Modeling)
 |**How?**|[bchain.html](bchain.html)|
 
 
-# How?
+## How?
 
 We can instead proceed in **four steps**.
 
@@ -89,31 +90,31 @@ We can instead proceed in **four steps**.
 1.   **Validate:** Have we acted on each of the previous steps?
 
 
-# Diagram
+## Diagram
 
 <a style="filter:invert(1)" title="Graingert, CC0, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Bitcoin_Transaction_Visual.svg"><img width="80%" alt="The mine is closed and the key must stop working.  And this key structure has stopped already.  by the reason for moving the blueprint and will use the code to confirm the AI ​​service to verify the person instead  and generate income into the new..." src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Bitcoin_Transaction_Visual.svg"></a>
 
-# Threats
+## Threats
 
 - What if?
     - Two entities have the same private key?
     - Dishonest nodes have more compute power?
     - Internet goes down?
 
-# Mitigate
+## Mitigate
 
 - Well...
     - Keys are ~4096 bit...
     - There are other more lucrative uses of compute than competing with BTC nodes
     - If the internet goes down, coins can't be spent but persist locally
 
-# Validate
+## Validate
 
 - This is new!
 - Cryptobook uses "Attack Games"
 - We explore "digital signature"
 
-# [Cryptobook](https://toc.cryptobook.us/book.pdf):
+## [Cryptobook](https://toc.cryptobook.us/book.pdf):
 
 > We give
 the adversary the power to mount a **chosen message attack**, namely the attacker can request the
@@ -121,26 +122,26 @@ signature on any message of his choice. Even with such power, the adversary shou
 to create an **existential forgery**, namely the attacker cannot output a valid message-signature
 pair $(m, \omega)$ for some new message $m$. 
 
-# [Cryptobook](https://toc.cryptobook.us/book.pdf):
+## [Cryptobook](https://toc.cryptobook.us/book.pdf):
 
 **Attack Game 13.1 (Signature security).** For a given signature scheme $\mathcal{S} = (\mathcal{G}, \mathcal{S}, \mathcal{V})$, (generate, sign, verify) defined over $(\mathcal{M}, \Sigma)$, (messages, signatures), and a given adversary $\mathcal{A}$, the attack game runs as follows:
 
 * The challenger runs $(pk, sk) \leftarrow \mathcal{G}()$ (private signing key, public verifying key) and sends $pk$ to $\mathcal{A}$.
 
-# [Cryptobook](https://toc.cryptobook.us/book.pdf):
+## [Cryptobook](https://toc.cryptobook.us/book.pdf):
 
 **Attack Game 13.1 (Signature security).** For a given signature scheme $\mathcal{S} = (\mathcal{G}, \mathcal{S}, \mathcal{V})$, (generate, sign, verify) defined over $(\mathcal{M}, \Sigma)$, (messages, signatures), and a given adversary $\mathcal{A}$, the attack game runs as follows:
 
 * $\mathcal{A}$ queries the challenger several times. For $i = 1, 2, \dots$, the $i^{th}$ signing query is a message $m_i \in \mathcal{M}$. Given $m_i$, the challenger computes $\sigma_i \leftarrow \mathcal{S}(sk, m_i)$, and then gives $\sigma_i$ to $\mathcal{A}$.
 
 
-# [Cryptobook](https://toc.cryptobook.us/book.pdf):
+## [Cryptobook](https://toc.cryptobook.us/book.pdf):
 
 **Attack Game 13.1 (Signature security).** For a given signature scheme $\mathcal{S} = (\mathcal{G}, \mathcal{S}, \mathcal{V})$, (generate, sign, verify) defined over $(\mathcal{M}, \Sigma)$, (messages, signatures), and a given adversary $\mathcal{A}$, the attack game runs as follows:
 
 * Eventually $\mathcal{A}$ outputs a candidate forgery pair $(m, \sigma) \in \mathcal{M} \times \Sigma$.
 
-# [Cryptobook](https://toc.cryptobook.us/book.pdf):
+## [Cryptobook](https://toc.cryptobook.us/book.pdf):
 
 **Attack Game 13.1 (Signature security).** For a given signature scheme $\mathcal{S} = (\mathcal{G}, \mathcal{S}, \mathcal{V})$, (generate, sign, verify) defined over $(\mathcal{M}, \Sigma)$, (messages, signatures), and a given adversary $\mathcal{A}$, the attack game runs as follows:
 
@@ -150,7 +151,7 @@ $$
 \mathcal{V}(pk, m, \sigma) = \text{accept}
 $$
 
-# Techniques
+## Techniques
 
 *   **Define the scope** and depth of analysis.
 *   Gain a **visual understanding** of what you’re threat modeling.
@@ -158,7 +159,7 @@ $$
 *   **Identify** threats.
 *   **Document** of missing or weak security controls.
 
-# Scope
+## Scope
 
 *   Determine **stakeholders**
     *   Who uses the service?
@@ -166,17 +167,18 @@ $$
     *   Who benefits from the service?
     *   Who does not benefit from the service?
 
-# Scope
+## Scope
 
 *   Who can answer these questions?
     *   Are they the same or different people?
     *   Should you do this by yourself?
     *   What do you do if you need help?
 
-# Visuals
+## Visuals
 ```{dot}
 //| fig-width: 1000px
 //| output-location: slide
+//| echo: false
 digraph block_chain {
   rankdir=TD;
   bgcolor="#191919";
@@ -213,26 +215,26 @@ digraph block_chain {
 ```
 
 
-# Threats
+## Threats
 
 *   What if?
     - Someone changes `(G,C,2)` to `(G,C,3)`
     - `G` submits a second `(G,G,2)` next block
     - `G` loses their private key?
 
-# Document
+## Document
 
 - [https://bitcoin.org/bitcoin.pdf](https://bitcoin.org/bitcoin.pdf)
 - [https://github.com/bitcoin/bitcoin](https://github.com/bitcoin/bitcoin)
 
-# **Traffic light**
+## **Traffic light**
 
 *   **Diagram:** What are we building?
 *   **Identify threats:** What could go wrong?
 *   **Mitigate:** What are we doing to defend against threats?
 *   **Validate:** Have we acted on each of the previous steps?
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - (Trace) Properties
@@ -245,13 +247,15 @@ digraph block_chain {
 
 # Properties
 
-*   An **security policy** may have **properties**.
+## Properties
+
+*   A **security policy** may have **properties**.
 *   These **security policies** are distinct from the **what?** of a threat model
 *   Rather the **security policy** is the **how?** of a threat model
 
 A security policy could have the property of being **secure** if the threats of a threat model are mitigated
 
-# Trace Properties
+## Trace Properties
 
 *   I think of properties in terms of **traces**
 *   A **trace** is the sequence of states through which a system passes over time.
@@ -260,7 +264,7 @@ A security policy could have the property of being **secure** if the threats of 
     *   A **system** implements the security policy.
     *   Emphasize the notion of **over time**. Traces are **time-based**.
 
-# Traffic Light
+## Traffic Light
 
 *   Think of a **traffic light**.
     *   In what **states** may a traffic light be?
@@ -268,7 +272,7 @@ A security policy could have the property of being **secure** if the threats of 
     *   Does a traffic light implement a **security policy**
     *   Do traffic lights **change over time**?
 
-# State Machine
+## State Machine
 
 - A traffic light is a **state machine**.
 
@@ -277,7 +281,7 @@ A security policy could have the property of being **secure** if the threats of 
 - Often called "FSM" (finite state machine)
     - I don't have a hot new start-up selling infinite states.
 
-# A Trace
+## A Trace
 
 - We can denote the state of a traffic light by the lit color. ("Wow this class is lit.")
 - A trace may appear as:
@@ -296,7 +300,7 @@ trace = [
 ]
 ```
 
-# Examples
+## Examples
 
 - Let's review some traces and see if they are from a traffic light system that is operating properly.
 ```{.python}
@@ -304,7 +308,7 @@ summarize = lambda t : "".join([s[0] for s in t])
 ```
 - Can also express traces as e.g. `RGYRGYRGY`
 
-# Start
+## Start
 
 - Does **starting state** matter?
 
@@ -360,7 +364,7 @@ trace = [
 
 ::::
 
-# End
+## End
 
 - Does **ending state** (terminating state) matter?
 
@@ -417,7 +421,7 @@ trace = [
 
 ::::
 
-# Length
+## Length
 
 - Does **length** (or perhaps size) matter?
 
@@ -468,7 +472,7 @@ trace = [
 ::::
 
 
-# Unique
+## Unique
 
 - Does **number of unique states** matter?
 
@@ -512,7 +516,7 @@ trace = [
 
 
 
-# Order
+## Order
 
 - Does **order** matter?
 
@@ -557,7 +561,7 @@ trace = [
 
 ::::
 
-# Sets of Traces
+## Sets of Traces
 ::: {.callout-note}
 A **trace property** is a set of traces.
 :::
@@ -572,13 +576,13 @@ property[3] = ["GREEN_", "YELLOW"]
 ```
     
 
-# System Properties
+## System Properties
 
 *   Say a system "satisfies" property $p$ if all possible traces produced by a system are in the property.
 *   This may be an infinite number of traces or include traces of infinite length.
 *   Systems may have (satisfy) more than one property.
 
-# On Security
+## On Security
 
 Properties provide a way to answer the "How?" after asking:
 
@@ -586,14 +590,14 @@ Properties provide a way to answer the "How?" after asking:
 *   **For whom** is the 'what' secure?
 *   **From whom** is the 'what' secure?
 
-# Sets of Traces
+## Sets of Traces
 
 - A **set** is an ordered collection of elements (such as sequences).
 - A **sequence** is an ordered collection of elements (such as states).
 - A **trace property** is a set of traces.
 - A **trace** is a sequence of states.
 
-# Organization
+## Organization
 
 ```{dot}
 //| echo: false
@@ -616,7 +620,7 @@ digraph PropertyHierarchy {
 }
 ```
 
-# Example
+## Example
 
 ```{dot}
 //| echo: false
@@ -639,7 +643,7 @@ digraph PropertyHierarchy {
 }
 ```
 
-# Enumeration
+## Enumeration
 
 - Thus far, we enumerated the possible traces.
 ```{.python}
@@ -651,7 +655,7 @@ property[3] = ["GREEN_", "YELLOW"]
 
 - This is bad. Why?
 
-# Specification
+## Specification
 
 - Rather than enumerate, let us specify.
 
@@ -663,7 +667,7 @@ The traffic light property is
         the only state succeeding "RED___" is "GREEN_".
 ```
     
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -674,15 +678,16 @@ The traffic light property is
     - Safety & Liveness
 - CIA Triad
 
+# Kripke Structures
 
-# Model Checking
+## Model Checking
 
 - A Kripke Structure is a tuple that models a state machine.
 - Recall:
     - A **state machine** is a mathematical model of computation. It is an abstract machine that can be in exactly one of a finite number of states at any given time.
     - Exactly one!
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, ...} that models a state machine.
 
@@ -690,7 +695,7 @@ A Kripke Structure is a tuple {_S_, ...} that models a state machine.
     *   Kripke structures only work for **finite** state machines
     *   For the sake of this class, we can imagine infinite states if needed.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, ...} that models a state machine.
 
@@ -701,7 +706,7 @@ A Kripke Structure is a tuple {_S_, ...} that models a state machine.
     *   Many possible, but finite, number of owners.
         
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, ...} that models a state machine.
 
@@ -710,7 +715,7 @@ A Kripke Structure is a tuple {_S_, _I_, ...} that models a state machine.
     *   There may be states in _S_ that are not in _I_
     *   These are the possible initial states of the state machine.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, ...} that models a state machine.
 
@@ -718,14 +723,14 @@ A Kripke Structure is a tuple {_S_, _I_, ...} that models a state machine.
     
 *   For a Bitcoin, the initial state is Satoshi Nakamoto's public key.
         
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, ...} that models a state machine.
 
 *   _S_ is a finite set of states
 *   _I_ ⊂ _S_ is the set of initial states.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
 
@@ -733,7 +738,7 @@ A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
     *   This just means _R_ says whether one state may be transitioned to from another.
     *   Same as graph edges (if we take _S_ to be nodes)
 
-# Model Checking
+## Model Checking
 
 *   **BONUS/CHALLENGE:** _R_ is left-total.
 
@@ -744,7 +749,7 @@ A binary relation _R_ ⊂ _S_ × _S_ is **left-total** if for all elements _s_ o
 * _R_ ⊂ _S_ × _S_ is **left-total** ≔ ∀ _s1_ ∈ _S_, ∃ _s2_ ∈ _S_ such that (_s1_,_s2_) ∈ _R_
     
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
 
@@ -756,7 +761,7 @@ A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
 ```
 *   For Bitcoin, the Cartesian product.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
 
@@ -764,7 +769,7 @@ A Kripke Structure is a tuple {_S_, _I_, _R_, ...} that models a state machine.
 *   _I_ ⊂ _S_ is the set of initial states.
 *   _R_ ⊂ _S_ × _S_ is a left-total transition relation.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models a state machine.
 
@@ -772,28 +777,28 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models a state machine
     *   This just means _L_ provides a way of talking about the states in _S_
     *   We talk about these states using **atomic propositions**
 
-# Atomic Propositions
+## Atomic Propositions
 
 *   Propositions are expressions in propositional, or zeroth order, logic.
 *   They are simply true or false.
 *   Atomic propositions are simplest possible form of these logic expressions.
 *   _L_ ⊂ _S_ → 2<sup>_AP_</sup>
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models transitions between over atomic propositions _AP_.
 
 *   _L_ is a **labeling function** over _S_, we denote this _L_ ⊂ _S_ → 2_AP_
     *   Given _AP_, _L_ tells us whether each is `true` or `false` (2 options) for every given state.
 
-# Model Checking
+## Model Checking
 
 A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models transitions and _AP_.
 
 *   For a traffic light, regard _AP_ as the bit encoding of the current state, with perhaps bits encoding "redness", "yellowness", and "greenness"
 *   These happen to be but are not required to be mutually exclusive. 
 
-# AP
+## AP
 
 * Or just take a "red" and "green" proposition.
 *   The easiest way to imagine this is with hexcodes
@@ -804,7 +809,7 @@ yellow = red + green
 ```
 * Regard a yellow light as a light that is both red and green (after all... it is)
     
-# Model Checking
+## Model Checking
 
 
 A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models transitions and _AP_.
@@ -866,13 +871,13 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_} that models transitions and
 
 -->
 
-# Diagrams
+## Diagrams
 
 Now that I've rigorously defined Kripke Structures, I am willing to tell you they are just diagrams.
 
 *   Clarke, Edmund & Grumberg, Orna & Jha, Somesh & Lu, Yuan & Veith, Helmut. (2003). Counterexample-guided abstraction refinement for symbolic model checking. J. ACM. 50. 752-794. 10.1145/876638.876643.
 
-# Diagrams
+## Diagrams
 
 
 ::::{columns}
@@ -896,7 +901,7 @@ Updated version: Ixfd64, CC BY 3.0 &lt;https://creativecommons.org/licenses/by/3
 
 ::::
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -934,7 +939,7 @@ digraph block_chain {
 ::::
 
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -979,7 +984,7 @@ digraph block_chain {
 
 
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -1029,7 +1034,7 @@ digraph block_chain {
 
 ::::
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -1082,7 +1087,7 @@ digraph block_chain {
 ::::
 
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -1133,7 +1138,7 @@ digraph block_chain {
 
 
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -1194,7 +1199,7 @@ digraph block_chain {
 
 
 
-# Traffic Light
+## Traffic Light
 
 ::::{columns}
 
@@ -1239,7 +1244,7 @@ digraph block_chain {
 
 ::::
 
-# Acceptance
+## Acceptance
 
 ::::{columns}
 
@@ -1285,7 +1290,7 @@ digraph block_chain {
 
 ::::
 
-# Acceptance
+## Acceptance
 
 ::::{columns}
 
@@ -1332,7 +1337,7 @@ digraph block_chain {
 ::::
 
 
-# Acceptance
+## Acceptance
 
 ::::{columns}
 
@@ -1379,7 +1384,7 @@ digraph block_chain {
 ::::
 
 
-# Rejection
+## Rejection
 
 ::::{columns}
 
@@ -1457,7 +1462,7 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_}
 
 -->
 
-# Limitations
+## Limitations
 
 - Better than enumeration, but...
     *   In text is too complex
@@ -1465,7 +1470,7 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_}
 - We will introduce a better way to write out relations, then look at our Kripke Structures.
 
 
-# TCP
+## TCP
 
 - Consider the "famous" TCP 3-way handshake.
 
@@ -1475,7 +1480,7 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_}
 
 
 
-# TCP
+## TCP
 
 ::::{columns}
 
@@ -1494,7 +1499,7 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_}
 
 ::::
 
-# TCP
+## TCP
 
 ::::{columns}
 
@@ -1514,7 +1519,7 @@ A Kripke Structure is a 4-tuple {_S_, _I_, _R_, _L_}
 
 ::::
 
-# TCP
+## TCP
 
 ::::{columns}
 
@@ -1581,7 +1586,7 @@ Consider:
 
 -->
     
-# TCP
+## TCP
 
 ::::{columns}
 
@@ -1602,7 +1607,7 @@ Consider:
 
 ::::
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -1613,7 +1618,9 @@ Consider:
     - Safety & Liveness
 - CIA Triad
 
-# neXt and Until
+# LTL
+
+## neXt and Until
 
 - It often suffices to define two temporal operators:
 
@@ -1627,7 +1634,7 @@ Consider:
 
 - Apply these over atomic propositions in _AP_ to describe security.
 
-# Composition
+## Composition
 
 With logical negation (not) and disjunction (or) we can generate other logical connectives.
 
@@ -1639,12 +1646,12 @@ With logical negation (not) and disjunction (or) we can generate other logical c
 | False | False | True  | False | True  | False         |
 
 
-# Next and Until
+## Next and Until
 
 
 <img src="https://cd-public.github.io/courses/old/secs24/slides/images/xu.png" style="filter:invert(.9)">
 
-# Derived Unary
+## Derived Unary
 
 | Name           | Written:         | Meaning                                                                    | Equivalencies                 |
 | :------------- | :------------ | :------------------------------------------------------------------------- | :---------------------------- |
@@ -1652,14 +1659,14 @@ With logical negation (not) and disjunction (or) we can generate other logical c
 | Future         | **F** _p_      | _p_ holds in some future time                                             | True **U** _p_              |
 | Global(ly)     | **G** _p_      | _p_ holds future times                                              | **¬**(True **U** **¬** _p_) |
 
-# Derived Binary
+## Derived Binary
 
 | Name           | Written:         | Meaning                                                                    | Equivalencies                 |
 | :------------- | :------------ | :------------------------------------------------------------------------- | :---------------------------- |
 | Until          | _p_ **U** _q_ | _p_ holds unless _q_, _q_ must hold eventually        | _p_ **U** _q_                |
 | Release        | _p_ **R** _q_ | _q_ holds up to and including when _p_ holds                               | **¬**(**¬** _p_ **U** **¬** _q_) |
 
-# Special Binary
+## Special Binary
 
 | Name           | Written:       | Meaning                                                                    | Equivalencies                 |
 | :------------- | :------------ | :------------------------------------------------------------------------- | :---------------------------- |
@@ -1667,7 +1674,7 @@ With logical negation (not) and disjunction (or) we can generate other logical c
 | Mighty release | _p_ **M** _q_ | _q_ holds up to and including when _p_ holds, and _p_ must hold eventually | _q_ **U** (_p_ **∨** _q_) |
 
 
-# Properties
+## Properties
 
 *   Some security properties are about bad things not happening:
     *   **G** $\neg$ _bad_
@@ -1676,7 +1683,7 @@ With logical negation (not) and disjunction (or) we can generate other logical c
     *   **F** _good_
     *   Term this "liveness"
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -1687,7 +1694,9 @@ With logical negation (not) and disjunction (or) we can generate other logical c
     - Safety & Liveness
 - CIA Triad
 
-# Aside
+# Automata
+
+## Aside
 
 - Büchi Automata are just "DFA" (deterministic finite automata) that aren't finite.
 - They accomplish this through an uninteresting hack.
@@ -1705,11 +1714,11 @@ Büchi Automata
 
 
 
-# Büchi Automata
+## Büchi Automata
 
 A deterministic Büchi Automaton either accepts or rejects infinite inputs (traces).
 
-# Büchi Automata
+## Büchi Automata
 
 A deterministic Büchi Automaton _A_ is a tuple {_Q_, ...} that accepts traces.
 
@@ -1820,9 +1829,9 @@ A deterministic Büchi Automaton _A_ is a tuple {_Q_, _Σ_, _δ_, _q0_, **F** } 
 -->
 
 
-# Finite Automata
+## Finite Automata
 
-## Definition
+##  Definition
 
 :::: {.columns}
 
@@ -1878,7 +1887,7 @@ digraph finite_automata {
 
 ::::
 
-## Process
+##  Process
 
 :::: {.columns}
 
@@ -1920,12 +1929,12 @@ digraph finite_automata {
 ::::
 
 
-## ''
+##  ''
 
 - The inital state is $q_1$.
 
 ```py
-[] # We'll use a Python list to represent the input.
+[] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -1961,12 +1970,12 @@ digraph finite_automata {
 ```
 
 
-## '0'
+##  '0'
 
 - Find label containing `0` out of $q_1$.
 
 ```py
-[0] # We'll use a Python list to represent the input.
+[0] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2001,12 +2010,12 @@ digraph finite_automata {
 }
 ```
 
-## '01'
+##  '01'
 
 - Find label containing `1` out of $q_1$.
 
 ```py
-[0, 1] # We'll use a Python list to represent the input.
+[0, 1] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2041,12 +2050,12 @@ digraph finite_automata {
 }
 ```
 
-## '011'
+##  '011'
 
 - Find label containing `1` out of $q_2$.
 
 ```py
-[0, 1, 1] # We'll use a Python list to represent the input.
+[0, 1, 1] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2081,12 +2090,12 @@ digraph finite_automata {
 }
 ```
 
-## '0110'
+##  '0110'
 
 - Find label containing `0` out of $q_3$.
 
 ```py
-[0, 1, 1, 0] # We'll use a Python list to represent the input.
+[0, 1, 1, 0] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2121,12 +2130,12 @@ digraph finite_automata {
 }
 ```
 
-## '01101'
+##  '01101'
 
 - Find label containing `1` out of $q_3$.
 
 ```py
-[0, 1, 1, 0, 1] # We'll use a Python list to represent the input.
+[0, 1, 1, 0, 1] ## We'll use a Python list to represent the input.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2161,12 +2170,12 @@ digraph finite_automata {
 }
 ```
 
-## '01101'
+##  '01101'
 
 - $M_1$ accepts `[0, 1, 1, 0, 1]` by ending in $q_3$
 
 ```py
-assert(M_1([0, 1, 1, 0, 1]) # M_1 as a function from bit strings to booleans.
+assert(M_1([0, 1, 1, 0, 1]) ## M_1 as a function from bit strings to booleans.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2201,12 +2210,12 @@ digraph finite_automata {
 }
 ```
 
-## Exercise
+##  Exercise
 
 - Does $M_1$ accept `[0, 0, 1, 0, 1]`?
 
 ```py
-[0, 0, 1, 0, 1] # M_1 as a function from bit strings to booleans.
+[0, 0, 1, 0, 1] ## M_1 as a function from bit strings to booleans.
 ```
 
 ```{dot filename="Finite Automata"}
@@ -2241,7 +2250,7 @@ digraph finite_automata {
 }
 ```
 
-## Terminology
+##  Terminology
 
 - We say that:
     -   $A$ is the *language* of $M_1$.
@@ -2255,13 +2264,13 @@ $$
 :::{.fragment}
 
 ```{.py}
-w = '01101' # for example
+w = '01101' ## for example
 assert('11' in w)
 ```
 
 :::
 
-## Formal Definition
+##  Formal Definition
 
 A finite automaton is formally defined as a 5-*tuple*:
 
@@ -2272,7 +2281,7 @@ A finite automaton is formally defined as a 5-*tuple*:
 - **$q_0$:** The initial state, where $q_0 \in Q$.
 - **$F$:** A set of accepting states (or final states), where $F \subset Q$.
 
-## Explanation:
+##  Explanation:
 
 * **States ($Q$):** Possible internal configurations - like computer memory.
 * **Alphabet ($\Sigma$):** Possible inputs - machine binary or computer I/O.
@@ -2280,7 +2289,7 @@ A finite automaton is formally defined as a 5-*tuple*:
 * **Initial State ($q_0$):** This is the state where the automaton begins its operation.
 * **Accepting States ($F$):** These determine if the FA outputs $0$ or $1$.
 
-## Our Example
+##  Our Example
 
 - $M_1 = (Q, \Sigma, \delta, q_1, \{q_3\})$
     - $Q = \{q_1, q_2, q_3\}$
@@ -2297,12 +2306,12 @@ A finite automaton is formally defined as a 5-*tuple*:
 
 :::
 
-## Python
+##  Python
 
 ```{.python}
-# define q_n as a convenience
+## define q_n as a convenience
 q_1, q_2, q_3 = "q_1", "q_2", "q_3"
-# define M_1
+## define M_1
 Q = {q_1, q_2, q_3}
 S = {0, 1}
 d = {
@@ -2313,7 +2322,7 @@ d = {
 M_1 = (Q,S,d,q_1,{q_3})
 ```
 
-## Strings/Languages
+##  Strings/Languages
 
 -   A *string* is a **sequence** of letters $\Sigma^n$
 -   A *language* is a set of *strings*.
@@ -2325,7 +2334,7 @@ We previously used the term "trace" the way DFAs use "string".
 *We note that the empty string is not in any way related to the empty language*
 :::
 
-## Acceptance
+##  Acceptance
 
 -   $M$ *accepts* string $w = w_1w_2\ldots w_n$ if:
 
@@ -2362,7 +2371,7 @@ $$
 
 :::
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -2375,6 +2384,8 @@ $$
 
 # Safety and Liveness
 
+## Safety and Liveness
+
 - [The Paper](https://www.cs.cornell.edu/fbs/publications/RecSafeLive.pdf)
 
 > A formal characterization for safety prop-
@@ -2383,7 +2394,7 @@ the structure of the Buchi automaton that specifies the property. The characteri
 erty to be decomposed into a safety property and
 a liveness property whose conjunction is the original.
 
-# Traffic Light
+## Traffic Light
   
 - Büchi traffic light (traffic lights don't have to stop someday, so not DFAs)
 
@@ -2425,7 +2436,7 @@ digraph block_chain {
 
 
 
-# Safety
+## Safety
 
 *   "Bad thing won't happen"
 *   If a Büchi Automata is a safety property...
@@ -2433,7 +2444,7 @@ digraph block_chain {
     *   Therefore, any failures result from "falling off" the diagram.
     *   Therefore, all states are accepting states (no failures based on ending).
 
-# Safety
+## Safety
   
 - The unsafe thing is "green to red"
 
@@ -2469,7 +2480,7 @@ digraph block_chain {
 }
 ```
 
-# Accepting States
+## Accepting States
 
 - These should, properly, be denoted with double circles (as they accept)
 
@@ -2505,7 +2516,7 @@ digraph block_chain {
 }
 ```
 
-# Closure
+## Closure
 
 - The **closure** of Büchi Automaton given by _A_ ≔ {_Q_, _Σ_, _δ_, _q0_, **F** } is _cl(A)_ ≔ {_Q_, _Σ_, _δ_, _q0_, _Q_ }.  
   
@@ -2513,13 +2524,13 @@ digraph block_chain {
 
 - That is, all circles are double circles.
 
-# Safety
+## Safety
 
 - A **safety property** is a property given by a Büchi Automaton _A_ ≔ {_Q_, _Σ_, _δ_, _q0_, **F** } such that all traces accepted by _A_ are also accepted by its _cl(A)_ ≔ {_Q_, _Σ_, _δ_, _q0_, _Q_ }.
 - We do not require that _Q_ = **F**, just that the accepted traces are the same.
 
 
-# Safety
+## Safety
 
 *   This means, we can develop safety properties from arrows (edges), or from _δ_
     *   Traffic lights must not allow $R$ immediately after $G$?
@@ -2527,7 +2538,7 @@ digraph block_chain {
     *   Have no defined outgoing edges labeled $R$
 *   Wait...
 
-# LTL
+## LTL
 
 *   That's just LTL
     * **G** **X** `red` $\implies \neg$ `green`
@@ -2536,7 +2547,7 @@ digraph block_chain {
     * Proof left as an exercise to the student.
     * Possibly the most interest proof of all time.
 
-# Liveness
+## Liveness
 
 *   "Good thing eventually" e.g. **F**_good_
 *   If a Büchi Automata is a liveness property...
@@ -2544,7 +2555,7 @@ digraph block_chain {
     *   Therefore, any failures result from not reaching accepting states.
     *   Therefore, all states should have outgoing edges covering all letters of the trace alphabet.
 
-# Liveness
+## Liveness
 
 - I'd argue a light must be green eventually.
 
@@ -2580,23 +2591,23 @@ digraph block_chain {
 }
 ```
 
-# Liveness
+## Liveness
 
 - The **closure** of Büchi Automaton given by _A_ ≔ {_Q_, _Σ_, _δ_, _q0_, **F** } is _cl(A)_ ≔ {_Q_, _Σ_, _δ_, _q0_, _Q_ }.  
   
 - That is, _cl(A)_ is equivalent to _A_ if the set of accepting states **F** is expanded to include all of the states of _A_
 
-# Liveness
+## Liveness
 
 A **liveness property** is a property given by a Büchi Automaton _A_ ≔ {_Q_, _Σ_, _δ_, _q0_, **F** } such that _cl(A)_ ≔ {_Q_, _Σ_, _δ_, _q0_, _Q_ } accepts all possible traces in _Σ_<sup>ω</sup>.
 
-# Liveness
+## Liveness
 
 *   This means, we can study liveness properties by adding a self-loop with negation of all other outgoing edges to each automaton state.
     *   This isn't great.
 *   It is more common to add a "trap state" which captures these transitions but does not accept.
 
-# Intersection
+## Intersection
 
 - We recall set theoretic intersection...
 $$
@@ -2609,17 +2620,17 @@ $$
 A **trace property** is a set of traces.
 :::
 
-# Claim
+## Claim
 
 > Given a Buchi automaton `m`, it is not difficult to construct Buchi automata `Safe(m)` and `Live(m)` such that `Safe(m)` specifies a safety property, `Live(m)` specifies a liveness property, and the property specified by `m` is the intersection of those specified by Safe(m) and Live(m).
 
-# Example
+## Example
 
 Consider the following Büchi automata over the alphabet of lower case letters:
 
 <img width="100%" src="https://upload.wikimedia.org/wikipedia/commons/5/56/Automate_de_Buchi2.jpg" style="filter:invert(.9)">
 
-# Example
+## Example
 
 - Safety means **G** _a_ **∨** _b_
     - Safe(m) = `{"a", "b", "aa", "ab", "ba", "bb", "aaa", "aab", ... }`
@@ -2627,48 +2638,48 @@ Consider the following Büchi automata over the alphabet of lower case letters:
     - Live(m) = `{"a", "aa", "ba", "ca", "da", "ea", "fa", "ga", ... }`
 - The intersection represents elements in both `Safe(m)` and `Live(m)`...
 
-# Safe()
+## Safe()
 
 - We recall the definition of safety.
 
 > `Safe(m)` excludes the "bad thing" for a Buchi automaton, which is attempting an undefined transition, because if such a "bad thing" happens at any point in the trace, the Buchi automaton will not accept that trace.
 
-# Safe()
+## Safe()
 
 - A core "nicety" of Büchi Automata is that **the safety property is the closure**.
 
 - `Safe(m)` = `cl(m)`  
   
-# Live()
+## Live()
 
 - We recall the definition of liveness.
 
 > `Live(m)` requires the "good thing" for a Buchi automaton, which is entering an accepting state infinitely often, because we require this "good thing" to happen for trace to be accepted.
 
-# Live()
+## Live()
 
 "Consider the following Büchi automata **over the alphabet of lower case letters**"
 
 <img width="100%" src="https://upload.wikimedia.org/wikipedia/commons/5/56/Automate_de_Buchi2.jpg" style="filter:invert(.9)">
 
-# Live()
+## Live()
 
 - While safety is mostly about **F**, the accepting states or the double circles, liveness is mostly about _Σ_ = `{a, b, ?}`, the alphabet or the possible states of the trace (NOT the states of the automata) that form the labels on arrows.
 
-# Live()
+## Live()
 
 - Define liveness relative to _Σ_. 
 - There most be no undefined transitions (that would be safety) 
 - So we require that any letter in _Σ_ has a defined transition at any point in time.
 
-# Learn more
+## Learn more
 
 - [DFAs](https://cd-public.github.io/compute/qmd/starfa.html#/title-slide)
 - [Büchi automaton](https://cd-public.github.io/courses/old/secs24/slides/slides/buchi.html)
 - [LTL](https://cd-public.github.io/courses/old/secs24/slides/slides/logics.html#/title-slide)
 - [Safety & Liveness](https://cd-public.github.io/courses/old/secs24/slides/slides/partition.html#/title-slide)
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -2678,49 +2689,51 @@ Consider the following Büchi automata over the alphabet of lower case letters:
 - &check; Safety & Liveness
 - CIA Triad
 
-# Quoth WUSTL
+# CIA Triad
+
+## Quoth WUSTL
 
 > [The CIA Triad—Confidentiality, Integrity, and Availability—is a guiding model in information security. A comprehensive information security strategy includes policies and security controls that minimize threats to these three crucial components.](https://informationsecurity.wustl.edu/guidance/confidentiality-integrity-and-availability-the-cia-triad/)
 
-# Confidentiality
+## Confidentiality
 
 > Confidentiality refers to protecting information from unauthorized access.
 
 - Quoth Prof. C: That's RSA, and it is safety.
 
-# Integrity
+## Integrity
 
 > Integrity means data are trustworthy, complete, and have not been accidentally altered or modified by an unauthorized user.
 
 - Quoth Prof. C: That's SHA, and it is safety.
 
-# Availability
+## Availability
 
 > Availability means data are accessible when you need them.
 
 - Quoth Prof. C: That's liveness.
 
-# Extended Pillars
+## Extended Pillars
 
 - Modern infosec often includes two more:
     - Authenticity
     - Non-repudiation
 - No great sources on this, think it's mostly people selling certs like [destcert](https://destcert.com/resources/five-pillars-information-security/#:~:text=7%20min.&text=Information%20security%20hinges%20on%20a,world%20challenges%20in%20the%20field.)
 
-# Authenticity
+## Authenticity
 
 > Authenticity is the property that an entity is what it claims to be. 
 
 - That's digital signatures, a combination of C and I
 
-# Non-repudiation
+## Non-repudiation
 
 > Non-repudiation is defined as the ability to prove the occurrence of a claimed event or action and its originating entities.
 
 - That's proof-of-work + authenticity.
 
 
-# Today
+## Today
 
 - &check; Threat and Threat Models
 - &check; (Trace) Properties
@@ -2730,7 +2743,7 @@ Consider the following Büchi automata over the alphabet of lower case letters:
 - &check; Safety & Liveness
 - &check; CIA Triad
 
-# Final Thoughts
+## Final Thoughts
 
 - We learned this term
     - Pointers/Mem Safety + Recursion
@@ -2740,4 +2753,3 @@ Consider the following Büchi automata over the alphabet of lower case letters:
     - Cryptography (RSA, SHA)
     - Number, Set, Graph, Automata Theory
     - Cybersecurity (Threat Models, CIA+)
-

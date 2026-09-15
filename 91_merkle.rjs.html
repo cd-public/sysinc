@@ -390,14 +390,14 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Merkle</h1>
-  <p class="subtitle">Week 0x4.4</p>
+  <p class="subtitle">wCd?</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
 <li><strong>Welcome</strong> to Computing Security
 <ul>
@@ -413,9 +413,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Trees, ish
 <ul>
@@ -425,14 +424,11 @@
 <li>Aside: Tx’s</li>
 </ul>
 </section>
-
-<section id="trees" class="title-slide slide level1 center">
-<h1>Trees</h1>
-
+<section id="trees" class="slide level2">
+<h2>Trees</h2>
 </section>
-
-<section id="n-ary-trees" class="title-slide slide level1 center">
-<h1><span class="math inline">\(n\)</span>-ary Trees</h1>
+<section id="n-ary-trees" class="slide level2">
+<h2><span class="math inline">\(n\)</span>-ary Trees</h2>
 <ul>
 <li>A tree is a type of graph.</li>
 <li>A graph is a pair of
@@ -445,9 +441,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="blockchain" class="title-slide slide level1 center">
-<h1>Blockchain</h1>
+<section id="blockchain" class="slide level2">
+<h2>Blockchain</h2>
 <ul>
 <li>Blockchain is a 1-ary tree
 <ul>
@@ -531,9 +526,8 @@
 </div>
 </div>
 </section>
-
-<section id="list_t" class="title-slide slide level1 center">
-<h1><code>list_t</code></h1>
+<section id="list_t" class="slide level2">
+<h2><code>list_t</code></h2>
 <ul>
 <li>A <code>list_t</code> is a 1-ary tree</li>
 </ul>
@@ -589,9 +583,8 @@
 </div>
 </div>
 </section>
-
-<section id="mocha-2-tree" class="title-slide slide level1 center">
-<h1>mocha 2-tree</h1>
+<section id="mocha-2-tree" class="slide level2">
+<h2>mocha 2-tree</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -692,9 +685,8 @@
 </div>
 </div>
 </section>
-
-<section id="common-case" class="title-slide slide level1 center">
-<h1>Common Case</h1>
+<section id="common-case" class="slide level2">
+<h2>Common Case</h2>
 <ul>
 <li>Usually in computing, I use trees to store “stuff”
 <ul>
@@ -704,9 +696,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="our-case" class="title-slide slide level1 center">
-<h1>Our Case</h1>
+<section id="our-case" class="slide level2">
+<h2>Our Case</h2>
 <ul>
 <li>We will store <em>digests</em> in nodes and transactions in leavefes.
 <ul>
@@ -715,9 +706,8 @@
 <li>Leaves a transaction “record”</li>
 </ul>
 </section>
-
-<section id="transaction-review" class="title-slide slide level1 center">
-<h1>Transaction review</h1>
+<section id="transaction-review" class="slide level2">
+<h2>Transaction review</h2>
 <ul>
 <li>Recall:
 <ul>
@@ -727,9 +717,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="transaction-review-1" class="title-slide slide level1 center">
-<h1>Transaction review</h1>
+<section id="transaction-review-1" class="slide level2">
+<h2>Transaction review</h2>
 <ul>
 <li>Recall:
 <ul>
@@ -743,9 +732,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="transaction" class="title-slide slide level1 center">
-<h1>Transaction</h1>
+<section id="transaction" class="slide level2">
+<h2>Transaction</h2>
 <ul>
 <li>Something like this:</li>
 </ul>
@@ -764,9 +752,8 @@
 <span id="cb1-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="in-practice" class="title-slide slide level1 center">
-<h1>In Practice</h1>
+<section id="in-practice" class="slide level2">
+<h2>In Practice</h2>
 <ul>
 <li><code>64 + 64 + 1 == 129</code></li>
 <li>Can’t RSA things bigger than <span class="math inline">\(n\)</span>, so must RSA in chunks</li>
@@ -784,9 +771,8 @@
 <span id="cb2-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="so-basically" class="title-slide slide level1 center">
-<h1>So basically</h1>
+<section id="so-basically" class="slide level2">
+<h2>So basically</h2>
 <ul>
 <li>Make a <code>tx_struct</code></li>
 <li>Cast it to a <code>uint64_t</code> array
@@ -798,9 +784,8 @@
 <li>Prefix with public key.</li>
 </ul>
 </section>
-
-<section id="how-do-ensure" class="title-slide slide level1 center">
-<h1>How do ensure?</h1>
+<section id="how-do-ensure" class="slide level2">
+<h2>How do ensure?</h2>
 <ul>
 <li>We want to have confidence in these transactions.</li>
 <li>Easy - hash them, and save the hashes.</li>
@@ -808,9 +793,8 @@
 <li>And it is unreasonable to store potentially thousands of hashes in each block!</li>
 </ul>
 </section>
-
-<section id="hash-tree" class="title-slide slide level1 center">
-<h1>Hash tree</h1>
+<section id="hash-tree" class="slide level2">
+<h2>Hash tree</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -953,9 +937,8 @@
 </div>
 </div>
 </section>
-
-<section id="in-practice-1" class="title-slide slide level1 center">
-<h1>In practice</h1>
+<section id="in-practice-1" class="slide level2">
+<h2>In practice</h2>
 <ol type="1">
 <li>Place on transaction in linear data structure, like a stack or array list</li>
 <li>Hash each transaction, store the results (!!! non-trivial)</li>
@@ -963,17 +946,15 @@
 <li>Repeat until there is a single hash, the “Merkle root”</li>
 </ol>
 </section>
-
-<section id="tree-terms" class="title-slide slide level1 center">
-<h1>Tree Terms</h1>
+<section id="tree-terms" class="slide level2">
+<h2>Tree Terms</h2>
 <ul>
 <li><p><a href="https://xlinux.nist.gov/dads/HTML/completetree.html">Complete</a></p></li>
 <li><p><strong>Definition</strong>: A tree in which every level, except possibly the deepest, is entirely filled. At depth n, the height of the tree, all nodes are as far left as possible.</p></li>
 </ul>
 </section>
-
-<section id="tree-terms-1" class="title-slide slide level1 center">
-<h1>Tree Terms</h1>
+<section id="tree-terms-1" class="slide level2">
+<h2>Tree Terms</h2>
 <ul>
 <li><p><a href="https://xlinux.nist.gov/dads/HTML/completetree.html">Perfect</a></p></li>
 <li><p><strong>Definition</strong>: A k-ary tree with all leaf nodes at same depth. All internal nodes have degree k.</p></li>
@@ -981,9 +962,8 @@
 <li><p>I take CLR as ground truth (more often 2nd+ edition as “CLRS”)</p></li>
 </ul>
 </section>
-
-<section id="complete" class="title-slide slide level1 center">
-<h1>Complete</h1>
+<section id="complete" class="slide level2">
+<h2>Complete</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1078,9 +1058,8 @@
 </div>
 </div>
 </section>
-
-<section id="complete-1" class="title-slide slide level1 center">
-<h1>Complete</h1>
+<section id="complete-1" class="slide level2">
+<h2>Complete</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1163,9 +1142,8 @@
 </div>
 </div>
 </section>
-
-<section id="complete-2" class="title-slide slide level1 center">
-<h1>Complete</h1>
+<section id="complete-2" class="slide level2">
+<h2>Complete</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1272,9 +1250,8 @@
 </div>
 </div>
 </section>
-
-<section id="incomplete" class="title-slide slide level1 center">
-<h1>Incomplete</h1>
+<section id="incomplete" class="slide level2">
+<h2>Incomplete</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1357,17 +1334,15 @@
 </div>
 </div>
 </section>
-
-<section id="takeaway" class="title-slide slide level1 center">
-<h1>Takeaway</h1>
+<section id="takeaway" class="slide level2">
+<h2>Takeaway</h2>
 <ul>
 <li>In a complete tree, we can always place all leafves in a linear data structure, like an array.</li>
 <li>In a complete binary (2-ary) tree, there will be (roughly) the same number of non-leaf and leaf nodes</li>
 </ul>
 </section>
-
-<section id="naive" class="title-slide slide level1 center">
-<h1>Naive</h1>
+<section id="naive" class="slide level2">
+<h2>Naive</h2>
 <ul>
 <li>We may be tempted to do this</li>
 </ul>
@@ -1383,9 +1358,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Trees, ish
 <ul>
@@ -1395,35 +1369,28 @@
 <li>✓ Aside: Tx’s</li>
 </ul>
 </section>
-
-<section id="heap" class="title-slide slide level1 center">
-<h1>Heap</h1>
-
+<section id="heap" class="slide level2">
+<h2>Heap</h2>
 </section>
-
-<section id="heaps" class="title-slide slide level1 center">
-<h1>Heaps</h1>
+<section id="heaps" class="slide level2">
+<h2>Heaps</h2>
 <ul>
 <li>To motivate our technique for Merkle trees, we are going to make a digression to the heap abstract data type, also called a priority queue.</li>
 <li>Vs. other graph representations, heaps can be implemented by store nodes <em>only</em> and deriving edges from a e.g.&nbsp;node’s index in an array.</li>
 </ul>
 </section>
-
-<section id="why-priority" class="title-slide slide level1 center">
-<h1>Why “Priority”</h1>
+<section id="why-priority" class="slide level2">
+<h2>Why “Priority”</h2>
 <ul>
 <li>A heap is a nonlinear (but linearizable<em>) data structure which </em>sorts* data… kinda.</li>
 <li>A heap always has some minimal or maximal value, within the the collection, in its initial position, or root.</li>
 </ul>
 </section>
-
-<section id="make-one" class="title-slide slide level1 center">
-<h1>Make one</h1>
-
+<section id="make-one" class="slide level2">
+<h2>Make one</h2>
 </section>
-
-<section id="empty-heap" class="title-slide slide level1 center">
-<h1>Empty Heap</h1>
+<section id="empty-heap" class="slide level2">
+<h2>Empty Heap</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1436,9 +1403,8 @@
 </ul>
 </div></div>
 </section>
-
-<section id="initial-value" class="title-slide slide level1 center">
-<h1>Initial Value</h1>
+<section id="initial-value" class="slide level2">
+<h2>Initial Value</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1469,9 +1435,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-64" class="title-slide slide level1 center">
-<h1>Insert 64</h1>
+<section id="insert-64" class="slide level2">
+<h2>Insert 64</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1513,9 +1478,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-64-1" class="title-slide slide level1 center">
-<h1>Insert 64</h1>
+<section id="insert-64-1" class="slide level2">
+<h2>Insert 64</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1562,9 +1526,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-192" class="title-slide slide level1 center">
-<h1>Insert 192</h1>
+<section id="insert-192" class="slide level2">
+<h2>Insert 192</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1618,9 +1581,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-192-1" class="title-slide slide level1 center">
-<h1>Insert 192</h1>
+<section id="insert-192-1" class="slide level2">
+<h2>Insert 192</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1675,9 +1637,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1737,9 +1698,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-96" class="title-slide slide level1 center">
-<h1>Insert 96</h1>
+<section id="insert-96" class="slide level2">
+<h2>Insert 96</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1805,9 +1765,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-96-1" class="title-slide slide level1 center">
-<h1>Insert 96</h1>
+<section id="insert-96-1" class="slide level2">
+<h2>Insert 96</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1873,9 +1832,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-1" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-1" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1942,9 +1900,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="aside-structs" class="title-slide slide level1 center">
-<h1>Aside: Structs</h1>
+<section id="aside-structs" class="slide level2">
+<h2>Aside: Structs</h2>
 <ul>
 <li>It is possible to implement a heap like so:</li>
 </ul>
@@ -1958,9 +1915,8 @@
 <li>An overhead of of <code>(136-8)/8 = 16</code>x (or worse as 8 bits will take a 64 bit “slot”)</li>
 </ul>
 </section>
-
-<section id="aside-arrays" class="title-slide slide level1 center">
-<h1>Aside: Arrays</h1>
+<section id="aside-arrays" class="slide level2">
+<h2>Aside: Arrays</h2>
 <ul>
 <li>Instead, realize we always Insert new elements to the… next available position.</li>
 <li>This is a stack push, usually implement on top of a list or array.</li>
@@ -1970,9 +1926,8 @@
 <li>Overhead of zero.</li>
 </ul>
 </section>
-
-<section id="use-arrays" class="title-slide slide level1 center">
-<h1>Use arrays</h1>
+<section id="use-arrays" class="slide level2">
+<h2>Use arrays</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2068,9 +2023,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-160" class="title-slide slide level1 center">
-<h1>Insert 160</h1>
+<section id="insert-160" class="slide level2">
+<h2>Insert 160</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2179,9 +2133,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-160-1" class="title-slide slide level1 center">
-<h1>Insert 160</h1>
+<section id="insert-160-1" class="slide level2">
+<h2>Insert 160</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2291,9 +2244,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-2" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-2" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2409,9 +2361,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="on-indices" class="title-slide slide level1 center">
-<h1>On Indices</h1>
+<section id="on-indices" class="slide level2">
+<h2>On Indices</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2460,9 +2411,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="on-indices-1" class="title-slide slide level1 center">
-<h1>On Indices</h1>
+<section id="on-indices-1" class="slide level2">
+<h2>On Indices</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2513,9 +2463,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="index" class="title-slide slide level1 center">
-<h1>1-Index</h1>
+<section id="index" class="slide level2">
+<h2>1-Index</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -2568,9 +2517,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-224" class="title-slide slide level1 center">
-<h1>Insert 224</h1>
+<section id="insert-224" class="slide level2">
+<h2>Insert 224</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2622,9 +2570,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="insert-224-1" class="title-slide slide level1 center">
-<h1>Insert 224</h1>
+<section id="insert-224-1" class="slide level2">
+<h2>Insert 224</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2677,9 +2624,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-3" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-3" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2739,9 +2685,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-4" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-4" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2802,9 +2747,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-5" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-5" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2866,9 +2810,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapify-6" class="title-slide slide level1 center">
-<h1>Heapify</h1>
+<section id="heapify-6" class="slide level2">
+<h2>Heapify</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2930,9 +2873,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapified" class="title-slide slide level1 center">
-<h1>Heapified</h1>
+<section id="heapified" class="slide level2">
+<h2>Heapified</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -2989,9 +2931,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="heapified-1" class="title-slide slide level1 center">
-<h1>Heapified</h1>
+<section id="heapified-1" class="slide level2">
+<h2>Heapified</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <div class="cell" data-fig-width="400px" data-layout-align="default">
@@ -3133,9 +3074,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="today-2" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Trees, ish
 <ul>
@@ -3145,18 +3085,16 @@
 <li>✓ Aside: Tx’s</li>
 </ul>
 </section>
-
-<section id="merkle" class="title-slide slide level1 center">
-<h1>Merkle</h1>
+<section id="merkle" class="slide level2">
+<h2>Merkle</h2>
 <ul>
 <li>To create a Merkle tree, all non-leaf nodes are hashes and all leaf nodes are what the data type is.</li>
 <li>Store the data type in array of length <span class="math inline">\(n\)</span></li>
 <li>The tree requires <span class="math inline">\(n-1\)</span> non-leaf nodes</li>
 </ul>
 </section>
-
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -3229,9 +3167,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="example-1" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -3304,9 +3241,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="example-2" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>Fill out the tree to get up to the 4-row.</li>
 </ul>
@@ -3462,9 +3398,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="example-3" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>Add additional leaves until there’s enough…</li>
 </ul>
@@ -3642,9 +3577,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="example-4" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>More…</li>
 </ul>
@@ -3844,9 +3778,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="example-5" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-5" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -4061,9 +3994,8 @@
 </div>
 </div></div>
 </section>
-
-<section id="hash-txs" class="title-slide slide level1 center">
-<h1>Hash Tx’s</h1>
+<section id="hash-txs" class="slide level2">
+<h2>Hash Tx’s</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -4277,9 +4209,8 @@
 </div>
 </div>
 </section>
-
-<section id="hash-hashes" class="title-slide slide level1 center">
-<h1>Hash Hashes</h1>
+<section id="hash-hashes" class="slide level2">
+<h2>Hash Hashes</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -4520,9 +4451,8 @@
 </div>
 </div>
 </section>
-
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="cell" data-fig-width="1000px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -4781,9 +4711,8 @@
 </div>
 </div>
 </section>
-
-<section id="today-3" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-3" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Trees, ish
 <ul>
@@ -4793,9 +4722,8 @@
 <li>✓ Aside: Tx’s</li>
 </ul>
 </section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <div class="cell" data-fig-width="1000px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -4996,9 +4924,8 @@
 </div>
 </div>
 </section>
-
-<section id="section-2" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>tx.h</strong></pre>

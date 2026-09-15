@@ -1,25 +1,16 @@
 ---
 title: Mounts
-subtitle: "Week 0x8 I"
-
-execute:
-    echo: true
-    cache: true
-    freeze: true  # never re-render during project render
-    code-fold: false
+subtitle: "w8d0"
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to variously CS 276/CS 540
+- **Welcome** to "Systems in C"
   - Back to containers.
   - Week off from C
   - Two lectures with exercises
-- **Action Items**:
-  - Basedterm ✔️
-  - BigRSA due 31 Mar
   
-# Today
+## Today
 
 - The file system
 - Linux and even... WINDOWS development????
@@ -27,24 +18,26 @@ execute:
 - Symbolic Linkages
 - Containers but good
 
-# Motivation
+# Backstory
+
+## Motivation
 
 ![](imgs/teams_email.png)
 
-# Motivation
+## Motivation
 
 ![](imgs/gpt_teams.png)
 
-# Motivation
+## Motivation
 
 ![](imgs/gpt_teams_full.png)
 
-# In brief
+## In brief
 
 - I am often on a Linux partition when a non-technical PM attempts to reach me through MS Suite
     - I can run MS Suite on Linux which, uh, defeats to purpose of being on Linux
 
-# In brief
+## In brief
 
 - I am often on a Windows partition when I get questions like:
     - Can I fix this compatibility issue with whitespace line termination?
@@ -52,20 +45,22 @@ execute:
     - Can you take a quick `md5sum` of this file?
 - Often I just need to run a quick script or executable on files in a Windows file system using Linux syscalls.
 
-# Separate Problem
+## Separate Problem
 
 1. `vim mywork.c`
-2. `podman build -t tester .` # COPY mywork.c
+2. `podman build -t tester .` ## COPY mywork.c
 4. `podman run tester python3 tester.py`
 5. I get negative one billion points
 6. `vim mywork.c`
 7. `podman run tester python3 tester.py`  still gives negative on billion because the file systems are desynced.
 
-# Bind Mounts
+# Mounts
+
+## Bind Mounts
 
 > [When you use a bind mount, a file or directory on the host machine is mounted from the host into a container. By contrast, when you use a volume, a new directory is created within Docker's storage directory on the host machine, and Docker manages that directory's contents.](https://docs.docker.com/engine/storage/bind-mounts/)
 
-# Let's step through the process
+## Let's step through the process
 
 - I make a container image that I'm relatively happy with.
     - Save this in a containerfile
@@ -73,7 +68,7 @@ execute:
     - Or... push to GHCR? Hmmm?
         - Soon™️
 
-# Container image 
+## Container image 
 
 - I rarely use utilities other than these few.
 ```{.email filename="Containerfile"}
@@ -82,7 +77,7 @@ FROM ubuntu
 RUN apt update && apt install gcc vim python3 astyle -y
 ```
 
-# Astyle
+## Astyle
 
 - `astyle` might be new to you
 - It completely rules
@@ -91,7 +86,7 @@ RUN apt update && apt install gcc vim python3 astyle -y
 - For the Rust class
 - Also `coc` usually via `npm` and (gags) *neovim*
 
-# Sample
+## Sample
 
 ```{.email}
 $ cat octal.c
@@ -112,7 +107,7 @@ $ ./a.out
 12
 ```
 
-# Hightlight
+## Hightlight
 
 - `vim octal.c`
 
@@ -133,14 +128,14 @@ int main() {
 
 - Learn more `astyle -h` (I've never read it).
 
-# Style Guides
+## Style Guides
 
 - The people that taught me C wrote [this](https://uchicago-cs.github.io/student-resource-guide/style-guide/c.html)
 - The iconic living legend Linux kernel hackers, who are never wrong, wrote [this](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
 - I'm not up-to-date on Google C but Google C++ is [here](https://google.github.io/styleguide/cppguide.html)
     - Our "header" instruction is from their ["The #define Guard"](https://google.github.io/styleguide/cppguide.html#The__define_Guard) heading.
 
-# Anyways
+## Anyways
 
 - To my knowledge this is all I've used this term outside of one-offs for testing.
 
@@ -153,14 +148,14 @@ astyle
 
 - Though can probably manage `gcc` only after today.
 
-# Let's step through the process
+## Let's step through the process
 
 - I make a container image that I'm relatively happy with.
     - `vim Containerfile`
-    - `podman build -t crypto .`
+    - `podman build -t sysinc .`
 - Now, just spin up a transient container when I need anything.
 
-# Run options
+## Run options
 
 - Two competing idealogues
     - I am on `docker` documentation not podman
@@ -174,7 +169,7 @@ docker run --mount type=bind,src=<host-path>,dst=<container-path>
 docker run --volume <host-path>:<container-path>
 ```
 
-# Quote Docker
+## Quote Docker
 
 > [In general, `--mount` is preferred. The main difference is that the `--mount` flag is more explicit and supports all the available options.](https://docs.docker.com/engine/storage/bind-mounts/)
 
@@ -183,15 +178,15 @@ docker run --volume <host-path>:<container-path>
     - We don't trust code other people wrote.
     - Or code we wrote.
 
-# Sample
+## Sample
 
-- [https://github.com/cd-c89/crypto/blob/main/podman/podman.sh](https://github.com/cd-c89/crypto/blob/main/podman/podman.sh)
+- [https://github.com/cd-c89/sysinc/blob/main/podman/podman.sh](https://github.com/cd-c89/sysinc/blob/main/podman/podman.sh)
 
 ```{.email}
-podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t sysinc /bin/bash
 ```
 
-# Breakdown
+## Breakdown
 
 |Arg | Meaning|
 |----| ---|
@@ -199,7 +194,7 @@ podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
 |run| start a container from some image |
 | --mount | let container see files that live outside container |
 
-# Breakdown
+## Breakdown
 
 |Arg | Meaning|
 |----| ---|
@@ -207,7 +202,7 @@ podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
 | src= | This is the folder on the host |
 | $PWD/.. | This is the file above the current working directory |
 
-# Try it
+## Try it
 
 - `$PWD` is a shell built-in like `$?`
 
@@ -227,16 +222,16 @@ $ ls ..
 user
 ```
 
-# Sample
+## Sample
 
 - Make the `..` directory on host be visible to container.
 
 ```{.email}
-podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t sysinc /bin/bash
 ```
 
 
-# Breakdown
+## Breakdown
 
 |Arg | Meaning|
 |----| ---|
@@ -248,39 +243,41 @@ podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
     - On Linux everything is easy (always)
 
 
-# Breakdown
+## Breakdown
 
 |Arg | Meaning|
 |----| ---|
 | -t | What should the name (tag) be of Container image? |
-| crypto | The tag I used during `podman build` |
+| sysinc | The tag I used during `podman build` |
 | /bin/bash | The executable to run within the container |
 
 
-# Sample
+## Sample
 
 ```{.email}
-podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t sysinc /bin/bash
 ```
 
 1. Start a shell
 2. In a container of the image based on the Containerfile
 3. Where `/mnt` refers to files on the host machine
 
-# See it
+## See it
 
 ```{.email}
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ /bin/bash podman.sh
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc/podman$ /bin/bash podman.sh
 c25d7d0db5d60efca7c1140dd9b8217a27e511caa4f5a5fdf2fc21e90ad45f17
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ ls ..
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc/podman$ ls ..
 4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ podman exec -it c2 /bin/bash
-root@c25d7d0db5d6:/# ls /mnt
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc/podman$ podman exec -it c2 /bin/bash
+root@c25d7d0db5d6:/## ls /mnt
 4096_t  README.md  enigma  macros  ops_ui  podman  rsainc  shainc
 root@c25d7d0db5d6:/#
 ```
 
-# More fun
+# Execution
+
+## More fun
 
 - I have `gcc` inside that container.
 - I can *compile* inside that container.
@@ -299,19 +296,19 @@ int main() {
 #
 
 ```{.email}
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto/podman$ cd ..
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc/podman$ cd ..
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ podman ps
 CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES
-c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ vim hi.c
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ cat hi.c
+c25d7d0db5d6  localhost/sysinc:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ vim hi.c
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ cat hi.c
 #include <stdio.h>
 
 int main() {
         printf("hi\n");
         return 0;
 }
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 cat /mnt/hi.c
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ podman exec -it c2 cat /mnt/hi.c
 #include <stdio.h>
 
 int main() {
@@ -320,47 +317,49 @@ int main() {
 }
 ```
 
-# Compile
+## Compile
 
 - I can compile within the Container
     - Just use `exec` (run command)
     - With `gcc`
     - With `/mnt` files
 ```{.email}
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman ps
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ podman ps
 CONTAINER ID  IMAGE                    COMMAND     CREATED        STATUS            PORTS       NAMES
-c25d7d0db5d6  localhost/crypto:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley
+c25d7d0db5d6  localhost/sysinc:latest  /bin/bash   7 minutes ago  Up 7 minutes ago              determined_shockley
 podman exec -it c2 gcc /mnt/hi.c -o /mnt/hi.out
 ```
 
-# Run it
+## Run it
 
 - Can run on the host device.
     - Well, making some pretty heavy assumptions.
     - This was ubuntu-to-ubuntu, after all
 ```{.email}
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ ./hi.out
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ ./hi.out
 hi
 ```
 - Can run in the container
 ```{.email}
-user@DESKTOP-THMS2PJ:~/dev/crypto/repos/crypto$ podman exec -it c2 ./mnt/hi.out
+user@DESKTOP-THMS2PJ:~/dev/sysinc/repos/sysinc$ podman exec -it c2 ./mnt/hi.out
 hi
 ```
 
-# Ubuntu on Windows
+# Windows
+
+## Ubuntu on Windows
 
 - An astute learning will notice this means *it no longer matters which OS your text editor runs under*
 - And here, in this class, we all love MS Windows.
 
-# It's Popular
+## It's Popular
 
   <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/4031_RC01/embed_loader.js"></script>
   <script type="text/javascript">
     trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"windows","geo":"US","time":"2004-01-01 2025-03-13"},{"keyword":"linux","geo":"US","time":"2004-01-01 2025-03-13"}],"category":0,"property":""}, {"exploreQuery":"date=all&geo=US&q=window,linux&hl=en","guestPath":"https://trends.google.com:443/trends/embed/"});
   </script>
 
-# Windows Commands
+## Windows Commands
 
 - Windows has two command lines.
     - Don't blame me I voted for Free and Open Source Software (FOSS)
@@ -368,27 +367,27 @@ hi
 1. `cmd.exe` from DOS, which runs .bat files
 2. PowerShell, for .NET, which runs .ps1 files
 
-# Why two shells?
+## Why two shells?
 
 - How does Windows work (pick one):
     - It doesn't.
     - I don't know.
 
-# Scripts
+## Scripts
 
 - For reference, here is my `.sh` script to mount folders:
 
 ```{.email filename="podman.sh"}
-podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=$PWD/..,target=/mnt -d -t sysinc /bin/bash
 ```
 
 - Here is how I run the same under the "Command" shell cmd.exe
 
 ```{.email filename="windows.bat"}
-podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t sysinc /bin/bash
 ```
 
-# One difference
+## One difference
 
 - `podman` commands are the same on all OSes
 - All commands within the container are the same, as the container is the same
@@ -397,15 +396,15 @@ podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash
         - Paths are backslash vs. forward slash delineated
         - `%cd% not `$PWD` gives the current directory.
 ```{.email filename="windows.bat"}
-podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t crypto /bin/bash
+podman run --mount type=bind,src=%cd%\..,target=/mnt -d -t sysinc /bin/bash
 ```
 
-# Windows Image
+## Windows Image
 
 - Presumably I can refer to `wsl` images from the Windows host, I didn't try.
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto\podman>podman machine start
+C:\Users\cd-desk\Documents\dev\sysinc\podman>podman machine start
 Starting machine "podman-machine-default"
 API forwarding for Docker API clients is not available due to the following startup failures.
         could not start api proxy since expected pipe is not available: podman-machine-default
@@ -413,28 +412,28 @@ API forwarding for Docker API clients is not available due to the following star
 Podman clients are still able to connect.
 Machine "podman-machine-default" started successfully
 
-C:\Users\cd-desk\Documents\dev\crypto\podman>podman build -t crypto .
+C:\Users\cd-desk\Documents\dev\sysinc\podman>podman build -t sysinc .
 ```
 
-# Launch Container
+## Launch Container
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto\podman>.\window.bat
+C:\Users\cd-desk\Documents\dev\sysinc\podman>.\window.bat
 
-C:\Users\cd-desk\Documents\dev\crypto\podman>podman run --mount type=bind,src=C:\Users\cd-desk\Documents\dev\crypto\podman\..,target=/mnt -d -t crypto /bin/bash
+C:\Users\cd-desk\Documents\dev\sysinc\podman>podman run --mount type=bind,src=C:\Users\cd-desk\Documents\dev\sysinc\podman\..,target=/mnt -d -t sysinc /bin/bash
 9a1b0fb2a8f87d3639149ee41fb2dcb822f5a7cbd971a39cdc77150a79774765
 
-C:\Users\cd-desk\Documents\dev\crypto\podman>
+C:\Users\cd-desk\Documents\dev\sysinc\podman>
 ```
 
-# vim
+## vim
 
 - I of course *also* have `vim` installed on Windows, but I don't know when I did that or how.
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto>vim hi.c
+C:\Users\cd-desk\Documents\dev\sysinc>vim hi.c
 
-C:\Users\cd-desk\Documents\dev\crypto>type hi.c
+C:\Users\cd-desk\Documents\dev\sysinc>type hi.c
 #include <stdio.h>
 
 int main() {
@@ -442,49 +441,49 @@ int main() {
         return 0;
 }
 
-C:\Users\cd-desk\Documents\dev\crypto>
+C:\Users\cd-desk\Documents\dev\sysinc>
 ```
 
-# Compile
+## Compile
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto>podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out
+C:\Users\cd-desk\Documents\dev\sysinc>podman exec -it 9a gcc /mnt/hi.c -o /mnt/hi.out
 
-C:\Users\cd-desk\Documents\dev\crypto>dir hi.out
+C:\Users\cd-desk\Documents\dev\sysinc>dir hi.out
  Volume in drive C has no label.
  Volume Serial Number is 5CEC-43F9
 
- Directory of C:\Users\cd-desk\Documents\dev\crypto
+ Directory of C:\Users\cd-desk\Documents\dev\sysinc
 
 03/12/2025  05:33 PM            15,960 hi.out
                1 File(s)         15,960 bytes
                0 Dir(s)  99,378,515,968 bytes free
 
-C:\Users\cd-desk\Documents\dev\crypto>
+C:\Users\cd-desk\Documents\dev\sysinc>
 ```
 
-# Run
+## Run
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto>podman exec -it 9a ./mnt/hi.out
+C:\Users\cd-desk\Documents\dev\sysinc>podman exec -it 9a ./mnt/hi.out
 i wrote this on windows lol meow
 
-C:\Users\cd-desk\Documents\dev\crypto>
+C:\Users\cd-desk\Documents\dev\sysinc>
 ```
 
 - Windows Development: It's easy.
 
-# It's not
+## It's not
 
 - Windows opened a window asking me what to do when I tried to run this.
 
 ```{.email}
-C:\Users\cd-desk\Documents\dev\crypto>.\hi.out
+C:\Users\cd-desk\Documents\dev\sysinc>.\hi.out
 
-C:\Users\cd-desk\Documents\dev\crypto>
+C:\Users\cd-desk\Documents\dev\sysinc>
 ```
 
-# Exercise
+## Exercise
 
 - Windows users:
     - Get this to run in PowerShell
@@ -493,11 +492,4 @@ C:\Users\cd-desk\Documents\dev\crypto>
 - Linux users:
     - Develop a "portable" binary that works across distributions.
 
-# Announcements
-
-- **Welcome** to variously CS 276/CS 540
-  - Back to containers.
-  - Week off from C
-  - Two lectures with exercises
-- **Action Items**:
-  - BigRSA due 31 Mar
+# Fin

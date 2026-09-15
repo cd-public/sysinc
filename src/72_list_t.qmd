@@ -1,8 +1,7 @@
 ---
 title: list_t
-subtitle: "HW 0x4.0: Due Fri, 08 Aug"
-
-format:  html
+subtitle: "Due Thu, 19 Nov"
+format: html
 ---
 
 # Review&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#review" role="button" aria-expanded="false" aria-controls="review">Show</a>

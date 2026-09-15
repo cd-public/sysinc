@@ -1,12 +1,11 @@
 ---
 title: Merkle
-subtitle: "Week 0x4.4"
-
+subtitle: "wCd?"
 execute:
     echo: false
 ---
 
-# Announcements
+## Announcements
 
 - **Welcome** to Computing Security
   - Trees, ish
@@ -15,16 +14,16 @@ execute:
 - **Action Items**:
   - BTCinC
 
-# Today
+## Today
 
 - Trees, ish
   - Heaps
   - Merkle Trees
 - Aside: Tx's
 
-# Trees
+## Trees
 
-# $n$-ary Trees
+## $n$-ary Trees
 
 - A tree is a type of graph.
 - A graph is a pair of
@@ -32,7 +31,7 @@ execute:
     - A set of "edges" which are pairs of nodes
         - They may be ordered pairs or not.
 
-# Blockchain
+## Blockchain
 
 - Blockchain is a 1-ary tree
     - Usually called a link(ed) list in computing
@@ -40,6 +39,7 @@ execute:
 
 ```{dot}
 //| fig-height: 200px
+//| echo: false
 digraph finite_automata {
   rankdir=LR;
   bgcolor="transparent"
@@ -66,12 +66,13 @@ digraph finite_automata {
 }
 ```
 
-# `list_t`
+## `list_t`
 
 - A `list_t` is a 1-ary tree
 
 ```{dot}
 //| fig-height: 200px
+//| echo: false
 digraph finite_automata {
   rankdir=LR;
   bgcolor="transparent"
@@ -97,9 +98,10 @@ digraph finite_automata {
 }
 ```
 
-# mocha 2-tree
+## mocha 2-tree
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=LR;
   bgcolor="transparent"
@@ -133,27 +135,27 @@ digraph finite_automata {
 }
 ```
 
-# Common Case
+## Common Case
 
 - Usually in computing, I use trees to store "stuff"
     - In a SQL database, I used a b-tree to store... data, I guess
     - In a binary search tree, I sort elements of sets with total orders, like integers or words
     - In OS page table, I store memory locations.
 
-# Our Case
+## Our Case
 
 - We will store *digests* in nodes and transactions in leavefes.
     - So, 256 bits
 - Leaves a transaction "record"
 
-# Transaction review
+## Transaction review
 
 - Recall:
     - A bitcoin transaction and a bitcoin coin are identical
     - A coin is a *chain of ownership*
     - Own a coin by being the most recent owner.
 
-# Transaction review
+## Transaction review
 
 - Recall:
     - A transaction contains:
@@ -162,7 +164,7 @@ digraph finite_automata {
         - An amount.
     - A sender/receiver is not a person par se but a public key
 
-# Transaction
+## Transaction
 
 - Something like this:
 ```{.c filename="tx.h"}
@@ -177,7 +179,7 @@ struct tx_struct {
 }
 ```
 
-# In Practice
+## In Practice
 
 - `64 + 64 + 1 == 129`
 - Can't RSA things bigger than $n$, so must RSA in chunks
@@ -191,7 +193,7 @@ struct signed_tx_struct {
 }
 ```
 
-# So basically
+## So basically
 
 - Make a `tx_struct`
 - Cast it to a `uint64_t` array
@@ -200,16 +202,17 @@ struct signed_tx_struct {
 - Load thirds into `signed_tx_struct`
 - Prefix with public key. 
 
-# How do ensure?
+## How do ensure?
 
 - We want to have confidence in these transactions.
 - Easy - hash them, and save the hashes. 
 - But wait - that's a lot of hashes to hold onto...
 - And it is unreasonable to store potentially thousands of hashes in each block!
 
-# Hash tree
+## Hash tree
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -251,20 +254,20 @@ digraph finite_automata {
 }
 ```
 
-# In practice
+## In practice
 
 1. Place on transaction in linear data structure, like a stack or array list
 1. Hash each transaction, store the results (!!! non-trivial)
 1. For each pair of hashes, compute the hash of the concatenation of the two hashes and store the results
 1. Repeat until there is a single hash, the "Merkle root"
 
-# Tree Terms
+## Tree Terms
 
 - [Complete](https://xlinux.nist.gov/dads/HTML/completetree.html)
 
 - **Definition**: A tree in which every level, except possibly the deepest, is entirely filled. At depth n, the height of the tree, all nodes are as far left as possible. 
 
-# Tree Terms
+## Tree Terms
 
 - [Perfect](https://xlinux.nist.gov/dads/HTML/completetree.html)
 
@@ -273,9 +276,10 @@ digraph finite_automata {
 - I take CLR as ground truth (more often 2nd+ edition as "CLRS")
 
 
-# Complete
+## Complete
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -302,9 +306,10 @@ digraph finite_automata {
 }
 ```
 
-# Complete
+## Complete
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -330,9 +335,10 @@ digraph finite_automata {
 }
 ```
 
-# Complete
+## Complete
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -359,10 +365,11 @@ digraph finite_automata {
 
 }
 ```
-# Incomplete
+## Incomplete
 
 
 ```{dot}
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -388,12 +395,12 @@ digraph finite_automata {
 }
 ```
 
-# Takeaway
+## Takeaway
 
 - In a complete tree, we can always place all leafves in a linear data structure, like an array.
 - In a complete binary (2-ary) tree, there will be (roughly) the same number of non-leaf and leaf nodes
 
-# Naive
+## Naive
 
 - We may be tempted to do this 
 
@@ -409,28 +416,28 @@ struct hash_tree_struct {
     - How do you tell if a pointer points to a leaf or not?
 
     
-# Today
+## Today
 
 - &check; Trees, ish
   - Heaps
   - Merkle Trees
 - &check; Aside: Tx's
 
-# Heap
+## Heap
 
-# Heaps
+## Heaps
 
 - To motivate our technique for Merkle trees, we are going to make a digression to the heap abstract data type, also called a priority queue.
 - Vs. other graph representations, heaps can be implemented by store nodes *only* and deriving edges from a e.g.  node's index in an array.
 
-# Why "Priority"
+## Why "Priority"
 
 - A heap is a nonlinear (but linearizable*) data structure which *sorts* data... kinda.
 - A heap always has some minimal or maximal value, within the the collection, in its initial position, or root.
 
-# Make one
+## Make one
 
-# Empty Heap
+## Empty Heap
 
 ::::{columns}
 
@@ -449,7 +456,7 @@ struct hash_tree_struct {
 
 ::::
 
-# Initial Value
+## Initial Value
 
 ::::{columns}
 
@@ -465,6 +472,7 @@ struct hash_tree_struct {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -490,7 +498,7 @@ digraph finite_automata {
 ::::
 
 
-# Insert 64
+## Insert 64
 
 ::::{columns}
 
@@ -506,6 +514,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -534,7 +543,7 @@ digraph finite_automata {
 
 
 
-# Insert 64
+## Insert 64
 
 ::::{columns}
 
@@ -552,6 +561,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -576,7 +586,7 @@ digraph finite_automata {
 
 ::::
 
-# Insert 192
+## Insert 192
 
 ::::{columns}
 
@@ -593,6 +603,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -620,7 +631,7 @@ digraph finite_automata {
 
 ::::
 
-# Insert 192
+## Insert 192
 
 ::::{columns}
 
@@ -637,6 +648,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -664,7 +676,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -684,6 +696,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -713,7 +726,7 @@ digraph finite_automata {
 
 
 
-# Insert 96
+## Insert 96
 
 ::::{columns}
 
@@ -729,6 +742,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -758,7 +772,7 @@ digraph finite_automata {
 ::::
 
 
-# Insert 96
+## Insert 96
 
 ::::{columns}
 
@@ -773,6 +787,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -802,7 +817,7 @@ digraph finite_automata {
 
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -818,6 +833,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -845,7 +861,7 @@ digraph finite_automata {
 
 ::::
 
-# Aside: Structs
+## Aside: Structs
 
 - It is possible to implement a heap like so:
 
@@ -860,7 +876,7 @@ struct heap_struct {
 - In this case, storing these 8 bit values would require structs of size `8 + 64 + 64 = 136` bits.
 - An overhead of of `(136-8)/8 = 16`x (or worse as 8 bits will take a 64 bit "slot")
 
-# Aside: Arrays
+## Aside: Arrays
 
 - Instead, realize we always Insert new elements to the... next available position.
 - This is a stack push, usually implement on top of a list or array.
@@ -872,7 +888,7 @@ typedef uint8_t *heap;
 - Overhead of zero.
 
 
-# Use arrays
+## Use arrays
 
 ::::{columns}
 
@@ -883,6 +899,7 @@ typedef uint8_t *heap;
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -914,6 +931,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -939,7 +957,7 @@ digraph finite_automata {
 
 ::::
 
-# Insert 160
+## Insert 160
 
 ::::{columns}
 
@@ -950,6 +968,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -983,6 +1002,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1009,7 +1029,7 @@ digraph finite_automata {
 ::::
 
 
-# Insert 160
+## Insert 160
 
 ::::{columns}
 
@@ -1020,6 +1040,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1053,6 +1074,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1079,7 +1101,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -1090,6 +1112,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1124,6 +1147,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1151,7 +1175,7 @@ digraph finite_automata {
 
 ::::
 
-# On Indices
+## On Indices
 
 ::::{columns}
 
@@ -1167,6 +1191,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1194,7 +1219,7 @@ digraph finite_automata {
 ::::
 
 
-# On Indices
+## On Indices
 
 ::::{columns}
 
@@ -1210,6 +1235,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1238,7 +1264,7 @@ digraph finite_automata {
 
 
 
-# 1-Index
+## 1-Index
 
 ::::{columns}
 
@@ -1256,6 +1282,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1282,7 +1309,7 @@ digraph finite_automata {
 
 
 
-# Insert 224
+## Insert 224
 
 ::::{columns}
 
@@ -1297,6 +1324,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1321,7 +1349,7 @@ digraph finite_automata {
 
 ::::
 
-# Insert 224
+## Insert 224
 
 ::::{columns}
 
@@ -1337,6 +1365,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1362,7 +1391,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -1379,6 +1408,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1407,7 +1437,7 @@ digraph finite_automata {
 
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -1425,6 +1455,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1452,7 +1483,7 @@ digraph finite_automata {
 
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -1471,6 +1502,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1497,7 +1529,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapify
+## Heapify
 
 ::::{columns}
 
@@ -1516,6 +1548,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1542,7 +1575,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapified
+## Heapified
 
 ::::{columns}
 
@@ -1562,6 +1595,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1587,7 +1621,7 @@ digraph finite_automata {
 ::::
 
 
-# Heapified
+## Heapified
 
 ::::{columns}
 
@@ -1596,6 +1630,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1634,6 +1669,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1658,20 +1694,20 @@ digraph finite_automata {
 
 ::::
 
-# Today
+## Today
 
 - &check; Trees, ish
   - &check; Heaps
   - Merkle Trees
 - &check; Aside: Tx's
 
-# Merkle
+## Merkle
 
 - To create a Merkle tree, all non-leaf nodes are hashes and all leaf nodes are what the data type is.
 - Store the data type in array of length $n$
 - The tree requires $n-1$ non-leaf nodes
 
-# Example
+## Example
 
 ::::{columns}
 
@@ -1687,6 +1723,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1713,7 +1750,7 @@ digraph finite_automata {
 ::::
 
 
-# Example
+## Example
 
 ::::{columns}
 
@@ -1730,6 +1767,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1757,7 +1795,7 @@ digraph finite_automata {
 
 
 
-# Example
+## Example
 
 - Fill out the tree to get up to the 4-row.
 
@@ -1768,6 +1806,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1809,6 +1848,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1836,7 +1876,7 @@ digraph finite_automata {
 
 
 
-# Example
+## Example
 
 - Add additional leaves until there's enough...
 
@@ -1847,6 +1887,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1892,6 +1933,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1919,7 +1961,7 @@ digraph finite_automata {
 
 
 
-# Example
+## Example
 
 - More...
 
@@ -1930,6 +1972,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -1979,6 +2022,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -2006,7 +2050,7 @@ digraph finite_automata {
 
 
 
-# Example
+## Example
 
 
 ::::{columns}
@@ -2025,6 +2069,7 @@ digraph finite_automata {
 
 ```{dot}
 //| fig-width: 400px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -2081,11 +2126,12 @@ digraph finite_automata {
 ::::
 
 
-# Hash Tx's
+## Hash Tx's
 
 
 ```{dot}
 //| fig-width: 800px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -2139,11 +2185,12 @@ digraph finite_automata {
 
 
 
-# Hash Hashes
+## Hash Hashes
 
 
 ```{dot}
 //| fig-width: 800px
+//| echo: false
 digraph finite_automata {
   rankdir=TD;
   bgcolor="transparent"
@@ -2196,11 +2243,12 @@ digraph finite_automata {
 
 
 
-# 
+## 
 
 
 ```{dot}
 //| fig-width: 1000px
+//| echo: false
 digraph block_chain {
   rankdir=TD;
   bgcolor="transparent"
@@ -2255,16 +2303,17 @@ digraph block_chain {
 
 
 
-# Today
+## Today
 
 - &check; Trees, ish
   - &check; Heaps
   - &check; Merkle Trees
 - &check; Aside: Tx's
 
-#
+##
 
 ```{dot}
+//| echo: false
 //| fig-width: 1000px
 digraph block_chain {
   rankdir=TD;
@@ -2302,7 +2351,7 @@ digraph block_chain {
 ```
 
 
-# 
+## 
 ```{.c filename="tx.h"}
 #define KEY_SIZE 4096 / 8 * sizeof(an_int)
 
