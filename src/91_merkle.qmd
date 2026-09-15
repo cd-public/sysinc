@@ -1,13 +1,13 @@
 ---
 title: Merkle
-subtitle: "wCd?"
+subtitle: "wC"
 execute:
     echo: false
 ---
 
 ## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
   - Trees, ish
     - Heaps
     - Merkle Trees

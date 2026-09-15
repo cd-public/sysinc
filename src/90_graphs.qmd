@@ -5,7 +5,7 @@ subtitle: "wBd1"
 
 ## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
   - Graphs, to introduce
     - DAGs
     - Trees, to introduce,
