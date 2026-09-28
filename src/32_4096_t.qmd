@@ -48,9 +48,9 @@ format: html
 
 - I find the following bulletin summary the most helpful to making a bigmul implementation:
     - I Made a pointer to a `uint32_t`
-    - `uint32_t *alias;
+    - <code>uint32_t *alias;</code>
     - Set it equal to the location of some array of `uint64_t`
-    - `uint32_t *alias = &array;
+    - <code>uint32_t *alias = &array;</code>
     - Copied elements of the "alias" into 64 bit values.
     - `uint64_t tmp = alias[5];`
     - Multiplied, tracking significance.
@@ -64,6 +64,15 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
     uint32_t *al0 = (uint32_t *)in0, *al1 = (uint32_t *)in1 , *alw = (uint32_t *)wrk, *alo = (uint32_t *)out;
 ```
 
+
+:::{.callout-note appearance="simple"}
+
+## Advanced Students
+
+Advanced Students should implement multiplication using only addition (possibly using the existing "BigAdd" from prior work) and bitshifts.
+
+:::
+
 :::
 
 # BigDiv&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#bigdiv" role="button" aria-expanded="false" aria-controls="bigdiv">Show</a>
@@ -72,7 +81,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
 
 *While I hope all students complete BigDiv, it is a de facto challenge problem - I found no "easy" solution, and understand it is a comparatively complex system.*
 
-- I implemented division as a recursive long division with considerable error handling.
+- I implemented division as recursive long division with considerable error handling.
 - I began by aligning the most significant non-zero bit, which was non-trivial but simple enough.
 - You should write the following functions:
 
@@ -178,6 +187,8 @@ MUL passes.
 QUO passes.
 REM passes.
 ```
+
+- A satisfying solution need only pass "MUL", though ambitious students should pursue the division operations as well.
 
 #### Testing
 
