@@ -44,8 +44,10 @@ format: html
 
 - Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.
 - We will use `.bad` instead of `.pem` and insecurely store these values in plaintext.
-- We will then make executables to generate `.bad` and encrypt content provided a `.bad`
-    - We name a `.bad` so helpfully we don't use it by accident.
+- We will then make executables to:
+    - Generate `.bad` file, and 
+    - Encrypt content when provided a `.bad` file.
+        - We name via `.bad` so hopefully we don't use it by accident.
 - We will naively print 3 lines of hexademical values, `n`, `e`, then `d`.
 - We will write them to a 5-line file as follows:
   - The first line is the precise header text.
@@ -72,7 +74,7 @@ fbea5e6a3ed31e8f
   - Not a huge deal how these are stored, actually.
   - The key itself though, is still unsafe to use.
 - We will naively print 2 lines of hexademical values, `n`, then `e`.
-- We will right them to a file prefixed and suffixed as follows:
+- We will write them to a file prefixed and suffixed as follows:
 
 ```{.email filename="unsafe.pub"}
 -----BEGIN UNSAFE PUBLIC KEY-----

@@ -132,7 +132,7 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem) {
 ## Euclidean Division
 
 - Euclidean division solves this problem by *changing the type of the function*
-    - **NOT** by changing the types of the operands (inputs, divisor, divisend, numerator, denominator)
+    - **NOT** by changing the types of the operands (inputs, divisor, dividend, numerator, denominator)
     - **YES** by changing the *number of return values*
 - We will simply have two return values.
     - We recall this impossible in C (loud cheers)
@@ -176,8 +176,8 @@ def div(x:int, y:int) -> tuple[int, int]:
 
 ## Constraints
 
-- The quotient is the number of largest number absolute by which the divisor may be multipled such the product is absolutely less than the divisend.
-- The remainder is the smallest positive value such that the sum of the remainder and the product of the quotient and divisor is equal to the divisend.
+- The quotient is the number of largest number absolute by which the divisor may be multipled such the product is absolutely less than the dividend.
+- The remainder is the smallest positive value such that the sum of the remainder and the product of the quotient and divisor is equal to the dividend.
 
 ## Takeaways
 

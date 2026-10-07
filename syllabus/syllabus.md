@@ -74,7 +74,7 @@ This course will be ungraded.  Systems computing is difficult and may be stressf
     * Students will not have an expectation of perfection.
     * Students will not lose points or a grade without discussion.
     * Students will have a chance to explain their engagement with the course.
-* **Students collectively within the class as a whole will receive collective feedback on ethics, communication, and teamwork.**
+* **Students collectively within the class as a whole will receive collective feedback on recursion, pointers, and development.**
     * Students will receive limited individual feedback in unique cases.
     * Students will be expected to provide respectful individual feedback to one another.
     * Students will be able to request feedback from the instructor at any time.

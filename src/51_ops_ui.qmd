@@ -210,7 +210,7 @@ uint64_t rem_ui(uint64_t *big, uint64_t lil, uint64_t *out);
     - A space, like ` ` or `\n`
 - `ctypes.h` provides functions to test each of these.
 ```{.C}
-/* For some reason this is int -> int *?
+/* For some reason this is int -> int */
 int isalnum( int ch );
 ```
 - Let's make a table.
@@ -272,16 +272,18 @@ char_to_bool(function, array, index)
 ```
 - This is not well-formed C - let's add types.
 ```{.C}
-void char_to_bool(function, char *array, int index) # should be size_t, but.
+void char_to_bool(function, char *array, int index) // should be size_t, but...
 ```
 - `isalnum` also has a type - the type `int -> int` in Python, but in C?
 ```{.C}
 void char_to_bool(int (function)(int), char *array, int index).
 ```
 
-    - We say `function` is a type that given some `int` returns some `int`
+- We say `function` is a type that given some `int` returns some `int`
 - How do we use it?
     - The same way we would any other function for which we know a name or alias!
+    
+    
 ```{.C}
 void char_to_bool(int (function)(int), char *array, int index) {
     if (function(array[index])) {
@@ -317,7 +319,6 @@ int main() {
 ### Longer arrays
 
 - Why not examine the char in multiple ways?
-    - We 
 
 ```{.C filename="goated.c"}
 #include <stdio.h>
@@ -358,7 +359,7 @@ int main() {
 ```
 - We can see the output:
 
-```{.email}}
+```{.email}
 TTFTTFFF
 ```
 
@@ -423,7 +424,7 @@ TTFTTFFF
 
 ## BigMid, mid_ui
 
-- In LaTeX I am accustomed to denoted "$a$ is divisible by $b$" or "$b$ divides $a$" as follows:
+- In LaTeX I am accustomed to denoting "$a$ is divisible by $b$" or "$b$ divides $a$" as follows:
 $$
 a \mid b
 $$

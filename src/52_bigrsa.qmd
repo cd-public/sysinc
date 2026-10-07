@@ -117,57 +117,11 @@ void prigmp(uint64_t *big, uint8_t words) {
 ## Generate Keys
 
 - Write a 4096 bit .bad and .pub file.
-- Implement in a .c file called "bigkey.c"
-  - It should behave identically to "keygen.c", but generate 4096 bit keys.
+- Implement in a .c file called `bigkey.c`
+  - It should behave identically to `keygen.c`, but generate up to 4096 bit keys.
   - The 4096 bit refers to how large the $n$ value should be
   - E.g. the $e$ value may still be (decimal) 65537
-- The KeyGen description from "RSAinC" in provided below, as reference:
-
-### A Private Key in 3 Parts
-
-- We recall that the private key minimally contains:
-  - `n`, a modular base
-  - `e`, an encryptor, and 
-  - `d`, a descryptor.
-
-- Based on the KeyGen lab, it should be uncomplicated to calculate these values for 64 bit keys.
-- We will use `.bad` instead of `.pem` and insecurely store these values in plaintext.
-- We will then make executables to generate `.bad` and encrypt content provided a `.bad`
-    - We name a `.bad` so helpfully we don't use it by accident.
-- We will naively print 3 lines of hexademical values, `n`, `e`, then `d`.
-- We will write them to a 5-line file as follows:
-  - The first line is the precise header text.
-  - The second line is the `n` value in hexadecimal.
-  - The third line is the `e` value, which is `10001`.
-  - The fourth line is the `d` value, which should be kept secret.
-  - The fifth and final line is the precise footer text.
-
-```{.email filename="unsafe.bad"}
------BEGIN UNSAFE PRIVATE KEY-----
-95a61f99198bd8e9
-10001
-fbea5e6a3ed31e8f
------END UNSAFE PRIVATE KEY-----
-```
-### A Public Key in 2 Parts
-
-- We recall that the public key contains, and should only contain:
-  - `n`, a modular base, and
-  - `e`, an encryptor
-
-- Based on the KeyGen lab, we already have the ability to write these values to file.
-- We will use `.pub` instead of `.pem` or `.bad`
-  - Not a huge deal how these are stored, actually.
-  - The key itself though, is still unsafe to use.
-- We will naively print 2 lines of hexademical values, `n`, then `e`.
-- We will right them to a file prefixed and suffixed as follows:
-
-```{.email filename="unsafe.pub"}
------BEGIN UNSAFE PUBLIC KEY-----
-95a61f99198bd8e9
-10001
------END UNSAFE PUBLIC KEY-----
-```
+- The KeyGen description from "RSAinC" is a useful reference text.
 
 :::
 
@@ -188,7 +142,7 @@ fbea5e6a3ed31e8f
       - It should read `n` and `d` from "unsafe.bad" to decrypt.
       - It should read `n` and `e` from "unsafe.pub" to encrypt.
     - Write the encrypted or decrypted content to the output file.
-- Your BigRSA should function over either "keygen.c" 32 bit keys or "bigkey.c" 4096 bit keys.
+- Your BigRSA should function over either `keygen.c` 32 bit keys or `bigkey.c` 4096 bit keys.
 
 ## A Note
 
@@ -310,11 +264,13 @@ This section contains spoilers, including a working solution, to the BigRSA assi
 ## How to use the reference repository
 
 - Either clone the repository and include your own `bigrsa` and `bigkey` or,
-- Add the relevant files to your `crypto` repository.
+- Add the relevant files to your `sysinc` repository.
 - Study the Makefile closely, and use this reference material or `#help-line` if you are confused.
   - My favorite [Makefile tutorial](https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)
 - You are not required to use GitHub actions (or containers, conspiciously absent) but may wish to do so.
 - You don't need to think about `clang` vs `gcc`, but I wanted to show you clang and Makefile variables.
+
+We hope to return to Makefile in depth in a future lecture.
 
 ## The Repository
 
