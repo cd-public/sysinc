@@ -108,5 +108,12 @@
     "crumbs": [
       "Endian"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Systems in C",
+    "section": "",
+    "text": "CS 271 “Systems in C”\n\nCalled:\n\nCS 271: Systems Programming\nCS 271: Sys Programming, Computer Arch\n\nThe first semester class in a:\n\nCompiled language, with\nNo garbage collector.\n\nTerm these “systems” languages.\n\nSuitable to write an operating system.\n\nTaught this year in C.\n\nSo to me, “Systems in C”\n\n\n\nTTh 1310-1440\n\n\nProf. Calvin\n\n\nSyllabus\n\nSyllabus link\n\n\n\n\nCalendar\n\n\n\nWeek Num.\nDate Tues\nTues/Talk\nThurs/Lab\nHW/Nxt Th\n\n\n\n\n0x0\n08/35\npodman\nalpine\nEnigma\n\n\n0x1\n09/01\nC89/99\nprintb\nmacros\n\n\n0x2\n09/08\nSHA256\nEndian\nSHAinC\n\n\n0x3\n09/15\nINTCEC\nFinite\n\n\n\n0x4\n09/22\nBigAdd\nFermat\n4096_t\n\n\n0x5\n09/29\nIASC26\nKeyGen\nRSAinC\n\n\n0x6\n10/06\nEuclid\nops_ui\nBigRSA\n\n\n0x7\n10/13\nMiddle\nAssess\n\n\n\n0x8\n10/20\nMounts\naction\n\n\n\n0x9\n10/27\nStream\nmalloc\nlist_t\n\n\n0bX\n11/03\nbreak;\nstruct\n\n\n\n0xA\n11/10\nbchain\n\n\n\n\n0xB\n11/17\ngraphs\nMerkle\nheap_t\n\n\n0xC\n11/24\nLogics\nbreak;\n\n\n\n0xD\n12/01\n\n\nBTCinC\n\n\n\n*The final is described as BTCinC and is due Tuesday, December 8th at 5:00 p.m..\n\n\nRecordings"
   }
 ]
