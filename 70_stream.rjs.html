@@ -390,31 +390,25 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Stream</h1>
-  <p class="subtitle">Week 0x9 I</p>
+  <p class="subtitle">w9d0</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
-<li><strong>Welcome</strong> to CS 540
+<li><strong>Welcome</strong> to Systems in C
 <ul>
 <li>A quick digression on patterns &amp; antipatterns</li>
 <li>C relevant</li>
 <li>Then data structures</li>
 </ul></li>
-<li><strong>Action Items</strong>:
-<ul>
-<li>BigRSA due this week.</li>
-<li>Final released</li>
-</ul></li>
 </ul>
 </section>
-
-<section id="final" class="title-slide slide level1 center">
-<h1>Final</h1>
+<section id="final" class="slide level2">
+<h2>Final</h2>
 <ul>
 <li>The final is a write-up with supporting code.</li>
 <li>The “MS CS” extensions for the next 4 weeks are 3 technical papers and 1 blog.</li>
@@ -422,9 +416,8 @@
 <li>Let’s review <a href="btcinc.html"><code>BTCinC</code></a> and the readings.</li>
 </ul>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Antipatterns</li>
 </ul>
@@ -432,9 +425,8 @@
 <p>An anti-pattern in software engineering, project management, and business processes is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.</p>
 </blockquote>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Duplication</li>
 <li>Deficient encapsulation v. Broken modularization</li>
@@ -444,9 +436,13 @@
 <li>Data clump</li>
 </ul>
 </section>
+<section>
+<section id="duplicate" class="title-slide slide level1 center">
+<h1>Duplicate</h1>
 
-<section id="duplication" class="title-slide slide level1 center">
-<h1>Duplication</h1>
+</section>
+<section id="duplication" class="slide level2">
+<h2>Duplication</h2>
 <ul>
 <li>And <em>streaming</em>
 <ul>
@@ -456,9 +452,8 @@
 <li>Let’s look at two examples.</li>
 </ul>
 </section>
-
-<section id="duplicate" class="title-slide slide level1 center">
-<h1>Duplicate</h1>
+<section id="duplicate-1" class="slide level2">
+<h2>Duplicate</h2>
 <ul>
 <li>Say we are working on Base85 and have the following function:</li>
 </ul>
@@ -471,9 +466,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="base85" class="title-slide slide level1 center">
-<h1>Base85</h1>
+<section id="base85" class="slide level2">
+<h2>Base85</h2>
 <ul>
 <li>It is perhaps impossible but certainly “wrong” to perform base85 encoding without this function.</li>
 <li>So no matter what, we will have this function in some loop over some data.</li>
@@ -482,9 +476,8 @@
 <span id="cb2-2"><a></a>    print_in_base85<span class="op">(</span>word<span class="op">);</span></span>
 <span id="cb2-3"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="design-decision" class="title-slide slide level1 center">
-<h1>Design Decision</h1>
+<section id="design-decision" class="slide level2">
+<h2>Design Decision</h2>
 <ul>
 <li>We have to decide how to populate <code>word</code>.
 <ul>
@@ -507,9 +500,8 @@
 <span id="cb4-5"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="do-we" class="title-slide slide level1 center">
-<h1>Do we?</h1>
+<section id="do-we" class="slide level2">
+<h2>Do we?</h2>
 <ul>
 <li>Copy (duplicate) all data then read, or…</li>
 <li>Read 32 bits at a time</li>
@@ -531,9 +523,8 @@
 <span id="cb6-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="stream" class="title-slide slide level1 center">
-<h1>Stream!</h1>
+<section id="stream" class="slide level2">
+<h2>Stream!</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -552,9 +543,8 @@
 <span id="cb7-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> conditional <span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li>From my research
 <ul>
@@ -564,9 +554,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="timing" class="title-slide slide level1 center">
-<h1>Timing</h1>
+<section id="timing" class="slide level2">
+<h2>Timing</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb8-1"><a></a>$ time python3 rtlkon.py testbench.vcd &gt;/dev/null</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a>real    0m0.323s</span>
@@ -582,9 +571,8 @@
 <span id="cb8-13"><a></a> 2936134  2931732 17474090 testbench.dtrace</span>
 <span id="cb8-14"><a></a> 2938353  2936166 17513149 total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="stream-1" class="title-slide slide level1 center">
-<h1>Stream</h1>
+<section id="stream-1" class="slide level2">
+<h2>Stream</h2>
 <ul>
 <li>Python 3, the world’s slowest language, writes 15.5 MB in .323 seconds</li>
 <li>Java, the other slowest language, reads 15.5 MB in 14.128 seconds.
@@ -594,9 +582,8 @@
 <li>Both tools fully simulate the processor as an automata, use local storage, etc.</li>
 </ul>
 </section>
-
-<section id="visualize" class="title-slide slide level1 center">
-<h1>Visualize</h1>
+<section id="visualize" class="slide level2">
+<h2>Visualize</h2>
 <ul>
 <li>I think of streaming as follows.</li>
 <li>We image we want to make some “File B” from some “File A”</li>
@@ -636,9 +623,8 @@
 </div>
 </div>
 </section>
-
-<section id="visualize-1" class="title-slide slide level1 center">
-<h1>Visualize</h1>
+<section id="visualize-1" class="slide level2">
+<h2>Visualize</h2>
 <ul>
 <li>Imagine SHA hashing Pride and Prejudice
 <ul>
@@ -680,9 +666,8 @@
 </div>
 </div>
 </section>
-
-<section id="visualize-2" class="title-slide slide level1 center">
-<h1>Visualize</h1>
+<section id="visualize-2" class="slide level2">
+<h2>Visualize</h2>
 <ul>
 <li>Imagine Base64 encoding an .svg.
 <ul>
@@ -724,9 +709,8 @@
 </div>
 </div>
 </section>
-
-<section id="streaming" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming" class="slide level2">
+<h2>Streaming</h2>
 <ul>
 <li>A file contains of <span class="math inline">\(n\)</span> words of <span class="math inline">\(b\)</span> bits.</li>
 </ul>
@@ -777,10 +761,8 @@
 </div>
 </div>
 </section>
-
-<section>
-<section id="streaming-1" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming-1" class="slide level2">
+<h2>Streaming</h2>
 <ul>
 <li>An executable maps files-to-files
 <ul>
@@ -1054,15 +1036,15 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
 <title>finite_automata</title>
 <polygon fill="#191919" stroke="transparent" points="-4,4 -4,-259 144.02,-259 144.02,4 -4,4"></polygon>
-<g id="clust2" class="cluster">
-<title>cluster_Y</title>
-<path fill="#191919" stroke="#ffffff" d="M92,-62C92,-62 120.02,-62 120.02,-62 126.02,-62 132.02,-68 132.02,-74 132.02,-74 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-74 80,-74 80,-68 86,-62 92,-62"></path>
-<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_X</title>
 <path fill="#191919" stroke="#ffffff" d="M20,-8C20,-8 48,-8 48,-8 54,-8 60,-14 60,-20 60,-20 60,-235 60,-235 60,-241 54,-247 48,-247 48,-247 20,-247 20,-247 14,-247 8,-241 8,-235 8,-235 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
 <text text-anchor="middle" x="34" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_Y</title>
+<path fill="#191919" stroke="#ffffff" d="M92,-62C92,-62 120.02,-62 120.02,-62 126.02,-62 132.02,-68 132.02,-74 132.02,-74 132.02,-235 132.02,-235 132.02,-241 126.02,-247 120.02,-247 120.02,-247 92,-247 92,-247 86,-247 80,-241 80,-235 80,-235 80,-74 80,-74 80,-68 86,-62 92,-62"></path>
+<text text-anchor="middle" x="106.01" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
 </g>
 <!-- 1 -->
 <g id="node1" class="node">
@@ -1242,9 +1224,9 @@
 </tr>
 </tbody>
 </table>
-</section></section>
-<section id="base64" class="title-slide slide level1 center">
-<h1>Base64</h1>
+</section>
+<section id="base64" class="slide level2">
+<h2>Base64</h2>
 <ul>
 <li>Base64
 <ul>
@@ -1258,9 +1240,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="streaming-2" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming-2" class="slide level2">
+<h2>Streaming</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1320,9 +1301,8 @@
 </div>
 </div>
 </section>
-
-<section id="streaming-3" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming-3" class="slide level2">
+<h2>Streaming</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1382,9 +1362,8 @@
 </div>
 </div>
 </section>
-
-<section id="streaming-4" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming-4" class="slide level2">
+<h2>Streaming</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1444,9 +1423,8 @@
 </div>
 </div>
 </section>
-
-<section id="streaming-5" class="title-slide slide level1 center">
-<h1>Streaming</h1>
+<section id="streaming-5" class="slide level2">
+<h2>Streaming</h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1506,9 +1484,8 @@
 </div>
 </div>
 </section>
-
-<section id="pattern" class="title-slide slide level1 center">
-<h1>Pattern</h1>
+<section id="pattern" class="slide level2">
+<h2>Pattern</h2>
 <ul>
 <li>This is the pattern</li>
 </ul>
@@ -1567,9 +1544,8 @@
 </div>
 </div>
 </section>
-
-<section id="anti-pattern" class="title-slide slide level1 center">
-<h1>Anti-Pattern</h1>
+<section id="anti-pattern" class="slide level2">
+<h2>Anti-Pattern</h2>
 <ul>
 <li>This is the anti-pattern of duplication</li>
 </ul>
@@ -1652,17 +1628,15 @@
 </div>
 </div>
 </section>
-
-<section id="big-deal" class="title-slide slide level1 center">
-<h1>Big Deal</h1>
+<section id="big-deal" class="slide level2">
+<h2>Big Deal</h2>
 <ul>
 <li>Unnecessary duplication is a big deal in database / lakehouse.</li>
 </ul>
 
 <img data-src="https://miro.medium.com/v2/0*-qVE8s5PCVcv_E7c.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-
-<section id="big-deal-1" class="title-slide slide level1 center">
-<h1>Big Deal</h1>
+<section id="big-deal-1" class="slide level2">
+<h2>Big Deal</h2>
 <ul>
 <li>Unnecessary duplication is what prevented prime generation in my 4096_t.</li>
 </ul>
@@ -1672,9 +1646,8 @@
 <li>That is <code>(4 + 2) * 64 * 64 = 24576</code> = 25 kilobytes for <code>5/2</code></li>
 </ul>
 </section>
-
-<section id="today-2" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>Deficient encapsulation v. Broken modularization</li>
@@ -1683,10 +1656,14 @@
 <li>Big Ball of Mud v. God Object</li>
 <li>Data clump</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="encapsulate" class="title-slide slide level1 center">
+<h1>Encapsulate</h1>
 
-<section id="on-4096_t" class="title-slide slide level1 center">
-<h1>On 4096_t</h1>
+</section>
+<section id="on-4096_t" class="slide level2">
+<h2>On 4096_t</h2>
 <ul>
 <li>I needed the following on BigRSA</li>
 </ul>
@@ -1703,9 +1680,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="header-files" class="title-slide slide level1 center">
-<h1>Header files</h1>
+<section id="header-files" class="slide level2">
+<h2>Header files</h2>
 <ul>
 <li>This header file implements the 4096_t… dare I say… API?</li>
 </ul>
@@ -1720,9 +1696,8 @@
 <li>I shouldn’t mess with this! It’s already “released”!</li>
 </ul>
 </section>
-
-<section id="options" class="title-slide slide level1 center">
-<h1>Options</h1>
+<section id="options" class="slide level2">
+<h2>Options</h2>
 <ul>
 <li>Implement <code>bignul</code> at the point-of-us, in both <code>bigrsa</code> and <code>bigkey</code>
 <ul>
@@ -1738,9 +1713,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="takeaways" class="title-slide slide level1 center">
-<h1>Takeaways</h1>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
 <ul>
 <li>When we design libraries, software, APIs, test scripts…</li>
 <li>Make sure we are preserving modularization and enscapsulation
@@ -1749,9 +1723,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="another-example" class="title-slide slide level1 center">
-<h1>Another example</h1>
+<section id="another-example" class="slide level2">
+<h2>Another example</h2>
 <ul>
 <li>This function:</li>
 </ul>
@@ -1769,13 +1742,12 @@
 <li>What is <code>conditional</code>?</li>
 </ul>
 </section>
-
-<section id="return-type" class="title-slide slide level1 center">
-<h1>Return type</h1>
+<section id="return-type" class="slide level2">
+<h2>Return type</h2>
 <ul>
 <li>This function:</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a></a><span class="co">/* returns # of words read */</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a></a><span class="co">/* returns ## of words read */</span></span>
 <span id="cb14-2"><a></a><span class="dt">size_t</span> print_in_base85<span class="op">(</span><span class="dt">uint32_t</span> word<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Uses its return value:</li>
@@ -1791,9 +1763,8 @@
 <li>To <em>encapsulate</em> checking end of a file</li>
 </ul>
 </section>
-
-<section id="bad" class="title-slide slide level1 center">
-<h1>Bad</h1>
+<section id="bad" class="slide level2">
+<h2>Bad</h2>
 <ul>
 <li>These are both bad</li>
 </ul>
@@ -1816,16 +1787,14 @@
 <span id="cb19-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="dv">4</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="another-example-1" class="title-slide slide level1 center">
-<h1>Another example</h1>
+<section id="another-example-1" class="slide level2">
+<h2>Another example</h2>
 <ul>
 <li><code>biggmp.c</code>, a libgmp implementation of 4096_t I am now providing for usage on <code>bigrsa</code>, could contain much repeated code.</li>
 </ul>
 </section>
-
-<section id="add-and-sub" class="title-slide slide level1 center">
-<h1>Add and Sub</h1>
+<section id="add-and-sub" class="slide level2">
+<h2>Add and Sub</h2>
 <ul>
 <li>GMP works by:
 <ul>
@@ -1838,9 +1807,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="see-it" class="title-slide slide level1 center">
-<h1>See it</h1>
+<section id="see-it" class="slide level2">
+<h2>See it</h2>
 <ul>
 <li>Here’s add with light edits:</li>
 </ul>
@@ -1867,9 +1835,8 @@
 <span id="cb21-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="both" class="title-slide slide level1 center">
-<h1>Both</h1>
+<section id="both" class="slide level2">
+<h2>Both</h2>
 <ul>
 <li>Only one line differs!
 <ul>
@@ -1900,9 +1867,8 @@
 <span id="cb23-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="bug" class="title-slide slide level1 center">
-<h1>Bug</h1>
+<section id="bug" class="slide level2">
+<h2>Bug</h2>
 <ul>
 <li>This doesn’t work because <code>sum</code> is used unitialized
 <ul>
@@ -1934,9 +1900,8 @@
 <span id="cb25-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="better" class="title-slide slide level1 center">
-<h1>Better</h1>
+<section id="better" class="slide level2">
+<h2>Better</h2>
 <ul>
 <li>Write some function that does all the setup and teardown</li>
 <li>Pass that function the operation as an argument</li>
@@ -1952,9 +1917,8 @@
 <span id="cb26-9"><a></a>    mpz_clears<span class="op">(</span>m0<span class="op">,</span> m1<span class="op">,</span> NULL<span class="op">);</span></span>
 <span id="cb26-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="code-reuse" class="title-slide slide level1 center">
-<h1>Code reuse!</h1>
+<section id="code-reuse" class="slide level2">
+<h2>Code reuse!</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a></a><span class="dt">uint64_t</span> bigadd<span class="op">(</span><span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>sum<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb27-2"><a></a>    apply<span class="op">(</span>in0<span class="op">,</span> in1<span class="op">,</span> sum<span class="op">,</span> mpz_add<span class="op">);</span></span>
 <span id="cb27-3"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -1970,9 +1934,8 @@
 <span id="cb27-13"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb27-14"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="in-practice" class="title-slide slide level1 center">
-<h1>In practice</h1>
+<section id="in-practice" class="slide level2">
+<h2>In practice</h2>
 <ul>
 <li>We declare a function which accepts a function as an argument by giving the functions type, and a local variable name.</li>
 <li>We call a function which “” by using the function name.</li>
@@ -1983,18 +1946,16 @@
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb28-1"><a></a><span class="dt">void</span> <span class="op">(</span>f<span class="op">)(</span>mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="declare-it" class="title-slide slide level1 center">
-<h1>Declare it:</h1>
+<section id="declare-it" class="slide level2">
+<h2>Declare it:</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb29-1"><a></a><span class="dt">void</span> apply<span class="op">(</span><span class="dt">void</span> <span class="op">(</span>f<span class="op">)(</span>mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">,</span> <span class="dt">const</span> mpz_t<span class="op">),</span> <span class="dt">uint64_t</span> <span class="op">*</span>in0<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>in1<span class="op">,</span> <span class="dt">uint64_t</span> <span class="op">*</span>out<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb29-2"><a></a>    mpz_t m0<span class="op">,</span> m1<span class="op">;</span></span>
 <span id="cb29-3"><a></a>    <span class="co">/* much text */</span></span>
 <span id="cb29-4"><a></a>    <span class="cf">return</span><span class="op">;</span></span>
 <span id="cb29-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="call-it" class="title-slide slide level1 center">
-<h1>Call it:</h1>
+<section id="call-it" class="slide level2">
+<h2>Call it:</h2>
 <ul>
 <li>This code is correct, just use name.</li>
 </ul>
@@ -2003,9 +1964,8 @@
 <span id="cb30-3"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb30-4"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="higher-order" class="title-slide slide level1 center">
-<h1>Higher Order</h1>
+<section id="higher-order" class="slide level2">
+<h2>Higher Order</h2>
 <ul>
 <li>Oh by the way, this <strong>encapsulates</strong> libgmp.</li>
 <li>This encapsulation method is the function programming concept of higher order functions.</li>
@@ -2017,9 +1977,8 @@
 <li>Oh by the way, this <strong>encapsulates</strong> libgmp.</li>
 </ul>
 </section>
-
-<section id="today-3" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-3" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>✓ Deficient encapsulation v. Broken modularization</li>
@@ -2028,15 +1987,18 @@
 <li>Big Ball of Mud v. God Object</li>
 <li>Data clump</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="sorcery" class="title-slide slide level1 center">
+<h1>Sorcery</h1>
 
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
 
 <img data-src="https://upload.wikimedia.org/wikipedia/en/6/62/I_Am_Number_Four_Poster.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-
-<section id="who-or-what-is-4" class="title-slide slide level1 center">
-<h1>Who or what is “4”?</h1>
+<section id="who-or-what-is-4" class="slide level2">
+<h2>Who or what is “4”?</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb31-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
 <span id="cb31-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
 <span id="cb31-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
@@ -2044,9 +2006,8 @@
 <span id="cb31-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
 <span id="cb31-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="dv">4</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="sizeof" class="title-slide slide level1 center">
-<h1>Sizeof</h1>
+<section id="sizeof" class="slide level2">
+<h2>Sizeof</h2>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a></a><span class="dt">size_t</span> s<span class="op">,</span> fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"file.txt"</span><span class="op">,</span> <span class="st">"r"</span><span class="op">)</span></span>
 <span id="cb32-2"><a></a><span class="dt">uint32_t</span> word<span class="op">;</span></span>
 <span id="cb32-3"><a></a><span class="cf">do</span> <span class="op">{</span></span>
@@ -2054,9 +2015,8 @@
 <span id="cb32-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
 <span id="cb32-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">uint32_t</span><span class="op">)</span> <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="define" class="title-slide slide level1 center">
-<h1>Define</h1>
+<section id="define" class="slide level2">
+<h2>Define</h2>
 <ul>
 <li>Add a define:</li>
 </ul>
@@ -2071,9 +2031,8 @@
 <span id="cb34-5"><a></a>    s <span class="op">=</span> print_in_base85<span class="op">(</span>word<span class="op">)</span></span>
 <span id="cb34-6"><a></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span> WORD_SIZE <span class="op">==</span> s <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="t" class="title-slide slide level1 center">
-<h1>4096_t</h1>
+<section id="t" class="slide level2">
+<h2>4096_t</h2>
 <ul>
 <li>I used defines to allow 4096_t to be changed to 8192 with a change to a single line of code</li>
 <li><em>But this only works if you use the defines everywhere</em></li>
@@ -2089,9 +2048,8 @@
 <li>Imagine a <code>???_t</code> and then just using different header files with different <code>S</code> values.</li>
 </ul>
 </section>
-
-<section id="today-4" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-4" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>✓ Deficient encapsulation v. Broken modularization</li>
@@ -2100,10 +2058,14 @@
 <li>Big Ball of Mud v. God Object</li>
 <li>Data clump</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="overthink" class="title-slide slide level1 center">
+<h1>Overthink</h1>
 
-<section id="overthinking" class="title-slide slide level1 center">
-<h1>Overthinking</h1>
+</section>
+<section id="overthinking" class="slide level2">
+<h2>Overthinking</h2>
 <ul>
 <li>It’s just bits.</li>
 </ul>
@@ -2137,9 +2099,8 @@
 <span id="cb36-24"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="not-numbers" class="title-slide slide level1 center">
-<h1>Not Numbers</h1>
+<section id="not-numbers" class="slide level2">
+<h2>Not Numbers</h2>
 <div class="sourceCode" id="cb37"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb37-1"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">s -&gt; </span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> buf<span class="op">);</span></span>
 <span id="cb37-2"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">d -&gt; </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">int</span><span class="op">)*</span>alias<span class="op">);</span></span>
 <span id="cb37-3"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%%</span><span class="st">u -&gt; </span><span class="sc">%u\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">unsigned</span><span class="op">)*</span>alias<span class="op">);</span></span>
@@ -2153,9 +2114,8 @@
 <span id="cb38-5"><a></a>As array: [104, 105, 33, 0]</span>
 <span id="cb38-6"><a></a>As array: [68, 69, 21, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="not-letters" class="title-slide slide level1 center">
-<h1>Not Letters</h1>
+<section id="not-letters" class="slide level2">
+<h2>Not Letters</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb39-1"><a></a>show<span class="op">(</span>buf<span class="op">)</span></span>
 <span id="cb39-2"><a></a><span class="op">*</span>alias <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
 <span id="cb39-3"><a></a>show<span class="op">(</span>buf<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2178,9 +2138,8 @@
 <span id="cb41-7"><a></a>As array: [72, 69, 21, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-
-<section id="just-bits" class="title-slide slide level1 center">
-<h1>Just bits</h1>
+<section id="just-bits" class="slide level2">
+<h2>Just bits</h2>
 <ul>
 <li>We, the coder, give them meaning.</li>
 <li>What does magic number <code>6650210</code> mean?</li>
@@ -2194,9 +2153,8 @@
 <span id="cb43-5"><a></a>As array: [98, 121, 101, 0]</span>
 <span id="cb43-6"><a></a>As array: [62, 79, 65, 0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="today-5" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-5" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>✓ Deficient encapsulation v. Broken modularization</li>
@@ -2205,10 +2163,14 @@
 <li>Big Ball of Mud v. God Object</li>
 <li>Data clump</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="big" class="title-slide slide level1 center">
+<h1>Big</h1>
 
-<section id="languages" class="title-slide slide level1 center">
-<h1>Languages</h1>
+</section>
+<section id="languages" class="slide level2">
+<h2>Languages</h2>
 <ul>
 <li>Not all patterns and antipatterns exist in all languages.</li>
 </ul>
@@ -2216,18 +2178,16 @@
 <p><a href="https://www.norvig.com/design-patterns/">Peter Norvig demonstrates that 16 out of the 23 patterns in the Design Patterns book (which is primarily focused on C++) are simplified or eliminated (via direct language support) in Lisp</a></p>
 </blockquote>
 </section>
-
-<section id="c-good" class="title-slide slide level1 center">
-<h1>C good</h1>
+<section id="c-good" class="slide level2">
+<h2>C good</h2>
 <ul>
 <li>God Objects cannot be made in C, an imperative language.</li>
 <li>But, we should make sure we use header files. (No “God .c”)</li>
 <li>Famously, the C preprocess (remember <code>Macros</code>) starts to look an awful lot like a LISP implementation in more sophisticated projects.</li>
 </ul>
 </section>
-
-<section id="c-lisp" class="title-slide slide level1 center">
-<h1>C LISP</h1>
+<section id="c-lisp" class="slide level2">
+<h2>C LISP</h2>
 <ul>
 <li>I can’t read this, but we all know what <code>CAT</code> means</li>
 </ul>
@@ -2240,9 +2200,8 @@
 <span id="cb44-7"><a></a><span class="pp">#define _e_sem</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> x</span><span class="op">(</span></span>
 <span id="cb44-8"><a></a><span class="pp">#define _bsem </span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="today-6" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-6" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>✓ Deficient encapsulation v. Broken modularization</li>
@@ -2251,19 +2210,22 @@
 <li>✓ Big Ball of Mud v. God Object</li>
 <li>Data clump</li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="clump" class="title-slide slide level1 center">
+<h1>Clump</h1>
 
-<section id="mandatory" class="title-slide slide level1 center">
-<h1>Mandatory</h1>
+</section>
+<section id="mandatory" class="slide level2">
+<h2>Mandatory</h2>
 <ul>
 <li>C contains a language-mandatory data clump anti-pattern</li>
 <li>This is a data clump - two values that only make sense together.</li>
 </ul>
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb45-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="null-termination" class="title-slide slide level1 center">
-<h1>Null termination</h1>
+<section id="null-termination" class="slide level2">
+<h2>Null termination</h2>
 <ul>
 <li>In practice, you can null terminate vectors just like strings
 <ul>
@@ -2284,9 +2246,8 @@
 <li>Avoids duplication, like 2x <code>mpz_init</code> calls</li>
 </ul>
 </section>
-
-<section id="today-7" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-7" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Duplication</li>
 <li>✓ Deficient encapsulation v. Broken modularization</li>
@@ -2296,9 +2257,8 @@
 <li>✓ Data clump</li>
 </ul>
 </section>
-
-<section id="previews" class="title-slide slide level1 center">
-<h1>Previews</h1>
+<section id="previews" class="slide level2">
+<h2>Previews</h2>
 <ul>
 <li><code>struct</code>
 <ul>
@@ -2310,15 +2270,14 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="or" class="title-slide slide level1 center">
-<h1>Or…</h1>
+<section id="or" class="slide level2">
+<h2>Or…</h2>
 <ul>
 <li>Riff on P strings?</li>
 </ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

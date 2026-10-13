@@ -1,32 +1,29 @@
 ---
 title: Stream
-subtitle: "Week 0x9 I"
+subtitle: "w9d0"
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to CS 540
+- **Welcome** to Systems in C
   - A quick digression on patterns & antipatterns
   - C relevant
   - Then data structures
-- **Action Items**:
-  - BigRSA due this week.
-  - Final released
 
-# Final
+## Final
 
 - The final is a write-up with supporting code.
 - The "MS CS" extensions for the next 4 weeks are 3 technical papers and 1 blog.
 - I have "tech debt" on the `genrsa` and `linker` VoDs, which will help you if you get stuck on the final, but right now I could only do them poorly, rather than well.
 - Let's review [`BTCinC`](btcinc.html) and the readings.
   
-# Today
+## Today
 
 - Antipatterns
 
 > An anti-pattern in software engineering, project management, and business processes is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
 
-# Today
+## Today
 
 - Duplication
 - Deficient encapsulation v. Broken modularization
@@ -35,14 +32,16 @@ subtitle: "Week 0x9 I"
 - Big Ball of Mud v. God Object
 - Data clump
 
-# Duplication
+# Duplicate
+
+## Duplication
 
 - And *streaming*
     - Today's lecture inspire by the idea of *streaming data*
     - Huge paradigm change in exascale data application, built the modern cloud.
 - Let's look at two examples.
 
-# Duplicate
+## Duplicate
 
 - Say we are working on Base85 and have the following function:
 ```{.c}
@@ -52,7 +51,7 @@ void print_in_base85(uint32_t word);
     - Base85 prints exactly 5 characters of printable ascii/utf-8 for exactly every 4 bytes / 32 bits of data
     - We know that every single 32-bit word is independent.
 
-# Base85
+## Base85
 
 - It is perhaps impossible but certainly "wrong" to perform base85 encoding without this function.
 - So no matter what, we will have this function in some loop over some data.
@@ -62,7 +61,7 @@ do {
 } while ( conditional )
 ```
 
-# Design Decision
+## Design Decision
 
 - We have to decide how to populate `word`.
     - We need 32 bits
@@ -96,7 +95,7 @@ do {
 
 ::::
 
-# Do we?
+## Do we?
 
 - Copy (duplicate) all data then read, or...
 - Read 32 bits at a time
@@ -130,7 +129,7 @@ do {
 
 ::::
 
-# Stream!
+## Stream!
 
 
 
@@ -161,14 +160,14 @@ do {
 
 ::::
 
-# Example
+## Example
 
 - From my research
     - Wrote a Python script the handles some hardware design data.
     - I use an existing tool in Java that handles the same data.
     - I implemented by tool with *streaming*
 
-# Timing
+## Timing
 
 ```{.email}
 $ time python3 rtlkon.py testbench.vcd >/dev/null
@@ -187,14 +186,14 @@ $ wc testbench.decls testbench.dtrace
  2938353  2936166 17513149 total
 ```
 
-# Stream
+## Stream
 
 - Python 3, the world's slowest language, writes 15.5 MB in .323 seconds
 - Java, the other slowest language, reads 15.5 MB in 14.128 seconds.
     - Python at 48x speed
 - Both tools fully simulate the processor as an automata, use local storage, etc.
 
-# Visualize
+## Visualize
 
 - I think of streaming as follows.
 - We image we want to make some "File B" from some "File A"
@@ -226,7 +225,7 @@ digraph finite_automata {
 }
 ```
 
-# Visualize
+## Visualize
 
 - Imagine SHA hashing Pride and Prejudice
     - You did this.
@@ -258,7 +257,7 @@ digraph finite_automata {
 }
 ```
 
-# Visualize
+## Visualize
 
 - Imagine Base64 encoding an .svg.
     - You can do this, quarto does this.
@@ -289,7 +288,7 @@ digraph finite_automata {
 }
 ```
 
-# Streaming
+## Streaming
 
 
 - A file contains of $n$ words of $b$ bits.
@@ -321,7 +320,7 @@ digraph finite_automata {
 ```
 
 
-# Streaming
+## Streaming
 
 
 - An executable maps files-to-files
@@ -355,7 +354,7 @@ digraph finite_automata {
 }
 ```
 
-## 
+##
 
 <table>
 
@@ -575,7 +574,7 @@ digraph finite_automata {
 </tbody>
 </table>
 
-# Base64
+## Base64
 
 - Base64
     - Bijects numbers in $\mathbb{Z}/n\mathbb{Z}:n = 2^{32}$
@@ -584,7 +583,7 @@ digraph finite_automata {
     - Bijects files, we can think of as in binary, to
     - Strings of arbitrary length over `[A-Za-z0-9+/]`
 
-# Streaming
+## Streaming
 
 ```{dot}
 //| fig-width: 800px
@@ -614,7 +613,7 @@ digraph finite_automata {
 }
 ```
 
-# Streaming
+## Streaming
 
 ```{dot}
 //| fig-width: 800px
@@ -645,7 +644,7 @@ digraph finite_automata {
 ```
 
 
-# Streaming
+## Streaming
 
 ```{dot}
 //| fig-width: 800px
@@ -677,7 +676,7 @@ digraph finite_automata {
 
 
 
-# Streaming
+## Streaming
 
 ```{dot}
 //| fig-width: 800px
@@ -707,7 +706,7 @@ digraph finite_automata {
 }
 ```
 
-# Pattern
+## Pattern
 
 - This is the pattern
 
@@ -739,7 +738,7 @@ digraph finite_automata {
 }
 ```
 
-# Anti-Pattern
+## Anti-Pattern
 
 - This is the anti-pattern of duplication
 
@@ -775,13 +774,13 @@ digraph finite_automata {
 }
 ```
 
-# Big Deal
+## Big Deal
 
 - Unnecessary duplication is a big deal in database / lakehouse.
 
 ![](https://miro.medium.com/v2/0*-qVE8s5PCVcv_E7c.png){fig-align="center"}
 
-# Big Deal
+## Big Deal
 
 - Unnecessary duplication is what prevented prime generation in my 4096_t.
 
@@ -792,7 +791,7 @@ uint64_t bigdiv(uint64_t *num, uint64_t *den, uint64_t *quo, uint64_t *rem) {
 
 - That is `(4 + 2) * 64 * 64 = 24576` = 25 kilobytes for `5/2`
 
-# Today
+## Today
 
 - &check; Duplication
 - Deficient encapsulation v. Broken modularization
@@ -801,7 +800,9 @@ uint64_t bigdiv(uint64_t *num, uint64_t *den, uint64_t *quo, uint64_t *rem) {
 - Big Ball of Mud v. God Object
 - Data clump
 
-# On 4096_t
+# Encapsulate
+
+## On 4096_t
 
 - I needed the following on BigRSA
 ```{.C}
@@ -815,7 +816,7 @@ uint64_t bignul(uint64_t *a) {
 - I didn't inclode it in 4096_t
     - I duplicated the code but...
 
-# Header files
+## Header files
 
 - This header file implements the 4096_t... dare I say... API?
 
@@ -831,7 +832,7 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem);
 
 - I shouldn't mess with this! It's already "released"!
 
-# Options
+## Options
 
 - Implement `bignul` at the point-of-us, in both `bigrsa` and `bigkey`
     - Broken modularization (big function outside of 4096_t)
@@ -840,13 +841,13 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem);
     - Broken modularization
         - E.g., the tests on 4096_t don't test bignul
 
-# Takeaways
+## Takeaways
 
 - When we design libraries, software, APIs, test scripts...
 - Make sure we are preserving modularization and enscapsulation
     - Shouldn't have bigops scattered to the four winds
 
-# Another example
+## Another example
 
 - This function:
 ```{.c}
@@ -863,11 +864,11 @@ do {
 ```
 - What is `conditional`?
 
-# Return type
+## Return type
 
 - This function:
 ```{.c}
-/* returns # of words read */
+/* returns ## of words read */
 size_t print_in_base85(uint32_t word)
 ```
 - Uses its return value:
@@ -882,7 +883,7 @@ do {
 ```
 - To *encapsulate* checking end of a file
 
-# Bad
+## Bad
 
 - These are both bad
 
@@ -921,11 +922,11 @@ do {
 
 ::::
 
-# Another example
+## Another example
 
 - `biggmp.c`, a libgmp implementation of 4096_t I am now providing for usage on `bigrsa`, could contain much repeated code.
 
-# Add and Sub
+## Add and Sub
 
 - GMP works by:
     - Declaring an `mpz_t` variable.
@@ -935,7 +936,7 @@ do {
     - Extracting to a buffer or 4096_t with `mpz_export`
     - Calling `mpz_clear` or slowing using up all your memory.
 
-# See it
+## See it
 
 - Here's add with light edits:
 
@@ -975,7 +976,7 @@ void bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum) {
 
 ::::
 
-# Both
+## Both
 
 - Only one line differs!
     - 8 repeated lines!
@@ -1017,7 +1018,7 @@ void bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum) {
 ::::
 
 
-# Bug
+## Bug
 
 - This doesn't work because `sum` is used unitialized
     - Requires 2 edits, easy to miss one
@@ -1059,7 +1060,7 @@ void bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum) {
 
 ::::
 
-# Better
+## Better
 
 - Write some function that does all the setup and teardown
 - Pass that function the operation as an argument
@@ -1077,7 +1078,7 @@ void apply(uint64_t *in0, uint64_t *in1, uint64_t *out, function) {
 }
 ```
 
-# Code reuse!
+## Code reuse!
 
 ```{.c}
 uint64_t bigadd(uint64_t *in0, uint64_t *in1, uint64_t *sum) {
@@ -1096,7 +1097,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
 }
 ```
 
-# In practice
+## In practice
 
 - We declare a function which accepts a function as an argument by giving the functions type, and a local variable name.
 - We call a function which "" by using the function name.
@@ -1106,7 +1107,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
 void (f)(mpz_t, const mpz_t, const mpz_t)
 ```
 
-# Declare it:
+## Declare it:
 
 ```{.c}
 void apply(void (f)(mpz_t, const mpz_t, const mpz_t), uint64_t *in0, uint64_t *in1, uint64_t *out) {
@@ -1116,7 +1117,7 @@ void apply(void (f)(mpz_t, const mpz_t, const mpz_t), uint64_t *in0, uint64_t *i
 }
 ```
 
-# Call it:
+## Call it:
 
 - This code is correct, just use name.
 
@@ -1127,7 +1128,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
 }
 ```
 
-# Higher Order
+## Higher Order
 
 - Oh by the way, this **encapsulates** libgmp.
 - This encapsulation method is the function programming concept of higher order functions.
@@ -1136,7 +1137,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
     - We can't *return* functions, just pass as args
 - Oh by the way, this **encapsulates** libgmp.
 
-# Today
+## Today
 
 - &check; Duplication
 - &check; Deficient encapsulation v. Broken modularization
@@ -1145,11 +1146,13 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
 - Big Ball of Mud v. God Object
 - Data clump
 
-# 
+# Sorcery
+
+## 
 
 ![](https://upload.wikimedia.org/wikipedia/en/6/62/I_Am_Number_Four_Poster.jpg){fig-align="center"}
 
-# Who or what is "4"?
+## Who or what is "4"?
 
 ```{.c}
 size_t s, fp = fopen("file.txt", "r")
@@ -1160,7 +1163,7 @@ do {
 } while ( 4 == s )
 ```
 
-# Sizeof
+## Sizeof
 
 ```{.c}
 size_t s, fp = fopen("file.txt", "r")
@@ -1171,7 +1174,7 @@ do {
 } while ( sizeof(uint32_t) == s )
 ```
 
-# Define
+## Define
 
 - Add a define:
 
@@ -1190,7 +1193,7 @@ do {
 } while ( WORD_SIZE == s )
 ```
 
-# 4096_t
+## 4096_t
 
 - I used defines to allow 4096_t to be changed to 8192 with a change to a single line of code
 - *But this only works if you use the defines everywhere*
@@ -1202,7 +1205,7 @@ do {
 
 - Imagine a `???_t` and then just using different header files with different `S` values.
 
-# Today
+## Today
 
 - &check; Duplication
 - &check; Deficient encapsulation v. Broken modularization
@@ -1211,7 +1214,9 @@ do {
 - Big Ball of Mud v. God Object
 - Data clump
 
-# Overthinking
+# Overthink
+
+## Overthinking
 
 - It's just bits.
 
@@ -1242,7 +1247,7 @@ void main() {
 }
 ```
 
-# Not Numbers
+## Not Numbers
 
 ```{.C}
 printf("%%s -> %s\n", buf);
@@ -1263,7 +1268,7 @@ As array: [68, 69, 21, 0]
 ```
 
 
-# Not Letters
+## Not Letters
 
 ```{.C}
 show(buf)
@@ -1302,7 +1307,7 @@ As array: [72, 69, 21, 0]
 
 ::::
 
-# Just bits
+## Just bits
 
 - We, the coder, give them meaning.
 - What does magic number `6650210` mean?
@@ -1322,7 +1327,7 @@ As array: [62, 79, 65, 0]
 ```
 
 
-# Today
+## Today
 
 - &check; Duplication
 - &check; Deficient encapsulation v. Broken modularization
@@ -1331,19 +1336,21 @@ As array: [62, 79, 65, 0]
 - Big Ball of Mud v. God Object
 - Data clump
 
-# Languages
+# Big
+
+## Languages
 
 - Not all patterns and antipatterns exist in all languages.
 
 > [Peter Norvig demonstrates that 16 out of the 23 patterns in the Design Patterns book (which is primarily focused on C++) are simplified or eliminated (via direct language support) in Lisp](https://www.norvig.com/design-patterns/)
 
-# C good
+## C good
 
 - God Objects cannot be made in C, an imperative language.
 - But, we should make sure we use header files. (No "God .c")
 - Famously, the C preprocess (remember `Macros`) starts to look an awful lot like a LISP implementation in more sophisticated projects.
 
-# C LISP
+## C LISP
 
 - I can't read this, but we all know what `CAT` means
 
@@ -1358,7 +1365,7 @@ As array: [62, 79, 65, 0]
 #define _bsem )
 ```
 
-# Today
+## Today
 
 - &check; Duplication
 - &check; Deficient encapsulation v. Broken modularization
@@ -1367,7 +1374,9 @@ As array: [62, 79, 65, 0]
 - &check; Big Ball of Mud v. God Object
 - Data clump
 
-# Mandatory
+# Clump
+
+## Mandatory
 
 - C contains a language-mandatory data clump anti-pattern
 - This is a data clump - two values that only make sense together.
@@ -1375,7 +1384,7 @@ As array: [62, 79, 65, 0]
 int main(int argc, char **argv)
 ```
 
-# Null termination
+## Null termination
 
 - In practice, you can null terminate vectors just like strings
     - libgmp does this
@@ -1388,7 +1397,7 @@ mpz_clears(m0, m1, NULL);
 ```
 - Avoids duplication, like 2x `mpz_init` calls
 
-# Today
+## Today
 
 - &check; Duplication
 - &check; Deficient encapsulation v. Broken modularization
@@ -1397,13 +1406,13 @@ mpz_clears(m0, m1, NULL);
 - &check; Big Ball of Mud v. God Object
 - &check; Data clump
 
-# Previews
+## Previews
 
 - `struct`
     - C language data structures
 - `malloc`
     - Dynamically sized C types
 
-# Or...
+## Or...
 
 - Riff on P strings?

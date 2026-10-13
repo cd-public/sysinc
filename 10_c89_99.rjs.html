@@ -1395,13 +1395,13 @@
 <li>I opened a new terminal and tested</li>
 </ul>
 <pre><code>gcc samp.c --std=c89</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c <span class="at">--std</span><span class="op">=</span>c89</span>
 <span id="cb37-2"><a></a><span class="ex">samp.c:</span> In function <span class="st">'main'</span>:</span>
 <span id="cb37-3"><a></a><span class="ex">samp.c:5:9:</span> error: C++ style comments are not allowed in ISO C90</span>
 <span id="cb37-4"><a></a>    <span class="ex">5</span> <span class="kw">|</span>         <span class="ex">//</span> This is a C++ style comment</span>
 <span id="cb37-5"><a></a>      <span class="kw">|</span>         <span class="ex">^</span></span>
 <span id="cb37-6"><a></a><span class="ex">samp.c:5:9:</span> note: <span class="er">(</span><span class="ex">this</span> will be reported only once per input file<span class="kw">)</span></span>
-<span id="cb37-7"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/crypto/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-7"><a></a><span class="ex">user@DESKTOP-THMS2PJ:~/sysinc/c89_99$</span> podman exec <span class="at">-it</span> <span class="at">-l</span> gcc samp.c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wall-etc" class="slide level2">
 <h2>-Wall etc</h2>
@@ -1715,7 +1715,7 @@ If you want a lot of control and flexibility, you can use the command line.
 <ul>
 <li>GitHub Container Registry</li>
 </ul></li>
-<li>In the meantime, I’d just keep a Containerfile at top level in your “crypto” repo.</li>
+<li>In the meantime, I’d just keep a Containerfile at top level in your “sysinc” repo.</li>
 </ul>
 </section>
 <section id="today-4" class="slide level2">

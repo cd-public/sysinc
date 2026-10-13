@@ -1,22 +1,17 @@
 ---
 title: malloc
-subtitle: "Week 0x4.0"
-
-execute:
-    echo: true
-    cache: true
-    freeze: true  # never re-render during project render
-    code-fold: false
+subtitle: "w9d1"
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
   - Storing structured data
 - **Action Items**:
+  - Data Structures
   - BTCinC
 
-# Data Clump
+## Data Clump
 
 - C contains a language-mandatory data clump anti-pattern
 - This is a data clump - two values that only make sense together.
@@ -24,21 +19,22 @@ execute:
 int main(int argc, char **argv)
 ```
 
-# Today
+## Today
 
 - `malloc`
     - Dynamically sized C
 - `free`
     - Unmalloc
-
+    
 # Review
 
-*   Python has no array (NumPy does)
-    
-    *   Historically lists $\neq$ arrays 
-    *   Python lists are closer to being array-lists - an implementation of a list *abstract data type* using an array *data structure*
+## Review
 
-# Arrays are:
+-   Python has no array (NumPy does)
+    -   Historically lists $\neq$ arrays 
+    -   Python lists are closer to being array-lists: an implementation of a list *abstract data type* using an array *data structure*
+
+## Arrays are:
 
 - Fixed length (replace only, no add/remove)
 ```{.C}
@@ -46,18 +42,24 @@ int arr[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 } ;
 arr = { 1, 2, 3 } ; // compile error 
 arr[15] = -1 ; // runtime error - "stack smashing"`
 ```
+
+## Arrays are:
+
 - Typed, mostly (still just bits, but of certain size)
 ```{.C}
 char *str = "hihi" ; 
 arr[3] = str ; // compile warning - integer from pointer w/o cast
 ```
 
-# Arrays are:
+## Arrays are:
 
 - Just "bits" storing a memory address - no known type or size.
 ```{.C}
 arr[sizeof(arr) -1] = -1 ; // *can* be a segmentation fault
 ```
+
+## Arrays are:
+
 - Arrays exist at fixed location in physical memory. 
 ```{.C}
 int *old = arr, *new ; 
@@ -65,14 +67,21 @@ new = arr ;
 old == new ; // this is "true"
 ```
 
-# Review
+## Arrays are:
 
-*   We use char \* in a function argument to account for arrays of any size.
-    *   What does this mean \*physically\* within the physical computing device?
-*   We use "char arr[$n$]" in the main function so we know we have enough space.
-    *   What does this mean \*physically\* within the physical computing device?
+- Fixed Length
+- Typed
+- An address
+- A fixed address
 
-# Takeaways
+## Review
+
+-   We use `char *` in a function argument to account for arrays of any size.
+    _   What does this mean *physically* within the physical computing device?
+-   We use "char arr[$n$]" in the main function so we know we have enough space.
+    -   What does this mean *physically* within the physical computing device?
+
+## Takeaways
 
 |Pointers|Arrays|
 |-|-|
@@ -82,7 +91,9 @@ old == new ; // this is "true"
 | Can describe any array | One specific array |
 
 
-# `malloc`
+# Malloc
+
+## `malloc`
 
 ```{.email}
 malloc(3)                Library Functions Manual               malloc(3)
@@ -103,7 +114,7 @@ SYNOPSIS         top
        void *malloc(size_t size);
 ```
 
-# Malloc
+## Malloc
 
 ```{.c}
 #include <stdlib.h>
@@ -113,7 +124,7 @@ void *malloc(size_t size);
 - `void *` is new, that is how we refer to something but we don't know to what.
     - Could be a string, could be a vector of strings (argv) could the message schedule array in SHA.
 
-# Malloc
+## Malloc
 
 -   returns a `void *`
     - This gives the location of some bits
@@ -127,7 +138,7 @@ char *ptr = (char *)malloc(sizeof(char) * 6) ;
         - That is, can perform a calculation how much space you need, then dget it.
         - "Here is some memory" vs "This memory contains characters".
 
-# Malloc
+## Malloc
 
 - Treat this memory region the same way we treat a character array. 
     - Handwave the null terminator for now.
@@ -143,7 +154,7 @@ for (i = 0; src[i]; i++) {
 printf("%s %s %s\n", str, buf, ptr) ; // "hello hello hello"
 ```
 
-# `size_t`
+## `size_t`
 
 *   Imagine mallocing all of memory in a single call.
     *   `malloc(0xFF...)` will either crash or return a void \* of zero
@@ -151,7 +162,7 @@ printf("%s %s %s\n", str, buf, ptr) ; // "hello hello hello"
     *   This would return 0xFF... `void *`, the largest of which would be 0xFF...
 *   `void *` and `size_t` are the same size.
 
-# `void *`
+## `void *`
 
 ```{.c}
 #include <stdlib.h> /* for size_t */
@@ -167,23 +178,23 @@ int main() {
 
 - Read more on assert [here](https://web.archive.org/web/20090707025230/http://www.ddj.com/blog/cppblog/archives/2007/07/assertions_vers.html) (or don't).
 
-# From hence
+## From hence
 
-*   But where does the memory come from?
-*   So far, "the stack" - akin to the data structure of the same name
-    * Operating Systems concept
-*   For malloc, "the heap" - again akin
-*   Stack and heap exist in different physical regions of system memory
-    *   So stack memory is near stack memory but distant from heap memory. 
+-   But where does the memory come from?
+-   So far, "the stack" - akin to the data structure of the same name
+    - Operating Systems concept
+-   For malloc, "the heap" - again akin
+-   Stack and heap exist in different physical regions of system memory
+    -   So stack memory is near stack memory but distant from heap memory. 
 
-# Stack & Heap
+## Stack & Heap
 
 ```{.c}
 char arr0[256], arr1[256], arr2[256]; 
 char *ptr0 = malloc(256), *ptr1 = malloc(256), *ptr2 = malloc(256); 
 printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 ```
-*   How far are all these things apart from each other: 
+-   How far are all these things apart from each other: 
 ```{.email}
 0x7ffdcfaae0c0
 0x7ffdcfaae1c0
@@ -192,22 +203,22 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 0x556f982023b0 
 0x556f982024c0
 ```
-*   Hmmm they all end in zero?
+-   Hmmm they all end in zero?
 
-# Stack & Heap
+## Stack & Heap
 
-*   In C, bits are in the stack, where we declare variables, or heap, another special magic place.
-*   Stack memory in explicit sizes fixed when code is compiled.
-*   We have only used stack memory so far so we have to fix memory size when we write the code.
+-   In C, bits are in the stack, where we declare variables, or heap, another special magic place.
+-   Stack memory in explicit sizes fixed when code is compiled.
+-   We have only used stack memory so far so we have to fix memory size when we write the code.
 
-# Stack & Heap
+## Stack & Heap
 
-*   In C, bits are in the stack, where we declare variables, or heap, another special magic place.
-*   A scratchpad  space that GCC configures programs to request and the OS allows use of (up to some limit).
-*   The "magic" is implementation details of the compiler and the operating system.
-*   The only way we will learn to interface with the heap is malloc.
+-   In C, bits are in the stack, where we declare variables, or heap, another special magic place.
+-   A scratchpad  space that GCC configures programs to request and the OS allows use of (up to some limit).
+-   The "magic" is implementation details of the compiler and the operating system.
+-   The only way we will learn to interface with the heap is malloc.
 
-# Stack & Heap
+## Stack & Heap
 
 |Stack|Heap|
 |-|-|
@@ -217,7 +228,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 |Higher/larger (~`0xFF...`)|Lower/smaller (~`0x00...`)|
 
 
-# [Credit](https://courses.engr.illinois.edu/cs225/fa2022/resources/stack-heap/)
+## [Credit](https://courses.engr.illinois.edu/cs225/fa2022/resources/stack-heap/)
     
 |Jenny Chen|Ruohao Guo|
 |-|-|
@@ -227,9 +238,9 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 |B.S. Computer Science, 2021, UIUC|B.S. Computer Science, 2021, UIUC|
 
 
-# Stack
+## Stack
 
-# Memory layout
+## Memory layout
 
 
 ::::{columns}
@@ -250,7 +261,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Stack
+## Stack
 
 ::::{columns}
 
@@ -271,7 +282,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Example
+## Example
 
 
 ::::{columns}
@@ -294,7 +305,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Example
+## Example
 
 
 ::::{columns}
@@ -317,7 +328,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 ::::
 
 
-# Example
+## Example
 
 
 ::::{columns}
@@ -340,7 +351,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Function Call
+## Function Call
 
 
 ::::{columns}
@@ -368,7 +379,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 
 
-# Function Call
+## Function Call
 
 
 ::::{columns}
@@ -391,7 +402,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# What of `return`
+## What of `return`
 
 
 ::::{columns}
@@ -414,7 +425,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# What of `return`
+## What of `return`
 
 
 ::::{columns}
@@ -437,7 +448,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Return
+## Return
 
 ::::{columns}
 
@@ -463,7 +474,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 ::::
 
 
-# Stack Discussion?
+## Stack Discussion?
 
 ::::{columns}
 
@@ -482,9 +493,9 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Stack
+## Stack
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -507,7 +518,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -530,7 +541,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -553,16 +564,16 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 ::::
 
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
 :::{.column width=50%} 
 
-*   Stack-allocate `main.q`
-*   Heap-allocate `2 * sizeof(int)` bytes
-*   Make a note that they are `int`s
-*   Store the address in `main.q`.
+-   Stack-allocate `main.q`
+-   Heap-allocate `2 * sizeof(int)` bytes
+-   Make a note that they are `int`s
+-   Store the address in `main.q`.
 
 :::
 
@@ -575,7 +586,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -596,7 +607,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -618,7 +629,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -641,7 +652,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -665,7 +676,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Heap Example
+## Heap Example
 
 ::::{columns}
 
@@ -689,14 +700,16 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Today
+## Today
 
 - &check; `malloc`
     - Dynamically sized C
 - `free`
     - Unmalloc
+    
+# Free
 
-# Free   
+## Free   
 
 ::::{columns}
 
@@ -716,7 +729,7 @@ printf("%p\n%p\n%p\n%p\n%p\n%p\n", arr0, arr1, arr2, ptr0, ptr1, ptr2) ;
 
 ::::
 
-# Free
+## Free
 
 ```{.email}
 malloc(3)                Library Functions Manual               malloc(3)
@@ -738,7 +751,7 @@ SYNOPSIS         top
        void free(void *_Nullable ptr);
 ```
 
-# Free   
+## Free   
 
 ```{.c}
 void free(void *_Nullable ptr);
@@ -761,47 +774,47 @@ ptr = buf; /* Star but not Nullable */
 ptr = arr; /* Star_Nullable */
 ```
 
-# Free
+## Free
 
 - Every `malloc` in your code should have a corresponding `free`
 - Otherwise you could run out memory (or other problems)
 
-# Memory Leak 
+## Memory Leak 
 
 1.  p holds a \*\_Nullable.
 2.  q holds a \*\_Nullable.
 
 ![](struct_files/heap_demo_4.png){width="50%"}
 
-# Memory Leak 
+## Memory Leak 
 
 1.  p, q holds a \*\_Nullable.
 2.  "old `p`" forgotten!
 
 ![](struct_files/heap_demo_5.png){width="50%"}
 
-# Your poor OS
+## Your poor OS
 
 - Your poor OS is on contract to protect that `1` you left in "old `p`" forever!
 - This is why sometimes restarting your computer causes it work.
 - E.g. Java, Python have a "garbage collector" that frees memory for you and causes you code to run 500 times (not always an exaggeration) slower.
 - Also if you try really hard you can memory leak Python.
 
-# Instead
+## Instead
 
 1. `free(p)` and the bytes return to circulation.
 2. `0` persists until overwritten*
 
 ![](struct_files/free_demo_5.png){width="50%"}
 
-# Valgrind
+## Valgrind
 
 - Verifying that all memory has been freed isn't easy!
 - I recommend use of `valgrind`
     - [Read more](https://valgrind.org/docs/manual/quick-start.html)
 - I won't teach Valgrind this term but may show it time to time.
 
-# leaky.c
+## leaky.c
 
 - Write a quick memory leaking program:
 
@@ -815,7 +828,7 @@ void main() {
 }
 ```
 
-# Valgrind
+## Valgrind
 
 - Compile a run within `valgrind`
 ```{.email}
@@ -843,7 +856,7 @@ $ valgrind ./a.out
 ==1331== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 
-# Emph
+## Emph
 
 ```{.c}
 ==1331== LEAK SUMMARY:
@@ -854,7 +867,7 @@ $ valgrind ./a.out
 int *p = (int *)malloc(sizeof(int));
 ```
 
-# Fix it
+## Fix it
 
 ```{.c filename="leaky.c"}
 #include <stdlib.h>
@@ -876,13 +889,13 @@ void main() {
 ==1430==         suppressed: 0 bytes in 0 blocks
 ```
 
-# "Good Enough"
+## "Good Enough"
 
 - It is possible to confuse Valgrind (and I intend to do so if we have time)
 - As a rule, if it confused Valgrind it likely contains some antipattern.
     - Up to debate with my planned example.
 
-# Free + Leak = Freak
+## Free + Leak = Freak
 
 *   We can generate a silly outcome at high probability by:
     
@@ -890,7 +903,7 @@ void main() {
     2.  Memory leak
     3.  Check value
 
-# Freak
+## Freak
 
 ```{.c}
 #include <stdio.h>
@@ -915,7 +928,7 @@ $ ./a.out
 1551349524
 ```
 
-# Without free
+## Without free
 
 ```{.c}
 #include <stdio.h>
@@ -939,7 +952,7 @@ $ ./a.out
 1
 ```
 
-# Without leaks
+## Without leaks
 
 ```{.c}
 #include <stdio.h>
@@ -964,7 +977,7 @@ $ ./a.out
 - `1` is unprotected but not yet overwritten.
 
 
-# Today
+## Today
 
 - &check; `malloc`
     - Dynamically sized C
@@ -972,16 +985,18 @@ $ ./a.out
     - Unmalloc
 - Memory-adjacent techniques?
     - If time
-
-# Overthinking
-
-*   It's just bits.
-*   A void \*, a size\_t, and a character array of length 8 walk into a compiler.
-    *   The compiler asks "Why the long int"?
-*   In running code, there is no distinction between any of these: each is simply 64 bits.
-*   The compiler maintains the distinction when generating code to make writing code easier for humans.
     
-# 
+# Extras
+
+## Overthinking
+
+-   It's just bits.
+-   A `void *`, a `size_t`, and a character array of length 8 walk into a compiler.
+    -   The compiler asks "Why the long int"?
+-   In running code, there is no distinction between any of these: each is simply 64 bits.
+-   The compiler maintains the distinction when generating code to make writing code easier for humans.
+    
+## 
     
 |Type|Use|Print code|sizeof(), usually|
 |-|-|-|-|
@@ -991,7 +1006,7 @@ $ ./a.out
 |`long`,`long int`,`int64_t`|$\text{abs}(x) <= 2^{63}$|`%ld`|8|
     
 
-# Casting
+## Casting
 
 - Casting avoids `gcc` warnings/errors:
 ```{.c}
@@ -1014,7 +1029,7 @@ q was malloc'ed 45975329250096 bytes from stack allocated p.
 ```
 
 
-# Implicit Cast
+## Implicit Cast
 
 *   Can infer casts, but some draw warnings:
 ```{.email}
@@ -1034,39 +1049,39 @@ $ python3 -c 'print(ord("h"))'
 ```
 - char array to `void *` is fine - both addresses
 
-# Documentation
+## Documentation
 
-*   Sometimes we can use casts to make it more clear what our code should be doing. 
+-   Sometimes we can use casts to make it more clear what our code should be doing. 
 ```{.c}
 char *str = (char *)malloc(sizeof(char) * 8) ; // malloc returns void *`
 ```
-*   I like void casts, they remind me of Python "\_ =" which I use in notebooks to discard output. 
+-   I like void casts, they remind me of Python "\_ =" which I use in notebooks to discard output. 
 ```{.c}
 (void)printf("%s\n", str) ; // printf returns an int - we don't care.
 ```
 
 
-# Takeaways
+## Takeaways
 
-*   Cast the return value of malloc. 
+-   Cast the return value of malloc. 
 ```{.c}
 int main() { 
     char *ptr = malloc(8) ; // error-prone, ambigious 
     char *str = (char *)malloc(sizeof(char) * 8) ; // more intentional 
 }
 ```
-*   Much bigger deal when using types of size other than one, or of unknown size.  
+-   Much bigger deal when using types of size other than one, or of unknown size.  
     
 
 
-# Pointer Arithmetic
+## Pointer Arithmetic
 
 ::::{columns}
 
 :::{.column width=50%}
-*   Wait a minute... `sizeof(int) != 1`.
-*   So `q` is must be some value other than `1` away from `q[1]`
-*   Yet we do not address the next int in an array by saying `q[1*sizeof(int)]`
+-   Wait a minute... `sizeof(int) != 1`.
+-   So `q` is must be some value other than `1` away from `q[1]`
+-   Yet we do not address the next int in an array by saying `q[1*sizeof(int)]`
 :::
 
 :::{.column width=50%}
@@ -1074,10 +1089,10 @@ int main() {
 :::
 ::::
 
-# Overload
+## Overload
 
-*   People are allowed to like things, so you are allowed to like this.
-*   I don't. 
+-   People are allowed to like things, so you are allowed to like this.
+-   I don't. 
 ```{.py}
 >>> x, y, s, t = 1, 2, "h", "i" 
 >>> x + y 3 
@@ -1086,18 +1101,18 @@ Traceback (most recent call last): File "<stdin>", line 1, in <module> TypeError
 >>> s + t 'hi' 
 >>>
 ```
-*   This is called operator overloading. 
-*   It's not allowed in C.
+-   This is called operator overloading. 
+-   It's not allowed in C.
 
-# Two many `gcc`'s
+## Two many `gcc`'s
 
-*   If you add strings together, `gcc` stops you.
+-   If you add strings together, `gcc` stops you.
 ```{.c}
 void main() {
         "a" + "b";
 }
 ```
-*   Thanks, `gcc`. 
+-   Thanks, `gcc`. 
 ```{.emai}
 leaky.c: In function ‘main’:
 leaky.c:2:13: error: invalid operands to binary + (have ‘char *’ and ‘char *’)
@@ -1107,9 +1122,9 @@ leaky.c:2:13: error: invalid operands to binary + (have ‘char *’ and ‘char
       |         |   char *
       |         char *
 ```
-*   What does "binary" mean ? (Hint: MATH 251W)
+-   What does "binary" mean ? (Hint: MATH 251W)
 
-# Trust `gcc`
+## Trust `gcc`
 
 - Let's do a cast and an addition
 ```{.c}
@@ -1125,38 +1140,38 @@ $ gcc leaky.c ; ./a.out
 0x100 + 0x1 = 0x108
 ```
 
-# Trust!
+## Trust!
 
-*   At least it's consistent. 
+-   At least it's consistent. 
 ```{.c}
 printf("%p + %p = %p \n", (void *)p, (void *)x, (void *)((char *)p + x)) ; 
 printf("%p + %p = %p \n", (void *)p, (void *)x, (void *)((int *)p + x)) ; 
 printf("%p + %p = %p \n", (void *)p, (void *)x, (void *)((long *)p + x)) ;`
 ```
-*   All 0x108 I'm sure. 
+-   All 0x108 I'm sure. 
 ```{.email}
 $ ./a.out 
 0x100 + 0x1 = 0x101 
 0x100 + 0x1 = 0x104 
 0x100 + 0x1 = 0x108
 ```
-*   Get it?
+-   Get it?
 
-# Overload?
+## Overload?
 
-*   "operator overloading... not allowed in C."
-*   Addition and subtraction... are(?) overloaded
-    *   Realistically, not quite (not commutative)
-*   Add a (1) location and (2) integer
-    *   int \* + int
-    *   int \* + long
-    *   char \* + int
-    *   long \* + char
+-   "operator overloading... not allowed in C."
+-   Addition and subtraction... are(?) overloaded
+    -   Realistically, not quite (not commutative)
+-   Add a (1) location and (2) integer
+    -   int \* + int
+    -   int \* + long
+    -   char \* + int
+    -   long \* + char
 
 
-# On `[]`
+## On `[]`
 
-*   Pointer arithmetic too. 
+-   Pointer arithmetic too. 
 ```{.c}
 int arr[4] = { 0x10, 0x100, 0x1000, 0x10000 } ; 
 printf(" arr+1 : %p\n", arr+1) ; 
@@ -1164,7 +1179,7 @@ printf("*(arr+1): %p\n", *(arr+1)) ;
 printf("(*arr+1): %p\n", (*arr+1)) ; 
 printf(" arr[1]: %p\n", arr[1]) ;
 ```
-*   See it.
+-   See it.
 ```{.email}
 arr+1 : 0x7fff5956cce4 
 *(arr+1): 0x100 
@@ -1172,9 +1187,9 @@ arr+1 : 0x7fff5956cce4
 arr[1]: 0x100`
 ```
 
-# Unary `&`
+## Unary `&`
 
-*   & is both a unary and binary operator in C, like - (minus) 
+-   & is both a unary and binary operator in C, like - (minus) 
 ```{.c}
 int main() { 
     int x, y
@@ -1184,7 +1199,8 @@ int main() {
     x = &y; 
 }
 ```
-# &
+
+## &
 
 - Unary `&` is inverse `*`
 
@@ -1202,7 +1218,7 @@ int main() {
  y = f, &y = 0x7ffc85ee5f68
 ```
 
-# &
+## &
 
 - `*` is not (quite) inverse `&`
 
@@ -1219,7 +1235,7 @@ int main() {
 Segmentation fault
 ```
 
-# Malloc fail
+## Malloc fail
 
 *   There is no guarantee `malloc` worked
     
@@ -1237,7 +1253,7 @@ void main() {
 }
 ```
 
-# Force fail
+## Force fail
 
 ```{.c}
 void main() { 
@@ -1249,7 +1265,7 @@ void main() {
 }
 ``` 
 
-# Today
+## Today
 
 - &check; `malloc`
     - Dynamically sized C

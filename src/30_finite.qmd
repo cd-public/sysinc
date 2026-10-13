@@ -1,6 +1,6 @@
 ---
 title: Finite
-subtitle: "w3d0"
+subtitle: "w3d?"
 ---
 
 ## Announcements
@@ -27,6 +27,8 @@ subtitle: "w3d0"
   - Arbitrary/high precision integers
   - Arithmetic operations
   - Function types
+  
+# Integers
   
 ## What are integers?
 
@@ -475,6 +477,7 @@ int main() {
   - Arithmetic operations
   - Function types
 
+# Operations
 
 ## Easy Mode
 
@@ -717,6 +720,8 @@ python3 -c "x = 2 ** 8 - 1 ; x = x * x ; print(x.bit_length())"
   - &check; Arbitrary/high precision integers
   - &check; Arithmetic operations
   - Function types
+  
+# Functions
 
 ## A 4096 bit type
 

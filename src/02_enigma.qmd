@@ -1,6 +1,7 @@
 ---
 title: Enigma
 subtitle: "Due Thu, 03 Sep"
+format:   html
 ---
 
 # Enigma&nbsp;<a class="btn btn-primary" data-bs-toggle="collapse" href="#enigma" role="button" aria-expanded="false" aria-controls = "enigma">Show</a>

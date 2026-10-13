@@ -1,6 +1,6 @@
 ---
 title: heap_t
-subtitle: "HW 0x4.1: Due Fri, 08 Aug"
+subtitle: "Exercise of `BTCinC`"
 format:   html
 ---
 
@@ -17,14 +17,14 @@ format:   html
 
 :::
 
-- This is the first of two "data structures" assignments, implementing the "Merkle tree" of blockchain.
+- This is the second of two "data structures" assignments, implementing the "Merkle tree" of blockchain.
 - The data stored by the structure is untyped and the heap is provided only with its size.
   - The same is true of the provided comparison function.
 - It is split over 3 files:
   - `tester.c` which is an example of how some client could use `heap_t`
   - `heap_t.h` which the public API you will implement, as with `list_t`
     - You may not change any lines and must use the array implementation.
-    - This is learning objective of the assignment.
+    - This is the learning objective of the assignment.
   - `heap_t.c` where you have some freedom but will be implementing known algorithms.
   - Additionally, a Makefile is provided.
 

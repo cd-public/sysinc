@@ -390,28 +390,24 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">bchain</h1>
-  <p class="subtitle">Systems in C</p>
+  <p class="subtitle">wBd0</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
-<li><strong>Welcome</strong> to Computing Security
+<li><strong>Welcome</strong> to Systems in C
 <ul>
+<li>“Long have I waited” - Emperor Palpatine</li>
 <li>Blockchain</li>
-</ul></li>
-<li><strong>Action Items</strong>:
-<ul>
-<li>BTCinC</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Background</li>
 <li>Blocks
@@ -420,18 +416,17 @@
 </ul></li>
 </ul>
 </section>
-
+<section>
 <section id="background" class="title-slide slide level1 center">
 <h1>Background</h1>
 
 </section>
-
-<section id="s" class="title-slide slide level1 center">
-<h1>2000s</h1>
+<section id="s" class="slide level2">
+<h2>2000s</h2>
 <ul>
 <li>Dotcom crash (~2000)
 <ul>
-<li>Many digital currency failed</li>
+<li>Many digital currencies failed</li>
 <li>Many ecommerce sites failed</li>
 <li>Many internet banks (e.g.&nbsp;Net.B@nk) fail</li>
 <li>Most large sites (Amazon, Cisco) contracted ~80%</li>
@@ -439,9 +434,8 @@
 <li>Centralized servers are politically weak.</li>
 </ul>
 </section>
-
-<section id="section" class="title-slide slide level1 center">
-<h1>2008</h1>
+<section id="section" class="slide level2">
+<h2>2008</h2>
 <ul>
 <li>Great Recession (~2007-)
 <ul>
@@ -453,9 +447,8 @@
 <li>Centralized banks are politically week</li>
 </ul>
 </section>
-
-<section id="open-question" class="title-slide slide level1 center">
-<h1>Open question</h1>
+<section id="open-question" class="slide level2">
+<h2>Open question</h2>
 <ul>
 <li>How can the client of a currency system:
 <ul>
@@ -471,9 +464,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="bitcoin" class="title-slide slide level1 center">
-<h1>Bitcoin</h1>
+<section id="bitcoin" class="slide level2">
+<h2>Bitcoin</h2>
 <ul>
 <li>Bitcoin is the first blockchain
 <ul>
@@ -489,9 +481,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="features" class="title-slide slide level1 center">
-<h1>Features</h1>
+<section id="features" class="slide level2">
+<h2>Features</h2>
 <ul>
 <li>Achieves consensus
 <ul>
@@ -506,18 +497,16 @@
 <li>Uses ‘proof of work’ <a href="http://www.hashcash.org/papers/pvp.pdf">C. Dwork ’92</a></li>
 </ul>
 </section>
-
-<section id="nakamoto-08" class="title-slide slide level1 center">
-<h1>Nakamoto ’08</h1>
+<section id="nakamoto-08" class="slide level2">
+<h2>Nakamoto ’08</h2>
 <ul>
 <li>We now follow the Nakamoto ’08 paper,</li>
 <li><a href="https://bitcoin.org/bitcoin.pdf">Bitcoin: A Peer-to-Peer Electronic Cash System</a></li>
 <li>You should read it.</li>
 </ul>
 </section>
-
-<section id="genesis-block" class="title-slide slide level1 center">
-<h1>Genesis Block</h1>
+<section id="genesis-block" class="slide level2">
+<h2>Genesis Block</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb1-1"><a></a>00000000   01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................</span>
 <span id="cb1-2"><a></a>00000010   00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................</span>
 <span id="cb1-3"><a></a>00000020   00 00 00 00 3B A3 ED FD  7A 7B 12 B2 7A C7 2C 3E   ....;£íýz{.²zÇ,&gt;</span>
@@ -536,15 +525,14 @@
 <span id="cb1-16"><a></a>000000F0   79 62 E0 EA 1F 61 DE B6  49 F6 BC 3F 4C EF 38 C4   ybàê.aÞ¶Iö¼?Lï8Ä</span>
 <span id="cb1-17"><a></a>00000100   F3 55 04 E5 1E C1 12 DE  5C 38 4D F7 BA 0B 8D 57   óU.å.Á.Þ\8M÷º..W</span>
 <span id="cb1-18"><a></a>00000110   8A 4C 70 2B 6B F1 1D 5F  AC 00 00 00 00            ŠLp+kñ._¬....</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
+</section></section>
+<section>
 <section id="blocks" class="title-slide slide level1 center">
 <h1>Blocks</h1>
 
 </section>
-
-<section id="bitcoin-1" class="title-slide slide level1 center">
-<h1>Bitcoin</h1>
+<section id="bitcoin-1" class="slide level2">
+<h2>Bitcoin</h2>
 <blockquote>
 <p>In this paper, we propose a solution to the double-spending problem using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions</p>
 </blockquote>
@@ -563,9 +551,8 @@
 </ul>
 </div></div>
 </section>
-
-<section id="transactions" class="title-slide slide level1 center">
-<h1>Transactions</h1>
+<section id="transactions" class="slide level2">
+<h2>Transactions</h2>
 <blockquote>
 <p>A <em>chain</em> of digital signatures</p>
 </blockquote>
@@ -582,9 +569,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="a-transaction" class="title-slide slide level1 center">
-<h1>A transaction</h1>
+<section id="a-transaction" class="slide level2">
+<h2>A transaction</h2>
 <blockquote>
 <p>Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin</p>
 </blockquote>
@@ -595,9 +581,8 @@
 <li>We write this down.</li>
 </ul>
 </section>
-
-<section id="signage" class="title-slide slide level1 center">
-<h1>Signage</h1>
+<section id="signage" class="slide level2">
+<h2>Signage</h2>
 <ul>
 <li>To verify it is (1) our coins and (2) use transferring them, we:
 <ul>
@@ -608,9 +593,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="verify" class="title-slide slide level1 center">
-<h1>Verify</h1>
+<section id="verify" class="slide level2">
+<h2>Verify</h2>
 <ul>
 <li>The general public:
 <ul>
@@ -620,9 +604,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <div class="cell" data-fig-width="800px" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -756,9 +739,8 @@
 </div>
 </div>
 </section>
-
-<section id="section-2" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <div style="max-height: 500px;  overflow-y: auto;">
 <div class="cell" data-fig-width="1000px" data-fig-height="2000px" data-layout-align="default">
 <div class="cell-output-display">
@@ -779,6 +761,11 @@
 <polygon fill="#191919" stroke="#ffffff" points="74,-726.4 74,-875.2 352,-875.2 352,-726.4 74,-726.4"></polygon>
 <text text-anchor="middle" x="213" y="-858.6" font-family="Times,serif" font-size="14.00" fill="#ffffff">Encryption</text>
 </g>
+<g id="clust2" class="cluster">
+<title>cluster_digest_pre</title>
+<polygon fill="#191919" stroke="#ffffff" points="230,-284.8 230,-433.6 442,-433.6 442,-284.8 230,-284.8"></polygon>
+<text text-anchor="middle" x="336" y="-417" font-family="Times,serif" font-size="14.00" fill="#ffffff">Precompression</text>
+</g>
 <g id="clust3" class="cluster">
 <title>cluster_digest_post</title>
 <polygon fill="#191919" stroke="#ffffff" points="10,-284.8 10,-433.6 222,-433.6 222,-284.8 10,-284.8"></polygon>
@@ -788,11 +775,6 @@
 <title>cluster_decryption</title>
 <polygon fill="#191919" stroke="#ffffff" points="8,-505.6 8,-654.4 292,-654.4 292,-505.6 8,-505.6"></polygon>
 <text text-anchor="middle" x="150" y="-637.8" font-family="Times,serif" font-size="14.00" fill="#ffffff">Decryption</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_digest_pre</title>
-<polygon fill="#191919" stroke="#ffffff" points="230,-284.8 230,-433.6 442,-433.6 442,-284.8 230,-284.8"></polygon>
-<text text-anchor="middle" x="336" y="-417" font-family="Times,serif" font-size="14.00" fill="#ffffff">Precompression</text>
 </g>
 <!-- message -->
 <g id="node1" class="node">
@@ -1065,23 +1047,22 @@
 </div>
 </div>
 </section>
-
-<section id="demo" class="title-slide slide level1 center">
-<h1>Demo</h1>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb2-1"><a></a>$ pwd</span>
 <span id="cb2-2"><a></a>~/crypto/bigrsa</span>
-<span id="cb2-3"><a></a>$ make # featuring libgmp because I'm scared of prime generation</span>
+<span id="cb2-3"><a></a>$ make ## featuring libgmp because I'm scared of prime generation</span>
 <span id="cb2-4"><a></a>gcc bigrsa.c biggmp.c -std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -lgmp -o bigrsa -lgmp</span>
 <span id="cb2-5"><a></a>gcc bigkey.c biggmp.c -std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -lgmp -o bigkey -lgmp</span>
 <span id="cb2-6"><a></a>$ ./bigkey</span>
-<span id="cb2-7"><a></a>$ echo "CD pays PC n buckerinos" &gt; m.txt # home persona -&gt; work persona</span>
-<span id="cb2-8"><a></a>$ ./bigrsa -d m.txt c.txt # -d as we sign with private key</span>
-<span id="cb2-9"><a></a>$ cat c.txt # this will be unprintable</span>
+<span id="cb2-7"><a></a>$ echo "CD pays PC n buckerinos" &gt; m.txt ## home persona -&gt; work persona</span>
+<span id="cb2-8"><a></a>$ ./bigrsa -d m.txt c.txt ## -d as we sign with private key</span>
+<span id="cb2-9"><a></a>$ cat c.txt ## this will be unprintable</span>
 <span id="cb2-10"><a></a>8�s4�������}���9�xh�/��1�␦8��v����̃�[M�����]�'3�&gt;Vv</span>
 <span id="cb2-11"><a></a>$ ./bigrsa -e c.txt n.txt</span>
-<span id="cb2-12"><a></a>$ cat n.txt # will be original message</span>
+<span id="cb2-12"><a></a>$ cat n.txt ## will be original message</span>
 <span id="cb2-13"><a></a>CD pays PC n buckerinos</span>
-<span id="cb2-14"><a></a>$ ../shainc/shainc m.txt # just happen to have a sha256 around</span>
+<span id="cb2-14"><a></a>$ ../shainc/shainc m.txt ## just happen to have a sha256 around</span>
 <span id="cb2-15"><a></a>f7208b993f0ad6a7277dee1bf4bb5478a57562c76e5bf18e011d6729f91caaa8  m.txt</span>
 <span id="cb2-16"><a></a>$ ../shainc/shainc n.txt</span>
 <span id="cb2-17"><a></a>f7208b993f0ad6a7277dee1bf4bb5478a57562c76e5bf18e011d6729f91caaa8  n.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1089,17 +1070,15 @@
 <li>Buckerinos accepted, who needs banks 👍</li>
 </ul>
 </section>
-
-<section id="wait-a-minute" class="title-slide slide level1 center">
-<h1>Wait a minute</h1>
+<section id="wait-a-minute" class="slide level2">
+<h2>Wait a minute</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb3-1"><a></a>$ echo "CD pays PC infinity buckerinos" &gt; m.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>What stops this from happening?</li>
 </ul>
 </section>
-
-<section id="doublecount" class="title-slide slide level1 center">
-<h1>Doublecount</h1>
+<section id="doublecount" class="slide level2">
+<h2>Doublecount</h2>
 <blockquote>
 <p>The problem of course is the payee can’t verify that one of the owners did not double-spend the coin.</p>
 </blockquote>
@@ -1107,9 +1086,8 @@
 <li>Banks with only <em>n</em> coins are <strong>the exact problem</strong></li>
 </ul>
 </section>
-
-<section id="with-physicalcoin" class="title-slide slide level1 center">
-<h1>With Physicalcoin</h1>
+<section id="with-physicalcoin" class="slide level2">
+<h2>With Physicalcoin</h2>
 <ul>
 <li>The (central?) bank is sole arbiter of providing credit with those coins.</li>
 <li>Banks with finite coins are vulnerable to bank runs.</li>
@@ -1117,9 +1095,8 @@
 <li>A bank must be trusted (very tough in early 2009, or… <a href="https://web.archive.org/web/20230310171005/https://www.nytimes.com/2023/03/10/business/silicon-valley-bank-stock.html">ever</a>?)</li>
 </ul>
 </section>
-
-<section id="ledgers" class="title-slide slide level1 center">
-<h1>Ledgers</h1>
+<section id="ledgers" class="slide level2">
+<h2>Ledgers</h2>
 <ul>
 <li>All transactions are logged publicly (and verifiable publicly)
 <ul>
@@ -1131,9 +1108,8 @@
 <li>Remember, transactions = coins.</li>
 </ul>
 </section>
-
-<section id="aside-metadata" class="title-slide slide level1 center">
-<h1>Aside: Metadata</h1>
+<section id="aside-metadata" class="slide level2">
+<h2>Aside: Metadata</h2>
 <ul>
 <li>In theory, Bitcoin can be anonymous.
 <ul>
@@ -1143,9 +1119,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="aside-limits" class="title-slide slide level1 center">
-<h1>Aside: Limits</h1>
+<section id="aside-limits" class="slide level2">
+<h2>Aside: Limits</h2>
 <ul>
 <li>If a coin is used for something illegal (e.g.&nbsp;ransom), its full ownership is known.</li>
 <li>If that coin is ever exchanged for currency/material, someone (e.g.&nbsp;DoJ) can seize assets.</li>
@@ -1153,9 +1128,8 @@
 <li><a href="https://www.justice.gov/opa/pr/department-justice-seizes-23-million-cryptocurrency-paid-ransomware-extortionists-darkside%22">Department of Justice Seizes $2.3 Million in Cryptocurrency Paid to the Ransomware Extortionists Darkside</a></li>
 </ul>
 </section>
-
-<section id="timestamps" class="title-slide slide level1 center">
-<h1>Timestamps</h1>
+<section id="timestamps" class="slide level2">
+<h2>Timestamps</h2>
 <ul>
 <li>Time is <em>hard</em> (actually <a href="https://lamport.azurewebsites.net/pubs/time-clocks.pdf">impossible</a>)</li>
 <li>Oh well.</li>
@@ -1169,17 +1143,15 @@
 <li>Hash it every 10 minutes.</li>
 </ul>
 </section>
-
-<section id="from-paper" class="title-slide slide level1 center">
-<h1>From Paper</h1>
+<section id="from-paper" class="slide level2">
+<h2>From Paper</h2>
 <blockquote>
 <p>Each timestamp includes the previous timestamp in sits hash, forming a chain, with each additional timestamp reinforcing the ones before it.</p>
 </blockquote>
 
 <img data-src="https://www.researchgate.net/profile/Umar-Ruhi-2/publication/325464908/figure/fig2/AS:632226425360385@1527745934849/Nakamotos-Blockchain-Proposal-Nakamoto-2008.png" class="r-stretch"></section>
-
-<section id="abstract-txs" class="title-slide slide level1 center">
-<h1>Abstract Tx’s</h1>
+<section id="abstract-txs" class="slide level2">
+<h2>Abstract Tx’s</h2>
 <ul>
 <li>For now, we abstract how transactions are handled.
 <ul>
@@ -1190,9 +1162,8 @@
 <li>We can get hashes from <code>shainc</code> or <code>sha256sum</code></li>
 </ul>
 </section>
-
-<section id="block" class="title-slide slide level1 center">
-<h1>Block</h1>
+<section id="block" class="slide level2">
+<h2>Block</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>bchain.h</strong></pre>
@@ -1213,9 +1184,8 @@
 <span id="cb4-14"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="doublespend" class="title-slide slide level1 center">
-<h1>Doublespend</h1>
+<section id="doublespend" class="slide level2">
+<h2>Doublespend</h2>
 <ul>
 <li>How does this help?
 <ul>
@@ -1225,9 +1195,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="solution" class="title-slide slide level1 center">
-<h1>Solution</h1>
+<section id="solution" class="slide level2">
+<h2>Solution</h2>
 <ul>
 <li>Two parts:
 <ul>
@@ -1242,9 +1211,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="proof-of-work" class="title-slide slide level1 center">
-<h1>Proof of work</h1>
+<section id="proof-of-work" class="slide level2">
+<h2>Proof of work</h2>
 <ul>
 <li>Make a block except the <code>nonce</code>.
 <ul>
@@ -1259,9 +1227,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="its-hard." class="title-slide slide level1 center">
-<h1>It’s hard.</h1>
+<section id="its-hard." class="slide level2">
+<h2>It’s hard.</h2>
 <ul>
 <li>Let’s get one trailing zero.</li>
 <li>Add utf-8 “nonce”.</li>
@@ -1280,9 +1247,8 @@
 <span id="cb5-12"><a></a>$ echo "CD-1&gt;PCF" &gt; tx.txt ; ./shainc tx.txt</span>
 <span id="cb5-13"><a></a>741f4fee0582ccb44db1503f8e3f326b2ae6c4ee94c3d0f31427e933b40a9fc0  tx.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="difficulty" class="title-slide slide level1 center">
-<h1>Difficulty</h1>
+<section id="difficulty" class="slide level2">
+<h2>Difficulty</h2>
 <ul>
 <li>Bitcoin has a scaling difficulty.
 <ul>
@@ -1296,9 +1262,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="quoth-sn" class="title-slide slide level1 center">
-<h1>Quoth SN:</h1>
+<section id="quoth-sn" class="slide level2">
+<h2>Quoth SN:</h2>
 <ul>
 <li>SN: Proof-of-work is “one-CPU-one-vote”
 <ul>
@@ -1308,9 +1273,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="logging" class="title-slide slide level1 center">
-<h1>Logging</h1>
+<section id="logging" class="slide level2">
+<h2>Logging</h2>
 <blockquote>
 <p>The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it.</p>
 </blockquote>
@@ -1321,9 +1285,8 @@
 <li>The chain gets more secure every 10 minutes.</li>
 </ul>
 </section>
-
-<section id="compute" class="title-slide slide level1 center">
-<h1>Compute</h1>
+<section id="compute" class="slide level2">
+<h2>Compute</h2>
 <blockquote>
 <p>If a majority of CPU power is controlled by honest nodes, the honest chain will grow the fastest and outpace any competing chains.</p>
 </blockquote>
@@ -1333,9 +1296,8 @@
 <li>The same authorities with majority of CPU power (trillion dollar companies, US Govt) also influence or control fiat currency (USD, Apple/Google Pay)</li>
 </ul>
 </section>
-
-<section id="climate" class="title-slide slide level1 center">
-<h1>Climate</h1>
+<section id="climate" class="slide level2">
+<h2>Climate</h2>
 <blockquote>
 <p>To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour.</p>
 </blockquote>
@@ -1344,14 +1306,11 @@
 <li>Miners are more efficient <em>per hash</em> - driving GPU development and a little bit the AI boom.</li>
 </ul>
 </section>
-
-<section id="the-network" class="title-slide slide level1 center">
-<h1>The Network</h1>
-
+<section id="the-network" class="slide level2">
+<h2>The Network</h2>
 </section>
-
-<section id="bitcoin-network" class="title-slide slide level1 center">
-<h1>Bitcoin Network</h1>
+<section id="bitcoin-network" class="slide level2">
+<h2>Bitcoin Network</h2>
 <ol type="1">
 <li>New transactions are broadcast to all nodes</li>
 <li>Each node collects makes a block.</li>
@@ -1361,9 +1320,8 @@
 <li>Nodes accept via starting on the <em>next</em> block.</li>
 </ol>
 </section>
-
-<section id="broadcast" class="title-slide slide level1 center">
-<h1>Broadcast</h1>
+<section id="broadcast" class="slide level2">
+<h2>Broadcast</h2>
 <blockquote>
 <p>New transactions are broadcast to all nodes</p>
 </blockquote>
@@ -1378,18 +1336,16 @@
 <li>Doing this well, much less exhaustively, is non-trivial, but doing it “at all” is easy.</li>
 </ul>
 </section>
-
-<section id="aside-example" class="title-slide slide level1 center">
-<h1>Aside: Example</h1>
+<section id="aside-example" class="slide level2">
+<h2>Aside: Example</h2>
 <ul>
 <li>This implements the message server of the famous impossibility result from Nancy Lynch that led to the eventual bitcoin result.</li>
 </ul>
 <iframe width="800px" height="300px" src="https://cd-public.github.io/calvinism/?uri=https://gist.githubusercontent.com/cd-public/d434b316dc027a4808571e1690fd592c/raw/318522d9691c44a96c8bac09388a4efac593c0e7/flpMsgSys.js">
 </iframe>
 </section>
-
-<section id="collect" class="title-slide slide level1 center">
-<h1>Collect</h1>
+<section id="collect" class="slide level2">
+<h2>Collect</h2>
 <blockquote>
 <p>Each node collects new transactions into a block.</p>
 </blockquote>
@@ -1409,9 +1365,8 @@
 <span id="cb6-10"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="work-mine" class="title-slide slide level1 center">
-<h1>Work / Mine</h1>
+<section id="work-mine" class="slide level2">
+<h2>Work / Mine</h2>
 <ul>
 <li>Just hash in a loop with a counter.
 <ul>
@@ -1426,9 +1381,8 @@
 <li>Broadcasting out-of-scope for now.</li>
 </ul>
 </section>
-
-<section id="broadcast-ii" class="title-slide slide level1 center">
-<h1>Broadcast II</h1>
+<section id="broadcast-ii" class="slide level2">
+<h2>Broadcast II</h2>
 <blockquote>
 <p>When a node finds a proof-of-work, it broadcasts the block to all nodes.</p>
 </blockquote>
@@ -1439,9 +1393,8 @@
 <li>Until then, in flux.</li>
 </ul>
 </section>
-
-<section id="accept" class="title-slide slide level1 center">
-<h1>Accept</h1>
+<section id="accept" class="slide level2">
+<h2>Accept</h2>
 <blockquote>
 <p>Nodes accept the block only if all transactions in it are valid and not already spent.</p>
 </blockquote>
@@ -1451,9 +1404,8 @@
 <li>Fraudelent blocks are expensive to make and unlikely to be accepted.</li>
 </ul>
 </section>
-
-<section id="express" class="title-slide slide level1 center">
-<h1>Express</h1>
+<section id="express" class="slide level2">
+<h2>Express</h2>
 <blockquote>
 <p>Nodes express their acceptance of the block by working on creating the next block in the chain, using the hash of the accepted block as the previous hash.</p>
 </blockquote>
@@ -1462,9 +1414,8 @@
 <li>So, block <code>n-2</code> is known accepted, <code>n-1</code> is likely accepted but there may be candidates, <code>n</code> is currently being mined.</li>
 </ul>
 </section>
-
-<section id="in-my-words" class="title-slide slide level1 center">
-<h1>In my words:</h1>
+<section id="in-my-words" class="slide level2">
+<h2>In my words:</h2>
 <ol type="1">
 <li>Broadcast (Transactions)</li>
 <li>Collect</li>
@@ -1474,9 +1425,8 @@
 <li>Express</li>
 </ol>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ Background</li>
 <li>✓ Blocks
@@ -1485,9 +1435,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="closing-thoughts" class="title-slide slide level1 center">
-<h1>Closing thoughts</h1>
+<section id="closing-thoughts" class="slide level2">
+<h2>Closing thoughts</h2>
 <ul>
 <li>Make a block</li>
 <li>Put in a list</li>
@@ -1498,7 +1447,7 @@
 </ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

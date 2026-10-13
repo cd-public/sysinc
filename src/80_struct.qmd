@@ -1,24 +1,19 @@
 ---
 title: struct
-subtitle: "Week 0x4.1"
-
-execute:
-    echo: true
-    cache: true
-    freeze: true  # never re-render during project render
-    code-fold: false
+subtitle: "wAd1"
 ---
 
-# Announcements
+## Announcements
 
-- **Welcome** to Computing Security
+- **Welcome** to Systems in C
   - Data Structures
   - Actual physical structures in C
     - Albeit in programable logic
 - **Action Items**:
+  - Data Structures
   - BTCinC
 
-# Today
+## Today
 
 - Motivation
 - Vocab
@@ -30,7 +25,7 @@ execute:
 
 # Motivation
 
-# Data Clump
+## Data Clump
 
 - C contains a language-mandatory data clump anti-pattern
 - This is a data clump - two values that only make sense together.
@@ -38,7 +33,7 @@ execute:
 int main(int argc, char **argv)
 ```
 
-# With malloc
+## With malloc
 
 - We can fix this with `malloc`
 
@@ -54,7 +49,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-# Can accept a "both"
+## Can accept a "both"
 
 - Really a... P vector?
     - [Pascal string](https://en.wikipedia.org/wiki/String_(computer_science)#Length-prefixed)
@@ -71,10 +66,10 @@ void print_argv(void **both) {
 }
 ```
 
-# Tada!
+## Tada!
 
 ```{.email}
-$ gcc thing.c -w # we uh, will fix warnings latter
+$ gcc thing.c -w ## we uh, will fix warnings latter
 $ ./a.out one two three
 argv[0] = ./a.out
 argv[1] = one
@@ -83,14 +78,9 @@ argv[3] = three
 ```
 - By the way, `4096_t` integer arrays were data structures the whole time.
 
-# Today
-
-- `struct`
-    - Structures not objects
-- `typedef`
-    - Evade Monkeytype
-
 # Stack & Heap
+
+## Stack & Heap
 
 - This passes `both` to `print_argv` by:
 ```{.c}
@@ -98,7 +88,7 @@ int main(int argc, char **argv) {
 ```
 1. `argc` a 4 byte `int` and `argv` an 8 byte address living on the stack.
 
-# Stack & Heap
+## Stack & Heap
 
 - This passes `both` to `print_argv` by:
 ```{.c}
@@ -111,7 +101,7 @@ int main(int argc, char **argv) {
     - We use `void *`
     - To be avoided, but we're learning that right now.
 
-# Stack & Heap
+## Stack & Heap
 
 - This passes `both` to `print_argv` by:
 ```{.c}
@@ -126,7 +116,7 @@ int main(int argc, char **argv) {
     - Use a cast, which still draws a warning.
     - This is bad style - don't do it ever.
 
-# Stack & Heap
+## Stack & Heap
 
 - This passes `both` to `print_argv` by:
 ```{.c}
@@ -142,7 +132,7 @@ int main(int argc, char **argv) {
 4. Put `argv`, a `char *`, in a `void *` slot
     - This is fine.
 
-# Stack & Heap
+## Stack & Heap
 
 ```{.c}
 int main(int argc, char **argv) {
@@ -157,7 +147,7 @@ int main(int argc, char **argv) {
 4. Put `argv`, a `char *`, in a `void *` slot
 5. Stack push `both`, the array location.
 
-# Stack & Heap
+## Stack & Heap
 
 - Now the annoying bit
 
@@ -170,7 +160,7 @@ void print_argv(void **both) {
         - Other locations?
     - This demands a solution.
 
-# Hack
+## Hack
 - Now the data clump antipattern.
 
 ```{.c}
@@ -181,7 +171,7 @@ void print_argv(void **both) {
 2. Look into `both`, find a `void *` of size 8, take the lower order 4 bits and call it an `int` named `argc`
     - This should feel *bad*
 
-# Hack
+## Hack
 - Now the data clump antipattern.
 
 ```{.c}
@@ -193,13 +183,13 @@ void print_argv(void **both) {
 2. `both[0] -> print_argv.argc:int`
 3. `both[1] -> print_argv.argv:char **`
 
-# Alternative
+## Alternative
 
 - Why can't we just tell `gcc` what that `void **` really is?
 - Instead of renaming everything into `void *` and back?
 - And wasting those 4 bits and drawing warnings and and and
 
-# We can
+## We can
 
 ```{.C}
 struct argv_struct {
@@ -216,7 +206,7 @@ struct argv_struct {
 6. No executable code.
 
 
-# Today
+## Today
 
 - &check; Motivation
 - Vocab
@@ -226,7 +216,9 @@ struct argv_struct {
 - `typedef`
     - Evade Monkeytype
 
-# A word
+# Vocab
+
+## A word
 
 *   Introduce term "**declare**"
 *   In e.g. `4096_t.h` we have *declared* functions.
@@ -236,7 +228,7 @@ struct argv_struct {
     *   No executable code.
 *   We can declare variables, including pointers and even functions.
 
-# A word
+## A word
 
 *   Introduce term "**define**"
 *   Values defined via "single equals assignments"
@@ -246,7 +238,7 @@ struct argv_struct {
     *   Other declarations and 
     *   Definitions.
 
-# declare & define
+## declare & define
 
 - Declare allocates some bits (on stack) 
 ```{.c}
@@ -264,7 +256,7 @@ str = "defined";
 ```
 
 
-# Today
+## Today
 
 - &check; Motivation
 - &check; Vocab
@@ -276,7 +268,7 @@ str = "defined";
 
 # `struct`
 
-# Classes
+## Classes
 
 *   In lesser (object oriented) languages, class implement data structures.
     *   Classes may lack both data and structure, 
@@ -291,7 +283,7 @@ class MultiAdd:
 ```
     *   No structure. No data.
 
-# Classes
+## Classes
 
 - Classes (allegedly) have their uses, but are not perhaps the most natural to implement, say, an ordered pair.
 ```{.py}
@@ -307,7 +299,7 @@ class OrderedPair:
         return f"OrderedPair({self.x}, {self.y})"
 ```
 
-# Structs
+## Structs
 
 *   In C, the "struct": 
 ```{.c}
@@ -316,13 +308,13 @@ struct ordered_pair {
 };
 ```
 
-# In practice
+## In practice
 
 -   While I *think* (it was was hard to find) it is up to the compiler, usually these just put all the variables in order.
 -   Vs. our `malloc` motivating example, structs, like other vars, will be stack allocated.
 -   As with our beloved object oriented languages, we use dot notation (`structs_variable_name.data_field_name`)
 
-# Example
+## Example
 
 ```{.c}
 struct argv_struct {
@@ -347,7 +339,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-# Examine
+## Examine
 
 ```{.email}
 $ ./a.out one two three
@@ -362,7 +354,7 @@ argv[3] = three
     - Like an array
 - The first entry is of size 4 but the next entry is 8 bits latter
 
-# Examine
+## Examine
 
 ```{.email}
 $ ./a.out one two three
@@ -377,7 +369,7 @@ argv[3] = three
     - One in `main`, one in `print_args`
     - Passed on stack.
 
-# Takeaways
+## Takeaways
 
 - Structs can be though of as arrays with names and types.
     - This is "record" theoretical type
@@ -385,7 +377,7 @@ argv[3] = three
 - Structs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code.
 
 
-# Today
+## Today
 
 - &check; Motivation
 - &check; Vocab
@@ -430,7 +422,7 @@ void print_argv(argv_s args) {
 :::
 ::::
 
-# bools
+## bools
 
 
 ```{.c}
@@ -447,7 +439,7 @@ typedef int bool;
     - So no code ever runs with undefined `bool`
 
 
-# Today
+## Today
 
 - &check; Motivation
 - &check; Vocab
@@ -455,8 +447,10 @@ typedef int bool;
 - &check; `typedef`
 - Header techniques
     - If time
+    
+# Extras
 
-# Private Fields
+## Private Fields
 
 ::::{columns}
 
@@ -493,7 +487,7 @@ class Pair:
 
 ::::
 
-# Java Better Here
+## Java Better Here
 
 - #1 Java appreciator assistant prof. of computer science calvin "prof. calvin" deutschbein
 
@@ -568,7 +562,7 @@ public class PrivatePair {
 
 
 
-# That said
+## That said
 
 - We love encapsulation
 - We don't for example, want to expose `4096_t` internal integer fields.
@@ -576,7 +570,7 @@ public class PrivatePair {
 - So we need private fields somehow.
 - We use header files.
 
-# 3 parts
+## 3 parts
 
 - "client" is whoever uses the structure implemented by the .c/.h files
 - Perhaps a la Python modules or standard libraries.
@@ -632,19 +626,19 @@ struct pair newp() {
 
 ::::
 
-# 3 parts
+## 3 parts
 
 - Probably use a Makefile here
 
 ```{.mk filename="Makefile"}
-CC = gcc # or clang
+CC = gcc ## or clang
 CFLAGS = -std=c89 -Wall -Wextra -Werror -Wpedantic -O2
 
 all: client.c pair.c pair.h
     $(CC) client.c pair.c $(CFLAGS)
 ```
 
-# 3 parts
+## 3 parts
 
 - Make the internals of pair private.
 
@@ -697,7 +691,7 @@ struct pair newp() {
 
 ::::
 
-# Not Allowed
+## Not Allowed
 
 - `gcc` needs size information.
 
@@ -718,7 +712,7 @@ cc1: all warnings being treated as errors
 make: *** [Makefile:5: all] Error 1
 ```
 
-# Use a Pointer
+## Use a Pointer
 
 - `malloc` and `free` but any size goes.
 
@@ -776,7 +770,7 @@ pair_ptr newp() {
 
 ::::
 
-# Not Allowed
+## Not Allowed
 
 - Ah! The problem we want!
     - Can't access internal fields.
@@ -798,7 +792,7 @@ client.c:7:13: error: invalid use of undefined type ‘struct pair’
 make: *** [Makefile:5: all] Error 1
 ```
 
-# Set
+## Set
 
 ::::{columns}
 
@@ -857,7 +851,7 @@ void setp(pair_ptr p, int x, int y) {
 
 ::::
 
-# Recall
+## Recall
 
 - We already passed `4096_t`'s as pointers.
 
@@ -873,7 +867,7 @@ uint64_t bigrem(uint64_t *num, uint64_t *den, uint64_t *rem);
 - By the way you now know enough to make mixed precision integers.
     - Use `free` in your .c files and `valgrind` on your executables.
 
-# Today
+## Today
 
 - &check; Motivation
 - &check; Vocab

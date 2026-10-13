@@ -390,37 +390,36 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">malloc</h1>
-  <p class="subtitle">Week 0x4.0</p>
+  <p class="subtitle">w9d1</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="announcements" class="title-slide slide level1 center">
-<h1>Announcements</h1>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
-<li><strong>Welcome</strong> to Computing Security
+<li><strong>Welcome</strong> to Systems in C
 <ul>
 <li>Storing structured data</li>
 </ul></li>
 <li><strong>Action Items</strong>:
 <ul>
+<li>Data Structures</li>
 <li>BTCinC</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="data-clump" class="title-slide slide level1 center">
-<h1>Data Clump</h1>
+<section id="data-clump" class="slide level2">
+<h2>Data Clump</h2>
 <ul>
 <li>C contains a language-mandatory data clump anti-pattern</li>
 <li>This is a data clump - two values that only make sense together.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">**</span>argv<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="today" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><code>malloc</code>
 <ul>
@@ -432,39 +431,47 @@
 </ul></li>
 </ul>
 </section>
-
+<section>
 <section id="review" class="title-slide slide level1 center">
 <h1>Review</h1>
+
+</section>
+<section id="review-1" class="slide level2">
+<h2>Review</h2>
 <ul>
-<li><p>Python has no array (NumPy does)</p>
+<li>Python has no array (NumPy does)
 <ul>
 <li>Historically lists <span class="math inline">\(\neq\)</span> arrays</li>
-<li>Python lists are closer to being array-lists - an implementation of a list <em>abstract data type</em> using an array <em>data structure</em></li>
+<li>Python lists are closer to being array-lists: an implementation of a list <em>abstract data type</em> using an array <em>data structure</em></li>
 </ul></li>
 </ul>
 </section>
-
-<section id="arrays-are" class="title-slide slide level1 center">
-<h1>Arrays are:</h1>
+<section id="arrays-are" class="slide level2">
+<h2>Arrays are:</h2>
 <ul>
 <li>Fixed length (replace only, no add/remove)</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">10</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">9</span> <span class="op">}</span> <span class="op">;</span></span>
 <span id="cb2-2"><a></a>arr <span class="op">=</span> <span class="op">{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span> <span class="op">}</span> <span class="op">;</span> <span class="co">// compile error </span></span>
 <span id="cb2-3"><a></a>arr<span class="op">[</span><span class="dv">15</span><span class="op">]</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">;</span> <span class="co">// runtime error - "stack smashing"`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arrays-are-1" class="slide level2">
+<h2>Arrays are:</h2>
 <ul>
 <li>Typed, mostly (still just bits, but of certain size)</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a></a><span class="dt">char</span> <span class="op">*</span>str <span class="op">=</span> <span class="st">"hihi"</span> <span class="op">;</span> </span>
 <span id="cb3-2"><a></a>arr<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> str <span class="op">;</span> <span class="co">// compile warning - integer from pointer w/o cast</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="arrays-are-1" class="title-slide slide level1 center">
-<h1>Arrays are:</h1>
+<section id="arrays-are-2" class="slide level2">
+<h2>Arrays are:</h2>
 <ul>
 <li>Just “bits” storing a memory address - no known type or size.</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource C number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a></a>arr<span class="op">[</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)</span> <span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">;</span> <span class="co">// *can* be a segmentation fault</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arrays-are-3" class="slide level2">
+<h2>Arrays are:</h2>
 <ul>
 <li>Arrays exist at fixed location in physical memory.</li>
 </ul>
@@ -472,23 +479,27 @@
 <span id="cb5-2"><a></a>new <span class="op">=</span> arr <span class="op">;</span> </span>
 <span id="cb5-3"><a></a>old <span class="op">==</span> new <span class="op">;</span> <span class="co">// this is "true"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="review-1" class="title-slide slide level1 center">
-<h1>Review</h1>
+<section id="arrays-are-4" class="slide level2">
+<h2>Arrays are:</h2>
 <ul>
-<li>We use char * in a function argument to account for arrays of any size.
+<li>Fixed Length</li>
+<li>Typed</li>
+<li>An address</li>
+<li>A fixed address</li>
+</ul>
+</section>
+<section id="review-2" class="slide level2">
+<h2>Review</h2>
 <ul>
-<li>What does this mean *physically* within the physical computing device?</li>
-</ul></li>
+<li>We use <code>char *</code> in a function argument to account for arrays of any size. _ What does this mean <em>physically</em> within the physical computing device?</li>
 <li>We use “char arr[<span class="math inline">\(n\)</span>]” in the main function so we know we have enough space.
 <ul>
-<li>What does this mean *physically* within the physical computing device?</li>
+<li>What does this mean <em>physically</em> within the physical computing device?</li>
 </ul></li>
 </ul>
 </section>
-
-<section id="takeaways" class="title-slide slide level1 center">
-<h1>Takeaways</h1>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -515,10 +526,14 @@
 </tr>
 </tbody>
 </table>
-</section>
-
+</section></section>
+<section>
 <section id="malloc" class="title-slide slide level1 center">
-<h1><code>malloc</code></h1>
+<h1>Malloc</h1>
+
+</section>
+<section id="malloc-1" class="slide level2">
+<h2><code>malloc</code></h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb6-1"><a></a>malloc(3)                Library Functions Manual               malloc(3)</span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a>NAME         top</span>
@@ -536,9 +551,8 @@
 <span id="cb6-15"><a></a></span>
 <span id="cb6-16"><a></a>       void *malloc(size_t size);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="malloc-1" class="title-slide slide level1 center">
-<h1>Malloc</h1>
+<section id="malloc-2" class="slide level2">
+<h2>Malloc</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb7-2"><a></a><span class="dt">void</span> <span class="op">*</span>malloc<span class="op">(</span><span class="dt">size_t</span> size<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -548,9 +562,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="malloc-2" class="title-slide slide level1 center">
-<h1>Malloc</h1>
+<section id="malloc-3" class="slide level2">
+<h2>Malloc</h2>
 <ul>
 <li>returns a <code>void *</code>
 <ul>
@@ -569,9 +582,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="malloc-3" class="title-slide slide level1 center">
-<h1>Malloc</h1>
+<section id="malloc-4" class="slide level2">
+<h2>Malloc</h2>
 <ul>
 <li>Treat this memory region the same way we treat a character array.
 <ul>
@@ -588,9 +600,8 @@
 <span id="cb9-9"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st"> </span><span class="sc">%s</span><span class="st"> </span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> str<span class="op">,</span> buf<span class="op">,</span> ptr<span class="op">)</span> <span class="op">;</span> <span class="co">// "hello hello hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="size_t" class="title-slide slide level1 center">
-<h1><code>size_t</code></h1>
+<section id="size_t" class="slide level2">
+<h2><code>size_t</code></h2>
 <ul>
 <li>Imagine mallocing all of memory in a single call.
 <ul>
@@ -603,9 +614,8 @@
 <li><code>void *</code> and <code>size_t</code> are the same size.</li>
 </ul>
 </section>
-
-<section id="void" class="title-slide slide level1 center">
-<h1><code>void *</code></h1>
+<section id="void" class="slide level2">
+<h2><code>void *</code></h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span><span class="pp"> </span><span class="co">/* for size_t */</span></span>
 <span id="cb10-2"><a></a><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span><span class="pp"> </span><span class="co">// for assert</span></span>
 <span id="cb10-3"><a></a></span>
@@ -619,9 +629,8 @@
 <li>Read more on assert <a href="https://web.archive.org/web/20090707025230/http://www.ddj.com/blog/cppblog/archives/2007/07/assertions_vers.html">here</a> (or don’t).</li>
 </ul>
 </section>
-
-<section id="from-hence" class="title-slide slide level1 center">
-<h1>From hence</h1>
+<section id="from-hence" class="slide level2">
+<h2>From hence</h2>
 <ul>
 <li>But where does the memory come from?</li>
 <li>So far, “the stack” - akin to the data structure of the same name
@@ -635,9 +644,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="stack-heap" class="title-slide slide level1 center">
-<h1>Stack &amp; Heap</h1>
+<section id="stack-heap" class="slide level2">
+<h2>Stack &amp; Heap</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a></a><span class="dt">char</span> arr0<span class="op">[</span><span class="dv">256</span><span class="op">],</span> arr1<span class="op">[</span><span class="dv">256</span><span class="op">],</span> arr2<span class="op">[</span><span class="dv">256</span><span class="op">];</span> </span>
 <span id="cb11-2"><a></a><span class="dt">char</span> <span class="op">*</span>ptr0 <span class="op">=</span> malloc<span class="op">(</span><span class="dv">256</span><span class="op">),</span> <span class="op">*</span>ptr1 <span class="op">=</span> malloc<span class="op">(</span><span class="dv">256</span><span class="op">),</span> <span class="op">*</span>ptr2 <span class="op">=</span> malloc<span class="op">(</span><span class="dv">256</span><span class="op">);</span> </span>
 <span id="cb11-3"><a></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%p\n%p\n%p\n%p\n%p\n%p\n</span><span class="st">"</span><span class="op">,</span> arr0<span class="op">,</span> arr1<span class="op">,</span> arr2<span class="op">,</span> ptr0<span class="op">,</span> ptr1<span class="op">,</span> ptr2<span class="op">)</span> <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -654,18 +662,16 @@
 <li>Hmmm they all end in zero?</li>
 </ul>
 </section>
-
-<section id="stack-heap-1" class="title-slide slide level1 center">
-<h1>Stack &amp; Heap</h1>
+<section id="stack-heap-1" class="slide level2">
+<h2>Stack &amp; Heap</h2>
 <ul>
 <li>In C, bits are in the stack, where we declare variables, or heap, another special magic place.</li>
 <li>Stack memory in explicit sizes fixed when code is compiled.</li>
 <li>We have only used stack memory so far so we have to fix memory size when we write the code.</li>
 </ul>
 </section>
-
-<section id="stack-heap-2" class="title-slide slide level1 center">
-<h1>Stack &amp; Heap</h1>
+<section id="stack-heap-2" class="slide level2">
+<h2>Stack &amp; Heap</h2>
 <ul>
 <li>In C, bits are in the stack, where we declare variables, or heap, another special magic place.</li>
 <li>A scratchpad space that GCC configures programs to request and the OS allows use of (up to some limit).</li>
@@ -673,9 +679,8 @@
 <li>The only way we will learn to interface with the heap is malloc.</li>
 </ul>
 </section>
-
-<section id="stack-heap-3" class="title-slide slide level1 center">
-<h1>Stack &amp; Heap</h1>
+<section id="stack-heap-3" class="slide level2">
+<h2>Stack &amp; Heap</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -703,9 +708,8 @@
 </tbody>
 </table>
 </section>
-
-<section id="credit" class="title-slide slide level1 center">
-<h1><a href="https://courses.engr.illinois.edu/cs225/fa2022/resources/stack-heap/">Credit</a></h1>
+<section id="credit" class="slide level2">
+<h2><a href="https://courses.engr.illinois.edu/cs225/fa2022/resources/stack-heap/">Credit</a></h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -733,14 +737,11 @@
 </tbody>
 </table>
 </section>
-
-<section id="stack" class="title-slide slide level1 center">
-<h1>Stack</h1>
-
+<section id="stack" class="slide level2">
+<h2>Stack</h2>
 </section>
-
-<section id="memory-layout" class="title-slide slide level1 center">
-<h1>Memory layout</h1>
+<section id="memory-layout" class="slide level2">
+<h2>Memory layout</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -752,9 +753,8 @@
 <p><img data-src="https://martinlwx.github.io/img/program_layout_in_memory.png"></p>
 </div></div>
 </section>
-
-<section id="stack-1" class="title-slide slide level1 center">
-<h1>Stack</h1>
+<section id="stack-1" class="slide level2">
+<h2>Stack</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -769,9 +769,8 @@
 <p><img data-src="https://martinlwx.github.io/img/program_layout_in_memory.png"></p>
 </div></div>
 </section>
-
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -786,9 +785,8 @@
 <p><img data-src="struct_files/stack_demo_1.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="example-1" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -802,9 +800,8 @@
 <p><img data-src="struct_files/stack_demo_2.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="example-2" class="title-slide slide level1 center">
-<h1>Example</h1>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -819,9 +816,8 @@
 <p><img data-src="struct_files/stack_demo_3.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="function-call" class="title-slide slide level1 center">
-<h1>Function Call</h1>
+<section id="function-call" class="slide level2">
+<h2>Function Call</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -838,9 +834,8 @@
 <p><img data-src="struct_files/stack_demo_4.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="function-call-1" class="title-slide slide level1 center">
-<h1>Function Call</h1>
+<section id="function-call-1" class="slide level2">
+<h2>Function Call</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -855,9 +850,8 @@
 <p><img data-src="struct_files/stack_demo_3.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="what-of-return" class="title-slide slide level1 center">
-<h1>What of <code>return</code></h1>
+<section id="what-of-return" class="slide level2">
+<h2>What of <code>return</code></h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -872,9 +866,8 @@
 <p><img data-src="struct_files/stack_demo_4.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="what-of-return-1" class="title-slide slide level1 center">
-<h1>What of <code>return</code></h1>
+<section id="what-of-return-1" class="slide level2">
+<h2>What of <code>return</code></h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -889,9 +882,8 @@
 <p><img data-src="struct_files/stack_demo_5.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="return" class="title-slide slide level1 center">
-<h1>Return</h1>
+<section id="return" class="slide level2">
+<h2>Return</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -909,9 +901,8 @@
 <p><img data-src="struct_files/stack_demo_6.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="stack-discussion" class="title-slide slide level1 center">
-<h1>Stack Discussion?</h1>
+<section id="stack-discussion" class="slide level2">
+<h2>Stack Discussion?</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png"></p>
@@ -919,14 +910,11 @@
 <p><img data-src="struct_files/stack_demo_6.png"></p>
 </div></div>
 </section>
-
-<section id="stack-2" class="title-slide slide level1 center">
-<h1>Stack</h1>
-
+<section id="stack-2" class="slide level2">
+<h2>Stack</h2>
 </section>
-
-<section id="heap-example" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -944,9 +932,8 @@
 </ul>
 </div></div>
 </section>
-
-<section id="heap-example-1" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-1" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -965,9 +952,8 @@
 <p><img data-src="struct_files/heap_demo_0.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-2" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-2" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -982,9 +968,8 @@
 <p><img data-src="struct_files/heap_demo_1.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-3" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-3" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -997,9 +982,8 @@
 <p><img data-src="struct_files/heap_demo_2.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-4" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-4" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1011,9 +995,8 @@
 <p><img data-src="struct_files/heap_demo_2.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-5" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-5" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1026,9 +1009,8 @@
 <p><img data-src="struct_files/heap_demo_3.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-6" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-6" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1042,9 +1024,8 @@
 <p><img data-src="struct_files/heap_demo_4.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-7" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-7" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1059,9 +1040,8 @@
 <p><img data-src="struct_files/heap_demo_5.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="heap-example-8" class="title-slide slide level1 center">
-<h1>Heap Example</h1>
+<section id="heap-example-8" class="slide level2">
+<h2>Heap Example</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1076,9 +1056,8 @@
 <p><img data-src="struct_files/heap_demo_5.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-
-<section id="today-1" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ <code>malloc</code>
 <ul>
@@ -1089,10 +1068,14 @@
 <li>Unmalloc</li>
 </ul></li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="free" class="title-slide slide level1 center">
 <h1>Free</h1>
+
+</section>
+<section id="free-1" class="slide level2">
+<h2>Free</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ol type="1">
@@ -1106,9 +1089,8 @@
 <p><img data-src="struct_files/heap_demo_4.png"></p>
 </div></div>
 </section>
-
-<section id="free-1" class="title-slide slide level1 center">
-<h1>Free</h1>
+<section id="free-2" class="slide level2">
+<h2>Free</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb13-1"><a></a>malloc(3)                Library Functions Manual               malloc(3)</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a>NAME         top</span>
@@ -1127,9 +1109,8 @@
 <span id="cb13-16"><a></a>       void *malloc(size_t size);</span>
 <span id="cb13-17"><a></a>       void free(void *_Nullable ptr);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="free-2" class="title-slide slide level1 center">
-<h1>Free</h1>
+<section id="free-3" class="slide level2">
+<h2>Free</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a></a><span class="dt">void</span> free<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>_Nullable ptr<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>p</code> is a pointer returned from <code>malloc</code>
@@ -1146,35 +1127,31 @@
 <span id="cb15-4"><a></a>ptr <span class="op">=</span> buf<span class="op">;</span> <span class="co">/* Star but not Nullable */</span></span>
 <span id="cb15-5"><a></a>ptr <span class="op">=</span> arr<span class="op">;</span> <span class="co">/* Star_Nullable */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="free-3" class="title-slide slide level1 center">
-<h1>Free</h1>
+<section id="free-4" class="slide level2">
+<h2>Free</h2>
 <ul>
 <li>Every <code>malloc</code> in your code should have a corresponding <code>free</code></li>
 <li>Otherwise you could run out memory (or other problems)</li>
 </ul>
 </section>
-
-<section id="memory-leak" class="title-slide slide level1 center">
-<h1>Memory Leak</h1>
+<section id="memory-leak" class="slide level2">
+<h2>Memory Leak</h2>
 <ol type="1">
 <li>p holds a *_Nullable.</li>
 <li>q holds a *_Nullable.</li>
 </ol>
 
 <img data-src="struct_files/heap_demo_4.png" style="width:50.0%" class="r-stretch"></section>
-
-<section id="memory-leak-1" class="title-slide slide level1 center">
-<h1>Memory Leak</h1>
+<section id="memory-leak-1" class="slide level2">
+<h2>Memory Leak</h2>
 <ol type="1">
 <li>p, q holds a *_Nullable.</li>
 <li>“old <code>p</code>” forgotten!</li>
 </ol>
 
 <img data-src="struct_files/heap_demo_5.png" style="width:50.0%" class="r-stretch"></section>
-
-<section id="your-poor-os" class="title-slide slide level1 center">
-<h1>Your poor OS</h1>
+<section id="your-poor-os" class="slide level2">
+<h2>Your poor OS</h2>
 <ul>
 <li>Your poor OS is on contract to protect that <code>1</code> you left in “old <code>p</code>” forever!</li>
 <li>This is why sometimes restarting your computer causes it work.</li>
@@ -1182,18 +1159,16 @@
 <li>Also if you try really hard you can memory leak Python.</li>
 </ul>
 </section>
-
-<section id="instead" class="title-slide slide level1 center">
-<h1>Instead</h1>
+<section id="instead" class="slide level2">
+<h2>Instead</h2>
 <ol type="1">
 <li><code>free(p)</code> and the bytes return to circulation.</li>
 <li><code>0</code> persists until overwritten*</li>
 </ol>
 
 <img data-src="struct_files/free_demo_5.png" style="width:50.0%" class="r-stretch"></section>
-
-<section id="valgrind" class="title-slide slide level1 center">
-<h1>Valgrind</h1>
+<section id="valgrind" class="slide level2">
+<h2>Valgrind</h2>
 <ul>
 <li>Verifying that all memory has been freed isn’t easy!</li>
 <li>I recommend use of <code>valgrind</code>
@@ -1203,9 +1178,8 @@
 <li>I won’t teach Valgrind this term but may show it time to time.</li>
 </ul>
 </section>
-
-<section id="leaky.c" class="title-slide slide level1 center">
-<h1>leaky.c</h1>
+<section id="leaky.c" class="slide level2">
+<h2>leaky.c</h2>
 <ul>
 <li>Write a quick memory leaking program:</li>
 </ul>
@@ -1222,9 +1196,8 @@
 <span id="cb16-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="valgrind-1" class="title-slide slide level1 center">
-<h1>Valgrind</h1>
+<section id="valgrind-1" class="slide level2">
+<h2>Valgrind</h2>
 <ul>
 <li>Compile a run within <code>valgrind</code></li>
 </ul>
@@ -1251,9 +1224,8 @@
 <span id="cb17-21"><a></a>==1331== For lists of detected and suppressed errors, rerun with: -s</span>
 <span id="cb17-22"><a></a>==1331== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="emph" class="title-slide slide level1 center">
-<h1>Emph</h1>
+<section id="emph" class="slide level2">
+<h2>Emph</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a></a><span class="op">==</span><span class="dv">1331</span><span class="op">==</span> LEAK SUMMARY<span class="op">:</span></span>
 <span id="cb18-2"><a></a><span class="op">==</span><span class="dv">1331</span><span class="op">==</span>    definitely lost<span class="op">:</span> <span class="dv">4</span> bytes in <span class="dv">1</span> blocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1261,9 +1233,8 @@
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a></a><span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> <span class="op">(</span><span class="dt">int</span> <span class="op">*)</span>malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="fix-it" class="title-slide slide level1 center">
-<h1>Fix it</h1>
+<section id="fix-it" class="slide level2">
+<h2>Fix it</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>leaky.c</strong></pre>
@@ -1284,9 +1255,8 @@
 <span id="cb21-5"><a></a>==1430==    still reachable: 4 bytes in 1 blocks</span>
 <span id="cb21-6"><a></a>==1430==         suppressed: 0 bytes in 0 blocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="good-enough" class="title-slide slide level1 center">
-<h1>“Good Enough”</h1>
+<section id="good-enough" class="slide level2">
+<h2>“Good Enough”</h2>
 <ul>
 <li>It is possible to confuse Valgrind (and I intend to do so if we have time)</li>
 <li>As a rule, if it confused Valgrind it likely contains some antipattern.
@@ -1295,9 +1265,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="free-leak-freak" class="title-slide slide level1 center">
-<h1>Free + Leak = Freak</h1>
+<section id="free-leak-freak" class="slide level2">
+<h2>Free + Leak = Freak</h2>
 <ul>
 <li><p>We can generate a silly outcome at high probability by:</p>
 <ol type="1">
@@ -1307,9 +1276,8 @@
 </ol></li>
 </ul>
 </section>
-
-<section id="freak" class="title-slide slide level1 center">
-<h1>Freak</h1>
+<section id="freak" class="slide level2">
+<h2>Freak</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb22-2"><a></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb22-3"><a></a></span>
@@ -1330,9 +1298,8 @@
 <span id="cb23-2"><a></a>1</span>
 <span id="cb23-3"><a></a>1551349524</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="without-free" class="title-slide slide level1 center">
-<h1>Without free</h1>
+<section id="without-free" class="slide level2">
+<h2>Without free</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb24-2"><a></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb24-3"><a></a></span>
@@ -1352,9 +1319,8 @@
 <span id="cb25-2"><a></a>1</span>
 <span id="cb25-3"><a></a>1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="without-leaks" class="title-slide slide level1 center">
-<h1>Without leaks</h1>
+<section id="without-leaks" class="slide level2">
+<h2>Without leaks</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb26-1"><a></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb26-2"><a></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb26-3"><a></a></span>
@@ -1375,9 +1341,8 @@
 <li><code>1</code> is unprotected but not yet overwritten.</li>
 </ul>
 </section>
-
-<section id="today-2" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ <code>malloc</code>
 <ul>
@@ -1392,13 +1357,17 @@
 <li>If time</li>
 </ul></li>
 </ul>
-</section>
+</section></section>
+<section>
+<section id="extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
 
-<section id="overthinking" class="title-slide slide level1 center">
-<h1>Overthinking</h1>
+</section>
+<section id="overthinking" class="slide level2">
+<h2>Overthinking</h2>
 <ul>
 <li>It’s just bits.</li>
-<li>A void *, a size_t, and a character array of length 8 walk into a compiler.
+<li>A <code>void *</code>, a <code>size_t</code>, and a character array of length 8 walk into a compiler.
 <ul>
 <li>The compiler asks “Why the long int”?</li>
 </ul></li>
@@ -1406,9 +1375,8 @@
 <li>The compiler maintains the distinction when generating code to make writing code easier for humans.</li>
 </ul>
 </section>
-
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1446,9 +1414,8 @@
 </tbody>
 </table>
 </section>
-
-<section id="casting" class="title-slide slide level1 center">
-<h1>Casting</h1>
+<section id="casting" class="slide level2">
+<h2>Casting</h2>
 <ul>
 <li>Casting avoids <code>gcc</code> warnings/errors:</li>
 </ul>
@@ -1469,9 +1436,8 @@
 <span id="cb29-2"><a></a>$ ./a.out</span>
 <span id="cb29-3"><a></a>q was malloc'ed 45975329250096 bytes from stack allocated p.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="implicit-cast" class="title-slide slide level1 center">
-<h1>Implicit Cast</h1>
+<section id="implicit-cast" class="slide level2">
+<h2>Implicit Cast</h2>
 <ul>
 <li>Can infer casts, but some draw warnings:</li>
 </ul>
@@ -1492,9 +1458,8 @@
 <li>char array to <code>void *</code> is fine - both addresses</li>
 </ul>
 </section>
-
-<section id="documentation" class="title-slide slide level1 center">
-<h1>Documentation</h1>
+<section id="documentation" class="slide level2">
+<h2>Documentation</h2>
 <ul>
 <li>Sometimes we can use casts to make it more clear what our code should be doing.</li>
 </ul>
@@ -1504,9 +1469,8 @@
 </ul>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a></a><span class="op">(</span><span class="dt">void</span><span class="op">)</span>printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> str<span class="op">)</span> <span class="op">;</span> <span class="co">// printf returns an int - we don't care.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="takeaways-1" class="title-slide slide level1 center">
-<h1>Takeaways</h1>
+<section id="takeaways-1" class="slide level2">
+<h2>Takeaways</h2>
 <ul>
 <li>Cast the return value of malloc.</li>
 </ul>
@@ -1518,9 +1482,8 @@
 <li>Much bigger deal when using types of size other than one, or of unknown size.</li>
 </ul>
 </section>
-
-<section id="pointer-arithmetic" class="title-slide slide level1 center">
-<h1>Pointer Arithmetic</h1>
+<section id="pointer-arithmetic" class="slide level2">
+<h2>Pointer Arithmetic</h2>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <ul>
@@ -1532,9 +1495,8 @@
 <p><img data-src="struct_files/heap_demo_4.png"></p>
 </div></div>
 </section>
-
-<section id="overload" class="title-slide slide level1 center">
-<h1>Overload</h1>
+<section id="overload" class="slide level2">
+<h2>Overload</h2>
 <ul>
 <li>People are allowed to like things, so you are allowed to like this.</li>
 <li>I don’t.</li>
@@ -1550,9 +1512,8 @@
 <li>It’s not allowed in C.</li>
 </ul>
 </section>
-
-<section id="two-many-gccs" class="title-slide slide level1 center">
-<h1>Two many <code>gcc</code>’s</h1>
+<section id="two-many-gccs" class="slide level2">
+<h2>Two many <code>gcc</code>’s</h2>
 <ul>
 <li>If you add strings together, <code>gcc</code> stops you.</li>
 </ul>
@@ -1573,9 +1534,8 @@
 <li>What does “binary” mean ? (Hint: MATH 251W)</li>
 </ul>
 </section>
-
-<section id="trust-gcc" class="title-slide slide level1 center">
-<h1>Trust <code>gcc</code></h1>
+<section id="trust-gcc" class="slide level2">
+<h2>Trust <code>gcc</code></h2>
 <ul>
 <li>Let’s do a cast and an addition</li>
 </ul>
@@ -1588,9 +1548,8 @@
 <div class="sourceCode" id="cb38"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb38-1"><a></a>$ gcc leaky.c ; ./a.out </span>
 <span id="cb38-2"><a></a>0x100 + 0x1 = 0x108</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="trust" class="title-slide slide level1 center">
-<h1>Trust!</h1>
+<section id="trust" class="slide level2">
+<h2>Trust!</h2>
 <ul>
 <li>At least it’s consistent.</li>
 </ul>
@@ -1608,9 +1567,8 @@
 <li>Get it?</li>
 </ul>
 </section>
-
-<section id="overload-1" class="title-slide slide level1 center">
-<h1>Overload?</h1>
+<section id="overload-1" class="slide level2">
+<h2>Overload?</h2>
 <ul>
 <li>“operator overloading… not allowed in C.”</li>
 <li>Addition and subtraction… are(?) overloaded
@@ -1626,9 +1584,8 @@
 </ul></li>
 </ul>
 </section>
-
-<section id="on" class="title-slide slide level1 center">
-<h1>On <code>[]</code></h1>
+<section id="on" class="slide level2">
+<h2>On <code>[]</code></h2>
 <ul>
 <li>Pointer arithmetic too.</li>
 </ul>
@@ -1645,9 +1602,8 @@
 <span id="cb42-3"><a></a>(*arr+1): 0x11 </span>
 <span id="cb42-4"><a></a>arr[1]: 0x100`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="unary" class="title-slide slide level1 center">
-<h1>Unary <code>&amp;</code></h1>
+<section id="unary" class="slide level2">
+<h2>Unary <code>&amp;</code></h2>
 <ul>
 <li>&amp; is both a unary and binary operator in C, like - (minus)</li>
 </ul>
@@ -1659,9 +1615,8 @@
 <span id="cb43-6"><a></a>    x <span class="op">=</span> <span class="op">&amp;</span>y<span class="op">;</span> </span>
 <span id="cb43-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1>&amp;</h1>
+<section id="section-1" class="slide level2">
+<h2>&amp;</h2>
 <ul>
 <li>Unary <code>&amp;</code> is inverse <code>*</code></li>
 </ul>
@@ -1677,9 +1632,8 @@
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb45-1"><a></a>*p = f,  p = 0x7ffc85ee5f68</span>
 <span id="cb45-2"><a></a> y = f, &amp;y = 0x7ffc85ee5f68</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="section-2" class="title-slide slide level1 center">
-<h1>&amp;</h1>
+<section id="section-2" class="slide level2">
+<h2>&amp;</h2>
 <ul>
 <li><code>*</code> is not (quite) inverse <code>&amp;</code></li>
 </ul>
@@ -1694,9 +1648,8 @@
 </ul>
 <div class="sourceCode" id="cb47"><pre class="sourceCode numberSource email number-lines code-with-copy"><code class="sourceCode email"><span id="cb47-1"><a></a>Segmentation fault</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="malloc-fail" class="title-slide slide level1 center">
-<h1>Malloc fail</h1>
+<section id="malloc-fail" class="slide level2">
+<h2>Malloc fail</h2>
 <ul>
 <li><p>There is no guarantee <code>malloc</code> worked</p>
 <ul>
@@ -1713,9 +1666,8 @@
 <span id="cb48-6"><a></a>    <span class="op">}</span> </span>
 <span id="cb48-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="force-fail" class="title-slide slide level1 center">
-<h1>Force fail</h1>
+<section id="force-fail" class="slide level2">
+<h2>Force fail</h2>
 <div class="sourceCode" id="cb49"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb49-1"><a></a><span class="dt">void</span> main<span class="op">()</span> <span class="op">{</span> </span>
 <span id="cb49-2"><a></a>    <span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> <span class="op">(</span><span class="dt">int</span> <span class="op">*)</span>malloc<span class="op">(-</span><span class="dv">1</span><span class="op">);</span></span>
 <span id="cb49-3"><a></a>    <span class="cf">if</span> <span class="op">(</span>p <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span> </span>
@@ -1724,9 +1676,8 @@
 <span id="cb49-6"><a></a>    <span class="op">}</span> </span>
 <span id="cb49-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-
-<section id="today-3" class="title-slide slide level1 center">
-<h1>Today</h1>
+<section id="today-3" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>✓ <code>malloc</code>
 <ul>
@@ -1743,7 +1694,7 @@
 </ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
