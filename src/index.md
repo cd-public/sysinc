@@ -37,7 +37,7 @@ format: html
 |0x4|09/22|[BigAdd](31_bigadd.qmd)|[Fermat](40_fermat.qmd)|[4096_t](32_4096_t.qmd)|
 |0x5|09/29|IASC26|[KeyGen](41_keygen.qmd)|[RSAinC](42_rsainc.qmd)|
 |0x6|10/06|[Euclid](50_euclid.qmd)|[ops_ui](51_ops_ui.qmd)|[BigRSA](52_bigrsa.qmd)|
-|0x7|10/13|[Middle](https://github.com/cd-c89/base85)|Assess||
+|0x7|10/13|[base85](https://github.com/cd-c89/base85)|[b64inc](https://github.com/cd-c89/base64/)||
 |0x8|10/20|[Mounts](60_mounts.qmd)|[action](61_action.qmd)||
 |0x9|10/27|[Stream](70_stream.qmd)|[malloc](71_malloc.qmd)|[list_t](72_list_t.qmd)|
 |0xA|11/03|`break;`|[struct](80_struct.qmd)||
