@@ -38,13 +38,13 @@ format: html
 |0x5|09/29|IASC26|[KeyGen](41_keygen.qmd)|[RSAinC](42_rsainc.qmd)|
 |0x6|10/06|[Euclid](50_euclid.qmd)|[ops_ui](51_ops_ui.qmd)|[BigRSA](52_bigrsa.qmd)|
 |0x7|10/13|Redact|Redact|
-|0x8|10/20|[Mounts](60_mounts.qmd)|[action](61_action.qmd)||
-|0x9|10/27|[Stream](70_stream.qmd)|[malloc](71_malloc.qmd)|[list_t](72_list_t.qmd)|
-|0xA|11/03|`break;`|[struct](80_struct.qmd)||
-|0xB|11/10|[bchain](81_bchain.qmd)|[graphs](90_graphs.qmd)|               |
+|0x8|10/20|[malloc](71_malloc.qmd)|[struct](80_struct.qmd)||
+|0x9|10/27|[Mounts](60_mounts.qmd)||[list_t](72_list_t.qmd)|
+|0xA|11/03|`break;`               |[action](61_action.qmd)||
+|0xB|11/10|[bchain](81_bchain.qmd)|[graphs](90_graphs.qmd)||
 |0xC|11/17|[Merkle](91_merkle.qmd)||[heap_t](92_heap_t.qmd)|
-|0xD|11/24|[Logics](A0_logics.qmd)|`break;`|
-|0xE|12/01|||[BTCinC](A2_btcinc.qmd)|
+|0xD|11/24|[Stream](70_stream.qmd)|`break;`|
+|0xE|12/01|[Logics](A0_logics.qmd)||[BTCinC](A2_btcinc.qmd)|
 
 *The final is described as [BTCinC](A2_btcinc.qmd) and is due [Tuesday, December 8th at 5:00 PM](https://my.willamette.edu/site/registrar/info/mywu-summative-evaluations).
 

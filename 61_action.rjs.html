@@ -572,7 +572,7 @@
 <li>Can facilitate collaboration within a broader framework.
 <ul>
 <li>GitHub uses issues and pull requests</li>
-<li>Historical, mailing lists (still in use of course).</li>
+<li>Historically, mailing lists (still in use of course).</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -831,7 +831,7 @@
 <td>Job is like a .sh file</td>
 </tr>
 <tr class="even">
-<td>build:</td>
+<td><code>build:</code></td>
 <td>Usually one of build, test, deploy</td>
 </tr>
 <tr class="odd">
@@ -904,36 +904,53 @@
 <h2>On .yml</h2>
 <ul>
 <li>You may have learned .yml from e.g.&nbsp;Data Engineering</li>
-<li>It is used in the header to these slides:
+<li>It is used to make these slides:
 <ul>
 <li>je suis développeur web</li>
 </ul></li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>action.qmd</strong></pre>
+<pre><strong>_quarto.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="action.qmd"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="pp">---</span></span>
-<span id="cb5-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Action</span></span>
-<span id="cb5-3"><a></a><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-4"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Prof. Calvin</span></span>
-<span id="cb5-5"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-6"><a></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-7"><a></a><span class="at">        </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-8"><a></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-9"><a></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
-<span id="cb5-10"><a></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-11"><a></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
-<span id="cb5-12"><a></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
-<span id="cb5-13"><a></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
-<span id="cb5-14"><a></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](../index.html)"</span></span>
-<span id="cb5-15"><a></a></span>
-<span id="cb5-16"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb5-17"><a></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-18"><a></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-19"><a></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">  ## never re-render during project render</span></span>
-<span id="cb5-20"><a></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb5-21"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-filename="_quarto.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb5-2"><a></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb5-3"><a></a><span class="at">    </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> ../</span></span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb5-6"><a></a><span class="at">    </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Systems in C"</span></span>
+<span id="cb5-7"><a></a><span class="at">    </span><span class="fu">sidebar</span><span class="kw">:</span></span>
+<span id="cb5-8"><a></a><span class="at">        </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb5-9"><a></a><span class="at">    </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-10"><a></a><span class="at">    </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-11"><a></a></span>
+<span id="cb5-12"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Systems in C"</span></span>
+<span id="cb5-13"><a></a></span>
+<span id="cb5-14"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb5-15"><a></a><span class="at">    </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb5-16"><a></a><span class="at">        </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-17"><a></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> darkly </span></span>
+<span id="cb5-18"><a></a><span class="at">        </span><span class="fu">code-line-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-19"><a></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
+<span id="cb5-20"><a></a><span class="at">        </span><span class="fu">code-tools</span><span class="kw">:</span></span>
+<span id="cb5-21"><a></a><span class="at">            </span><span class="fu">source</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-22"><a></a><span class="at">            </span><span class="fu">toggle</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-23"><a></a><span class="at">            </span><span class="fu">caption</span><span class="kw">:</span><span class="at"> none</span></span>
+<span id="cb5-24"><a></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-25"><a></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb5-26"><a></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
+<span id="cb5-27"><a></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-28"><a></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
+<span id="cb5-29"><a></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
+<span id="cb5-30"><a></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
+<span id="cb5-31"><a></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](index.html)"</span></span>
+<span id="cb5-32"><a></a><span class="at">        </span><span class="fu">output-ext</span><span class="kw">:</span><span class="at"> rjs.html        </span></span>
+<span id="cb5-33"><a></a><span class="at">        </span></span>
+<span id="cb5-34"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb5-35"><a></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-36"><a></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-37"><a></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto    </span></span>
+<span id="cb5-38"><a></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="up-to-you" class="slide level2">
@@ -1163,7 +1180,7 @@
 <section id="curl" class="slide level2">
 <h2>Curl</h2>
 <ul>
-<li>This just pulls a book from GitHub using <code>curl</code> and usings the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
+<li>This just pulls a book from GitHub using <code>curl</code> and uses the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1175,7 +1192,7 @@
 <ul>
 <li><code>curl</code> downloads a file from a url</li>
 <li><code>-o</code> specifies what to save that file as on the local computers</li>
-<li><code>2&gt;</code> suggests were to send error handling information</li>
+<li><code>2&gt;</code> redirects error handling information to a file</li>
 <li><code>/dev/null</code> is an imaginary file we can write to that won’t remember what we wrote there.
 <ul>
 <li>Like <code>return none</code></li>
@@ -1347,14 +1364,10 @@
 <span id="cb31-11"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="outcomes" class="slide level2">
-<h2>Outcomes</h2>
-
-<img data-src="imgs/ghact.png" class="r-stretch"></section>
 <section id="todo" class="slide level2">
 <h2>Todo</h2>
 <ul>
-<li>Get this working on your “shainc” or “enigma” or something.</li>
+<li>Get this working on your “shainc”/“enigma”/“base64”.</li>
 <li>Either in your main repo or in some other one.</li>
 <li>Add “GitHub Actions and CI/CD pipelines for DevOps” to your resume.</li>
 </ul>

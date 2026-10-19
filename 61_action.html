@@ -432,7 +432,6 @@ window.Quarto = {
   <li><a href="#end-to-end" id="toc-end-to-end" class="nav-link" data-scroll-target="#end-to-end">End-to-end</a></li>
   <li><a href="#makefile" id="toc-makefile" class="nav-link" data-scroll-target="#makefile">Makefile</a></li>
   <li><a href="#yml-1" id="toc-yml-1" class="nav-link" data-scroll-target="#yml-1">.yml</a></li>
-  <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes">Outcomes</a></li>
   <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">Todo</a></li>
   </ul></li>
   </ul>
@@ -632,7 +631,7 @@ window.Quarto = {
 <li>Can facilitate collaboration within a broader framework.
 <ul>
 <li>GitHub uses issues and pull requests</li>
-<li>Historical, mailing lists (still in use of course).</li>
+<li>Historically, mailing lists (still in use of course).</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -889,7 +888,7 @@ window.Quarto = {
 <td>Job is like a .sh file</td>
 </tr>
 <tr class="even">
-<td>build:</td>
+<td><code>build:</code></td>
 <td>Usually one of build, test, deploy</td>
 </tr>
 <tr class="odd">
@@ -962,36 +961,53 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="on-.yml">On .yml</h2>
 <ul>
 <li>You may have learned .yml from e.g.&nbsp;Data Engineering</li>
-<li>It is used in the header to these slides:
+<li>It is used to make these slides:
 <ul>
 <li>je suis développeur web</li>
 </ul></li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>action.qmd</strong></pre>
+<pre><strong>_quarto.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="action.qmd"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Action</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Prof. Calvin</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="at">        </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](../index.html)"</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">  ## never re-render during project render</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-filename="_quarto.yml"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="at">    </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> ../</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="at">    </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Systems in C"</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="at">    </span><span class="fu">sidebar</span><span class="kw">:</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="at">        </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="at">    </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="at">    </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Systems in C"</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="at">    </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="at">        </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> darkly </span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="at">        </span><span class="fu">code-line-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="at">        </span><span class="fu">code-tools</span><span class="kw">:</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="at">            </span><span class="fu">source</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="at">            </span><span class="fu">toggle</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="at">            </span><span class="fu">caption</span><span class="kw">:</span><span class="at"> none</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="at">    </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="at">        </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="at">        </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> monospace</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="at">        </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="at">        </span><span class="fu">show-slide-number</span><span class="kw">:</span><span class="at"> all</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="at">        </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1050</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="at">        </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="at">        </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Home](index.html)"</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="at">        </span><span class="fu">output-ext</span><span class="kw">:</span><span class="at"> rjs.html        </span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="at">        </span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a><span class="at">    </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="at">    </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto    </span></span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="up-to-you" class="level2">
@@ -1219,7 +1235,7 @@ window.Quarto = {
 <section id="curl" class="level2">
 <h2 class="anchored" data-anchor-id="curl">Curl</h2>
 <ul>
-<li>This just pulls a book from GitHub using <code>curl</code> and usings the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
+<li>This just pulls a book from GitHub using <code>curl</code> and uses the <code>&gt;</code> character to direct all of the diagnostic information to nowhere.</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">curl</span> https://github.com/cd-public/books/raw/main/pg1342.txt <span class="at">-o</span> austen.txt <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1231,7 +1247,7 @@ window.Quarto = {
 <ul>
 <li><code>curl</code> downloads a file from a url</li>
 <li><code>-o</code> specifies what to save that file as on the local computers</li>
-<li><code>2&gt;</code> suggests were to send error handling information</li>
+<li><code>2&gt;</code> redirects error handling information to a file</li>
 <li><code>/dev/null</code> is an imaginary file we can write to that won’t remember what we wrote there.
 <ul>
 <li>Like <code>return none</code></li>
@@ -1403,14 +1419,10 @@ window.Quarto = {
 <span id="cb31-11"><a href="#cb31-11"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="outcomes">Outcomes</h2>
-<p><img src="imgs/ghact.png" class="img-fluid"></p>
-</section>
 <section id="todo" class="level2">
 <h2 class="anchored" data-anchor-id="todo">Todo</h2>
 <ul>
-<li>Get this working on your “shainc” or “enigma” or something.</li>
+<li>Get this working on your “shainc”/“enigma”/“base64”.</li>
 <li>Either in your main repo or in some other one.</li>
 <li>Add “GitHub Actions and CI/CD pipelines for DevOps” to your resume.</li>
 </ul>
@@ -2022,7 +2034,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb32-115"><a href="#cb32-115"></a><span class="ss">    - </span>Detects errors as soon as they are written.</span>
 <span id="cb32-116"><a href="#cb32-116"></a><span class="ss">    - </span>Can facilitate collaboration within a broader framework.</span>
 <span id="cb32-117"><a href="#cb32-117"></a><span class="ss">        - </span>GitHub uses issues and pull requests</span>
-<span id="cb32-118"><a href="#cb32-118"></a><span class="ss">        - </span>Historical, mailing lists (still in use of course).</span>
+<span id="cb32-118"><a href="#cb32-118"></a><span class="ss">        - </span>Historically, mailing lists (still in use of course).</span>
 <span id="cb32-119"><a href="#cb32-119"></a></span>
 <span id="cb32-120"><a href="#cb32-120"></a><span class="fu">## Mailing List Ex.</span></span>
 <span id="cb32-121"><a href="#cb32-121"></a></span>
@@ -2188,7 +2200,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb32-281"><a href="#cb32-281"></a>|Line|Description|</span>
 <span id="cb32-282"><a href="#cb32-282"></a>|--|--|</span>
 <span id="cb32-283"><a href="#cb32-283"></a>|<span class="in">`jobs:`</span>|Job is like a .sh file|</span>
-<span id="cb32-284"><a href="#cb32-284"></a>|  build: | Usually one of build, test, deploy |</span>
+<span id="cb32-284"><a href="#cb32-284"></a>|<span class="in">`  build:`</span> | Usually one of build, test, deploy |</span>
 <span id="cb32-285"><a href="#cb32-285"></a>|<span class="in">`    runs-on: ubuntu-latest`</span>| That is GitHub managed image|</span>
 <span id="cb32-286"><a href="#cb32-286"></a></span>
 <span id="cb32-287"><a href="#cb32-287"></a><span class="ss">- </span>I tried to change <span class="in">`ubuntu-latest`</span> to <span class="in">`ubuntu`</span> and it broke.</span>
@@ -2224,376 +2236,390 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb32-317"><a href="#cb32-317"></a><span class="fu">## On .yml</span></span>
 <span id="cb32-318"><a href="#cb32-318"></a></span>
 <span id="cb32-319"><a href="#cb32-319"></a><span class="ss">- </span>You may have learned .yml from e.g. Data Engineering</span>
-<span id="cb32-320"><a href="#cb32-320"></a><span class="ss">- </span>It is used in the header to these slides:</span>
+<span id="cb32-320"><a href="#cb32-320"></a><span class="ss">- </span>It is used to make these slides:</span>
 <span id="cb32-321"><a href="#cb32-321"></a><span class="ss">    - </span>je suis développeur web</span>
 <span id="cb32-322"><a href="#cb32-322"></a></span>
-<span id="cb32-323"><a href="#cb32-323"></a><span class="in">```{.yml filename="action.qmd"}</span></span>
-<span id="cb32-324"><a href="#cb32-324"></a><span class="in">---</span></span>
-<span id="cb32-325"><a href="#cb32-325"></a><span class="in">title: Action</span></span>
-<span id="cb32-326"><a href="#cb32-326"></a><span class="in">theme: dark</span></span>
-<span id="cb32-327"><a href="#cb32-327"></a><span class="in">author: Prof. Calvin</span></span>
-<span id="cb32-328"><a href="#cb32-328"></a><span class="in">format: </span></span>
-<span id="cb32-329"><a href="#cb32-329"></a><span class="in">    revealjs: </span></span>
-<span id="cb32-330"><a href="#cb32-330"></a><span class="in">        code-fold: true</span></span>
-<span id="cb32-331"><a href="#cb32-331"></a><span class="in">        theme: dark</span></span>
-<span id="cb32-332"><a href="#cb32-332"></a><span class="in">        mainfont: monospace</span></span>
-<span id="cb32-333"><a href="#cb32-333"></a><span class="in">        slide-number: true</span></span>
-<span id="cb32-334"><a href="#cb32-334"></a><span class="in">        show-slide-number: all</span></span>
-<span id="cb32-335"><a href="#cb32-335"></a><span class="in">        width: 1050</span></span>
-<span id="cb32-336"><a href="#cb32-336"></a><span class="in">        height: 700</span></span>
-<span id="cb32-337"><a href="#cb32-337"></a><span class="in">        footer: "[Home](../index.html)"</span></span>
-<span id="cb32-338"><a href="#cb32-338"></a></span>
-<span id="cb32-339"><a href="#cb32-339"></a><span class="in">execute:</span></span>
-<span id="cb32-340"><a href="#cb32-340"></a><span class="in">    echo: true</span></span>
-<span id="cb32-341"><a href="#cb32-341"></a><span class="in">    cache: true</span></span>
-<span id="cb32-342"><a href="#cb32-342"></a><span class="in">    freeze: true  ## never re-render during project render</span></span>
-<span id="cb32-343"><a href="#cb32-343"></a><span class="in">    code-fold: false</span></span>
-<span id="cb32-344"><a href="#cb32-344"></a><span class="in">---</span></span>
-<span id="cb32-345"><a href="#cb32-345"></a><span class="in">```</span></span>
-<span id="cb32-346"><a href="#cb32-346"></a></span>
-<span id="cb32-347"><a href="#cb32-347"></a><span class="fu">## Up to you</span></span>
-<span id="cb32-348"><a href="#cb32-348"></a></span>
-<span id="cb32-349"><a href="#cb32-349"></a><span class="ss">- </span>You can fiddle around with GitHub workflows and actions and etc and etc, it's not too bad, but...</span>
-<span id="cb32-350"><a href="#cb32-350"></a><span class="ss">- </span>I'd use the above as boilerplate and only change one thing:</span>
-<span id="cb32-351"><a href="#cb32-351"></a><span class="ss">- </span><span class="in">`make`</span></span>
-<span id="cb32-352"><a href="#cb32-352"></a></span>
-<span id="cb32-353"><a href="#cb32-353"></a><span class="fu">## Today</span></span>
-<span id="cb32-354"><a href="#cb32-354"></a></span>
-<span id="cb32-355"><a href="#cb32-355"></a><span class="ss">- </span>&lt;span style="font-variant:small-caps"&gt;DevOps&lt;/span&gt;</span>
-<span id="cb32-356"><a href="#cb32-356"></a><span class="ss">- </span>Continious Integration</span>
-<span id="cb32-357"><a href="#cb32-357"></a><span class="ss">    - </span><span class="in">`make`</span></span>
-<span id="cb32-358"><a href="#cb32-358"></a><span class="ss">    - </span><span class="dv">&amp;check;</span> GitHub Actions</span>
-<span id="cb32-359"><a href="#cb32-359"></a></span>
-<span id="cb32-360"><a href="#cb32-360"></a><span class="fu">#  `make`</span></span>
-<span id="cb32-361"><a href="#cb32-361"></a></span>
-<span id="cb32-362"><a href="#cb32-362"></a><span class="fu">## `make`</span></span>
-<span id="cb32-363"><a href="#cb32-363"></a></span>
-<span id="cb32-364"><a href="#cb32-364"></a><span class="ss">- </span><span class="in">`make`</span> is the historically supported way to get things done related to C (and C++) development.</span>
-<span id="cb32-365"><a href="#cb32-365"></a><span class="ss">    - </span>CMake is the new technique which is a bit heavier weight and used in larger projects.</span>
-<span id="cb32-366"><a href="#cb32-366"></a><span class="ss">        - </span>By new I mean 2000.</span>
-<span id="cb32-367"><a href="#cb32-367"></a><span class="ss">        - </span><span class="in">`make`</span> is 1976</span>
-<span id="cb32-368"><a href="#cb32-368"></a></span>
-<span id="cb32-369"><a href="#cb32-369"></a><span class="fu">## The Pitch</span></span>
+<span id="cb32-323"><a href="#cb32-323"></a><span class="in">```{.yml filename="_quarto.yml"}</span></span>
+<span id="cb32-324"><a href="#cb32-324"></a><span class="in">project:</span></span>
+<span id="cb32-325"><a href="#cb32-325"></a><span class="in">    type: website</span></span>
+<span id="cb32-326"><a href="#cb32-326"></a><span class="in">    output-dir: ../</span></span>
+<span id="cb32-327"><a href="#cb32-327"></a></span>
+<span id="cb32-328"><a href="#cb32-328"></a><span class="in">website:</span></span>
+<span id="cb32-329"><a href="#cb32-329"></a><span class="in">    title: "Systems in C"</span></span>
+<span id="cb32-330"><a href="#cb32-330"></a><span class="in">    sidebar:</span></span>
+<span id="cb32-331"><a href="#cb32-331"></a><span class="in">        contents: auto</span></span>
+<span id="cb32-332"><a href="#cb32-332"></a><span class="in">    search: true</span></span>
+<span id="cb32-333"><a href="#cb32-333"></a><span class="in">    page-navigation: true</span></span>
+<span id="cb32-334"><a href="#cb32-334"></a></span>
+<span id="cb32-335"><a href="#cb32-335"></a><span class="in">subtitle: "Systems in C"</span></span>
+<span id="cb32-336"><a href="#cb32-336"></a></span>
+<span id="cb32-337"><a href="#cb32-337"></a><span class="in">format:</span></span>
+<span id="cb32-338"><a href="#cb32-338"></a><span class="in">    html:</span></span>
+<span id="cb32-339"><a href="#cb32-339"></a><span class="in">        toc: true</span></span>
+<span id="cb32-340"><a href="#cb32-340"></a><span class="in">        theme: darkly </span></span>
+<span id="cb32-341"><a href="#cb32-341"></a><span class="in">        code-line-numbers: true</span></span>
+<span id="cb32-342"><a href="#cb32-342"></a><span class="in">        mainfont: monospace</span></span>
+<span id="cb32-343"><a href="#cb32-343"></a><span class="in">        code-tools:</span></span>
+<span id="cb32-344"><a href="#cb32-344"></a><span class="in">            source: true</span></span>
+<span id="cb32-345"><a href="#cb32-345"></a><span class="in">            toggle: false</span></span>
+<span id="cb32-346"><a href="#cb32-346"></a><span class="in">            caption: none</span></span>
+<span id="cb32-347"><a href="#cb32-347"></a><span class="in">    revealjs: </span></span>
+<span id="cb32-348"><a href="#cb32-348"></a><span class="in">        theme: dark</span></span>
+<span id="cb32-349"><a href="#cb32-349"></a><span class="in">        mainfont: monospace</span></span>
+<span id="cb32-350"><a href="#cb32-350"></a><span class="in">        slide-number: true</span></span>
+<span id="cb32-351"><a href="#cb32-351"></a><span class="in">        show-slide-number: all</span></span>
+<span id="cb32-352"><a href="#cb32-352"></a><span class="in">        width: 1050</span></span>
+<span id="cb32-353"><a href="#cb32-353"></a><span class="in">        height: 700</span></span>
+<span id="cb32-354"><a href="#cb32-354"></a><span class="in">        footer: "[Home](index.html)"</span></span>
+<span id="cb32-355"><a href="#cb32-355"></a><span class="in">        output-ext: rjs.html        </span></span>
+<span id="cb32-356"><a href="#cb32-356"></a><span class="in">        </span></span>
+<span id="cb32-357"><a href="#cb32-357"></a><span class="in">execute:</span></span>
+<span id="cb32-358"><a href="#cb32-358"></a><span class="in">    echo: true</span></span>
+<span id="cb32-359"><a href="#cb32-359"></a><span class="in">    cache: true</span></span>
+<span id="cb32-360"><a href="#cb32-360"></a><span class="in">    freeze: auto    </span></span>
+<span id="cb32-361"><a href="#cb32-361"></a><span class="in">    code-fold: false</span></span>
+<span id="cb32-362"><a href="#cb32-362"></a></span>
+<span id="cb32-363"><a href="#cb32-363"></a><span class="in">```</span></span>
+<span id="cb32-364"><a href="#cb32-364"></a></span>
+<span id="cb32-365"><a href="#cb32-365"></a><span class="fu">## Up to you</span></span>
+<span id="cb32-366"><a href="#cb32-366"></a></span>
+<span id="cb32-367"><a href="#cb32-367"></a><span class="ss">- </span>You can fiddle around with GitHub workflows and actions and etc and etc, it's not too bad, but...</span>
+<span id="cb32-368"><a href="#cb32-368"></a><span class="ss">- </span>I'd use the above as boilerplate and only change one thing:</span>
+<span id="cb32-369"><a href="#cb32-369"></a><span class="ss">- </span><span class="in">`make`</span></span>
 <span id="cb32-370"><a href="#cb32-370"></a></span>
-<span id="cb32-371"><a href="#cb32-371"></a><span class="ss">- </span><span class="in">`make`</span></span>
-<span id="cb32-372"><a href="#cb32-372"></a><span class="ss">    - </span>Stores big commands</span>
-<span id="cb32-373"><a href="#cb32-373"></a><span class="ss">    - </span>Can check how recently files have changed</span>
-<span id="cb32-374"><a href="#cb32-374"></a><span class="ss">    - </span>Is programable via "rules" in a <span class="in">`Makefile`</span>.</span>
-<span id="cb32-375"><a href="#cb32-375"></a></span>
-<span id="cb32-376"><a href="#cb32-376"></a></span>
-<span id="cb32-377"><a href="#cb32-377"></a><span class="fu">## Example</span></span>
-<span id="cb32-378"><a href="#cb32-378"></a></span>
-<span id="cb32-379"><a href="#cb32-379"></a><span class="ss">- </span>Here's a sample Makefile, the thing that programs <span class="in">`make`</span></span>
-<span id="cb32-380"><a href="#cb32-380"></a><span class="ss">    - </span>Guess what Containerfile naming scheme is derived from!</span>
-<span id="cb32-381"><a href="#cb32-381"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
-<span id="cb32-382"><a href="#cb32-382"></a><span class="in">build:</span></span>
-<span id="cb32-383"><a href="#cb32-383"></a><span class="in">    gcc shainc.c</span></span>
-<span id="cb32-384"><a href="#cb32-384"></a><span class="in">```</span></span>
-<span id="cb32-385"><a href="#cb32-385"></a><span class="ss">- </span>Using SHA as the running example...</span>
+<span id="cb32-371"><a href="#cb32-371"></a><span class="fu">## Today</span></span>
+<span id="cb32-372"><a href="#cb32-372"></a></span>
+<span id="cb32-373"><a href="#cb32-373"></a><span class="ss">- </span>&lt;span style="font-variant:small-caps"&gt;DevOps&lt;/span&gt;</span>
+<span id="cb32-374"><a href="#cb32-374"></a><span class="ss">- </span>Continious Integration</span>
+<span id="cb32-375"><a href="#cb32-375"></a><span class="ss">    - </span><span class="in">`make`</span></span>
+<span id="cb32-376"><a href="#cb32-376"></a><span class="ss">    - </span><span class="dv">&amp;check;</span> GitHub Actions</span>
+<span id="cb32-377"><a href="#cb32-377"></a></span>
+<span id="cb32-378"><a href="#cb32-378"></a><span class="fu">#  `make`</span></span>
+<span id="cb32-379"><a href="#cb32-379"></a></span>
+<span id="cb32-380"><a href="#cb32-380"></a><span class="fu">## `make`</span></span>
+<span id="cb32-381"><a href="#cb32-381"></a></span>
+<span id="cb32-382"><a href="#cb32-382"></a><span class="ss">- </span><span class="in">`make`</span> is the historically supported way to get things done related to C (and C++) development.</span>
+<span id="cb32-383"><a href="#cb32-383"></a><span class="ss">    - </span>CMake is the new technique which is a bit heavier weight and used in larger projects.</span>
+<span id="cb32-384"><a href="#cb32-384"></a><span class="ss">        - </span>By new I mean 2000.</span>
+<span id="cb32-385"><a href="#cb32-385"></a><span class="ss">        - </span><span class="in">`make`</span> is 1976</span>
 <span id="cb32-386"><a href="#cb32-386"></a></span>
-<span id="cb32-387"><a href="#cb32-387"></a><span class="fu">## Example</span></span>
+<span id="cb32-387"><a href="#cb32-387"></a><span class="fu">## The Pitch</span></span>
 <span id="cb32-388"><a href="#cb32-388"></a></span>
-<span id="cb32-389"><a href="#cb32-389"></a><span class="ss">- </span>Suppose we have an incomplete "shainc.c"</span>
-<span id="cb32-390"><a href="#cb32-390"></a></span>
-<span id="cb32-391"><a href="#cb32-391"></a><span class="in">```{.C filename="shainc.c"}</span></span>
-<span id="cb32-392"><a href="#cb32-392"></a><span class="in">int main() {</span></span>
-<span id="cb32-393"><a href="#cb32-393"></a><span class="in">        printf("hi\n");</span></span>
-<span id="cb32-394"><a href="#cb32-394"></a><span class="in">}</span></span>
-<span id="cb32-395"><a href="#cb32-395"></a><span class="in">```</span></span>
+<span id="cb32-389"><a href="#cb32-389"></a><span class="ss">- </span><span class="in">`make`</span></span>
+<span id="cb32-390"><a href="#cb32-390"></a><span class="ss">    - </span>Stores big commands</span>
+<span id="cb32-391"><a href="#cb32-391"></a><span class="ss">    - </span>Can check how recently files have changed</span>
+<span id="cb32-392"><a href="#cb32-392"></a><span class="ss">    - </span>Is programable via "rules" in a <span class="in">`Makefile`</span>.</span>
+<span id="cb32-393"><a href="#cb32-393"></a></span>
+<span id="cb32-394"><a href="#cb32-394"></a></span>
+<span id="cb32-395"><a href="#cb32-395"></a><span class="fu">## Example</span></span>
 <span id="cb32-396"><a href="#cb32-396"></a></span>
-<span id="cb32-397"><a href="#cb32-397"></a><span class="ss">- </span>We get some warnings:</span>
-<span id="cb32-398"><a href="#cb32-398"></a><span class="in">```{.email}</span></span>
-<span id="cb32-399"><a href="#cb32-399"></a><span class="in">$ gcc shainc.c</span></span>
-<span id="cb32-400"><a href="#cb32-400"></a><span class="in">shainc.c: In function ‘main’:</span></span>
-<span id="cb32-401"><a href="#cb32-401"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
-<span id="cb32-402"><a href="#cb32-402"></a><span class="in">    2 |         printf("hi\n");</span></span>
-<span id="cb32-403"><a href="#cb32-403"></a><span class="in">      |         ^~~~~~</span></span>
-<span id="cb32-404"><a href="#cb32-404"></a><span class="in">```</span></span>
-<span id="cb32-405"><a href="#cb32-405"></a></span>
-<span id="cb32-406"><a href="#cb32-406"></a><span class="fu">## Example</span></span>
-<span id="cb32-407"><a href="#cb32-407"></a></span>
-<span id="cb32-408"><a href="#cb32-408"></a><span class="ss">- </span>Given a Makfile that contains the same "rule"</span>
-<span id="cb32-409"><a href="#cb32-409"></a></span>
-<span id="cb32-410"><a href="#cb32-410"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
-<span id="cb32-411"><a href="#cb32-411"></a><span class="in">build:</span></span>
-<span id="cb32-412"><a href="#cb32-412"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-397"><a href="#cb32-397"></a><span class="ss">- </span>Here's a sample Makefile, the thing that programs <span class="in">`make`</span></span>
+<span id="cb32-398"><a href="#cb32-398"></a><span class="ss">    - </span>Guess what Containerfile naming scheme is derived from!</span>
+<span id="cb32-399"><a href="#cb32-399"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-400"><a href="#cb32-400"></a><span class="in">build:</span></span>
+<span id="cb32-401"><a href="#cb32-401"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-402"><a href="#cb32-402"></a><span class="in">```</span></span>
+<span id="cb32-403"><a href="#cb32-403"></a><span class="ss">- </span>Using SHA as the running example...</span>
+<span id="cb32-404"><a href="#cb32-404"></a></span>
+<span id="cb32-405"><a href="#cb32-405"></a><span class="fu">## Example</span></span>
+<span id="cb32-406"><a href="#cb32-406"></a></span>
+<span id="cb32-407"><a href="#cb32-407"></a><span class="ss">- </span>Suppose we have an incomplete "shainc.c"</span>
+<span id="cb32-408"><a href="#cb32-408"></a></span>
+<span id="cb32-409"><a href="#cb32-409"></a><span class="in">```{.C filename="shainc.c"}</span></span>
+<span id="cb32-410"><a href="#cb32-410"></a><span class="in">int main() {</span></span>
+<span id="cb32-411"><a href="#cb32-411"></a><span class="in">        printf("hi\n");</span></span>
+<span id="cb32-412"><a href="#cb32-412"></a><span class="in">}</span></span>
 <span id="cb32-413"><a href="#cb32-413"></a><span class="in">```</span></span>
 <span id="cb32-414"><a href="#cb32-414"></a></span>
-<span id="cb32-415"><a href="#cb32-415"></a><span class="ss">- </span>We get *the same* warnings:</span>
+<span id="cb32-415"><a href="#cb32-415"></a><span class="ss">- </span>We get some warnings:</span>
 <span id="cb32-416"><a href="#cb32-416"></a><span class="in">```{.email}</span></span>
-<span id="cb32-417"><a href="#cb32-417"></a><span class="in">$ make</span></span>
-<span id="cb32-418"><a href="#cb32-418"></a><span class="in">gcc shainc.c</span></span>
-<span id="cb32-419"><a href="#cb32-419"></a><span class="in">shainc.c: In function ‘main’:</span></span>
-<span id="cb32-420"><a href="#cb32-420"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
-<span id="cb32-421"><a href="#cb32-421"></a><span class="in">    2 |         printf("hi\n");</span></span>
-<span id="cb32-422"><a href="#cb32-422"></a><span class="in">      |         ^~~~~~</span></span>
-<span id="cb32-423"><a href="#cb32-423"></a><span class="in">```</span></span>
-<span id="cb32-424"><a href="#cb32-424"></a></span>
-<span id="cb32-425"><a href="#cb32-425"></a><span class="fu">## Takeaways</span></span>
-<span id="cb32-426"><a href="#cb32-426"></a></span>
-<span id="cb32-427"><a href="#cb32-427"></a><span class="ss">- </span>Make runs shell commands.</span>
-<span id="cb32-428"><a href="#cb32-428"></a><span class="ss">- </span>They run the same as if we type them ourselves.</span>
-<span id="cb32-429"><a href="#cb32-429"></a><span class="ss">- </span>This allows us to store commands.</span>
-<span id="cb32-430"><a href="#cb32-430"></a><span class="ss">- </span>Rules can be goofy - but by default the first one runs - we have one, named build, so it's the one that happens.</span>
-<span id="cb32-431"><a href="#cb32-431"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
-<span id="cb32-432"><a href="#cb32-432"></a><span class="in">build:</span></span>
-<span id="cb32-433"><a href="#cb32-433"></a><span class="in">    gcc shainc.c</span></span>
-<span id="cb32-434"><a href="#cb32-434"></a><span class="in">```</span></span>
-<span id="cb32-435"><a href="#cb32-435"></a></span>
-<span id="cb32-436"><a href="#cb32-436"></a><span class="fu">## Rules</span></span>
-<span id="cb32-437"><a href="#cb32-437"></a></span>
-<span id="cb32-438"><a href="#cb32-438"></a><span class="ss">- </span>You can also specify rules if you have more than one:</span>
-<span id="cb32-439"><a href="#cb32-439"></a></span>
-<span id="cb32-440"><a href="#cb32-440"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
-<span id="cb32-441"><a href="#cb32-441"></a><span class="in">build:</span></span>
-<span id="cb32-442"><a href="#cb32-442"></a><span class="in">    gcc shainc.c</span></span>
-<span id="cb32-443"><a href="#cb32-443"></a></span>
-<span id="cb32-444"><a href="#cb32-444"></a><span class="in">nowarn:</span></span>
-<span id="cb32-445"><a href="#cb32-445"></a><span class="in">    gcc shainc.c -w</span></span>
-<span id="cb32-446"><a href="#cb32-446"></a><span class="in">```</span></span>
-<span id="cb32-447"><a href="#cb32-447"></a></span>
-<span id="cb32-448"><a href="#cb32-448"></a><span class="fu">## Use rules</span></span>
-<span id="cb32-449"><a href="#cb32-449"></a></span>
-<span id="cb32-450"><a href="#cb32-450"></a><span class="ss">- </span>We can "build"</span>
-<span id="cb32-451"><a href="#cb32-451"></a><span class="in">```{.email}</span></span>
-<span id="cb32-452"><a href="#cb32-452"></a><span class="in">$ make build</span></span>
-<span id="cb32-453"><a href="#cb32-453"></a><span class="in">gcc shainc.c</span></span>
-<span id="cb32-454"><a href="#cb32-454"></a><span class="in">...</span></span>
-<span id="cb32-455"><a href="#cb32-455"></a><span class="in">```</span></span>
-<span id="cb32-456"><a href="#cb32-456"></a><span class="ss">- </span>Or we can specify "nowarn"</span>
-<span id="cb32-457"><a href="#cb32-457"></a><span class="in">```{.email}</span></span>
-<span id="cb32-458"><a href="#cb32-458"></a><span class="in">$ make nowarn</span></span>
-<span id="cb32-459"><a href="#cb32-459"></a><span class="in">gcc shainc.c -w</span></span>
-<span id="cb32-460"><a href="#cb32-460"></a><span class="in">```</span></span>
-<span id="cb32-461"><a href="#cb32-461"></a><span class="ss">- </span>The first is the default</span>
-<span id="cb32-462"><a href="#cb32-462"></a><span class="in">```{.email}</span></span>
-<span id="cb32-463"><a href="#cb32-463"></a><span class="in">$ make</span></span>
-<span id="cb32-464"><a href="#cb32-464"></a><span class="in">gcc shainc.c</span></span>
-<span id="cb32-465"><a href="#cb32-465"></a><span class="in">```</span></span>
-<span id="cb32-466"><a href="#cb32-466"></a></span>
-<span id="cb32-467"><a href="#cb32-467"></a><span class="fu">## In practice</span></span>
-<span id="cb32-468"><a href="#cb32-468"></a></span>
-<span id="cb32-469"><a href="#cb32-469"></a><span class="ss">- </span>I tend to use a Makefile like this:</span>
-<span id="cb32-470"><a href="#cb32-470"></a></span>
-<span id="cb32-471"><a href="#cb32-471"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
-<span id="cb32-472"><a href="#cb32-472"></a><span class="in">build:</span></span>
-<span id="cb32-473"><a href="#cb32-473"></a><span class="in">    gcc shainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-474"><a href="#cb32-474"></a></span>
-<span id="cb32-475"><a href="#cb32-475"></a><span class="in">clean:</span></span>
-<span id="cb32-476"><a href="#cb32-476"></a><span class="in">    rm shainc</span></span>
-<span id="cb32-477"><a href="#cb32-477"></a><span class="in">```</span></span>
-<span id="cb32-478"><a href="#cb32-478"></a></span>
-<span id="cb32-479"><a href="#cb32-479"></a><span class="ss">- </span><span class="in">`make`</span> will compile and <span class="in">`make clean`</span> will remove the old executable if I don't want it around for some reason.</span>
-<span id="cb32-480"><a href="#cb32-480"></a></span>
-<span id="cb32-481"><a href="#cb32-481"></a><span class="fu">## Check</span></span>
-<span id="cb32-482"><a href="#cb32-482"></a></span>
-<span id="cb32-483"><a href="#cb32-483"></a><span class="ss">- </span>"make" commands tend to be 5 char, next most common I see is "check"</span>
-<span id="cb32-484"><a href="#cb32-484"></a><span class="ss">- </span>We have a shell friendly <span class="in">`shainc`</span> autograder!</span>
-<span id="cb32-485"><a href="#cb32-485"></a><span class="in">```{.sh filename="tester.sh"}</span></span>
-<span id="cb32-486"><a href="#cb32-486"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-487"><a href="#cb32-487"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
-<span id="cb32-488"><a href="#cb32-488"></a><span class="in">echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
-<span id="cb32-489"><a href="#cb32-489"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
-<span id="cb32-490"><a href="#cb32-490"></a><span class="in">echo " === Finding errors vs. reference implementation. === "</span></span>
-<span id="cb32-491"><a href="#cb32-491"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
-<span id="cb32-492"><a href="#cb32-492"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
-<span id="cb32-493"><a href="#cb32-493"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
-<span id="cb32-494"><a href="#cb32-494"></a><span class="in">echo " === Errors printed. No errors denotes \"Perfect!\" === "</span></span>
+<span id="cb32-417"><a href="#cb32-417"></a><span class="in">$ gcc shainc.c</span></span>
+<span id="cb32-418"><a href="#cb32-418"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-419"><a href="#cb32-419"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
+<span id="cb32-420"><a href="#cb32-420"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-421"><a href="#cb32-421"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-422"><a href="#cb32-422"></a><span class="in">```</span></span>
+<span id="cb32-423"><a href="#cb32-423"></a></span>
+<span id="cb32-424"><a href="#cb32-424"></a><span class="fu">## Example</span></span>
+<span id="cb32-425"><a href="#cb32-425"></a></span>
+<span id="cb32-426"><a href="#cb32-426"></a><span class="ss">- </span>Given a Makfile that contains the same "rule"</span>
+<span id="cb32-427"><a href="#cb32-427"></a></span>
+<span id="cb32-428"><a href="#cb32-428"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-429"><a href="#cb32-429"></a><span class="in">build:</span></span>
+<span id="cb32-430"><a href="#cb32-430"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-431"><a href="#cb32-431"></a><span class="in">```</span></span>
+<span id="cb32-432"><a href="#cb32-432"></a></span>
+<span id="cb32-433"><a href="#cb32-433"></a><span class="ss">- </span>We get *the same* warnings:</span>
+<span id="cb32-434"><a href="#cb32-434"></a><span class="in">```{.email}</span></span>
+<span id="cb32-435"><a href="#cb32-435"></a><span class="in">$ make</span></span>
+<span id="cb32-436"><a href="#cb32-436"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-437"><a href="#cb32-437"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-438"><a href="#cb32-438"></a><span class="in">shainc.c:2:9: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span></span>
+<span id="cb32-439"><a href="#cb32-439"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-440"><a href="#cb32-440"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-441"><a href="#cb32-441"></a><span class="in">```</span></span>
+<span id="cb32-442"><a href="#cb32-442"></a></span>
+<span id="cb32-443"><a href="#cb32-443"></a><span class="fu">## Takeaways</span></span>
+<span id="cb32-444"><a href="#cb32-444"></a></span>
+<span id="cb32-445"><a href="#cb32-445"></a><span class="ss">- </span>Make runs shell commands.</span>
+<span id="cb32-446"><a href="#cb32-446"></a><span class="ss">- </span>They run the same as if we type them ourselves.</span>
+<span id="cb32-447"><a href="#cb32-447"></a><span class="ss">- </span>This allows us to store commands.</span>
+<span id="cb32-448"><a href="#cb32-448"></a><span class="ss">- </span>Rules can be goofy - but by default the first one runs - we have one, named build, so it's the one that happens.</span>
+<span id="cb32-449"><a href="#cb32-449"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-450"><a href="#cb32-450"></a><span class="in">build:</span></span>
+<span id="cb32-451"><a href="#cb32-451"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-452"><a href="#cb32-452"></a><span class="in">```</span></span>
+<span id="cb32-453"><a href="#cb32-453"></a></span>
+<span id="cb32-454"><a href="#cb32-454"></a><span class="fu">## Rules</span></span>
+<span id="cb32-455"><a href="#cb32-455"></a></span>
+<span id="cb32-456"><a href="#cb32-456"></a><span class="ss">- </span>You can also specify rules if you have more than one:</span>
+<span id="cb32-457"><a href="#cb32-457"></a></span>
+<span id="cb32-458"><a href="#cb32-458"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-459"><a href="#cb32-459"></a><span class="in">build:</span></span>
+<span id="cb32-460"><a href="#cb32-460"></a><span class="in">    gcc shainc.c</span></span>
+<span id="cb32-461"><a href="#cb32-461"></a></span>
+<span id="cb32-462"><a href="#cb32-462"></a><span class="in">nowarn:</span></span>
+<span id="cb32-463"><a href="#cb32-463"></a><span class="in">    gcc shainc.c -w</span></span>
+<span id="cb32-464"><a href="#cb32-464"></a><span class="in">```</span></span>
+<span id="cb32-465"><a href="#cb32-465"></a></span>
+<span id="cb32-466"><a href="#cb32-466"></a><span class="fu">## Use rules</span></span>
+<span id="cb32-467"><a href="#cb32-467"></a></span>
+<span id="cb32-468"><a href="#cb32-468"></a><span class="ss">- </span>We can "build"</span>
+<span id="cb32-469"><a href="#cb32-469"></a><span class="in">```{.email}</span></span>
+<span id="cb32-470"><a href="#cb32-470"></a><span class="in">$ make build</span></span>
+<span id="cb32-471"><a href="#cb32-471"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-472"><a href="#cb32-472"></a><span class="in">...</span></span>
+<span id="cb32-473"><a href="#cb32-473"></a><span class="in">```</span></span>
+<span id="cb32-474"><a href="#cb32-474"></a><span class="ss">- </span>Or we can specify "nowarn"</span>
+<span id="cb32-475"><a href="#cb32-475"></a><span class="in">```{.email}</span></span>
+<span id="cb32-476"><a href="#cb32-476"></a><span class="in">$ make nowarn</span></span>
+<span id="cb32-477"><a href="#cb32-477"></a><span class="in">gcc shainc.c -w</span></span>
+<span id="cb32-478"><a href="#cb32-478"></a><span class="in">```</span></span>
+<span id="cb32-479"><a href="#cb32-479"></a><span class="ss">- </span>The first is the default</span>
+<span id="cb32-480"><a href="#cb32-480"></a><span class="in">```{.email}</span></span>
+<span id="cb32-481"><a href="#cb32-481"></a><span class="in">$ make</span></span>
+<span id="cb32-482"><a href="#cb32-482"></a><span class="in">gcc shainc.c</span></span>
+<span id="cb32-483"><a href="#cb32-483"></a><span class="in">```</span></span>
+<span id="cb32-484"><a href="#cb32-484"></a></span>
+<span id="cb32-485"><a href="#cb32-485"></a><span class="fu">## In practice</span></span>
+<span id="cb32-486"><a href="#cb32-486"></a></span>
+<span id="cb32-487"><a href="#cb32-487"></a><span class="ss">- </span>I tend to use a Makefile like this:</span>
+<span id="cb32-488"><a href="#cb32-488"></a></span>
+<span id="cb32-489"><a href="#cb32-489"></a><span class="in">```{.makefile filename="Makefile"}</span></span>
+<span id="cb32-490"><a href="#cb32-490"></a><span class="in">build:</span></span>
+<span id="cb32-491"><a href="#cb32-491"></a><span class="in">    gcc shainc.c --std=c89 -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-492"><a href="#cb32-492"></a></span>
+<span id="cb32-493"><a href="#cb32-493"></a><span class="in">clean:</span></span>
+<span id="cb32-494"><a href="#cb32-494"></a><span class="in">    rm shainc</span></span>
 <span id="cb32-495"><a href="#cb32-495"></a><span class="in">```</span></span>
 <span id="cb32-496"><a href="#cb32-496"></a></span>
-<span id="cb32-497"><a href="#cb32-497"></a><span class="fu">## A note</span></span>
+<span id="cb32-497"><a href="#cb32-497"></a><span class="ss">- </span><span class="in">`make`</span> will compile and <span class="in">`make clean`</span> will remove the old executable if I don't want it around for some reason.</span>
 <span id="cb32-498"><a href="#cb32-498"></a></span>
-<span id="cb32-499"><a href="#cb32-499"></a><span class="ss">- </span>This:</span>
-<span id="cb32-500"><a href="#cb32-500"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-501"><a href="#cb32-501"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
-<span id="cb32-502"><a href="#cb32-502"></a><span class="in">```</span></span>
-<span id="cb32-503"><a href="#cb32-503"></a><span class="ss">- </span>Is *bash* and only works via <span class="in">`/bin/bash`</span></span>
-<span id="cb32-504"><a href="#cb32-504"></a><span class="ss">- </span>Makefile uses *sh* which doesn't allow the parenthesis like that.</span>
-<span id="cb32-505"><a href="#cb32-505"></a><span class="ss">- </span>We will use temporary files.</span>
-<span id="cb32-506"><a href="#cb32-506"></a></span>
-<span id="cb32-507"><a href="#cb32-507"></a><span class="fu">## Step by step</span></span>
-<span id="cb32-508"><a href="#cb32-508"></a></span>
-<span id="cb32-509"><a href="#cb32-509"></a><span class="ss">- </span>This is just <span class="in">`make build`</span></span>
-<span id="cb32-510"><a href="#cb32-510"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-511"><a href="#cb32-511"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-512"><a href="#cb32-512"></a><span class="in">```</span></span>
-<span id="cb32-513"><a href="#cb32-513"></a><span class="ss">- </span>These lines just echo text into a file:</span>
-<span id="cb32-514"><a href="#cb32-514"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-515"><a href="#cb32-515"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
-<span id="cb32-516"><a href="#cb32-516"></a><span class="in">echo "Lorem ipsum dolor sit amet, " ## etc etc</span></span>
-<span id="cb32-517"><a href="#cb32-517"></a><span class="in">```</span></span>
-<span id="cb32-518"><a href="#cb32-518"></a></span>
-<span id="cb32-519"><a href="#cb32-519"></a><span class="fu">## Curl</span></span>
-<span id="cb32-520"><a href="#cb32-520"></a></span>
-<span id="cb32-521"><a href="#cb32-521"></a><span class="ss">- </span>This just pulls a book from GitHub using <span class="in">`curl`</span> and usings the <span class="in">`&gt;`</span> character to direct all of the diagnostic information to nowhere.</span>
-<span id="cb32-522"><a href="#cb32-522"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-523"><a href="#cb32-523"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
-<span id="cb32-524"><a href="#cb32-524"></a><span class="in">```</span></span>
-<span id="cb32-525"><a href="#cb32-525"></a><span class="ss">- </span>Try it with different flags if you are confused.</span>
+<span id="cb32-499"><a href="#cb32-499"></a><span class="fu">## Check</span></span>
+<span id="cb32-500"><a href="#cb32-500"></a></span>
+<span id="cb32-501"><a href="#cb32-501"></a><span class="ss">- </span>"make" commands tend to be 5 char, next most common I see is "check"</span>
+<span id="cb32-502"><a href="#cb32-502"></a><span class="ss">- </span>We have a shell friendly <span class="in">`shainc`</span> autograder!</span>
+<span id="cb32-503"><a href="#cb32-503"></a><span class="in">```{.sh filename="tester.sh"}</span></span>
+<span id="cb32-504"><a href="#cb32-504"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-505"><a href="#cb32-505"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-506"><a href="#cb32-506"></a><span class="in">echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
+<span id="cb32-507"><a href="#cb32-507"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-508"><a href="#cb32-508"></a><span class="in">echo " === Finding errors vs. reference implementation. === "</span></span>
+<span id="cb32-509"><a href="#cb32-509"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-510"><a href="#cb32-510"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
+<span id="cb32-511"><a href="#cb32-511"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
+<span id="cb32-512"><a href="#cb32-512"></a><span class="in">echo " === Errors printed. No errors denotes \"Perfect!\" === "</span></span>
+<span id="cb32-513"><a href="#cb32-513"></a><span class="in">```</span></span>
+<span id="cb32-514"><a href="#cb32-514"></a></span>
+<span id="cb32-515"><a href="#cb32-515"></a><span class="fu">## A note</span></span>
+<span id="cb32-516"><a href="#cb32-516"></a></span>
+<span id="cb32-517"><a href="#cb32-517"></a><span class="ss">- </span>This:</span>
+<span id="cb32-518"><a href="#cb32-518"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-519"><a href="#cb32-519"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-520"><a href="#cb32-520"></a><span class="in">```</span></span>
+<span id="cb32-521"><a href="#cb32-521"></a><span class="ss">- </span>Is *bash* and only works via <span class="in">`/bin/bash`</span></span>
+<span id="cb32-522"><a href="#cb32-522"></a><span class="ss">- </span>Makefile uses *sh* which doesn't allow the parenthesis like that.</span>
+<span id="cb32-523"><a href="#cb32-523"></a><span class="ss">- </span>We will use temporary files.</span>
+<span id="cb32-524"><a href="#cb32-524"></a></span>
+<span id="cb32-525"><a href="#cb32-525"></a><span class="fu">## Step by step</span></span>
 <span id="cb32-526"><a href="#cb32-526"></a></span>
-<span id="cb32-527"><a href="#cb32-527"></a><span class="fu">## Curl</span></span>
-<span id="cb32-528"><a href="#cb32-528"></a></span>
-<span id="cb32-529"><a href="#cb32-529"></a><span class="ss">- </span><span class="in">`curl`</span> downloads a file from a url</span>
-<span id="cb32-530"><a href="#cb32-530"></a><span class="ss">- </span><span class="in">`-o`</span> specifies what to save that file as on the local computers</span>
-<span id="cb32-531"><a href="#cb32-531"></a><span class="ss">- </span><span class="in">`2&gt;`</span> suggests were to send error handling information</span>
-<span id="cb32-532"><a href="#cb32-532"></a><span class="ss">- </span><span class="in">`/dev/null`</span> is an imaginary file we can write to that won't remember what we wrote there.</span>
-<span id="cb32-533"><a href="#cb32-533"></a><span class="ss">    - </span>Like <span class="in">`return none`</span></span>
-<span id="cb32-534"><a href="#cb32-534"></a></span>
-<span id="cb32-535"><a href="#cb32-535"></a><span class="fu">## Diff</span></span>
+<span id="cb32-527"><a href="#cb32-527"></a><span class="ss">- </span>This is just <span class="in">`make build`</span></span>
+<span id="cb32-528"><a href="#cb32-528"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-529"><a href="#cb32-529"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-530"><a href="#cb32-530"></a><span class="in">```</span></span>
+<span id="cb32-531"><a href="#cb32-531"></a><span class="ss">- </span>These lines just echo text into a file:</span>
+<span id="cb32-532"><a href="#cb32-532"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-533"><a href="#cb32-533"></a><span class="in">echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-534"><a href="#cb32-534"></a><span class="in">echo "Lorem ipsum dolor sit amet, " ## etc etc</span></span>
+<span id="cb32-535"><a href="#cb32-535"></a><span class="in">```</span></span>
 <span id="cb32-536"><a href="#cb32-536"></a></span>
-<span id="cb32-537"><a href="#cb32-537"></a><span class="ss">- </span><span class="in">`diff`</span> compares two files to see if they are the same or different.</span>
-<span id="cb32-538"><a href="#cb32-538"></a><span class="ss">    - </span>If they differ, it prints the difference and returns a non-zero value.</span>
-<span id="cb32-539"><a href="#cb32-539"></a><span class="ss">    - </span>If they are the same, it prints nothing and returns zero.</span>
+<span id="cb32-537"><a href="#cb32-537"></a><span class="fu">## Curl</span></span>
+<span id="cb32-538"><a href="#cb32-538"></a></span>
+<span id="cb32-539"><a href="#cb32-539"></a><span class="ss">- </span>This just pulls a book from GitHub using <span class="in">`curl`</span> and uses the <span class="in">`&gt;`</span> character to direct all of the diagnostic information to nowhere.</span>
 <span id="cb32-540"><a href="#cb32-540"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-541"><a href="#cb32-541"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
-<span id="cb32-542"><a href="#cb32-542"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
-<span id="cb32-543"><a href="#cb32-543"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
-<span id="cb32-544"><a href="#cb32-544"></a><span class="in">```</span></span>
-<span id="cb32-545"><a href="#cb32-545"></a></span>
-<span id="cb32-546"><a href="#cb32-546"></a><span class="fu">## Wait - which files?</span></span>
-<span id="cb32-547"><a href="#cb32-547"></a></span>
-<span id="cb32-548"><a href="#cb32-548"></a><span class="ss">- </span>This is another imaginary file:</span>
-<span id="cb32-549"><a href="#cb32-549"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-550"><a href="#cb32-550"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
-<span id="cb32-551"><a href="#cb32-551"></a><span class="in">```</span></span>
-<span id="cb32-552"><a href="#cb32-552"></a><span class="ss">- </span>This is not allowed by <span class="in">`make`</span>.</span>
-<span id="cb32-553"><a href="#cb32-553"></a><span class="ss">- </span>Instead, make a few files:</span>
-<span id="cb32-554"><a href="#cb32-554"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-555"><a href="#cb32-555"></a><span class="in">sha256sum 15char.txt &gt; 15char.sum</span></span>
-<span id="cb32-556"><a href="#cb32-556"></a><span class="in">./shainc 15char.txt &gt; 15char.inc</span></span>
-<span id="cb32-557"><a href="#cb32-557"></a><span class="in">diff 15char.inc 15char.sum</span></span>
-<span id="cb32-558"><a href="#cb32-558"></a><span class="in">```</span></span>
-<span id="cb32-559"><a href="#cb32-559"></a></span>
-<span id="cb32-560"><a href="#cb32-560"></a><span class="fu">## Try diff</span></span>
-<span id="cb32-561"><a href="#cb32-561"></a></span>
-<span id="cb32-562"><a href="#cb32-562"></a><span class="ss">- </span>Use <span class="in">`echo`</span> to create <span class="in">`15char.txt`</span> and <span class="in">`lipsum.txt`</span>.</span>
-<span id="cb32-563"><a href="#cb32-563"></a><span class="ss">- </span>Use <span class="in">`diff`</span> to examine them:</span>
-<span id="cb32-564"><a href="#cb32-564"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-565"><a href="#cb32-565"></a><span class="in">$ diff 15char.txt 15char.txt</span></span>
-<span id="cb32-566"><a href="#cb32-566"></a><span class="in">$ echo $?</span></span>
-<span id="cb32-567"><a href="#cb32-567"></a><span class="in">0</span></span>
-<span id="cb32-568"><a href="#cb32-568"></a><span class="in">$ diff 15char.txt lipsum.txt</span></span>
-<span id="cb32-569"><a href="#cb32-569"></a><span class="in">1c1</span></span>
-<span id="cb32-570"><a href="#cb32-570"></a><span class="in">&lt; 15 characters.</span></span>
-<span id="cb32-571"><a href="#cb32-571"></a><span class="in">---</span></span>
-<span id="cb32-572"><a href="#cb32-572"></a><span class="in">&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span>
-<span id="cb32-573"><a href="#cb32-573"></a><span class="in">$ echo $?</span></span>
-<span id="cb32-574"><a href="#cb32-574"></a><span class="in">1</span></span>
-<span id="cb32-575"><a href="#cb32-575"></a><span class="in">```</span></span>
-<span id="cb32-576"><a href="#cb32-576"></a></span>
-<span id="cb32-577"><a href="#cb32-577"></a><span class="fu">## Use /dev/null</span></span>
-<span id="cb32-578"><a href="#cb32-578"></a></span>
-<span id="cb32-579"><a href="#cb32-579"></a><span class="ss">- </span>Wait we don't care what the difference is, just if there is one.</span>
-<span id="cb32-580"><a href="#cb32-580"></a><span class="ss">- </span>And we know how to ignore the output of a command.</span>
-<span id="cb32-581"><a href="#cb32-581"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-582"><a href="#cb32-582"></a><span class="in">$ diff 15char.txt 15char.txt &gt;/dev/null ; echo $?</span></span>
-<span id="cb32-583"><a href="#cb32-583"></a><span class="in">0</span></span>
-<span id="cb32-584"><a href="#cb32-584"></a><span class="in">$ diff 15char.txt lipsum.txt &gt;/dev/null ; echo $?</span></span>
-<span id="cb32-585"><a href="#cb32-585"></a><span class="in">1</span></span>
-<span id="cb32-586"><a href="#cb32-586"></a><span class="in">```</span></span>
-<span id="cb32-587"><a href="#cb32-587"></a><span class="ss">- </span>*When files differ, the return value of `diff` suggests an error occured*</span>
-<span id="cb32-588"><a href="#cb32-588"></a></span>
-<span id="cb32-589"><a href="#cb32-589"></a><span class="fu">## Non-zero return</span></span>
-<span id="cb32-590"><a href="#cb32-590"></a></span>
-<span id="cb32-591"><a href="#cb32-591"></a><span class="ss">- </span>We get the same from <span class="in">`gcc`</span> when a build fails.</span>
-<span id="cb32-592"><a href="#cb32-592"></a><span class="in">```{.sh}</span></span>
-<span id="cb32-593"><a href="#cb32-593"></a><span class="in">$ gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-594"><a href="#cb32-594"></a><span class="in">shainc.c: In function ‘main’:</span></span>
-<span id="cb32-595"><a href="#cb32-595"></a><span class="in">shainc.c:2:9: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]</span></span>
-<span id="cb32-596"><a href="#cb32-596"></a><span class="in">    2 |         printf("hi\n");</span></span>
-<span id="cb32-597"><a href="#cb32-597"></a><span class="in">      |         ^~~~~~</span></span>
-<span id="cb32-598"><a href="#cb32-598"></a><span class="in">shainc.c:1:1: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
-<span id="cb32-599"><a href="#cb32-599"></a><span class="in">  +++ |+#include &lt;stdio.h&gt;</span></span>
-<span id="cb32-600"><a href="#cb32-600"></a><span class="in">    1 | int main() {</span></span>
-<span id="cb32-601"><a href="#cb32-601"></a><span class="in">shainc.c:2:9: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror=builtin-declaration-mismatch]</span></span>
-<span id="cb32-602"><a href="#cb32-602"></a><span class="in">    2 |         printf("hi\n");</span></span>
-<span id="cb32-603"><a href="#cb32-603"></a><span class="in">      |         ^~~~~~</span></span>
-<span id="cb32-604"><a href="#cb32-604"></a><span class="in">shainc.c:2:9: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
-<span id="cb32-605"><a href="#cb32-605"></a><span class="in">cc1: all warnings being treated as errors</span></span>
-<span id="cb32-606"><a href="#cb32-606"></a><span class="in">$ echo $?</span></span>
-<span id="cb32-607"><a href="#cb32-607"></a><span class="in">2</span></span>
-<span id="cb32-608"><a href="#cb32-608"></a><span class="in">```</span></span>
-<span id="cb32-609"><a href="#cb32-609"></a></span>
-<span id="cb32-610"><a href="#cb32-610"></a><span class="fu">## Makefile nonzero</span></span>
-<span id="cb32-611"><a href="#cb32-611"></a></span>
-<span id="cb32-612"><a href="#cb32-612"></a><span class="ss">- </span>Makefile returns the error value:</span>
-<span id="cb32-613"><a href="#cb32-613"></a></span>
-<span id="cb32-614"><a href="#cb32-614"></a><span class="in">```{.sh}    </span></span>
-<span id="cb32-615"><a href="#cb32-615"></a><span class="in">$ cat Makefile</span></span>
-<span id="cb32-616"><a href="#cb32-616"></a><span class="in">build:</span></span>
-<span id="cb32-617"><a href="#cb32-617"></a><span class="in">        gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-618"><a href="#cb32-618"></a><span class="in">$ make 2&gt;/dev/null ; echo $?</span></span>
-<span id="cb32-619"><a href="#cb32-619"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
-<span id="cb32-620"><a href="#cb32-620"></a><span class="in">2</span></span>
-<span id="cb32-621"><a href="#cb32-621"></a><span class="in">```</span></span>
-<span id="cb32-622"><a href="#cb32-622"></a></span>
-<span id="cb32-623"><a href="#cb32-623"></a><span class="fu">## Actions</span></span>
-<span id="cb32-624"><a href="#cb32-624"></a></span>
-<span id="cb32-625"><a href="#cb32-625"></a><span class="ss">- </span>We can use <span class="in">`make`</span> and <span class="in">`make check`</span> within GitHub actions:</span>
-<span id="cb32-626"><a href="#cb32-626"></a></span>
-<span id="cb32-627"><a href="#cb32-627"></a><span class="in">```{.yml filename="ci/c-cpp.yml"}</span></span>
-<span id="cb32-628"><a href="#cb32-628"></a><span class="in">    - name: make</span></span>
-<span id="cb32-629"><a href="#cb32-629"></a><span class="in">      run: make</span></span>
-<span id="cb32-630"><a href="#cb32-630"></a><span class="in">    - name: make check</span></span>
-<span id="cb32-631"><a href="#cb32-631"></a><span class="in">      run: make check</span></span>
-<span id="cb32-632"><a href="#cb32-632"></a><span class="in">```</span></span>
-<span id="cb32-633"><a href="#cb32-633"></a><span class="ss">- </span>And GitHub will report error status to us when we check in files.</span>
-<span id="cb32-634"><a href="#cb32-634"></a></span>
-<span id="cb32-635"><a href="#cb32-635"></a><span class="fu">## End-to-end</span></span>
-<span id="cb32-636"><a href="#cb32-636"></a></span>
-<span id="cb32-637"><a href="#cb32-637"></a><span class="ss">- </span>Check this repository:</span>
-<span id="cb32-638"><a href="#cb32-638"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/action</span><span class="co">](https://github.com/cd-c89/action)</span></span>
-<span id="cb32-639"><a href="#cb32-639"></a><span class="ss">- </span>Spoiler alert: it contains a passable <span class="in">`shainc`</span> solution if you wanted to work on that someday.</span>
+<span id="cb32-541"><a href="#cb32-541"></a><span class="in">curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-542"><a href="#cb32-542"></a><span class="in">```</span></span>
+<span id="cb32-543"><a href="#cb32-543"></a><span class="ss">- </span>Try it with different flags if you are confused.</span>
+<span id="cb32-544"><a href="#cb32-544"></a></span>
+<span id="cb32-545"><a href="#cb32-545"></a><span class="fu">## Curl</span></span>
+<span id="cb32-546"><a href="#cb32-546"></a></span>
+<span id="cb32-547"><a href="#cb32-547"></a><span class="ss">- </span><span class="in">`curl`</span> downloads a file from a url</span>
+<span id="cb32-548"><a href="#cb32-548"></a><span class="ss">- </span><span class="in">`-o`</span> specifies what to save that file as on the local computers</span>
+<span id="cb32-549"><a href="#cb32-549"></a><span class="ss">- </span><span class="in">`2&gt;`</span> redirects error handling information to a file</span>
+<span id="cb32-550"><a href="#cb32-550"></a><span class="ss">- </span><span class="in">`/dev/null`</span> is an imaginary file we can write to that won't remember what we wrote there.</span>
+<span id="cb32-551"><a href="#cb32-551"></a><span class="ss">    - </span>Like <span class="in">`return none`</span></span>
+<span id="cb32-552"><a href="#cb32-552"></a></span>
+<span id="cb32-553"><a href="#cb32-553"></a><span class="fu">## Diff</span></span>
+<span id="cb32-554"><a href="#cb32-554"></a></span>
+<span id="cb32-555"><a href="#cb32-555"></a><span class="ss">- </span><span class="in">`diff`</span> compares two files to see if they are the same or different.</span>
+<span id="cb32-556"><a href="#cb32-556"></a><span class="ss">    - </span>If they differ, it prints the difference and returns a non-zero value.</span>
+<span id="cb32-557"><a href="#cb32-557"></a><span class="ss">    - </span>If they are the same, it prints nothing and returns zero.</span>
+<span id="cb32-558"><a href="#cb32-558"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-559"><a href="#cb32-559"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-560"><a href="#cb32-560"></a><span class="in">diff &lt;(sha256sum lipsum.txt) &lt;(./shainc lipsum.txt)</span></span>
+<span id="cb32-561"><a href="#cb32-561"></a><span class="in">diff &lt;(sha256sum austen.txt) &lt;(./shainc austen.txt)</span></span>
+<span id="cb32-562"><a href="#cb32-562"></a><span class="in">```</span></span>
+<span id="cb32-563"><a href="#cb32-563"></a></span>
+<span id="cb32-564"><a href="#cb32-564"></a><span class="fu">## Wait - which files?</span></span>
+<span id="cb32-565"><a href="#cb32-565"></a></span>
+<span id="cb32-566"><a href="#cb32-566"></a><span class="ss">- </span>This is another imaginary file:</span>
+<span id="cb32-567"><a href="#cb32-567"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-568"><a href="#cb32-568"></a><span class="in">diff &lt;(sha256sum 15char.txt) &lt;(./shainc 15char.txt)</span></span>
+<span id="cb32-569"><a href="#cb32-569"></a><span class="in">```</span></span>
+<span id="cb32-570"><a href="#cb32-570"></a><span class="ss">- </span>This is not allowed by <span class="in">`make`</span>.</span>
+<span id="cb32-571"><a href="#cb32-571"></a><span class="ss">- </span>Instead, make a few files:</span>
+<span id="cb32-572"><a href="#cb32-572"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-573"><a href="#cb32-573"></a><span class="in">sha256sum 15char.txt &gt; 15char.sum</span></span>
+<span id="cb32-574"><a href="#cb32-574"></a><span class="in">./shainc 15char.txt &gt; 15char.inc</span></span>
+<span id="cb32-575"><a href="#cb32-575"></a><span class="in">diff 15char.inc 15char.sum</span></span>
+<span id="cb32-576"><a href="#cb32-576"></a><span class="in">```</span></span>
+<span id="cb32-577"><a href="#cb32-577"></a></span>
+<span id="cb32-578"><a href="#cb32-578"></a><span class="fu">## Try diff</span></span>
+<span id="cb32-579"><a href="#cb32-579"></a></span>
+<span id="cb32-580"><a href="#cb32-580"></a><span class="ss">- </span>Use <span class="in">`echo`</span> to create <span class="in">`15char.txt`</span> and <span class="in">`lipsum.txt`</span>.</span>
+<span id="cb32-581"><a href="#cb32-581"></a><span class="ss">- </span>Use <span class="in">`diff`</span> to examine them:</span>
+<span id="cb32-582"><a href="#cb32-582"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-583"><a href="#cb32-583"></a><span class="in">$ diff 15char.txt 15char.txt</span></span>
+<span id="cb32-584"><a href="#cb32-584"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-585"><a href="#cb32-585"></a><span class="in">0</span></span>
+<span id="cb32-586"><a href="#cb32-586"></a><span class="in">$ diff 15char.txt lipsum.txt</span></span>
+<span id="cb32-587"><a href="#cb32-587"></a><span class="in">1c1</span></span>
+<span id="cb32-588"><a href="#cb32-588"></a><span class="in">&lt; 15 characters.</span></span>
+<span id="cb32-589"><a href="#cb32-589"></a><span class="in">---</span></span>
+<span id="cb32-590"><a href="#cb32-590"></a><span class="in">&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span>
+<span id="cb32-591"><a href="#cb32-591"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-592"><a href="#cb32-592"></a><span class="in">1</span></span>
+<span id="cb32-593"><a href="#cb32-593"></a><span class="in">```</span></span>
+<span id="cb32-594"><a href="#cb32-594"></a></span>
+<span id="cb32-595"><a href="#cb32-595"></a><span class="fu">## Use /dev/null</span></span>
+<span id="cb32-596"><a href="#cb32-596"></a></span>
+<span id="cb32-597"><a href="#cb32-597"></a><span class="ss">- </span>Wait we don't care what the difference is, just if there is one.</span>
+<span id="cb32-598"><a href="#cb32-598"></a><span class="ss">- </span>And we know how to ignore the output of a command.</span>
+<span id="cb32-599"><a href="#cb32-599"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-600"><a href="#cb32-600"></a><span class="in">$ diff 15char.txt 15char.txt &gt;/dev/null ; echo $?</span></span>
+<span id="cb32-601"><a href="#cb32-601"></a><span class="in">0</span></span>
+<span id="cb32-602"><a href="#cb32-602"></a><span class="in">$ diff 15char.txt lipsum.txt &gt;/dev/null ; echo $?</span></span>
+<span id="cb32-603"><a href="#cb32-603"></a><span class="in">1</span></span>
+<span id="cb32-604"><a href="#cb32-604"></a><span class="in">```</span></span>
+<span id="cb32-605"><a href="#cb32-605"></a><span class="ss">- </span>*When files differ, the return value of `diff` suggests an error occured*</span>
+<span id="cb32-606"><a href="#cb32-606"></a></span>
+<span id="cb32-607"><a href="#cb32-607"></a><span class="fu">## Non-zero return</span></span>
+<span id="cb32-608"><a href="#cb32-608"></a></span>
+<span id="cb32-609"><a href="#cb32-609"></a><span class="ss">- </span>We get the same from <span class="in">`gcc`</span> when a build fails.</span>
+<span id="cb32-610"><a href="#cb32-610"></a><span class="in">```{.sh}</span></span>
+<span id="cb32-611"><a href="#cb32-611"></a><span class="in">$ gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-612"><a href="#cb32-612"></a><span class="in">shainc.c: In function ‘main’:</span></span>
+<span id="cb32-613"><a href="#cb32-613"></a><span class="in">shainc.c:2:9: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]</span></span>
+<span id="cb32-614"><a href="#cb32-614"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-615"><a href="#cb32-615"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-616"><a href="#cb32-616"></a><span class="in">shainc.c:1:1: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
+<span id="cb32-617"><a href="#cb32-617"></a><span class="in">  +++ |+#include &lt;stdio.h&gt;</span></span>
+<span id="cb32-618"><a href="#cb32-618"></a><span class="in">    1 | int main() {</span></span>
+<span id="cb32-619"><a href="#cb32-619"></a><span class="in">shainc.c:2:9: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror=builtin-declaration-mismatch]</span></span>
+<span id="cb32-620"><a href="#cb32-620"></a><span class="in">    2 |         printf("hi\n");</span></span>
+<span id="cb32-621"><a href="#cb32-621"></a><span class="in">      |         ^~~~~~</span></span>
+<span id="cb32-622"><a href="#cb32-622"></a><span class="in">shainc.c:2:9: note: include ‘&lt;stdio.h&gt;’ or provide a declaration of ‘printf’</span></span>
+<span id="cb32-623"><a href="#cb32-623"></a><span class="in">cc1: all warnings being treated as errors</span></span>
+<span id="cb32-624"><a href="#cb32-624"></a><span class="in">$ echo $?</span></span>
+<span id="cb32-625"><a href="#cb32-625"></a><span class="in">2</span></span>
+<span id="cb32-626"><a href="#cb32-626"></a><span class="in">```</span></span>
+<span id="cb32-627"><a href="#cb32-627"></a></span>
+<span id="cb32-628"><a href="#cb32-628"></a><span class="fu">## Makefile nonzero</span></span>
+<span id="cb32-629"><a href="#cb32-629"></a></span>
+<span id="cb32-630"><a href="#cb32-630"></a><span class="ss">- </span>Makefile returns the error value:</span>
+<span id="cb32-631"><a href="#cb32-631"></a></span>
+<span id="cb32-632"><a href="#cb32-632"></a><span class="in">```{.sh}    </span></span>
+<span id="cb32-633"><a href="#cb32-633"></a><span class="in">$ cat Makefile</span></span>
+<span id="cb32-634"><a href="#cb32-634"></a><span class="in">build:</span></span>
+<span id="cb32-635"><a href="#cb32-635"></a><span class="in">        gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-636"><a href="#cb32-636"></a><span class="in">$ make 2&gt;/dev/null ; echo $?</span></span>
+<span id="cb32-637"><a href="#cb32-637"></a><span class="in">gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-638"><a href="#cb32-638"></a><span class="in">2</span></span>
+<span id="cb32-639"><a href="#cb32-639"></a><span class="in">```</span></span>
 <span id="cb32-640"><a href="#cb32-640"></a></span>
-<span id="cb32-641"><a href="#cb32-641"></a><span class="fu">## Makefile</span></span>
+<span id="cb32-641"><a href="#cb32-641"></a><span class="fu">## Actions</span></span>
 <span id="cb32-642"><a href="#cb32-642"></a></span>
-<span id="cb32-643"><a href="#cb32-643"></a><span class="in">```{.sh filename="Makefile"}</span></span>
-<span id="cb32-644"><a href="#cb32-644"></a><span class="in">check: build</span></span>
-<span id="cb32-645"><a href="#cb32-645"></a><span class="in">    echo "15 characters." &gt; 15char.txt</span></span>
-<span id="cb32-646"><a href="#cb32-646"></a><span class="in">    echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
-<span id="cb32-647"><a href="#cb32-647"></a><span class="in">    curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
-<span id="cb32-648"><a href="#cb32-648"></a><span class="in">    ## Makefile uses sh not bash so can't use &lt;() and have to use the filesystem</span></span>
-<span id="cb32-649"><a href="#cb32-649"></a><span class="in">    ./shainc 15char.txt &gt; 15char.inc</span></span>
-<span id="cb32-650"><a href="#cb32-650"></a><span class="in">    ./shainc lipsum.txt &gt; lipsum.inc</span></span>
-<span id="cb32-651"><a href="#cb32-651"></a><span class="in">    ./shainc austen.txt &gt; austen.inc</span></span>
-<span id="cb32-652"><a href="#cb32-652"></a><span class="in">    sha256sum 15char.txt &gt; 15char.sum</span></span>
-<span id="cb32-653"><a href="#cb32-653"></a><span class="in">    sha256sum lipsum.txt &gt; lipsum.sum</span></span>
-<span id="cb32-654"><a href="#cb32-654"></a><span class="in">    sha256sum austen.txt &gt; austen.sum</span></span>
-<span id="cb32-655"><a href="#cb32-655"></a><span class="in">    diff 15char.inc 15char.sum || diff lipsum.inc lipsum.sum || diff austen.inc austen.sum</span></span>
-<span id="cb32-656"><a href="#cb32-656"></a></span>
-<span id="cb32-657"><a href="#cb32-657"></a></span>
-<span id="cb32-658"><a href="#cb32-658"></a><span class="in">build:</span></span>
-<span id="cb32-659"><a href="#cb32-659"></a><span class="in">    gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-643"><a href="#cb32-643"></a><span class="ss">- </span>We can use <span class="in">`make`</span> and <span class="in">`make check`</span> within GitHub actions:</span>
+<span id="cb32-644"><a href="#cb32-644"></a></span>
+<span id="cb32-645"><a href="#cb32-645"></a><span class="in">```{.yml filename="ci/c-cpp.yml"}</span></span>
+<span id="cb32-646"><a href="#cb32-646"></a><span class="in">    - name: make</span></span>
+<span id="cb32-647"><a href="#cb32-647"></a><span class="in">      run: make</span></span>
+<span id="cb32-648"><a href="#cb32-648"></a><span class="in">    - name: make check</span></span>
+<span id="cb32-649"><a href="#cb32-649"></a><span class="in">      run: make check</span></span>
+<span id="cb32-650"><a href="#cb32-650"></a><span class="in">```</span></span>
+<span id="cb32-651"><a href="#cb32-651"></a><span class="ss">- </span>And GitHub will report error status to us when we check in files.</span>
+<span id="cb32-652"><a href="#cb32-652"></a></span>
+<span id="cb32-653"><a href="#cb32-653"></a><span class="fu">## End-to-end</span></span>
+<span id="cb32-654"><a href="#cb32-654"></a></span>
+<span id="cb32-655"><a href="#cb32-655"></a><span class="ss">- </span>Check this repository:</span>
+<span id="cb32-656"><a href="#cb32-656"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">https://github.com/cd-c89/action</span><span class="co">](https://github.com/cd-c89/action)</span></span>
+<span id="cb32-657"><a href="#cb32-657"></a><span class="ss">- </span>Spoiler alert: it contains a passable <span class="in">`shainc`</span> solution if you wanted to work on that someday.</span>
+<span id="cb32-658"><a href="#cb32-658"></a></span>
+<span id="cb32-659"><a href="#cb32-659"></a><span class="fu">## Makefile</span></span>
 <span id="cb32-660"><a href="#cb32-660"></a></span>
-<span id="cb32-661"><a href="#cb32-661"></a><span class="in">clean:</span></span>
-<span id="cb32-662"><a href="#cb32-662"></a><span class="in">    rm shainc *.txt *.inc *.sum</span></span>
-<span id="cb32-663"><a href="#cb32-663"></a><span class="in">```</span></span>
-<span id="cb32-664"><a href="#cb32-664"></a></span>
-<span id="cb32-665"><a href="#cb32-665"></a><span class="fu">## .yml</span></span>
-<span id="cb32-666"><a href="#cb32-666"></a></span>
-<span id="cb32-667"><a href="#cb32-667"></a><span class="in">```{.yml filename=".github/workflows/c89.yml"}</span></span>
-<span id="cb32-668"><a href="#cb32-668"></a><span class="in">name: C89 CI</span></span>
-<span id="cb32-669"><a href="#cb32-669"></a></span>
-<span id="cb32-670"><a href="#cb32-670"></a><span class="in">on: push</span></span>
-<span id="cb32-671"><a href="#cb32-671"></a></span>
-<span id="cb32-672"><a href="#cb32-672"></a><span class="in">jobs:</span></span>
-<span id="cb32-673"><a href="#cb32-673"></a><span class="in">  build:</span></span>
-<span id="cb32-674"><a href="#cb32-674"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb32-661"><a href="#cb32-661"></a><span class="in">```{.sh filename="Makefile"}</span></span>
+<span id="cb32-662"><a href="#cb32-662"></a><span class="in">check: build</span></span>
+<span id="cb32-663"><a href="#cb32-663"></a><span class="in">    echo "15 characters." &gt; 15char.txt</span></span>
+<span id="cb32-664"><a href="#cb32-664"></a><span class="in">    echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." &gt; lipsum.txt</span></span>
+<span id="cb32-665"><a href="#cb32-665"></a><span class="in">    curl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null</span></span>
+<span id="cb32-666"><a href="#cb32-666"></a><span class="in">    ## Makefile uses sh not bash so can't use &lt;() and have to use the filesystem</span></span>
+<span id="cb32-667"><a href="#cb32-667"></a><span class="in">    ./shainc 15char.txt &gt; 15char.inc</span></span>
+<span id="cb32-668"><a href="#cb32-668"></a><span class="in">    ./shainc lipsum.txt &gt; lipsum.inc</span></span>
+<span id="cb32-669"><a href="#cb32-669"></a><span class="in">    ./shainc austen.txt &gt; austen.inc</span></span>
+<span id="cb32-670"><a href="#cb32-670"></a><span class="in">    sha256sum 15char.txt &gt; 15char.sum</span></span>
+<span id="cb32-671"><a href="#cb32-671"></a><span class="in">    sha256sum lipsum.txt &gt; lipsum.sum</span></span>
+<span id="cb32-672"><a href="#cb32-672"></a><span class="in">    sha256sum austen.txt &gt; austen.sum</span></span>
+<span id="cb32-673"><a href="#cb32-673"></a><span class="in">    diff 15char.inc 15char.sum || diff lipsum.inc lipsum.sum || diff austen.inc austen.sum</span></span>
+<span id="cb32-674"><a href="#cb32-674"></a></span>
 <span id="cb32-675"><a href="#cb32-675"></a></span>
-<span id="cb32-676"><a href="#cb32-676"></a><span class="in">    steps:</span></span>
-<span id="cb32-677"><a href="#cb32-677"></a><span class="in">    - uses: actions/checkout@v4</span></span>
-<span id="cb32-678"><a href="#cb32-678"></a><span class="in">    - run: make</span></span>
-<span id="cb32-679"><a href="#cb32-679"></a><span class="in">```</span></span>
-<span id="cb32-680"><a href="#cb32-680"></a></span>
-<span id="cb32-681"><a href="#cb32-681"></a><span class="fu">## Outcomes</span></span>
+<span id="cb32-676"><a href="#cb32-676"></a><span class="in">build:</span></span>
+<span id="cb32-677"><a href="#cb32-677"></a><span class="in">    gcc shainc.c -Wall -Wextra -Werror -Wpedantic -O2 -o shainc</span></span>
+<span id="cb32-678"><a href="#cb32-678"></a></span>
+<span id="cb32-679"><a href="#cb32-679"></a><span class="in">clean:</span></span>
+<span id="cb32-680"><a href="#cb32-680"></a><span class="in">    rm shainc *.txt *.inc *.sum</span></span>
+<span id="cb32-681"><a href="#cb32-681"></a><span class="in">```</span></span>
 <span id="cb32-682"><a href="#cb32-682"></a></span>
-<span id="cb32-683"><a href="#cb32-683"></a><span class="al">![](imgs/ghact.png)</span></span>
+<span id="cb32-683"><a href="#cb32-683"></a><span class="fu">## .yml</span></span>
 <span id="cb32-684"><a href="#cb32-684"></a></span>
-<span id="cb32-685"><a href="#cb32-685"></a><span class="fu">## Todo</span></span>
-<span id="cb32-686"><a href="#cb32-686"></a></span>
-<span id="cb32-687"><a href="#cb32-687"></a><span class="ss">- </span>Get this working on your "shainc" or "enigma" or something.</span>
-<span id="cb32-688"><a href="#cb32-688"></a><span class="ss">- </span>Either in your main repo or in some other one.</span>
-<span id="cb32-689"><a href="#cb32-689"></a><span class="ss">- </span>Add "GitHub Actions and CI/CD pipelines for DevOps" to your resume.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb32-685"><a href="#cb32-685"></a><span class="in">```{.yml filename=".github/workflows/c89.yml"}</span></span>
+<span id="cb32-686"><a href="#cb32-686"></a><span class="in">name: C89 CI</span></span>
+<span id="cb32-687"><a href="#cb32-687"></a></span>
+<span id="cb32-688"><a href="#cb32-688"></a><span class="in">on: push</span></span>
+<span id="cb32-689"><a href="#cb32-689"></a></span>
+<span id="cb32-690"><a href="#cb32-690"></a><span class="in">jobs:</span></span>
+<span id="cb32-691"><a href="#cb32-691"></a><span class="in">  build:</span></span>
+<span id="cb32-692"><a href="#cb32-692"></a><span class="in">    runs-on: ubuntu-latest</span></span>
+<span id="cb32-693"><a href="#cb32-693"></a></span>
+<span id="cb32-694"><a href="#cb32-694"></a><span class="in">    steps:</span></span>
+<span id="cb32-695"><a href="#cb32-695"></a><span class="in">    - uses: actions/checkout@v4</span></span>
+<span id="cb32-696"><a href="#cb32-696"></a><span class="in">    - run: make</span></span>
+<span id="cb32-697"><a href="#cb32-697"></a><span class="in">```</span></span>
+<span id="cb32-698"><a href="#cb32-698"></a></span>
+<span id="cb32-699"><a href="#cb32-699"></a><span class="fu">## Todo</span></span>
+<span id="cb32-700"><a href="#cb32-700"></a></span>
+<span id="cb32-701"><a href="#cb32-701"></a><span class="ss">- </span>Get this working on your "shainc"/"enigma"/"base64".</span>
+<span id="cb32-702"><a href="#cb32-702"></a><span class="ss">- </span>Either in your main repo or in some other one.</span>
+<span id="cb32-703"><a href="#cb32-703"></a><span class="ss">- </span>Add "GitHub Actions and CI/CD pipelines for DevOps" to your resume.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

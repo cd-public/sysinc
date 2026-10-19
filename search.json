@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Systems in C",
     "section": "",
-    "text": "CS 271 “Systems in C”\n\nCalled:\n\nCS 271: Systems Programming\nCS 271: Sys Programming, Computer Arch\n\nThe first semester class in a:\n\nCompiled language, with\nNo garbage collector.\n\nTerm these “systems” languages.\n\nSuitable to write an operating system.\n\nTaught this year in C.\n\nSo to me, “Systems in C”\n\n\n\nTTh 1310-1440\n\n\nProf. Calvin\n\n\nSyllabus\n\nSyllabus link\n\n\n\n\nCalendar\n\n\n\nWeek Num.\nDate Tues\nTues/Talk\nThurs/Lab\nHW/Nxt Th\n\n\n\n\n0x0\n08/35\npodman\nalpine\nEnigma\n\n\n0x1\n09/01\nC89/99\nprintb\nmacros\n\n\n0x2\n09/08\nSHA256\nEndian\nSHAinC\n\n\n0x3\n09/15\nINTCEC\nFinite\n\n\n\n0x4\n09/22\nBigAdd\nFermat\n4096_t\n\n\n0x5\n09/29\nIASC26\nKeyGen\nRSAinC\n\n\n0x6\n10/06\nEuclid\nops_ui\nBigRSA\n\n\n0x7\n10/13\nMiddle\nAssess\n\n\n\n0x8\n10/20\nMounts\naction\n\n\n\n0x9\n10/27\nStream\nmalloc\nlist_t\n\n\n0xA\n11/03\nbreak;\nstruct\n\n\n\n0xB\n11/10\nbchain\ngraphs\n\n\n\n0xC\n11/17\nMerkle\n\nheap_t\n\n\n0xD\n11/24\nLogics\nbreak;\n\n\n\n0xE\n12/01\n\n\nBTCinC\n\n\n\n*The final is described as BTCinC and is due Tuesday, December 8th at 5:00 PM.\n\n\nRecordings"
+    "text": "CS 271 “Systems in C”\n\nCalled:\n\nCS 271: Systems Programming\nCS 271: Sys Programming, Computer Arch\n\nThe first semester class in a:\n\nCompiled language, with\nNo garbage collector.\n\nTerm these “systems” languages.\n\nSuitable to write an operating system.\n\nTaught this year in C.\n\nSo to me, “Systems in C”\n\n\n\nTTh 1310-1440\n\n\nProf. Calvin\n\n\nSyllabus\n\nSyllabus link\n\n\n\n\nCalendar\n\n\n\nWeek Num.\nDate Tues\nTues/Talk\nThurs/Lab\nHW/Nxt Th\n\n\n\n\n0x0\n08/35\npodman\nalpine\nEnigma\n\n\n0x1\n09/01\nC89/99\nprintb\nmacros\n\n\n0x2\n09/08\nSHA256\nEndian\nSHAinC\n\n\n0x3\n09/15\nINTCEC\nFinite\n\n\n\n0x4\n09/22\nBigAdd\nFermat\n4096_t\n\n\n0x5\n09/29\nIASC26\nKeyGen\nRSAinC\n\n\n0x6\n10/06\nEuclid\nops_ui\nBigRSA\n\n\n0x7\n10/13\nRedact\nRedact\n\n\n\n0x8\n10/20\nmalloc\nstruct\n\n\n\n0x9\n10/27\nMounts\n\nlist_t\n\n\n0xA\n11/03\nbreak;\naction\n\n\n\n0xB\n11/10\nbchain\ngraphs\n\n\n\n0xC\n11/17\nMerkle\n\nheap_t\n\n\n0xD\n11/24\nStream\nbreak;\n\n\n\n0xE\n12/01\nLogics\n\nBTCinC\n\n\n\n*The final is described as BTCinC and is due Tuesday, December 8th at 5:00 PM.\n\n\nRecordings"
   },
   {
     "objectID": "A0_logics.html",
@@ -4298,7 +4298,7 @@
     "href": "81_bchain.rjs.html#section-2",
     "title": "bchain",
     "section": "",
-    "text": "RSA_Encryption\n\n\ncluster_check\n\nIntegrity Check\n\n\ncluster_encryption\n\nEncryption\n\n\ncluster_digest_pre\n\nPrecompression\n\n\ncluster_digest_post\n\nPostcompression\n\n\ncluster_decryption\n\nDecryption\n\n\n\nmessage\n\nMessage (M)\n\n\n\nencrypt\n\nCiphertext (C) = M^e mod n\n\n\n\nmessage-&gt;encrypt\n\n\n\n\n\ninter\n\nEncrypted Transaction\n\n\n\nencrypt-&gt;inter\n\n\n\n\n\npublic_key_ref\n\n\n\nPrivate Key: (n, d)\n\n\n\npublic_key_ref-&gt;encrypt\n\n\n\n\n\nshamsg\n\nMessage (M)\n\n\n\nchecksum\n\nChecksum: sha256 M\n\n\n\nshamsg-&gt;checksum\n\n\n\n\n\ndigestpre\n\nTx Digest 1 (MD1) \n\n\n\nchecksum-&gt;digestpre\n\n\n\n\n\nsquares\n\n\n\nH^(0)\n\n\n\nsquares-&gt;checksum\n\n\n\n\n\nshamsg2\n\nMessage (M)\n\n\n\nchecksum2\n\nChecksum: sha256 M\n\n\n\nshamsg2-&gt;checksum2\n\n\n\n\n\ndigestpost\n\nTx Digest 0 (MD0)\n\n\n\nchecksum2-&gt;digestpost\n\n\n\n\n\nsquares2\n\n\n\nH^(0)\n\n\n\nsquares2-&gt;checksum2\n\n\n\n\n\nciphertext\n\nCiphertext (C)\n\n\n\ndecrypt\n\nMessage (M) = C^d mod n\n\n\n\nciphertext-&gt;decrypt\n\n\n\n\n\noutput\n\nDecrypted Transaction\n\n\n\ndecrypt-&gt;output\n\n\n\n\n\nprivate_key_ref\n\n\n\nPublic Key: (n, e)\n\n\n\nprivate_key_ref-&gt;decrypt\n\n\n\n\n\npre\n\nMD0\n\n\n\ncheck\n\n\n\nMD1 == MD0\n\n\n\npre-&gt;check\n\n\n\n\n\npost\n\nMD1\n\n\n\npost-&gt;check\n\n\n\n\n\naccept\n\nTransaction Acceptance\n\n\n\ncheck-&gt;accept\n\n\n\n\n\ninput\n\nUnencrypted Transaction\n\n\n\ninput-&gt;message\n\n\n\n\n\ninput-&gt;shamsg\n\n\n\n\n\ninter-&gt;ciphertext\n\n\n\n\n\noutput-&gt;shamsg2\n\n\n\n\n\ndigestpre-&gt;pre\n\n\n\n\n\ndigestpost-&gt;post"
+    "text": "RSA_Encryption\n\n\ncluster_digest_post\n\nPostcompression\n\n\ncluster_check\n\nIntegrity Check\n\n\ncluster_digest_pre\n\nPrecompression\n\n\ncluster_encryption\n\nEncryption\n\n\ncluster_decryption\n\nDecryption\n\n\n\nmessage\n\nMessage (M)\n\n\n\nencrypt\n\nCiphertext (C) = M^e mod n\n\n\n\nmessage-&gt;encrypt\n\n\n\n\n\ninter\n\nEncrypted Transaction\n\n\n\nencrypt-&gt;inter\n\n\n\n\n\npublic_key_ref\n\n\n\nPrivate Key: (n, d)\n\n\n\npublic_key_ref-&gt;encrypt\n\n\n\n\n\nshamsg\n\nMessage (M)\n\n\n\nchecksum\n\nChecksum: sha256 M\n\n\n\nshamsg-&gt;checksum\n\n\n\n\n\ndigestpre\n\nTx Digest 1 (MD1) \n\n\n\nchecksum-&gt;digestpre\n\n\n\n\n\nsquares\n\n\n\nH^(0)\n\n\n\nsquares-&gt;checksum\n\n\n\n\n\nshamsg2\n\nMessage (M)\n\n\n\nchecksum2\n\nChecksum: sha256 M\n\n\n\nshamsg2-&gt;checksum2\n\n\n\n\n\ndigestpost\n\nTx Digest 0 (MD0)\n\n\n\nchecksum2-&gt;digestpost\n\n\n\n\n\nsquares2\n\n\n\nH^(0)\n\n\n\nsquares2-&gt;checksum2\n\n\n\n\n\nciphertext\n\nCiphertext (C)\n\n\n\ndecrypt\n\nMessage (M) = C^d mod n\n\n\n\nciphertext-&gt;decrypt\n\n\n\n\n\noutput\n\nDecrypted Transaction\n\n\n\ndecrypt-&gt;output\n\n\n\n\n\nprivate_key_ref\n\n\n\nPublic Key: (n, e)\n\n\n\nprivate_key_ref-&gt;decrypt\n\n\n\n\n\npre\n\nMD0\n\n\n\ncheck\n\n\n\nMD1 == MD0\n\n\n\npre-&gt;check\n\n\n\n\n\npost\n\nMD1\n\n\n\npost-&gt;check\n\n\n\n\n\naccept\n\nTransaction Acceptance\n\n\n\ncheck-&gt;accept\n\n\n\n\n\ninput\n\nUnencrypted Transaction\n\n\n\ninput-&gt;message\n\n\n\n\n\ninput-&gt;shamsg\n\n\n\n\n\ninter-&gt;ciphertext\n\n\n\n\n\noutput-&gt;shamsg2\n\n\n\n\n\ndigestpre-&gt;pre\n\n\n\n\n\ndigestpost-&gt;post"
   },
   {
     "objectID": "81_bchain.rjs.html#demo",
@@ -4599,7 +4599,7 @@
     "href": "70_stream.html",
     "title": "Stream",
     "section": "",
-    "text": "Welcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant\nThen data structures",
+    "text": "Welcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant",
     "crumbs": [
       "Stream"
     ]
@@ -4609,7 +4609,7 @@
     "href": "70_stream.html#announcements",
     "title": "Stream",
     "section": "",
-    "text": "Welcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant\nThen data structures",
+    "text": "Welcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant",
     "crumbs": [
       "Stream"
     ]
@@ -4619,7 +4619,7 @@
     "href": "70_stream.html#final",
     "title": "Stream",
     "section": "Final",
-    "text": "Final\n\nThe final is a write-up with supporting code.\nThe “MS CS” extensions for the next 4 weeks are 3 technical papers and 1 blog.\nI have “tech debt” on the genrsa and linker VoDs, which will help you if you get stuck on the final, but right now I could only do them poorly, rather than well.\nLet’s review BTCinC and the readings.",
+    "text": "Final\n\nThe final is a write-up with supporting code.\nLet’s review BTCinC.",
     "crumbs": [
       "Stream"
     ]
@@ -5255,16 +5255,6 @@
     ]
   },
   {
-    "objectID": "70_stream.html#previews",
-    "href": "70_stream.html#previews",
-    "title": "Stream",
-    "section": "Previews",
-    "text": "Previews\n\nstruct\n\nC language data structures\n\nmalloc\n\nDynamically sized C types",
-    "crumbs": [
-      "Stream"
-    ]
-  },
-  {
     "objectID": "70_stream.html#or",
     "href": "70_stream.html#or",
     "title": "Stream",
@@ -5279,14 +5269,14 @@
     "href": "70_stream.rjs.html#announcements",
     "title": "Stream",
     "section": "Announcements",
-    "text": "Announcements\n\nWelcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant\nThen data structures"
+    "text": "Announcements\n\nWelcome to Systems in C\n\nA quick digression on patterns & antipatterns\nC relevant"
   },
   {
     "objectID": "70_stream.rjs.html#final",
     "href": "70_stream.rjs.html#final",
     "title": "Stream",
     "section": "Final",
-    "text": "Final\n\nThe final is a write-up with supporting code.\nThe “MS CS” extensions for the next 4 weeks are 3 technical papers and 1 blog.\nI have “tech debt” on the genrsa and linker VoDs, which will help you if you get stuck on the final, but right now I could only do them poorly, rather than well.\nLet’s review BTCinC and the readings."
+    "text": "Final\n\nThe final is a write-up with supporting code.\nLet’s review BTCinC."
   },
   {
     "objectID": "70_stream.rjs.html#today",
@@ -5728,13 +5718,6 @@
     "title": "Stream",
     "section": "Today",
     "text": "Today\n\n✓ Duplication\n✓ Deficient encapsulation v. Broken modularization\n✓ Magic Numbers\n✓ Overthinking\n✓ Big Ball of Mud v. God Object\n✓ Data clump"
-  },
-  {
-    "objectID": "70_stream.rjs.html#previews",
-    "href": "70_stream.rjs.html#previews",
-    "title": "Stream",
-    "section": "Previews",
-    "text": "Previews\n\nstruct\n\nC language data structures\n\nmalloc\n\nDynamically sized C types"
   },
   {
     "objectID": "70_stream.rjs.html#or",
@@ -11122,13 +11105,6 @@
     ]
   },
   {
-<<<<<<< HEAD
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Systems in C",
-    "section": "",
-    "text": "CS 271 “Systems in C”\n\nCalled:\n\nCS 271: Systems Programming\nCS 271: Sys Programming, Computer Arch\n\nThe first semester class in a:\n\nCompiled language, with\nNo garbage collector.\n\nTerm these “systems” languages.\n\nSuitable to write an operating system.\n\nTaught this year in C.\n\nSo to me, “Systems in C”\n\n\n\nTTh 1310-1440\n\n\nProf. Calvin\n\n\nSyllabus\n\nSyllabus link\n\n\n\n\nCalendar\n\n\n\nWeek Num.\nDate Tues\nTues/Talk\nThurs/Lab\nHW/Nxt Th\n\n\n\n\n0x0\n08/35\npodman\nalpine\nEnigma\n\n\n0x1\n09/01\nC89/99\nprintb\nmacros\n\n\n0x2\n09/08\nSHA256\nEndian\nSHAinC\n\n\n0x3\n09/15\nINTCEC\nFinite\n\n\n\n0x4\n09/22\nBigAdd\nFermat\n4096_t\n\n\n0x5\n09/29\nIASC26\nKeyGen\nRSAinC\n\n\n0x6\n10/06\nEuclid\nops_ui\nBigRSA\n\n\n0x7\n10/13\nMiddle\nAssess\n\n\n\n0x8\n10/20\nMounts\naction\n\n\n\n0x9\n10/27\nStream\nmalloc\nlist_t\n\n\n0bX\n11/03\nbreak;\nstruct\n\n\n\n0xA\n11/10\nbchain\n\n\n\n\n0xB\n11/17\ngraphs\nMerkle\nheap_t\n\n\n0xC\n11/24\nLogics\nbreak;\n\n\n\n0xD\n12/01\n\n\nBTCinC\n\n\n\n*The final is described as BTCinC and is due Tuesday, December 8th at 5:00 p.m..\n\n\nRecordings"
-=======
     "objectID": "30_finite.rjs.html#announcements",
     "href": "30_finite.rjs.html#announcements",
     "title": "Finite",
@@ -13587,7 +13563,7 @@
     "href": "61_action.rjs.html#ci-1",
     "title": "Action",
     "section": "CI",
-    "text": "CI\n\nBuild and Test.\n\nEnsures code changes integrate smoothly.\nDetects errors as soon as they are written.\nCan facilitate collaboration within a broader framework.\n\nGitHub uses issues and pull requests\nHistorical, mailing lists (still in use of course)."
+    "text": "CI\n\nBuild and Test.\n\nEnsures code changes integrate smoothly.\nDetects errors as soon as they are written.\nCan facilitate collaboration within a broader framework.\n\nGitHub uses issues and pull requests\nHistorically, mailing lists (still in use of course)."
   },
   {
     "objectID": "61_action.rjs.html#mailing-list-ex.",
@@ -13741,7 +13717,7 @@
     "href": "61_action.rjs.html#on-.yml",
     "title": "Action",
     "section": "On .yml",
-    "text": "On .yml\n\nYou may have learned .yml from e.g. Data Engineering\nIt is used in the header to these slides:\n\nje suis développeur web\n\n\n\n\naction.qmd\n\n---\ntitle: Action\ntheme: dark\nauthor: Prof. Calvin\nformat: \n    revealjs: \n        code-fold: true\n        theme: dark\n        mainfont: monospace\n        slide-number: true\n        show-slide-number: all\n        width: 1050\n        height: 700\n        footer: \"[Home](../index.html)\"\n\nexecute:\n    echo: true\n    cache: true\n    freeze: true  ## never re-render during project render\n    code-fold: false\n---"
+    "text": "On .yml\n\nYou may have learned .yml from e.g. Data Engineering\nIt is used to make these slides:\n\nje suis développeur web\n\n\n\n\n_quarto.yml\n\nproject:\n    type: website\n    output-dir: ../\n\nwebsite:\n    title: \"Systems in C\"\n    sidebar:\n        contents: auto\n    search: true\n    page-navigation: true\n\nsubtitle: \"Systems in C\"\n\nformat:\n    html:\n        toc: true\n        theme: darkly \n        code-line-numbers: true\n        mainfont: monospace\n        code-tools:\n            source: true\n            toggle: false\n            caption: none\n    revealjs: \n        theme: dark\n        mainfont: monospace\n        slide-number: true\n        show-slide-number: all\n        width: 1050\n        height: 700\n        footer: \"[Home](index.html)\"\n        output-ext: rjs.html        \n        \nexecute:\n    echo: true\n    cache: true\n    freeze: auto    \n    code-fold: false"
   },
   {
     "objectID": "61_action.rjs.html#up-to-you",
@@ -13846,14 +13822,14 @@
     "href": "61_action.rjs.html#curl",
     "title": "Action",
     "section": "Curl",
-    "text": "Curl\n\nThis just pulls a book from GitHub using curl and usings the &gt; character to direct all of the diagnostic information to nowhere.\n\ncurl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null\n\nTry it with different flags if you are confused."
+    "text": "Curl\n\nThis just pulls a book from GitHub using curl and uses the &gt; character to direct all of the diagnostic information to nowhere.\n\ncurl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null\n\nTry it with different flags if you are confused."
   },
   {
     "objectID": "61_action.rjs.html#curl-1",
     "href": "61_action.rjs.html#curl-1",
     "title": "Action",
     "section": "Curl",
-    "text": "Curl\n\ncurl downloads a file from a url\n-o specifies what to save that file as on the local computers\n2&gt; suggests were to send error handling information\n/dev/null is an imaginary file we can write to that won’t remember what we wrote there.\n\nLike return none"
+    "text": "Curl\n\ncurl downloads a file from a url\n-o specifies what to save that file as on the local computers\n2&gt; redirects error handling information to a file\n/dev/null is an imaginary file we can write to that won’t remember what we wrote there.\n\nLike return none"
   },
   {
     "objectID": "61_action.rjs.html#diff",
@@ -13926,18 +13902,11 @@
     "text": ".yml\n\n\n.github/workflows/c89.yml\n\nname: C89 CI\n\non: push\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n\n    steps:\n    - uses: actions/checkout@v4\n    - run: make"
   },
   {
-    "objectID": "61_action.rjs.html#outcomes",
-    "href": "61_action.rjs.html#outcomes",
-    "title": "Action",
-    "section": "Outcomes",
-    "text": "Outcomes"
-  },
-  {
     "objectID": "61_action.rjs.html#todo",
     "href": "61_action.rjs.html#todo",
     "title": "Action",
     "section": "Todo",
-    "text": "Todo\n\nGet this working on your “shainc” or “enigma” or something.\nEither in your main repo or in some other one.\nAdd “GitHub Actions and CI/CD pipelines for DevOps” to your resume."
+    "text": "Todo\n\nGet this working on your “shainc”/“enigma”/“base64”.\nEither in your main repo or in some other one.\nAdd “GitHub Actions and CI/CD pipelines for DevOps” to your resume."
   },
   {
     "objectID": "61_action.html",
@@ -14084,7 +14053,7 @@
     "href": "61_action.html#ci-1",
     "title": "Action",
     "section": "CI",
-    "text": "CI\n\nBuild and Test.\n\nEnsures code changes integrate smoothly.\nDetects errors as soon as they are written.\nCan facilitate collaboration within a broader framework.\n\nGitHub uses issues and pull requests\nHistorical, mailing lists (still in use of course).",
+    "text": "CI\n\nBuild and Test.\n\nEnsures code changes integrate smoothly.\nDetects errors as soon as they are written.\nCan facilitate collaboration within a broader framework.\n\nGitHub uses issues and pull requests\nHistorically, mailing lists (still in use of course).",
     "crumbs": [
       "Action"
     ]
@@ -14304,7 +14273,7 @@
     "href": "61_action.html#on-.yml",
     "title": "Action",
     "section": "On .yml",
-    "text": "On .yml\n\nYou may have learned .yml from e.g. Data Engineering\nIt is used in the header to these slides:\n\nje suis développeur web\n\n\n\n\naction.qmd\n\n---\ntitle: Action\ntheme: dark\nauthor: Prof. Calvin\nformat: \n    revealjs: \n        code-fold: true\n        theme: dark\n        mainfont: monospace\n        slide-number: true\n        show-slide-number: all\n        width: 1050\n        height: 700\n        footer: \"[Home](../index.html)\"\n\nexecute:\n    echo: true\n    cache: true\n    freeze: true  ## never re-render during project render\n    code-fold: false\n---",
+    "text": "On .yml\n\nYou may have learned .yml from e.g. Data Engineering\nIt is used to make these slides:\n\nje suis développeur web\n\n\n\n\n_quarto.yml\n\nproject:\n    type: website\n    output-dir: ../\n\nwebsite:\n    title: \"Systems in C\"\n    sidebar:\n        contents: auto\n    search: true\n    page-navigation: true\n\nsubtitle: \"Systems in C\"\n\nformat:\n    html:\n        toc: true\n        theme: darkly \n        code-line-numbers: true\n        mainfont: monospace\n        code-tools:\n            source: true\n            toggle: false\n            caption: none\n    revealjs: \n        theme: dark\n        mainfont: monospace\n        slide-number: true\n        show-slide-number: all\n        width: 1050\n        height: 700\n        footer: \"[Home](index.html)\"\n        output-ext: rjs.html        \n        \nexecute:\n    echo: true\n    cache: true\n    freeze: auto    \n    code-fold: false",
     "crumbs": [
       "Action"
     ]
@@ -14454,7 +14423,7 @@
     "href": "61_action.html#curl",
     "title": "Action",
     "section": "Curl",
-    "text": "Curl\n\nThis just pulls a book from GitHub using curl and usings the &gt; character to direct all of the diagnostic information to nowhere.\n\ncurl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null\n\nTry it with different flags if you are confused.",
+    "text": "Curl\n\nThis just pulls a book from GitHub using curl and uses the &gt; character to direct all of the diagnostic information to nowhere.\n\ncurl https://github.com/cd-public/books/raw/main/pg1342.txt -o austen.txt 2&gt;/dev/null\n\nTry it with different flags if you are confused.",
     "crumbs": [
       "Action"
     ]
@@ -14464,7 +14433,7 @@
     "href": "61_action.html#curl-1",
     "title": "Action",
     "section": "Curl",
-    "text": "Curl\n\ncurl downloads a file from a url\n-o specifies what to save that file as on the local computers\n2&gt; suggests were to send error handling information\n/dev/null is an imaginary file we can write to that won’t remember what we wrote there.\n\nLike return none",
+    "text": "Curl\n\ncurl downloads a file from a url\n-o specifies what to save that file as on the local computers\n2&gt; redirects error handling information to a file\n/dev/null is an imaginary file we can write to that won’t remember what we wrote there.\n\nLike return none",
     "crumbs": [
       "Action"
     ]
@@ -14570,21 +14539,11 @@
     ]
   },
   {
-    "objectID": "61_action.html#outcomes",
-    "href": "61_action.html#outcomes",
-    "title": "Action",
-    "section": "Outcomes",
-    "text": "Outcomes",
-    "crumbs": [
-      "Action"
-    ]
-  },
-  {
     "objectID": "61_action.html#todo",
     "href": "61_action.html#todo",
     "title": "Action",
     "section": "Todo",
-    "text": "Todo\n\nGet this working on your “shainc” or “enigma” or something.\nEither in your main repo or in some other one.\nAdd “GitHub Actions and CI/CD pipelines for DevOps” to your resume.",
+    "text": "Todo\n\nGet this working on your “shainc”/“enigma”/“base64”.\nEither in your main repo or in some other one.\nAdd “GitHub Actions and CI/CD pipelines for DevOps” to your resume.",
     "crumbs": [
       "Action"
     ]
@@ -18413,6 +18372,5 @@
     "crumbs": [
       "BTCinC"
     ]
->>>>>>> 0693c514f1d7cb0252b3e1a1092ba4c5350506ba
   }
 ]
