@@ -14616,7 +14616,7 @@
     "href": "71_malloc.rjs.html#review-2",
     "title": "malloc",
     "section": "Review",
-    "text": "Review\n\nWe use char * in a function argument to account for arrays of any size. _ What does this mean physically within the physical computing device?\nWe use “char arr[\\(n\\)]” in the main function so we know we have enough space.\n\nWhat does this mean physically within the physical computing device?"
+    "text": "Review\n\nWe use char * in a function argument to account for arrays of any size.\n\nWhat does this mean physically within the physical computing device?\n\nWe use “char arr[\\(n\\)]” in the main function so we know we have enough space.\n\nWhat does this mean physically within the physical computing device?"
   },
   {
     "objectID": "71_malloc.rjs.html#takeaways",
@@ -14644,7 +14644,14 @@
     "href": "71_malloc.rjs.html#malloc-3",
     "title": "malloc",
     "section": "Malloc",
-    "text": "Malloc\n\nreturns a void *\n\nThis gives the location of some bits\nThose bits can be used however\nThe argument size is the number of bytes\n\nchar *ptr = (char *)malloc(sizeof(char) * 6) ;\nOnce we have the void *, we can use a cast to change it to some other star.\n\nVoilà, something a lot like an array, but of software defined size\n\nThat is, can perform a calculation how much space you need, then dget it.\n“Here is some memory” vs “This memory contains characters”."
+    "text": "Malloc\n\nreturns a void *\n\nThis gives the location of some bits\nThose bits can be used however\nThe argument size is the number of bytes\n\nchar *ptr = (char *)malloc(sizeof(char) * 6) ;"
+  },
+  {
+    "objectID": "71_malloc.rjs.html#void-star",
+    "href": "71_malloc.rjs.html#void-star",
+    "title": "malloc",
+    "section": "“Void Star”",
+    "text": "“Void Star”\n\nOnce we have the void *, we can use a cast to change it to some other star.\n\nVoilà, something a lot like an array, but of software defined size\n\nThat is, can perform a calculation how much space you need, then dget it.\n“Here is some memory” vs “This memory contains characters”."
   },
   {
     "objectID": "71_malloc.rjs.html#malloc-4",
@@ -14710,13 +14717,6 @@
     "text": "Credit\n\n\n\nJenny Chen\nRuohao Guo\n\n\n\n\nshe/her\nshe/her\n\n\nSoftware Engineer\nGraduate Research Assistant\n\n\nApple\nGeorgia Institute of Technology\n\n\nB.S. Computer Science, 2021, UIUC\nB.S. Computer Science, 2021, UIUC"
   },
   {
-    "objectID": "71_malloc.rjs.html#stack",
-    "href": "71_malloc.rjs.html#stack",
-    "title": "malloc",
-    "section": "Stack",
-    "text": "Stack"
-  },
-  {
     "objectID": "71_malloc.rjs.html#memory-layout",
     "href": "71_malloc.rjs.html#memory-layout",
     "title": "malloc",
@@ -14759,13 +14759,6 @@
     "text": "Function Call\n\n\n\nAllocate a for main\nAllocate b for main\nAllocate c for main\nAllocate sizeof(int) bytes for variable a for hello\n\nStore (int)100\nPerhaps hello.a vs main.a"
   },
   {
-    "objectID": "71_malloc.rjs.html#function-call-1",
-    "href": "71_malloc.rjs.html#function-call-1",
-    "title": "malloc",
-    "section": "Function Call",
-    "text": "Function Call\n\n\n\nAllocate a for main\nAllocate b for main\nAllocate ‘c’ for main’c for main\n\nStore the numerical value (int)12345"
-  },
-  {
     "objectID": "71_malloc.rjs.html#what-of-return",
     "href": "71_malloc.rjs.html#what-of-return",
     "title": "malloc",
@@ -14792,13 +14785,6 @@
     "title": "malloc",
     "section": "Stack Discussion?",
     "text": "Stack Discussion?"
-  },
-  {
-    "objectID": "71_malloc.rjs.html#stack-2",
-    "href": "71_malloc.rjs.html#stack-2",
-    "title": "malloc",
-    "section": "Stack",
-    "text": "Stack"
   },
   {
     "objectID": "71_malloc.rjs.html#heap-example",
@@ -15241,7 +15227,7 @@
     "href": "71_malloc.html#review-2",
     "title": "malloc",
     "section": "Review",
-    "text": "Review\n\nWe use char * in a function argument to account for arrays of any size. _ What does this mean physically within the physical computing device?\nWe use “char arr[\\(n\\)]” in the main function so we know we have enough space.\n\nWhat does this mean physically within the physical computing device?",
+    "text": "Review\n\nWe use char * in a function argument to account for arrays of any size.\n\nWhat does this mean physically within the physical computing device?\n\nWe use “char arr[\\(n\\)]” in the main function so we know we have enough space.\n\nWhat does this mean physically within the physical computing device?",
     "crumbs": [
       "malloc"
     ]
@@ -15281,7 +15267,17 @@
     "href": "71_malloc.html#malloc-3",
     "title": "malloc",
     "section": "Malloc",
-    "text": "Malloc\n\nreturns a void *\n\nThis gives the location of some bits\nThose bits can be used however\nThe argument size is the number of bytes\n\nchar *ptr = (char *)malloc(sizeof(char) * 6) ;\nOnce we have the void *, we can use a cast to change it to some other star.\n\nVoilà, something a lot like an array, but of software defined size\n\nThat is, can perform a calculation how much space you need, then dget it.\n“Here is some memory” vs “This memory contains characters”.",
+    "text": "Malloc\n\nreturns a void *\n\nThis gives the location of some bits\nThose bits can be used however\nThe argument size is the number of bytes\n\nchar *ptr = (char *)malloc(sizeof(char) * 6) ;",
+    "crumbs": [
+      "malloc"
+    ]
+  },
+  {
+    "objectID": "71_malloc.html#void-star",
+    "href": "71_malloc.html#void-star",
+    "title": "malloc",
+    "section": "“Void Star”",
+    "text": "“Void Star”\n\nOnce we have the void *, we can use a cast to change it to some other star.\n\nVoilà, something a lot like an array, but of software defined size\n\nThat is, can perform a calculation how much space you need, then dget it.\n“Here is some memory” vs “This memory contains characters”.",
     "crumbs": [
       "malloc"
     ]
@@ -15377,16 +15373,6 @@
     ]
   },
   {
-    "objectID": "71_malloc.html#stack",
-    "href": "71_malloc.html#stack",
-    "title": "malloc",
-    "section": "Stack",
-    "text": "Stack",
-    "crumbs": [
-      "malloc"
-    ]
-  },
-  {
     "objectID": "71_malloc.html#memory-layout",
     "href": "71_malloc.html#memory-layout",
     "title": "malloc",
@@ -15447,16 +15433,6 @@
     ]
   },
   {
-    "objectID": "71_malloc.html#function-call-1",
-    "href": "71_malloc.html#function-call-1",
-    "title": "malloc",
-    "section": "Function Call",
-    "text": "Function Call\n\n\n\nAllocate a for main\nAllocate b for main\nAllocate ‘c’ for main’c for main\n\nStore the numerical value (int)12345",
-    "crumbs": [
-      "malloc"
-    ]
-  },
-  {
     "objectID": "71_malloc.html#what-of-return",
     "href": "71_malloc.html#what-of-return",
     "title": "malloc",
@@ -15492,16 +15468,6 @@
     "title": "malloc",
     "section": "Stack Discussion?",
     "text": "Stack Discussion?",
-    "crumbs": [
-      "malloc"
-    ]
-  },
-  {
-    "objectID": "71_malloc.html#stack-2",
-    "href": "71_malloc.html#stack-2",
-    "title": "malloc",
-    "section": "Stack",
-    "text": "Stack",
     "crumbs": [
       "malloc"
     ]
@@ -16138,7 +16104,7 @@
     "href": "80_struct.rjs.html#classes",
     "title": "struct",
     "section": "Classes",
-    "text": "Classes\n\nIn lesser (object oriented) languages, class implement data structures.\n\nClasses may lack both data and structure,\nThey are, perhaps, “computation structures”?\n\nclass MultiAdd:\ndef do(self, ns):\n    if ns:\n        n = ns[0]\n        [n := n + i for i in ns[1:]]\n    return n\n\nNo structure. No data."
+    "text": "Classes\n\nIn lesser (object oriented) languages, classes implement data structures.\n\nClasses may lack both data and structure,\nThey are, perhaps, “computation structures”?\n\nclass MultiAdd:\n\ndef do(self, ns):\n    if ns:\n        n = ns[0]\n        [n := n + i for i in ns[1:]]\n    return n\n\nNo structure. No data."
   },
   {
     "objectID": "80_struct.rjs.html#classes-1",
@@ -16187,7 +16153,7 @@
     "href": "80_struct.rjs.html#takeaways",
     "title": "struct",
     "section": "Takeaways",
-    "text": "Takeaways\n\nStructs can be though of as arrays with names and types.\n\nThis is “record” theoretical type\nIncreasingly implemented with .json instead of types, which is a whole thing\n\nStructs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code."
+    "text": "Takeaways\n\nStructs can be thought of as arrays with names and types.\n\nThis is “record” theoretical type\nIncreasingly implemented with .json instead of types, which is a whole thing\n\nStructs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code."
   },
   {
     "objectID": "80_struct.rjs.html#today-3",
@@ -16519,7 +16485,7 @@
     "href": "80_struct.html#classes",
     "title": "struct",
     "section": "Classes",
-    "text": "Classes\n\nIn lesser (object oriented) languages, class implement data structures.\n\nClasses may lack both data and structure,\nThey are, perhaps, “computation structures”?\n\nclass MultiAdd:\ndef do(self, ns):\n    if ns:\n        n = ns[0]\n        [n := n + i for i in ns[1:]]\n    return n\n\nNo structure. No data.",
+    "text": "Classes\n\nIn lesser (object oriented) languages, classes implement data structures.\n\nClasses may lack both data and structure,\nThey are, perhaps, “computation structures”?\n\nclass MultiAdd:\n\ndef do(self, ns):\n    if ns:\n        n = ns[0]\n        [n := n + i for i in ns[1:]]\n    return n\n\nNo structure. No data.",
     "crumbs": [
       "struct"
     ]
@@ -16589,7 +16555,7 @@
     "href": "80_struct.html#takeaways",
     "title": "struct",
     "section": "Takeaways",
-    "text": "Takeaways\n\nStructs can be though of as arrays with names and types.\n\nThis is “record” theoretical type\nIncreasingly implemented with .json instead of types, which is a whole thing\n\nStructs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code.",
+    "text": "Takeaways\n\nStructs can be thought of as arrays with names and types.\n\nThis is “record” theoretical type\nIncreasingly implemented with .json instead of types, which is a whole thing\n\nStructs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code.",
     "crumbs": [
       "struct"
     ]

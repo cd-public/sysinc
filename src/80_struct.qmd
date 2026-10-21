@@ -161,6 +161,7 @@ void print_argv(void **both) {
     - This demands a solution.
 
 ## Hack
+
 - Now the data clump antipattern.
 
 ```{.c}
@@ -172,6 +173,7 @@ void print_argv(void **both) {
     - This should feel *bad*
 
 ## Hack
+
 - Now the data clump antipattern.
 
 ```{.c}
@@ -270,11 +272,12 @@ str = "defined";
 
 ## Classes
 
-*   In lesser (object oriented) languages, class implement data structures.
+*   In lesser (object oriented) languages, *classes* implement data structures.
     *   Classes may lack both data and structure, 
     *   They are, perhaps, "computation structures"?
 ```{.py}
 class MultiAdd:
+
     def do(self, ns):
         if ns:
             n = ns[0]
@@ -371,7 +374,7 @@ argv[3] = three
 
 ## Takeaways
 
-- Structs can be though of as arrays with names and types.
+- Structs can be thought of as arrays with names and types.
     - This is "record" theoretical type
     - Increasingly implemented with `.json` instead of types, which is a whole thing
 - Structs are defined at compile time, and versus e.g. Python objects, cannot be altered by running code.
