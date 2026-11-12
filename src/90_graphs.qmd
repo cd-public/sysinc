@@ -1,6 +1,7 @@
 ---
 title: Graphs
 subtitle: "wBd1"
+format: html
 ---
 
 *A hastily cobbled together exercise since you claimed to know what graphs are.*
@@ -84,4 +85,32 @@ Since I was on the clock for this, I just used:
 ```sh
 gcc dijkstra.c -w && ./a.out
 ```
+
+## The Key
+
+Here's what all the 3-letters mean.
+
+| Code | 	City	        | Junction	| TimeZone |
+|-|-|-|-|
+| ABQ | 	Albuquerque, NM	| I-25 / I-40	| Mountain |
+| BTM | 	Butte, MT	| I-15 / I-90	| Mountain |
+| BYG | 	Buffalo, WY	| I-25 / I-90	| Mountain |
+| BYI | 	Burley, ID	| I-84 / I-86	| Mountain |
+| CVF | 	Cove Fort, UT	| I-15 / I-70	| Mountain |
+| CYS | 	Cheyenne, WY	| I-25 / I-80	| Mountain |
+| DAG | 	Barstow, CA	| I-15 / I-40	| Pacific |
+| DEN | 	Denver, CO	| I-25 / I-70	| Mountain |
+| ELN | 	Ellensburg, WA	| I-90 / I-82	| Pacific |
+| FLG | 	Flagstaff, AZ	| I-17 / I-40	| Mountain |
+| HES | 	Hermiston, OR	| I-82 / I-84	| Pacific |
+| LAX | 	Los Angeles, CA	| I-5 / I-10	| Pacific |
+| LRU | 	Las Cruces, NM	| I-10 / I-25	| Mountain |
+| OGD | 	Ogden, UT	| I-15 / I-84	| Mountain |
+| ONT | 	Ontario, CA	| I-10 / I-15	| Pacific |
+| PDX | 	Portland, OR	| I-5 / I-84	| Pacific |
+| PHX | 	Phoenix, AZ	| I-10 / I-17	| Mountain |
+| PIH | 	Pocatello, ID	| I-15 / I-86	| Mountain |
+| SEA | 	Seattle, WA	| I-5 / I-90	| Pacific |
+| SLC | 	Salt Lake City, UT |I-15 / I-80	| Mountain |
+| SMF | 	Sacramento, CA	| I-5 / I-80	| Pacific |
 
