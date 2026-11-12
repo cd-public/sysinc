@@ -139,7 +139,7 @@ int main() {
 
 - To my knowledge this is all I've used this term outside of one-offs for testing.
 
-```
+```{.email}
 gcc \
 vim \
 python3 \

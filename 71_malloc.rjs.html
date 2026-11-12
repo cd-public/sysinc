@@ -491,7 +491,10 @@
 <section id="review-2" class="slide level2">
 <h2>Review</h2>
 <ul>
-<li>We use <code>char *</code> in a function argument to account for arrays of any size. _ What does this mean <em>physically</em> within the physical computing device?</li>
+<li>We use <code>char *</code> in a function argument to account for arrays of any size.
+<ul>
+<li>What does this mean <em>physically</em> within the physical computing device?</li>
+</ul></li>
 <li>We use “char arr[<span class="math inline">\(n\)</span>]” in the main function so we know we have enough space.
 <ul>
 <li>What does this mean <em>physically</em> within the physical computing device?</li>
@@ -572,6 +575,11 @@
 <li>The argument <code>size</code> is the number of bytes</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a></a><span class="dt">char</span> <span class="op">*</span>ptr <span class="op">=</span> <span class="op">(</span><span class="dt">char</span> <span class="op">*)</span>malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">char</span><span class="op">)</span> <span class="op">*</span> <span class="dv">6</span><span class="op">)</span> <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="void-star" class="slide level2">
+<h2>“Void Star”</h2>
+<ul>
 <li>Once we have the <code>void *</code>, we can use a <em>cast</em> to change it to some other star.
 <ul>
 <li>Voilà, something a lot like an array, but of software defined size
@@ -736,9 +744,11 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="stack" class="slide level2">
-<h2>Stack</h2>
+</section></section>
+<section>
+<section id="stack" class="title-slide slide level1 center">
+<h1>Stack</h1>
+
 </section>
 <section id="memory-layout" class="slide level2">
 <h2>Memory layout</h2>
@@ -834,22 +844,6 @@
 <p><img data-src="struct_files/stack_demo_4.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
 </div></div>
 </section>
-<section id="function-call-1" class="slide level2">
-<h2>Function Call</h2>
-<div class="{columns}">
-<div class="column" style="width:50%;">
-<ol type="1">
-<li>Allocate <code>a</code> for <code>main</code></li>
-<li>Allocate <code>b</code> for <code>main</code></li>
-<li>Allocate ‘c’ for main’<code>c</code> for <code>main</code>
-<ul>
-<li>Store the numerical value <code>(int)12345</code></li>
-</ul></li>
-</ol>
-</div><div class="column" style="width:50%;">
-<p><img data-src="struct_files/stack_demo_3.png"> <img data-src="struct_files/demo_legend.png" style="width:50.0%"></p>
-</div></div>
-</section>
 <section id="what-of-return" class="slide level2">
 <h2>What of <code>return</code></h2>
 <div class="{columns}">
@@ -909,9 +903,11 @@
 </div><div class="column" style="width:50%;">
 <p><img data-src="struct_files/stack_demo_6.png"></p>
 </div></div>
-</section>
-<section id="stack-2" class="slide level2">
-<h2>Stack</h2>
+</section></section>
+<section>
+<section id="heap" class="title-slide slide level1 center">
+<h1>Heap</h1>
+
 </section>
 <section id="heap-example" class="slide level2">
 <h2>Heap Example</h2>

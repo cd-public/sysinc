@@ -738,17 +738,18 @@
 <section id="classes" class="slide level2">
 <h2>Classes</h2>
 <ul>
-<li>In lesser (object oriented) languages, class implement data structures.
+<li>In lesser (object oriented) languages, <em>classes</em> implement data structures.
 <ul>
 <li>Classes may lack both data and structure,</li>
 <li>They are, perhaps, “computation structures”?</li>
 </ul>
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">class</span> MultiAdd:</span>
-<span id="cb16-2"><a></a><span class="kw">def</span> do(<span class="va">self</span>, ns):</span>
-<span id="cb16-3"><a></a>    <span class="cf">if</span> ns:</span>
-<span id="cb16-4"><a></a>        n <span class="op">=</span> ns[<span class="dv">0</span>]</span>
-<span id="cb16-5"><a></a>        [n <span class="op">:=</span> n <span class="op">+</span> i <span class="cf">for</span> i <span class="kw">in</span> ns[<span class="dv">1</span>:]]</span>
-<span id="cb16-6"><a></a>    <span class="cf">return</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a><span class="kw">def</span> do(<span class="va">self</span>, ns):</span>
+<span id="cb16-4"><a></a>    <span class="cf">if</span> ns:</span>
+<span id="cb16-5"><a></a>        n <span class="op">=</span> ns[<span class="dv">0</span>]</span>
+<span id="cb16-6"><a></a>        [n <span class="op">:=</span> n <span class="op">+</span> i <span class="cf">for</span> i <span class="kw">in</span> ns[<span class="dv">1</span>:]]</span>
+<span id="cb16-7"><a></a>    <span class="cf">return</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>No structure. No data.</li>
 </ul></li>
@@ -847,7 +848,7 @@
 <section id="takeaways" class="slide level2">
 <h2>Takeaways</h2>
 <ul>
-<li>Structs can be though of as arrays with names and types.
+<li>Structs can be thought of as arrays with names and types.
 <ul>
 <li>This is “record” theoretical type</li>
 <li>Increasingly implemented with <code>.json</code> instead of types, which is a whole thing</li>
